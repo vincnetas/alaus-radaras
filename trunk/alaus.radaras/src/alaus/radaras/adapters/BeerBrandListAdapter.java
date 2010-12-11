@@ -85,9 +85,9 @@ class BeerBrandListAdapter extends BaseAdapter {
      *      android.view.ViewGroup)
      */
     public View getView(int position, View convertView, ViewGroup parent) {
-        // A ViewHolder keeps references to children views to avoid unneccessary calls
+        // A BeerBrandViewHolder keeps references to children views to avoid unneccessary calls
         // to findViewById() on each row.
-        ViewHolder holder;
+        BeerBrandViewHolder holder;
 
         // When convertView is not null, we can reuse it directly, there is no need
         // to reinflate it. We only inflate a new View when the convertView supplied
@@ -95,18 +95,18 @@ class BeerBrandListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.atm_list_item, null);
 
-            // Creates a ViewHolder and store references to the two children views
+            // Creates a BeerBrandViewHolder and store references to the two children views
             // we want to bind data to.
-            holder = new ViewHolder();
+            holder = new BeerBrandViewHolder();
             holder.address = (TextView) convertView.findViewById(R.id.address);
             holder.icon = (ImageView) convertView.findViewById(R.id.icon);
             holder.distance = (TextView) convertView.findViewById(R.id.distance);
             holder.location = (TextView) convertView.findViewById(R.id.location);
             convertView.setTag(holder);
         } else {
-            // Get the ViewHolder back to get fast access to the TextView
+            // Get the BeerBrandViewHolder back to get fast access to the TextView
             // and the ImageView.
-            holder = (ViewHolder) convertView.getTag();
+            holder = (BeerBrandViewHolder) convertView.getTag();
         }
         ATM atm = atms.get(position);
         // Bind the data efficiently with the holder.
