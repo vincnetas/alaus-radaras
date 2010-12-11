@@ -7,17 +7,13 @@
 	android:stretchColumns="1">
 	<TableRow>
 		<ImageView 
-		 	android:id="@+id/TextCurrency" 
+		 	android:id="@+id/BrandIcon" 
 		 	android:layout_width="45px"
 		 	android:layout_height="fill_parent" 
 		 	android:gravity="center"
-		 	android:background="#CCE0DD"
-		 	android:textStyle="bold"
-		 	android:textSize="17px"
-		 	android:textColor="#004847"
-		 	android:text="hi" />
+		 	android:background="#CCE0DD" />
 	 	<TextView 
-		 	android:id="@+id/TextCurrencyName"
+		 	android:id="@+id/BrandTitle"
 		 	android:layout_width="fill_parent" 
 		 	android:layout_height="fill_parent"
 		 	android:layout_marginLeft="10px" 
