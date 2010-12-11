@@ -3,11 +3,11 @@ package alaus.radaras.adapters;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import alaus.radaras.R;
 import alaus.radaras.dao.model.Beer;
-import alaus.radaras.viewholders.BeerBrandViewHolder;
+import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class BeerBrandListAdapter extends BaseAdapter {
+class BrandListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Bitmap sebIcon;
     private Bitmap swedIcon;
@@ -30,7 +30,7 @@ class BeerBrandListAdapter extends BaseAdapter {
     private List<Beer> beers;
     private DecimalFormat meteresFormat = new DecimalFormat("0");
     private DecimalFormat kilometeresFormat = new DecimalFormat("0.00");
-    public BeerBrandListAdapter(Context context, List<Beer> beers) {
+    public BrandListAdapter(Context context, List<Beer> beers) {
         // Cache the LayoutInflate to avoid asking for a new one each time.
         mInflater = LayoutInflater.from(context);
         this.beers = beers;
@@ -89,7 +89,7 @@ class BeerBrandListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // A BeerBrandViewHolder keeps references to children views to avoid unneccessary calls
         // to findViewById() on each row.
-        BeerBrandViewHolder holder;
+        BrandViewHolder holder;
 
         // When convertView is not null, we can reuse it directly, there is no need
         // to reinflate it. We only inflate a new View when the convertView supplied
@@ -99,14 +99,14 @@ class BeerBrandListAdapter extends BaseAdapter {
 
             // Creates a BeerBrandViewHolder and store references to the two children views
             // we want to bind data to.
-            holder = new BeerBrandViewHolder();
-            holder.title = (TextView) convertView.findViewById(R.id.address);
-            holder.img = (ImageView) convertView.findViewById(R.id.icon);
+            holder = new BrandViewHolder();
+            holder.title = (TextView) convertView.findViewById(R.id.BrandTitle);
+            holder.img = (ImageView) convertView.findViewById(R.id.BrandIcon);
             convertView.setTag(holder);
         } else {
             // Get the BeerBrandViewHolder back to get fast access to the TextView
             // and the ImageView.
-            holder = (BeerBrandViewHolder) convertView.getTag();
+            holder = (BrandViewHolder) convertView.getTag();
         }
         Beer atm = beers.get(position);
         // Bind the data efficiently with the holder.
