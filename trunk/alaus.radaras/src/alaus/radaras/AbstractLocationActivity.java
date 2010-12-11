@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class DummyLocationActivity  extends Activity  implements Observer {
+public class AbstractLocationActivity  extends Activity  implements Observer {
 	/** Called when the activity is first created. */
 	LocationProvider locationProvider;
 	ATMProvider atmProvider;
