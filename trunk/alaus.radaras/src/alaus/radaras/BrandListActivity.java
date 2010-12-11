@@ -33,7 +33,7 @@ public class BrandListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
         
-        brands = new BeerRadarDao().getBrands();
+        brands = BeerRadarDao.getInstance(this).getBrands();
         
         ListView l1 = (ListView) findViewById(R.id.listBrands);
         l1.setAdapter(new BrandListAdapter(this, brands));
