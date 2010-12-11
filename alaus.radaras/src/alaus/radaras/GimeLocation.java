@@ -3,6 +3,7 @@
  */
 package alaus.radaras;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -124,6 +125,10 @@ public class GimeLocation extends MapActivity implements Observer {
 				pubs = getBeerRadarDao().getPubsByBrandId(brandId, loc);
 			} else {
 				pubs = getBeerRadarDao().getNearbyPubs(loc);
+			}
+			
+			if (pubs == null) {
+				pubs = new ArrayList<Pub>();
 			}
 			
 			for (Pub pub : pubs) {
