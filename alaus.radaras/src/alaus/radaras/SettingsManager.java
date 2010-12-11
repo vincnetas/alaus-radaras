@@ -57,9 +57,11 @@ public class SettingsManager {
 
 	public void increaseCurrent() {
 		Integer current = getCurrentCount();
-		storeValue(Settings.SETTING_CURRENT_COUNT, (current++).toString());
+		current++;
+		storeValue(Settings.SETTING_CURRENT_COUNT, (current).toString());
 		Integer total = getTotalCount();
-		storeValue(Settings.SETTING_TOTAL_COUNT, (total++).toString());
+		total++;
+		storeValue(Settings.SETTING_TOTAL_COUNT, (total).toString());
 		
 	}
 
