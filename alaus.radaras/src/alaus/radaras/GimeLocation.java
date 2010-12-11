@@ -21,6 +21,8 @@ import com.google.android.maps.OverlayItem;
  */
 public class GimeLocation extends MapActivity {
 
+	private LocationProvider locationProvider;
+	
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
