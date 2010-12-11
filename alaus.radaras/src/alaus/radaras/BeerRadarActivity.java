@@ -22,5 +22,14 @@ public class BeerRadarActivity extends Activity {
                 startActivity(intent);
 			}
 		});
+		Button buttonBrand = (Button) findViewById(R.id.ButtonBrand);
+		buttonBrand.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(BeerRadarActivity.this, BrandListActivity.class);
+                startActivity(intent);
+			}
+		});
+
     }
 }

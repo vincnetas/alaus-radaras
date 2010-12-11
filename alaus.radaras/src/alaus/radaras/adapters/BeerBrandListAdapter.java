@@ -3,6 +3,7 @@ package alaus.radaras.adapters;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import alaus.radaras.viewholders.BeerBrandViewHolder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
