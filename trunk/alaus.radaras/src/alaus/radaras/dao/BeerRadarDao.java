@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.FeelingLucky;
@@ -124,8 +125,23 @@ public class BeerRadarDao {
 	}
 	
 	public FeelingLucky feelingLucky() {
+		Cursor cursor = db.rawQuery(
+				"SELECT id FROM pubs p " +
+				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
+				"ORDER BY RANDOM() LIMIT 1", null);
+
+		String pubId = null;
+		if (cursor.moveToFirst()) {
+			pubId = cursor.getString(0);
+		}
 		
-		return new FeelingLucky();
+		Pub pub = getPub(pubId);
+		List<Brand> brands = getBrandsByPubId(pubId);
+		FeelingLucky lucky = new FeelingLucky();
+		lucky.setPub(pub);
+		lucky.setBrand(brands.get(new Random().nextInt(brands.size())));
+		
+		return lucky;
 	}
 	
 	public Drawable getImage(String url) {
