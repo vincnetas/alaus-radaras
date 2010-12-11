@@ -1,0 +1,32 @@
+guiness;Guiness;
+kilkeny;Kilkeny;
+hoegarden;Hoegarden;
+pogo;PoGO šviesusis;pogo
+vilniaus_kvietinis;Vilniaus kvietinis;bermudai, pogo
+varniuku;Varniuk? tamsusis;pogo
+samson;Samson;blusyne, pogo, plieno_paukste
+heineken;Heineken;pogo, savas_kampas
+warsteiner;Warsteiner;bunte_gans, plieno_paukste
+erdinger;Erdinger;bunte_gans
+veltins;Veltins;bunte_gans
+rinkuskiu_proginis;Rinkuški? proginis;bermudai
+kanapinis;Kanapinis tamsus;bermudai
+vilniaus_nefiltr;Vilniaus nefiltruotas;bermudai
+jovaru_snekutis;Jovar? šnekutis;bermudai
+krusovec;Krušovec;blusyne
+belmonto_sviesus;Belmonto šviesusis;belmontas
+belmonto_ypatingas;Belmonto ypatingasis;belmontas
+velvet;Velvet;savas_kampas
+zubr;Zubr;savas_kampas
+franziskaner;Franziskaner;savas_kampas
+staropramen;Staropramen;burito
+bravaria;Bravaria;bravaria
+busi_trecias;B?si Tre?ias;busi_trecias
+budweiser;"Budweiser ""BUDVAR""";busi_trecias, plieno_paukste
+svyturys_baltas;"Švyturys ""Baltas""";busi_trecias
+kalnapilis_grand;"Kalnapilis ""Grand""";busi_trecias
+katedros_sviesusis;Katedros Šviesusis;prie_katedros, dominink_karciama
+katedros_tamsusis;Katedros Tamsusis;prie_katedros, dominink_karciama
+katedros_medaus;Katedros Medaus;prie_katedros, dominink_karciama
+svyturys_extra;"Švyturys ""Extra""";jalta
+grimbergen;Grimbergen;jalta
