@@ -3,6 +3,8 @@
  */
 package alaus.radaras;
 
+import java.util.List;
+
 import alaus.radaras.adapters.PubBrandListAdapter;
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Brand;
@@ -35,9 +37,13 @@ public class PubActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.pub);
 
-	    final Pub pub = BeerRadarDao.getInstance(this).getPub(getIntent().getExtras().get(PUBID).toString());
+	    BeerRadarDao dao = BeerRadarDao.getInstance(this);
+	    
+	    final Pub pub = dao.getPub(getIntent().getExtras().get(PUBID).toString());
+	    final List<Brand> brands = dao.getBrandsByPubId(pub.getId());
+	    
 	    GridView gridview = (GridView) findViewById(R.id.pubBrandList);
-//	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBrands()));
+	    gridview.setAdapter(new PubBrandListAdapter(this,brands));
 	    
 	    addressView = (TextView)findViewById(R.id.pubAddress);
 	    addressView.setText(pub.getAddress());
@@ -53,9 +59,9 @@ public class PubActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-//				Brand beer = pub.getBrands().get(position);
-//				Toast.makeText(PubActivity.this, beer.getDescription(), Toast.LENGTH_SHORT).show();
-//				
+				Brand beer = brands.get(position);
+				Toast.makeText(PubActivity.this, beer.getDescription(), Toast.LENGTH_SHORT).show();
+				
 			}
 	    });
 	    
