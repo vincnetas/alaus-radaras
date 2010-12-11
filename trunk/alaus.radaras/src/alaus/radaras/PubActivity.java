@@ -35,18 +35,18 @@ public class PubActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.pub);
 
-	    final Pub pub = BeerRadarDao.getInstance().getPubByPubId(getIntent().getExtras().get(PUBID).toString());
-	    GridView gridview = (GridView) findViewById(R.id.brandList);
+	    final Pub pub = BeerRadarDao.getInstance(this).getPubByPubId(getIntent().getExtras().get(PUBID).toString());
+	    GridView gridview = (GridView) findViewById(R.id.pubBrandList);
 	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBeers()));
 	    
-	    addressView = (TextView)findViewById(R.id.address);
+	    addressView = (TextView)findViewById(R.id.pubAddress);
 	    addressView.setText(pub.getAddress());
 	    
-	    phoneView = (TextView)findViewById(R.id.phone);
+	    phoneView = (TextView)findViewById(R.id.pubPhone);
 	    phoneView.setText(pub.getPhone());
 	    
-	    ((TextView)findViewById(R.id.name)).setText(pub.getNotes());
-	    ((TextView)findViewById(R.id.notes)).setText(pub.getNotes());
+	    ((TextView)findViewById(R.id.pubName)).setText(pub.getNotes());
+	    ((TextView)findViewById(R.id.pubNotes)).setText(pub.getNotes());
 	     
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 
