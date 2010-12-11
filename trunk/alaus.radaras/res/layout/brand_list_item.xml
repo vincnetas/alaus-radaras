@@ -10,8 +10,7 @@
 		 	android:id="@+id/BrandIcon" 
 		 	android:layout_width="45px"
 		 	android:layout_height="fill_parent" 
-		 	android:gravity="center"
-		 	android:background="#CCE0DD" />
+		 	android:gravity="center" />
 	 	<TextView 
 		 	android:id="@+id/BrandTitle"
 		 	android:layout_width="fill_parent" 
