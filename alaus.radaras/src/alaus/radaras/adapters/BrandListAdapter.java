@@ -44,7 +44,7 @@ public class BrandListAdapter extends BaseAdapter {
      * @see android.widget.ListAdapter#getCount()
      */
     public int getCount() {
-        return 20;
+        return brands.size();
     }
 
     /**
