@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.ItemizedOverlay;
@@ -45,6 +46,9 @@ public class PubOverlay extends ItemizedOverlay<PubOverlayItem> {
 	protected boolean onTap(int index) {
 		PubOverlayItem pubOverlayItem = overlays.get(index);
 		
+		Intent intent = new Intent(context, PubActivity.class);
+		intent.putExtra(PubActivity., value)
+		context.startActivity(intent);
 		
 		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 		dialog.setTitle(pubOverlayItem.getTitle());
