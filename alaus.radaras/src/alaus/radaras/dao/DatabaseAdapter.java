@@ -42,7 +42,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 		public static String PUBS_BRANDS = 
 	        "CREATE TABLE pubs_brands(" +
 	        	"pub_id			TEXT NOT NULL, " +
-	        	"beer_id 		TEXT NOT NULL);";
+	        	"brand_id 		TEXT NOT NULL);";
 
 	}
 	
@@ -72,6 +72,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     	Log.i(LOG_TAG, "Inserting initial data");
     	insertBrands(db);
     	insertPubs(db);
+    	insertPubsAndBrands(db);
     	Log.i(LOG_TAG, "Finished inserting initial data");
     	
     }
@@ -113,6 +114,29 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     			values.put("longtitude", columns[6]);
     			db.insert("pubs", null, values);
     		}    		
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
+    }
+    
+    private void insertPubsAndBrands(SQLiteDatabase db) {
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("brands.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			String[] columns = line.split(";");
+    			Log.i(LOG_TAG, "Inserting brand relationships: " + columns[0]);
+    			if (columns.length == 3) {
+	    			String[] pubs = columns[2].split(",");
+	    			for (int i = 0; i < pubs.length; i++) {
+	        			ContentValues values = new ContentValues();
+	        			values.put("brand_id", columns[0]);
+	        			values.put("pub_id", pubs[i].trim());
+	        			db.insert("pubs_brands", null, values);    				
+	    			}
+    			}
+    		}
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
     	}
