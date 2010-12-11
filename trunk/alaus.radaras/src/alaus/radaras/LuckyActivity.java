@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 public class LuckyActivity extends Activity {
 	public Pub pb;
 	public void onCreate(Bundle savedInstanceState) {
