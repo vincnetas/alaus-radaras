@@ -6,15 +6,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import alaus.radaras.R;
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.FeelingLucky;
 import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.dao.model.Qoute;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
+import android.widget.BaseAdapter;
 
 public class BeerRadarDao {
 
@@ -23,8 +26,11 @@ public class BeerRadarDao {
 	
 	private SQLiteDatabase db;
 	
+	private Context context;
+	
 	private BeerRadarDao(Context context) {
 		db = new DatabaseAdapter(context).getReadableDatabase();
+		this.context = context;
 	}
 	
 	public static BeerRadarDao getInstance(Context context) {
@@ -145,7 +151,9 @@ public class BeerRadarDao {
 	}
 	
 	public Drawable getImage(String url) {
-		return null;
+		Resources resources = context.getResources();
+		Integer id = resources.getIdentifier("R.drawable.brand", null, null);
+		return null;//return getResources().getDrawable(id)
 	}
 	
 	public Qoute getQoute(int amount)  {
