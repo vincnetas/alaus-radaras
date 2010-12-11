@@ -10,12 +10,11 @@ import java.util.Observer;
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
-import android.view.MotionEvent;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
 
 /**
  * @author Vincentas
@@ -27,6 +26,8 @@ public class GimeLocation extends MapActivity implements Observer {
 	
 	private BeerRadarDao beerRadarDao;
 	
+	private PubOverlay pubOverlay;
+	
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
@@ -36,18 +37,11 @@ public class GimeLocation extends MapActivity implements Observer {
 
 		setContentView(R.layout.map);
 		
-		List<Overlay> mapOverlays = getMapView().getOverlays();
-		Drawable drawable = this.getResources().getDrawable(R.drawable.icon);
-		PubOverlay pubsOverlay = new PubOverlay(drawable, this);
-		
-		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId());
-		for (Pub pub : pubs) {
-			pubsOverlay.addOverlay(new PubOverlayItem(pub));						
-		}	
-		
-		mapOverlays.add(pubsOverlay);
+		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
+
+		getMapView().getOverlays().add(pubOverlay);
 	}
-	
+
 	private MapView getMapView() {
 		return (MapView) findViewById(R.id.mapView);
 	}
@@ -66,24 +60,17 @@ public class GimeLocation extends MapActivity implements Observer {
 	
 	private LocationProvider locationProvider;
 	
-	protected LocationProvider getLocationProvider() {
+	private LocationProvider getLocationProvider() {
 		if (locationProvider == null) {
 			locationProvider = new LocationProvider(getBaseContext());
 		}
+		
 		return locationProvider;
 	}
 
-	protected void killLocationProvider() {
-		if (locationProvider != null) {
-			locationProvider.deleteObserver(this);
-		}
-		
-		getLocationProvider().killAll();
-	};
-
 	@Override
 	protected void onPause() {
-		killLocationProvider();
+		getLocationProvider().deleteObserver(this);
 		super.onPause();
 	}
 
@@ -95,8 +82,12 @@ public class GimeLocation extends MapActivity implements Observer {
 
 	@Override
 	public void update(Observable observable, Object data) {
-		// TODO Auto-generated method stub
-		
+		Location location = (Location) data;
+	
+		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId());
+		for (Pub pub : pubs) {
+			pubOverlay.addOverlay(new PubOverlayItem(pub));						
+		}
 	}
 
 	/**
