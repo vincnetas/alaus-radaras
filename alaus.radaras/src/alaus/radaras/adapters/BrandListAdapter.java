@@ -99,7 +99,7 @@ public class BrandListAdapter extends BaseAdapter {
         Brand brnd = brands.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(brnd.getBrand());
-        holder.img.setImageDrawable((new BeerRadarDao().getImage(brnd.getIcon())));
+        holder.img.setImageDrawable((BeerRadarDao.getInstance(mInflater.getContext()).getImage(brnd.getIcon())));
         
         return convertView;
     }
