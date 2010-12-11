@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class BeerRadarActivity extends Activity {
     /** Called when the activity is first created. */
@@ -27,7 +28,12 @@ public class BeerRadarActivity extends Activity {
 			@Override
 			public void onClick(View v) {
                 Intent inte = new Intent(BeerRadarActivity.this, BrandListActivity.class);
-        		startActivity(inte);
+        		try
+        		{
+        			startActivity(inte);
+        		}catch(Exception ex){
+        			Toast.makeText(BeerRadarActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        		}
 			}
 		});
 
