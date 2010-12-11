@@ -38,8 +38,8 @@ public class GimeLocation extends MapActivity implements Observer {
 		super.onCreate(bunble);
 
 		   Location location = new Location(LocationManager.GPS_PROVIDER);
-		   location.setLongitude(25.337219);
-		   location.setLatitude(54.736515);
+		   location.setLongitude(25.289261);
+		   location.setLatitude(54.67527);
 
 		
 		setContentView(R.layout.map);		
