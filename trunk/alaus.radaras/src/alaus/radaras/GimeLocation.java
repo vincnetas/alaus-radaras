@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import alaus.radaras.dao.BeerRadarDao;
+import alaus.radaras.dao.model.Brand;
+import alaus.radaras.dao.model.Pub;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -23,26 +26,42 @@ import com.google.android.maps.OverlayItem;
  */
 public class GimeLocation extends MapActivity implements Observer {
 
+	public static final String BRAND_ID = "brandId";
+	
+	private BeerRadarDao beerRadarDao;
+	
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
-	protected void onCreate(Bundle buicicle) {
-		super.onCreate(buicicle);
-		
+	protected void onCreate(Bundle bunble) {
+		super.onCreate(bunble);
+
 		setContentView(R.layout.map);
 		
-		MapView mapView = (MapView) findViewById(R.id.mapView);
-		
-		List<Overlay> mapOverlays = mapView.getOverlays();
+		List<Overlay> mapOverlays = getMapView().getOverlays();
 		Drawable drawable = this.getResources().getDrawable(R.drawable.icon);
 		PubOverlay overlay = new PubOverlay(drawable, this);
 		
-		GeoPoint point = new GeoPoint(19240000,-99120000);
-		OverlayItem overlayitem = new OverlayItem(point, "Hola, Mundo!", "I'm in Mexico City!");
-		
-		overlay.addOverlay(overlayitem);
-		mapOverlays.add(overlay);
+		List<Pub> pubs = getBeerRadarDao().getPubsByBrand(getBrandId());
+		for (Pub pub : pubs) {
+			double latitude = pub.getLocation().getLatitude();
+			double longtitude = pub.getLocation().getLongtitude();
+
+			GeoPoint point = new GeoPoint((int) (latitude * 1e6), (int) (longtitude * 1e6));
+			OverlayItem overlayitem = new OverlayItem(point, pub.getTitle(), pub.getNotes());
+
+			overlay.addOverlay(overlayitem);
+			mapOverlays.add(overlay);			
+		}		
+	}
+	
+	private MapView getMapView() {
+		return (MapView) findViewById(R.id.mapView);
+	}
+	
+	private String getBrandId() {
+		return getIntent().getExtras().getString(BRAND_ID);
 	}
 	
 	/* (non-Javadoc)
@@ -96,4 +115,20 @@ public class GimeLocation extends MapActivity implements Observer {
 		// TODO Auto-generated method stub
 		
 	}
+
+	/**
+	 * @return the beerRadarDao
+	 */
+	public BeerRadarDao getBeerRadarDao() {
+		return BeerRadarDao.getInstance();
+	}
+
+	/**
+	 * @param beerRadarDao the beerRadarDao to set
+	 */
+	public void setBeerRadarDao(BeerRadarDao beerRadarDao) {
+		this.beerRadarDao = beerRadarDao;
+	}
+	
+	
 }
