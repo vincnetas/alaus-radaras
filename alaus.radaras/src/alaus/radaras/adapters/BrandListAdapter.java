@@ -5,6 +5,7 @@ import java.util.List;
 
 import alaus.radaras.R;
 import alaus.radaras.dao.model.Beer;
+import alaus.radaras.dao.model.Brand;
 import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -27,13 +28,13 @@ public class BrandListAdapter extends BaseAdapter {
     private Bitmap siauliuIcon;
     private Bitmap nordeaIcon;
     private Bitmap danskeIcon;
-    private List<Beer> beers;
+    private List<Brand> brands;
     private DecimalFormat meteresFormat = new DecimalFormat("0");
     private DecimalFormat kilometeresFormat = new DecimalFormat("0.00");
-    public BrandListAdapter(Context context, List<Beer> beers) {
+    public BrandListAdapter(Context context, List<Brand> brands) {
         // Cache the LayoutInflate to avoid asking for a new one each time.
         mInflater = LayoutInflater.from(context);
-        this.beers = beers;
+        this.brands = brands;
         // Icons bound to the rows.
 //        sebIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.seb);
 //        swedIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.hansa);
@@ -108,7 +109,7 @@ public class BrandListAdapter extends BaseAdapter {
             // and the ImageView.
             holder = (BrandViewHolder) convertView.getTag();
         }
-        Beer atm = beers.get(position);
+        Brand atm = brands.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(atm.getBrand());
         holder.img.setImageBitmap(getImageByBank(atm.getIcon()));
