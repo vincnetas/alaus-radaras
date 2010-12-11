@@ -1,7 +1,5 @@
 package alaus.radaras.dao.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Pub {
 
@@ -18,8 +16,6 @@ public class Pub {
 	private String phone;
 	
 	private String url;
-	
-	private List<Brand> brands;
 
 	public String getId() {
 		return id;
@@ -69,26 +65,11 @@ public class Pub {
 		this.phone = phone;
 	}
 
-	public List<Brand> getBrands() {
-		return brands;
-	}
-
 	public String getUrl() {
 		return url;
 	}
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public void setBrands(List<Brand> brands) {
-		this.brands = brands;
-	}
-	
-	public void addBeer(Brand beer) {
-		if (brands == null) {
-			brands = new ArrayList<Brand>();
-		}
-		brands.add(beer);
 	}
 }
