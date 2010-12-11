@@ -16,8 +16,9 @@ public class BeerRadarActivity extends Activity {
         setContentView(R.layout.main);
         
 		ImageButton buttonTitle = (ImageButton) findViewById(R.id.imgTitleButton);
+		//buttonTitle.setAlpha(100);
 		buttonTitle.setOnClickListener(new View.OnClickListener() {
-			
+				
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(BeerRadarActivity.this, BeerCounterActivity.class);
