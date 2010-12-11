@@ -3,13 +3,13 @@
  */
 package alaus.radaras;
 
-import net.fmu1.omxticker.R;
 import alaus.radaras.adapters.PubBrandListAdapter;
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.Pub;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,7 +36,7 @@ public class PubActivity extends Activity {
 	    setContentView(R.layout.main);
 
 	    final Pub pub = BeerRadarDao.getInstance().getPubByPubId(getIntent().getExtras().get(PUBID).toString());
-	    GridView gridview; //(GridView) findViewById(R.id.);
+	    GridView gridview = (GridView) findViewById(R.id.brandList);
 	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBeers()));
 	    
 	    addressView = (TextView)findViewById(R.id.address);
@@ -64,10 +64,20 @@ public class PubActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_DIAL);
-				intent.setData(new Uri(pub.getPhone()));
+				intent.setData(Uri.parse("tel:"+pub.getPhone()));
 				
 			}
-			
 	    });
+	    
+	    addressView.setOnClickListener(new OnClickListener() {
+	    	@Override
+			public void onClick(View v) {
+				
+				String uri = "geo:0,0?q=" + pub.getAddress();
+				startActivity(new Intent(android.content.Intent.ACTION_VIEW, Uri
+						.parse(uri)));
+
+			}
+		});
 	}
 }

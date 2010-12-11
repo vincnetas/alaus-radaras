@@ -50,7 +50,8 @@ public class PubBrandListAdapter extends BaseAdapter {
 	        } else {
 	            imageView = (ImageView) convertView;
 	        }
-	        imageView.setImageDrawable(drawable)
+	        Brand beer = beers.get(position);
+	        imageView.setImageDrawable(BeerRadarDao.getInstance().getImage(beer.getIcon()));
 	        return imageView;
 	}
 
