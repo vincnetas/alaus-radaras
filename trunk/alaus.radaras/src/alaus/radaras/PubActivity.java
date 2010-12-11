@@ -26,7 +26,7 @@ import android.widget.Toast;
  */
 public class PubActivity extends Activity {
 	
-	private static final String PUBID = "PUBID";
+	public static final String PUBID = "PUBID";
 
 	private TextView addressView;
 	private TextView phoneView;
@@ -35,7 +35,7 @@ public class PubActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 
-	    final Pub pub = BeerRadarDao.getInstance().getPub(getIntent().getExtras().get(PUBID).toString());
+	    final Pub pub = BeerRadarDao.getInstance().getPubByPubId(getIntent().getExtras().get(PUBID).toString());
 	    GridView gridview; //(GridView) findViewById(R.id.);
 	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBeers()));
 	    
@@ -64,7 +64,7 @@ public class PubActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_DIAL);
-				intent.setData(data)
+				intent.setData(new Uri(pub.getPhone()));
 				
 			}
 			
