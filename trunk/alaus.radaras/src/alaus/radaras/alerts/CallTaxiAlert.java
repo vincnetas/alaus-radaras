@@ -31,6 +31,7 @@ public class CallTaxiAlert extends BeerCountAlert {
 			public void onClick(DialogInterface dialog, int which) {
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:+37052444888"));
+				context.startActivity(intent);
 				
 			}
 		};
