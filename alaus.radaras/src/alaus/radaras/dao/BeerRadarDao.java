@@ -93,7 +93,7 @@ public class BeerRadarDao {
 	public List<Pub> getNearbyPubs(Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.query(
-			"os", 
+			"pubs", 
 			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
 			null, 
 			null, 
