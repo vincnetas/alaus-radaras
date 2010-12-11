@@ -1,5 +1,9 @@
 package alaus.radaras.dao;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -8,6 +12,8 @@ import android.util.Log;
 public class DatabaseAdapter extends SQLiteOpenHelper {
 
 	private static final String LOG_TAG = "beer-radar-db";
+	
+	private Context context;
 	
 	private static class Definition {
 		
@@ -47,6 +53,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     		Definition.DB_NAME, 
     		null, 
     		Definition.DB_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -61,6 +68,54 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     		Log.e(LOG_TAG, e.getMessage());
     	}
     	Log.i(LOG_TAG, "Finished creating database.");
+    	
+    	Log.i(LOG_TAG, "Inserting initial data");
+    	insertBrands(db);
+    	insertPubs(db);
+    	Log.i(LOG_TAG, "Finished inserting initial data");
+    	
+    }
+    
+    private void insertBrands(SQLiteDatabase db) {
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("brands.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			String[] columns = line.split(";");
+    			Log.i(LOG_TAG, "Inserting brand: " + columns[0]);
+    			ContentValues values = new ContentValues();
+    			values.put("id", columns[0]);
+    			values.put("title", columns[1]);
+    			values.put("icon", columns[0]);
+    			db.insert("brands", null, values);
+    		}
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
+    }
+    
+    private void insertPubs(SQLiteDatabase db) {
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("pubs.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			String[] columns = line.split(";");
+    			Log.i(LOG_TAG, "Inserting pub: " + columns[0]);
+    			ContentValues values = new ContentValues();
+    			values.put("id", columns[0]);
+    			values.put("title", columns[1]);
+    			values.put("address", columns[2]);
+    			values.put("phone", columns[3]);
+    			values.put("url", columns[4]);
+    			values.put("latitude", columns[5]);
+    			values.put("longtitude", columns[6]);
+    			db.insert("pubs", null, values);
+    		}    		
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
     }
 
 	@Override
