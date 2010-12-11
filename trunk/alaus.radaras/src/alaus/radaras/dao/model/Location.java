@@ -6,6 +6,10 @@ public class Location {
 	
 	private double latitude;
 
+	public Location() {
+		
+	}
+	
 	public Location(double longtitude, double latitude) {
 		setLatitude(latitude);
 		setLongtitude(longtitude);

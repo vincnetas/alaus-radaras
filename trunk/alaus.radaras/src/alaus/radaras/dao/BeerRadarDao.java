@@ -11,6 +11,7 @@ import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.dao.model.Qoute;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 
@@ -19,7 +20,6 @@ public class BeerRadarDao {
 	private static Map<Context, BeerRadarDao> instances = 
 		new HashMap<Context, BeerRadarDao>();
 	
-	@SuppressWarnings("unused")
 	private SQLiteDatabase db;
 	
 	private BeerRadarDao(Context context) {
@@ -36,19 +36,78 @@ public class BeerRadarDao {
 	}
 	
 	public List<Brand> getBrands() {
-		return new ArrayList<Brand>();
+		List<Brand> brands = new ArrayList<Brand>();
+		Cursor cursor = db.query(
+			"brands", 
+			new String[] {"id", "title", "icon", "description"},
+			null, 
+			null, 
+			null, 
+			null, 
+			"title asc");
+		if (cursor.moveToFirst()) {
+			do {
+				brands.add(toBrand(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return brands;
 	}
 	
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
-		return new ArrayList<Pub>();
+		List<Pub> pubs = new ArrayList<Pub>();
+		Cursor cursor = db.query(
+			"os", 
+			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
+			null, 
+			null, 
+			null, 
+			null, 
+			"title asc");
+		if (cursor.moveToFirst()) {
+			do {
+				pubs.add(toPub(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return pubs;
 	}
 	
 	public List<Pub> getNearbyPubs(Location location) {
-		return new ArrayList<Pub>();
+		List<Pub> pubs = new ArrayList<Pub>();
+		Cursor cursor = db.query(
+			"os", 
+			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
+			null, 
+			null, 
+			null, 
+			null, 
+			"title asc");
+		if (cursor.moveToFirst()) {
+			do {
+				pubs.add(toPub(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return pubs;
 	}
 	
 	public Pub getPubByPubId(String pubId) {
-		return new Pub();
+		Cursor cursor = db.query(
+			"os", 
+			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
+			"id = ?s", 
+			new String[] {pubId}, 
+			null, 
+			null, 
+			"title asc");
+		return (cursor.moveToFirst()) ? toPub(cursor) : null;
 	}
 	
 	public FeelingLucky feelingLucky() {
@@ -62,5 +121,31 @@ public class BeerRadarDao {
 	public Qoute getQoute(int amount)  {
 		return new Qoute();
 	}
+
 	
+	private Brand toBrand(Cursor cursor) {
+		Brand brand = new Brand();
+		brand.setId(cursor.getString(0));
+		brand.setTitle(cursor.getString(1));
+		brand.setIcon(cursor.getString(2));
+		brand.setDescription(cursor.getString(3));
+		return brand;		
+	}
+	
+	private Pub toPub(Cursor cursor) {
+		Pub pub = new Pub();
+		pub.setId(cursor.getString(0));
+		pub.setTitle(cursor.getString(1));
+		pub.setAddress(cursor.getString(2));
+		pub.setNotes(cursor.getString(3));
+		pub.setPhone(cursor.getString(4));
+		pub.setUrl(cursor.getString(5));
+		
+		Location location = new Location();
+		location.setLatitude(cursor.getDouble(6));
+		location.setLongtitude(cursor.getDouble(7));
+		pub.setLocation(location);
+		
+		return pub;
+	}
 }
