@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.dao.model.Beer;
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
