@@ -21,7 +21,12 @@ public class BeerRadarActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(BeerRadarActivity.this, BeerCounterActivity.class);
-                startActivity(intent);
+				try
+        		{
+        			startActivity(intent);
+        		}catch(Exception ex){
+        			Toast.makeText(BeerRadarActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        		}
 			}
 		});
 
