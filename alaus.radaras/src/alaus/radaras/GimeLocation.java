@@ -9,7 +9,6 @@ import java.util.Observer;
 
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -84,7 +83,7 @@ public class GimeLocation extends MapActivity implements Observer {
 	public void update(Observable observable, Object data) {
 		Location location = (Location) data;
 	
-		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId());
+		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId(), new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude()));
 		for (Pub pub : pubs) {
 			pubOverlay.addOverlay(new PubOverlayItem(pub));						
 		}
@@ -94,7 +93,7 @@ public class GimeLocation extends MapActivity implements Observer {
 	 * @return the beerRadarDao
 	 */
 	public BeerRadarDao getBeerRadarDao() {
-		return BeerRadarDao.getInstance();
+		return BeerRadarDao.getInstance(this);
 	}
 
 	/**
