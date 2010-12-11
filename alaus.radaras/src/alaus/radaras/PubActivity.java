@@ -39,7 +39,7 @@ public class PubActivity extends Activity {
 	    setContentView(R.layout.pub);
 
 	    BeerRadarDao dao = BeerRadarDao.getInstance(this);
-	    String pubId = "bermudai";//getIntent().getExtras().get(PUBID).toString();
+	    String pubId = getIntent().getExtras().get(PUBID).toString();
 	    final Pub pub = dao.getPub(pubId);
 	    final List<Brand> brands = dao.getBrandsByPubId(pub.getId());
 	    
