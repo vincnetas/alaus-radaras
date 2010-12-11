@@ -58,14 +58,9 @@ public class BeerRadarDao {
 	
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
-		Cursor cursor = db.query(
-			"os", 
-			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
-			null, 
-			null, 
-			null, 
-			null, 
-			"title asc");
+		Cursor cursor = db.rawQuery(
+				"", 
+				new String[] { brandId });
 		if (cursor.moveToFirst()) {
 			do {
 				pubs.add(toPub(cursor));
