@@ -31,6 +31,11 @@ public class PubOverlay extends ItemizedOverlay<PubOverlayItem> {
 		overlays.add(overlay);
 		populate();
 	}
+	
+	public void clean() {
+		overlays.clear();
+		populate();
+	}
 
 	@Override
 	protected PubOverlayItem createItem(int i) {
