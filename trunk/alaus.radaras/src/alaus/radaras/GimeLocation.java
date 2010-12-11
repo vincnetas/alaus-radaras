@@ -41,8 +41,8 @@ public class GimeLocation extends MapActivity implements Observer {
 		super.onCreate(bunble);
 
 		setContentView(R.layout.map);		
-		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
-		getMapView().getOverlays().add(pubOverlay);
+//		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
+//		getMapView().getOverlays().add(pubOverlay);
 	}
 
 	private MapView getMapView() {
@@ -79,18 +79,19 @@ public class GimeLocation extends MapActivity implements Observer {
 
 	@Override
 	protected void onResume() {
-		getLocationProvider().subscribe(this);
 		super.onResume();
 		
-		pubOverlay.clean();
-		mapPopulated = false;
-		
-		Location location = getLocationProvider().getLastKnownLocation();
-		if (location == null) {
-			showDialog(ENABLE_GPS_DIALOG);
-		} else {
-			populateMap(location);
-		}
+//		getLocationProvider().subscribe(this);
+//		
+//		pubOverlay.clean();
+//		mapPopulated = false;
+//		
+//		Location location = getLocationProvider().getLastKnownLocation();
+//		if (location == null) {
+//			showDialog(ENABLE_GPS_DIALOG);
+//		} else {
+//			populateMap(location);
+//		}
 	}
 	
 	private boolean mapPopulated = false;
