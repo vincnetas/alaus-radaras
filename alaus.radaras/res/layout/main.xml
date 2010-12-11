@@ -7,7 +7,7 @@
     >
 <ImageView 
 	android:id="@+id/imgTitleButton"
-	android:src="@drawable/bokalas" 
+	android:src="@drawable/bok_title" 
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"></ImageView>
@@ -16,7 +16,7 @@
 	android:id="@+id/ButtonNear" 
 	android:layout_width="fill_parent"
 	android:layout_marginLeft="40px" 
-	android:layout_height="90px"
+	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_below="@id/imgTitleButton"></Button>
@@ -24,7 +24,7 @@
 	android:text="@string/BrandValue" 
 	android:id="@+id/ButtonBrand" 
 	android:layout_width="fill_parent" 
-	android:layout_height="90px"
+	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_marginLeft="40px"
@@ -33,7 +33,7 @@
 	android:text="@string/LuckyValue" 
 	android:id="@+id/ButtonLucky" 
 	android:layout_width="fill_parent" 
-	android:layout_height="90px"
+	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginLeft="40px"
 	android:layout_marginTop="10px"
