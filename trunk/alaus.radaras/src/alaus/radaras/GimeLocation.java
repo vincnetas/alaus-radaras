@@ -37,15 +37,26 @@ public class GimeLocation extends MapActivity implements Observer {
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
 
+		   Location location = new Location(LocationManager.GPS_PROVIDER);
+		   location.setLongitude(25.337219);
+		   location.setLatitude(54.736515);
+		   
+		   Pub pub = new Pub();
+		   pub.setTitle("title");
+		   pub.setNotes("notes");
+		   pub.setId("pubId");
+		   alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());		   
+		   pub.setLocation(loc);
+		
 		setContentView(R.layout.map);		
-//		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
-//		
-//		getMapView().getOverlays().add(pubOverlay);	        
+		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
+		pubOverlay.addOverlay(new PubOverlayItem(pub));
+		
+		
+		getMapView().getOverlays().add(pubOverlay);	        
 	   getMapView().setBuiltInZoomControls(true);
 
-	   Location location = new Location(LocationManager.GPS_PROVIDER);
-	   location.setLongitude(25.337219);
-	   location.setLatitude(54.736515);
+
 	   setupMap(location);
 	   
 	}
