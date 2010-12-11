@@ -17,7 +17,6 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
-import android.widget.BaseAdapter;
 
 public class BeerRadarDao {
 
