@@ -113,7 +113,7 @@ public class BeerRadarDao {
 	
 	public Pub getPub(String pubId) {
 		Cursor cursor = db.query(
-			"os", 
+			"pubs", 
 			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
 			"id = ?", 
 			new String[] {pubId}, 
@@ -124,6 +124,7 @@ public class BeerRadarDao {
 	}
 	
 	public FeelingLucky feelingLucky() {
+		
 		return new FeelingLucky();
 	}
 	
