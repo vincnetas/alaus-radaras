@@ -2,6 +2,7 @@ package alaus.radaras;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ public class BeerRadarActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ImageView buttonTitle = (ImageView) findViewById(R.id.imgTitleButton);
 		//buttonTitle.setAlpha(100);
 		buttonTitle.setOnClickListener(new View.OnClickListener() {
