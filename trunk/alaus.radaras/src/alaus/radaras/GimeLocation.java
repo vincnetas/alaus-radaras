@@ -9,8 +9,14 @@ import java.util.Observer;
 
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -34,10 +40,8 @@ public class GimeLocation extends MapActivity implements Observer {
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
 
-		setContentView(R.layout.map);
-		
+		setContentView(R.layout.map);		
 		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
-
 		getMapView().getOverlays().add(pubOverlay);
 	}
 
@@ -77,16 +81,43 @@ public class GimeLocation extends MapActivity implements Observer {
 	protected void onResume() {
 		getLocationProvider().subscribe(this);
 		super.onResume();
+		
+		pubOverlay.clean();
+		mapPopulated = false;
+		
+		Location location = getLocationProvider().getLastKnownLocation();
+		if (location == null) {
+			showDialog(ENABLE_GPS_DIALOG);
+		} else {
+			populateMap(location);
+		}
+	}
+	
+	private boolean mapPopulated = false;
+	
+	private synchronized void populateMap(Location location) {
+		if (!mapPopulated) {
+			String brandId = getBrandId();
+			alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
+			List<Pub> pubs;
+			
+			if (brandId != null) {
+				pubs = getBeerRadarDao().getPubsByBrandId(brandId, loc);
+			} else {
+				pubs = getBeerRadarDao().getNearbyPubs(loc);
+			}
+			
+			for (Pub pub : pubs) {
+				pubOverlay.addOverlay(new PubOverlayItem(pub));						
+			}
+			
+			mapPopulated = true;
+		}
 	}
 
 	@Override
 	public void update(Observable observable, Object data) {
-		Location location = (Location) data;
-	
-		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId(), new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude()));
-		for (Pub pub : pubs) {
-			pubOverlay.addOverlay(new PubOverlayItem(pub));						
-		}
+		populateMap((Location) data);		
 	}
 
 	/**
@@ -103,5 +134,56 @@ public class GimeLocation extends MapActivity implements Observer {
 		this.beerRadarDao = beerRadarDao;
 	}
 	
+	private static final int ENABLE_GPS_DIALOG = 1;
 	
+	private static final int SEARCHING_LOCATION = 2;
+	
+	private static final int SHOW_GPS_SETTINGS = 120;
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateDialog(int)
+	 */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Dialog result = null;
+		
+		switch (id) {
+			case ENABLE_GPS_DIALOG: {
+				result = new AlertDialog.Builder(this).
+					setTitle("Enable GPS").
+					setCancelable(false).
+					setMessage("This application requires GPS.").
+					setPositiveButton("Enable", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int whichButton) {
+								Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+								startActivityForResult(intent, SHOW_GPS_SETTINGS);
+							}
+						}).create();
+				break;
+			}
+			case SEARCHING_LOCATION: {
+				result = getSearchLocationDialog();
+				break;
+			}		
+			default: {
+				break;
+			}
+		}
+
+        return result;
+	}
+	
+	private ProgressDialog searchLocationDialog = null;
+	
+	private Dialog getSearchLocationDialog() {
+		if (searchLocationDialog == null) {
+			searchLocationDialog = new ProgressDialog(this);
+			searchLocationDialog.setTitle("Searching...");
+			searchLocationDialog.setMessage("Aquiring GPS location...");
+			searchLocationDialog.setCancelable(false);
+			searchLocationDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		}
+		
+		return searchLocationDialog;
+	}
 }
