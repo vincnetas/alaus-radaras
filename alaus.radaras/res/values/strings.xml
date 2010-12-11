@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_name">Alaus radaras</string>
+<string name="app_name">Alaus radaras</string>
 <string name="NearValue">Artimiausias</string>
 <string name="BrandValue">Rūšis</string>
-
 <string name="BrandsName">Rušys</string>
 <string name="LocationName">Vietos</string>
 <string name="LuckyValue">Alaus?</string>
