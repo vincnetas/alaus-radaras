@@ -5,7 +5,7 @@
   android:layout_height="fill_parent">
   <ImageView android:id="@+id/countBeer" android:src="@drawable/girl"
     android:layout_width="fill_parent"
-  	android:layout_height="50px">
+  	android:layout_height="150px">
   </ImageView>
   <TextView android:id="@+id/counterTodayHeader"
   	android:textSize="30px" android:layout_width="fill_parent" 
