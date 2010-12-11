@@ -35,15 +35,15 @@ class BeerBrandListAdapter extends BaseAdapter {
         mInflater = LayoutInflater.from(context);
         this.beers = beers;
         // Icons bound to the rows.
-        sebIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.seb);
-        swedIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.hansa);
-        parexIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.parex);
-        dnbIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.dnbnord);
-        danskeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.danske);
-        nordeaIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.nordea);
-        snorasIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.snoras);
-        ukioIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ukio);
-        siauliuIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.siauliu);
+//        sebIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.seb);
+//        swedIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.hansa);
+//        parexIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.parex);
+//        dnbIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.dnbnord);
+//        danskeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.danske);
+//        nordeaIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.nordea);
+//        snorasIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.snoras);
+//        ukioIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ukio);
+//        siauliuIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.siauliu);
         Log.i("AMTProvider", "in ATMListAdapter");
        // mIcon1 = 
        // mIcon2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon48x48_2);
