@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class BrandListAdapter extends BaseAdapter {
+public class BrandListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Bitmap sebIcon;
     private Bitmap swedIcon;
