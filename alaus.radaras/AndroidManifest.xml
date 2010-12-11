@@ -6,16 +6,19 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-    	<uses-library android:name="com.google.android.maps" />
-        <activity android:name=".BeerRadarActivity"
-                  android:label="@string/app_name">
+    	<activity android:name=".BeerRadarActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity><uses-library android:name="com.google.android.maps" />
+        
 
-    </application>
+    <activity android:name=".GimeLocation" android:label="@string/LocationName"></activity>
+<activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
+<activity android:name=".PubActivity"></activity>
+<activity android:name=".BeerCounterActivity"></activity>
+</application>
 
 
 </manifest> 

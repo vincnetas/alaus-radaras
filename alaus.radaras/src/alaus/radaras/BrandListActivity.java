@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.view.View;
 import alaus.radaras.adapters.BrandListAdapter;
 import alaus.radaras.dao.BeerRadarDao;
@@ -31,11 +32,14 @@ public class BrandListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
+		try {
+			setContentView(R.layout.list);
         
-        brands = BeerRadarDao.getInstance(this).getBrands();
-        
-        ListView l1 = (ListView) findViewById(R.id.listBrands);
+        	brands = BeerRadarDao.getInstance(this).getBrands();
+        }catch(Exception ex){
+			Toast.makeText(BrandListActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        ListView l1 = (ListView) findViewById(R.id.list);
         l1.setAdapter(new BrandListAdapter(this, brands));
 
         
