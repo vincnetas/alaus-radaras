@@ -5,7 +5,7 @@ package alaus.radaras;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
+import alaus.radaras.dao.model.Pub;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -45,15 +45,12 @@ public class PubOverlay extends ItemizedOverlay<PubOverlayItem> {
 	@Override
 	protected boolean onTap(int index) {
 		PubOverlayItem pubOverlayItem = overlays.get(index);
+		Pub pub = pubOverlayItem.getPub();
 		
 		Intent intent = new Intent(context, PubActivity.class);
-		intent.putExtra(PubActivity., value)
+		intent.putExtra(PubActivity.PUBID, pub.getId());
 		context.startActivity(intent);
-		
-		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		dialog.setTitle(pubOverlayItem.getTitle());
-		dialog.setMessage(pubOverlayItem.getSnippet());
-		dialog.show();
+
 		return true;
 	}
 }
