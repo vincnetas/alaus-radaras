@@ -26,7 +26,7 @@ public class BeerRadarActivity extends Activity {
 		buttonBrand.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Intent inte = new Intent(BeerRadarActivity.this, GimeLocation.class);
+                Intent inte = new Intent(BeerRadarActivity.this, BrandListActivity.class);
         		startActivity(inte);
 			}
 		});
