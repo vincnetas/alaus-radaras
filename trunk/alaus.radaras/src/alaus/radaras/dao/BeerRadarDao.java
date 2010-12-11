@@ -7,6 +7,7 @@ import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.FeelingLucky;
 import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
+import android.graphics.drawable.Drawable;
 
 public class BeerRadarDao {
 
@@ -23,7 +24,7 @@ public class BeerRadarDao {
 		return new ArrayList<Brand>();
 	}
 	
-	public List<Pub> getPubsByBrand(Brand brand) {
+	public List<Pub> getPubsByBrandId(String brandId) {
 		return new ArrayList<Pub>();
 	}
 	
@@ -31,8 +32,16 @@ public class BeerRadarDao {
 		return new ArrayList<Pub>();
 	}
 	
+	public Pub getPubByPubId(String pubId) {
+		return new Pub();
+	}
+	
 	public FeelingLucky feelingLucky() {
 		return new FeelingLucky();
+	}
+	
+	public Drawable getImage(String url) {
+		return null;
 	}
 	
 }
