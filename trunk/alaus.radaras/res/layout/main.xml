@@ -4,11 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<ImageView 
-	android:id="@+id/imgTitle"
+<ImageButton 
+	android:id="@+id/imgTitleButton"
 	android:src="@drawable/girl" 	
 	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"></ImageView>
+	android:layout_height="wrap_content"></ImageButton>
 <Button 
 	android:text="@string/NearValue" 
 	android:id="@+id/ButtonNear" 
