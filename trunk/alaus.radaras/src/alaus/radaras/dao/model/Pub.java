@@ -17,6 +17,8 @@ public class Pub {
 	
 	private String phone;
 	
+	private String url;
+	
 	private List<Brand> beers;
 
 	public String getId() {
@@ -69,6 +71,14 @@ public class Pub {
 
 	public List<Brand> getBeers() {
 		return beers;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public void setBeers(List<Brand> beers) {

@@ -1,21 +1,36 @@
 package alaus.radaras.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.FeelingLucky;
 import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
+import alaus.radaras.dao.model.Qoute;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 
 public class BeerRadarDao {
 
-	private static BeerRadarDao instance;
+	private static Map<Context, BeerRadarDao> instances = 
+		new HashMap<Context, BeerRadarDao>();
 	
-	public static BeerRadarDao getInstance() {
+	@SuppressWarnings("unused")
+	private SQLiteDatabase db;
+	
+	private BeerRadarDao(Context context) {
+		db = new DatabaseAdapter(context).getReadableDatabase();
+	}
+	
+	public static BeerRadarDao getInstance(Context context) {
+		BeerRadarDao instance = instances.get(context);
 		if (instance == null) {
-			instance = new BeerRadarDao();
+			instance = new BeerRadarDao(context);
+			instances.put(context, instance);
 		}
 		return instance;
 	}
@@ -24,7 +39,7 @@ public class BeerRadarDao {
 		return new ArrayList<Brand>();
 	}
 	
-	public List<Pub> getPubsByBrandId(String brandId) {
+	public List<Pub> getPubsByBrandId(String brandId, Location location) {
 		return new ArrayList<Pub>();
 	}
 	
@@ -42,6 +57,10 @@ public class BeerRadarDao {
 	
 	public Drawable getImage(String url) {
 		return null;
+	}
+	
+	public Qoute getQoute(int amount)  {
+		return new Qoute();
 	}
 	
 }
