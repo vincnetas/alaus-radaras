@@ -32,7 +32,7 @@ public class BrandListAdapter extends BaseAdapter {
 //        snorasIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.snoras);
 //        ukioIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ukio);
 //        siauliuIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.siauliu);
-        Log.i("BrandProvides", "in BrandProvider");
+        Log.i("BrandProvider", "in BrandProvider");
        // mIcon1 = 
        // mIcon2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon48x48_2);
     }
