@@ -13,7 +13,7 @@ public class BeerRadarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-		Button button = (Button) findViewById(R.id.Button01);
+		Button button = (Button) findViewById(R.id.ButtonNear);
 		button.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

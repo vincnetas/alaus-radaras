@@ -4,10 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-<Button android:text="@+id/Button01" android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+<ImageView 
+	android:id="@+id/ImageView01" 	
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"></ImageView>
+<Button 
+	android:text="@+id/ButtonNear" 
+	android:id="@+id/ButtonNear" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"></Button>
+<Button 
+	android:text="@+id/ButtonBrand" 
+	android:id="@+id/ButtonBrand" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"></Button>
 </LinearLayout>
