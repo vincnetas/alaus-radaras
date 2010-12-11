@@ -63,15 +63,6 @@ public class GimeLocation extends MapActivity implements Observer {
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
-
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onTouchEvent(android.view.MotionEvent)
-	 */
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
-		return super.onTouchEvent(event);
-	}
 	
 	private LocationProvider locationProvider;
 	
