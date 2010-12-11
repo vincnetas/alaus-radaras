@@ -18,12 +18,12 @@ public class Brand {
 		this.id = id;
 	}
 
-	public String getBrand() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void setBrand(String brand) {
-		this.title = brand;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getIcon() {

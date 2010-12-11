@@ -19,7 +19,7 @@ public class Pub {
 	
 	private String url;
 	
-	private List<Brand> beers;
+	private List<Brand> brands;
 
 	public String getId() {
 		return id;
@@ -69,8 +69,8 @@ public class Pub {
 		this.phone = phone;
 	}
 
-	public List<Brand> getBeers() {
-		return beers;
+	public List<Brand> getBrands() {
+		return brands;
 	}
 
 	public String getUrl() {
@@ -81,14 +81,14 @@ public class Pub {
 		this.url = url;
 	}
 
-	public void setBeers(List<Brand> beers) {
-		this.beers = beers;
+	public void setBrands(List<Brand> brands) {
+		this.brands = brands;
 	}
 	
 	public void addBeer(Brand beer) {
-		if (beers == null) {
-			beers = new ArrayList<Brand>();
+		if (brands == null) {
+			brands = new ArrayList<Brand>();
 		}
-		beers.add(beer);
+		brands.add(beer);
 	}
 }
