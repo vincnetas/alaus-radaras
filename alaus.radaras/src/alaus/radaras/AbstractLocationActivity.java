@@ -3,7 +3,6 @@ package alaus.radaras;
 import java.util.Observer;
 
 import android.app.Activity;
-import android.os.Bundle;
 
 public abstract class AbstractLocationActivity  extends Activity  implements Observer {
 
@@ -22,12 +21,6 @@ public abstract class AbstractLocationActivity  extends Activity  implements Obs
 		}
 		
 		getLocationProvider().killAll();
-	};
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		getLocationProvider().subscribe(this);
-		super.onCreate(savedInstanceState);
 	};
 
 	@Override
