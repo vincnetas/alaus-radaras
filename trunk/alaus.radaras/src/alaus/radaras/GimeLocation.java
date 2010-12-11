@@ -4,6 +4,8 @@
 package alaus.radaras;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,10 +21,8 @@ import com.google.android.maps.OverlayItem;
  * @author Vincentas
  * based on : http://mobiforge.com/developing/story/using-google-maps-android
  */
-public class GimeLocation extends MapActivity {
+public class GimeLocation extends MapActivity implements Observer {
 
-	private LocationProvider locationProvider;
-	
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
@@ -60,5 +60,40 @@ public class GimeLocation extends MapActivity {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		return super.onTouchEvent(event);
+	}
+	
+	private LocationProvider locationProvider;
+	
+	protected LocationProvider getLocationProvider() {
+		if (locationProvider == null) {
+			locationProvider = new LocationProvider(getBaseContext());
+		}
+		return locationProvider;
+	}
+
+	protected void killLocationProvider() {
+		if (locationProvider != null) {
+			locationProvider.deleteObserver(this);
+		}
+		
+		getLocationProvider().killAll();
+	};
+
+	@Override
+	protected void onPause() {
+		killLocationProvider();
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		getLocationProvider().subscribe(this);
+		super.onResume();
+	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		
 	}
 }
