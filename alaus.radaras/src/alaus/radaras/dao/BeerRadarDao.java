@@ -9,6 +9,15 @@ import alaus.radaras.dao.model.Pub;
 
 public class BeerRadarDao {
 
+	private static BeerRadarDao instance;
+	
+	public static BeerRadarDao getInstance() {
+		if (instance == null) {
+			instance = new BeerRadarDao();
+		}
+		return instance;
+	}
+	
 	public List<Beer> getBeers() {
 		return new ArrayList<Beer>();
 	}
