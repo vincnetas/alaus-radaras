@@ -3,6 +3,7 @@ package alaus.radaras.adapters;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import alaus.radaras.dao.model.Beer;
 import alaus.radaras.viewholders.BeerBrandViewHolder;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -26,13 +27,13 @@ class BeerBrandListAdapter extends BaseAdapter {
     private Bitmap siauliuIcon;
     private Bitmap nordeaIcon;
     private Bitmap danskeIcon;
-    private List<ATM> atms;
+    private List<Beer> beers;
     private DecimalFormat meteresFormat = new DecimalFormat("0");
     private DecimalFormat kilometeresFormat = new DecimalFormat("0.00");
-    public ATMListAdapter(Context context, List<ATM> atms) {
+    public BeerBrandListAdapter(Context context, List<Beer> beers) {
         // Cache the LayoutInflate to avoid asking for a new one each time.
         mInflater = LayoutInflater.from(context);
-        this.atms = atms;
+        this.beers = beers;
         // Icons bound to the rows.
         sebIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.seb);
         swedIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.hansa);
@@ -94,28 +95,23 @@ class BeerBrandListAdapter extends BaseAdapter {
         // to reinflate it. We only inflate a new View when the convertView supplied
         // by ListView is null.
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.atm_list_item, null);
+            convertView = mInflater.inflate(R.layout.brand_list_item, null);
 
             // Creates a BeerBrandViewHolder and store references to the two children views
             // we want to bind data to.
             holder = new BeerBrandViewHolder();
-            holder.address = (TextView) convertView.findViewById(R.id.address);
-            holder.icon = (ImageView) convertView.findViewById(R.id.icon);
-            holder.distance = (TextView) convertView.findViewById(R.id.distance);
-            holder.location = (TextView) convertView.findViewById(R.id.location);
+            holder.title = (TextView) convertView.findViewById(R.id.address);
+            holder.img = (ImageView) convertView.findViewById(R.id.icon);
             convertView.setTag(holder);
         } else {
             // Get the BeerBrandViewHolder back to get fast access to the TextView
             // and the ImageView.
             holder = (BeerBrandViewHolder) convertView.getTag();
         }
-        ATM atm = atms.get(position);
+        Beer atm = beers.get(position);
         // Bind the data efficiently with the holder.
-        holder.atmAddress = atm.getAddress() + ", " + atm.getCity();
-        holder.address.setText(holder.atmAddress);
-        holder.icon.setImageBitmap(getImageByBank(atm.getBank()));
-        holder.distance.setText(formatDistance(atm.getDistance()));
-        holder.location.setText(atm.getLocation());
+        holder.title.setText(atm.getBrand());
+        holder.img.setImageBitmap(getImageByBank(atm.getIcon()));
         
         return convertView;
     }

@@ -5,9 +5,6 @@ import android.widget.TextView;
 
 public class BeerBrandViewHolder {
 
-	  TextView address;
-      ImageView icon;
-      TextView distance;
-      TextView location;
-      String atmAddress;
+	  public TextView title;
+	  public ImageView img;
 }
