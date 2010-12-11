@@ -1,33 +1,54 @@
 id;Brand;Barai
-guiness;Guiness;
-kilkeny;Kilkeny;
-hoegarden;Hoegarden;
-pogo;PoGO �viesusis;pogo
-vilniaus_kvietinis;Vilniaus kvietinis;bermudai, pogo
-varniuku;Varniuk? tamsusis;pogo
-samson;Samson;blusyne, pogo, plieno_paukste
-heineken;Heineken;pogo, savas_kampas
-warsteiner;Warsteiner;bunte_gans, plieno_paukste
-erdinger;Erdinger;bunte_gans
-veltins;Veltins;bunte_gans
-rinkuskiu_proginis;Rinku�ki? proginis;bermudai
-kanapinis;Kanapinis tamsus;bermudai
-vilniaus_nefiltr;Vilniaus nefiltruotas;bermudai
-jovaru_snekutis;Jovar? �nekutis;bermudai
-krusovec;Kru�ovec;blusyne
-belmonto_sviesus;Belmonto �viesusis;belmontas
+backoriu_tamsusis;Bačkorių tamsusis;alaus_namai
 belmonto_ypatingas;Belmonto ypatingasis;belmontas
-velvet;Velvet;savas_kampas
-zubr;Zubr;savas_kampas
-franziskaner;Franziskaner;savas_kampas
-staropramen;Staropramen;burito
+belmonto_sviesus;Belmonto šviesusis;belmontas
+bernard_cerne;Bernard Černe;dolce_vita, alaus_studija
+birzu_sirvenos;Biržų Širvenos;b6, alaus_namai, obuolys
 bravaria;Bravaria;bravaria
-busi_trecias;B?si Tre?ias;busi_trecias
-budweiser;"Budweiser ""BUDVAR""";busi_trecias, plieno_paukste
-svyturys_baltas;"�vyturys ""Baltas""";busi_trecias
-kalnapilis_grand;"Kalnapilis ""Grand""";busi_trecias
-katedros_sviesusis;Katedros �viesusis;prie_katedros, dominink_karciama
-katedros_tamsusis;Katedros Tamsusis;prie_katedros, dominink_karciama
-katedros_medaus;Katedros Medaus;prie_katedros, dominink_karciama
-svyturys_extra;"�vyturys ""Extra""";jalta
+budweiser;"Budweiser ""BUDVAR""";busi_trecias, plieno_paukste, simo_baras, dolce_vita, alaus_studija, obuolys
+busi_trecias;Būsi Trečias;busi_trecias
+butautu_dvaro;Butautų Dvaro;mamutas
+chodovar;Chodovar;obuolys
+daujotu;Daujotų;alaus_namai
+dundulio;Dundulio;bermudai, alaus_namai
+ekstra_tvirtoves;Ekstra Tvirtovės;pilies_mene
+erdinger;Erdinger;bunte_gans, simo_baras, alaus_studija
+franziskaner;Franziskaner;savas_kampas
 grimbergen;Grimbergen;jalta
+gubernijos_kvietinis;Gubernijos kvietinis;alaus_namai
+guiness;Guiness;alaus_studija, obuolys
+heineken;Heineken;pogo, savas_kampas, wall_street, alaus_studija
+hoegarden;Hoegarden;wall_street, obuolys
+jovaru_snekutis;Jovarų šnekutis;bermudai
+kalnapilis_grand;"Kalnapilis ""Grand""";busi_trecias, pilies_mene, mamutas, obuolys
+kanapinis;Kanapinis tamsus;bermudai, obuolys
+katedros_medaus;Katedros Medaus;prie_katedros, dominink_karciama
+katedros_sviesusis;Katedros Šviesusis;prie_katedros, dominink_karciama
+katedros_tamsusis;Katedros Tamsusis;prie_katedros, dominink_karciama
+kozel;Kozel;obuolys,wall_street
+krusovec;Krušovec;blusyne, simo_baras, alaus_studija
+kunigaiksciu;Kunigaikščių;mamutas, keisti_zenklai
+murphys_stout;Murphy's stout;alaus_studija
+new_castle_brown_ale;Newcastle Brown Ale;alaus_studija
+pilies;Pilies;pilies_mene
+pogo;PoGO šviesusis;pogo
+raudonuju_dobilu;Raudonųjų Dobilų;chillout, alaus_namai
+rinkuskiu_proginis;Rinkuškių proginis;bermudai, alaus_namai
+samson;Samson;blusyne, pogo, plieno_paukste, alaus_studija
+staropramen;Staropramen;burito, obuolys
+svyturys_baltas;"Švyturys ""Baltas""";busi_trecias, pilies_mene, uzupio_picerija
+svyturys_baltijos;"Švyturys ""Baltijos""";molinis_asotis, mamutas
+svyturys_extra;"Švyturys ""Extra""";jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas
+tauro_tradicinis;Tauro Tradicinis;mamutas
+tores;Tores gyvas nefiltruotas;tores
+tucher;Tucher;obuolys
+utenos;utenos;pilies_mene, alaus_baras_just
+varniuku;Varniukų tamsusis;pogo, alaus_baras_pyli, alaus_namai
+veltins;Veltins;bunte_gans, alaus_studija, obuolys
+velvet;Velvet;savas_kampas
+vilkmerges_tamsusis;Vilkmergės tamsusis;alaus_namai
+vilniaus_kvietinis;Vilniaus kvietinis;bermudai, pogo, obuolys
+vilniaus_nefiltr;Vilniaus nefiltruotas;bermudai, alaus_namai
+warsteiner;Warsteiner;bunte_gans, plieno_paukste, wall_street
+zubr;Zubr;savas_kampas
+leffe;Leffe;obuolys
