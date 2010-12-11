@@ -41,19 +41,14 @@ public class GimeLocation extends MapActivity implements Observer {
 		
 		List<Overlay> mapOverlays = getMapView().getOverlays();
 		Drawable drawable = this.getResources().getDrawable(R.drawable.icon);
-		PubOverlay overlay = new PubOverlay(drawable, this);
+		PubOverlay pubsOverlay = new PubOverlay(drawable, this);
 		
 		List<Pub> pubs = getBeerRadarDao().getPubsByBrand(getBrandId());
 		for (Pub pub : pubs) {
-			double latitude = pub.getLocation().getLatitude();
-			double longtitude = pub.getLocation().getLongtitude();
-
-			GeoPoint point = new GeoPoint((int) (latitude * 1e6), (int) (longtitude * 1e6));
-			OverlayItem overlayitem = new OverlayItem(point, pub.getTitle(), pub.getNotes());
-
-			overlay.addOverlay(overlayitem);
-			mapOverlays.add(overlay);			
-		}		
+			pubsOverlay.addOverlay(new PubOverlayItem(pub));						
+		}	
+		
+		mapOverlays.add(pubsOverlay);
 	}
 	
 	private MapView getMapView() {
