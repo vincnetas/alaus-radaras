@@ -20,128 +20,125 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
 /**
- * @author Vincentas
- * based on : http://mobiforge.com/developing/story/using-google-maps-android
+ * @author Vincentas based on :
+ *         http://mobiforge.com/developing/story/using-google-maps-android
  */
 public class GimeLocation extends MapActivity implements Observer {
 
 	public static final String BRAND_ID = "brandId";
-	
+
 	private BeerRadarDao beerRadarDao;
-	
+
 	private PubOverlay pubOverlay;
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
 
-		   Location location = new Location(LocationManager.GPS_PROVIDER);
-		   location.setLongitude(25.289261);
-		   location.setLatitude(54.67527);
-
-		
-		setContentView(R.layout.map);		
+		setContentView(R.layout.map);
 		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.bokalas), this);
-		
-		populateMap(location);
-		
-	
-		getMapView().getOverlays().add(pubOverlay);	        
-	   getMapView().setBuiltInZoomControls(true);
 
+		getMapView().getOverlays().add(pubOverlay);
+		getMapView().setBuiltInZoomControls(true);
 
-	   setupMap(location);
-	   
+		Location location = new Location(LocationManager.GPS_PROVIDER);
+		location.setLongitude(25.289261);
+		location.setLatitude(54.67527);
+		setupMap(location);
 	}
 
 	private MapView getMapView() {
 		return (MapView) findViewById(R.id.mapView);
 	}
-	
+
 	private String getBrandId() {
 		String result = null;
-		
+
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			result = extras.getString(BRAND_ID);
 		}
-		
+
 		return result;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
 	 */
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
-	
-	private LocationProvider locationProvider;
-	
-	private LocationProvider getLocationProvider() {
-		if (locationProvider == null) {
-			locationProvider = new LocationProvider(getBaseContext());
-		}
-		
-		return locationProvider;
-	}
 
-	@Override
-	protected void onPause() {
-		getLocationProvider().deleteObserver(this);
-		super.onPause();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		getLocationProvider().subscribe(this);
-//		
-//		pubOverlay.clean();
-//		mapPopulated = false;
-//		
-//		Location location = getLocationProvider().getLastKnownLocation();
-//		if (location == null) {
-//			showDialog(ENABLE_GPS_DIALOG);
-//		} else {
-//			populateMap(location);
+//	private LocationProvider locationProvider;
+//
+//	private LocationProvider getLocationProvider() {
+//		if (locationProvider == null) {
+//			locationProvider = new LocationProvider(getBaseContext());
 //		}
-	}
-	
+//
+//		return locationProvider;
+//	}
+
+//	@Override
+//	protected void onPause() {
+//		getLocationProvider().deleteObserver(this);
+//		super.onPause();
+//	}
+
+//	@Override
+//	protected void onResume() {
+//		super.onResume();
+//
+//		getLocationProvider().subscribe(this);
+//		//
+//		// pubOverlay.clean();
+//		// mapPopulated = false;
+//		//
+//		// Location location = getLocationProvider().getLastKnownLocation();
+//		// if (location == null) {
+//		// showDialog(ENABLE_GPS_DIALOG);
+//		// } else {
+//		// populateMap(location);
+//		// }
+//	}
+
 	private boolean mapPopulated = false;
-	
+
 	private synchronized void populateMap(Location location) {
-//		if (!mapPopulated) {
-			String brandId = getBrandId();
-			alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
-			List<Pub> pubs;
-			
-			if (brandId != null) {
-				pubs = getBeerRadarDao().getPubsByBrandId(brandId, loc);
-			} else {
-				pubs = getBeerRadarDao().getNearbyPubs(loc);
-			}
-			
-			if (pubs == null) {
-				pubs = new ArrayList<Pub>();
-			}
-			
-			for (Pub pub : pubs) {
-				pubOverlay.addOverlay(new PubOverlayItem(pub));						
-			}
-			
-			mapPopulated = true;
-//		}
+		// if (!mapPopulated) {
+		String brandId = getBrandId();
+		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
+		List<Pub> pubs;
+
+		if (brandId != null) {
+			pubs = getBeerRadarDao().getPubsByBrandId(brandId, loc);
+		} else {
+			pubs = getBeerRadarDao().getNearbyPubs(loc);
+		}
+
+		if (pubs == null) {
+			pubs = new ArrayList<Pub>();
+		}
+
+		for (Pub pub : pubs) {
+			pubOverlay.addOverlay(new PubOverlayItem(pub));
+		}
+
+		mapPopulated = true;
+		// }
 	}
 
 	@Override
 	public void update(Observable observable, Object data) {
-//		populateMap((Location) data);
+		// populateMap((Location) data);
 		setupMap((Location) data);
 	}
 
@@ -153,27 +150,26 @@ public class GimeLocation extends MapActivity implements Observer {
 	}
 
 	/**
-	 * @param beerRadarDao the beerRadarDao to set
+	 * @param beerRadarDao
+	 *            the beerRadarDao to set
 	 */
 	public void setBeerRadarDao(BeerRadarDao beerRadarDao) {
 		this.beerRadarDao = beerRadarDao;
 	}
-	
 
 	/*
 	 * Basic Map setup
 	 */
-	private void setupMap(Location location){
-		
-			MapController mapController = getMapView().getController();
-			
+	private void setupMap(Location location) {
+		populateMap(location);
 
-		
+		MapController mapController = getMapView().getController();
+
 		// Zoom to span from the list of points
 		mapController.zoomToSpan(100000, 100000);
 
 		// Animate to the center cluster of points
 		mapController.animateTo(Utils.geoPoint(location));
-		
+
 	}
 }
