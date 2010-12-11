@@ -51,7 +51,7 @@ public class PubBrandListAdapter extends BaseAdapter {
 	            imageView = (ImageView) convertView;
 	        }
 	        Brand beer = beers.get(position);
-	        imageView.setImageDrawable(BeerRadarDao.getInstance().getImage(beer.getIcon()));
+	        imageView.setImageDrawable(BeerRadarDao.getInstance(context).getImage(beer.getIcon()));
 	        return imageView;
 	}
 
