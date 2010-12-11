@@ -1,13 +1,12 @@
 package alaus.radaras.adapters;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 import alaus.radaras.R;
+import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,18 +17,7 @@ import android.widget.TextView;
 
 public class BrandListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
-    private Bitmap sebIcon;
-    private Bitmap swedIcon;
-    private Bitmap snorasIcon;
-    private Bitmap dnbIcon;
-    private Bitmap ukioIcon;
-    private Bitmap parexIcon;
-    private Bitmap siauliuIcon;
-    private Bitmap nordeaIcon;
-    private Bitmap danskeIcon;
     private List<Brand> brands;
-    private DecimalFormat meteresFormat = new DecimalFormat("0");
-    private DecimalFormat kilometeresFormat = new DecimalFormat("0.00");
     public BrandListAdapter(Context context, List<Brand> brands) {
         // Cache the LayoutInflate to avoid asking for a new one each time.
         mInflater = LayoutInflater.from(context);
@@ -44,7 +32,7 @@ public class BrandListAdapter extends BaseAdapter {
 //        snorasIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.snoras);
 //        ukioIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.ukio);
 //        siauliuIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.siauliu);
-        Log.i("AMTProvider", "in ATMListAdapter");
+        Log.i("BrandProvides", "in BrandProvider");
        // mIcon1 = 
        // mIcon2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon48x48_2);
     }
@@ -108,45 +96,24 @@ public class BrandListAdapter extends BaseAdapter {
             // and the ImageView.
             holder = (BrandViewHolder) convertView.getTag();
         }
-        Brand atm = brands.get(position);
+        Brand brnd = brands.get(position);
         // Bind the data efficiently with the holder.
-        holder.title.setText(atm.getBrand());
-        holder.img.setImageBitmap(getImageByBank(atm.getIcon()));
+        holder.title.setText(brnd.getBrand());
+        holder.img.setImageDrawable((new BeerRadarDao().getImage(brnd.getIcon())));
         
         return convertView;
     }
 
-    private CharSequence formatDistance(double distance) {
-		// TODO Auto-generated method stub
-    	if(distance > 1)
-    	{
-			return kilometeresFormat.format(distance) + " km";
-    	}
-    	else
-    	{
-			return meteresFormat.format(distance * 1000) + " m";
-    	}
-	}
+//    private CharSequence formatDistance(double distance) {
+//		// TODO Auto-generated method stub
+//    	if(distance > 1)
+//    	{
+//			return kilometeresFormat.format(distance) + " km";
+//    	}
+//    	else
+//    	{
+//			return meteresFormat.format(distance * 1000) + " m";
+//    	}
+//	}
 
-	private Bitmap getImageByBank(String bank) {
-		if(bank.equalsIgnoreCase("seb"))
-			return sebIcon;
-		else if(bank.equalsIgnoreCase("swed"))
-			return swedIcon;
-		else if(bank.equalsIgnoreCase("nordea"))
-			return nordeaIcon;
-		else if(bank.equalsIgnoreCase("parex"))
-			return parexIcon;
-		else if(bank.equalsIgnoreCase("snoras"))
-			return snorasIcon;
-		else if(bank.equalsIgnoreCase("ukio"))
-			return ukioIcon;
-		else if(bank.equalsIgnoreCase("nord"))
-			return dnbIcon;
-		else if(bank.equalsIgnoreCase("danske"))
-			return danskeIcon;
-		else if(bank.equalsIgnoreCase("siauliu"))
-			return siauliuIcon;
-		return null;
-	}
 }
