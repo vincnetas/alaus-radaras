@@ -40,19 +40,20 @@ public class GimeLocation extends MapActivity implements Observer {
 		   Location location = new Location(LocationManager.GPS_PROVIDER);
 		   location.setLongitude(25.337219);
 		   location.setLatitude(54.736515);
-		   
-		   Pub pub = new Pub();
-		   pub.setTitle("title");
-		   pub.setNotes("notes");
-		   pub.setId("pubId");
-		   alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());		   
-		   pub.setLocation(loc);
+//		   
+//		   Pub pub = new Pub();
+//		   pub.setTitle("title");
+//		   pub.setNotes("notes");
+//		   pub.setId("pubId");
+//		   alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());		   
+//		   pub.setLocation(loc);
 		
 		setContentView(R.layout.map);		
-		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
-		pubOverlay.addOverlay(new PubOverlayItem(pub));
+		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.bokalas), this);
 		
+		populateMap(location);
 		
+	
 		getMapView().getOverlays().add(pubOverlay);	        
 	   getMapView().setBuiltInZoomControls(true);
 
@@ -66,7 +67,14 @@ public class GimeLocation extends MapActivity implements Observer {
 	}
 	
 	private String getBrandId() {
-		return getIntent().getExtras().getString(BRAND_ID);
+		String result = null;
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			result = extras.getString(BRAND_ID);
+		}
+		
+		return result;
 	}
 	
 	/* (non-Javadoc)
@@ -113,7 +121,7 @@ public class GimeLocation extends MapActivity implements Observer {
 	private boolean mapPopulated = false;
 	
 	private synchronized void populateMap(Location location) {
-		if (!mapPopulated) {
+//		if (!mapPopulated) {
 			String brandId = getBrandId();
 			alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
 			List<Pub> pubs;
@@ -129,7 +137,7 @@ public class GimeLocation extends MapActivity implements Observer {
 			}
 			
 			mapPopulated = true;
-		}
+//		}
 	}
 
 	@Override
