@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
   <ImageView android:id="@+id/countBeer" android:src="@drawable/girl"
     android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  >
+  	android:layout_height="50px">
   </ImageView>
   <TextView android:id="@+id/counterTodayHeader"
   	android:textSize="30px" android:layout_width="fill_parent" 
   	android:layout_marginRight="5px"
   	android:text="Jau išgėriau"
-	android:layout_height="wrap_content">
+	android:layout_height="30px"
+	android:layout_below="@id/countBeer">
   </TextView>
   <TextView android:id="@+id/counterCurrent"
   	android:textSize="30px" android:layout_width="fill_parent" 
   	android:layout_marginRight="5px"
-	android:layout_height="wrap_content">
+	android:layout_height="50px"
+	android:layout_below="@id/counterTodayHeader">
   </TextView>
   <TextView android:id="@+id/counterQoute"
   	android:textSize="30px" android:layout_width="fill_parent" 
   	android:layout_marginRight="5px"
-	android:layout_height="wrap_content">
+	android:layout_height="50px"
+	android:layout_below="@id/counterCurrent">
+  </TextView>
+  <Button android:id="@+id/counterResetCurrent"
+  android:layout_width="60px" 
+  android:layout_height="60px"
+  android:layout_below="@id/counterQoute" 
+  android:text="Iš naujo"></Button>
+  <TextView android:id="@+id/counterTotal"
+  	android:textSize="30px" android:layout_width="fill_parent" 
+  	android:layout_marginRight="5px"
+	android:layout_height="50px"
+	android:layout_below="@id/counterResetCurrent">
   </TextView>
   
-</LinearLayout>
+</RelativeLayout>

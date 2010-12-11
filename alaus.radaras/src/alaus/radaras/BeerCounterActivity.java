@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ public class BeerCounterActivity extends Activity {
 	    
 	    final SettingsManager settings = new SettingsManager(this);
 
-	    update(settings.getCurrentCount());
+	    update(settings.getCurrentCount(),settings.getTotalCount());
 	    
 	    ImageView beerImage = (ImageView)findViewById(R.id.countBeer);
 	    beerImage.setOnClickListener(new OnClickListener() {
@@ -31,19 +32,31 @@ public class BeerCounterActivity extends Activity {
 				  
 			    settings.increaseCurrent();
 			    Integer current = settings.getCurrentCount();
-			    update(current);
+			    update(current,settings.getTotalCount());
 			    displayAlerts(current);
 			    
 			}
 	    });
-
+	    
+	    Button resetCurrent = (Button)findViewById(R.id.counterResetCurrent);
+	    resetCurrent.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				settings.resetCurrent();
+				update(0,settings.getTotalCount());
+			    
+			}
+	    });
 			
 	}
 
-	private void update(Integer currentCount) {
+	private void update(Integer currentCount, Integer totalCount) {
 		 Qoute qoute = BeerRadarDao.getInstance(this).getQoute(currentCount);
 		 ((TextView)findViewById(R.id.counterCurrent)).setText(currentCount.toString());
 		 ((TextView)findViewById(R.id.counterQoute)).setText(qoute.getText());
+		 ((TextView)findViewById(R.id.counterTotal)).setText(totalCount.toString());
 		
 	}
 	

@@ -51,7 +51,7 @@ public class SettingsManager {
 		return Integer.valueOf(value);
 	}
 
-	private Integer getTotalCount() {
+	Integer getTotalCount() {
 		return getCount(Settings.SETTING_TOTAL_COUNT);
 	}
 
@@ -62,6 +62,11 @@ public class SettingsManager {
 		Integer total = getTotalCount();
 		total++;
 		storeValue(Settings.SETTING_TOTAL_COUNT, (total).toString());
+		
+	}
+
+	public void resetCurrent() {
+		storeValue(Settings.SETTING_CURRENT_COUNT,"0");
 		
 	}
 
