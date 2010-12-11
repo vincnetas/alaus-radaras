@@ -56,6 +56,23 @@ public class BeerRadarDao {
 		return brands;
 	}
 	
+	public List<Brand> getBrandsByPubId(String pubId) {
+		List<Brand> brands = new ArrayList<Brand>();
+		Cursor cursor = db.rawQuery(
+				"SELECT id, title, icon, description " +
+				"FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = ?s", 
+				new String[] { pubId });
+		if (cursor.moveToFirst()) {
+			do {
+				brands.add(toBrand(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return brands;
+	}
+	
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
@@ -94,7 +111,7 @@ public class BeerRadarDao {
 		return pubs;
 	}
 	
-	public Pub getPubByPubId(String pubId) {
+	public Pub getPub(String pubId) {
 		Cursor cursor = db.query(
 			"os", 
 			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},

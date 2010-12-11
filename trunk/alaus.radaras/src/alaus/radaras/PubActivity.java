@@ -35,7 +35,7 @@ public class PubActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.pub);
 
-	    final Pub pub = BeerRadarDao.getInstance(this).getPubByPubId(getIntent().getExtras().get(PUBID).toString());
+	    final Pub pub = BeerRadarDao.getInstance(this).getPub(getIntent().getExtras().get(PUBID).toString());
 	    GridView gridview = (GridView) findViewById(R.id.pubBrandList);
 //	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBrands()));
 	    
