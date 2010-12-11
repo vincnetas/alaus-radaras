@@ -18,6 +18,7 @@
 <activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
 <activity android:name=".PubActivity"></activity>
 <activity android:name=".BeerCounterActivity"></activity>
+<activity android:name=".LuckyActivity"></activity>
 </application>
 
 

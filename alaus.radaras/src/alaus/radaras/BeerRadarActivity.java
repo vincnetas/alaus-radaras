@@ -37,5 +37,19 @@ public class BeerRadarActivity extends Activity {
 			}
 		});
 
+		Button buttonLucky = (Button) findViewById(R.id.ButtonLucky);
+		buttonLucky.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+                Intent inte = new Intent(BeerRadarActivity.this, LuckyActivity.class);
+        		try
+        		{
+        			startActivity(inte);
+        		}catch(Exception ex){
+        			Toast.makeText(BeerRadarActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        		}
+			}
+		});
+
     }
 }
