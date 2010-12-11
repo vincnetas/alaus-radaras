@@ -44,7 +44,7 @@ public class GimeLocation extends MapActivity {
 		overlay.addOverlay(overlayitem);
 		mapOverlays.add(overlay);
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
 	 */
