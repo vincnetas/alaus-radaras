@@ -1,5 +1,8 @@
 package alaus.radaras.dao.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pub {
 
 	private String id;
