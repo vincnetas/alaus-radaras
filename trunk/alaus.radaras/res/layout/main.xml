@@ -7,7 +7,7 @@
     >
 <ImageView 
 	android:id="@+id/imgTitleButton"
-	android:src="@drawable/bok_title" 
+	android:src="@drawable/bokalas_vol_3" 
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"></ImageView>
