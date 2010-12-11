@@ -52,10 +52,15 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) 
     {
-        db.execSQL(
-        		Definition.PUBS + 
-        		Definition.BRANDS + 
-        		Definition.PUBS_BRANDS);
+    	Log.i(LOG_TAG, "Creating initial database");
+    	try {
+	        db.execSQL(Definition.PUBS);
+	        db.execSQL(Definition.BRANDS);
+	        db.execSQL(Definition.PUBS_BRANDS);
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
+    	Log.i(LOG_TAG, "Finished creating database.");
     }
 
 	@Override
