@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class BeerRadarActivity extends Activity {
@@ -15,7 +16,7 @@ public class BeerRadarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-		ImageButton buttonTitle = (ImageButton) findViewById(R.id.imgTitleButton);
+		ImageView buttonTitle = (ImageView) findViewById(R.id.imgTitleButton);
 		//buttonTitle.setAlpha(100);
 		buttonTitle.setOnClickListener(new View.OnClickListener() {
 				

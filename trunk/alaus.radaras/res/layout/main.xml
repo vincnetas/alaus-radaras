@@ -4,12 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<ImageButton 
+<ImageView 
 	android:id="@+id/imgTitleButton"
 	android:src="@drawable/bokalas" 
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:layout_centerHorizontal="true"></ImageButton>
+	android:layout_centerHorizontal="true"></ImageView>
 <Button 
 	android:text="@string/NearValue" 
 	android:id="@+id/ButtonNear" 
