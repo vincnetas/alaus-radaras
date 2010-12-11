@@ -152,9 +152,13 @@ public class BeerRadarDao {
 	
 	public Drawable getImage(String url) {
 		Resources resources = context.getResources();
-		Integer id = resources.getIdentifier("R.drawable.brand_"+url, null, null);
-		if(id == 0)
+		Integer id = 0;
+		if(url != null) {
+			id = resources.getIdentifier("R.drawable.brand_"+url, null, null);
+		}
+		if(id == 0) {
 			id = R.drawable.brand_default;
+		}
 			
 		return resources.getDrawable(id);
 	}
