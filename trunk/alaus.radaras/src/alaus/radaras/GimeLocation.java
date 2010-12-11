@@ -8,17 +8,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.Pub;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
 
 /**
  * @author Vincentas
@@ -43,7 +40,7 @@ public class GimeLocation extends MapActivity implements Observer {
 		Drawable drawable = this.getResources().getDrawable(R.drawable.icon);
 		PubOverlay pubsOverlay = new PubOverlay(drawable, this);
 		
-		List<Pub> pubs = getBeerRadarDao().getPubsByBrand(getBrandId());
+		List<Pub> pubs = getBeerRadarDao().getPubsByBrandId(getBrandId());
 		for (Pub pub : pubs) {
 			pubsOverlay.addOverlay(new PubOverlayItem(pub));						
 		}	
