@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     >
 <ImageView 
-	android:id="@+id/ImageView01" 	
+	android:id="@+id/imgTitle"
+	android:src="@drawable/girl.png" 	
 	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"></ImageView>
 <Button 
