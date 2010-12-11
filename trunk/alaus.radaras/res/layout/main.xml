@@ -19,4 +19,9 @@
 	android:id="@+id/ButtonBrand" 
 	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"></Button>
+<Button 
+	android:text="@string/LuckyValue" 
+	android:id="@+id/ButtonLucky" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"></Button>
 </LinearLayout>
