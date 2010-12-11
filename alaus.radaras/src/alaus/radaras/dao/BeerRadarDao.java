@@ -3,7 +3,8 @@ package alaus.radaras.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import alaus.radaras.dao.model.Beer;
+import alaus.radaras.dao.model.Brand;
+import alaus.radaras.dao.model.FeelingLucky;
 import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
 
@@ -18,11 +19,11 @@ public class BeerRadarDao {
 		return instance;
 	}
 	
-	public List<Beer> getBeers() {
-		return new ArrayList<Beer>();
+	public List<Brand> getBrands() {
+		return new ArrayList<Brand>();
 	}
 	
-	public List<Pub> getPubsByBeer(Beer beer) {
+	public List<Pub> getPubsByBrand(Brand brand) {
 		return new ArrayList<Pub>();
 	}
 	
@@ -30,8 +31,8 @@ public class BeerRadarDao {
 		return new ArrayList<Pub>();
 	}
 	
-	public Pub getPubInfo() {
-		return new Pub();
+	public FeelingLucky feelingLucky() {
+		return new FeelingLucky();
 	}
 	
 }

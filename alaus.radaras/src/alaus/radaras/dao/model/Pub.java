@@ -17,7 +17,7 @@ public class Pub {
 	
 	private String phone;
 	
-	private List<Beer> beers;
+	private List<Brand> beers;
 
 	public String getId() {
 		return id;
@@ -67,17 +67,17 @@ public class Pub {
 		this.phone = phone;
 	}
 
-	public List<Beer> getBeers() {
+	public List<Brand> getBeers() {
 		return beers;
 	}
 
-	public void setBeers(List<Beer> beers) {
+	public void setBeers(List<Brand> beers) {
 		this.beers = beers;
 	}
 	
-	public void addBeer(Beer beer) {
+	public void addBeer(Brand beer) {
 		if (beers == null) {
-			beers = new ArrayList<Beer>();
+			beers = new ArrayList<Brand>();
 		}
 		beers.add(beer);
 	}
