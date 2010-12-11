@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background"
     >
 <ImageView 
 	android:id="@+id/imgTitleButton"
@@ -13,19 +14,28 @@
 <Button 
 	android:text="@string/NearValue" 
 	android:id="@+id/ButtonNear" 
-	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:layout_marginLeft="40px" 
+	android:layout_height="90px"
+	android:layout_centerInParent="true"
+	android:layout_marginTop="10px"
 	android:layout_below="@id/imgTitleButton"></Button>
 <Button 
 	android:text="@string/BrandValue" 
 	android:id="@+id/ButtonBrand" 
 	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
+	android:layout_height="90px"
+	android:layout_centerInParent="true"
+	android:layout_marginTop="10px"
+	android:layout_marginLeft="40px"
 	android:layout_below="@id/ButtonNear"></Button>
 <Button 
 	android:text="@string/LuckyValue" 
 	android:id="@+id/ButtonLucky" 
 	android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
+	android:layout_height="90px"
+	android:layout_centerInParent="true"
+	android:layout_marginLeft="40px"
+	android:layout_marginTop="10px"
 	android:layout_below="@id/ButtonBrand"></Button>
 </RelativeLayout >
