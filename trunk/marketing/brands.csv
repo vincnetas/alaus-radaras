@@ -1,33 +1,33 @@
-Brand;Barai
-Guiness;
-Kilkeny;
-Hoegarden;
-PoGO šviesusis;pogo
-Vilniaus kvietinis;bermudai, pogo
-Varniuk? tamsusis;pogo
-Samson dark;blusyne, pogo, plieno_paukste
-Heineken;pogo, savas_kampas
-Warsteiner;bunte_gans, plieno_paukste
-Erdinger;bunte_gans
-Veltins;bunte_gans
-Rinkuški? proginis;bermudai
-Kanapinis tamsus;bermudai
-Vilniaus nefiltruotas;bermudai
-Jovar? šnekutis;bermudai
-Krušovec;blusyne
-Belmonto šviesusis;belmontas
-Belmonto ypatingasis;belmontas
-Velvet;savas_kampas
-Zubr;savas_kampas
-Franziskaner;savas_kampas
-Staropramen;burito
-Bravaria;bravaria
-B?si Tre?ias;busi_trecias
-"Budweiser ""BUDVAR""";busi_trecias, plieno_paukste
-"Švyturys ""Baltas""";busi_trecias
-"Kalnapilis ""Grand""";busi_trecias
-Katedros Šviesusis;prie_katedros, dominink_karciama
-Katedros Tamsusis;prie_katedros, dominink_karciama
-Katedros Medaus;prie_katedros, dominink_karciama
-"Švyturys ""Extra""";jalta
-Grimbergen;jalta
+id;Brand;Barai
+guiness;Guiness;
+kilkeny;Kilkeny;
+hoegarden;Hoegarden;
+pogo;PoGO šviesusis;pogo
+vilniaus_kvietinis;Vilniaus kvietinis;bermudai, pogo
+varniuku;Varniuk? tamsusis;pogo
+samson;Samson;blusyne, pogo, plieno_paukste
+heineken;Heineken;pogo, savas_kampas
+warsteiner;Warsteiner;bunte_gans, plieno_paukste
+erdinger;Erdinger;bunte_gans
+veltins;Veltins;bunte_gans
+rinkuskiu_proginis;Rinkuški? proginis;bermudai
+kanapinis;Kanapinis tamsus;bermudai
+vilniaus_nefiltr;Vilniaus nefiltruotas;bermudai
+jovaru_snekutis;Jovar? šnekutis;bermudai
+krusovec;Krušovec;blusyne
+belmonto_sviesus;Belmonto šviesusis;belmontas
+belmonto_ypatingas;Belmonto ypatingasis;belmontas
+velvet;Velvet;savas_kampas
+zubr;Zubr;savas_kampas
+franziskaner;Franziskaner;savas_kampas
+staropramen;Staropramen;burito
+bravaria;Bravaria;bravaria
+busi_trecias;B?si Tre?ias;busi_trecias
+budweiser;"Budweiser ""BUDVAR""";busi_trecias, plieno_paukste
+svyturys_baltas;"Švyturys ""Baltas""";busi_trecias
+kalnapilis_grand;"Kalnapilis ""Grand""";busi_trecias
+katedros_sviesusis;Katedros Šviesusis;prie_katedros, dominink_karciama
+katedros_tamsusis;Katedros Tamsusis;prie_katedros, dominink_karciama
+katedros_medaus;Katedros Medaus;prie_katedros, dominink_karciama
+svyturys_extra;"Švyturys ""Extra""";jalta
+grimbergen;Grimbergen;jalta
