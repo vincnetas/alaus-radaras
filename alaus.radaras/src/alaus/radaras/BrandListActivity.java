@@ -5,7 +5,7 @@ package alaus.radaras;
 
 import java.util.List;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.AdapterView;
@@ -21,7 +21,7 @@ import alaus.radaras.dao.model.Brand;
  * @author LP
  *
  */
-public class BrandListActivity extends ListActivity {
+public class BrandListActivity extends Activity {
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -29,7 +29,7 @@ public class BrandListActivity extends ListActivity {
 	private List<Brand> brands;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		try {

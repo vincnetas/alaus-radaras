@@ -37,7 +37,7 @@ public class PubActivity extends Activity {
 
 	    final Pub pub = BeerRadarDao.getInstance(this).getPubByPubId(getIntent().getExtras().get(PUBID).toString());
 	    GridView gridview = (GridView) findViewById(R.id.pubBrandList);
-	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBeers()));
+	    gridview.setAdapter(new PubBrandListAdapter(this,pub.getBrands()));
 	    
 	    addressView = (TextView)findViewById(R.id.pubAddress);
 	    addressView.setText(pub.getAddress());
@@ -53,7 +53,7 @@ public class PubActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				Brand beer = pub.getBeers().get(position);
+				Brand beer = pub.getBrands().get(position);
 				Toast.makeText(PubActivity.this, beer.getDescription(), Toast.LENGTH_SHORT).show();
 				
 			}
