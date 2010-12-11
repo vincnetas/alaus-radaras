@@ -20,7 +20,7 @@ public class LuckyActivity extends Activity {
         ImageView imgBrand = (ImageView) findViewById(R.id.LuckyBrandIcon);
         TextView brand = (TextView) findViewById(R.id.LuckyBrandTitle);
         TextView pubView = (TextView) findViewById(R.id.LuckyPubTitle);
-        FeelingLucky lucky = new FeelingLucky();
+        FeelingLucky lucky = BeerRadarDao.getInstance(this).feelingLucky();
         Brand brData = lucky.getBrand();
         pb = lucky.getPub();
         imgBrand.setImageDrawable(BeerRadarDao.getInstance(this).getImage(brData.getIcon()));
