@@ -12,6 +12,7 @@ import alaus.radaras.dao.model.Pub;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,20 +39,27 @@ public class PubActivity extends Activity {
 	    setContentView(R.layout.pub);
 
 	    BeerRadarDao dao = BeerRadarDao.getInstance(this);
-	    
-	    final Pub pub = dao.getPub(getIntent().getExtras().get(PUBID).toString());
+	    String pubId = "bermudai";//getIntent().getExtras().get(PUBID).toString();
+	    final Pub pub = dao.getPub(pubId);
 	    final List<Brand> brands = dao.getBrandsByPubId(pub.getId());
 	    
-	    GridView gridview = (GridView) findViewById(R.id.pubBrandList);
-	    gridview.setAdapter(new PubBrandListAdapter(this,brands));
-	    
+    	GridView gridview = (GridView) findViewById(R.id.pubBrandList);
+    	TextView noBeers = (TextView)findViewById(R.id.pubNoBeers);
+	    if(brands != null && brands.size() > 0) {
+	    	gridview.setAdapter(new PubBrandListAdapter(this,brands));
+	    	noBeers.setVisibility(View.GONE);
+	    	gridview.setVisibility(View.VISIBLE);
+	    } else{
+	    	gridview.setVisibility(View.GONE);
+	    	noBeers.setVisibility(View.VISIBLE);
+	    }
 	    addressView = (TextView)findViewById(R.id.pubAddress);
 	    addressView.setText(pub.getAddress());
 	    
 	    phoneView = (TextView)findViewById(R.id.pubPhone);
 	    phoneView.setText(pub.getPhone());
 	    
-	    ((TextView)findViewById(R.id.pubName)).setText(pub.getNotes());
+	    ((TextView)findViewById(R.id.pubName)).setText(pub.getTitle());
 	    ((TextView)findViewById(R.id.pubNotes)).setText(pub.getNotes());
 	     
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
