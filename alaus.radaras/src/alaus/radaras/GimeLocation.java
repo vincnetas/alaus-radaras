@@ -9,10 +9,13 @@ import java.util.Observer;
 
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
+import alaus.radaras.utils.Utils;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
 /**
@@ -35,8 +38,16 @@ public class GimeLocation extends MapActivity implements Observer {
 		super.onCreate(bunble);
 
 		setContentView(R.layout.map);		
-		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
-		getMapView().getOverlays().add(pubOverlay);
+//		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.icon), this);
+//		
+//		getMapView().getOverlays().add(pubOverlay);	        
+	   getMapView().setBuiltInZoomControls(true);
+
+	   Location location = new Location(LocationManager.GPS_PROVIDER);
+	   location.setLongitude(25.337219);
+	   location.setLatitude(54.736515);
+	   setupMap(location);
+	   
 	}
 
 	private MapView getMapView() {
@@ -75,7 +86,7 @@ public class GimeLocation extends MapActivity implements Observer {
 	protected void onResume() {
 		super.onResume();
 		
-//		getLocationProvider().subscribe(this);
+		getLocationProvider().subscribe(this);
 //		
 //		pubOverlay.clean();
 //		mapPopulated = false;
@@ -112,7 +123,8 @@ public class GimeLocation extends MapActivity implements Observer {
 
 	@Override
 	public void update(Observable observable, Object data) {
-		populateMap((Location) data);		
+//		populateMap((Location) data);
+		setupMap((Location) data);
 	}
 
 	/**
@@ -127,5 +139,23 @@ public class GimeLocation extends MapActivity implements Observer {
 	 */
 	public void setBeerRadarDao(BeerRadarDao beerRadarDao) {
 		this.beerRadarDao = beerRadarDao;
+	}
+	
+
+	/*
+	 * Basic Map setup
+	 */
+	private void setupMap(Location location){
+		
+			MapController mapController = getMapView().getController();
+			
+
+		
+		// Zoom to span from the list of points
+		mapController.zoomToSpan(100000, 100000);
+
+		// Animate to the center cluster of points
+		mapController.animateTo(Utils.geoPoint(location));
+		
 	}
 }
