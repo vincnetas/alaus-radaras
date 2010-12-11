@@ -6,16 +6,16 @@
     >
 <ImageView 
 	android:id="@+id/imgTitle"
-	android:src="@drawable/girl.png" 	
-	android:layout_width="wrap_content" 
+	android:src="@drawable/girl" 	
+	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"></ImageView>
 <Button 
-	android:text="@+id/ButtonNear" 
+	android:text="@string/NearValue" 
 	android:id="@+id/ButtonNear" 
 	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"></Button>
 <Button 
-	android:text="@+id/ButtonBrand" 
+	android:text="@string/BrandValue" 
 	android:id="@+id/ButtonBrand" 
 	android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"></Button>
