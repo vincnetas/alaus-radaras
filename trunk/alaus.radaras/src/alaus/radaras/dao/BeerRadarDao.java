@@ -209,7 +209,7 @@ public class BeerRadarDao {
 				"brands", 
 				new String[] {"id", "title", "icon", "description"},
 				"id = ?", 
-				null, 
+				new String[] {brandId}, 
 				null, 
 				null, 
 				"title asc");
