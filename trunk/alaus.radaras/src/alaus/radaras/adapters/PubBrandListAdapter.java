@@ -82,7 +82,7 @@ public class PubBrandListAdapter extends BaseAdapter {
 			v = inflater.inflate(R.layout.pub_brand_list_item, null);
 			TextView tv = (TextView)v.findViewById(R.id.pubBrandGridText);
 			tv.setText(brand.getTitle());
-			tv.setTextColor(android.R.color.black);
+			
 			ImageView iv = (ImageView)v.findViewById(R.id.pubBrandGridIcon);
 			//iv.setLayoutParams(new GridView.LayoutParams(70, 70));
 			iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
