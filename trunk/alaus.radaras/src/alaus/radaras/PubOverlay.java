@@ -8,18 +8,9 @@ import java.util.ArrayList;
 import alaus.radaras.dao.model.Pub;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.drawable.Drawable;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
-import com.google.android.maps.Projection;
 import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
 
 /**
@@ -56,22 +47,16 @@ public class PubOverlay extends BalloonItemizedOverlay<PubOverlayItem> {
 	public int size() {
 		return overlays.size();
 	}
-
-//	@Override
-//	protected boolean onTap(int index) {
-//		PubOverlayItem pubOverlayItem = overlays.get(index);
-//		Pub pub = pubOverlayItem.getPub();
-//		
-//		Intent intent = new Intent(context, PubActivity.class);
-//		intent.putExtra(PubActivity.PUBID, pub.getId());
-//		context.startActivity(intent);
-//
-//		return true;
-//	}
 	
 	@Override
 	protected boolean onBalloonTap(int index) {
-		Toast.makeText(context, "onBalloonTap for overlay index " + index, Toast.LENGTH_LONG).show();
+		PubOverlayItem pubOverlayItem = overlays.get(index);
+		Pub pub = pubOverlayItem.getPub();
+		
+		Intent intent = new Intent(context, PubActivity.class);
+		intent.putExtra(PubActivity.PUBID, pub.getId());
+		context.startActivity(intent);
+		
 		return true;
 	}
 }
