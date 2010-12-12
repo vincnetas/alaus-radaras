@@ -82,10 +82,10 @@ public class PubBrandListAdapter extends BaseAdapter {
 			TextView tv = (TextView)v.findViewById(R.id.pubBrandGridText);
 			tv.setText(brand.getTitle());
 			ImageView iv = (ImageView)v.findViewById(R.id.pubBrandGridIcon);
-			iv.setLayoutParams(new GridView.LayoutParams(70, 70));
+			//iv.setLayoutParams(new GridView.LayoutParams(70, 70));
 			iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
 			iv.setImageDrawable(BeerRadarDao.getInstance(context).getImage(brand.getIcon()));
-			iv.setPadding(8, 8, 8, 8);
+			//iv.setPadding(8, 8, 8, 8);
 		}
 		else
 		{
