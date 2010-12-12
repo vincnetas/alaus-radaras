@@ -12,21 +12,18 @@ public class BrandTabWidget extends TabActivity {
 	   super.onCreate(savedInstanceState);
 	    setContentView(R.layout.brand_tabs);
 
-	    Resources res = getResources(); // Resource object to get Drawables
-	    TabHost tabHost = getTabHost();  // The activity TabHost
-	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
-	    Intent intent;  // Reusable Intent for each tab
+	    Resources res = getResources(); 
+	    TabHost tabHost = getTabHost(); 
+	    TabHost.TabSpec spec;
+	    Intent intent;  
 
-	    // Create an Intent to launch an Activity for the tab (to be reused)
 	    intent = new Intent().setClass(this, BrandListActivity.class);
 
-	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("artists").setIndicator("Artists",
 	                      res.getDrawable(R.drawable.bok_title))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    // Do the same for the other tabs
 	    intent = new Intent().setClass(this, BrandListActivity.class);
 	    spec = tabHost.newTabSpec("albums").setIndicator("Albums",
 	                      res.getDrawable(R.drawable.bok_title))
@@ -39,6 +36,6 @@ public class BrandTabWidget extends TabActivity {
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    tabHost.setCurrentTab(2);
+	    tabHost.setCurrentTab(0);
 	}
 }
