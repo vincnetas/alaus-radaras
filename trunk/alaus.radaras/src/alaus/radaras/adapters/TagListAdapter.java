@@ -63,7 +63,7 @@ public class TagListAdapter extends BaseAdapter {
         Tag tag = tags.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(tag.getTitle());
-        holder.img.setImageResource(R.drawable.tag_02);
+        holder.img.setImageResource(R.drawable.alus);
         
         return convertView;
 	}
