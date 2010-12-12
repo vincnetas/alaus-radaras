@@ -67,7 +67,7 @@ public class PubActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				Brand beer = brands.get(position);
-				Toast.makeText(PubActivity.this, beer.getDescription(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(PubActivity.this, beer.getTitle(), Toast.LENGTH_SHORT).show();
 				
 			}
 	    });
