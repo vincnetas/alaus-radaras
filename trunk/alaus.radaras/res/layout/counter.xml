@@ -34,8 +34,7 @@
   	android:layout_centerHorizontal="true"
 	android:layout_height="300px"
 	android:background="@drawable/burbuliukas"
-	android:layout_below="@id/countBeer" 
-  ></ImageView>
+	android:layout_below="@id/countBeer"></ImageView>
   <TextView android:id="@+id/counterQoute"
   	android:textSize="30px" 
   	android:layout_width="wrap_content" 
