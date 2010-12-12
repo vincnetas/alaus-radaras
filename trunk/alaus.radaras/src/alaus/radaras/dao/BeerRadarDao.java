@@ -200,7 +200,8 @@ public class BeerRadarDao {
 		Resources resources = context.getResources();
 		Integer id = 0;
 		if(url != null) {
-			id = resources.getIdentifier("R.drawable.brand_"+url, null, null);
+			id = resources.getIdentifier("@drawable/brand_" + url, "drawable",
+                    context.getPackageName());
 		}
 		if(id == 0) {
 			id = R.drawable.brand_default;
