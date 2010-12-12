@@ -27,19 +27,26 @@
 	android:layout_centerHorizontal="true"
 	android:textColor="#201400">
   </TextView>
-  <TextView android:id="@+id/counterQoute"
+  <ImageView
+  android:id="@+id/counterQouteImg"
   	android:textSize="30px" 
   	android:layout_width="fill_parent" 
   	android:layout_centerHorizontal="true"
+	android:layout_height="300px"
+	android:background="@drawable/batonas"
+	android:layout_below="@id/countBeer" 
+  ></ImageView>
+  <TextView android:id="@+id/counterQoute"
+  	android:textSize="30px" 
+  	android:layout_width="wrap_content" 
+  	android:layout_centerHorizontal="true"
   	android:text="Oh shit thats good funny something"
-	android:layout_height="wrap_content"
+  	android:layout_gravity="center_horizontal"
+	android:layout_height="300px"
+	android:paddingTop="60px"
+	android:layout_marginLeft="15px"
+	android:textColor="#201400"
 	android:layout_below="@id/countBeer">
   </TextView>
-  <TextView android:id="@+id/counterTotal"
-  	android:textSize="30px" android:layout_width="fill_parent" 
-  	android:layout_marginRight="5px"
-	android:layout_height="50px"
-	android:layout_below="@+id/counterQoute">
-  </TextView>
-  
+ 
 </RelativeLayout>

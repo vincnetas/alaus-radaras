@@ -64,7 +64,6 @@ public class BeerCounterActivity extends Activity {
 		}
 		 ((TextView)findViewById(R.id.counterCurrent)).setText(currentCount.toString());
 		 ((TextView)findViewById(R.id.counterQoute)).setText(qoute.getText());
-		 ((TextView)findViewById(R.id.counterTotal)).setText(totalCount.toString());
 		
 	}
 	
