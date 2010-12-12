@@ -12,46 +12,52 @@
 	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"></ImageView>
 <TextView android:id="@+id/mainCounterCurrent"
-  	android:textSize="80px" 
+  	android:textSize="60px" 
   	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"
 	android:textStyle="bold"
-	android:paddingRight="60px"
+	android:paddingRight="50px"
 	android:shadowColor="#979797"
 	android:shadowDx="5"
 	android:shadowDy="-2"
 	android:shadowRadius="2"
 	android:text="woot"
-	android:layout_marginTop="60px"
+	android:layout_marginTop="80px"
 	android:layout_centerHorizontal="true"
 	android:textColor="#201400">
   </TextView>
 	
 <Button 
 	android:text="@string/NearValue" 
+	android:textSize="16px"
 	android:id="@+id/ButtonNear" 
 	android:layout_width="fill_parent"
 	android:layout_marginLeft="40px" 
 	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
+	android:background="@drawable/batonas"
 	android:layout_below="@id/imgTitleButton"></Button>
 <Button 
 	android:text="@string/BrandValue" 
 	android:id="@+id/ButtonBrand" 
+	android:textSize="16px"
 	android:layout_width="fill_parent" 
 	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_marginLeft="40px"
+	android:background="@drawable/batonas"
 	android:layout_below="@id/ButtonNear"></Button>
 <Button 
 	android:text="@string/LuckyValue" 
 	android:id="@+id/ButtonLucky" 
+	android:textSize="16px"
 	android:layout_width="fill_parent" 
 	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginLeft="40px"
 	android:layout_marginTop="10px"
+	android:background="@drawable/batonas"
 	android:layout_below="@id/ButtonBrand"></Button>
 </RelativeLayout >

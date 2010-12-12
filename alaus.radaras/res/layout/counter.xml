@@ -7,23 +7,23 @@
 
   <ImageView 
   	android:id="@+id/countBeer" 
-  	android:src="@drawable/bokalas_vol_3"
+  	android:src="@drawable/bok_title"
     android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
   	android:layout_centerHorizontal="true">
   </ImageView>
     <TextView android:id="@+id/counterCurrent"
-  	android:textSize="130px" 
+  	android:textSize="110px" 
   	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"
 	android:textStyle="bold"
-	android:paddingRight="25px"
+	android:paddingRight="35px"
 	android:shadowColor="#979797"
 	android:shadowDx="5"
 	android:shadowDy="-2"
 	android:shadowRadius="2"
 	android:text="woot"
-	android:layout_marginTop="23px"
+	android:layout_marginTop="32px"
 	android:layout_centerHorizontal="true"
 	android:textColor="#201400">
   </TextView>

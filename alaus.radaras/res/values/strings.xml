@@ -2,9 +2,9 @@
 <resources>
     
 <string name="app_name">Alaus radaras</string>
-<string name="NearValue">Artimiausias</string>
-<string name="BrandValue">Rūšis</string>
+<string name="NearValue">Vietos</string>
+<string name="BrandValue">Alūs</string>
 <string name="BrandsName">Rušys</string>
 <string name="LocationName">Vietos</string>
-<string name="LuckyValue">Alaus?</string>
+<string name="LuckyValue">Ištroškau</string>
 </resources>
