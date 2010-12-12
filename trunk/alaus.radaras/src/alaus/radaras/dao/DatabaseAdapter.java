@@ -46,6 +46,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 		
 		public static String COUNTRIES = 
 	        "CREATE TABLE countries(" +
+	        	"code			TEXT NOT NULL," + 
 	        	"name			TEXT NOT NULL);";
 		
 		public static String BRANDS_COUNTRIES = 
@@ -55,12 +56,13 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 		
 		public static String TAGS = 
 	        "CREATE TABLE tags(" +
+	        	"code			TEXT NOT NULL," +
 	        	"title			TEXT NOT NULL);";
 		
 		public static String BRANDS_TAGS = 
 	        "CREATE TABLE brands_tags(" +
 	        	"brand_id			TEXT NOT NULL," +
-	        	"country			TEXT NOT NULL);";
+	        	"tag				TEXT NOT NULL);";
 		
 		public static String QOUTES = 
 	        "CREATE TABLE qoutes(" +
