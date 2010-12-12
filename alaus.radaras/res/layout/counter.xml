@@ -13,17 +13,17 @@
   	android:layout_centerHorizontal="true">
   </ImageView>
     <TextView android:id="@+id/counterCurrent"
-  	android:textSize="110px" 
+  	android:textSize="100px" 
   	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"
 	android:textStyle="bold"
-	android:paddingRight="35px"
+	android:paddingRight="50px"
 	android:shadowColor="#979797"
 	android:shadowDx="5"
 	android:shadowDy="-2"
 	android:shadowRadius="2"
 	android:text="woot"
-	android:layout_marginTop="32px"
+	android:layout_marginTop="50px"
 	android:layout_centerHorizontal="true"
 	android:textColor="#201400">
   </TextView>
