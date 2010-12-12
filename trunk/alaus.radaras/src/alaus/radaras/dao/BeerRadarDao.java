@@ -283,6 +283,21 @@ public class BeerRadarDao {
 		return null;
 	}
 
+	public Country getCountry(String code) {
+		Cursor cursor = db.query(
+				"countries", 
+				new String[] {"code", "name"},
+				"code = ?", 
+				new String[] { code }, 
+				null, 
+				null, 
+				null);
+		if (cursor.moveToFirst()) {
+			return toCountry(cursor);
+		}
+		return null;
+	}
+	
 	private Brand toBrand(Cursor cursor) {
 		Brand brand = new Brand();
 		brand.setId(cursor.getString(0));
