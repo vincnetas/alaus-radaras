@@ -30,6 +30,10 @@ import com.google.android.maps.MyLocationOverlay;
 public class GimeLocation extends MapActivity implements Observer {
 
 	public static final String BRAND_ID = "brandId";
+	
+	public static final String TAG_ID = "tagId";
+	
+	public static final String COUNTRY_ID = "countryId";
 
 	private BeerRadarDao beerRadarDao;
 
@@ -47,7 +51,7 @@ public class GimeLocation extends MapActivity implements Observer {
 		super.onCreate(bunble);
 		
 		setContentView(R.layout.map);
-		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.bokalas), this);
+		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.bokalas), this, getMapView());
 
 		getMapView().getOverlays().add(pubOverlay);
 		locationOverlay = new MyLocationOverlay(this, getMapView());
@@ -89,24 +93,24 @@ public class GimeLocation extends MapActivity implements Observer {
 		locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, false, false, false, Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
 		locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
 		locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
+		locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
 		
 		Runnable runnable = new Runnable() {
 
 			@Override
 			public void run() {
 				while (keepRunning) {
-					locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
 				}
 			}
 		};
 		
 		new Thread(runnable).start();
-		
 	}
 	
 	private boolean keepRunning = true;

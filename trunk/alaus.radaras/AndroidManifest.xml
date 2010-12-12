@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="alaus.radaras"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <uses-library android:name="com.google.android.maps" />
-        
-    	<activity android:name=".BeerRadarActivity" android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        
-    
+	package="alaus.radaras" android:versionCode="1" android:versionName="1.0">
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.INTERNET" />
 
-    <activity android:name=".GimeLocation" android:label="@string/LocationName"></activity>
-<activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
-<activity android:name=".PubActivity"></activity>
-<activity android:name=".BeerCounterActivity"></activity>
-<activity android:name=".LuckyActivity"></activity>
-<activity android:name=".BrandTabWidget" android:label="@string/app_name"
-          android:theme="@android:style/Theme.NoTitleBar"> </activity>
-</application>
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<uses-library android:name="com.google.android.maps" />
+
+		<activity android:name=".BeerRadarActivity" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 
 
 
-<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-<uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+		<activity android:name=".GimeLocation" android:label="@string/LocationName"></activity>
+		<activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
+		<activity android:name=".PubActivity"></activity>
+		<activity android:name=".BeerCounterActivity"></activity>
+		<activity android:name=".LuckyActivity"></activity>
+		<activity android:name=".BrandTabWidget" android:label="@string/app_name"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+	</application>
+
+
+
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
 </manifest> 
