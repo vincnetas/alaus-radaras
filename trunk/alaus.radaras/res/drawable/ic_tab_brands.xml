@@ -3,23 +3,6 @@
     <!-- When selected, use grey -->
     <item android:drawable="@drawable/tab_beer_01" 
           android:state_selected="true" >
-        <!--    <shape>
-            <gradient
-                android:startColor="#55ff0000"
-                android:endColor="#55ff0000"
-                android:angle="270" />
-            <stroke
-                android:width="3dp"
-                android:color="#55ff0000" />
-            <corners
-                android:radius="3dp" />
-            <padding
-                android:left="10dp"
-                android:top="10dp"
-                android:right="10dp"
-                android:bottom="10dp" />
-        </shape>-->
-          
           </item>
     <!-- When not selected, use white-->
     <item android:drawable="@drawable/tab_beer_02"/>
