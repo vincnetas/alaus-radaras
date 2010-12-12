@@ -7,10 +7,11 @@ import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Qoute;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class BeerCounterActivity extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	    setContentView(R.layout.counter);
 	    
 	    final SettingsManager settings = new SettingsManager(this);
@@ -38,18 +40,17 @@ public class BeerCounterActivity extends Activity {
 			}
 	    });
 	    
-	    Button resetCurrent = (Button)findViewById(R.id.counterResetCurrent);
-	    resetCurrent.setOnClickListener(new OnClickListener() {
+	    beerImage.setOnLongClickListener(new OnLongClickListener() {
 			
 			@Override
-			public void onClick(View v) {
-				
+			public boolean onLongClick(View v) {
+				  
 				settings.resetCurrent();
 				update(0,settings.getTotalCount());
-			    
+			    return true;
 			}
 	    });
-			
+	    
 	}
 
 	private void update(Integer currentCount, Integer totalCount) {

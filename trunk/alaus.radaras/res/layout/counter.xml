@@ -2,40 +2,44 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-  <ImageView android:id="@+id/countBeer" android:src="@drawable/girl"
+  android:layout_height="fill_parent"
+  android:background="@drawable/background">
+
+  <ImageView 
+  	android:id="@+id/countBeer" 
+  	android:src="@drawable/bokalas_vol_3"
     android:layout_width="fill_parent"
-  	android:layout_height="150px">
+  	android:layout_height="wrap_content"
+  	android:layout_centerHorizontal="true">
   </ImageView>
-  <TextView android:id="@+id/counterTodayHeader"
-  	android:textSize="30px" android:layout_width="fill_parent" 
-  	android:layout_marginRight="5px"
-  	android:text="Jau išgėriau"
-	android:layout_height="30px"
-	android:layout_below="@id/countBeer">
-  </TextView>
-  <TextView android:id="@+id/counterCurrent"
-  	android:textSize="30px" android:layout_width="fill_parent" 
-  	android:layout_marginRight="5px"
-	android:layout_height="50px"
-	android:layout_below="@id/counterTodayHeader">
+    <TextView android:id="@+id/counterCurrent"
+  	android:textSize="130px" 
+  	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:textStyle="bold"
+	android:paddingRight="25px"
+	android:shadowColor="#979797"
+	android:shadowDx="5"
+	android:shadowDy="-2"
+	android:shadowRadius="2"
+	android:text="woot"
+	android:layout_marginTop="23px"
+	android:layout_centerHorizontal="true"
+	android:textColor="#201400">
   </TextView>
   <TextView android:id="@+id/counterQoute"
-  	android:textSize="30px" android:layout_width="fill_parent" 
-  	android:layout_marginRight="5px"
-	android:layout_height="50px"
-	android:layout_below="@id/counterCurrent">
+  	android:textSize="30px" 
+  	android:layout_width="fill_parent" 
+  	android:layout_centerHorizontal="true"
+  	android:text="Oh shit thats good funny something"
+	android:layout_height="wrap_content"
+	android:layout_below="@id/countBeer">
   </TextView>
-  <Button android:id="@+id/counterResetCurrent"
-  android:layout_width="60px" 
-  android:layout_height="60px"
-  android:layout_below="@id/counterQoute" 
-  android:text="Iš naujo"/>
   <TextView android:id="@+id/counterTotal"
   	android:textSize="30px" android:layout_width="fill_parent" 
   	android:layout_marginRight="5px"
 	android:layout_height="50px"
-	android:layout_below="@id/counterResetCurrent">
+	android:layout_below="@+id/counterQoute">
   </TextView>
   
 </RelativeLayout>

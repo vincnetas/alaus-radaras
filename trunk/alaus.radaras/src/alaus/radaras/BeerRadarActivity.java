@@ -15,8 +15,8 @@ public class BeerRadarActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(R.layout.main);
 		ImageView buttonTitle = (ImageView) findViewById(R.id.imgTitleButton);
 		//buttonTitle.setAlpha(100);
 		buttonTitle.setOnClickListener(new View.OnClickListener() {
