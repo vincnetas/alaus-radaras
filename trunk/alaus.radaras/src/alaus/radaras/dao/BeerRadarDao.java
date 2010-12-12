@@ -135,7 +135,7 @@ public class BeerRadarDao {
 	public List<Pub> getPubsByTag(String tag, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
-			"SELECT id, title, address, notes, phone, url, latitude, longtitude " +
+			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
 				"INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = ?", 
@@ -154,10 +154,10 @@ public class BeerRadarDao {
 	public List<Pub> getPubsByCountry(String country, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
-			"SELECT id, title, address, notes, phone, url, latitude, longtitude " +
+			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
-				"INNER JOIN brands_countries bt ON bt.brand_id = pb.brand_id AND bt.country = ?", 
+				"INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = ?", 
 			new String[] { country });
 		if (cursor.moveToFirst()) {
 			do {
