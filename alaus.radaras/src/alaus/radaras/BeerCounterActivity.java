@@ -55,7 +55,7 @@ public class BeerCounterActivity extends Activity {
 
 	private void update(Integer currentCount, Integer totalCount) {
 		Qoute qoute;
-		if(currentCount < 10) {
+		if(currentCount <= 10) {
 		 qoute = BeerRadarDao.getInstance(this).getQoute(currentCount);
 		}
 		else {
