@@ -134,11 +134,39 @@ public class BeerRadarDao {
 	
 	public List<Pub> getPubsByTag(String tag, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
+		Cursor cursor = db.rawQuery(
+			"SELECT id, title, address, notes, phone, url, latitude, longtitude " +
+			"FROM pubs p " +
+				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
+				"INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = ?", 
+			new String[] { tag });
+		if (cursor.moveToFirst()) {
+			do {
+				pubs.add(toPub(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
 		return pubs;
 	}
 	
 	public List<Pub> getPubsByCountry(String country, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
+		Cursor cursor = db.rawQuery(
+			"SELECT id, title, address, notes, phone, url, latitude, longtitude " +
+			"FROM pubs p " +
+				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
+				"INNER JOIN brands_countries bt ON bt.brand_id = pb.brand_id AND bt.country = ?", 
+			new String[] { country });
+		if (cursor.moveToFirst()) {
+			do {
+				pubs.add(toPub(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
 		return pubs;
 	}
 	
