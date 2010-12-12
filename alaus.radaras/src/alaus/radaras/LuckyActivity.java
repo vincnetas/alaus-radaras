@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class LuckyActivity extends Activity {
 	public Pub pb;
+	public Brand brData;
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lucky);
@@ -21,7 +22,7 @@ public class LuckyActivity extends Activity {
         TextView brand = (TextView) findViewById(R.id.LuckyBrandTitle);
         TextView pubView = (TextView) findViewById(R.id.LuckyPubTitle);
         FeelingLucky lucky = BeerRadarDao.getInstance(this).feelingLucky();
-        Brand brData = lucky.getBrand();
+        brData = lucky.getBrand();
         pb = lucky.getPub();
         imgBrand.setImageDrawable(BeerRadarDao.getInstance(this).getImage(brData.getIcon()));
         brand.setText(brData.getTitle());
@@ -35,5 +36,15 @@ public class LuckyActivity extends Activity {
                 startActivity(intent);
 			}
 		});
+
+        brand.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+        		Intent inte = new Intent(LuckyActivity.this, GimeLocation.class);
+        		inte.putExtra(GimeLocation.BRAND_ID, brData.getId());
+        		startActivity(inte);
+			}
+		});
+
 	}
 }

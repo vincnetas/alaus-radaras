@@ -6,6 +6,18 @@
 	android:background="@drawable/background"
 	android:stretchColumns="1">
 	<TableRow>
+	 	<TextView 
+		 	android:id="@+id/LuckyDrink"
+		 	android:layout_width="fill_parent" 
+		 	android:layout_height="fill_parent"
+		 	android:layout_marginLeft="5px" 
+		 	android:layout_span="2"
+		 	android:textSize="24px"
+		 	android:text="Šiandien geriam alų:"
+		 	android:gravity="center_vertical|center_horizontal"
+		 	android:textColor="#FFFFFF" />
+ 	</TableRow>
+	<TableRow>
 		<ImageView 
 		 	android:id="@+id/LuckyBrandIcon" 
 		 	android:layout_width="45px"
@@ -15,9 +27,21 @@
 		 	android:id="@+id/LuckyBrandTitle"
 		 	android:layout_width="fill_parent" 
 		 	android:layout_height="fill_parent"
-		 	android:layout_marginLeft="10px" 
-		 	android:textSize="16px"
+		 	android:layout_marginLeft="5px" 
+		 	android:textSize="24px"
 		 	android:gravity="center_vertical"
+		 	android:textColor="#FFFFFF" />
+ 	</TableRow>
+	<TableRow>
+	 	<TextView 
+		 	android:id="@+id/LuckyPubText"
+		 	android:layout_width="fill_parent" 
+		 	android:layout_height="fill_parent"
+		 	android:layout_marginLeft="5px" 
+		 	android:layout_span="2"
+		 	android:textSize="24px"
+		 	android:text="Kurio yra bare:"
+		 	android:gravity="center_vertical|center_horizontal"
 		 	android:textColor="#FFFFFF" />
  	</TableRow>
  	<TableRow>
@@ -25,9 +49,10 @@
 		 	android:id="@+id/LuckyPubTitle"
 		 	android:layout_width="fill_parent" 
 		 	android:layout_height="fill_parent"
+		 	android:layout_span="2"
 		 	android:layout_marginLeft="10px" 
-		 	android:textSize="24px"
-		 	android:gravity="center_vertical"
+		 	android:textSize="40px"
+		 	android:gravity="center_vertical|center_horizontal"
 		 	android:textColor="#FFFFFF" />
  	</TableRow>
 </TableLayout>
