@@ -5,6 +5,7 @@ package alaus.radaras;
 
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.utils.Utils;
+import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.OverlayItem;
 
@@ -18,7 +19,6 @@ public class PubOverlayItem extends OverlayItem {
 	
 	public PubOverlayItem(Pub pub) {
 		super(Utils.geoPoint(pub.getLocation()), pub.getTitle(), pub.getNotes());
-		
 		this.pub = pub;
 	}
 
@@ -28,4 +28,6 @@ public class PubOverlayItem extends OverlayItem {
 	public Pub getPub() {
 		return pub;
 	}
+	
+	
 }

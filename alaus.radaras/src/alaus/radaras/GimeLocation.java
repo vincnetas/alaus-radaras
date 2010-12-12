@@ -11,6 +11,9 @@ import java.util.Observer;
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.utils.Utils;
+import android.content.Context;
+import android.location.Criteria;
+import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.os.Bundle;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 
 /**
  * @author Vincentas based on :
@@ -30,6 +34,8 @@ public class GimeLocation extends MapActivity implements Observer {
 	private BeerRadarDao beerRadarDao;
 
 	private PubOverlay pubOverlay;
+	
+	private MyLocationOverlay locationOverlay;
 
 	/*
 	 * (non-Javadoc)
@@ -39,22 +45,88 @@ public class GimeLocation extends MapActivity implements Observer {
 	@Override
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
-
+		
 		setContentView(R.layout.map);
 		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.bokalas), this);
 
 		getMapView().getOverlays().add(pubOverlay);
+		locationOverlay = new MyLocationOverlay(this, getMapView());
+		locationOverlay.enableMyLocation();
+		
+		getMapView().getOverlays().add(locationOverlay);		
 		getMapView().setBuiltInZoomControls(true);
+		
+		fakeProvider();
+		
+		locationOverlay.runOnFirstFix(new Runnable() {
+			
+			@Override
+			public void run() {
+				setupMap();				
+			}
+		});
+		
+	}
 
-		Location location = new Location(LocationManager.GPS_PROVIDER);
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		locationOverlay.disableMyLocation();
+	}
+
+
+
+	private void fakeProvider() {
+		final Location location = new Location(LocationManager.GPS_PROVIDER);
 		location.setLongitude(25.289261);
 		location.setLatitude(54.67527);
-		setupMap(location);
+		
+		final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+				
+		locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, false, false, false, Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
+		locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
+		locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
+		
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				while (keepRunning) {
+					locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		
+		new Thread(runnable).start();
+		
 	}
+	
+	private boolean keepRunning = true;
 
 	private MapView getMapView() {
 		return (MapView) findViewById(R.id.mapView);
 	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.MapActivity#onDestroy()
+	 */
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		keepRunning = false;
+	}
+
+
 
 	private String getBrandId() {
 		String result = null;
@@ -139,7 +211,7 @@ public class GimeLocation extends MapActivity implements Observer {
 	@Override
 	public void update(Observable observable, Object data) {
 		// populateMap((Location) data);
-		setupMap((Location) data);
+//		setupMap((Location) data);
 	}
 
 	/**
@@ -160,7 +232,9 @@ public class GimeLocation extends MapActivity implements Observer {
 	/*
 	 * Basic Map setup
 	 */
-	private void setupMap(Location location) {
+	private void setupMap() {
+		Location location = locationOverlay.getLastFix();
+		
 		populateMap(location);
 
 		MapController mapController = getMapView().getController();
