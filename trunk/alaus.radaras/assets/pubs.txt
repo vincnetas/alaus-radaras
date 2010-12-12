@@ -34,3 +34,4 @@ bermudai	Bermudai	Upes 6, Vilnius	37065570262	http://www.bermudaiclub.lt/	54.696
 prie_katedros	Prie Katedros	Gedimino pr. 5, Vilnius	8 605 77555	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Prie_Katedros.html	54.6864964	25.2832854
 wall_street	Wall Street	Lvovo g. 25, Vilnius	8 52 195916	http://www.wallst.lt/	54.6955893	25.2802079
 keisti_zenklai	Keisti ženklai	Trakų g. 13, Vilnius	(8 5) 2610779		54.6803049	25.2813502
+gorky_bar	Gorky Bar	Pilies g. 34, Vilnius	8 652 18035		54.6818804	25.2891853
