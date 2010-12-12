@@ -132,6 +132,17 @@ public class BeerRadarDao {
 		return pubs;
 	}
 	
+	public List<Pub> getPubsByTag(String tag, Location location) {
+		List<Pub> pubs = new ArrayList<Pub>();
+		return pubs;
+	}
+	
+	public List<Pub> getPubsByCountry(String country, Location location) {
+		List<Pub> pubs = new ArrayList<Pub>();
+		return pubs;
+	}
+	
+	
 	public List<Pub> getNearbyPubs(Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.query(
@@ -217,7 +228,7 @@ public class BeerRadarDao {
 		List<Country> countries = new ArrayList<Country>();
 		Cursor cursor = db.query(
 				"countries", 
-				new String[] {"name"},
+				new String[] {"code", "name"},
 				null, 
 				null, 
 				null, 
@@ -239,7 +250,7 @@ public class BeerRadarDao {
 		List<Tag> tags = new ArrayList<Tag>();
 		Cursor cursor = db.query(
 				"tags", 
-				new String[] {"title"},
+				new String[] {"code", "title"},
 				null, 
 				null, 
 				null, 
@@ -285,13 +296,15 @@ public class BeerRadarDao {
 	
 	private Tag toTag(Cursor cursor) {
 		Tag tag = new Tag();
-		tag.setTitle(cursor.getString(0));
+		tag.setCode(cursor.getString(0));
+		tag.setTitle(cursor.getString(1));
 		return tag;
 	}
 	
 	private Country toCountry(Cursor cursor) {
 		Country country = new Country();
-		country.setName(cursor.getString(0));
+		country.setCode(cursor.getString(0));
+		country.setName(cursor.getString(1));
 		return country;
 	}
 }

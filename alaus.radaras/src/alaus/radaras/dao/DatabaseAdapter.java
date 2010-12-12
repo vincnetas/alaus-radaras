@@ -99,10 +99,10 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     	Log.i(LOG_TAG, "Inserting initial data");
     	insertBrands(db);
     	insertPubs(db);
-    	insertPubsAndBrands(db);
     	insertTags(db);
     	insertCountries(db);
     	insertQoutes(db);
+    	insertAssociations(db);
     	Log.i(LOG_TAG, "Finished inserting initial data");
     	
     }
@@ -113,7 +113,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     				new InputStreamReader(context.getAssets().open("brands.txt")));
     		String line = null;
     		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split(";");
+    			String[] columns = line.split("\t");
     			Log.i(LOG_TAG, "Inserting brand: " + columns[0]);
     			ContentValues values = new ContentValues();
     			values.put("id", columns[0]);
@@ -132,7 +132,7 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     				new InputStreamReader(context.getAssets().open("pubs.txt")));
     		String line = null;
     		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split(";");
+    			String[] columns = line.split("\t");
     			Log.i(LOG_TAG, "Inserting pub: " + columns[0]);
     			ContentValues values = new ContentValues();
     			values.put("id", columns[0]);
@@ -149,23 +149,43 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     	}
     }
     
-    private void insertPubsAndBrands(SQLiteDatabase db) {
+    private void insertAssociations(SQLiteDatabase db) {
     	try {
     		BufferedReader reader = new BufferedReader(
     				new InputStreamReader(context.getAssets().open("brands.txt")));
     		String line = null;
+    		
     		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split(";");
-    			Log.i(LOG_TAG, "Inserting brand relationships: " + columns[0]);
-    			if (columns.length == 3) {
-	    			String[] pubs = columns[2].split(",");
-	    			for (int i = 0; i < pubs.length; i++) {
-	        			ContentValues values = new ContentValues();
-	        			values.put("brand_id", columns[0]);
-	        			values.put("pub_id", pubs[i].trim());
-	        			db.insert("pubs_brands", null, values);    				
-	    			}
+    			
+    			String[] columns = line.split("\t");
+    			
+    			Log.i(LOG_TAG, "Inserting brand<->pub association: " + columns[0]);
+    			String[] pubs = columns[2].split(",");
+    			for (int i = 0; i < pubs.length; i++) {
+        			ContentValues values = new ContentValues();
+        			values.put("brand_id", columns[0]);
+        			values.put("pub_id", pubs[i].trim());
+        			db.insert("pubs_brands", null, values);    				
     			}
+    			
+    			Log.i(LOG_TAG, "Inserting brand<->country association: " + columns[0]);
+    			String[] countries = columns[3].split(",");
+    			for (int i = 0; i < countries.length; i++) {
+        			ContentValues values = new ContentValues();
+        			values.put("brand_id", columns[0]);
+        			values.put("country", countries[i].trim());
+        			db.insert("brands_countries", null, values);    				
+    			}
+    			
+    			Log.i(LOG_TAG, "Inserting brand<->tag association: " + columns[0]);
+    			String[] tags = columns[4].split(",");
+    			for (int i = 0; i < tags.length; i++) {
+        			ContentValues values = new ContentValues();
+        			values.put("brand_id", columns[0]);
+        			values.put("tag", tags[i].trim());
+        			db.insert("brands_tags", null, values);    				
+    			}
+    			
     		}
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
@@ -191,11 +211,39 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 	}
 
     private void insertCountries(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("countries.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			Log.i(LOG_TAG, "Inserting country: " + line);
+    			String[] columns = line.split("\t");
+    			ContentValues values = new ContentValues();
+    			values.put("code", columns[0]);
+    			values.put("name", columns[1]);
+    			db.insert("countries", null, values);
+    		}
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
 	}
 
 	private void insertTags(SQLiteDatabase db) {
-		// TODO Auto-generated method stub		
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("tags.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			Log.i(LOG_TAG, "Inserting tags: " + line);
+    			String[] columns = line.split("\t");
+    			ContentValues values = new ContentValues();
+    			values.put("code", columns[0]);
+    			values.put("title", columns[1]);
+    			db.insert("tags", null, values);
+    		}
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}		
 	}
 
 	@Override
