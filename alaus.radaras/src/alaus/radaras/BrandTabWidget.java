@@ -19,20 +19,20 @@ public class BrandTabWidget extends TabActivity {
 
 	    intent = new Intent().setClass(this, BrandListActivity.class);
 
-	    spec = tabHost.newTabSpec("artists").setIndicator("Artists",
+	    spec = tabHost.newTabSpec("alūs").setIndicator("Alūs",
 	                      res.getDrawable(R.drawable.bok_title))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, BrandListActivity.class);
-	    spec = tabHost.newTabSpec("albums").setIndicator("Albums",
+	    intent = new Intent().setClass(this, CountryListActivity.class);
+	    spec = tabHost.newTabSpec("šalys").setIndicator("Šalys",
 	                      res.getDrawable(R.drawable.bok_title))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, BrandListActivity.class);
-	    spec = tabHost.newTabSpec("songs").setIndicator("Songs",
-	                      res.getDrawable(R.drawable.bok_title))
+	    intent = new Intent().setClass(this, TagListActivity.class);
+	    spec = tabHost.newTabSpec("tipai").setIndicator("Tipai",
+	                      res.getDrawable(R.drawable.tag))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
