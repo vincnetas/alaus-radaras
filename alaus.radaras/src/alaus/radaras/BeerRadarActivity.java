@@ -76,5 +76,6 @@ public class BeerRadarActivity extends Activity {
     	final SettingsManager settings = new SettingsManager(this);
         TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
         counter.setText(settings.getTotalCount().toString());
+        super.onResume();
     }
 }
