@@ -3,10 +3,8 @@ package alaus.radaras;
 import java.util.List;
 
 import alaus.radaras.adapters.CountryListAdapter;
-import alaus.radaras.adapters.TagListAdapter;
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Country;
-import alaus.radaras.dao.model.Tag;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
