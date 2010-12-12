@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
- 	android:layout_height="wrap_content" 
- 	android:gravity="left|center"
- 	android:layout_width="wrap_content" 
- 	android:paddingBottom="5px"
- 	android:paddingTop="5px" 
- 	android:paddingLeft="5px"
+ 	android:layout_height="fill_parent" 
+ 	android:layout_width="fill_parent" 
  	android:background="@drawable/background">
  	
  <TextView android:id="@+id/tagBrandHeader" 
-  android:layout_height="wrap_content"
+  android:layout_height="40px"
   android:layout_width="wrap_content"
-  android:textSize="40px"
-  android:text="Tago pavadinimas"></TextView>
+  android:textSize="30px"
+  android:text="Tagas"
+  android:layout_marginBottom="10px"></TextView>
   
   <ImageView android:id="@+id/tagBrandShowOnMap" 
   android:layout_height="wrap_content"
   android:layout_width="wrap_content"
   android:layout_alignParentRight="true"
-  android:src="@drawable/tag_02"
-  android:layout_toRightOf="@id/tagBrandHeader">
+  android:layout_marginBottom="10px"
+  android:src="@drawable/map_01">
   </ImageView>
  <ListView 
  	android:id="@+id/tagBrandList" 
