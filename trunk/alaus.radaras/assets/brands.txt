@@ -15,7 +15,7 @@ erdinger	Erdinger	bunte_gans, simo_baras, alaus_studija	de	white, foreign
 franziskaner	Franziskaner	savas_kampas	de	white, foreign
 grimbergen	Grimbergen	jalta	be	foreign, dark, strong
 gubernijos_kvietinis	Gubernijos kvietinis	alaus_namai	lt	white
-guiness	Guiness	alaus_studija, obuolys	ie	foreign, dark
+guinness	Guinness	alaus_studija, obuolys	ie	foreign, dark
 heineken	Heineken	pogo, savas_kampas, wall_street, alaus_studija	nl	lager, foreign
 hoegarden	Hoegarden	wall_street, obuolys	be	white, foreign
 jovaru_snekutis	Jovarų šnekutis	bermudai	lt	rural, lager
