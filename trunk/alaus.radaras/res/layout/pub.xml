@@ -6,22 +6,22 @@
   android:background="@drawable/background">
   <TextView android:id="@+id/pubName"
   	android:textSize="50px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content">
+	android:layout_height="wrap_content" android:text="Pub name">
   </TextView>
 	<TextView android:id="@+id/pubPhone"
   	android:textSize="15px" android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"
-	android:layout_below="@id/pubName">
+	android:layout_below="@id/pubName" android:text="Phone">
   </TextView>
   	<TextView android:id="@+id/pubAddress"
   	android:textSize="15px" android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"
-	android:layout_below="@id/pubPhone">
+	android:layout_below="@id/pubPhone" android:text="Address">
   </TextView>
   <TextView android:id="@+id/pubNotes"
   	android:textSize="15px" android:layout_width="fill_parent" 
 	android:layout_height="wrap_content"
-	android:layout_below="@id/pubAddress">
+	android:layout_below="@id/pubAddress" android:text="Notes">
   </TextView>
    <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
     android:id="@+id/pubBrandList"
