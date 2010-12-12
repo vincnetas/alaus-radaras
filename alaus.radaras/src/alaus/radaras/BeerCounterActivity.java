@@ -54,7 +54,14 @@ public class BeerCounterActivity extends Activity {
 	}
 
 	private void update(Integer currentCount, Integer totalCount) {
-		 Qoute qoute = BeerRadarDao.getInstance(this).getQoute(currentCount);
+		Qoute qoute;
+		if(totalCount < 10) {
+		 qoute = BeerRadarDao.getInstance(this).getQoute(currentCount);
+		}
+		else {
+			qoute = new Qoute();
+			qoute.setText("земля в илюминаторе.... земля в илюминаторе....");
+		}
 		 ((TextView)findViewById(R.id.counterCurrent)).setText(currentCount.toString());
 		 ((TextView)findViewById(R.id.counterQoute)).setText(qoute.getText());
 		 ((TextView)findViewById(R.id.counterTotal)).setText(totalCount.toString());
