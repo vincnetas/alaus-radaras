@@ -5,8 +5,6 @@ package alaus.radaras;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
@@ -27,7 +25,7 @@ import com.google.android.maps.MyLocationOverlay;
  * @author Vincentas based on :
  *         http://mobiforge.com/developing/story/using-google-maps-android
  */
-public class GimeLocation extends MapActivity implements Observer {
+public class GimeLocation extends MapActivity {
 
 	public static final String BRAND_ID = "brandId";
 	
@@ -80,9 +78,7 @@ public class GimeLocation extends MapActivity implements Observer {
 		super.onPause();
 		locationOverlay.disableMyLocation();
 	}
-
-
-
+	
 	private void fakeProvider() {
 		final Location location = new Location(LocationManager.GPS_PROVIDER);
 		location.setLongitude(25.289261);
@@ -117,9 +113,7 @@ public class GimeLocation extends MapActivity implements Observer {
 
 	private MapView getMapView() {
 		return (MapView) findViewById(R.id.mapView);
-	}
-	
-	
+	}	
 
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.MapActivity#onDestroy()
@@ -130,17 +124,28 @@ public class GimeLocation extends MapActivity implements Observer {
 		keepRunning = false;
 	}
 
-
-
-	private String getBrandId() {
+	private String getString(String key) {
 		String result = null;
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-			result = extras.getString(BRAND_ID);
+			result = extras.getString(key);
 		}
 
 		return result;
+		
+	}
+
+	private String getBrandId() {
+		return getString(BRAND_ID);
+	}
+	
+	private String getTagId() {
+		return getString(TAG_ID);
+	}
+	
+	private String getCountryId() {
+		return getString(COUNTRY_ID);
 	}
 
 	/*
@@ -153,49 +158,16 @@ public class GimeLocation extends MapActivity implements Observer {
 		return false;
 	}
 
-//	private LocationProvider locationProvider;
-//
-//	private LocationProvider getLocationProvider() {
-//		if (locationProvider == null) {
-//			locationProvider = new LocationProvider(getBaseContext());
-//		}
-//
-//		return locationProvider;
-//	}
-
-//	@Override
-//	protected void onPause() {
-//		getLocationProvider().deleteObserver(this);
-//		super.onPause();
-//	}
-
-//	@Override
-//	protected void onResume() {
-//		super.onResume();
-//
-//		getLocationProvider().subscribe(this);
-//		//
-//		// pubOverlay.clean();
-//		// mapPopulated = false;
-//		//
-//		// Location location = getLocationProvider().getLastKnownLocation();
-//		// if (location == null) {
-//		// showDialog(ENABLE_GPS_DIALOG);
-//		// } else {
-//		// populateMap(location);
-//		// }
-//	}
-
-	private boolean mapPopulated = false;
-
 	private synchronized void populateMap(Location location) {
-		// if (!mapPopulated) {
-		String brandId = getBrandId();
 		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
 		List<Pub> pubs;
 
-		if (brandId != null) {
-			pubs = getBeerRadarDao().getPubsByBrandId(brandId, loc);
+		if (getBrandId() != null) {
+			pubs = getBeerRadarDao().getPubsByBrandId(getBrandId(), loc);
+		} else if (getCountryId() != null) {
+			pubs = getBeerRadarDao().getPubsByBrandId(getCountryId()));
+		} else if (getTagId() != null) {
+			pubs = getBeerRadarDao().getPubsByBrandId(getTagId(), loc);
 		} else {
 			pubs = getBeerRadarDao().getNearbyPubs(loc);
 		}
@@ -207,15 +179,6 @@ public class GimeLocation extends MapActivity implements Observer {
 		for (Pub pub : pubs) {
 			pubOverlay.addOverlay(new PubOverlayItem(pub));
 		}
-
-		mapPopulated = true;
-		// }
-	}
-
-	@Override
-	public void update(Observable observable, Object data) {
-		// populateMap((Location) data);
-//		setupMap((Location) data);
 	}
 
 	/**
