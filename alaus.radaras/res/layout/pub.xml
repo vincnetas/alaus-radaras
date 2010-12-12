@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/background">
-  <TextView android:id="@+id/pubName"
-  	android:textSize="50px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content" android:text="Pub name">
-  </TextView>
-	<TextView android:id="@+id/pubPhone"
-  	android:textSize="15px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
-	android:layout_below="@id/pubName" android:text="Phone">
-  </TextView>
-  	<TextView android:id="@+id/pubAddress"
-  	android:textSize="15px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
-	android:layout_below="@id/pubPhone" android:text="Address">
-  </TextView>
-  <TextView android:id="@+id/pubNotes"
-  	android:textSize="15px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
-	android:layout_below="@id/pubAddress" android:text="Notes">
-  </TextView>
-   <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:id="@+id/pubBrandList"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:columnWidth="64px"
-    android:numColumns="auto_fit"
-    android:verticalSpacing="20px"
-    android:horizontalSpacing="20px"
-    android:stretchMode="columnWidth"
-    android:gravity="center"
-    android:layout_below="@id/pubNotes"/>
-    <TextView android:id="@+id/pubNoBeers"
-  	android:textSize="15px" android:layout_width="fill_parent" 
-	android:layout_height="wrap_content"
-	android:text="Oh! Gail bet nėra informacijos apie alų :("
-	android:layout_below="@id/pubBrandList">
-  </TextView>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@drawable/background">
+	<TextView android:id="@+id/pubName" android:textSize="50px"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="Pub name">
+	</TextView>
+	<ImageView android:src="@drawable/beer_01"
+		android:layout_height="wrap_content" android:layout_below="@id/pubName"
+		android:id="@+id/pubPhoneImage" android:layout_width="wrap_content" android:padding="3px"></ImageView>
+	<TextView android:id="@+id/pubPhone" android:textSize="15px"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_below="@id/pubName" android:layout_toRightOf="@+id/pubPhoneImage" android:text="Phone">
+	</TextView>
+	<ImageView android:src="@drawable/beer_01"
+		android:layout_height="wrap_content" android:layout_below="@+id/pubPhoneImage"
+		android:id="@+id/pubLocationImage" android:layout_width="wrap_content" android:padding="3px"></ImageView>
+	<ImageView android:src="@drawable/beer_01" android:id="@+id/pubDirectionsImage"
+		android:layout_height="wrap_content" android:layout_below="@+id/pubPhoneImage"
+		android:layout_toRightOf="@+id/pubLocationImage" android:layout_width="wrap_content" android:padding="3px"></ImageView>
+	<TextView android:id="@+id/pubAddress" android:textSize="15px"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/pubPhoneImage" android:layout_toRightOf="@+id/pubDirectionsImage" android:text="Address">
+	</TextView>
+	<TextView android:id="@+id/pubNotes" android:textSize="15px"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/pubLocationImage" android:text="Notes">
+	</TextView>
+	<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/pubBrandList" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:columnWidth="64px"
+		android:numColumns="auto_fit" android:verticalSpacing="20px"
+		android:horizontalSpacing="20px" android:stretchMode="columnWidth"
+		android:gravity="center" android:layout_below="@id/pubNotes" />
+	<TextView android:id="@+id/pubNoBeers" android:textSize="15px"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="Oh! Gail bet nėra informacijos apie alų :("
+		android:layout_below="@id/pubBrandList">
+	</TextView>
+
+
 </RelativeLayout>
