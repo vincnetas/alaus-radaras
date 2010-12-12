@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BeerRadarActivity extends Activity {
@@ -69,5 +70,11 @@ public class BeerRadarActivity extends Activity {
 			}
 		});
 
+    }
+    @Override
+    public void onResume(){
+    	final SettingsManager settings = new SettingsManager(this);
+        TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
+        counter.setText(settings.getTotalCount().toString());
     }
 }
