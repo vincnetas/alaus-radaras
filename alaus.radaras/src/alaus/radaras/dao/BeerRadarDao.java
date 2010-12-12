@@ -204,6 +204,18 @@ public class BeerRadarDao {
 		return (cursor.moveToFirst()) ? toPub(cursor) : null;
 	}
 	
+	public Brand getBrand(String brandId) {		
+		Cursor cursor = db.query(
+				"brands", 
+				new String[] {"id", "title", "icon", "description"},
+				"id = ?", 
+				null, 
+				null, 
+				null, 
+				"title asc");
+		return (cursor.moveToFirst()) ? toBrand(cursor) : null;
+	}
+	
 	public FeelingLucky feelingLucky() {
 		Cursor cursor = db.rawQuery(
 				"SELECT id FROM pubs p " +
