@@ -82,11 +82,37 @@ public class BeerRadarDao {
 	}
 	
 	public List<Brand> getBrandsByCountry(String country) {
-		return new ArrayList<Brand>();
+		List<Brand> brands = new ArrayList<Brand>();
+		Cursor cursor = db.rawQuery(
+				"SELECT id, title, icon, description " +
+				"FROM brands b INNER JOIN brands_countries bc ON b.id = bc.brand_id AND bc.country = ?", 
+				new String[] { country });
+		if (cursor.moveToFirst()) {
+			do {
+				brands.add(toBrand(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return brands;
 	}
 	
 	public List<Brand> getBrandsByTag(String tag) {
-		return new ArrayList<Brand>();
+		List<Brand> brands = new ArrayList<Brand>();
+		Cursor cursor = db.rawQuery(
+				"SELECT id, title, icon, description " +
+				"FROM brands b INNER JOIN brands_tags bt ON b.id = bt.brand_id AND bt.tag = ?", 
+				new String[] { tag });
+		if (cursor.moveToFirst()) {
+			do {
+				brands.add(toBrand(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		return brands;
 	}
 
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
@@ -173,16 +199,61 @@ public class BeerRadarDao {
 	}
 	
 	public Qoute getQoute(int amount)  {
-		return new Qoute();
+		Qoute qoute = new Qoute();
+		Cursor cursor = db.rawQuery(
+				"SELECT text FROM qoutes q " +
+				"WHERE q.amount = ? " +
+				"ORDER BY RANDOM() LIMIT 1", 
+				new String[] { Integer.valueOf(amount).toString() });
+		if (cursor.moveToFirst()) {
+			qoute.setText(cursor.getString(0));
+			return qoute;
+		} else {
+			return null;
+		}
 	}
 	
 	public List<Country> getCountries() {
 		List<Country> countries = new ArrayList<Country>();
+		Cursor cursor = db.query(
+				"countries", 
+				new String[] {"name"},
+				null, 
+				null, 
+				null, 
+				null, 
+				"name asc");
+
+		if (cursor.moveToFirst()) {
+			do {
+				countries.add(toCountry(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
 		return countries;
 	}
 	
 	public List<Tag> getTags() {
 		List<Tag> tags = new ArrayList<Tag>();
+		Cursor cursor = db.query(
+				"tags", 
+				new String[] {"title"},
+				null, 
+				null, 
+				null, 
+				null, 
+				"title asc");
+		
+		if (cursor.moveToFirst()) {
+			do {
+				tags.add(toTag(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
 		return tags;
 	}
 	
@@ -210,5 +281,17 @@ public class BeerRadarDao {
 		pub.setLocation(location);
 		
 		return pub;
+	}
+	
+	private Tag toTag(Cursor cursor) {
+		Tag tag = new Tag();
+		tag.setTitle(cursor.getString(0));
+		return tag;
+	}
+	
+	private Country toCountry(Cursor cursor) {
+		Country country = new Country();
+		country.setName(cursor.getString(0));
+		return country;
 	}
 }

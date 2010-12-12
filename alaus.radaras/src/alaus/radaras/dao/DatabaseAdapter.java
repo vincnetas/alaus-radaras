@@ -43,7 +43,29 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 	        "CREATE TABLE pubs_brands(" +
 	        	"pub_id			TEXT NOT NULL, " +
 	        	"brand_id 		TEXT NOT NULL);";
-
+		
+		public static String COUNTRIES = 
+	        "CREATE TABLE countries(" +
+	        	"name			TEXT NOT NULL);";
+		
+		public static String BRANDS_COUNTRIES = 
+	        "CREATE TABLE brands_countries(" +
+	        	"brand_id			TEXT NOT NULL," +
+	        	"country			TEXT NOT NULL);";
+		
+		public static String TAGS = 
+	        "CREATE TABLE tags(" +
+	        	"title			TEXT NOT NULL);";
+		
+		public static String BRANDS_TAGS = 
+	        "CREATE TABLE brands_tags(" +
+	        	"brand_id			TEXT NOT NULL," +
+	        	"country			TEXT NOT NULL);";
+		
+		public static String QOUTES = 
+	        "CREATE TABLE qoutes(" +
+	        	"amount			INTEGER NOT NULL," +
+	        	"text			TEXT NOT NULL);";
 	}
 	
     public DatabaseAdapter(Context context) 
@@ -64,6 +86,11 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
 	        db.execSQL(Definition.PUBS);
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
+	        db.execSQL(Definition.COUNTRIES);
+	        db.execSQL(Definition.BRANDS_COUNTRIES);
+	        db.execSQL(Definition.TAGS);
+	        db.execSQL(Definition.BRANDS_TAGS);
+	        db.execSQL(Definition.QOUTES);
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
     	}
@@ -73,11 +100,14 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     	insertBrands(db);
     	insertPubs(db);
     	insertPubsAndBrands(db);
+    	insertTags(db);
+    	insertCountries(db);
+    	insertQoutes(db);
     	Log.i(LOG_TAG, "Finished inserting initial data");
     	
     }
-    
-    private void insertBrands(SQLiteDatabase db) {
+
+	private void insertBrands(SQLiteDatabase db) {
     	try {
     		BufferedReader reader = new BufferedReader(
     				new InputStreamReader(context.getAssets().open("brands.txt")));
@@ -142,6 +172,32 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
     	}
     }
 
+	private void insertQoutes(SQLiteDatabase db) {
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("qoutes.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			String[] columns = line.split("\t");
+    			Log.i(LOG_TAG, "Inserting qoute: " + columns[0]);
+    			ContentValues values = new ContentValues();
+    			values.put("amount", columns[0]);
+    			values.put("text", columns[1]);
+    			db.insert("qoutes", null, values);
+    		}
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}
+	}
+
+    private void insertCountries(SQLiteDatabase db) {
+		// TODO Auto-generated method stub
+	}
+
+	private void insertTags(SQLiteDatabase db) {
+		// TODO Auto-generated method stub		
+	}
+
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(LOG_TAG, "Upgrading database from version " 
@@ -150,6 +206,8 @@ public class DatabaseAdapter extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS pubs_brands;");
         db.execSQL("DROP TABLE IF EXISTS pubs;");
         db.execSQL("DROP TABLE IF EXISTS brands;");
+        db.execSQL("DROP TABLE IF EXISTS tags;");
+        db.execSQL("DROP TABLE IF EXISTS countries;");
         onCreate(db);
 	}
 }
