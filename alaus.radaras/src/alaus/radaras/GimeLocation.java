@@ -35,8 +35,6 @@ public class GimeLocation extends MapActivity {
 
 	private BeerRadarDao beerRadarDao;
 
-	private PubOverlay pubOverlay;
-	
 	private MyLocationOverlay locationOverlay;
 
 	/*
@@ -49,9 +47,6 @@ public class GimeLocation extends MapActivity {
 		super.onCreate(bunble);
 		
 		setContentView(R.layout.map);
-		pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.pin), this, getMapView());
-
-		getMapView().getOverlays().add(pubOverlay);
 		locationOverlay = new MyLocationOverlay(this, getMapView());
 		locationOverlay.enableMyLocation();
 		
@@ -176,9 +171,13 @@ public class GimeLocation extends MapActivity {
 			pubs = new ArrayList<Pub>();
 		}
 
+		PubOverlay pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.pin), this, getMapView());
+		
 		for (Pub pub : pubs) {
 			pubOverlay.addOverlay(new PubOverlayItem(pub));
 		}
+		
+		getMapView().getOverlays().add(pubOverlay);
 	}
 
 	/**
