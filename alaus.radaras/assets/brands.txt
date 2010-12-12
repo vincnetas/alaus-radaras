@@ -41,7 +41,8 @@ svyturys_extra	Švyturys "Extra"	jalta, pilies_mene, alaus_baras_just, molinis_a
 tauro_tradicinis	Tauro Tradicinis	mamutas	lt	lager, strong
 tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
 tucher	Tucher	obuolys	de	foreign, white
-utenos	utenos	pilies_mene, alaus_baras_just	lt	lager
+utenos	Utenos	pilies_mene, alaus_baras_just	lt	lager
+utenos_dark	Uteno Dark	gorky_bar	lt	dark
 varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
 veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
 velvet	Velvet	savas_kampas	cz	foreign, dark
