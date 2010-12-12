@@ -15,6 +15,7 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -63,6 +64,7 @@ public class GimeLocation extends MapActivity {
 			}
 		});
 		
+		setTitle();
 	}
 
 	/* (non-Javadoc)
@@ -152,19 +154,36 @@ public class GimeLocation extends MapActivity {
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
+	
+	private void setTitle() {
+		String caption = "";
+		BeerRadarDao dao = getBeerRadarDao();
+		
+		if (getBrandId() != null) {
+			dao.getBrands();
+		} else if (getCountryId() != null) {
+			caption = dao.getCountry(getCountryId()).getName();
+		} else if (getTagId() != null) {
+			caption = dao.getTag(getTagId()).getTitle();
+		}
+
+		TextView mapCaption = (TextView) findViewById(R.id.mapCaption);
+		mapCaption.setText(caption);
+	}
 
 	private synchronized void populateMap(Location location) {
 		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
 		List<Pub> pubs;
-
+		BeerRadarDao dao = getBeerRadarDao();
+		
 		if (getBrandId() != null) {
-			pubs = getBeerRadarDao().getPubsByBrandId(getBrandId(), loc);
+			pubs = dao.getPubsByBrandId(getBrandId(), loc);
 		} else if (getCountryId() != null) {
-			pubs = getBeerRadarDao().getPubsByCountry(getCountryId(), loc);
+			pubs = dao.getPubsByCountry(getCountryId(), loc);
 		} else if (getTagId() != null) {
-			pubs = getBeerRadarDao().getPubsByTag(getTagId(), loc);
+			pubs = dao.getPubsByTag(getTagId(), loc);
 		} else {
-			pubs = getBeerRadarDao().getNearbyPubs(loc);
+			pubs = dao.getNearbyPubs(loc);
 		}
 
 		if (pubs == null) {
