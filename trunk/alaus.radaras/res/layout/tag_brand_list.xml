@@ -6,16 +6,19 @@
  	android:paddingBottom="5px"
  	android:paddingTop="5px" 
  	android:paddingLeft="5px"
- 	>
+ 	android:background="@drawable/background">
+ 	
  <TextView android:id="@+id/tagBrandHeader" 
   android:layout_height="wrap_content"
   android:layout_width="wrap_content"
+  android:textSize="40px"
   android:text="Tago pavadinimas"></TextView>
   
   <ImageView android:id="@+id/tagBrandShowOnMap" 
   android:layout_height="wrap_content"
   android:layout_width="wrap_content"
-  android:src="@drawable/map"
+  android:layout_alignParentRight="true"
+  android:src="@drawable/tag_02"
   android:layout_toRightOf="@id/tagBrandHeader">
   </ImageView>
  <ListView 
