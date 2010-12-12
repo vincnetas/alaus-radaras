@@ -21,7 +21,7 @@
 
 		<activity android:name=".GimeLocation" android:label="@string/LocationName"></activity>
 		<activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
-		<activity android:name=".PubActivity"></activity>
+		<activity android:name=".PubActivity" android:label="Baras"></activity>
 		<activity android:name=".BeerCounterActivity"></activity>
 		<activity android:name=".LuckyActivity"></activity>
 		<activity android:name=".BrandTabWidget" android:label="@string/app_name"
@@ -29,8 +29,8 @@
 		</activity>
 		<activity android:name=".TagListActivity"></activity>
 		<activity android:name=".CountryListActivity"></activity>
-		<activity android:name=".TagBrandsListActivity"></activity>
-		<activity android:name=".CountryBrandsListActivity"></activity>
+		<activity android:name=".TagBrandsListActivity" android:label="Rūšys pagal tipą"></activity>
+		<activity android:name=".CountryBrandsListActivity" android:label="Rūšys pagal šalį"></activity>
 	</application>
 
 
