@@ -11,6 +11,22 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"></ImageView>
+<TextView android:id="@+id/mainCounterCurrent"
+  	android:textSize="100px" 
+  	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:textStyle="bold"
+	android:paddingRight="45px"
+	android:shadowColor="#979797"
+	android:shadowDx="5"
+	android:shadowDy="-2"
+	android:shadowRadius="2"
+	android:text="woot"
+	android:layout_marginTop="45px"
+	android:layout_centerHorizontal="true"
+	android:textColor="#201400">
+  </TextView>
+	
 <Button 
 	android:text="@string/NearValue" 
 	android:id="@+id/ButtonNear" 
