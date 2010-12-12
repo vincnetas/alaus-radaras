@@ -33,7 +33,7 @@
   	android:layout_width="fill_parent" 
   	android:layout_centerHorizontal="true"
 	android:layout_height="300px"
-	android:background="@drawable/batonas"
+	android:background="@drawable/burbuliukas"
 	android:layout_below="@id/countBeer" 
   ></ImageView>
   <TextView android:id="@+id/counterQoute"
@@ -43,8 +43,9 @@
   	android:text="Oh shit thats good funny something"
   	android:layout_gravity="center_horizontal"
 	android:layout_height="300px"
-	android:paddingTop="60px"
-	android:layout_marginLeft="15px"
+	
+	android:paddingTop="70px"
+	android:layout_marginLeft="45px"
 	android:textColor="#201400"
 	android:layout_below="@id/countBeer">
   </TextView>
