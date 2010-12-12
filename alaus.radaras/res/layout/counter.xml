@@ -43,11 +43,9 @@
   	android:text="Oh shit thats good funny something"
   	android:layout_gravity="center_horizontal"
 	android:layout_height="300px"
-	
 	android:paddingTop="70px"
 	android:layout_marginLeft="45px"
 	android:textColor="#201400"
 	android:layout_below="@id/countBeer">
   </TextView>
- 
 </RelativeLayout>
