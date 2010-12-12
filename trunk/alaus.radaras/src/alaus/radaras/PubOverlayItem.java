@@ -5,7 +5,6 @@ package alaus.radaras;
 
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.utils.Utils;
-import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.OverlayItem;
 

@@ -10,10 +10,8 @@ import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Brand;
 import alaus.radaras.dao.model.Pub;
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.net.Uri;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -97,18 +95,5 @@ public class PubActivity extends Activity {
 		});
 	    
 	    
-	}
-	
-	@Override
-	protected void onNewIntent(Intent intent) {
-	    setIntent(intent);
-	    handleIntent(intent);
-	}
-
-	private void handleIntent(Intent intent) {
-	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-	      String query = intent.getStringExtra(SearchManager.QUERY);
-	      String inq = query;
-	    }
 	}
 }
