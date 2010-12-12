@@ -22,6 +22,7 @@
  	android:id="@+id/tagBrandList" 
  	android:layout_height="wrap_content"
  	android:layout_width="fill_parent"
- 	android:layout_below="@id/tagBrandHeader"  />
+ 	android:layout_below="@id/tagBrandHeader" 
+ 	android:cacheColorHint="#00000000" />
  
 </RelativeLayout>

@@ -11,6 +11,6 @@
  	android:id="@+id/list" 
  	android:layout_height="wrap_content"
  	android:layout_width="fill_parent"
- 	  />
+ 	android:cacheColorHint="#00000000"  />
  
 </LinearLayout>
