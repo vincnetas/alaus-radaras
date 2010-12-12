@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
- 	android:layout_height="wrap_content" 
- 	android:gravity="left|center"
- 	android:layout_width="wrap_content" 
- 	android:paddingBottom="5px"
- 	android:paddingTop="5px" 
- 	android:paddingLeft="5px"
- 	>
+ 	android:layout_height="fill_parent" 
+ 	android:layout_width="fill_parent" 
+ 	android:background="@drawable/background">
  <TextView android:id="@+id/countryBrandHeader" 
-  android:layout_height="wrap_content"
+  android:layout_height="30px"
   android:layout_width="wrap_content"
-  android:text="Šalies pavadinimas"></TextView>
+  android:textSize="30px"
+  android:text="Šalis"></TextView>
   
   <ImageView android:id="@+id/countryBrandShowOnMap" 
   android:layout_height="wrap_content"
   android:layout_width="wrap_content"
-  android:src="@drawable/map"
-  android:layout_toRightOf="@id/countryBrandHeader">
+  android:src="@drawable/map_02"
+  android:layout_alignParentRight="true">
   </ImageView>
  <ListView 
  	android:id="@+id/countryBrandList" 
