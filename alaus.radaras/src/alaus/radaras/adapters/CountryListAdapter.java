@@ -61,7 +61,7 @@ public class CountryListAdapter extends BaseAdapter {
         Country country = countries.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(country.getName());
-        holder.img.setImageResource(R.drawable.country);
+        holder.img.setImageResource(R.drawable.map_02);
         
         return convertView;
 	}
