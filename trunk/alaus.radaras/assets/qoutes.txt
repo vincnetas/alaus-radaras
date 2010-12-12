@@ -1,33 +1,32 @@
-
-0,Ko lauki?
-0,Nusimato geras laikas?
-0,Dar gali vairuoti!
-1,Dar po vieną!
-1,Kokios gražios tavo akys
-1,Nenukrypk nuo tikslo!
-2,"Taip, tave kabina!"
-2,"Pavalgyk, daugiau tilps"
-3,Gera pradžia pusė darbo
-3,Kablys?! Tai dar po vieną!
-3,Jau gali pradėt stovėt eilėje prie WC
-3,Gauni +2 Išminties -100 nuo sutuoktinio
-4,"Apsidairyk, aplinkui pagražėjusios moterys"
-4,Jau gali pareikšti savo nuomonę apie WikiLeaks
-4,Nepamiršk nupirkt gėlių!
-5,Nepamiršk mineralinio!
-5,Pažiūrėk į ranką... kiek pirštų?
-6,Point of no return
-6,"Burtas mestas, Rubikonas paleistas"
-6,"Kaire dešine, kaire dešine, kaire ..aaaa... nukritai!"
-7,Ryt keltis nereikia!
-7,Nebelenda?! Užsisakyt ketčupo.
-8,"Skambink bosui, dėrėkis dėl atlyginimo"
-8,Jūs darotės nematomas ir nenugalimas!
-8,Jums jūra iki kelių!
-9,Dar 9999999999...99 alaus ir galbūt aplenksi Chuck Norris
-9,你这样做。回家。
-9,Dar nenori miau miau?
-10,Dar vienas?! Jau gali užsirašyti savo vardą bare
-10,"Pivo bez vodiki, dengi na veter"
-10,Užsidėk vesutivinį žiedą
-10,Ar nepamiršai paslėpt kočėlo?
+0	Ko lauki?
+0	Nusimato geras laikas?
+0	Dar gali vairuoti!
+1	Dar po vieną!
+1	Kokios gražios tavo akys
+1	Nenukrypk nuo tikslo!
+2	Taip, tave kabina!
+2	Pavalgyk, daugiau tilps
+3	Gera pradžia pusė darbo
+3	Kablys?! Tai dar po vieną!
+3	Jau gali pradėt stovėt eilėje prie WC
+3	Gauni +2 Išminties -100 nuo sutuoktinio
+4	Apsidairyk, aplinkui pagražėjusios moterys
+4	Jau gali pareikšti savo nuomonę apie WikiLeaks
+4	Nepamiršk nupirkt gėlių!
+5	Nepamiršk mineralinio!
+5	Pažiūrėk į ranką... kiek pirštų?
+6	Point of no return
+6	Burtas mestas, Rubikonas paleistas
+6	Kaire dešine, kaire dešine, kaire ..aaaa... nukritai!
+7	Ryt keltis nereikia!
+7	Nebelenda?! Užsisakyt ketčupo.
+8	Skambink bosui, dėrėkis dėl atlyginimo
+8	Jūs darotės nematomas ir nenugalimas!
+8	Jums jūra iki kelių!
+9	Dar 9999999999...99 alaus ir galbūt aplenksi Chuck Norris
+9	你这样做。回家。
+9	Dar nenori miau miau?
+10	Dar vienas?! Jau gali užsirašyti savo vardą bare
+10	Pivo bez vodiki, dengi na veter
+10	Užsidėk vesutivinį žiedą
+10	Ar nepamiršai paslėpt kočėlo?
