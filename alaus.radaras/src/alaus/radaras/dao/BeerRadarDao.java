@@ -8,10 +8,12 @@ import java.util.Random;
 
 import alaus.radaras.R;
 import alaus.radaras.dao.model.Brand;
+import alaus.radaras.dao.model.Country;
 import alaus.radaras.dao.model.FeelingLucky;
 import alaus.radaras.dao.model.Location;
 import alaus.radaras.dao.model.Pub;
 import alaus.radaras.dao.model.Qoute;
+import alaus.radaras.dao.model.Tag;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -79,6 +81,14 @@ public class BeerRadarDao {
 		return brands;
 	}
 	
+	public List<Brand> getBrandsByCountry(String country) {
+		return new ArrayList<Brand>();
+	}
+	
+	public List<Brand> getBrandsByTag(String tag) {
+		return new ArrayList<Brand>();
+	}
+
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
@@ -165,7 +175,16 @@ public class BeerRadarDao {
 	public Qoute getQoute(int amount)  {
 		return new Qoute();
 	}
-
+	
+	public List<Country> getCountries() {
+		List<Country> countries = new ArrayList<Country>();
+		return countries;
+	}
+	
+	public List<Tag> getTags() {
+		List<Tag> tags = new ArrayList<Tag>();
+		return tags;
+	}
 	
 	private Brand toBrand(Cursor cursor) {
 		Brand brand = new Brand();
