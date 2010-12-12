@@ -160,7 +160,7 @@ public class GimeLocation extends MapActivity {
 		BeerRadarDao dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
-			dao.getBrands();
+			caption = dao.getBrand(getBrandId()).getTitle();
 		} else if (getCountryId() != null) {
 			caption = dao.getCountry(getCountryId()).getName();
 		} else if (getTagId() != null) {
