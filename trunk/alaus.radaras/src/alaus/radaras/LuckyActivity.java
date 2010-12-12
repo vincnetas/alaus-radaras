@@ -28,7 +28,8 @@ public class LuckyActivity extends Activity {
         brand.setText(brData.getTitle());
         pubView.setText(pb.getTitle());
         
-        pubView.setOnClickListener(new View.OnClickListener() {
+        TextView pubT = (TextView) findViewById(R.id.LuckyPubT);
+        pubT.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(LuckyActivity.this, PubActivity.class);
@@ -36,8 +37,9 @@ public class LuckyActivity extends Activity {
                 startActivity(intent);
 			}
 		});
+        TextView brandT = (TextView) findViewById(R.id.LuckyBrandT);
 
-        brand.setOnClickListener(new View.OnClickListener() {
+        brandT.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
         		Intent inte = new Intent(LuckyActivity.this, GimeLocation.class);
