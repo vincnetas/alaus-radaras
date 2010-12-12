@@ -41,6 +41,7 @@
 		 	android:layout_toRightOf="@id/LuckyBrandIcon"
 		 	android:textColor="#201400" />
 		<TextView 
+			android:id="@+id/LuckyPubT"
 			android:background="@drawable/lucky"
 		 	android:layout_marginTop="5px"
 		 	android:layout_width="fill_parent"
