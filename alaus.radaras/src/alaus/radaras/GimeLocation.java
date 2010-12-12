@@ -165,9 +165,9 @@ public class GimeLocation extends MapActivity {
 		if (getBrandId() != null) {
 			pubs = getBeerRadarDao().getPubsByBrandId(getBrandId(), loc);
 		} else if (getCountryId() != null) {
-			pubs = getBeerRadarDao().getPubsByBrandId(getCountryId(), loc);
+			pubs = getBeerRadarDao().getPubsByCountry(getCountryId(), loc);
 		} else if (getTagId() != null) {
-			pubs = getBeerRadarDao().getPubsByBrandId(getTagId(), loc);
+			pubs = getBeerRadarDao().getPubsByTag(getTagId(), loc);
 		} else {
 			pubs = getBeerRadarDao().getNearbyPubs(loc);
 		}
