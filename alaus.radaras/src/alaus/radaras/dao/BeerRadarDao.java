@@ -268,6 +268,21 @@ public class BeerRadarDao {
 		return tags;
 	}
 	
+	public Tag getTag(String code) {
+		Cursor cursor = db.query(
+				"tags", 
+				new String[] {"code", "title"},
+				"code = ?", 
+				new String[] { code }, 
+				null, 
+				null, 
+				null);
+		if (cursor.moveToFirst()) {
+			return toTag(cursor);
+		}
+		return null;
+	}
+
 	private Brand toBrand(Cursor cursor) {
 		Brand brand = new Brand();
 		brand.setId(cursor.getString(0));
