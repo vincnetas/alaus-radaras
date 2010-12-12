@@ -46,7 +46,7 @@ public class BeerRadarActivity extends Activity {
 		buttonBrand.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                Intent inte = new Intent(BeerRadarActivity.this, BrandListActivity.class);
+                Intent inte = new Intent(BeerRadarActivity.this, BrandTabWidget.class);
         		try
         		{
         			startActivity(inte);
