@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,9 +53,12 @@ public class PubActivity extends Activity {
 	    	gridview.setVisibility(View.GONE);
 	    	noBeers.setVisibility(View.VISIBLE);
 	    }
+	    
+	    ImageView locationImage = (ImageView) findViewById(R.id.pubLocationImage);
 	    addressView = (TextView)findViewById(R.id.pubAddress);
 	    addressView.setText(pub.getAddress());
 	    
+	    ImageView phoneImage = (ImageView) findViewById(R.id.pubPhoneImage);	    
 	    phoneView = (TextView)findViewById(R.id.pubPhone);
 	    phoneView.setText(pub.getPhone());
 	    
@@ -72,18 +76,19 @@ public class PubActivity extends Activity {
 			}
 	    });
 	    
-	    phoneView.setOnClickListener(new OnClickListener() {
+	    OnClickListener phoneOnClickListener = new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_DIAL);
 				intent.setData(Uri.parse("tel:"+pub.getPhone()));
-				startActivity(intent);
-				
+				startActivity(intent);				
 			}
-	    });
+	    };
+	    phoneView.setOnClickListener(phoneOnClickListener);
+	    phoneImage.setOnClickListener(phoneOnClickListener);
 	    
-	    addressView.setOnClickListener(new OnClickListener() {
+	    OnClickListener locationOnClickListener = new OnClickListener() {
 	    	@Override
 			public void onClick(View v) {
 				
@@ -92,8 +97,8 @@ public class PubActivity extends Activity {
 						.parse(uri)));
 
 			}
-		});
-	    
-	    
+		};
+	    addressView.setOnClickListener(locationOnClickListener);
+	    locationImage.setOnClickListener(locationOnClickListener);	    
 	}
 }
