@@ -1,7 +1,7 @@
 backoriu_tamsusis	Bačkorių tamsusis	alaus_namai	lt	dark, rural
 belmonto_ypatingas	Belmonto ypatingasis	belmontas	lt	dark, rural
 belmonto_sviesus	Belmonto šviesusis	belmontas	lt	lager, rural
-bernard_cerne	Bernard Černe	dolce_vita, alaus_studija	cz	dark, foreign
+bernard_cerne	Bernard Černe	dolce_vita, alaus_studija, simo_baras	cz	dark, foreign
 birzu_sirvenos	Biržų Širvenos	b6, alaus_namai, obuolys	lt	lager, rural
 bravaria	Bravaria	bravaria	lt	lager
 budweiser	Budweiser "BUDVAR"	busi_trecias, plieno_paukste, simo_baras, dolce_vita, alaus_studija, obuolys	cz	foreign, lager
@@ -17,7 +17,7 @@ grimbergen	Grimbergen	jalta	be	foreign, dark, strong
 gubernijos_kvietinis	Gubernijos kvietinis	alaus_namai	lt	white
 guinness	Guinness	alaus_studija, obuolys	ie	foreign, dark
 heineken	Heineken	pogo, savas_kampas, wall_street, alaus_studija	nl	lager, foreign
-hoegarden	Hoegarden	wall_street, obuolys	be	white, foreign
+hoegaarden	Hoegaarden	wall_street, obuolys	be	white, foreign
 jovaru_snekutis	Jovarų šnekutis	bermudai	lt	rural, lager
 kalnapilis_grand	Kalnapilis "Grand"	busi_trecias, pilies_mene, mamutas, obuolys	lt	lager
 kanapinis	Kanapinis tamsus	bermudai, obuolys	lt	rural, dark
@@ -45,7 +45,6 @@ utenos	Utenos	pilies_mene, alaus_baras_just	lt	lager
 utenos_dark	Uteno Dark	gorky_bar	lt	dark
 varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
 veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
-velvet	Velvet	savas_kampas	cz	foreign, dark
 vilkmerges_tamsusis	Vilkmergės tamsusis	alaus_namai	lt	rural, dark
 vilniaus_kvietinis	Vilniaus kvietinis	bermudai, pogo, obuolys	lt	white
 vilniaus_nefiltr	Vilniaus nefiltruotas	bermudai, alaus_namai	lt	lager
