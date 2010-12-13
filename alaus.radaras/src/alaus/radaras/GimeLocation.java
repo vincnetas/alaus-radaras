@@ -5,6 +5,9 @@ package alaus.radaras;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 
 import alaus.radaras.dao.BeerRadarDao;
 import alaus.radaras.dao.model.Pub;
@@ -15,7 +18,9 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -26,8 +31,10 @@ import com.google.android.maps.MyLocationOverlay;
  * @author Vincentas based on :
  *         http://mobiforge.com/developing/story/using-google-maps-android
  */
-public class GimeLocation extends MapActivity {
+public class GimeLocation extends MapActivity  implements Observer {
 
+	private LocationProvider locationProvider;
+	
 	public static final String BRAND_ID = "brandId";
 	
 	public static final String TAG_ID = "tagId";
@@ -46,7 +53,7 @@ public class GimeLocation extends MapActivity {
 	@Override
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
-		
+		getLocationProvider().subscribe(this);
 		setContentView(R.layout.map);
 		locationOverlay = new MyLocationOverlay(this, getMapView());
 		locationOverlay.enableMyLocation();
@@ -54,15 +61,18 @@ public class GimeLocation extends MapActivity {
 		getMapView().getOverlays().add(locationOverlay);		
 		getMapView().setBuiltInZoomControls(true);
 		
-		fakeProvider();
+		//Log.i("GimeLocation", "onCreate ");
 		
-		locationOverlay.runOnFirstFix(new Runnable() {
-			
-			@Override
-			public void run() {
-				setupMap();				
-			}
-		});
+		//fakeProvider();
+		
+//		locationOverlay.runOnFirstFix(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+
+					setupMap(getLocationProvider().getLastKnownLocation());		
+//			}
+//		});
 		
 		setTitle();
 	}
@@ -74,37 +84,36 @@ public class GimeLocation extends MapActivity {
 	protected void onPause() {
 		super.onPause();
 		locationOverlay.disableMyLocation();
+		killLocationProvider();
 	}
 	
-	private void fakeProvider() {
-		final Location location = new Location(LocationManager.GPS_PROVIDER);
-		location.setLongitude(25.289261);
-		location.setLatitude(54.67527);
-		
-		final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-				
-		locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, false, false, false, Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
-		locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
-		locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
-		locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
-		
-		Runnable runnable = new Runnable() {
-
-			@Override
-			public void run() {
-				while (keepRunning) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
-				}
-			}
-		};
-		
-		new Thread(runnable).start();
-	}
+////	private void fakeProvider() {
+//	
+//		
+//		final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//				
+//		locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, false, false, false, Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
+//		locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
+//		locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
+//		locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
+//		
+//		Runnable runnable = new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				while (keepRunning) {
+//					try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//					locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
+//				}
+//			}
+//		};
+//		
+//		new Thread(runnable).start();
+//	}
 	
 	private boolean keepRunning = true;
 
@@ -172,7 +181,11 @@ public class GimeLocation extends MapActivity {
 	}
 
 	private synchronized void populateMap(Location location) {
-		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
+		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location();
+		if(location != null) {
+		 loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
+		}
+			
 		List<Pub> pubs;
 		BeerRadarDao dao = getBeerRadarDao();
 		
@@ -217,9 +230,9 @@ public class GimeLocation extends MapActivity {
 	/*
 	 * Basic Map setup
 	 */
-	private void setupMap() {
-		Location location = locationOverlay.getLastFix();
-		
+	private void setupMap(Location location) {
+	
+//		Log.i("GimeLocation", "setupMap ");
 		populateMap(location);
 
 		MapController mapController = getMapView().getController();
@@ -228,7 +241,46 @@ public class GimeLocation extends MapActivity {
 		mapController.zoomToSpan(30000, 30000);
 
 		// Animate to the center cluster of points
-		mapController.animateTo(Utils.geoPoint(location));
+		if(location != null) {
+			mapController.animateTo(Utils.geoPoint(location));
+		}
 
 	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		setupMap((Location)data);
+	}
+	
+	private LocationProvider getLocationProvider() {
+		if (locationProvider == null) {
+			locationProvider = initLocationProvider();
+			//Log.i("GimeLocation", "initLocationProvider ");
+		}
+		return locationProvider;
+	}
+
+	private LocationProvider initLocationProvider() {
+		LocationProvider provider = new LocationProvider(getBaseContext());
+		return provider;
+	}
+
+	private void killLocationProvider() {
+		if (locationProvider != null) {
+			locationProvider.deleteObserver(this);
+		//	Log.i("GimeLocation", "killLocationProvider ");
+		}
+		getLocationProvider().killAll();
+	};
+	
+	@Override
+	protected void onResume() {
+		getLocationProvider().subscribe(this);
+		setupMap(getLocationProvider().getLastKnownLocation());
+		super.onResume();
+		Toast.makeText(GimeLocation.this, "Palaukite, bandau nustatyti Jūsų vietą...", Toast.LENGTH_LONG).show();
+		//Log.i("GimeLocation", "onResume ");
+	}
+
 }
