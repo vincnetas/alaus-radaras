@@ -1,9 +1,9 @@
-=RestApi=
+=Server side API=
 
 == rest/services/radar ==
 Input
 {{{
-// some credentials or some sort of api_key?
+    some sort of api_key/credentials?
 }}}
 
 Output
