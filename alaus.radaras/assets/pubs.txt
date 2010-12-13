@@ -23,7 +23,7 @@ b6	B6	Bazilijonų g. 6	(8 603) 29332		54.6741394	25.2859476
 tores	Tores	Užupio g. 40, Vilnius	+370 655 3 2626	http://www.tores.lt/	54.6809148	25.2979667
 stopke	Stopkė	Užupio 2a, Vilnius		http://www.stopke.lt/	54.6805511	25.2922544
 uzupio_picerija	Užupio picerija	Paupio g. 3, Vilnius	(8 5) 2153666		54.6800877	25.2958167
-obuolys	Obuolio aludė	Šnipiškių g. 3, Vilnius	+370 272 4234	http://www.applepub.lt/	54.6938689	25.2775397
+obuolys	Obuolio aludė	Šnipiškių g. 3, Vilnius	+370 527 24234	http://www.applepub.lt/	54.6938689	25.2775397
 mamutas	Mamutas	Savanorių 16, Vilnius 	(5) 2331131		54.6774303	25.2551304
 dolce_vita	Dolce-Vita	Trakų g. 11/Pranciškonų g. 2, Vilnius	5 2312 444	http://www.dolce-vita.lt/	54.6794895	25.2807925
 bambalyne	Bambalynė	Stiklių g. 7, Vilnius	+370 676 00075	http://bambalyne.lt/	54.6800344	25.2863445
