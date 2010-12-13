@@ -29,35 +29,29 @@
 	
 <Button 
 	android:text="@string/NearValue" 
-	android:textSize="30px"
 	android:id="@+id/ButtonNear" 
 	android:layout_width="fill_parent"
 	android:layout_marginLeft="40px" 
-	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/imgTitleButton"></Button>
+	android:layout_below="@id/imgTitleButton" android:textSize="30dp" android:layout_height="40dp"></Button>
 <Button 
 	android:text="@string/BrandValue" 
 	android:id="@+id/ButtonBrand" 
-	android:textSize="30px"
 	android:layout_width="fill_parent" 
-	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_marginLeft="40px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/ButtonNear"></Button>
+	android:layout_below="@id/ButtonNear" android:textSize="30dp" android:layout_height="40dp"></Button>
 <Button 
 	android:text="@string/LuckyValue" 
 	android:id="@+id/ButtonLucky" 
-	android:textSize="30px"
 	android:layout_width="fill_parent" 
-	android:layout_height="60px"
 	android:layout_centerInParent="true"
 	android:layout_marginLeft="40px"
 	android:layout_marginTop="10px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/ButtonBrand"></Button>
+	android:layout_below="@id/ButtonBrand" android:layout_height="40dp" android:textSize="30dp"></Button>
 </RelativeLayout >
