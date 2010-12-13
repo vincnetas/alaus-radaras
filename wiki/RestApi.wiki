@@ -1,0 +1,43 @@
+=RestApi=
+
+== rest/services/radar ==
+Input
+{{{
+empty
+}}}
+
+Output
+{{{
+{
+    "brands": [
+        {
+            "id" : "id",
+            "title" : "title"
+            "icon" : "icon",
+            "description" : "description"
+        }
+    ]
+
+    "pubs": [
+        {
+            "id" : "id",
+            "title" : "title"
+            "longitude" : "longitude",
+            "latitude" : "latitude",
+            "address" : "address",
+            "notes" : "notes",
+            "phone" : "phone",
+            "url" : "url",
+            "description" : "description"
+        }
+    ]
+}
+}}}
+
+=== Response codes ===
+{{{
+HTTP Successful 200 - OK
+HTTP Error 304     - Not modified
+}}}
+ 
+
