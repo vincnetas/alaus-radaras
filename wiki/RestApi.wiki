@@ -1,5 +1,3 @@
-=Server side API=
-
 == rest/services/radar ==
 Input
 {{{
