@@ -13,38 +13,38 @@
   	android:layout_centerHorizontal="true">
   </ImageView>
     <TextView android:id="@+id/counterCurrent"
-  	android:textSize="100px" 
+  	android:textSize="100dp" 
   	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"
 	android:textStyle="bold"
-	android:paddingRight="50px"
+	android:paddingRight="50dp"
 	android:shadowColor="#979797"
 	android:shadowDx="5"
 	android:shadowDy="-2"
 	android:shadowRadius="2"
 	android:text="woot"
-	android:layout_marginTop="50px"
+	android:layout_marginTop="50dp"
 	android:layout_centerHorizontal="true"
 	android:textColor="#201400">
   </TextView>
   <ImageView
   android:id="@+id/counterQouteImg"
-  	android:textSize="30px" 
+  	android:textSize="30dp" 
   	android:layout_width="fill_parent" 
   	android:layout_centerHorizontal="true"
-	android:layout_height="300px"
+	android:layout_height="300dp"
 	android:background="@drawable/burbuliukas"
 	android:layout_below="@id/countBeer"></ImageView>
   <TextView android:id="@+id/counterQoute"
-  	android:textSize="30px" 
+  	android:textSize="30dp" 
   	android:layout_width="wrap_content" 
-  	android:layout_centerHorizontal="true"
   	android:text="Oh shit thats good funny something"
-  	android:layout_gravity="center_horizontal"
-	android:layout_height="300px"
-	android:paddingTop="70px"
-	android:layout_marginLeft="45px"
+  	android:layout_gravity="bottom"
+	android:layout_height="300dp"
+	android:paddingBottom="15dp"
+	android:layout_marginLeft="45dp"
 	android:textColor="#201400"
+	android:gravity="bottom|left"
 	android:layout_below="@id/countBeer">
   </TextView>
 </RelativeLayout>
