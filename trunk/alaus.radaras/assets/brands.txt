@@ -43,7 +43,7 @@ tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
 tucher	Tucher	obuolys	de	foreign, white
 utenos	Utenos	pilies_mene, alaus_baras_just	lt	lager
 utenos_dark	Uteno Dark	gorky_bar	lt	dark
-varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
+varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai, mamutas	lt	rural, dark
 veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
 vilkmerges_tamsusis	Vilkmergės tamsusis	alaus_namai	lt	rural, dark
 vilniaus_kvietinis	Vilniaus kvietinis	bermudai, pogo, obuolys	lt	white
