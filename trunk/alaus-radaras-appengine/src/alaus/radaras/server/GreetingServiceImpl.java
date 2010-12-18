@@ -3,12 +3,18 @@ package alaus.radaras.server;
 import alaus.radaras.client.GreetingService;
 import alaus.radaras.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.inject.Singleton;
 
 /**
  * The server side implementation of the RPC service.
  */
-@SuppressWarnings("serial")
+@Singleton
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5405571273602475982L;
 
 	public String greetServer(String input) throws IllegalArgumentException {
 		// Verify that the input is valid. 
