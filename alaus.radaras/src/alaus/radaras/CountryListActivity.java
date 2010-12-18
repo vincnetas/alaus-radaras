@@ -3,8 +3,8 @@ package alaus.radaras;
 import java.util.List;
 
 import alaus.radaras.adapters.CountryListAdapter;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Country;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Country;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class CountryListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 			setContentView(R.layout.country_list);
         
-		countries = BeerRadarDao.getInstance(this).getCountries();
+		countries = BeerRadar.getInstance(this).getCountries();
         ListView l1 = (ListView) findViewById(R.id.countryList);
         l1.setAdapter(new CountryListAdapter(this, countries));
 

@@ -3,10 +3,7 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
-import alaus.radaras.dao.model.Tag;
-import alaus.radaras.viewholders.BrandViewHolder;
+import alaus.radaras.service.model.Tag;
 import alaus.radaras.viewholders.TagViewHolder;
 import android.content.Context;
 import android.view.LayoutInflater;

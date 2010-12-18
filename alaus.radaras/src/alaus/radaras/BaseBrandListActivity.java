@@ -3,7 +3,7 @@ package alaus.radaras;
 import java.util.List;
 
 import alaus.radaras.adapters.BrandListAdapter;
-import alaus.radaras.dao.model.Brand;
+import alaus.radaras.service.model.Brand;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

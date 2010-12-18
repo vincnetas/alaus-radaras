@@ -3,9 +3,9 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
-import alaus.radaras.dao.model.Country;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Brand;
+import alaus.radaras.service.model.Country;
 import alaus.radaras.viewholders.CountryViewHolder;
 import alaus.radaras.viewholders.PubViewHolder;
 import android.content.Context;
@@ -86,7 +86,7 @@ public class PubBrandListAdapter extends BaseAdapter {
 			ImageView iv = (ImageView)v.findViewById(R.id.pubBrandGridIcon);
 			//iv.setLayoutParams(new GridView.LayoutParams(70, 70));
 			iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
-			iv.setImageDrawable(BeerRadarDao.getInstance(context).getImage(brand.getIcon()));
+			iv.setImageDrawable(BeerRadar.getInstance(context).getImage(brand.getIcon()));
 			//iv.setPadding(8, 8, 8, 8);
 		}
 		else

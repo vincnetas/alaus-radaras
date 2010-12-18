@@ -1,9 +1,9 @@
 package alaus.radaras;
 
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
-import alaus.radaras.dao.model.FeelingLucky;
-import alaus.radaras.dao.model.Pub;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Brand;
+import alaus.radaras.service.model.FeelingLucky;
+import alaus.radaras.service.model.Pub;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,10 +21,10 @@ public class LuckyActivity extends Activity {
         ImageView imgBrand = (ImageView) findViewById(R.id.LuckyBrandIcon);
         TextView brand = (TextView) findViewById(R.id.LuckyBrandTitle);
         TextView pubView = (TextView) findViewById(R.id.LuckyPubTitle);
-        FeelingLucky lucky = BeerRadarDao.getInstance(this).feelingLucky();
+        FeelingLucky lucky = BeerRadar.getInstance(this).feelingLucky();
         brData = lucky.getBrand();
         pb = lucky.getPub();
-        imgBrand.setImageDrawable(BeerRadarDao.getInstance(this).getImage(brData.getIcon()));
+        imgBrand.setImageDrawable(BeerRadar.getInstance(this).getImage(brData.getIcon()));
         brand.setText(brData.getTitle());
         pubView.setText(pb.getTitle());
         

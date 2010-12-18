@@ -3,8 +3,8 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Brand;
 import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
 import android.util.Log;
@@ -87,7 +87,7 @@ public class BrandListAdapter extends BaseAdapter {
         Brand brnd = brands.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(brnd.getTitle());
-        holder.img.setImageDrawable((BeerRadarDao.getInstance(mInflater.getContext()).getImage(brnd.getIcon())));
+        holder.img.setImageDrawable((BeerRadar.getInstance(mInflater.getContext()).getImage(brnd.getIcon())));
         
         return convertView;
     }

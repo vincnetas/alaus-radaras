@@ -9,8 +9,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Pub;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Pub;
 import alaus.radaras.utils.Utils;
 import android.content.Context;
 import android.location.Criteria;
@@ -41,7 +41,7 @@ public class GimeLocation extends MapActivity  implements Observer {
 	
 	public static final String COUNTRY_ID = "countryId";
 
-	private BeerRadarDao beerRadarDao;
+	private BeerRadar beerRadarDao;
 
 	private MyLocationOverlay locationOverlay;
 
@@ -166,7 +166,7 @@ public class GimeLocation extends MapActivity  implements Observer {
 	
 	private void setTitle() {
 		String caption = "";
-		BeerRadarDao dao = getBeerRadarDao();
+		BeerRadar dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
 			caption = dao.getBrand(getBrandId()).getTitle();
@@ -181,13 +181,13 @@ public class GimeLocation extends MapActivity  implements Observer {
 	}
 
 	private synchronized void populateMap(Location location) {
-		alaus.radaras.dao.model.Location loc = new alaus.radaras.dao.model.Location();
+		alaus.radaras.service.model.Location loc = new alaus.radaras.service.model.Location();
 		if(location != null) {
-		 loc = new alaus.radaras.dao.model.Location(location.getLongitude(), location.getLatitude());
+		 loc = new alaus.radaras.service.model.Location(location.getLongitude(), location.getLatitude());
 		}
 			
 		List<Pub> pubs;
-		BeerRadarDao dao = getBeerRadarDao();
+		BeerRadar dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
 			pubs = dao.getPubsByBrandId(getBrandId(), loc);
@@ -215,15 +215,15 @@ public class GimeLocation extends MapActivity  implements Observer {
 	/**
 	 * @return the beerRadarDao
 	 */
-	public BeerRadarDao getBeerRadarDao() {
-		return BeerRadarDao.getInstance(this);
+	public BeerRadar getBeerRadarDao() {
+		return BeerRadar.getInstance(this);
 	}
 
 	/**
 	 * @param beerRadarDao
 	 *            the beerRadarDao to set
 	 */
-	public void setBeerRadarDao(BeerRadarDao beerRadarDao) {
+	public void setBeerRadarDao(BeerRadar beerRadarDao) {
 		this.beerRadarDao = beerRadarDao;
 	}
 
