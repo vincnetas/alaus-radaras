@@ -3,7 +3,7 @@
  */
 package alaus.radaras;
 
-import alaus.radaras.dao.BeerRadarDao;
+import alaus.radaras.service.BeerRadar;
 import android.os.Bundle;
 
 
@@ -19,7 +19,7 @@ public class BrandListActivity extends BaseBrandListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
-		showBrands(BeerRadarDao.getInstance(this).getBrands(), R.id.list);
+		showBrands(BeerRadar.getInstance(this).getBrands(), R.id.list);
   
 	}
 

@@ -1,7 +1,7 @@
 package alaus.radaras;
 
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Country;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Country;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +19,7 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 			final String countryId = getIntent().getExtras().getString(COUNTRY);
-			BeerRadarDao dao = BeerRadarDao.getInstance(this);
+			BeerRadar dao = BeerRadar.getInstance(this);
 			Country country = dao.getCountry(countryId);
 			setContentView(R.layout.country_brand_list);
 			showBrands(dao.getBrandsByCountry(countryId), R.id.countryBrandList);

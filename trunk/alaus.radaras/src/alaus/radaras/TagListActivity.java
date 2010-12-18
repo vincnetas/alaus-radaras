@@ -3,8 +3,8 @@ package alaus.radaras;
 import java.util.List;
 
 import alaus.radaras.adapters.TagListAdapter;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Tag;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Tag;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class TagListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 			setContentView(R.layout.tag_list);
         
-        tags = BeerRadarDao.getInstance(this).getTags();
+        tags = BeerRadar.getInstance(this).getTags();
         ListView l1 = (ListView) findViewById(R.id.tagList);
         l1.setAdapter(new TagListAdapter(this, tags));
 

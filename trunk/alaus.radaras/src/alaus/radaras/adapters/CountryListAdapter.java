@@ -3,7 +3,7 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.dao.model.Country;
+import alaus.radaras.service.model.Country;
 import alaus.radaras.viewholders.CountryViewHolder;
 import android.content.Context;
 import android.view.LayoutInflater;

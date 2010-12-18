@@ -6,9 +6,9 @@ package alaus.radaras;
 import java.util.List;
 
 import alaus.radaras.adapters.PubBrandListAdapter;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Brand;
-import alaus.radaras.dao.model.Pub;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Brand;
+import alaus.radaras.service.model.Pub;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -38,7 +38,7 @@ public class PubActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.pub);
 
-	    BeerRadarDao dao = BeerRadarDao.getInstance(this);
+	    BeerRadar dao = BeerRadar.getInstance(this);
 	    String pubId = getIntent().getExtras().get(PUBID).toString();
 	    final Pub pub = dao.getPub(pubId);
 	    final List<Brand> brands = dao.getBrandsByPubId(pub.getId());

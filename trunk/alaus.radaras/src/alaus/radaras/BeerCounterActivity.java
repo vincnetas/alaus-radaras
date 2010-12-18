@@ -3,8 +3,8 @@ package alaus.radaras;
 import alaus.radaras.alerts.BeerCountAlert;
 import alaus.radaras.alerts.CallTaxiAlert;
 import alaus.radaras.alerts.NewLevelAlert;
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Qoute;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Qoute;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
@@ -56,7 +56,7 @@ public class BeerCounterActivity extends Activity {
 	private void update(Integer currentCount, Integer totalCount) {
 		Qoute qoute;
 		if(currentCount <= 10) {
-		 qoute = BeerRadarDao.getInstance(this).getQoute(currentCount);
+		 qoute = BeerRadar.getInstance(this).getQoute(currentCount);
 		}
 		else {
 			qoute = new Qoute();

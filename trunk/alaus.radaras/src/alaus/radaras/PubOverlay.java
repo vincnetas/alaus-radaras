@@ -5,7 +5,7 @@ package alaus.radaras;
 
 import java.util.ArrayList;
 
-import alaus.radaras.dao.model.Pub;
+import alaus.radaras.service.model.Pub;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;

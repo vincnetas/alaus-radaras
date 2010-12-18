@@ -1,8 +1,8 @@
 package alaus.radaras;
 
 
-import alaus.radaras.dao.BeerRadarDao;
-import alaus.radaras.dao.model.Tag;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Tag;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +19,7 @@ public class TagBrandsListActivity extends BaseBrandListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 			final String tagId = getIntent().getExtras().getString(TAG);
-			BeerRadarDao dao = BeerRadarDao.getInstance(this);
+			BeerRadar dao = BeerRadar.getInstance(this);
 			Tag tag = dao.getTag(tagId);
 			setContentView(R.layout.tag_brand_list);
 			showBrands(dao.getBrandsByTag(tagId), R.id.tagBrandList);

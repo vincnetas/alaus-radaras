@@ -17,7 +17,7 @@ public class Utils {
 		return new GeoPoint((int) (location.getLatitude() * 1e6), (int) (location.getLongitude() * 1e6));
 	}
 
-	public static GeoPoint geoPoint(alaus.radaras.dao.model.Location location) {
+	public static GeoPoint geoPoint(alaus.radaras.service.model.Location location) {
 		return new GeoPoint((int) (location.getLatitude() * 1e6), (int) (location.getLongtitude() * 1e6));
 	}
 }

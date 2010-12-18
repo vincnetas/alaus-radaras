@@ -3,7 +3,7 @@
  */
 package alaus.radaras;
 
-import alaus.radaras.dao.model.Pub;
+import alaus.radaras.service.model.Pub;
 import alaus.radaras.utils.Utils;
 
 import com.google.android.maps.OverlayItem;
