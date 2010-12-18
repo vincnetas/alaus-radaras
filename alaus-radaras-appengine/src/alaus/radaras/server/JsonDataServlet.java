@@ -13,18 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.shared.model.Association;
+import alaus.radaras.shared.model.Quote;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 /**
  * @author Vincentas
  *
  */
+@Singleton
 public class JsonDataServlet extends HttpServlet {
 
+	@Inject
+	private BaseDao baseDao;
+	
 	/**
 	 * 
 	 */
@@ -35,19 +43,31 @@ public class JsonDataServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BaseDao baseDao = new BaseDao();
-		
 		Map<String, Object[]> data = new HashMap<String, Object[]>();
 		
-		data.put("brands", baseDao.getBrands().toArray());
-		data.put("countries", baseDao.getCountries().toArray());
-		data.put("pubs", baseDao.getPubs().toArray());
-		data.put("tags", baseDao.getTags().toArray());
+		data.put("brands", getBaseDao().getBrands().toArray());
+		data.put("countries", getBaseDao().getCountries().toArray());
+		data.put("pubs", getBaseDao().getPubs().toArray());
+		data.put("tags", getBaseDao().getTags().toArray());
+		data.put("brandTag", getBaseDao().getBrandTagAssociations().toArray());
+		data.put("brandCountry", getBaseDao().getBrandCountryAssociation().toArray());
+		data.put("brandPub", getBaseDao().getBrandPubAssociations().toArray());
+		data.put("quotes", getBaseDao().getQuotes().toArray());
 		
 		Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
 			
 			@Override
 			public boolean shouldSkipField(FieldAttributes f) {
+				if (f.getDeclaringClass() == Quote.class) {
+					if (f.getName().equals("id")) {
+						return true;
+					}					
+				} else if (Association.class.isAssignableFrom(f.getDeclaringClass())) {
+					if (f.getName().equals("id")) {
+						return true;
+					}
+				}
+					
 				return f.getName().equals("jdoDetachedState");
 			}
 			
@@ -61,4 +81,20 @@ public class JsonDataServlet extends HttpServlet {
 				
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
+
+	/**
+	 * @return the baseDao
+	 */
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
+
+	/**
+	 * @param baseDao the baseDao to set
+	 */
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
+	}
+	
+	
 }

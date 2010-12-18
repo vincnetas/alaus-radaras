@@ -6,8 +6,12 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import alaus.radaras.shared.model.Brand;
+import alaus.radaras.shared.model.BrandCountryAssociation;
+import alaus.radaras.shared.model.BrandPubAssociation;
+import alaus.radaras.shared.model.BrandTagAssociation;
 import alaus.radaras.shared.model.Country;
 import alaus.radaras.shared.model.Pub;
+import alaus.radaras.shared.model.Quote;
 import alaus.radaras.shared.model.Tag;
 
 public class BaseDao {
@@ -22,58 +26,45 @@ public class BaseDao {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Brand> getBrands() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			Query query = pm.newQuery(Brand.class);
-			try {
-				return (List<Brand>) pm.detachCopyAll((List<Brand>) query.execute());
-			} finally {
-				query.closeAll();
-			}
-		} finally {
-			pm.close();
-		}
+		return get(Brand.class);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Pub> getPubs() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			Query query = pm.newQuery(Pub.class);
-			try {				
-				return (List<Pub>) pm.detachCopyAll((List<Pub>) query.execute());
-			} finally {
-				query.closeAll();
-			}
-		} finally {
-			pm.close();
-		}
+		return get(Pub.class);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Country> getCountries() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			Query query = pm.newQuery(Country.class);
-			try {
-				return (List<Country>) pm.detachCopyAll((List<Country>) query.execute());
-			} finally {
-				query.closeAll();
-			}
-		} finally {
-			pm.close();
-		}
+		return get(Country.class);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Tag> getTags() {
+		return get(Tag.class);
+	}
+	
+	public List<BrandCountryAssociation> getBrandCountryAssociation() {
+		return get(BrandCountryAssociation.class);
+	}
+	
+	public List<BrandPubAssociation> getBrandPubAssociations() {
+		return get(BrandPubAssociation.class);
+	}
+	
+	public List<BrandPubAssociation> getQuotes() {
+		return get(Quote.class);
+	}
+	
+	public List<BrandTagAssociation> getBrandTagAssociations() {
+		return get(BrandTagAssociation.class);
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private <T> List<T> get(Class clazz) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery(Tag.class);
+			Query query = pm.newQuery(clazz);
 			try {
-				return (List<Tag>) pm.detachCopyAll((List<Tag>) query.execute());
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
 			} finally {
 				query.closeAll();
 			}

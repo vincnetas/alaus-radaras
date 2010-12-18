@@ -21,18 +21,30 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.shared.model.Association;
 import alaus.radaras.shared.model.Brand;
+import alaus.radaras.shared.model.BrandCountryAssociation;
+import alaus.radaras.shared.model.BrandPubAssociation;
+import alaus.radaras.shared.model.BrandTagAssociation;
 import alaus.radaras.shared.model.Country;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
+import alaus.radaras.shared.model.Quote;
 import alaus.radaras.shared.model.Tag;
+
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 /**
  * @author Vincentas
  * 
  */
+@Singleton
 public class UploadServlet extends HttpServlet {
 
+	@Inject
+	BaseDao baseDao;
+	
 	/**
 	 * 
 	 */
@@ -47,7 +59,6 @@ public class UploadServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BaseDao baseDao = new BaseDao();
 		ServletFileUpload upload = new ServletFileUpload();
 
 		try {
@@ -63,13 +74,15 @@ public class UploadServlet extends HttpServlet {
 					String type = item.getName();
 					
 					if ("brands.txt".equalsIgnoreCase(type)) {
-						baseDao.save(parseBrands(inputStream));
+						getBaseDao().save(parseBrands(inputStream));
 					} else if ("tags.txt".equalsIgnoreCase(type)) {
-						baseDao.save(parseTags(inputStream));
+						getBaseDao().save(parseTags(inputStream));
 					} else if ("countries.txt".equalsIgnoreCase(type)) {
-						baseDao.save(parseCountries(inputStream));
+						getBaseDao().save(parseCountries(inputStream));
 					} else if ("pubs.txt".equalsIgnoreCase(type)) {
-						baseDao.save(parsePubs(inputStream));
+						getBaseDao().save(parsePubs(inputStream));
+					} else if ("qoutes.txt".equalsIgnoreCase(type)) {
+						getBaseDao().save(parseQuotes(inputStream));
 					} else {
 						throw new ServletException("Unknown type : " + type);
 					}
@@ -85,8 +98,8 @@ public class UploadServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
-	private List<Brand> parseBrands(InputStream inputStream) throws IOException {
-		List<Brand> result = new ArrayList<Brand>();
+	private List<Object> parseBrands(InputStream inputStream) throws IOException {
+		List<Object> result = new ArrayList<Object>();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
 		String line = null;
@@ -98,6 +111,21 @@ public class UploadServlet extends HttpServlet {
 			brand.setIcon(columns[0]);
 			
 			result.add(brand);
+			
+			String[] pubs = columns[2].split(",");
+			for (int i = 0; i < pubs.length; i++) {
+    			result.add(new BrandPubAssociation(columns[0], pubs[i].trim()));
+			}
+			
+			String[] countries = columns[3].split(",");
+			for (int i = 0; i < countries.length; i++) {
+				result.add(new BrandCountryAssociation(columns[0], countries[i].trim()));
+			}
+			
+			String[] tags = columns[4].split(",");
+			for (int i = 0; i < tags.length; i++) {
+    			result.add(new BrandTagAssociation(columns[0], tags[i].trim()));
+			}
 		}
 
 		return result;
@@ -157,4 +185,39 @@ public class UploadServlet extends HttpServlet {
 
 		return result;
 	}
+	
+	private List<Quote> parseQuotes(InputStream inputStream) throws IOException {
+		List<Quote> result = new ArrayList<Quote>();
+		
+		BufferedReader reader = new BufferedReader(	new InputStreamReader(inputStream));
+		String line;
+		
+		while ((line = reader.readLine()) != null) {
+			String[] columns = line.split("\t");
+			
+			Quote qoute = new Quote();
+			qoute.setIndex(Integer.valueOf(columns[0]));			
+			qoute.setText(columns[1]);
+
+			result.add(	qoute);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * @return the baseDao
+	 */
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
+
+	/**
+	 * @param baseDao the baseDao to set
+	 */
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
+	}
+	
+	
 }
