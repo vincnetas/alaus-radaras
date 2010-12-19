@@ -21,7 +21,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import alaus.radaras.server.dao.BaseDao;
-import alaus.radaras.shared.model.Association;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.BrandCountryAssociation;
 import alaus.radaras.shared.model.BrandPubAssociation;
