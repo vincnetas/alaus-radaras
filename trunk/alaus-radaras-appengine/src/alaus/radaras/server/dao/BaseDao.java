@@ -2,74 +2,33 @@ package alaus.radaras.server.dao;
 
 import java.util.List;
 
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.BrandCountryAssociation;
 import alaus.radaras.shared.model.BrandPubAssociation;
 import alaus.radaras.shared.model.BrandTagAssociation;
 import alaus.radaras.shared.model.Country;
 import alaus.radaras.shared.model.Pub;
-import alaus.radaras.shared.model.Quote;
 import alaus.radaras.shared.model.Tag;
 
-public class BaseDao {
+public interface BaseDao {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void save(List list) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			pm.makePersistentAll(list);
-		} finally {
-			pm.close();
-		}
-	}
-	
-	public List<Brand> getBrands() {
-		return get(Brand.class);
-	}
+	@SuppressWarnings({ "rawtypes" })
+	public abstract void save(List list);
 
-	public List<Pub> getPubs() {
-		return get(Pub.class);
-	}
+	public abstract List<Brand> getBrands();
 
-	public List<Country> getCountries() {
-		return get(Country.class);
-	}
+	public abstract List<Pub> getPubs();
 
-	public List<Tag> getTags() {
-		return get(Tag.class);
-	}
-	
-	public List<BrandCountryAssociation> getBrandCountryAssociation() {
-		return get(BrandCountryAssociation.class);
-	}
-	
-	public List<BrandPubAssociation> getBrandPubAssociations() {
-		return get(BrandPubAssociation.class);
-	}
-	
-	public List<BrandPubAssociation> getQuotes() {
-		return get(Quote.class);
-	}
-	
-	public List<BrandTagAssociation> getBrandTagAssociations() {
-		return get(BrandTagAssociation.class);
-	}
-	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private <T> List<T> get(Class clazz) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			Query query = pm.newQuery(clazz);
-			try {
-				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
-			} finally {
-				query.closeAll();
-			}
-		} finally {
-			pm.close();
-		}
-	}
+	public abstract List<Country> getCountries();
+
+	public abstract List<Tag> getTags();
+
+	public abstract List<BrandCountryAssociation> getBrandCountryAssociation();
+
+	public abstract List<BrandPubAssociation> getBrandPubAssociations();
+
+	public abstract List<BrandPubAssociation> getQuotes();
+
+	public abstract List<BrandTagAssociation> getBrandTagAssociations();
+
 }
