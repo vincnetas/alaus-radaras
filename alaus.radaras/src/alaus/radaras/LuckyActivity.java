@@ -13,17 +13,18 @@ import android.widget.TextView;
 
 
 public class LuckyActivity extends Activity {
-	public Pub pb;
-	public Brand brData;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lucky);
+        
         ImageView imgBrand = (ImageView) findViewById(R.id.LuckyBrandIcon);
         TextView brand = (TextView) findViewById(R.id.LuckyBrandTitle);
         TextView pubView = (TextView) findViewById(R.id.LuckyPubTitle);
+        
         FeelingLucky lucky = BeerRadar.getInstance(this).feelingLucky();
-        brData = lucky.getBrand();
-        pb = lucky.getPub();
+        final Brand brData = lucky.getBrand();
+        final Pub pb = lucky.getPub();
         imgBrand.setImageDrawable(BeerRadar.getInstance(this).getImage(brData.getIcon()));
         brand.setText(brData.getTitle());
         pubView.setText(pb.getTitle());
