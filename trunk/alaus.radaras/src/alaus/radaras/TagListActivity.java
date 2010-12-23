@@ -21,16 +21,16 @@ public class TagListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 
 		tags = BeerRadar.getInstance(this).getTags();
+		
 		getListView().setAdapter(new TagListAdapter(this, tags));
-
 		getListView().setOnItemClickListener(new ListView.OnItemClickListener() {
 			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				Tag tag = tags.get(position);
-				Intent inte = new Intent(TagListActivity.this, TagBrandsListActivity.class);
-				inte.putExtra(TagBrandsListActivity.TAG, tag.getCode());
-				startActivity(inte);
+				Intent intent = new Intent(TagListActivity.this, TagBrandsListActivity.class);
+				intent.putExtra(TagBrandsListActivity.TAG, tag.getCode());
+				startActivity(intent);
 			}
 		});
 	}
