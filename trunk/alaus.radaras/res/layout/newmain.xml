@@ -12,14 +12,14 @@
 
 				<ImageButton android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:src="@drawable/around"
-					android:id="@+id/around" android:padding="5dp" android:background="@color/transparent"></ImageButton>
+					android:id="@+id/around" android:padding="5dp" android:background="@color/home_button"></ImageButton>
 			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/NearValue"></TextView>
 </LinearLayout>
 			<LinearLayout android:id="@+id/LinearLayout03"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
 				<ImageButton android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:src="@drawable/search"
-					android:id="@+id/search" android:padding="5dp" android:background="@color/transparent"></ImageButton>
+					android:id="@+id/search" android:padding="5dp" android:background="@color/home_button"></ImageButton>
 			<TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/BrandValue"></TextView>
 </LinearLayout>
 		</TableRow>
@@ -28,16 +28,14 @@
 				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
 				<ImageButton android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:src="@drawable/hook"
-					android:id="@+id/lucky" android:background="@color/transparent"
-					android:padding="5dp"></ImageButton>
+					android:id="@+id/lucky" android:padding="5dp" android:background="@color/home_button"></ImageButton>
 			<TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/LuckyValue"></TextView>
 </LinearLayout>
 			<LinearLayout android:id="@+id/LinearLayout05"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
 				<ImageButton android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:src="@drawable/baloon"
-					android:id="@+id/counter" android:background="@color/transparent"
-					android:padding="5dp"></ImageButton>
+					android:id="@+id/counter" android:padding="5dp" android:background="@color/home_button"></ImageButton>
 			<TextView android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/BeerCounterName"></TextView>
 </LinearLayout>
 		</TableRow>
