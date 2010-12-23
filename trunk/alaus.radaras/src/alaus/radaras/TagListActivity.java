@@ -5,39 +5,33 @@ import java.util.List;
 import alaus.radaras.adapters.TagListAdapter;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.model.Tag;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class TagListActivity extends Activity {
-
+public class TagListActivity extends ListActivity {
 
 	private List<Tag> tags;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-			setContentView(R.layout.tag_list);
-        
-        tags = BeerRadar.getInstance(this).getTags();
-        ListView l1 = (ListView) findViewById(R.id.tagList);
-        l1.setAdapter(new TagListAdapter(this, tags));
 
-        
-        l1.setOnItemClickListener(new ListView.OnItemClickListener(){
+		tags = BeerRadar.getInstance(this).getTags();
+		getListView().setAdapter(new TagListAdapter(this, tags));
 
-        	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        		Tag tag = tags.get(position);
-        		Intent inte = new Intent(TagListActivity.this, TagBrandsListActivity.class);
-        		inte.putExtra(TagBrandsListActivity.TAG, tag.getCode());
-        		startActivity(inte);
-        	}
-            });
-
-        
+		getListView().setOnItemClickListener(new ListView.OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+				Tag tag = tags.get(position);
+				Intent inte = new Intent(TagListActivity.this, TagBrandsListActivity.class);
+				inte.putExtra(TagBrandsListActivity.TAG, tag.getCode());
+				startActivity(inte);
+			}
+		});
 	}
-	
 }
