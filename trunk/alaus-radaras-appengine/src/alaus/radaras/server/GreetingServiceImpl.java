@@ -1,8 +1,13 @@
 package alaus.radaras.server;
 
+import java.util.List;
+
 import alaus.radaras.client.GreetingService;
-import alaus.radaras.shared.FieldVerifier;
+import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.shared.model.Pub;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
@@ -11,27 +16,30 @@ import com.google.inject.Singleton;
 @Singleton
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
+	@Inject
+	private BaseDao baseDao;
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5405571273602475982L;
 
-	public String greetServer(String input) throws IllegalArgumentException {
-		// Verify that the input is valid. 
-		if (!FieldVerifier.isValidName(input)) {
-			// If the input is not valid, throw an IllegalArgumentException back to
-			// the client.
-			throw new IllegalArgumentException("Name must be at least 4 characters long");
-		}
+	public List<Pub> greetServer(String input) throws IllegalArgumentException {
+		return getBaseDao().getPubs();
+	}
 
-		String serverInfo = getServletContext().getServerInfo();
-		String userAgent = getThreadLocalRequest().getHeader("User-Agent");
+	/**
+	 * @return the baseDao
+	 */
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
 
-		// Escape data from the client to avoid cross-site script vulnerabilities.
-		input = escapeHtml(input);
-		userAgent = escapeHtml(userAgent);
-
-		return "Hello, " + input + "!<br><br>I am running " + serverInfo + ".<br><br>It looks like you are using:<br>" + userAgent;
+	/**
+	 * @param baseDao the baseDao to set
+	 */
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
 	}
 
 	/**

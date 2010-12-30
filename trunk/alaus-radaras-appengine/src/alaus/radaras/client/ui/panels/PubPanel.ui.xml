@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:r="urn:import:alaus.radaras.client.ui" xmlns:e="urn:import:alaus.radaras.client.ui.edit">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HorizontalPanel>
+			<r:SearchWidget></r:SearchWidget>
+			<e:EditPubWidget></e:EditPubWidget>
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

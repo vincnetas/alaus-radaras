@@ -1,7 +1,13 @@
 /**
  * 
  */
-package alaus.radaras.client;
+package alaus.radaras.client.ui;
+
+import java.util.List;
+
+import alaus.radaras.client.GreetingService;
+import alaus.radaras.client.GreetingServiceAsync;
+import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -9,11 +15,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -21,23 +29,12 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  */
 public class Uploader extends Composite {
+	
+	private static GreetingServiceAsync service = GWT.create(GreetingService.class);
 
 	private static uploaderUiBinder uiBinder = GWT.create(uploaderUiBinder.class);
 
 	interface uploaderUiBinder extends UiBinder<Widget, Uploader> {
-	}
-
-	/**
-	 * Because this class has a default constructor, it can be used as a binder
-	 * template. In other words, it can be used in other *.ui.xml files as
-	 * follows: <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	 * xmlns:g="urn:import:**user's package**">
-	 * <g:**UserClassName**>Hello!</g:**UserClassName> </ui:UiBinder> Note that
-	 * depending on the widget that is used, it may be necessary to implement
-	 * HasHTML instead of HasText.
-	 */
-	public Uploader() {
-		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@UiField
@@ -47,12 +44,31 @@ public class Uploader extends Composite {
 	FileUpload fileUpload;
 
 	@UiField
+	ListBox list;
+
+	@UiField
 	Button submitButton;
 
-	public Uploader(String firstName) {
+	public Uploader() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		service.greetServer("", new AsyncCallback<List<Pub>>() {
+			
+			@Override
+			public void onSuccess(List<Pub> result) {
+				for (Pub pub : result) {
+					list.addItem(pub.getTitle());
+				}				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.toString());
+				
+			}
+		});
 	}
-
+	
 	@UiHandler("submitButton")
 	void onSubmitButton(ClickEvent e) {
 		formPanel.submit();

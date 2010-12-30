@@ -1,40 +1,56 @@
 package alaus.radaras.shared.model;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
-@PersistenceCapable(detachable="true")
-public class Location {
+@PersistenceCapable(detachable = "true")
+public class Location implements Serializable {
 
 	@Persistent
-	private double longtitude;
-	
+	private double longitude;
+
 	@Persistent
 	private double latitude;
 
 	public Location() {
-		
+
 	}
-	
-	public Location(double longtitude, double latitude) {
+
+	public Location(double longitude, double latitude) {
 		setLatitude(latitude);
-		setLongtitude(longtitude);
-	}
-	
-	public double getLongtitude() {
-		return longtitude;
+		setLongitude(longitude);
 	}
 
-	public void setLongtitude(double longtitude) {
-		this.longtitude = longtitude;
+	/**
+	 * @return the longitude
+	 */
+	public double getLongitude() {
+		return longitude;
 	}
 
+	/**
+	 * @param longitude
+	 *            the longitude to set
+	 */
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	/**
+	 * @return the latitude
+	 */
 	public double getLatitude() {
 		return latitude;
 	}
 
+	/**
+	 * @param latitude
+	 *            the latitude to set
+	 */
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
-	
+
 }

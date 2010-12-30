@@ -1,20 +1,23 @@
 package alaus.radaras.shared.model;
 
+import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable(detachable="true")
-public class Quote {
-
-	@PrimaryKey
-	private String id;
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
+public class Quote extends Updatable {
 	
 	@Persistent
 	private int index;
 	
 	@Persistent
 	private String text;
+
+	
+	public Quote(String text, int index) {
+		setIndex(index);
+		setText(text);
+	}
 	
 	/**
 	 * @return the index
@@ -34,22 +37,11 @@ public class Quote {
 		return text;
 	}
 
+	/**
+	 * @param text the text to set
+	 */
 	public void setText(String text) {
-		id = String.valueOf(text.hashCode());
+		setId(String.valueOf(text.hashCode()));
 		this.text = text;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
 	}	
 }

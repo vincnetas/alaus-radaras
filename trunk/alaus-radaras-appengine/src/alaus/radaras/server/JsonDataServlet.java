@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import alaus.radaras.server.dao.BaseDao;
-import alaus.radaras.shared.model.Association;
 import alaus.radaras.shared.model.Quote;
 
 import com.google.gson.ExclusionStrategy;
@@ -46,12 +45,8 @@ public class JsonDataServlet extends HttpServlet {
 		Map<String, Object[]> data = new HashMap<String, Object[]>();
 		
 		data.put("brands", getBaseDao().getBrands().toArray());
-		data.put("countries", getBaseDao().getCountries().toArray());
+		data.put("beers", getBaseDao().getBeers().toArray());
 		data.put("pubs", getBaseDao().getPubs().toArray());
-		data.put("tags", getBaseDao().getTags().toArray());
-		data.put("brandTag", getBaseDao().getBrandTagAssociations().toArray());
-		data.put("brandCountry", getBaseDao().getBrandCountryAssociation().toArray());
-		data.put("brandPub", getBaseDao().getBrandPubAssociations().toArray());
 		data.put("quotes", getBaseDao().getQuotes().toArray());
 		
 		Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
@@ -62,10 +57,6 @@ public class JsonDataServlet extends HttpServlet {
 					if (f.getName().equals("id")) {
 						return true;
 					}					
-				} else if (Association.class.isAssignableFrom(f.getDeclaringClass())) {
-					if (f.getName().equals("id")) {
-						return true;
-					}
 				}
 					
 				return f.getName().equals("jdoDetachedState");
@@ -80,6 +71,8 @@ public class JsonDataServlet extends HttpServlet {
 		resp.getWriter().print(gson.toJson(data));
 				
 		resp.setStatus(HttpServletResponse.SC_OK);
+		
+		
 	}
 
 	/**
