@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:r="urn:import:alaus.radaras.client.ui" xmlns:p="urn:import:alaus.radaras.client.ui.panels">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:TabLayoutPanel barUnit='EM' barHeight='3' height="800px">
+		<g:tab>
+			<g:header size='7'>Map</g:header>
+			<p:MapPanel></p:MapPanel>
+		</g:tab>
+		<g:tab>
+			<g:header size='7'>Pub</g:header>
+			<p:PubPanel></p:PubPanel>			
+		</g:tab>
+		<g:tab>
+			<g:header size='7'>Brand</g:header>
+			<p:BrandPanel></p:BrandPanel>
+		</g:tab>
+		<g:tab>
+			<g:header size='7'>Beer</g:header>
+			<p:BeerPanel></p:BeerPanel>
+		</g:tab>
+		<g:tab>
+			<g:header size='7'>Upload</g:header>
+			<r:Uploader></r:Uploader>
+		</g:tab>
+	</g:TabLayoutPanel>
+</ui:UiBinder> 

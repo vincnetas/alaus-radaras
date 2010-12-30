@@ -1,53 +1,138 @@
 package alaus.radaras.shared.model;
 
+import java.util.Set;
+
+import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable(detachable="true")
-public class Brand {
+@PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
+public class Brand extends Updatable {
 
-	@PrimaryKey
-	private String id;
-	
 	@Persistent
 	private String title;
-	
+
 	@Persistent
 	private String icon;
-	
+
+	@Persistent
+	private String homePage;
+
+	@Persistent
+	private String country;
+
+	@Persistent
+	private String homeTown;
+
 	@Persistent
 	private String description;
 
-	public String getId() {
-		return id;
-	}
+	@Persistent
+	private Set<String> tags;
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	/**
+	 * @return the title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * @param title
+	 *            the title to set
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * @return the icon
+	 */
 	public String getIcon() {
 		return icon;
 	}
 
+	/**
+	 * @param icon
+	 *            the icon to set
+	 */
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
 
+	/**
+	 * @return the homePage
+	 */
+	public String getHomePage() {
+		return homePage;
+	}
+
+	/**
+	 * @param homePage
+	 *            the homePage to set
+	 */
+	public void setHomePage(String homePage) {
+		this.homePage = homePage;
+	}
+
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * @param country
+	 *            the country to set
+	 */
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	/**
+	 * @return the homeTown
+	 */
+	public String getHomeTown() {
+		return homeTown;
+	}
+
+	/**
+	 * @param homeTown
+	 *            the homeTown to set
+	 */
+	public void setHomeTown(String homeTown) {
+		this.homeTown = homeTown;
+	}
+
+	/**
+	 * @return the description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * @param description
+	 *            the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	/**
+	 * @return the tags
+	 */
+	public Set<String> getTags() {
+		return tags;
+	}
+
+	/**
+	 * @param tags
+	 *            the tags to set
+	 */
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
+	}
+
 }

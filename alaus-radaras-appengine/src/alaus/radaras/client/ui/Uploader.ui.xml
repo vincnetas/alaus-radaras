@@ -14,5 +14,6 @@
 			</g:VerticalPanel>				
 		</g:FormPanel>
 		<g:Button ui:field="submitButton">Submit</g:Button>
+		<g:ListBox ui:field="list"></g:ListBox>
 	</g:HTMLPanel>
 </ui:UiBinder> 
