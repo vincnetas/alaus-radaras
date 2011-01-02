@@ -1,0 +1,53 @@
+backoriu_tamsusis	Bačkorių tamsusis	alaus_namai	lt	dark, rural
+belmonto_ypatingas	Belmonto ypatingasis	belmontas	lt	dark, rural
+belmonto_sviesus	Belmonto šviesusis	belmontas	lt	lager, rural
+bernard_cerne	Bernard Černe	dolce_vita, alaus_studija, simo_baras	cz	dark, foreign
+birzu_sirvenos	Biržų Širvenos	b6, alaus_namai, obuolys	lt	lager, rural
+bravaria	Bravaria	bravaria	lt	lager
+budweiser	Budweiser "BUDVAR"	busi_trecias, plieno_paukste, simo_baras, dolce_vita, alaus_studija, obuolys	cz	foreign, lager
+busi_trecias	Būsi Trečias	busi_trecias	lt	rural, dark
+butautu_dvaro	Butautų Dvaro	mamutas	lt	rural, dark
+chodovar	Chodovar	obuolys	lt	lager
+daujotu	Daujotų	alaus_namai	lt	rural
+dundulio	Dundulio	bermudai, alaus_namai	lt	rural
+ekstra_tvirtoves	Ekstra Tvirtovės	pilies_mene	lt	rural, strong
+erdinger	Erdinger	bunte_gans, simo_baras, alaus_studija	de	white, foreign
+franziskaner	Franziskaner	savas_kampas	de	white, foreign
+grimbergen	Grimbergen	jalta	be	foreign, dark, strong
+gubernijos_kvietinis	Gubernijos kvietinis	alaus_namai	lt	white
+guinness	Guinness	alaus_studija, obuolys	ie	foreign, dark
+heineken	Heineken	pogo, savas_kampas, wall_street, alaus_studija	nl	lager, foreign
+hoegaarden	Hoegaarden	wall_street, obuolys	be	white, foreign
+jovaru_snekutis	Jovarų šnekutis	bermudai	lt	rural, lager
+kalnapilis_grand	Kalnapilis "Grand"	busi_trecias, pilies_mene, mamutas, obuolys	lt	lager
+kanapinis	Kanapinis tamsus	bermudai, obuolys	lt	rural, dark
+katedros_medaus	Katedros Medaus	prie_katedros, dominink_karciama	lt	rural, lager
+katedros_sviesusis	Katedros Šviesusis	prie_katedros, dominink_karciama	lt	rural, lager
+katedros_tamsusis	Katedros Tamsusis	prie_katedros, dominink_karciama	lt	rural, dark
+kozel	Kozel	obuolys,wall_street	cz	foreign, dark, light
+krusovice	Krušovice	blusyne, simo_baras, alaus_studija	cz	foreign, dark, light
+kunigaiksciu	Kunigaikščių	mamutas, keisti_zenklai	lt	rural, strong
+murphys_stout	Murphy's stout	alaus_studija	ie	foreign, dark
+new_castle_brown_ale	Newcastle Brown Ale	alaus_studija	uk	foreign, dark
+pilies	Pilies	pilies_mene	lt	lager
+pogo	PoGO šviesusis	pogo	lt	lager
+raudonuju_dobilu	Raudonųjų Dobilų	chillout, alaus_namai	lt	rural, dark
+rinkuskiu_proginis	Rinkuškių proginis	bermudai, alaus_namai	lt	rural, lager
+samson	Samson	blusyne, pogo, plieno_paukste, alaus_studija	cz	foreign, dark
+staropramen	Staropramen	burito, obuolys	cz	foreign, lager
+svyturys_baltas	Švyturys "Baltas"	busi_trecias, pilies_mene, uzupio_picerija	lt	white
+svyturys_baltijos	Švyturys "Baltijos"	molinis_asotis, mamutas	lt	dark, strong
+svyturys_extra	Švyturys "Extra"	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas	lt	lager
+tauro_tradicinis	Tauro Tradicinis	mamutas	lt	lager, strong
+tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
+tucher	Tucher	obuolys	de	foreign, white
+utenos	Utenos	pilies_mene, alaus_baras_just	lt	lager
+utenos_dark	Uteno Dark	gorky_bar	lt	dark
+varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai, mamutas	lt	rural, dark
+veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
+vilkmerges_tamsusis	Vilkmergės tamsusis	alaus_namai	lt	rural, dark
+vilniaus_kvietinis	Vilniaus kvietinis	bermudai, pogo, obuolys	lt	white
+vilniaus_nefiltr	Vilniaus nefiltruotas	bermudai, alaus_namai	lt	lager
+warsteiner	Warsteiner	bunte_gans, plieno_paukste, wall_street	de	foreign, lager
+zubr	Zubr	savas_kampas	cz	foreign, lager
+leffe	Leffe	obuolys	be	foreign, white, strong
