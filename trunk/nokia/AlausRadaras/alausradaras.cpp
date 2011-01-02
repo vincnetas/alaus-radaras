@@ -11,6 +11,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     ui->setupUi(this);
     try {
     dbManager = new DbManager();
+    //this must be run in another thread
     dbManager->init();
     QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("select * from brands");
@@ -19,7 +20,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
        model->setHeaderData(2, Qt::Horizontal, QObject::tr("icon"));
 
     QTabWidget *tabWidget = new QTabWidget;
-
+    setCentralWidget(tabWidget);
     QTableView *view = new QTableView;
       view->setModel(model);
       view->resizeColumnsToContents();
