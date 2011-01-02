@@ -10,10 +10,18 @@ public:
     bool init();
     ~DbManager();
 private:
-    static const uint DB_VERSION = 1;
+    enum DbInserts { PUBS, BRANDS, TAGS, COUNTRIES, QOUTES, ASSOCIATIONS };
+    static const uint DB_VERSION = 2;
     bool isDbLatest();
     bool createDb();
+
+    void dropTables();
     void insertBrands(QSqlQuery &query);
+    void insertPubs(QSqlQuery &query);
+    void insertTags(QSqlQuery &query);
+    void insertCountries(QSqlQuery &query);
+    void insertQoutes(QSqlQuery &query);
+    void insertAssociations(QSqlQuery &query);
 
 };
 
