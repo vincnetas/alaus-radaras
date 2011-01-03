@@ -12,10 +12,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         alausradaras.cpp \
-    dbmanager.cpp
+    dbmanager.cpp \
+    test.cpp
 
 HEADERS  += alausradaras.h \
-    dbmanager.h
+    dbmanager.h \
+    test.h
 
 FORMS    += alausradaras.ui
 

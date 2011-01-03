@@ -7,7 +7,8 @@
 #include <QtCore/QDebug>
 #include <QTextCodec>
 
-DbManager::DbManager()
+
+DbManager::DbManager(QObject *parent) : QObject(parent)
 {
     db = NULL;
 }

@@ -3,16 +3,32 @@
 #include <QSqlQueryModel>
 #include <QTableView>
 #include<QMessageBox>
+#include <QThread>
+#include <QProgressDialog>
 
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AlausRadaras)
 {
     ui->setupUi(this);
-    try {
+
     dbManager = new DbManager();
-    //this must be run in another thread
+
+    dialog = new QProgressDialog();
+    dialog->setLabelText("Wait, db initing");
+    dialog->setMinimum(0);
+    dialog->setMaximum(0);
+    dialog->setWindowModality(Qt::WindowModal);
+    dialog->showMaximized();
+    qApp->processEvents();
     dbManager->init();
+    qApp->processEvents();
+    dialog->hide();
+        this->dbInitFinished();
+}
+void AlausRadaras::dbInitFinished()
+{
+
     QSqlQueryModel *model = new QSqlQueryModel();
     model->setQuery("select * from brands");
        model->setHeaderData(0, Qt::Horizontal, QObject::tr("id"));
@@ -28,16 +44,12 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
 
        tabWidget->addTab(view, QObject::tr("Test"));
      tabWidget->showMaximized();
- }
-    catch( char * str ) {
-        QMessageBox::critical(0, qApp->tr("Cannot open database"),
-                              str, QMessageBox::Cancel);
-    }
+
 }
 
 AlausRadaras::~AlausRadaras()
 {
-
+    delete dialog;
     delete ui;
     delete dbManager;
 }
