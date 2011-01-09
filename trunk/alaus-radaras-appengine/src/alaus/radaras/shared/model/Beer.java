@@ -3,7 +3,6 @@
  */
 package alaus.radaras.shared.model;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.jdo.annotations.IdentityType;
@@ -28,9 +27,6 @@ public class Beer extends Updatable {
 
 	@Persistent
 	private Set<String> tags;
-
-	@Persistent
-	private Date lastUpdate;
 
 	/**
 	 * @return the title
@@ -90,21 +86,6 @@ public class Beer extends Updatable {
 	 */
 	public void setTags(Set<String> tags) {
 		this.tags = tags;
-	}
-
-	/**
-	 * @return the lastUpdate
-	 */
-	public Date getLastUpdate() {
-		return lastUpdate;
-	}
-
-	/**
-	 * @param lastUpdate
-	 *            the lastUpdate to set
-	 */
-	public void setLastUpdate(Date lastUpdate) {
-		this.lastUpdate = lastUpdate;
 	}
 
 }

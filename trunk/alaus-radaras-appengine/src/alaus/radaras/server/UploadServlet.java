@@ -21,6 +21,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.server.dao.BeerDao;
+import alaus.radaras.server.dao.BrandDao;
+import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
@@ -35,9 +38,15 @@ import com.google.inject.Singleton;
  */
 @Singleton
 public class UploadServlet extends HttpServlet {
-
+		
 	@Inject
-	BaseDao baseDao;
+	private PubDao pubDao;
+	
+	@Inject
+	private BeerDao beerDao;
+	
+	@Inject
+	private BrandDao brandDao;
 	
 	/**
 	 * 
@@ -68,11 +77,9 @@ public class UploadServlet extends HttpServlet {
 					String type = item.getName();
 					
 					if ("brands.txt".equalsIgnoreCase(type)) {
-						getBaseDao().save(parseBrands(inputStream));
+						getBrandDao().save(parseBrands(inputStream));
 					} else if ("pubs.txt".equalsIgnoreCase(type)) {
-						getBaseDao().save(parsePubs(inputStream));
-					} else if ("qoutes.txt".equalsIgnoreCase(type)) {
-						getBaseDao().save(parseQuotes(inputStream));
+						getPubDao().save(parsePubs(inputStream));
 					} else {
 						throw new ServletException("Unknown type : " + type);
 					}
@@ -118,7 +125,7 @@ public class UploadServlet extends HttpServlet {
 			pub.setTitle(columns[1]);
 			pub.setAddress(columns[2]);
 			pub.setPhone(columns[3]);
-			pub.setUrl(columns[4]);
+			pub.setHomepage(columns[4]);
 			pub.setLocation(new Location(Double.parseDouble(columns[6]), Double.parseDouble(columns[5])));
 			
 			result.add(pub);
@@ -147,17 +154,45 @@ public class UploadServlet extends HttpServlet {
 	}
 
 	/**
-	 * @return the baseDao
+	 * @return the pubDao
 	 */
-	public BaseDao getBaseDao() {
-		return baseDao;
+	public PubDao getPubDao() {
+		return pubDao;
 	}
 
 	/**
-	 * @param baseDao the baseDao to set
+	 * @param pubDao the pubDao to set
 	 */
-	public void setBaseDao(BaseDao baseDao) {
-		this.baseDao = baseDao;
+	public void setPubDao(PubDao pubDao) {
+		this.pubDao = pubDao;
+	}
+
+	/**
+	 * @return the beerDao
+	 */
+	public BeerDao getBeerDao() {
+		return beerDao;
+	}
+
+	/**
+	 * @param beerDao the beerDao to set
+	 */
+	public void setBeerDao(BeerDao beerDao) {
+		this.beerDao = beerDao;
+	}
+
+	/**
+	 * @return the brandDao
+	 */
+	public BrandDao getBrandDao() {
+		return brandDao;
+	}
+
+	/**
+	 * @param brandDao the brandDao to set
+	 */
+	public void setBrandDao(BrandDao brandDao) {
+		this.brandDao = brandDao;
 	}
 	
 	

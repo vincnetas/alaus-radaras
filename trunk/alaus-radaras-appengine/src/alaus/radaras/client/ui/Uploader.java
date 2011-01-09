@@ -5,8 +5,8 @@ package alaus.radaras.client.ui;
 
 import java.util.List;
 
-import alaus.radaras.client.GreetingService;
-import alaus.radaras.client.GreetingServiceAsync;
+import alaus.radaras.client.BeerService;
+import alaus.radaras.client.BeerServiceAsync;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.core.client.GWT;
@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Uploader extends Composite {
 	
-	private static GreetingServiceAsync service = GWT.create(GreetingService.class);
+	private static BeerServiceAsync service = GWT.create(BeerService.class);
 
 	private static uploaderUiBinder uiBinder = GWT.create(uploaderUiBinder.class);
 

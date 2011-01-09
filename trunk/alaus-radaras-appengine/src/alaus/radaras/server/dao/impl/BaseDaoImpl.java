@@ -3,6 +3,8 @@
  */
 package alaus.radaras.server.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -10,23 +12,16 @@ import javax.jdo.Query;
 
 import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.PMF;
-import alaus.radaras.shared.model.Beer;
-import alaus.radaras.shared.model.Brand;
-import alaus.radaras.shared.model.Pub;
-import alaus.radaras.shared.model.Quote;
+import alaus.radaras.shared.model.Status;
 
 /**
  * @author Vincentas
  *
  */
-public class BaseDaoImpl implements BaseDao {
+public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.dao.impl.a#save(java.util.List)
-	 */
 	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void save(List list) {
+	public void save(List<T> list) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistentAll(list);
@@ -35,43 +30,16 @@ public class BaseDaoImpl implements BaseDao {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.dao.impl.a#getBrands()
-	 */
+	public abstract Class<T> getClazz();
+	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Brand> getBrands() {
-		return get(Brand.class);
-	}
-
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.dao.impl.a#getPubs()
-	 */
-	@Override
-	public List<Pub> getPubs() {
-		return get(Pub.class);
-	}	
-
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.dao.BaseDao#getBeers()
-	 */
-	@Override
-	public List<Beer> getBeers() {
-		return get(Beer.class);
-	}
-
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.dao.BaseDao#getQuotes()
-	 */
-	@Override
-	public List<Quote> getQuotes() {
-		return get(Quote.class);
-	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private <T> List<T> get(Class clazz) {
+	public List<T> getAll() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery(clazz);
+			Query query = pm.newQuery(getClazz());
+			query.setFilter("status == " + Status.ACTUAL);
+			
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
 			} finally {
@@ -81,4 +49,53 @@ public class BaseDaoImpl implements BaseDao {
 			pm.close();
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getUpdated(Date since) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Query query = pm.newQuery(getClazz());
+			query.declareParameters("since");
+			query.setFilter("lastUpdate >= since && status == " + Status.ACTUAL);
+
+			try {
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
+			} finally {
+				query.closeAll();
+			}
+		} finally {
+			pm.close();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#getDeleted(java.util.Date)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getDeleted(Date since) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Query query = pm.newQuery(getClazz());
+			query.declareParameters("since");
+			query.setFilter("lastUpdate >= since && status == " + Status.DELETED);
+
+			try {
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
+			} finally {
+				query.closeAll();
+			}
+		} finally {
+			pm.close();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#getUpdates(java.lang.String)
+	 */
+	@Override
+	public List<T> getUpdates(String id) {
+		return new ArrayList<T>();
+	}	
 }
