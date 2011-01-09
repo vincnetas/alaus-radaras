@@ -19,6 +19,8 @@ public:
     ~AlausRadaras();
 public slots:
     void dbInitFinished();
+private slots:
+    void on_btnBrands_clicked();
 private:
     Ui::AlausRadaras *ui;
 };

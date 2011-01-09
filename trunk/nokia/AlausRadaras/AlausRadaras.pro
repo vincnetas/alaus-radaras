@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += sql
+QT      += thread
 TARGET = AlausRadaras
 TEMPLATE = app
 
@@ -13,13 +14,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         alausradaras.cpp \
     dbmanager.cpp \
-    test.cpp
+    test.cpp \
+    brandtabs.cpp \
+    brandlistmodel.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
-    test.h
+    test.h \
+    brandtabs.h \
+    brandlistmodel.h
 
-FORMS    += alausradaras.ui
+FORMS    += alausradaras.ui \
+    brandtabs.ui
 
 CONFIG += mobility
 MOBILITY = 
@@ -32,4 +38,5 @@ symbian {
 }
 
 RESOURCES += \
-    Assets.qrc
+    Assets.qrc \
+    Brands.qrc
