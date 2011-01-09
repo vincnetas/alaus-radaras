@@ -7,16 +7,16 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label>Title</g:Label><g:TextBox ui:field="title"></g:TextBox>
-		<g:Label>Location</g:Label><g:Button ui:field="selectLocation">Map</g:Button>
-		<g:Label>Country</g:Label><g:SuggestBox ui:field="country"></g:SuggestBox>
-		<g:Label>City</g:Label><g:SuggestBox ui:field="city"></g:SuggestBox>
-		<g:Label>Address</g:Label><g:TextBox ui:field="address"></g:TextBox>
-		<g:Label>Phone</g:Label><g:TextBox ui:field="phone"></g:TextBox>
-		<g:Label>Description</g:Label><g:TextArea ui:field="description"></g:TextArea>
-		<g:Label>Homepage</g:Label><g:TextBox ui:field="homepage"></g:TextBox>
-		<g:Label>Hours</g:Label><g:TextBox ui:field="hours"></g:TextBox>
-		<g:Label>Tags</g:Label><g:TextBox ui:field="tags"></g:TextBox>
-		<g:Label>Beers</g:Label><g:Button ui:field="selectBeer">Beer</g:Button>
+		<g:Label>Title</g:Label><g:TextBox ui:field="title" width="90%"></g:TextBox>
+<!--		<g:Label>Location</g:Label><g:Button ui:field="selectLocation">Map</g:Button>-->
+<!--		<g:Label>Country</g:Label><g:SuggestBox ui:field="country"></g:SuggestBox>-->
+<!--		<g:Label>City</g:Label><g:SuggestBox ui:field="city"></g:SuggestBox>-->
+<!--		<g:Label>Address</g:Label><g:TextBox ui:field="address"></g:TextBox>-->
+<!--		<g:Label>Phone</g:Label><g:TextBox ui:field="phone"></g:TextBox>-->
+		<g:Label>Description</g:Label><g:TextArea ui:field="description" width="90%"></g:TextArea>
+<!--		<g:Label>Homepage</g:Label><g:TextBox ui:field="homepage"></g:TextBox>-->
+<!--		<g:Label>Hours</g:Label><g:TextBox ui:field="hours"></g:TextBox>-->
+<!--		<g:Label>Tags</g:Label><g:TextBox ui:field="tags"></g:TextBox>-->
+<!--		<g:Label>Beers</g:Label><g:Button ui:field="selectBeer">Beer</g:Button>-->
 	</g:HTMLPanel>
 </ui:UiBinder> 

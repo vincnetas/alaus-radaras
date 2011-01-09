@@ -5,7 +5,6 @@
 		/* Add CSS here. See the GWT docs on UI Binder for more details */
 		.important {
 			font-weight: bold;
-			background-color: green;
 		}
 	</ui:style>
 	<g:HTMLPanel styleName="{style.important}" width="300px">

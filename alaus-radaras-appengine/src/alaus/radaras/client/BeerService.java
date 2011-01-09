@@ -17,5 +17,5 @@ public interface BeerService extends RemoteService {
 	
 	List<Pub> findPubs(Location location, double radius);
 	
-	
+	void savePub(Pub pub);
 }

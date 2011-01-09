@@ -16,13 +16,16 @@ import com.google.gwt.maps.client.overlay.Polygon;
  */
 public class CircleOverlay extends Polygon {
 
-	public CircleOverlay(LatLng center, double radius) {
-		super(getPoints(center, radius));
-		setFillStyle(PolyStyleOptions.newInstance("blue"));
+	public static CircleOverlay newInstance(LatLng center, double radius) {
+		LatLng[] points = getPoints(center, radius);
+		return new CircleOverlay(points);
+	}
+	
+	private CircleOverlay(LatLng[] points) {
+		super(points);
 	}
 	
 	private static LatLng[] getPoints(LatLng center, double radius) {
-		// calculating km/degree
 		double latConv = center.distanceFrom(LatLng.newInstance(center.getLatitude() + 0.1, center.getLongitude())) / 100;
 		double lngConv = center.distanceFrom(LatLng.newInstance(center.getLatitude(), center.getLongitude() + 0.1)) / 100;
 
@@ -35,6 +38,7 @@ public class CircleOverlay extends Polygon {
 
 			points.add(point);
 		}
+		
 		points.add(points.get(0));
 		return points.toArray(new LatLng[0]);
 	}

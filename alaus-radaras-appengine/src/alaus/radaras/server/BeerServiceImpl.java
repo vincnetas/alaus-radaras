@@ -49,8 +49,12 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public List<Pub> findPubs(Location location, double radius) {
-		// TODO Auto-generated method stub
-		return null;
+		return getPubDao().getAll();
+	}
+
+	@Override
+	public void savePub(Pub pub) {
+		getPubDao().save(pub);
 	}
 	
 	

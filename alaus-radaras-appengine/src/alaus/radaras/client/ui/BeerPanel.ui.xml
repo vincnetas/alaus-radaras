@@ -8,12 +8,13 @@
 		}
 		.textBox {
 			height: 26px;
+			float: left;
 			font-size: 22px;
 		}
 	</ui:style>
 	<g:HTMLPanel width="100%">
 		<g:HTMLPanel styleName="{style.layout}">
-			<g:Image url="/img/alus.png" height="32px" width="32px"/>
+			<g:Image styleName="{style.textBox}" url="/img/alus.png" height="32px" width="32px"/>
 			<g:TextBox styleName="{style.textBox}"/>
 		</g:HTMLPanel>
 		<g:HTMLPanel ui:field="beerPanel">

@@ -13,7 +13,10 @@ public class Pub extends Updatable {
 	private String title;
 	
 	@Persistent
-	private Location location;
+	private Double longitude;
+
+	@Persistent
+	private Double latitude;
 	
 	@Persistent
 	private String country;
@@ -64,14 +67,19 @@ public class Pub extends Updatable {
 	 * @return the location
 	 */
 	public Location getLocation() {
-		return location;
+		try {
+			return new Location(longitude, latitude);
+		} catch (NullPointerException npe) {
+			return null;
+		}
 	}
 
 	/**
 	 * @param location the location to set
 	 */
 	public void setLocation(Location location) {
-		this.location = location;
+		this.latitude = location.getLatitude();
+		this.longitude = location.getLongitude();
 	}
 
 	/**
@@ -199,6 +207,32 @@ public class Pub extends Updatable {
 	public void setBeerIds(Set<String> beerIds) {
 		this.beerIds = beerIds;
 	}
-	
-	
+
+	/**
+	 * @return the longitude
+	 */
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	/**
+	 * @param longitude the longitude to set
+	 */
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	/**
+	 * @return the latitude
+	 */
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	/**
+	 * @param latitude the latitude to set
+	 */
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
 }

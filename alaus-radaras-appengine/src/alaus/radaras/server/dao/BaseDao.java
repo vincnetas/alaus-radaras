@@ -3,8 +3,12 @@ package alaus.radaras.server.dao;
 import java.util.Date;
 import java.util.List;
 
-public interface BaseDao<T> {
+import alaus.radaras.shared.model.Updatable;
 
+public interface BaseDao<T extends Updatable> {
+
+	void save(T object);
+	
 	void save(List<T> list);
 
 	List<T> getAll();

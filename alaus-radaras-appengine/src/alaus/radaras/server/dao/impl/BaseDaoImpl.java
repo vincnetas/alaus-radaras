@@ -11,17 +11,47 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.server.dao.IdProvider;
 import alaus.radaras.server.dao.PMF;
 import alaus.radaras.shared.model.Status;
+import alaus.radaras.shared.model.Updatable;
+
+import com.google.inject.Inject;
 
 /**
  * @author Vincentas
  *
  */
-public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
+
+	@Inject
+	IdProvider idProvider;
+	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#save(java.lang.Object)
+	 */
+	@Override
+	public void save(T object) {
+		if (object.getId() == null) {
+			object.setId(getIdProvider().getId());
+		}
+		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(object);
+		} finally {
+			pm.close();
+		}
+	}
 
 	@Override
 	public void save(List<T> list) {
+		for (T object : list) {
+			if (object.getId() == null) {
+				object.setId(getIdProvider().getId());
+			}
+		}
+		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistentAll(list);
@@ -97,5 +127,19 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> getUpdates(String id) {
 		return new ArrayList<T>();
-	}	
+	}
+
+	/**
+	 * @return the idProvider
+	 */
+	public IdProvider getIdProvider() {
+		return idProvider;
+	}
+
+	/**
+	 * @param idProvider the idProvider to set
+	 */
+	public void setIdProvider(IdProvider idProvider) {
+		this.idProvider = idProvider;
+	}
 }
