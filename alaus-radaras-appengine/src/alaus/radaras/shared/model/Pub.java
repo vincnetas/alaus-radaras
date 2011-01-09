@@ -42,9 +42,10 @@ public class Pub extends Updatable {
 	@Persistent
 	private Set<String> beerIds;
 	
-	@Persistent
-	private String url;
-
+	public BeerLocation getBeerLocation() {
+		return new BeerLocation(getTitle(), getLocation(), getBeerIds(), getTags());
+	}
+	
 	/**
 	 * @return the title
 	 */
@@ -198,20 +199,6 @@ public class Pub extends Updatable {
 	public void setBeerIds(Set<String> beerIds) {
 		this.beerIds = beerIds;
 	}
-
-	/**
-	 * @return the url
-	 */
-	public String getUrl() {
-		return url;
-	}
-
-	/**
-	 * @param url the url to set
-	 */
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
+	
 	
 }

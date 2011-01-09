@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.server.dao.BeerDao;
+import alaus.radaras.server.dao.BrandDao;
+import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Quote;
 
 import com.google.gson.ExclusionStrategy;
@@ -28,9 +30,15 @@ import com.google.inject.Singleton;
  */
 @Singleton
 public class JsonDataServlet extends HttpServlet {
-
+	
 	@Inject
-	private BaseDao baseDao;
+	private PubDao pubDao;
+	
+	@Inject
+	private BeerDao beerDao;
+	
+	@Inject
+	private BrandDao brandDao;
 	
 	/**
 	 * 
@@ -44,10 +52,9 @@ public class JsonDataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, Object[]> data = new HashMap<String, Object[]>();
 		
-		data.put("brands", getBaseDao().getBrands().toArray());
-		data.put("beers", getBaseDao().getBeers().toArray());
-		data.put("pubs", getBaseDao().getPubs().toArray());
-		data.put("quotes", getBaseDao().getQuotes().toArray());
+		data.put("brands", getBrandDao().getAll().toArray());
+		data.put("beers", getBeerDao().getAll().toArray());
+		data.put("pubs", getPubDao().getAll().toArray());
 		
 		Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
 			
@@ -76,17 +83,45 @@ public class JsonDataServlet extends HttpServlet {
 	}
 
 	/**
-	 * @return the baseDao
+	 * @return the pubDao
 	 */
-	public BaseDao getBaseDao() {
-		return baseDao;
+	public PubDao getPubDao() {
+		return pubDao;
 	}
 
 	/**
-	 * @param baseDao the baseDao to set
+	 * @param pubDao the pubDao to set
 	 */
-	public void setBaseDao(BaseDao baseDao) {
-		this.baseDao = baseDao;
+	public void setPubDao(PubDao pubDao) {
+		this.pubDao = pubDao;
+	}
+
+	/**
+	 * @return the beerDao
+	 */
+	public BeerDao getBeerDao() {
+		return beerDao;
+	}
+
+	/**
+	 * @param beerDao the beerDao to set
+	 */
+	public void setBeerDao(BeerDao beerDao) {
+		this.beerDao = beerDao;
+	}
+
+	/**
+	 * @return the brandDao
+	 */
+	public BrandDao getBrandDao() {
+		return brandDao;
+	}
+
+	/**
+	 * @param brandDao the brandDao to set
+	 */
+	public void setBrandDao(BrandDao brandDao) {
+		this.brandDao = brandDao;
 	}
 	
 	

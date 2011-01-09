@@ -1,20 +1,28 @@
 package alaus.radaras.server.guice;
 
-import alaus.radaras.server.GreetingServiceImpl;
+import alaus.radaras.server.BeerServiceImpl;
+import alaus.radaras.server.ImageServlet;
 import alaus.radaras.server.JsonDataServlet;
 import alaus.radaras.server.UploadServlet;
-import alaus.radaras.server.dao.BaseDao;
-import alaus.radaras.server.dao.impl.BaseDaoImpl;
+import alaus.radaras.server.dao.BeerDao;
+import alaus.radaras.server.dao.BrandDao;
+import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.impl.BeerDaoImpl;
+import alaus.radaras.server.dao.impl.BrandDaoImpl;
+import alaus.radaras.server.dao.impl.PubDaoImpl;
 
 import com.google.inject.servlet.ServletModule;
 
 class AlausServletModule extends ServletModule {
 	@Override
 	protected void configureServlets() {
-		bind(BaseDao.class).to(BaseDaoImpl.class);
+		bind(PubDao.class).to(PubDaoImpl.class);
+		bind(BeerDao.class).to(BeerDaoImpl.class);
+		bind(BrandDao.class).to(BrandDaoImpl.class);
 		
-		serve("/alaus_radaras_appengine/greet").with(GreetingServiceImpl.class);
+		serve("/beerEngine/beerService").with(BeerServiceImpl.class);
 		serve("/data").with(JsonDataServlet.class);		
 		serve("/admin/upload").with(UploadServlet.class);
+		serve("/image/beer/*").with(ImageServlet.class);
 	}
 }

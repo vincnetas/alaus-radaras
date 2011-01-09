@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class Alaus_radaras_appengine implements EntryPoint {
+public class BeerEngine implements EntryPoint {
 
 	/**
 	 * This is the entry point method.

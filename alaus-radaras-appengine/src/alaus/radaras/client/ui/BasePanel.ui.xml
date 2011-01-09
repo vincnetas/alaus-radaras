@@ -6,26 +6,12 @@
 			font-weight: bold;
 		}
 	</ui:style>
-	<g:TabLayoutPanel barUnit='EM' barHeight='3' height="800px">
-		<g:tab>
-			<g:header size='7'>Map</g:header>
+	<g:AbsolutePanel width="100%" height="100%">
+		<g:at left="0" top="0">
 			<p:MapPanel></p:MapPanel>
-		</g:tab>
-		<g:tab>
-			<g:header size='7'>Pub</g:header>
-			<p:PubPanel></p:PubPanel>			
-		</g:tab>
-		<g:tab>
-			<g:header size='7'>Brand</g:header>
-			<p:BrandPanel></p:BrandPanel>
-		</g:tab>
-		<g:tab>
-			<g:header size='7'>Beer</g:header>
-			<p:BeerPanel></p:BeerPanel>
-		</g:tab>
-		<g:tab>
-			<g:header size='7'>Upload</g:header>
-			<r:Uploader></r:Uploader>
-		</g:tab>
-	</g:TabLayoutPanel>
+		</g:at>
+		<g:at left="30" top="30">
+			<r:ToolPanel></r:ToolPanel>
+		</g:at>
+	</g:AbsolutePanel>
 </ui:UiBinder> 

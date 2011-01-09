@@ -1,24 +1,25 @@
 package alaus.radaras.server.dao;
 
+import java.util.Date;
 import java.util.List;
 
-import alaus.radaras.shared.model.Beer;
-import alaus.radaras.shared.model.Brand;
-import alaus.radaras.shared.model.Pub;
-import alaus.radaras.shared.model.Quote;
+public interface BaseDao<T> {
 
-public interface BaseDao {
+	void save(List<T> list);
 
-	@SuppressWarnings({ "rawtypes" })
-	public abstract void save(List list);
-
-	public abstract List<Beer> getBeers();
-
-	public abstract List<Brand> getBrands();
-
-	public abstract List<Pub> getPubs();
-
-	public abstract List<Quote> getQuotes();
-
+	List<T> getAll();
+	
+	List<T> getUpdated(Date since);
+	
+	List<T> getDeleted(Date since);
+	
+	/**
+	 * 
+	 * @param id
+	 *            Object id
+	 * @return Returns list of updates with status APPLIED and UPDATE that have
+	 *         parentId of specified object
+	 */
+	List<T> getUpdates(String id);
 
 }

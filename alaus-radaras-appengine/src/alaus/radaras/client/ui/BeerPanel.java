@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package alaus.radaras.client.ui;
 
 import com.google.gwt.core.client.GWT;
@@ -7,16 +10,22 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class BasePanel extends Composite {
+/**
+ * @author Vincentas
+ *
+ */
+public class BeerPanel extends Composite {
 
-	private static BasePanelUiBinder uiBinder = GWT.create(BasePanelUiBinder.class);
+	private static BeerPanelUiBinder uiBinder = GWT.create(BeerPanelUiBinder.class);
 
-	interface BasePanelUiBinder extends UiBinder<Widget, BasePanel> {
+	interface BeerPanelUiBinder extends UiBinder<Widget, BeerPanel> {
 	}
-	
-	public BasePanel() {
-		initWidget(uiBinder.createAndBindUi(this));
 
+	@UiField
+	HTMLPanel beerPanel;
+	
+	public BeerPanel() {
+		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 }
