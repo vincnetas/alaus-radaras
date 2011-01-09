@@ -7,9 +7,8 @@
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:HorizontalPanel>
-			<r:SearchWidget></r:SearchWidget>
-			<e:EditPubWidget></e:EditPubWidget>
-		</g:HorizontalPanel>
+		<g:Label ui:field="title"></g:Label>
+		<g:Label ui:field="description"></g:Label>
+		<g:Button ui:field="editButton">edit</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

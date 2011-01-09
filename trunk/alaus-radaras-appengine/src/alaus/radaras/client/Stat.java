@@ -26,7 +26,7 @@ public class Stat {
 	
 	public synchronized static BeerServiceAsync getBeerService() {
 		if (beerService == null) {
-			beerService = GWT.create(BeerServiceAsync.class);
+			beerService = GWT.create(BeerService.class);
 		}
 		
 		return beerService;

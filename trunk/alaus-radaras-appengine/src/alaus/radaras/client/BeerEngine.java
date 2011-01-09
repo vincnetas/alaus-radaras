@@ -26,6 +26,7 @@ public class BeerEngine implements EntryPoint {
 			return;
 		}
 		
+
 		RootPanel.get().add(new BasePanel());
 	}
 }

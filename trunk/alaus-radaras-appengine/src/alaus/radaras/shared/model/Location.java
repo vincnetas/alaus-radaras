@@ -2,16 +2,15 @@ package alaus.radaras.shared.model;
 
 import java.io.Serializable;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-
-@PersistenceCapable(detachable = "true")
 public class Location implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7850139646130809824L;
 
-	@Persistent
 	private double longitude;
 
-	@Persistent
 	private double latitude;
 
 	public Location() {

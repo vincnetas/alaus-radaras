@@ -21,6 +21,11 @@ import javax.jdo.annotations.PrimaryKey;
 @Inheritance(strategy=InheritanceStrategy.SUBCLASS_TABLE)
 public class Updatable implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@PrimaryKey
 	private String id;
 	
@@ -28,7 +33,7 @@ public class Updatable implements Serializable {
 	private Date lastUpdate;
 
 	@Persistent
-	private int status = 0;
+	private int status = Status.ACTUAL;
 
 	@Persistent
 	private String updatedBy;
