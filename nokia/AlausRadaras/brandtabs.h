@@ -1,19 +1,18 @@
 #ifndef BRANDTABS_H
 #define BRANDTABS_H
 
-#include <QWidget>
-#include "dbmanager.h"
+#include <QMainWindow>
 
 namespace Ui {
     class BrandTabs;
 }
 
-class BrandTabs : public QWidget
+class BrandTabs : public QMainWindow
 {
     Q_OBJECT
 
 public:
-     BrandTabs(QWidget *parent = 0, DbManager *db = NULL);
+    explicit BrandTabs(QWidget *parent = 0);
     ~BrandTabs();
 
 private:

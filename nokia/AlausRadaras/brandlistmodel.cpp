@@ -17,7 +17,7 @@ QVariant BrandListModel::data(const QModelIndex &index, int role) const
             QString iconId = displayValue.toString();
             QFile f( ":/brands/brand_" % iconId % ".png");
             if(f.exists()) {
-               return QVariant(QPixmap (":/brands/brand_" % iconId % ".png"));
+               return QVariant(QPixmap (f.fileName()));
             } else {
                return QVariant(QPixmap (":/brands/brand_default.png"));
             }

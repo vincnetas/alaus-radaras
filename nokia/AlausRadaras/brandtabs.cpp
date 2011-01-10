@@ -1,24 +1,32 @@
 #include "brandtabs.h"
 #include "ui_brandtabs.h"
 #include "brandlistmodel.h"
-#include "dbmanager.h"
-#include <QSqlError>
-#include <QDebug>
-BrandTabs::BrandTabs(QWidget *parent, DbManager *db) :
-    QWidget(parent),
+#include "countrylistmodel.h"
+#include "taglistmodel.h"
+
+BrandTabs::BrandTabs(QWidget *parent) :
+    QMainWindow(parent),
     ui(new Ui::BrandTabs)
 {
     ui->setupUi(this);
 
-    BrandListModel* model = new BrandListModel();
-    model->setQuery("select icon, title from brands");
-    if (model->lastError().isValid())
-        qDebug() << model->lastError();
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Paveiksliukas"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Pavadinimas"));
-    ui->brandListView->setModel(model);
-    ui->brandListView->show();
+    BrandListModel* brandsModel = new BrandListModel();
+    brandsModel->setQuery("select icon, title from brands");
+    ui->brandListView->setModel(brandsModel);
 
+    CountryListModel* countryModel = new CountryListModel();
+    countryModel->setQuery("select name from countries");
+    ui->countryListView->setModel(countryModel);
+
+    TagListModel* tagsModel = new TagListModel();
+    tagsModel->setQuery("select title from tags");
+    ui->tagListView->setModel(tagsModel);
+
+    QAction* backAction = new QAction(this);
+    backAction->setText("Back");
+    backAction->setSoftKeyRole(QAction::NegativeSoftKey);
+    this->addAction(backAction);
+    connect(backAction, SIGNAL(triggered()), this, SLOT(close()));
 }
 
 BrandTabs::~BrandTabs()

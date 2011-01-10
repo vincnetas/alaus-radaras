@@ -6,6 +6,8 @@
 #include <QStringList>
 #include <QtCore/QDebug>
 #include <QTextCodec>
+#include <QDebug>
+#include <QSqlError>
 
 
 DbManager::DbManager(QObject *parent) : QObject(parent)
@@ -57,31 +59,51 @@ bool DbManager::createDb()
                    "notes	 	TEXT, "
                    "phone	 	TEXT, "
                    "url	 	TEXT);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands("
                "id 			TEXT PRIMARY KEY, "
                "title 			TEXT NOT NULL, "
                "icon			TEXT, "
                "description 	TEXT);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
+
+    query.exec("CREATE TABLE tags("
+               "code			TEXT NOT NULL, "
+               "title			TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE pubs_brands("
                "pub_id			TEXT NOT NULL, "
                "brand_id 		TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     query.exec( "CREATE TABLE countries("
                 "code			TEXT NOT NULL,"
                 "name			TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands_countries("
                "brand_id			TEXT NOT NULL,"
                "country			TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands_tags("
                 "brand_id			TEXT NOT NULL,"
                 "tag				TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
     query.exec("CREATE TABLE qoutes("
                 "amount			INTEGER NOT NULL,"
                 "text			TEXT NOT NULL);");
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
 
     //cowboy coding. But i hate c++ delegates with pointers
     insertBrands(query);
@@ -115,6 +137,8 @@ void DbManager::insertBrands(QSqlQuery &query)
              query.bindValue(":title", columns.at(1));
              query.bindValue(":icon", columns.at(0));
              query.exec();
+             if(query.lastError().isValid())
+                 qDebug() << query.lastError();
 
      }
      file.close();
@@ -143,6 +167,8 @@ void DbManager::insertTags(QSqlQuery &query)
         query.bindValue(":code", columns.at(0));
         query.bindValue(":title", columns.at(1));
         query.exec();
+        if(query.lastError().isValid())
+            qDebug() << query.lastError();
 
      }
      file.close();
@@ -156,8 +182,7 @@ void DbManager::insertPubs(QSqlQuery &query)
 
      qDebug() << "begin inserting pubs";
 
-     query.prepare("INSERT INTO brands "
-                       "VALUES (:id, :title, :address, :phone, :url, :latitude, :longitude)");
+     query.prepare("INSERT INTO pubs VALUES (:id, :title, :longitude, :latitude,  :address, :notes, :phone, :url )");
 
      QFile file(":/db/pubs.txt");
      file.open(QFile::ReadOnly | QFile::Text);
@@ -175,7 +200,10 @@ void DbManager::insertPubs(QSqlQuery &query)
         query.bindValue(":url", columns.at(4));
         query.bindValue(":latitude", columns.at(5));
         query.bindValue(":longitude", columns.at(6));
+        query.bindValue(":notes","");
         query.exec();
+        if(query.lastError().isValid())
+            qDebug() << query.lastError();
 
      }
      file.close();
@@ -189,8 +217,7 @@ void DbManager::insertCountries(QSqlQuery &query)
 
      qDebug() << "begin inserting countries";
 
-     query.prepare("INSERT INTO countries"
-                       "VALUES (:code, :name)");
+     query.prepare("INSERT INTO countries VALUES (:code, :name)");
 
      QFile file(":/db/countries.txt");
      file.open(QFile::ReadOnly | QFile::Text);
@@ -204,6 +231,8 @@ void DbManager::insertCountries(QSqlQuery &query)
         query.bindValue(":code", columns.at(0));
         query.bindValue(":name", columns.at(1));
         query.exec();
+        if(query.lastError().isValid())
+            qDebug() << query.lastError();
 
      }
      file.close();
@@ -217,8 +246,7 @@ void DbManager::insertQoutes(QSqlQuery &query)
 
      qDebug() << "begin inserting qoutes";
 
-     query.prepare("INSERT INTO qoutes"
-                       "VALUES (:amount, :text)");
+     query.prepare("INSERT INTO qoutes VALUES (:amount, :text)");
 
      QFile file(":/db/qoutes.txt");
      file.open(QFile::ReadOnly | QFile::Text);
@@ -232,6 +260,8 @@ void DbManager::insertQoutes(QSqlQuery &query)
         query.bindValue(":amount", columns.at(0));
         query.bindValue(":text", columns.at(1));
         query.exec();
+        if(query.lastError().isValid())
+            qDebug() << query.lastError();
 
      }
      file.close();
@@ -263,6 +293,8 @@ void DbManager::insertAssociations(QSqlQuery &query)
             query.bindValue(":brand_id", columns.at(0));
             query.bindValue(":text", pubs.at(i).trimmed());
             query.exec();
+            if(query.lastError().isValid())
+                qDebug() << query.lastError();
         }
 
         qDebug() << "Inserting brand<->country association: ";
@@ -272,6 +304,8 @@ void DbManager::insertAssociations(QSqlQuery &query)
             query.bindValue(":brand_id", columns.at(0));
             query.bindValue(":country", countries.at(i).trimmed());
             query.exec();
+            if(query.lastError().isValid())
+                qDebug() << query.lastError();
         }
 
         qDebug() << "Inserting brand<->tag association: ";
@@ -281,6 +315,8 @@ void DbManager::insertAssociations(QSqlQuery &query)
             query.bindValue(":brand_id", columns.at(0));
             query.bindValue(":tag", tags.at(i).trimmed());
             query.exec();
+            if(query.lastError().isValid())
+                qDebug() << query.lastError();
         }
      }
      file.close();
@@ -294,6 +330,7 @@ void DbManager::dropTables()
     QSqlQuery query;
        query.exec("drop table if exists pubs");
        query.exec("drop table if exists brands");
+       query.exec("drop table if exists tags");
        query.exec("drop table if exists pubs_brands");
        query.exec("drop table if exists countries");
        query.exec("drop table if exists brands_countries");

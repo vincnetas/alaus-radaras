@@ -14,17 +14,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         alausradaras.cpp \
     dbmanager.cpp \
-    test.cpp \
+    brandlistmodel.cpp \
+    countrylistmodel.cpp \
     brandtabs.cpp \
-    brandlistmodel.cpp
+    taglistmodel.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
     test.h \
+    brandlistmodel.h \
+    countrylistmodel.h \
     brandtabs.h \
-    brandlistmodel.h
+    taglistmodel.h
 
 FORMS    += alausradaras.ui \
+    brandtabs.ui \
     brandtabs.ui
 
 CONFIG += mobility
@@ -39,4 +43,5 @@ symbian {
 
 RESOURCES += \
     Assets.qrc \
-    Brands.qrc
+    Brands.qrc \
+    Images.qrc

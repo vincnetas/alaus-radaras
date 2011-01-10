@@ -1,9 +1,10 @@
 #include "alausradaras.h"
 #include "ui_alausradaras.h"
-#include "brandtabs.h"
 #include <QThread>
 #include <QDebug>
 #include <QMenuBar>
+#include <QDialog>
+#include "brandtabs.h"
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AlausRadaras)
@@ -11,6 +12,8 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     ui->setupUi(this);
     dbManager = new DbManager();
     dbManager->init();
+
+    brandTabs = new BrandTabs(this);
 
     QAction* exitAction = new QAction(this);
     exitAction->setText("Remove");
@@ -23,14 +26,14 @@ void AlausRadaras::dbInitFinished()
 
 void AlausRadaras::on_btnBrands_clicked()
 {
-    BrandTabs* tabs = new BrandTabs(this, this->dbManager);
-    setCentralWidget(tabs);
-
+    brandTabs->setWindowFlags( brandTabs->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
+    brandTabs->showFullScreen();
 }
 
 AlausRadaras::~AlausRadaras()
 {
     delete dialog;
     delete ui;
+    delete brandTabs;
     delete dbManager;
 }

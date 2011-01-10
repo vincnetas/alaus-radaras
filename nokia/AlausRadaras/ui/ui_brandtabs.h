@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'brandtabs.ui'
 **
-** Created: Sun Jan 9 22:25:11 2011
+** Created: Mon Jan 10 21:53:59 2011
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,7 +16,9 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
 #include <QtGui/QListView>
+#include <QtGui/QMainWindow>
 #include <QtGui/QTabWidget>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,51 +26,79 @@ QT_BEGIN_NAMESPACE
 class Ui_BrandTabs
 {
 public:
+    QWidget *centralwidget;
+    QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
-    QWidget *tab;
+    QWidget *tabBrands;
+    QVBoxLayout *verticalLayout_2;
     QListView *brandListView;
-    QWidget *tab_3;
-    QListView *listView;
-    QWidget *tab_2;
+    QWidget *tabCountries;
+    QVBoxLayout *verticalLayout_3;
+    QListView *countryListView;
+    QWidget *tabTags;
+    QVBoxLayout *verticalLayout_4;
+    QListView *tagListView;
 
-    void setupUi(QWidget *BrandTabs)
+    void setupUi(QMainWindow *BrandTabs)
     {
         if (BrandTabs->objectName().isEmpty())
             BrandTabs->setObjectName(QString::fromUtf8("BrandTabs"));
-        BrandTabs->resize(320, 640);
-        tabWidget = new QTabWidget(BrandTabs);
+        BrandTabs->resize(800, 600);
+        centralwidget = new QWidget(BrandTabs);
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 0, 320, 640));
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        brandListView = new QListView(tab);
+        tabBrands = new QWidget();
+        tabBrands->setObjectName(QString::fromUtf8("tabBrands"));
+        verticalLayout_2 = new QVBoxLayout(tabBrands);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        brandListView = new QListView(tabBrands);
         brandListView->setObjectName(QString::fromUtf8("brandListView"));
-        brandListView->setGeometry(QRect(0, 0, 471, 611));
-        tabWidget->addTab(tab, QString());
-        tab_3 = new QWidget();
-        tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        listView = new QListView(tab_3);
-        listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(0, 0, 320, 640));
-        tabWidget->addTab(tab_3, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        tabWidget->addTab(tab_2, QString());
+
+        verticalLayout_2->addWidget(brandListView);
+
+        tabWidget->addTab(tabBrands, QString());
+        tabCountries = new QWidget();
+        tabCountries->setObjectName(QString::fromUtf8("tabCountries"));
+        verticalLayout_3 = new QVBoxLayout(tabCountries);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        countryListView = new QListView(tabCountries);
+        countryListView->setObjectName(QString::fromUtf8("countryListView"));
+
+        verticalLayout_3->addWidget(countryListView);
+
+        tabWidget->addTab(tabCountries, QString());
+        tabTags = new QWidget();
+        tabTags->setObjectName(QString::fromUtf8("tabTags"));
+        verticalLayout_4 = new QVBoxLayout(tabTags);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        tagListView = new QListView(tabTags);
+        tagListView->setObjectName(QString::fromUtf8("tagListView"));
+
+        verticalLayout_4->addWidget(tagListView);
+
+        tabWidget->addTab(tabTags, QString());
+
+        verticalLayout->addWidget(tabWidget);
+
+        BrandTabs->setCentralWidget(centralwidget);
 
         retranslateUi(BrandTabs);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(BrandTabs);
     } // setupUi
 
-    void retranslateUi(QWidget *BrandTabs)
+    void retranslateUi(QMainWindow *BrandTabs)
     {
-        BrandTabs->setWindowTitle(QApplication::translate("BrandTabs", "Form", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("BrandTabs", "Tab 1", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("BrandTabs", "Page", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("BrandTabs", "Tab 2", 0, QApplication::UnicodeUTF8));
+        BrandTabs->setWindowTitle(QApplication::translate("BrandTabs", "MainWindow", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tabBrands), QApplication::translate("BrandTabs", "R\305\253\305\241ys", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tabCountries), QApplication::translate("BrandTabs", "\305\240alys", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tabTags), QApplication::translate("BrandTabs", "Tipai", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

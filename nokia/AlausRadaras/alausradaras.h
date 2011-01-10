@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <dbmanager.h>
 #include <QProgressDialog>
+#include "brandtabs.h"
 namespace Ui {
     class AlausRadaras;
 }
@@ -23,6 +24,7 @@ private slots:
     void on_btnBrands_clicked();
 private:
     Ui::AlausRadaras *ui;
+    BrandTabs *brandTabs;
 };
 
 #endif // ALAUSRADARAS_H
