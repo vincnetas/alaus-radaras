@@ -25,7 +25,11 @@ QVariant BrandListModel::data(const QModelIndex &index, int role) const
             QModelIndex textIndex = QSqlQueryModel::index(index.row(), 1);
             QVariant displayValue = QSqlQueryModel::data(textIndex, Qt::DisplayRole);
             return displayValue.toString();
-
+        } else if (role == Qt::EditRole) {
+            //abusing QT ... how cool is that! ;-)
+            QModelIndex textIndex = QSqlQueryModel::index(index.row(), 2);
+            QVariant displayValue = QSqlQueryModel::data(textIndex, Qt::DisplayRole);
+            return displayValue.toString();
         } else {
             return QSqlQueryModel::data(index, role);
         }

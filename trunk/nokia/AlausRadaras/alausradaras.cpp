@@ -5,6 +5,7 @@
 #include <QMenuBar>
 #include <QDialog>
 #include "brandtabs.h"
+#include "beermap.h"
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AlausRadaras)
@@ -28,6 +29,14 @@ void AlausRadaras::on_btnBrands_clicked()
 {
     brandTabs->setWindowFlags( brandTabs->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
     brandTabs->showFullScreen();
+}
+
+void AlausRadaras::on_btnNear_clicked()
+{
+
+        BeerMap *map = new BeerMap(this);
+        map->showFullScreen();
+
 }
 
 AlausRadaras::~AlausRadaras()
