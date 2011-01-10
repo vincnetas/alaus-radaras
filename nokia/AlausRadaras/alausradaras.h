@@ -22,6 +22,7 @@ public slots:
     void dbInitFinished();
 private slots:
     void on_btnBrands_clicked();
+    void on_btnNear_clicked();
 private:
     Ui::AlausRadaras *ui;
     BrandTabs *brandTabs;
