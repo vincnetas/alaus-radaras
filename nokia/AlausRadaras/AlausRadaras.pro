@@ -8,6 +8,7 @@ QT       += core gui
 QT       += sql
 QT       += thread
 QT       += webkit
+QT       += console
 TARGET = AlausRadaras
 TEMPLATE = app
 
@@ -19,7 +20,8 @@ SOURCES += main.cpp\
     countrylistmodel.cpp \
     brandtabs.cpp \
     taglistmodel.cpp \
-    beermap.cpp
+    beermap.cpp \
+    pubview.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -28,14 +30,16 @@ HEADERS  += alausradaras.h \
     countrylistmodel.h \
     brandtabs.h \
     taglistmodel.h \
-    beermap.h
+    beermap.h \
+    pubview.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
     brandtabs.ui \
-    beermap.ui
+    beermap.ui \
+    pubview.ui
 
-CONFIG += mobility
+CONFIG += mobility debug
 MOBILITY = 
 
 symbian {

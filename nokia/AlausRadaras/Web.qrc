@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>web/index.html</file>
+        <file>web/json2.js</file>
+        <file>web/pin.png</file>
     </qresource>
 </RCC>
