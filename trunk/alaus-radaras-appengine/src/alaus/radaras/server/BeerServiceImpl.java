@@ -25,10 +25,6 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	private static final long serialVersionUID = -5405571273602475982L;
 
-	public List<Pub> greetServer(String input) throws IllegalArgumentException {
-		return getPubDao().getAll();
-	}
-
 	/**
 	 * @return the pubDao
 	 */

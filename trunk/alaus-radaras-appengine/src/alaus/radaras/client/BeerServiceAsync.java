@@ -12,8 +12,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface BeerServiceAsync {
 	
-	void greetServer(String input, AsyncCallback<List<Pub>> callback) throws IllegalArgumentException;
-
 	void findPubs(Location location, double radius, AsyncCallback<List<Pub>> callback);
 
 	void savePub(Pub pub, AsyncCallback<Void> callback);

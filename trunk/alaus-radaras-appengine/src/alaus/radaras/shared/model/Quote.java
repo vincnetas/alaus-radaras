@@ -12,7 +12,10 @@ public class Quote extends Updatable {
 	
 	@Persistent
 	private String text;
-
+	
+	public Quote() {
+		
+	}
 	
 	public Quote(String text, int index) {
 		setIndex(index);
