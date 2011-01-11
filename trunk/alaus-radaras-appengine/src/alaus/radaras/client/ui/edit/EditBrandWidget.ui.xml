@@ -13,6 +13,5 @@
 		<g:Label>Country</g:Label><g:SuggestBox ui:field="country"></g:SuggestBox>
 		<g:Label>Hometown</g:Label><g:SuggestBox ui:field="hometown"></g:SuggestBox>
 		<g:Label>Description</g:Label><g:TextArea ui:field="description"></g:TextArea>
-		<g:Label>Tags</g:Label><g:TextBox ui:field="tags"></g:TextBox>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -5,7 +5,9 @@ package alaus.radaras.server.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -94,6 +96,20 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 			} finally {
 				query.closeAll();
 			}
+		} finally {
+			pm.close();
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#load(java.util.Set)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public Set<T> load(Set<String> ids) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			return new HashSet<T>(pm.detachCopyAll(pm.getObjectsById(ids, false)));
 		} finally {
 			pm.close();
 		}
