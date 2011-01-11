@@ -13,7 +13,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("beerService")
 public interface BeerService extends RemoteService {
-	List<Pub> greetServer(String name) throws IllegalArgumentException;
 	
 	List<Pub> findPubs(Location location, double radius);
 	

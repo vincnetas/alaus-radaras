@@ -20,14 +20,12 @@ import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
-import alaus.radaras.shared.model.Quote;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -73,13 +71,14 @@ public class UploadServlet extends HttpServlet {
 				String name = item.getFieldName();
 				if ("file".equalsIgnoreCase(name)) {
 					InputStream inputStream = item.openStream();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 					
 					String type = item.getName();
 					
 					if ("brands.txt".equalsIgnoreCase(type)) {
-						getBrandDao().save(parseBrands(inputStream));
+						getBrandDao().save(parseBrands(reader));
 					} else if ("pubs.txt".equalsIgnoreCase(type)) {
-						getPubDao().save(parsePubs(inputStream));
+						getPubDao().save(parsePubs(reader));
 					} else {
 						throw new ServletException("Unknown type : " + type);
 					}
@@ -95,9 +94,8 @@ public class UploadServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
-	private List<Brand> parseBrands(InputStream inputStream) throws IOException {
+	private List<Brand> parseBrands(BufferedReader reader) throws IOException {
 		List<Brand> result = new ArrayList<Brand>();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
 		String line = null;
 		while ((line = reader.readLine()) != null) {
@@ -113,10 +111,9 @@ public class UploadServlet extends HttpServlet {
 		return result;
 	}
 
-	private List<Pub> parsePubs(InputStream inputStream) throws NumberFormatException, IOException {
+	private List<Pub> parsePubs(BufferedReader reader) throws NumberFormatException, IOException {
 		List<Pub> result = new ArrayList<Pub>();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
+		
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			String[] columns = line.split("\t");
@@ -131,25 +128,6 @@ public class UploadServlet extends HttpServlet {
 			result.add(pub);
 		}
 
-		return result;
-	}
-
-	private List<Quote> parseQuotes(InputStream inputStream) throws IOException {
-		List<Quote> result = new ArrayList<Quote>();
-		
-		BufferedReader reader = new BufferedReader(	new InputStreamReader(inputStream));
-		String line;
-		
-		while ((line = reader.readLine()) != null) {
-			String[] columns = line.split("\t");
-			
-			Quote qoute = new Quote(
-					columns[1],
-					Integer.valueOf(columns[0]));
-
-			result.add(	qoute);
-		}
-		
 		return result;
 	}
 

@@ -11,5 +11,6 @@
 		<r:CityPanel></r:CityPanel>
 		<r:BeerPanel></r:BeerPanel>
 		<g:Button ui:field="addPubButton">Add</g:Button>
+		<g:Button ui:field="uploadButton">Upload</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -20,13 +20,6 @@ public class BeerLocation implements Serializable {
 
 	private Set<String> tags;
 
-	public BeerLocation(String title, Location location, Set<String> beerIds, Set<String> tags) {
-		setTitle(title);
-		setLocation(location);
-		setBeerIds(beerIds);
-		setTags(tags);
-	}
-
 	/**
 	 * @return the title
 	 */

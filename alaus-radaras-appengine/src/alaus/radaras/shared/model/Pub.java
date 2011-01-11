@@ -45,10 +45,6 @@ public class Pub extends Updatable {
 	@Persistent
 	private Set<String> beerIds;
 	
-	public BeerLocation getBeerLocation() {
-		return new BeerLocation(getTitle(), getLocation(), getBeerIds(), getTags());
-	}
-	
 	/**
 	 * @return the title
 	 */
