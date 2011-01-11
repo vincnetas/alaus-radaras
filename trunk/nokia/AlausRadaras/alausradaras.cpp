@@ -35,14 +35,15 @@ void AlausRadaras::on_btnNear_clicked()
 {
 
         BeerMap *map = new BeerMap(this);
+        map->showBeerMap(ALL,"");
         map->showFullScreen();
 
 }
 
 AlausRadaras::~AlausRadaras()
 {
-    delete dialog;
+  //  delete dialog;
     delete ui;
-    delete brandTabs;
+   // delete brandTabs;
     delete dbManager;
 }

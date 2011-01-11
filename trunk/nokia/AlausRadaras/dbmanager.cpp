@@ -288,10 +288,10 @@ void DbManager::insertAssociations(QSqlQuery &query)
 
         qDebug() << "Inserting brand<->pub association: ";
         QStringList pubs = columns.at(2).split(",");
-        query.prepare("INSERT INTO pubs_brands VALUES (:brand_id, :pub_id)");
+        query.prepare("INSERT INTO pubs_brands VALUES (:pub_id,:brand_id)");
         for (int i = 0; i < pubs.length(); i++) {
             query.bindValue(":brand_id", columns.at(0));
-            query.bindValue(":text", pubs.at(i).trimmed());
+            query.bindValue(":pub_id", pubs.at(i).trimmed());
             query.exec();
             if(query.lastError().isValid())
                 qDebug() << query.lastError();

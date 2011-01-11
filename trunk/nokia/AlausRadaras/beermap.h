@@ -7,6 +7,8 @@ namespace Ui {
     class BeerMap;
 }
 
+enum BeerMapType { BRAND, COUNTRY, TAG, ALL };
+
 class BeerMap : public QMainWindow
 {
     Q_OBJECT
@@ -14,9 +16,18 @@ class BeerMap : public QMainWindow
 public:
     explicit BeerMap(QWidget *parent = 0);
     ~BeerMap();
-
+    void showBeerMap(BeerMapType type, QString id);
 private:
     Ui::BeerMap *ui;
+    BeerMapType type;
+    QString id;
+
+private slots:
+    void pageLoad_finished(bool ok);
+    void attachJavascript();
+public slots:
+    QString getMarkerData();
+    void showPub(QString pubId);
 };
 
 #endif // BEERMAP_H
