@@ -1,9 +1,12 @@
 package alaus.radaras.server;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import alaus.radaras.client.BeerService;
+import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
@@ -19,6 +22,9 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 
 	@Inject
 	private PubDao pubDao;
+	
+	@Inject
+	private BeerDao beerDao;
 
 	/**
 	 * 
@@ -52,6 +58,43 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	public void savePub(Pub pub) {
 		getPubDao().save(pub);
 	}
+
+	@Override
+	public List<Beer> getBeerSuggestions(String queryString, int limit) {
+		List<Beer> beers = new ArrayList<Beer>();
+		
+		Beer beer; 
+
+		beer = new Beer();
+		beer.setTitle("Alus vienas " + limit);
+		beers.add(beer);
+		
+		beer = new Beer();
+		beer.setTitle("Alus du");
+		beers.add(beer);
+		
+		beer = new Beer();
+		beer.setTitle("Alus trys");
+		beers.add(beer);
+		
+		return beers;
+	}
+
+	/**
+	 * @return the beerDao
+	 */
+	public BeerDao getBeerDao() {
+		return beerDao;
+	}
+
+	/**
+	 * @param beerDao the beerDao to set
+	 */
+	public void setBeerDao(BeerDao beerDao) {
+		this.beerDao = beerDao;
+	}
+	
+	
 	
 	
 }
