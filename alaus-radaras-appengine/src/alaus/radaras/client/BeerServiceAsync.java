@@ -2,6 +2,7 @@ package alaus.radaras.client;
 
 import java.util.List;
 
+import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
@@ -15,5 +16,7 @@ public interface BeerServiceAsync {
 	void findPubs(Location location, double radius, AsyncCallback<List<Pub>> callback);
 
 	void savePub(Pub pub, AsyncCallback<Void> callback);
+
+	void getBeerSuggestions(String queryString, int limit, AsyncCallback<List<Beer>> callback);
 	
 }

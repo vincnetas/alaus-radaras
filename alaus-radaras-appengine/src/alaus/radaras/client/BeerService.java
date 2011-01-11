@@ -2,6 +2,7 @@ package alaus.radaras.client;
 
 import java.util.List;
 
+import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
@@ -17,4 +18,6 @@ public interface BeerService extends RemoteService {
 	List<Pub> findPubs(Location location, double radius);
 	
 	void savePub(Pub pub);
+	
+	List<Beer> getBeerSuggestions(String queryString, int limit);
 }

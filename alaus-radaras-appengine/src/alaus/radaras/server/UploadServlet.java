@@ -4,11 +4,15 @@
 package alaus.radaras.server;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +27,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -79,6 +87,15 @@ public class UploadServlet extends HttpServlet {
 						getBrandDao().save(parseBrands(reader));
 					} else if ("pubs.txt".equalsIgnoreCase(type)) {
 						getPubDao().save(parsePubs(reader));
+					} else if ("pubs.json".equals(type)){
+						List<Pub> pubs = parseJson(reader, new TypeToken<Map<String, List<Pub>>>(){}.getType(), "pubs");
+						getPubDao().save(pubs);
+					} else if ("brands.json".equals(type)){
+						List<Brand> brands = parseJson(reader, new TypeToken<Map<String, List<Brand>>>(){}.getType(), "brands");
+						getBrandDao().save(brands);
+					} else if ("beers.json".equals(type)){
+						List<Beer> beers = parseJson(reader, new TypeToken<Map<String, List<Beer>>>(){}.getType(), "beers");
+						getBeerDao().save(beers);
 					} else {
 						throw new ServletException("Unknown type : " + type);
 					}
@@ -173,5 +190,9 @@ public class UploadServlet extends HttpServlet {
 		this.brandDao = brandDao;
 	}
 	
-	
+	private <T> List<T> parseJson(Reader reader, Type type, String name) throws FileNotFoundException {
+		Gson gson = new GsonBuilder().create();
+		Map<String, List<T>> fromJson = gson.fromJson(reader, type);
+		return fromJson.get(name);
+	}	
 }

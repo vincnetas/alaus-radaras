@@ -52,11 +52,36 @@ public class JsonDataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, Object[]> data = new HashMap<String, Object[]>();
 		
-		data.put("brands", getBrandDao().getAll().toArray());
-		data.put("beers", getBeerDao().getAll().toArray());
-		data.put("pubs", getPubDao().getAll().toArray());
+		String fileName = "data.json";
+		String what = req.getParameter("what");
+		if (what == null) {
+			data.put("brands", getBrandDao().getAll().toArray());	
+			data.put("beers", getBeerDao().getAll().toArray());	
+			data.put("pubs", getPubDao().getAll().toArray());	
+		} else if (what.equalsIgnoreCase("brands")) {
+			data.put("brands", getBrandDao().getAll().toArray());	
+			fileName = "brands.json";
+		} else if (what.equalsIgnoreCase("beers")) {
+			data.put("beers", getBeerDao().getAll().toArray());
+			fileName = "beers.json";
+		} else if (what.equalsIgnoreCase("pubs")) {
+			data.put("pubs", getPubDao().getAll().toArray());
+			fileName = "pubs.json";
+		} else {
+			data.put("brands", getBrandDao().getAll().toArray());	
+			data.put("beers", getBeerDao().getAll().toArray());	
+			data.put("pubs", getPubDao().getAll().toArray());	
+		}
 		
-		Gson gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
+		resp.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		resp.getWriter().print(getGson().toJson(data));
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
+	
+	private Gson getGson() {
+		return new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
 			
 			@Override
 			public boolean shouldSkipField(FieldAttributes f) {
@@ -74,12 +99,6 @@ public class JsonDataServlet extends HttpServlet {
 				return false;
 			}
 		}).create();
-		
-		resp.getWriter().print(gson.toJson(data));
-				
-		resp.setStatus(HttpServletResponse.SC_OK);
-		
-		
 	}
 
 	/**
