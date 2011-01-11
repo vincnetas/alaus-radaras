@@ -1,20 +1,16 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:alaus.radaras.client.ui.edit">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:alaus.radaras.client.ui.edit.suggest">
 	<ui:style>
 		.important {
 			font-weight: bold;
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label>Title</g:Label><g:TextBox ui:field="title" width="90%"></g:TextBox>
-		<g:Label>Description</g:Label><g:TextArea ui:field="description" width="90%"></g:TextArea>
+		<g:Label>Title</g:Label><g:TextBox ui:field="title" width="200px"></g:TextBox>
 		<g:Label>Beers</g:Label>
 		<e:BeerSuggestBox ui:field="beerSuggest"></e:BeerSuggestBox>
-		<g:HTMLPanel ui:field="beers">
-			<g:Label>Švyturio Baltas</g:Label>
-			<g:Label>Švyturio Baltas</g:Label>
-			<g:Label>Švyturio Baltas</g:Label>
+		<g:HTMLPanel ui:field="beerPanel">
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

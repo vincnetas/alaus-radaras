@@ -114,6 +114,29 @@ public class Updatable implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		
+		if (obj instanceof Updatable) {
+			Updatable updatable = (Updatable) obj;
+			if (updatable.getId() != null && getId() != null) {
+				result = updatable.getId().equals(getId());
+			}
+		}
+		
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}}

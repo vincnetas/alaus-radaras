@@ -2,6 +2,7 @@ package alaus.radaras.server.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import alaus.radaras.shared.model.Updatable;
 
@@ -10,6 +11,8 @@ public interface BaseDao<T extends Updatable> {
 	void save(T object);
 	
 	void save(List<T> list);
+	
+	Set<T> load(Set<String> ids);
 
 	List<T> getAll();
 	

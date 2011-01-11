@@ -3,6 +3,8 @@
  */
 package alaus.radaras.client;
 
+import alaus.radaras.client.command.Command;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerManager;
 
@@ -30,6 +32,10 @@ public class Stat {
 		}
 		
 		return beerService;
+	}
+	
+	public static void execute(Command command) {
+		command.execute();
 	}
 	
 }
