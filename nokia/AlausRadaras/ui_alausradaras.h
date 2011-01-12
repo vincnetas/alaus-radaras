@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'alausradaras.ui'
 **
-** Created: Tue Jan 11 22:25:17 2011
+** Created: Tue Jan 11 19:26:29 2011
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
