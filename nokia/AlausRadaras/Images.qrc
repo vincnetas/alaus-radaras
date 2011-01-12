@@ -4,5 +4,6 @@
         <file>images/background.png</file>
         <file>images/batonas.png</file>
         <file>images/map_01.png</file>
+        <file>images/bok_title.png</file>
     </qresource>
 </RCC>

@@ -38,11 +38,11 @@ bool DbManager::init()
 
 bool DbManager::isDbLatest()
 {
-//    QSqlQuery query("PRAGMA user_version");
-//         while (query.next()) {
-//             uint userVersion = query.value(0).toUInt();
-//             return userVersion == DB_VERSION;
-//         }
+    QSqlQuery query("PRAGMA user_version");
+         while (query.next()) {
+             uint userVersion = query.value(0).toUInt();
+             return userVersion == DB_VERSION;
+         }
     return false;
 }
 
@@ -342,7 +342,7 @@ void DbManager::dropTables()
 
 DbManager::~DbManager()
 {
-    this->dropTables();
+    //this->dropTables();
     if(db != NULL) {
         if(db->isOpen()) {
             db->close();
