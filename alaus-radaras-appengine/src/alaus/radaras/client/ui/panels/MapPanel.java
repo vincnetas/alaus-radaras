@@ -22,6 +22,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.maps.client.InfoWindow;
 import com.google.gwt.maps.client.InfoWindowContent;
 import com.google.gwt.maps.client.MapWidget;
+import com.google.gwt.maps.client.control.Control;
+import com.google.gwt.maps.client.control.ControlAnchor;
+import com.google.gwt.maps.client.control.ControlPosition;
+import com.google.gwt.maps.client.control.LargeMapControl3D;
 import com.google.gwt.maps.client.event.MapClickHandler;
 import com.google.gwt.maps.client.event.MapMouseMoveHandler;
 import com.google.gwt.maps.client.event.MarkerClickHandler;
@@ -53,6 +57,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		mapWidget.setZoomLevel(8);
 		mapWidget.setScrollWheelZoomEnabled(true);
 		mapWidget.addMapClickHandler(new BeerMapClickHandler());
+		mapWidget.addControl(new LargeMapControl3D(), new ControlPosition(ControlAnchor.TOP_RIGHT, 20, 20));
 		
 		Stat.getHandlerManager().addHandler(StartAddPubHandler.type, this);
 		Stat.getHandlerManager().addHandler(PubAddedHandler.type, this);

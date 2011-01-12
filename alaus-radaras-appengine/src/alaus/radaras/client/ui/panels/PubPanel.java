@@ -18,6 +18,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -35,6 +36,9 @@ public class PubPanel extends Composite {
 	@UiField
 	VerticalPanel beerPanel;
 	
+	@UiField
+	Image editImage;
+	
 	private Pub pub;
 	
 	private final Map<String, BeerInfoWidget> beerWidgets = new HashMap<String, BeerInfoWidget>();
@@ -45,7 +49,7 @@ public class PubPanel extends Composite {
 		setPub(pub);
 	}
 	
-	@UiHandler("title")
+	@UiHandler("editImage")
 	void onEditButtonClick(ClickEvent event) {
 		final EditPubWidget editPubWidget = new EditPubWidget(pub);
 		EditDialog editPubDialog = new EditDialog(editPubWidget) {

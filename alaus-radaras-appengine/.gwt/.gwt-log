@@ -4534,3 +4534,83 @@ Rebinding alaus.radaras.client.ui.CityPanel.CityPanelUiBinder
 Rebinding alaus.radaras.client.ui.CityPanel_CityPanelUiBinderImpl_designTime1294829751792_GenBundle
    Adding '1' new generated units
       Removing invalidated units
+Refreshing module 'beerEngine'
+   Refreshing resources
+   Refreshing resources
+   Refreshing resources
+Validating newly compiled units
+   [ERROR] Errors in 'file:/C:/runit/workspace/alaus-radaras-appengine/src/alaus/radaras/client/ui/panels/MapPanel.java'
+      [ERROR] Line 56: Syntax error on token ")", delete this token
+      [ERROR] Line 58: Stat.getHandlerManager cannot be resolved to a type
+      [ERROR] Line 58: Syntax error, insert ")" to complete Expression
+Removing invalidated units
+Rebinding com.google.gwt.user.client.impl.WindowImplIE.Resources
+   Adding '1' new generated units
+      Removing invalidated units
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for percentPattern()
+         Generating method body for zeroDigit()
+         Generating method body for scientificPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for notANumber()
+         Generating method body for minusSign()
+         Generating method body for infinity()
+         Generating method body for exponentialSymbol()
+         Generating method body for plusSign()
+         Generating method body for currencyPattern()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for groupingSeparator()
+         Generating method body for perMill()
+         Generating method body for monetarySeparator()
+         Generating method body for decimalPattern()
+         Generating method body for percent()
+         Generating method body for defCurrencyCode()
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel.PubPanelUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      validating {style.pubTitle}
+      validating {style.editImage}
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel_PubPanelUiBinderImpl_designTime1294836509070_GenBundle
+   Adding '1' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel.PubPanelUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      validating {style.pubTitle}
+      validating {style.editImage}
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel_PubPanelUiBinderImpl_designTime1294836509758_GenBundle
+   Adding '1' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel.PubPanelUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      validating {style.pubTitle}
+      validating {style.editImage}
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel_PubPanelUiBinderImpl_designTime1294836534758_GenBundle
+   Adding '1' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel.PubPanelUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      validating {style.pubTitle}
+      validating {style.editImage}
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel_PubPanelUiBinderImpl_designTime1294837579560_GenBundle
+   Adding '1' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel.PubPanelUiBinder
+   Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+      validating {style.pubTitle}
+      validating {style.editImage}
+   Adding '3' new generated units
+      Removing invalidated units
+Rebinding alaus.radaras.client.ui.panels.PubPanel_PubPanelUiBinderImpl_designTime1294837579747_GenBundle
+   Adding '1' new generated units
+      Removing invalidated units
