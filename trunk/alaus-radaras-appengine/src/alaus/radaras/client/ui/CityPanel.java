@@ -3,9 +3,18 @@
  */
 package alaus.radaras.client.ui;
 
+import alaus.radaras.client.Stat;
+import alaus.radaras.client.events.ChangeUserLocationEvent;
+import alaus.radaras.shared.model.IPLocation;
+
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -15,6 +24,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class CityPanel extends Composite {
 
 	private static CityPanelUiBinder uiBinder = GWT.create(CityPanelUiBinder.class);
+	
+	@UiField TextBox textBox;
 
 	interface CityPanelUiBinder extends UiBinder<Widget, CityPanel> {
 	}
@@ -32,10 +43,27 @@ public class CityPanel extends Composite {
 	 */
 	public CityPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		Stat.getBeerService().getMyLocation(new AsyncCallback<IPLocation>() {
+			
+			@Override
+			public void onSuccess(IPLocation result) {
+				String value = result.toString();
+				if (!value.isEmpty()) {
+					textBox.setText(value);
+					Stat.getHandlerManager().fireEvent(new ChangeUserLocationEvent(value));
+				}
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub				
+			}
+		});
 	}
-
-	public CityPanel(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
-
+	
+	@UiHandler("textBox")
+	void onTextBoxValueChange(ValueChangeEvent<String> event) {
+		Stat.getHandlerManager().fireEvent(new ChangeUserLocationEvent(event.getValue()));
 	}
 }

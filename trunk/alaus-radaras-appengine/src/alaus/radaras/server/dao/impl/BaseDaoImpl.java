@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -107,9 +108,17 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Set<T> load(Set<String> ids) {
+		Set<T> result = new HashSet<T>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			return new HashSet<T>(pm.detachCopyAll(pm.getObjectsById(ids, false)));
+			for (String id : ids) {
+				try {
+					result.add(pm.detachCopy(pm.getObjectById(getClazz(), id)));
+				} catch (JDOObjectNotFoundException notFoundException) {
+					// Ignore
+				}
+			}
+			return result;
 		} finally {
 			pm.close();
 		}

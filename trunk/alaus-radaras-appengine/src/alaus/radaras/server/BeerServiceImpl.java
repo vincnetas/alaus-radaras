@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import alaus.radaras.client.BeerService;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
+import alaus.radaras.shared.model.IPLocation;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
@@ -31,6 +35,9 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	
 	@Inject
 	private BrandDao brandDao;
+	
+	@Inject
+	private IPLocator locator;
 
 	/**
 	 * 
@@ -151,4 +158,31 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	public Set<Brand> loadBrand(Set<String> brandIds) {
 		return getBrandDao().load(brandIds);
 	}
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.client.BeerService#getMyLocation()
+	 */
+	@Override
+	public IPLocation getMyLocation() {
+		HttpServletRequest request = perThreadRequest.get();
+		return getLocator().locate(request.getRemoteAddr());
+	}
+
+	/**
+	 * @return the locator
+	 */
+	public IPLocator getLocator() {
+		return locator;
+	}
+
+	/**
+	 * @param locator the locator to set
+	 */
+	public void setLocator(IPLocator locator) {
+		this.locator = locator;
+	}
+	
+	
+	
+	
 }

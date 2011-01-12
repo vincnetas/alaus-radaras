@@ -1,5 +1,6 @@
 package alaus.radaras.shared.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.jdo.annotations.IdentityType;
@@ -194,6 +195,10 @@ public class Pub extends Updatable {
 	 * @return the beerIds
 	 */
 	public Set<String> getBeerIds() {
+		if (beerIds == null) {
+			beerIds = new HashSet<String>();
+		}
+		
 		return beerIds;
 	}
 

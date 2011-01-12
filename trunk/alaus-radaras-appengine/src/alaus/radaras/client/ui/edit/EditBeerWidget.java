@@ -1,11 +1,12 @@
 package alaus.radaras.client.ui.edit;
 
+import java.util.Set;
+
+import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
-import alaus.radaras.client.command.SaveBeerCommand;
-import alaus.radaras.client.events.saved.BeerSavedHandler;
-import alaus.radaras.client.ui.dialogs.EditDialog;
 import alaus.radaras.client.ui.edit.suggest.BrandSuggestBox;
 import alaus.radaras.client.ui.edit.suggest.BrandSuggestion;
+import alaus.radaras.shared.Utils;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 
@@ -14,11 +15,12 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class EditBeerWidget extends SaveComposite implements SelectionHandler<Suggestion> {
+public class EditBeerWidget extends Composite implements SelectionHandler<Suggestion> {
 
 	private static EditBeerWidgetUiBinder uiBinder = GWT.create(EditBeerWidgetUiBinder.class);
 
@@ -30,6 +32,8 @@ public class EditBeerWidget extends SaveComposite implements SelectionHandler<Su
 	
 	@UiField
 	BrandSuggestBox brandSuggest;
+	
+	private Brand brand;
 	
 	private Beer beer;
 	
@@ -52,44 +56,59 @@ public class EditBeerWidget extends SaveComposite implements SelectionHandler<Su
 	}
 	
 	private void createBrand(String brandNameSuggestion) {
-		
+		Brand brand = new Brand();
+		brand.setTitle(brandNameSuggestion);
+		Stat.getBeerService().saveBrand(brand, new BaseAsyncCallback<Brand>() {
+
+			@Override
+			public void onSuccess(Brand result) {
+				setBrand(result);
+			}
+		});
 	}
 	
-	private void setBrand(Brand brand) {
-		
+	/**
+	 * @return the brand
+	 */
+	public Brand getBrand() {
+		return brand;
+	}
+
+	/**
+	 * @param brand the brand to set
+	 */
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+		brandSuggest.setText(brand.getTitle());					
+
 	}
 
 	/**
 	 * @param beer the beer to set
 	 */
 	public void setBeer(Beer beer) {
-		this.beer = beer;asd
+		title.setText(beer.getTitle());
+		Stat.getBeerService().loadBrand(Utils.set(beer.getBrandId()), new BaseAsyncCallback<Set<Brand>>() {
+			
+			@Override
+			public void onSuccess(Set<Brand> result) {
+				if (result.size() == 1) {
+					setBrand(result.iterator().next());
+				}
+			}
+			
+		});
+		
+		this.beer = beer;
 	}
 
 	/**
 	 * @return the beer
 	 */
 	public Beer getBeer() {
-		return beer;asd
-	}
-
-	private BeerSavedHandler handler = null;
-	
-	@Override
-	public void save(final EditDialog editDialog) {
-		if (handler == null) {
-			handler = new BeerSavedHandler() {
-
-				@Override
-				public void saved(Beer beer) {
-					editDialog.hide();
-					Stat.getHandlerManager().removeHandler(BeerSavedHandler.type, this);
-				}
-			};
-			
-			Stat.getHandlerManager().addHandler(BeerSavedHandler.type, handler);
-		}		
+		beer.setBrandId(brand.getId());
+		beer.setTitle(title.getText());
 		
-		Stat.execute(new SaveBeerCommand(getBeer()));		
+		return beer;
 	}
 }
