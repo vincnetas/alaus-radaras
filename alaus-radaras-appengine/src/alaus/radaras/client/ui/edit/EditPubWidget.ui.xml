@@ -5,12 +5,14 @@
 		.important {
 			font-weight: bold;
 		}
+		.label {
+			font-weight: bold;
+		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label>Title</g:Label><g:TextBox ui:field="title" width="200px"></g:TextBox>
-		<g:Label>Beers</g:Label>
+		<g:Label styleName="{style.label}">Title</g:Label><g:TextBox ui:field="title" width="200px"></g:TextBox>
+		<g:Label styleName="{style.label}">Beers</g:Label>		
+		<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
 		<e:BeerSuggestBox ui:field="beerSuggest"></e:BeerSuggestBox>
-		<g:HTMLPanel ui:field="beerPanel">
-		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

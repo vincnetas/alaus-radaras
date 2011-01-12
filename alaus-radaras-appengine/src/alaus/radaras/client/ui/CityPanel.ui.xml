@@ -14,6 +14,6 @@
 	</ui:style>
 	<g:HTMLPanel width="100%">
 		<g:Image styleName="{style.textBox}" url="/img/city.gif" height="32px" width="32px"/>
-		<g:TextBox styleName="{style.textBox}"/>
+		<g:TextBox styleName="{style.textBox}" ui:field="textBox"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

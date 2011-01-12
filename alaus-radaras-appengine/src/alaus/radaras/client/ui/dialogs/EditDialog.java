@@ -3,20 +3,12 @@
  */
 package alaus.radaras.client.ui.dialogs;
 
-import alaus.radaras.client.Stat;
-import alaus.radaras.client.events.PubAddedEvent;
-import alaus.radaras.client.ui.edit.EditPubWidget;
-import alaus.radaras.client.ui.edit.SaveComposite;
-import alaus.radaras.shared.model.Pub;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -25,7 +17,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Vincentas
  * 
  */
-public class EditDialog extends DialogBox {
+public abstract class EditDialog extends DialogBox {
 
 	private static DialogsUiBinder uiBinder = GWT.create(DialogsUiBinder.class);
 
@@ -33,12 +25,15 @@ public class EditDialog extends DialogBox {
 	}
 
 	@UiField(provided=true)
-	SaveComposite widget;
+	Widget widget;
 	
 	@UiField 
 	Button okButton;
 	
-	public EditDialog(SaveComposite widget) {
+	@UiField 
+	Button cancelButton;
+	
+	public EditDialog(Widget widget) {
 		this.widget = widget;		
 		uiBinder.createAndBindUi(this);
 	}
@@ -51,7 +46,10 @@ public class EditDialog extends DialogBox {
 	}
 	
 	@UiHandler("okButton")
-	void onOkButtonClick(ClickEvent event) {
-		widget.save(this);
+	public abstract void onOkButtonClick(ClickEvent event);
+	
+	@UiHandler("cancelButton")
+	public void onCancelButtonClick(ClickEvent event) {
+		hide();
 	}
 }

@@ -5,10 +5,17 @@
 		.important {
 			font-weight: bold;
 		}
+		.pubTitle {
+			font-size: larger;
+			font-weight: bold;
+			cursor: pointer;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label ui:field="title"></g:Label>
-		<g:Label ui:field="description"></g:Label>
-		<g:Button ui:field="editButton">edit</g:Button>
+		<g:Label styleName="{style.pubTitle}" ui:field="title"></g:Label>				
+		<g:Label>We are serving</g:Label>
+		<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

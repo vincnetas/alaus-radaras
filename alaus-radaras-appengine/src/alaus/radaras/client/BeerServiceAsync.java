@@ -5,6 +5,7 @@ import java.util.Set;
 
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
+import alaus.radaras.shared.model.IPLocation;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
@@ -40,5 +41,9 @@ public interface BeerServiceAsync {
 
 
 	void loadBrand(Set<String> brandIds, AsyncCallback<Set<Brand>> callback);
+
+
+
+	void getMyLocation(AsyncCallback<IPLocation> callback);
 	
 }

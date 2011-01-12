@@ -2,7 +2,6 @@
 <module rename-to='beerEngine'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
-  <inherits name='com.google.gwt.dev.util'/>
   <inherits name='com.google.gwt.maps.GoogleMaps'/>
   <inherits name='com.capsula.gwt.reversegeocoder.ReverseGeocoder'/>
 
