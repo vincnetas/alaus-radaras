@@ -14,7 +14,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     dbManager = new DbManager();
     dbManager->init();
 
-    brandTabs = new BrandTabs(this);
+    brandTabs = NULL;
 
     QAction* exitAction = new QAction(this);
     exitAction->setText("Remove");
@@ -27,6 +27,7 @@ void AlausRadaras::dbInitFinished()
 
 void AlausRadaras::on_btnBrands_clicked()
 {
+    brandTabs = new BrandTabs(this);
     brandTabs->setWindowFlags( brandTabs->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
     brandTabs->showFullScreen();
 }

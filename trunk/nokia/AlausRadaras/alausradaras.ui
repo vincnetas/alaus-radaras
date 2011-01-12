@@ -6,22 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>480</height>
+    <width>320</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>AlausRadaras</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow, QWidget, QDialog { border-image: url(:/images/background.png); }</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="btnNear">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>130</y>
-      <width>191</width>
-      <height>81</height>
+      <x>20</x>
+      <y>230</y>
+      <width>281</width>
+      <height>111</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/images/batonas.png);</string>
     </property>
     <property name="text">
      <string>Arti</string>
@@ -30,14 +36,49 @@
    <widget class="QPushButton" name="btnBrands">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>240</y>
-      <width>191</width>
-      <height>81</height>
+      <x>20</x>
+      <y>360</y>
+      <width>281</width>
+      <height>111</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/images/batonas.png)</string>
     </property>
     <property name="text">
      <string>Rūšys</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLucky">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>490</y>
+      <width>281</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/images/batonas.png)</string>
+    </property>
+    <property name="text">
+     <string>Ištrorškau</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>251</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:url(:/images/bok_title.png);</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>
