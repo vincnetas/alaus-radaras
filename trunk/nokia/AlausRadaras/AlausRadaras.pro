@@ -6,9 +6,7 @@
 
 QT       += core gui
 QT       += sql
-QT       += thread
-QT       += webkit
-QT       += console
+QT       += network
 TARGET = AlausRadaras
 TEMPLATE = app
 
@@ -52,5 +50,4 @@ symbian {
 RESOURCES += \
     Assets.qrc \
     Brands.qrc \
-    Images.qrc \
-    Web.qrc
+    Images.qrc

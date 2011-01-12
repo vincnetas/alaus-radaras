@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
+    <width>360</width>
     <height>640</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <widget class="QPushButton" name="btnNear">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>230</y>
       <width>281</width>
       <height>111</height>
@@ -36,7 +36,7 @@
    <widget class="QPushButton" name="btnBrands">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>360</y>
       <width>281</width>
       <height>111</height>
@@ -52,10 +52,10 @@
    <widget class="QPushButton" name="btnLucky">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>40</x>
       <y>490</y>
       <width>281</width>
-      <height>131</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="styleSheet">
