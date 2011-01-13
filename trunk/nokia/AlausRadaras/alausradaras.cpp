@@ -5,7 +5,7 @@
 #include <QMenuBar>
 #include <QDialog>
 #include "brandtabs.h"
-#include "beermap.h"
+#include "publist.h"
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AlausRadaras)
@@ -15,11 +15,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     dbManager->init();
 
     brandTabs = NULL;
-
-    QAction* exitAction = new QAction(this);
-    exitAction->setText("Remove");
-    exitAction->setSoftKeyRole(QAction::NegativeSoftKey);
-    this->addAction(exitAction);
+    map = NULL;
 }
 void AlausRadaras::dbInitFinished()
 {
@@ -35,16 +31,17 @@ void AlausRadaras::on_btnBrands_clicked()
 void AlausRadaras::on_btnNear_clicked()
 {
 
-        BeerMap *map = new BeerMap(this);
-        map->showBeerMap(ALL,"");
+        map = new PubList(this);
+        map->showPubList(ALL,"");
+        map->setWindowFlags(map->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
         map->showFullScreen();
 
 }
 
 AlausRadaras::~AlausRadaras()
 {
-  //  delete dialog;
     delete ui;
-   // delete brandTabs;
+    delete brandTabs;
+    delete map;
     delete dbManager;
 }

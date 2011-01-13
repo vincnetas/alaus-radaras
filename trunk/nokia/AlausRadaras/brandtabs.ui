@@ -11,7 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Alaus tipai</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Images.qrc">
+    <normaloff>:/images/bok_title.png</normaloff>:/images/bok_title.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#BrandTabs { border-image:url(:/images/background.png); } </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -55,6 +62,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
  <connections/>
 </ui>

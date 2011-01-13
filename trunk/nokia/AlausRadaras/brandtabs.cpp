@@ -4,6 +4,7 @@
 #include "countrylistmodel.h"
 #include "taglistmodel.h"
 #include <QMessageBox>
+#include <publist.h>
 
 BrandTabs::BrandTabs(QWidget *parent) :
     QMainWindow(parent),
@@ -26,21 +27,21 @@ BrandTabs::BrandTabs(QWidget *parent) :
     ui->tagListView->setModel(tagsModel);
 
     QAction* backAction = new QAction(this);
-    backAction->setText("Back");
+    backAction->setText("Atgal");
     backAction->setSoftKeyRole(QAction::NegativeSoftKey);
-    this->addAction(backAction);
     connect(backAction, SIGNAL(triggered()), this, SLOT(close()));
+    this->addAction(backAction);
 }
 
 void BrandTabs::brandList_itemClicked(const QModelIndex &current)
 {
-
     QVariant data = current.data(Qt::EditRole);
-    QString dataString = data.toString();
 
-    QMessageBox msgBox;
-     msgBox.setText(dataString);
-  //   msgBox.exec();
+    PubList *map = new PubList(this);
+    map->showPubList(BRAND,data.toString());
+    map->setWindowFlags(map->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
+    map->showFullScreen();
+
 }
 
 BrandTabs::~BrandTabs()

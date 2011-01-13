@@ -11,10 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AlausRadaras</string>
+   <string>Alaus radaras</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Images.qrc">
+    <normaloff>:/images/bok_title.png</normaloff>:/images/bok_title.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow, QWidget, QDialog { border-image: url(:/images/background.png); }</string>
+   <string notr="true">#AlausRadaras { border-image:url(:/images/background.png); } </string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="btnNear">
@@ -37,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>360</y>
+      <y>350</y>
       <width>281</width>
       <height>111</height>
      </rect>
@@ -53,9 +57,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>490</y>
+      <y>470</y>
       <width>281</width>
-      <height>121</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -84,6 +88,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
  <connections/>
 </ui>
