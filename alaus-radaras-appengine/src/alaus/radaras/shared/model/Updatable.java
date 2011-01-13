@@ -33,8 +33,8 @@ public class Updatable implements Serializable {
 	private Date lastUpdate;
 
 	@Persistent
-	private int status = Status.ACTUAL;
-
+	Boolean approved;
+	
 	@Persistent
 	private String updatedBy;
 
@@ -54,21 +54,6 @@ public class Updatable implements Serializable {
 	 */
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
-	}
-
-	/**
-	 * @return the status
-	 */
-	public int getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status
-	 *            the status to set
-	 */
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	/**
@@ -113,6 +98,20 @@ public class Updatable implements Serializable {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}	
+
+	/**
+	 * @return the approved
+	 */
+	public Boolean isApproved() {
+		return (approved != null) ? approved : false;
+	}
+
+	/**
+	 * @param approved the approved to set
+	 */
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
 	}
 
 	/* (non-Javadoc)

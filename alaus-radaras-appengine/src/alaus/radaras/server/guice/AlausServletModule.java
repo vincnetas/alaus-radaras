@@ -12,9 +12,11 @@ import alaus.radaras.server.dao.impl.BeerDaoImpl;
 import alaus.radaras.server.dao.impl.BrandDaoImpl;
 import alaus.radaras.server.dao.impl.IdProviderImpl;
 import alaus.radaras.server.dao.impl.PubDaoImpl;
-import alaus.radaras.server.locator.IPLocatorImpl;
 import alaus.radaras.server.locator.IPLocator;
+import alaus.radaras.server.locator.IPLocatorImpl;
 
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.inject.servlet.ServletModule;
 
 class AlausServletModule extends ServletModule {
@@ -25,6 +27,7 @@ class AlausServletModule extends ServletModule {
 		bind(BeerDao.class).to(BeerDaoImpl.class);
 		bind(BrandDao.class).to(BrandDaoImpl.class);
 		bind(IPLocator.class).to(IPLocatorImpl.class);
+		bind(UserService.class).toInstance(UserServiceFactory.getUserService());		
 		
 		serve("/beerEngine/beerService").with(BeerServiceImpl.class);
 		serve("/data").with(JsonDataServlet.class);		

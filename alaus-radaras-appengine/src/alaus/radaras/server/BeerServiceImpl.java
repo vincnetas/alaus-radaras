@@ -27,6 +27,7 @@ import com.google.inject.Singleton;
 @Singleton
 public class BeerServiceImpl extends RemoteServiceServlet implements BeerService {
 
+	
 	@Inject
 	private PubDao pubDao;
 	
@@ -139,12 +140,6 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	}
 
 	@Override
-	public Brand saveBrand(Brand brand) {
-		getBrandDao().save(brand);
-		return brand;
-	}
-
-	@Override
 	public Set<Beer> loadBeer(Set<String> beerIds) {
 		return getBeerDao().load(beerIds);
 	}
@@ -182,7 +177,30 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 		this.locator = locator;
 	}
 	
-	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.client.BeerService#addPub(alaus.radaras.shared.model.Pub)
+	 */
+	@Override
+	public Pub addPub(Pub pub) {
+		return getPubDao().add(pub);
+	}
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.client.BeerService#addBeer(alaus.radaras.shared.model.Beer)
+	 */
+	@Override
+	public Beer addBeer(Beer beer) {
+		return getBeerDao().add(beer);
+	}
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.client.BeerService#getPubWithModifications(java.lang.String)
+	 */
+	@Override
+	public List<Pub> getPubUpdates(String id) {
+		return getPubDao().getUpdates(id);
+	}
+
 	
 	
 }

@@ -52,7 +52,7 @@ public class PubPanel extends Composite {
 	@UiHandler("editImage")
 	void onEditButtonClick(ClickEvent event) {
 		final EditPubWidget editPubWidget = new EditPubWidget(pub);
-		EditDialog editPubDialog = new EditDialog(editPubWidget) {
+		EditDialog editPubDialog = new EditDialog(editPubWidget, "Edit Pub") {
 			
 			@Override
 			public void onOkButtonClick(ClickEvent event) {

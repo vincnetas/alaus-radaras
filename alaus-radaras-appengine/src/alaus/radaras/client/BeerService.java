@@ -19,22 +19,26 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface BeerService extends RemoteService {
 
 	Set<Beer> loadBeer(Set<String> beerIds);
-	
+
 	Set<Pub> loadPub(Set<String> pubIds);
-	
+
 	Set<Brand> loadBrand(Set<String> brandIds);
-	
+
 	List<Pub> findPubs(Location location, double radius);
-	
+
 	List<Beer> getBeerSuggestions(String queryString, int limit);
 
 	List<Brand> getBrandSuggestions(String queryString, int limit);
 
+	IPLocation getMyLocation();
+
+	Pub addPub(Pub pub);
+
+	Beer addBeer(Beer beer);
+
+	Pub savePub(Pub pub);
+
 	Beer saveBeer(Beer beer);
 	
-	Pub savePub(Pub pub);
-	
-	Brand saveBrand(Brand brand);
-	
-	IPLocation getMyLocation();
+	List<Pub> getPubUpdates(String id);
 }

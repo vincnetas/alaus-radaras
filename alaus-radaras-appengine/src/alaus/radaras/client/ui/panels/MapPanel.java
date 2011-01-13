@@ -34,7 +34,10 @@ import com.google.gwt.maps.client.geocode.LocationCallback;
 import com.google.gwt.maps.client.geocode.Placemark;
 import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.maps.client.geom.LatLngBounds;
+import com.google.gwt.maps.client.geom.Size;
+import com.google.gwt.maps.client.overlay.Icon;
 import com.google.gwt.maps.client.overlay.Marker;
+import com.google.gwt.maps.client.overlay.MarkerOptions;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
@@ -111,7 +114,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 //				}
 //			}
 			
-			LatLng location = (event.getLatLng() != null) ? event.getLatLng() : event.getOverlayLatLng();
+			final LatLng location = (event.getLatLng() != null) ? event.getLatLng() : event.getOverlayLatLng();			
 			
 			if (addingPub) {
 				mapWidget.removeMapMouseMoveHandler(beerMapMouseMoveHandler);
@@ -120,11 +123,11 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				pub.setLocation(latLngToLocation(location));
 				
 				final EditPubWidget editPubWidget = new EditPubWidget(pub);
-				EditDialog editDialog = new EditDialog(editPubWidget) {
+				EditDialog editDialog = new EditDialog(editPubWidget, "Add Pub") {
 					
 					@Override
 					public void onOkButtonClick(ClickEvent event) {
-						Stat.getBeerService().savePub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
+						Stat.getBeerService().addPub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
 							
 							@Override
 							public void onSuccess(Pub result) {
@@ -191,11 +194,14 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 
 	private Map<Pub, Marker> pubs = new HashMap<Pub, Marker>();
 	
+	
+	
 	@Override
 	public void pubAdded(final Pub pub) {
 		if (pub.getLocation() != null) {			
 			if (!pubs.containsKey(pub)) {
 				final Marker marker = new Marker(locationToLatLng(pub.getLocation()));
+
 				marker.addMarkerClickHandler(new MarkerClickHandler() {
 					
 					@Override

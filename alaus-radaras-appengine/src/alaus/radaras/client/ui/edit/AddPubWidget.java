@@ -2,11 +2,8 @@ package alaus.radaras.client.ui.edit;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestBox;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestion;
@@ -21,20 +18,20 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class EditPubWidget extends Composite implements SelectionHandler<Suggestion> {
+public class AddPubWidget extends Composite implements SelectionHandler<Suggestion> {
 
 	private static EditPubWidgetUiBinder uiBinder = GWT.create(EditPubWidgetUiBinder.class);
 
-	interface EditPubWidgetUiBinder extends UiBinder<Widget, EditPubWidget> {
+	interface EditPubWidgetUiBinder extends UiBinder<Widget, AddPubWidget> {
 	}
 	
 	@UiField
-	Label title;
+	TextBox title;
 	
 	@UiField
 	BeerSuggestBox beerSuggest;
@@ -42,23 +39,11 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	@UiField
 	VerticalPanel beerPanel;
 	
-	@UiField
-	VerticalPanel addedBeerPanel;
-
-	@UiField
-	VerticalPanel removedBeerPanel;
-	
-	private Set<String> removedBeers = new HashSet<String>();
-	
-	private Set<String> addedBeers = new HashSet<String>();
-	
-	private Set<String> beers = new HashSet<String>();
-	
-	private Set<String> allBeers = new HashSet<String>();
+	private final Map<String, BeerInfoWidget> beerWidgets = new HashMap<String, BeerInfoWidget>();
 	
 	private Pub pub;
 	
-	public EditPubWidget(Pub pub) {
+	public AddPubWidget(Pub pub) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		beerSuggest.addSelectionHandler(this);		
@@ -96,11 +81,13 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	
 	private void addBeer(String beerId) {
 		BeerInfoWidget beerInfoWidget = new BeerInfoWidget(beerId);
+		beerWidgets.put(beerId, beerInfoWidget);
 		beerPanel.add(beerInfoWidget);
 	}
 	
 	private void addBeer(Beer beer) {
 		BeerInfoWidget beerInfoWidget = new BeerInfoWidget(beer);
+		beerWidgets.put(beer.getId(), beerInfoWidget);
 		beerPanel.add(beerInfoWidget);
 	}
 	
@@ -117,31 +104,7 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	/**
 	 * @param pub the pub to set
 	 */
-	public void setPub(final Pub pub) {
-		Stat.getBeerService().getPubUpdates(pub.getId(), new BaseAsyncCallback<List<Pub>>() {
-			
-			@Override
-			public void onSuccess(List<Pub> result) {
-				Set<String> beerUpdates = new HashSet<String>();
-				for (Pub pubUpdate : result) {
-					beerUpdates.addAll(pubUpdate.getBeerIds());
-				}
-				
-				removedBeers = new HashSet<String>(pub.getBeerIds());
-				removedBeers.removeAll(beerUpdates);
-				
-				addedBeers = new HashSet<String>(beerUpdates);
-				addedBeers.removeAll(pub.getBeerIds());
-				
-				beers = new HashSet<String>(beerUpdates);
-				beers.retainAll(pub.getBeerIds());
-				
-				allBeers = new HashSet<String>(beerUpdates);
-				allBeers.addAll(pub.getBeerIds());				
-			}
-
-		});
-		
+	public void setPub(Pub pub) {
 		for (String beerId : pub.getBeerIds()) {
 			addBeer(beerId);
 		}
