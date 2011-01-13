@@ -56,15 +56,6 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 	}
 	
 	private void createBrand(String brandNameSuggestion) {
-		Brand brand = new Brand();
-		brand.setTitle(brandNameSuggestion);
-		Stat.getBeerService().saveBrand(brand, new BaseAsyncCallback<Brand>() {
-
-			@Override
-			public void onSuccess(Brand result) {
-				setBrand(result);
-			}
-		});
 	}
 	
 	/**

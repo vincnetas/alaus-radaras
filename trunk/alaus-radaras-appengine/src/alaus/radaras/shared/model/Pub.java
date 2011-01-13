@@ -236,4 +236,6 @@ public class Pub extends Updatable {
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
+	
+	
 }

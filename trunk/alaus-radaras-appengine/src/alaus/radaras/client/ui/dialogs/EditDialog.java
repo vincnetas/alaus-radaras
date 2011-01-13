@@ -33,9 +33,10 @@ public abstract class EditDialog extends DialogBox {
 	@UiField 
 	Button cancelButton;
 	
-	public EditDialog(Widget widget) {
+	public EditDialog(Widget widget, String title) {
 		this.widget = widget;		
 		uiBinder.createAndBindUi(this);
+		setHTML(title);
 	}
 
 	@UiFactory

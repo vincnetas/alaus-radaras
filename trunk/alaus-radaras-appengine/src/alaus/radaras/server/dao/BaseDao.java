@@ -8,9 +8,11 @@ import alaus.radaras.shared.model.Updatable;
 
 public interface BaseDao<T extends Updatable> {
 
-	void save(T object);
+	T add(T object);
 	
-	void save(List<T> list);
+	T save(T object);
+	
+	List<T> add(List<T> list);
 	
 	Set<T> load(Set<String> ids);
 
@@ -28,5 +30,8 @@ public interface BaseDao<T extends Updatable> {
 	 *         parentId of specified object
 	 */
 	List<T> getUpdates(String id);
+	
+	T get(String id);
 
+	
 }

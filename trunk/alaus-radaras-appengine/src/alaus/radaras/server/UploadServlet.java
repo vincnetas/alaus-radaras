@@ -84,18 +84,18 @@ public class UploadServlet extends HttpServlet {
 					String type = item.getName();
 					
 					if ("brands.txt".equalsIgnoreCase(type)) {
-						getBrandDao().save(parseBrands(reader));
+						getBrandDao().add(parseBrands(reader));
 					} else if ("pubs.txt".equalsIgnoreCase(type)) {
-						getPubDao().save(parsePubs(reader));
+						getPubDao().add(parsePubs(reader));
 					} else if ("pubs.json".equals(type)){
 						List<Pub> pubs = parseJson(reader, new TypeToken<Map<String, List<Pub>>>(){}.getType(), "pubs");
-						getPubDao().save(pubs);
+						getPubDao().add(pubs);
 					} else if ("brands.json".equals(type)){
 						List<Brand> brands = parseJson(reader, new TypeToken<Map<String, List<Brand>>>(){}.getType(), "brands");
-						getBrandDao().save(brands);
+						getBrandDao().add(brands);
 					} else if ("beers.json".equals(type)){
 						List<Beer> beers = parseJson(reader, new TypeToken<Map<String, List<Beer>>>(){}.getType(), "beers");
-						getBeerDao().save(beers);
+						getBeerDao().add(beers);
 					} else {
 						throw new ServletException("Unknown type : " + type);
 					}
