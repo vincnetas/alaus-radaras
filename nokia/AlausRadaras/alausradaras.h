@@ -5,6 +5,7 @@
 #include <dbmanager.h>
 #include <QProgressDialog>
 #include "brandtabs.h"
+#include "publist.h"
 namespace Ui {
     class AlausRadaras;
 }
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::AlausRadaras *ui;
     BrandTabs *brandTabs;
+    PubList *map;
 };
 
 #endif // ALAUSRADARAS_H

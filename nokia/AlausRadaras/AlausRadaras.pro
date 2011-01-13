@@ -18,24 +18,27 @@ SOURCES += main.cpp\
     countrylistmodel.cpp \
     brandtabs.cpp \
     taglistmodel.cpp \
-    beermap.cpp \
-    pubview.cpp
+    pubview.cpp \
+    beerpub.cpp \
+    publist.cpp \
+    publistmodel.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
-    test.h \
     brandlistmodel.h \
     countrylistmodel.h \
     brandtabs.h \
     taglistmodel.h \
-    beermap.h \
-    pubview.h
+    pubview.h \
+    beerpub.h \
+    publist.h \
+    publistmodel.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
     brandtabs.ui \
-    beermap.ui \
-    pubview.ui
+    pubview.ui \
+    publist.ui
 
 CONFIG += mobility debug
 MOBILITY = 
