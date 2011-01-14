@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PubList</class>
- <widget class="QMainWindow" name="PubList">
+ <class>BrandList</class>
+ <widget class="QMainWindow" name="BrandList">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,16 +11,15 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Barai</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="Images.qrc">
-    <normaloff>:/images/bok_title.png</normaloff>:/images/bok_title.png</iconset>
+   <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#PubList { border-image:url(:/images/background.png); } </string>
+   <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="txtHeader">
@@ -37,7 +36,7 @@ color:#736F6E;
      </widget>
     </item>
     <item>
-     <widget class="QListView" name="listView">
+     <widget class="QListView" name="brandListView">
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
@@ -76,8 +75,6 @@ padding:10px 20px 10px 20px;
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="Images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

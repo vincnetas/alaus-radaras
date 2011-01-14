@@ -21,7 +21,16 @@ SOURCES += main.cpp\
     pubview.cpp \
     beerpub.cpp \
     publist.cpp \
-    publistmodel.cpp
+    publistmodel.cpp \
+    flickcharm.cpp \
+    qskineticscroller.cpp \
+    calculationhelper.cpp \
+    slippymap.cpp \
+    lightmaps.cpp \
+    dataprovider.cpp \
+    feelinglucky.cpp \
+    brandlist.cpp \
+    feelingluckyinfo.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -32,13 +41,24 @@ HEADERS  += alausradaras.h \
     pubview.h \
     beerpub.h \
     publist.h \
-    publistmodel.h
+    publistmodel.h \
+    flickcharm.h \
+    qskineticscroller.h \
+    calculationhelper.h \
+    slippymap.h \
+    lightmaps.h \
+    dataprovider.h \
+    feelinglucky.h \
+    brandlist.h \
+    feelingluckyinfo.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
     brandtabs.ui \
     pubview.ui \
-    publist.ui
+    publist.ui \
+    feelinglucky.ui \
+    brandlist.ui
 
 CONFIG += mobility debug
 MOBILITY = 

@@ -16,16 +16,18 @@ PubView::PubView(QWidget *parent, QString pubId) :
         ui->pubNameLabel->setText(query.value(1).toString());
     }
 
-    BrandListModel* brandsModel = new BrandListModel();
+    brandsModel = new BrandListModel();
     brandsModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = '%1'").arg(pubId));
     ui->brandListView->setModel(brandsModel);
 }
 void PubView::on_closeButton_clicked()
 {
-    this->close();
+    this->accept();
 }
 
 PubView::~PubView()
 {
+    qDebug() << "pubview destructor called";
     delete ui;
+    delete brandsModel;
 }

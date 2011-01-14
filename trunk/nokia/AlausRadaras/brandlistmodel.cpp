@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QPixmap>
 #include <QStringBuilder>
+#include <QDebug>
 
 BrandListModel::BrandListModel(QObject *parent) :
     QSqlQueryModel(parent)
@@ -33,4 +34,9 @@ QVariant BrandListModel::data(const QModelIndex &index, int role) const
         } else {
             return QSqlQueryModel::data(index, role);
         }
+}
+BrandListModel::~BrandListModel()
+{
+ qDebug() << "Destroying BrandListModel ";
+
 }

@@ -13,6 +13,10 @@ QVariant TagListModel::data(const QModelIndex &index, int role) const
     } else if (role == Qt::DisplayRole) {
         QVariant displayValue = QSqlQueryModel::data(index, Qt::DisplayRole);
         return displayValue.toString();
+    } else if (role == Qt::EditRole) {
+        QModelIndex textIndex = QSqlQueryModel::index(index.row(), 1);
+        QVariant displayValue = QSqlQueryModel::data(textIndex, Qt::DisplayRole);
+        return displayValue.toString();
     } else {
         return QSqlQueryModel::data(index, role);
     }

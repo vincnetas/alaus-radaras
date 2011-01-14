@@ -6,6 +6,7 @@
 #include <QProgressDialog>
 #include "brandtabs.h"
 #include "publist.h"
+#include "feelinglucky.h"
 namespace Ui {
     class AlausRadaras;
 }
@@ -24,10 +25,16 @@ public slots:
 private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();
+    void on_btnLucky_clicked();
+    void brandTabs_destroyed();
+    void pubList_destroyed();
+    void feelingLucky_destroyed();
+    void on_btnExit_clicked();
 private:
     Ui::AlausRadaras *ui;
     BrandTabs *brandTabs;
-    PubList *map;
+    PubList *pubList;
+    FeelingLucky *feelingLucky;
 };
 
 #endif // ALAUSRADARAS_H
