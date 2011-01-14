@@ -6,74 +6,78 @@
 #include <beerpub.h>
 #include <pubview.h>
 #include <publistmodel.h>
+#include <lightmaps.h>
+#include "dataprovider.h"
 
 
-
-
-PubList::PubList(QWidget *parent) :
+PubList::PubList(QWidget *parent, PubListType type, QString id) :
     QMainWindow(parent),
-    ui(new Ui::PubList)
+    ui(new Ui::PubList),
+    id(id),
+    type(type)
 {
     ui->setupUi(this);
 
-    QAction* backAction = new QAction(this);
-    backAction->setText("Atgal");
-    backAction->setSoftKeyRole(QAction::NegativeSoftKey);
-    connect(backAction, SIGNAL(triggered()), this, SLOT(close()));
-    this->addAction(backAction);
+    dataProvider = new DataProvider(this);
+    pubView = NULL;
+
+    switch(this->type)
+    {
+        case ALL:
+            pubs = dataProvider->getAllPubs();
+        break;
+        case BRAND:
+            pubs = dataProvider->getPubsByBrandId(this->id);
+        break;
+        case COUNTRY:
+            pubs = dataProvider->getPubsByCountry(this->id);
+         break;
+            case TAG:
+                 pubs = dataProvider->getPubsByTag(this->id);
+        break;
+    }
+
+    pubListModel = new PubListModel(this, pubs);
+    this->ui->listView->setModel(pubListModel);
+    this->ui->listView->show();
+    QListView::connect(this->ui->listView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
 }
 
 PubList::~PubList()
 {
+    for(int i = 0; i < pubs.size() ; i++) {
+        delete pubs[i];
+    }
+
+    delete pubListModel;
+    delete pubView;
     delete ui;
-}
-
-
-QList<BeerPub*> PubList::getPubs()
-{
-    QString sqlQuery = NULL;
-    switch(this->type) {
-        case ALL:
-        sqlQuery = QString("SELECT id, title, longtitude, latitude from pubs");
-        break;
-        case BRAND:
-        sqlQuery = QString("SELECT id, title, address, notes, phone, url, latitude, longtitude FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = '%1'").arg(this->id);
-        break;
-    }
-    QSqlQuery query(sqlQuery);
-    QList<BeerPub*> pubs;
-    while(query.next()) {
-        BeerPub* pub = new BeerPub();
-        pub->setId(query.value(0).toString());
-        pub->setTitle(query.value(1).toString());
-        pub->setLongitude(query.value(2).toDouble());
-        pub->setLatitude(query.value(3).toDouble());
-        pub->setDistance(0);
-        pubs.append(pub);
-    }
-
-   return pubs;
-
+    delete dataProvider;
 }
 
 void PubList::showPub(QString pubId)
 {
     QString newPub = pubId;
-    PubView *view = new PubView(this,newPub);
-    view->setWindowFlags( view->windowFlags() ^ Qt::WindowSoftkeysVisibleHint );
-    view->setModal(true);
-    view->showFullScreen();
+    pubView = new PubView(this,newPub);
+    pubView->setModal(true);
+    pubView->showFullScreen();
+    connect(pubView,SIGNAL(accepted()), this,SLOT(pubview_accepted()));
 }
 
-void PubList::showPubList(PubListType type, QString id)
+void PubList::pubview_accepted()
 {
-    this->id = id;
-    this->type = type;
-    QList<BeerPub*> pubs = this->getPubs();
-    PubListModel* model = new PubListModel(this, pubs);
-    this->ui->listView->setModel(model);
-    this->ui->listView->show();
-    QListView::connect(this->ui->listView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
+    delete pubView;
+    pubView = NULL;
+}
+
+void PubList::setHeader(QString text)
+{
+    this->ui->txtHeader->setText(text);
+}
+
+void PubList::on_btnBack_clicked()
+{
+ this->close();
 }
 
 void PubList::pubList_itemClicked(const QModelIndex &current)

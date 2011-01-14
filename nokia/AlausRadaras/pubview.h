@@ -2,7 +2,7 @@
 #define PUBVIEW_H
 
 #include <QDialog>
-
+#include <brandlistmodel.h>
 namespace Ui {
     class PubView;
 }
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::PubView *ui;
+    BrandListModel* brandsModel;
 private slots:
     void on_closeButton_clicked();
 };

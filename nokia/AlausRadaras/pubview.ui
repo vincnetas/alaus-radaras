@@ -85,6 +85,9 @@
    </item>
    <item>
     <widget class="QListView" name="brandListView">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
      <property name="viewMode">
       <enum>QListView::ListMode</enum>
      </property>
@@ -107,6 +110,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
+       <property name="styleSheet">
+        <string notr="true">#closeButton {
+border-image:url(:/images/batonas.png);
+padding:10px 20px 10px 20px;
+}</string>
+       </property>
        <property name="text">
         <string>Atgal</string>
        </property>

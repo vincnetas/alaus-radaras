@@ -9,6 +9,7 @@ class BrandListModel : public QSqlQueryModel
 public:
     explicit BrandListModel(QObject *parent = 0);
     QVariant data(const QModelIndex &item, int role) const;
+    ~BrandListModel();
 
 signals:
 
