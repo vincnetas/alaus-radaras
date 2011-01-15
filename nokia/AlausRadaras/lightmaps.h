@@ -11,7 +11,7 @@ public:
     void setCenter(qreal lat, qreal lng);
     void setPubs(QList<BeerPub*> &pubs);
 signals:
-
+    void pubSelected(QString pubId);
 private slots:
      void updateMap(const QRect &r);
 protected:
@@ -22,12 +22,10 @@ protected:
      void mouseReleaseEvent(QMouseEvent *);
 private:
     SlippyMap *m_normalMap;
-    SlippyMap *m_largeMap;
     bool pressed;
     bool snapped;
     QPoint pressPos;
     QPoint dragPos;
-    QPixmap zoomPixmap;
     QPixmap maskPixmap;
 };
 

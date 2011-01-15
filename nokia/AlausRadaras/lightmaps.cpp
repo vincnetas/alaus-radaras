@@ -8,15 +8,12 @@ LightMaps::LightMaps(QWidget *parent) :
     , snapped(false)
 {
 m_normalMap = new SlippyMap(this);
-m_largeMap = new SlippyMap(this);
 connect(m_normalMap, SIGNAL(updated(QRect)), SLOT(updateMap(QRect)));
-connect(m_largeMap, SIGNAL(updated(QRect)), SLOT(update()));
 }
 void LightMaps::setCenter(qreal lat, qreal lng) {
     m_normalMap->latitude = lat;
     m_normalMap->longitude = lng;
     m_normalMap->invalidate();
-    m_largeMap->invalidate();
 }
 
 void LightMaps::updateMap(const QRect &r) {
@@ -27,9 +24,6 @@ void LightMaps::resizeEvent(QResizeEvent *) {
     this->m_normalMap->width = width();
     this->m_normalMap->height = height();
     this->m_normalMap->invalidate();
-    this->m_largeMap->width = m_normalMap->width * 2;
-    this->m_largeMap->height = m_normalMap->height * 2;
-    this-> m_largeMap->invalidate();
 }
 
 void LightMaps::paintEvent(QPaintEvent *event) {
@@ -80,7 +74,16 @@ void LightMaps::mouseMoveEvent(QMouseEvent *event) {
         }
 }
 
-void LightMaps::mouseReleaseEvent(QMouseEvent *) {
+void LightMaps::mouseReleaseEvent(QMouseEvent *event) {
+    //qDebug("released on x :%d, y:%d",event->pos().x(),event->pos().y());
+    for(int i = 0; i < m_normalMap->pubCoordinates.size(); i++) {
+//        qDebug() << "looping";
+        if(m_normalMap->pubCoordinates[i].coordinates.contains(event->pos())) {
+            //qDebug() << "pub id" << m_normalMap->pubCoordinates[i].pubId;
+            emit pubSelected(m_normalMap->pubCoordinates[i].pubId);
+            break;
+        }
+    }
     update();
 }
 

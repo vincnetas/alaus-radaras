@@ -5,6 +5,7 @@
 #include <QList>
 #include "beerpub.h"
 #include "lightmaps.h"
+#include "pubview.h"
 
 namespace Ui {
     class BeerMap;
@@ -23,8 +24,11 @@ private:
     Ui::BeerMap *ui;
     QList<BeerPub*> pubs;
     LightMaps *maps;
+    PubView *pub;
 private slots:
     void on_btnBack_clicked();
+    void pub_accepted();
+    void showPub(QString pubId);
 
 };
 
