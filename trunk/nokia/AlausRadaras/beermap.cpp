@@ -9,7 +9,9 @@ BeerMap::BeerMap(QWidget *parent) :
     ui->setupUi(this);
     maps = new LightMaps(this);
     maps->setCenter(54.686647, 25.282788);
-    this->setCentralWidget(maps);
+    connect(maps, SIGNAL(pubSelected(QString)),this, SLOT(showPub(QString)));
+    this->ui->layout->addWidget(maps);
+    pub = NULL;
 }
 
 void BeerMap::on_btnBack_clicked()
@@ -23,8 +25,24 @@ void BeerMap::setPubs(QList<BeerPub*> &pubs)
     this->maps->setPubs(pubs);
 }
 
+
+void BeerMap::showPub(QString pubId)
+{
+    pub = new PubView(this,pubId);
+    pub->setModal(true);
+    pub->showFullScreen();
+    connect(pub,SIGNAL(accepted()), this,SLOT(pub_accepted()));
+}
+
+void BeerMap::pub_accepted()
+{
+    delete pub;
+    pub = NULL;
+}
+
 BeerMap::~BeerMap()
 {
+    delete pub;
     delete maps;
     delete ui;
 }

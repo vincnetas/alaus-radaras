@@ -6,6 +6,13 @@
 #include <QtNetwork>
 #include <QList>
 #include "beerpub.h"
+
+struct PubContainer {
+    QRect coordinates;
+    QString pubId;
+
+};
+
 class SlippyMap : public QObject
 {
     Q_OBJECT
@@ -19,6 +26,7 @@ public:
     void invalidate();
     void pan(const QPoint &delta);
     void setPubs(QList<BeerPub*> &pubs);
+    QList<PubContainer> pubCoordinates;
 signals:
 
 public slots:
@@ -31,6 +39,7 @@ private:
     QNetworkAccessManager m_manager;
     QUrl m_url;
     QList<BeerPub*> pubs;
+
 private slots:
     void handleNetworkData(QNetworkReply *reply);
     void download();

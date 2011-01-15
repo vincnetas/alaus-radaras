@@ -39,6 +39,7 @@ bool DbManager::init()
 
 bool DbManager::isDbLatest()
 {
+    return false;
     QSqlQuery query("PRAGMA user_version");
          while (query.next()) {
              uint userVersion = query.value(0).toUInt();
@@ -200,7 +201,10 @@ void DbManager::insertPubs(QSqlQuery &query)
 
         QStringList columns = line.split("\t");
 
+        qDebug() << "\n" << columns.at(1);
         Location loc = getLocation(columns.at(5),columns.at(6));
+        qDebug() << loc.tile.x() << " " << loc.tile.y() << " " << loc.tilePixel.x() << " " << loc.tilePixel.y();
+
         query.bindValue(":id", columns.at(0));
         query.bindValue(":title", columns.at(1));
         query.bindValue(":address", columns.at(2));
@@ -214,8 +218,6 @@ void DbManager::insertPubs(QSqlQuery &query)
         query.bindValue(":tile_pixel_x", loc.tilePixel.x());
         query.bindValue(":tile_pixel_y",loc.tilePixel.y());
         query.exec();
-
-        qDebug() << loc.tile.x() << " " << loc.tile.y() << " " << loc.tilePixel.x() << " " << loc.tilePixel.y();
         if(query.lastError().isValid())
             qDebug() << query.lastError();
 
@@ -229,8 +231,10 @@ void DbManager::insertPubs(QSqlQuery &query)
 Location DbManager::getLocation(QString latitude, QString longitude)
 {
     Location loc;
+    qDebug() << "Lat long" << QString::number(latitude.toDouble()) << " " << QString::number(longitude.toDouble());
     QPointF tileFullPoint = CalculationHelper::tileForCoordinate(latitude.toDouble(), longitude.toDouble());
-    loc.tile = tileFullPoint.toPoint();
+    qDebug() << "FullPoint: " << QString::number(tileFullPoint.x()) << " " << QString::number(tileFullPoint.y());
+    loc.tile = QPoint((int)tileFullPoint.x(),(int)tileFullPoint.y());
     loc.tilePixel = CalculationHelper::tilePixelForTile(tileFullPoint);
     return loc;
 }

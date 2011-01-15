@@ -67,6 +67,7 @@ void SlippyMap::invalidate() {
 }
 
 void SlippyMap::render(QPainter *p, const QRect &rect) {
+    pubCoordinates.clear();
     for (int x = 0; x <= m_tilesRect.width(); ++x)
         for (int y = 0; y <= m_tilesRect.height(); ++y) {
             QPoint tp(x + m_tilesRect.left(), y + m_tilesRect.top());
@@ -85,7 +86,11 @@ void SlippyMap::render(QPainter *p, const QRect &rect) {
                     if(pubs[i]->tile().x() == tp.x() && pubs[i]->tile().y() == tp.y()) {
                        // qDebug() << "looping";
                         // qDebug() << "oslo x" << tileForOslo.x() << " oslo y " << tileForOslo.y();
-                        p->drawImage(box.x() + pubs[i]->tilePixel().x(),box.y() + pubs[i]->tilePixel().y(),QImage(":/images/pin.png"));
+                        PubContainer container;
+                        container.coordinates = QRect(box.x() + pubs[i]->tilePixel().x() - 10,box.y() + pubs[i]->tilePixel().y() - 32,35,50);
+                        container.pubId = pubs[i]->id();
+                        pubCoordinates.append(container);
+                        p->drawImage(container.coordinates.x(),container.coordinates.y(),QImage(":/images/pin.png"));
                     }
                 }
             }
@@ -148,7 +153,7 @@ void SlippyMap::download() {
    // qDebug() << "getting data with url  " + path.arg(zoom).arg(grab.x()).arg(grab.y());
     QNetworkRequest request;
     request.setUrl(m_url);
-    request.setRawHeader("User-Agent", "Nokia (Qt) Graphics Dojo 1.0");
+    request.setRawHeader("User-Agent", "Nokia Beer Radar (Qt)");
     request.setAttribute(QNetworkRequest::User, QVariant(grab));
     m_manager.get(request);
 }
