@@ -24,16 +24,20 @@ bool DbManager::init()
        if (!db.open()) {
            return false;
        }
+    return true;
+}
 
-       if(!isDbLatest())
-       {
-           qDebug() << "Db is not latest";
-           if(!createDb())
-           {
-               return false;
-           }
-       }
+bool DbManager::populateIfNotLatest()
+{
 
+    if(!isDbLatest())
+    {
+        qDebug() << "Db is not latest";
+        if(!createDb())
+        {
+            return false;
+        }
+    }
     return true;
 }
 

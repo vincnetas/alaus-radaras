@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QSqlDatabase>
 #include <QtCore>
-
+#include <QSqlQuery>
 struct Location {
     QPoint tile;
     QPoint tilePixel;
@@ -17,11 +17,14 @@ public:
     QSqlDatabase* db;
     explicit DbManager(QObject *parent = 0);
     ~DbManager();
+     bool init();
+     bool populateIfNotLatest();
+    bool isDbLatest();
 public slots:
-    bool init();
+
 private:
     static const uint DB_VERSION = 3;
-    bool isDbLatest();
+
     bool createDb();
 
     void dropTables();
