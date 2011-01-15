@@ -2,6 +2,13 @@
 #define DBMANAGER_H
 #include <QObject>
 #include <QSqlDatabase>
+#include <QtCore>
+
+struct Location {
+    QPoint tile;
+    QPoint tilePixel;
+};
+
 
 class DbManager : public QObject
 {
@@ -13,7 +20,7 @@ public:
 public slots:
     bool init();
 private:
-    static const uint DB_VERSION = 2;
+    static const uint DB_VERSION = 3;
     bool isDbLatest();
     bool createDb();
 
@@ -24,6 +31,7 @@ private:
     void insertCountries(QSqlQuery &query);
     void insertQoutes(QSqlQuery &query);
     void insertAssociations(QSqlQuery &query);
+    Location getLocation(QString latitude, QString longitude);
 
 };
 

@@ -2,7 +2,8 @@
 #include <QtNetwork>
 #include <QtGui>
 #include "calculationhelper.h"
-
+#include "beerpub.h"
+#include <QList>
 
 uint qHash(const QPoint& p)
 {
@@ -14,7 +15,6 @@ SlippyMap::SlippyMap(QObject *parent) :
     QObject(parent)
     , width(400)
     , height(300)
-    , zoom(16)
     , latitude(59.9138204)
     , longitude(10.7387413) {
     m_emptyTile = QPixmap(CalculationHelper::tileSize, CalculationHelper::tileSize);
@@ -34,7 +34,7 @@ void SlippyMap::invalidate() {
     if (width <= 0 || height <= 0)
         return;
 
-    QPointF ct = CalculationHelper::tileForCoordinate(latitude, longitude, zoom);
+    QPointF ct = CalculationHelper::tileForCoordinate(latitude, longitude);
     qreal tx = ct.x();
     qreal ty = ct.y();
 
@@ -74,29 +74,36 @@ void SlippyMap::render(QPainter *p, const QRect &rect) {
 
             if (rect.intersects(box)) {
               //    qDebug() << "rendering box with x" << box.x() << " and y " << box.y() << " and width " << box.width() << " and height " << box.height();
-              //     qDebug() << "tp x" << tp.x() << " and tp y " << tp.y();
+               //    qDebug() << "tp x" << tp.x() << " and tp y " << tp.y();
                 if (m_tilePixmaps.contains(tp))
                     p->drawPixmap(box, m_tilePixmaps.value(tp));
                 else
                     p->drawPixmap(box, m_emptyTile);
 
-                QPointF tileForOslo = CalculationHelper::tileForCoordinate(59.9138204, 10.7387413, zoom);
-                        if(tileForOslo.toPoint().x() == tp.x() && tileForOslo.toPoint().y() == tp.y()) {
-                       // qDebug() << "oslo x" << tileForOslo.x() << " oslo y " << tileForOslo.y();
-                        QPoint pix(256 * 0.5, 256 * 0.48);
-                        p->drawImage(box.x() + pix.x(),box.y() + pix.y(),QImage(":/images/pin.png"));
+                for(int i = 0 ; i < pubs.length(); i++) {
+                    // qDebug() << "pub x" << pubs[i]->tile().x() << " and pub y " << pubs[i]->tile().y();
+                    if(pubs[i]->tile().x() == tp.x() && pubs[i]->tile().y() == tp.y()) {
+                       // qDebug() << "looping";
+                        // qDebug() << "oslo x" << tileForOslo.x() << " oslo y " << tileForOslo.y();
+                        p->drawImage(box.x() + pubs[i]->tilePixel().x(),box.y() + pubs[i]->tilePixel().y(),QImage(":/images/pin.png"));
+                    }
                 }
             }
         }
 }
 void SlippyMap::pan(const QPoint &delta) {
     QPointF dx = QPointF(delta) / qreal(CalculationHelper::tileSize);
-    QPointF center = CalculationHelper::tileForCoordinate(latitude, longitude, zoom) - dx;
-    latitude = CalculationHelper::latitudeFromTile(center.y(), zoom);
-    longitude = CalculationHelper::longitudeFromTile(center.x(), zoom);
+    QPointF center = CalculationHelper::tileForCoordinate(latitude, longitude) - dx;
+    latitude = CalculationHelper::latitudeFromTile(center.y());
+    longitude = CalculationHelper::longitudeFromTile(center.x());
     // qDebug() << "dx x is " << QString::number(dx.x()) << "dx y is " << QString::number(dx.y());
    // qDebug() << "center x is " << QString::number(center.x()) << "center y is " << QString::number(center.y());
     invalidate();
+}
+
+void SlippyMap::setPubs(QList<BeerPub*> &pubs)
+{
+    this->pubs = pubs;
 }
 
 void SlippyMap::handleNetworkData(QNetworkReply *reply) {
@@ -137,7 +144,7 @@ void SlippyMap::download() {
     }
 
     QString path = "http://tile.openstreetmap.org/%1/%2/%3.png";
-    m_url = QUrl(path.arg(zoom).arg(grab.x()).arg(grab.y()));
+    m_url = QUrl(path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y()));
    // qDebug() << "getting data with url  " + path.arg(zoom).arg(grab.x()).arg(grab.y());
     QNetworkRequest request;
     request.setUrl(m_url);

@@ -17,7 +17,7 @@ class BrandList : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit BrandList(QWidget *parent = 0, BrandListType type = BRAND_COUNTRY, QString id = "");
+    explicit BrandList(QWidget *parent = 0, BrandListType tp = BRAND_COUNTRY, QString ids = "");
     ~BrandList();
     void setHeader(QString text);
 

@@ -8,6 +8,7 @@
 #include <pubview.h>
 #include "publistmodel.h"
 #include "dataprovider.h"
+#include "beermap.h"
 namespace Ui {
     class PubList;
 }
@@ -26,6 +27,8 @@ private slots:
     void pubList_itemClicked(const QModelIndex &current);
     void pubview_accepted();
     void on_btnBack_clicked();
+    void map_destroyed();
+    void on_btnMap_clicked();
 private:
     Ui::PubList *ui;
     PubListType type;
@@ -35,6 +38,7 @@ private:
     PubView *pubView;
     PubListModel* pubListModel;
     DataProvider* dataProvider;
+    BeerMap* map;
 };
 
 #endif // PUBLIST_H

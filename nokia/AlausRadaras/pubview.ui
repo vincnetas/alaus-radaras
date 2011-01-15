@@ -85,6 +85,9 @@
    </item>
    <item>
     <widget class="QListView" name="brandListView">
+     <property name="styleSheet">
+      <string notr="true">#brandListView{ border-image:url(:/images/background.png); } </string>
+     </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>

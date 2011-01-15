@@ -12,10 +12,12 @@ class CalculationHelper
 {
 public:
     static const int tileSize = 256;
+    static const int zoom = 16;
     static uint qHash(const QPoint& p);
-    static QPointF tileForCoordinate(qreal lat, qreal lng, int zoom);
-    static qreal longitudeFromTile(qreal tx, int zoom);
-    static qreal latitudeFromTile(qreal ty, int zoom);
+    static QPointF tileForCoordinate(qreal lat, qreal lng);
+    static qreal longitudeFromTile(qreal tx);
+    static qreal latitudeFromTile(qreal ty);
+    static QPoint tilePixelForTile(QPointF tile);
 };
 
 #endif // CALCULATIONHELPER_H

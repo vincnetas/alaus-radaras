@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BrandList</class>
- <widget class="QMainWindow" name="BrandList">
+ <class>BeerMap</class>
+ <widget class="QMainWindow" name="BeerMap">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,34 +14,17 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
+   <string notr="true">#BeerMap { border-image:url(:/images/background.png); } </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="styleSheet">
-    <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
-   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="txtHeader">
-      <property name="styleSheet">
-       <string notr="true">#txtHeader{
-border-image:url(:/images/lucky.png);
-padding-left:10px;
-color:#736F6E;
-}</string>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QListView" name="brandListView">
-      <property name="styleSheet">
-       <string notr="true">#brandListView { border-image:url(:/images/background.png); } </string>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
      </widget>
     </item>
