@@ -54,3 +54,23 @@ void BeerPub::setDistance(const qreal &distance)
     m_distance = distance;
 }
 
+QPoint BeerPub::tile() const
+{
+    return m_tile;
+}
+
+void BeerPub::setTile(const QPoint &tile)
+{
+    m_tile = tile;
+}
+
+QPoint BeerPub::tilePixel() const
+{
+    return m_tilePixel;
+}
+
+void BeerPub::setTilePixel(const QPoint &tilePixel)
+{
+    m_tilePixel = tilePixel;
+}
+

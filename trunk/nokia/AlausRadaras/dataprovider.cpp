@@ -8,22 +8,22 @@ DataProvider::DataProvider(QObject *parent) :
 
 QList<BeerPub*> DataProvider::getAllPubs()
 {
-    return this->generatePubsFromQuery(new QSqlQuery("SELECT id, title, longtitude, latitude from pubs"));
+    return this->generatePubsFromQuery(new QSqlQuery("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y  from pubs"));
 }
 
 QList<BeerPub*> DataProvider::getPubsByBrandId(QString brandId)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT id, title, longtitude, latitude FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = '%1'").arg(brandId)));
+    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = '%1'").arg(brandId)));
 }
 
 QList<BeerPub*> DataProvider::getPubsByCountry(QString countryCode)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id  INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = '%1'").arg(countryCode)));
+    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y  FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id  INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = '%1'").arg(countryCode)));
 }
 
 QList<BeerPub*> DataProvider::getPubsByTag(QString tagCode)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = '%1'").arg(tagCode)));
+    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y  FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = '%1'").arg(tagCode)));
 }
 
 FeelingLuckyInfo DataProvider::feelingLucky()
@@ -56,8 +56,11 @@ QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
         pub->setTitle(query->value(1).toString());
         pub->setLongitude(query->value(2).toDouble());
         pub->setLatitude(query->value(3).toDouble());
+        pub->setTile(QPoint(query->value(4).toInt(),query->value(5).toInt()));
+        pub->setTilePixel(QPoint(query->value(6).toInt(),query->value(7).toInt()));
         pub->setDistance(0);
         pubs.append(pub);
+        //qDebug() << query->value(4).toString() << " "  << query->value(5).toString();
     }
 
    return pubs;

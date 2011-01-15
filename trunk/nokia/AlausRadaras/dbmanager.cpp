@@ -8,6 +8,7 @@
 #include <QTextCodec>
 #include <QDebug>
 #include <QSqlError>
+#include "calculationhelper.h"
 
 
 DbManager::DbManager(QObject *parent) : QObject(parent)
@@ -58,7 +59,11 @@ bool DbManager::createDb()
                    "address 	TEXT, "
                    "notes	 	TEXT, "
                    "phone	 	TEXT, "
-                   "url	 	TEXT);");
+                   "url	 	TEXT,"
+                   "tile_x INTEGER,"
+                   "tile_y INTEGER,"
+                   "tile_pixel_x INTEGER,"
+                   "tile_pixel_y INTEGER);");
     if(query.lastError().isValid())
         qDebug() << query.lastError();
 
@@ -182,7 +187,7 @@ void DbManager::insertPubs(QSqlQuery &query)
 
      qDebug() << "begin inserting pubs";
 
-     query.prepare("INSERT INTO pubs VALUES (:id, :title, :longitude, :latitude,  :address, :notes, :phone, :url )");
+     query.prepare("INSERT INTO pubs VALUES (:id, :title, :longitude, :latitude,  :address, :notes, :phone, :url, :tile_x, :tile_y,:tile_pixel_x, :tile_pixel_y )");
 
      QFile file(":/db/pubs.txt");
      file.open(QFile::ReadOnly | QFile::Text);
@@ -192,7 +197,10 @@ void DbManager::insertPubs(QSqlQuery &query)
      while (!in.atEnd()) {
         line = in.readLine();
 
+
         QStringList columns = line.split("\t");
+
+        Location loc = getLocation(columns.at(5),columns.at(6));
         query.bindValue(":id", columns.at(0));
         query.bindValue(":title", columns.at(1));
         query.bindValue(":address", columns.at(2));
@@ -201,7 +209,13 @@ void DbManager::insertPubs(QSqlQuery &query)
         query.bindValue(":latitude", columns.at(5));
         query.bindValue(":longitude", columns.at(6));
         query.bindValue(":notes","");
+        query.bindValue(":tile_x", loc.tile.x());
+        query.bindValue(":tile_y", loc.tile.y());
+        query.bindValue(":tile_pixel_x", loc.tilePixel.x());
+        query.bindValue(":tile_pixel_y",loc.tilePixel.y());
         query.exec();
+
+        qDebug() << loc.tile.x() << " " << loc.tile.y() << " " << loc.tilePixel.x() << " " << loc.tilePixel.y();
         if(query.lastError().isValid())
             qDebug() << query.lastError();
 
@@ -210,6 +224,15 @@ void DbManager::insertPubs(QSqlQuery &query)
 
      qDebug() << "end inserting pubs";
 
+}
+
+Location DbManager::getLocation(QString latitude, QString longitude)
+{
+    Location loc;
+    QPointF tileFullPoint = CalculationHelper::tileForCoordinate(latitude.toDouble(), longitude.toDouble());
+    loc.tile = tileFullPoint.toPoint();
+    loc.tilePixel = CalculationHelper::tilePixelForTile(tileFullPoint);
+    return loc;
 }
 
 void DbManager::insertCountries(QSqlQuery &query)

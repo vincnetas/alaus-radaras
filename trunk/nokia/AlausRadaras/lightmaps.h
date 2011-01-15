@@ -9,6 +9,7 @@ class LightMaps : public QWidget
 public:
     explicit LightMaps(QWidget *parent = 0);
     void setCenter(qreal lat, qreal lng);
+    void setPubs(QList<BeerPub*> &pubs);
 signals:
 
 private slots:

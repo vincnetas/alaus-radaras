@@ -1,4 +1,6 @@
 #include "lightmaps.h"
+#include "beerpub.h"
+#include <QList>
 
 LightMaps::LightMaps(QWidget *parent) :
     QWidget(parent)
@@ -45,6 +47,10 @@ void LightMaps::paintEvent(QPaintEvent *event) {
     p.end();
 }
 
+void LightMaps::setPubs(QList<BeerPub*> &pubs)
+{
+    this->m_normalMap->setPubs(pubs);
+}
 
 void LightMaps::mousePressEvent(QMouseEvent *event) {
     if (event->buttons() != Qt::LeftButton)

@@ -3,10 +3,10 @@
 #include "brandlistmodel.h"
 #include "publist.h"
 
-BrandList::BrandList(QWidget *parent, BrandListType type, QString id) :
+BrandList::BrandList(QWidget *parent, BrandListType tp, QString ids) :
     QMainWindow(parent),
-    id(id),
-    type(type),
+    id(ids),
+    type(tp),
     ui(new Ui::BrandList)
 {
     ui->setupUi(this);

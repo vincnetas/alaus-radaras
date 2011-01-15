@@ -49,6 +49,7 @@ PubList::~PubList()
         delete pubs[i];
     }
 
+    delete map;
     delete pubListModel;
     delete pubView;
     delete ui;
@@ -63,6 +64,21 @@ void PubList::showPub(QString pubId)
     pubView->showFullScreen();
     connect(pubView,SIGNAL(accepted()), this,SLOT(pubview_accepted()));
 }
+
+void PubList::on_btnMap_clicked()
+{
+    map = new BeerMap(this);
+    map->setPubs(this->pubs);
+    map->showFullScreen();
+    connect(map,SIGNAL(destroyed()), this,SLOT(map_destroyed()));
+}
+
+void PubList::map_destroyed()
+{
+    delete map;
+    map = NULL;
+}
+
 
 void PubList::pubview_accepted()
 {

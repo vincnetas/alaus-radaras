@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QtGui>
 #include <QtNetwork>
+#include <QList>
+#include "beerpub.h"
 class SlippyMap : public QObject
 {
     Q_OBJECT
@@ -11,12 +13,12 @@ public:
     explicit SlippyMap(QObject *parent = 0);
     int width;
     int height;
-    int zoom;
     qreal latitude;
     qreal longitude;
     void render(QPainter *p, const QRect &rect);
     void invalidate();
     void pan(const QPoint &delta);
+    void setPubs(QList<BeerPub*> &pubs);
 signals:
 
 public slots:
@@ -28,6 +30,7 @@ private:
     QHash<QPoint, QPixmap> m_tilePixmaps;
     QNetworkAccessManager m_manager;
     QUrl m_url;
+    QList<BeerPub*> pubs;
 private slots:
     void handleNetworkData(QNetworkReply *reply);
     void download();

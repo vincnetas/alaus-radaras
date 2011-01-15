@@ -2,6 +2,7 @@
 #define BEERPUB_H
 
 #include <QObject>
+#include <QPoint>
 
 class BeerPub : public QObject
 {
@@ -11,6 +12,8 @@ class BeerPub : public QObject
     Q_PROPERTY(qreal latitude READ latitude WRITE setLatitude)
     Q_PROPERTY(qreal longitude READ longitude WRITE setLongitude)
     Q_PROPERTY(qreal distance READ distance WRITE setDistance)
+    Q_PROPERTY(QPoint tile READ tile WRITE setTile)
+    Q_PROPERTY(QPoint tilePixel READ tile WRITE setTilePixel)
 public:
     explicit BeerPub(QObject *parent = 0);
 
@@ -29,6 +32,12 @@ public:
     qreal distance() const;
     void setDistance(const qreal &);
 
+    QPoint tile() const;
+    void setTile(const QPoint &);
+
+    QPoint tilePixel() const;
+    void setTilePixel(const QPoint &);
+
 signals:
 
 public slots:
@@ -38,6 +47,8 @@ private:
     qreal m_longitude;
     qreal m_latitude;
     qreal m_distance;
+    QPoint m_tile;
+    QPoint m_tilePixel;
 
 };
 
