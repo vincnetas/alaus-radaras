@@ -6,6 +6,7 @@
 #include <QDialog>
 #include "brandtabs.h"
 #include "publist.h"
+#include "dbpopulator.h"
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AlausRadaras)
@@ -17,9 +18,25 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     brandTabs = NULL;
     pubList = NULL;
     feelingLucky = NULL;
+
+    if(!dbManager->isDbLatest()) {
+        progress = new WaitDialog(this);
+        progress->setModal(true);
+        progress->showFullScreen();
+
+        populator = new DbPopulator(this,dbManager);
+        populator->start();
+        connect(populator,SIGNAL(finished()),this,SLOT(dbInitFinished()));
+
+    } else {
+        populator = NULL;
+        progress = NULL;
+    }
 }
 void AlausRadaras::dbInitFinished()
 {
+    progress->close();
+    delete progress;
 }
 
 void AlausRadaras::on_btnBrands_clicked()
@@ -71,6 +88,7 @@ void AlausRadaras::on_btnExit_clicked()
 AlausRadaras::~AlausRadaras()
 {
     delete ui;
+    delete populator;
     delete brandTabs;
     delete pubList;
     delete dbManager;

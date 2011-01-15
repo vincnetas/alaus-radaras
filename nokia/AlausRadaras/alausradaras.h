@@ -7,6 +7,8 @@
 #include "brandtabs.h"
 #include "publist.h"
 #include "feelinglucky.h"
+#include "dbpopulator.h"
+#include "waitdialog.h"
 namespace Ui {
     class AlausRadaras;
 }
@@ -19,6 +21,7 @@ public:
     explicit AlausRadaras(QWidget *parent = 0);
     DbManager *dbManager;
     QProgressDialog *dialog;
+    DbPopulator *populator;
     ~AlausRadaras();
 public slots:
     void dbInitFinished();
@@ -35,6 +38,7 @@ private:
     BrandTabs *brandTabs;
     PubList *pubList;
     FeelingLucky *feelingLucky;
+    WaitDialog *progress;
 };
 
 #endif // ALAUSRADARAS_H

@@ -31,7 +31,9 @@ SOURCES += main.cpp\
     feelinglucky.cpp \
     brandlist.cpp \
     feelingluckyinfo.cpp \
-    beermap.cpp
+    beermap.cpp \
+    dbpopulator.cpp \
+    waitdialog.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -52,7 +54,9 @@ HEADERS  += alausradaras.h \
     feelinglucky.h \
     brandlist.h \
     feelingluckyinfo.h \
-    beermap.h
+    beermap.h \
+    dbpopulator.h \
+    waitdialog.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -61,7 +65,8 @@ FORMS    += alausradaras.ui \
     publist.ui \
     feelinglucky.ui \
     brandlist.ui \
-    beermap.ui
+    beermap.ui \
+    waitdialog.ui
 
 CONFIG += mobility debug
 MOBILITY = 
