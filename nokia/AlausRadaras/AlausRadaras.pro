@@ -71,12 +71,13 @@ FORMS    += alausradaras.ui \
     waitdialog.ui \
     beercounter.ui
 
-CONFIG += mobility debug
-MOBILITY = 
+CONFIG += mobility
+MOBILITY = location
+
 
 symbian {
     TARGET.UID3 = 0xece1c5e8
-    TARGET.CAPABILITY += NetworkServices
+    TARGET.CAPABILITY += NetworkServices Location
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
 }

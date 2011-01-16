@@ -9,6 +9,7 @@
 #include "feelinglucky.h"
 #include "dbpopulator.h"
 #include "waitdialog.h"
+#include "beercounter.h"
 namespace Ui {
     class AlausRadaras;
 }
@@ -33,12 +34,15 @@ private slots:
     void pubList_destroyed();
     void feelingLucky_destroyed();
     void on_btnExit_clicked();
+    void on_btnCounter_clicked();
+    void beerCounter_destroyed();
 private:
     Ui::AlausRadaras *ui;
     BrandTabs *brandTabs;
     PubList *pubList;
     FeelingLucky *feelingLucky;
     WaitDialog *progress;
+    BeerCounter *counter;
 };
 
 #endif // ALAUSRADARAS_H

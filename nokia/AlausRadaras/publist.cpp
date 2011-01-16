@@ -8,8 +8,8 @@
 #include <publistmodel.h>
 #include <lightmaps.h>
 #include "dataprovider.h"
-
-
+#include <QGeoCoordinate>
+#include <QGeoPositionInfoSource>
 PubList::PubList(QWidget *parent, PubListType type, QString id) :
     QMainWindow(parent),
     ui(new Ui::PubList),
@@ -41,6 +41,7 @@ PubList::PubList(QWidget *parent, PubListType type, QString id) :
     this->ui->listView->setModel(pubListModel);
     this->ui->listView->show();
     QListView::connect(this->ui->listView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
+    this->startGPS();
 }
 
 PubList::~PubList()
@@ -102,4 +103,39 @@ void PubList::pubList_itemClicked(const QModelIndex &current)
     QVariant data = current.data(Qt::EditRole);
     this->showPub(data.toString());
 
+}
+
+void PubList::startGPS()
+{
+    // Obtain the location data source if it is not obtained already
+    if (!locationDataSource)
+    {
+        locationDataSource =
+            QGeoPositionInfoSource::createDefaultSource(this);
+        // Whenever the location data source signals that the current
+        // position is updated, the positionUpdated function is called
+        connect(locationDataSource, SIGNAL(positionUpdated(QGeoPositionInfo)),
+                      this, SLOT(positionUpdated(QGeoPositionInfo)));
+
+        // Start listening for position updates
+        locationDataSource->startUpdates();
+    }
+}
+
+void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
+{
+    if (geoPositionInfo.isValid())
+    {
+        // We've got the position. No need to continue the listening.
+        locationDataSource->stopUpdates();
+
+        // Save the position information into a member variable
+        myPositionInfo = geoPositionInfo;
+
+        // Get the current location as latitude and longitude
+        QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
+        qreal latitude = geoCoordinate.latitude();
+        qreal longitude = geoCoordinate.longitude();
+        qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
+    }
 }

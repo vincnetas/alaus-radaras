@@ -46,6 +46,15 @@ FeelingLuckyInfo DataProvider::feelingLucky()
 }
 
 
+QString DataProvider::getQoute(int count)
+{
+
+
+    QSqlQuery query(QString("SELECT text FROM qoutes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1").arg(count));
+    while(query.next()) {
+       return query.value(0).toString();
+    }
+}
 
 QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
 {

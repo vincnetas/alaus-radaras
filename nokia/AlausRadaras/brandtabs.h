@@ -35,6 +35,7 @@ private:
     CountryListModel* countryModel;
     TagListModel* tagsModel;
     BrandList *brandList;
+    QListView *brandListView;
 };
 
 #endif // BRANDTABS_H
