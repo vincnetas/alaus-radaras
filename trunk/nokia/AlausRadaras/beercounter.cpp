@@ -5,10 +5,51 @@ BeerCounter::BeerCounter(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BeerCounter)
 {
+    dataProvider = new DataProvider(this);
     ui->setupUi(this);
+
+    int currentCount = settings.value("CurrentCount", 0).toInt();
+    ui->btnCount->setText(QString::number(currentCount));
+    this->showQoute(currentCount);
+}
+
+void BeerCounter::on_btnBack_clicked()
+{
+    this->close();
+}
+
+void BeerCounter::on_btnCount_clicked()
+{
+
+    int currentCount = settings.value("CurrentCount", 0).toInt();
+    settings.setValue("CurrentCount",++currentCount);
+
+    int totalCount = settings.value("TotalCount", 0).toInt();
+    settings.setValue("TotalCount",++totalCount);
+
+    ui->btnCount->setText(QString::number(currentCount));
+
+    this->showQoute(currentCount);
+
+}
+
+void BeerCounter::on_btnClear_clicked()
+{
+    settings.setValue("CurrentCount",0);
+    ui->btnCount->setText("0");
+    this->showQoute(0);
+}
+
+void BeerCounter::showQoute(int count)
+{
+    if(count <= 10)
+        this->ui->qouteLabel->setText(dataProvider->getQoute(count));
+    else
+        this->ui->qouteLabel->setText("ececeecee");
 }
 
 BeerCounter::~BeerCounter()
 {
+    delete dataProvider;
     delete ui;
 }

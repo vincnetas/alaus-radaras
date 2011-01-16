@@ -12,7 +12,7 @@
 static const int gMaxIgnoredMouseMoves = 4;
 // The timer measures the drag speed & handles kinetic scrolling. Adjusting
 // the timer interval will change the scrolling speed and smoothness.
-static const int gTimerInterval = 30;
+static const int gTimerInterval = 45;
 // The speed measurement is imprecise, limit it so that the scrolling is not
 // too fast.
 static const int gMaxDecelerationSpeed = 30;

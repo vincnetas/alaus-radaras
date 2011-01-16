@@ -32,6 +32,8 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
         populator = NULL;
         progress = NULL;
     }
+    QSettings settings;
+    ui->btnCounter->setText(settings.value("TotalCount",0).toString());
 }
 void AlausRadaras::dbInitFinished()
 {
@@ -84,9 +86,26 @@ void AlausRadaras::on_btnExit_clicked()
     this->close();
 }
 
+void AlausRadaras::on_btnCounter_clicked()
+{
+    counter = new BeerCounter(this);
+    counter->showFullScreen();
+    connect(counter,SIGNAL(destroyed()),this,SLOT(beerCounter_destroyed()));
+}
+
+void AlausRadaras::beerCounter_destroyed()
+{
+    QSettings settings;
+    ui->btnCounter->setText(settings.value("TotalCount",0).toString());
+
+    delete counter;
+    counter = NULL;
+}
+
 
 AlausRadaras::~AlausRadaras()
 {
+    delete counter;
     delete ui;
     delete populator;
     delete brandTabs;

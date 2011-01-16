@@ -16,16 +16,45 @@ BrandTabs::BrandTabs(QWidget *parent) :
     pubList = NULL;
     brandList = NULL;
 
+
+    brandListView = new QListView(ui->tabBrands);
+    brandListView->setObjectName(QString::fromUtf8("brandListView"));
+    brandListView->setStyleSheet(QString::fromUtf8("#brandListView { border-image:url(:/images/background.png); } "));
+    brandListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    brandListView->setVerticalScrollMode(QListView::ScrollPerPixel);
+    brandListView->setHorizontalScrollMode(QListView::ScrollPerPixel);
+
+    brandListView->setUniformItemSizes (true);
+    QsKineticScroller *listKineticScroller = new QsKineticScroller(this);
+    listKineticScroller->enableKineticScrollFor(brandListView);
+
+    ui->verticalLayout_2->addWidget(brandListView);
+
+    QListView::connect(brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
+
     brandsModel = new BrandListModel();
     brandsModel->setQuery("select icon, title, id from brands");
-    ui->brandListView->setVerticalScrollMode(QListView::ScrollPerPixel);
-    ui->brandListView->setHorizontalScrollMode(QListView::ScrollPerPixel);
-    ui->brandListView->setModel(brandsModel);
+    brandListView->setModel(brandsModel);
 
-    QsKineticScroller *listKineticScroller = new QsKineticScroller(this);
-    listKineticScroller->enableKineticScrollFor(ui->brandListView);
 
-    QListView::connect(ui->brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
+
+//    QListWidget *brandList = new QListWidget(this);
+//    brandList->setUniformItemSizes(true);
+//    brandList->setVerticalScrollMode(QListView::ScrollPerPixel);
+//    brandList->setHorizontalScrollMode(QListView::ScrollPerPixel);
+//    QSqlQuery brands("select icon, title, id from brands");
+//    while(brands.next()) {
+
+//        QListWidgetItem *newItem = new QListWidgetItem;
+//            newItem->setText(brands.value(1).toString());
+//            brandList->addItem(newItem);
+
+//    }
+
+//    QsKineticScroller *listKineticScroller = new QsKineticScroller(this);
+//    listKineticScroller->enableKineticScrollFor(brandList);
+
+//    ui->verticalLayout_2->addWidget(brandList);
 
 
     countryModel = new CountryListModel();
@@ -89,6 +118,7 @@ void BrandTabs::on_btnClose_clicked()
 
 BrandTabs::~BrandTabs()
 {
+    delete brandListView;
     delete tagsModel;
     delete countryModel;
     delete brandsModel;

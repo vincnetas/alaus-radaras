@@ -41,7 +41,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnCounter">
         <property name="sizePolicy">
          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
           <horstretch>1</horstretch>
@@ -54,8 +54,16 @@
           <height>140</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">border-image:url(:/images/bok_title.png);</string>
+         <string notr="true">#btnCounter {
+border-image:url(:/images/bok_title.png);
+color:black;
+}</string>
         </property>
         <property name="text">
          <string>test</string>
