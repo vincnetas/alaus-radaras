@@ -23,7 +23,6 @@ private slots:
     void on_btnPub_clicked();
     void on_btnBack_clicked();
     void pubview_accepted();
-    void publist_destroyed();
 private:
     Ui::FeelingLucky *ui;
     PubView *pubView;

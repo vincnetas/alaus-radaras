@@ -35,13 +35,15 @@ FeelingLuckyInfo DataProvider::feelingLucky()
         lucky.pubId = pubQuery.value(0).toString();
         lucky.pubName = pubQuery.value(1).toString();
     }
+    pubQuery.clear();
+
     QSqlQuery brandQuery(QString("SELECT id, title FROM brands b  INNER JOIN pubs_brands pb ON b.id = pb.brand_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1").arg(lucky.pubId));
 
     while(brandQuery.next()) {
         lucky.brandId = brandQuery.value(0).toString();
         lucky.brandName = brandQuery.value(1).toString();
     }
-
+    brandQuery.clear();
     return lucky;
 }
 
@@ -54,6 +56,8 @@ QString DataProvider::getQoute(int count)
     while(query.next()) {
        return query.value(0).toString();
     }
+    query.clear();
+    return QString::fromUtf8("Dar po viena!");
 }
 
 QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
@@ -71,6 +75,8 @@ QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
         pubs.append(pub);
         //qDebug() << query->value(4).toString() << " "  << query->value(5).toString();
     }
+
+    query->clear();
 
    return pubs;
 

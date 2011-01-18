@@ -1,7 +1,7 @@
 #include "waitdialog.h"
 #include "ui_waitdialog.h"
 #include <QMovie>
-
+#include "viewutils.h"
 WaitDialog::WaitDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::WaitDialog)
@@ -13,6 +13,9 @@ WaitDialog::WaitDialog(QWidget *parent) :
      timer = new QTimer(this);
      connect(timer, SIGNAL(timeout()), this, SLOT(updateProgress()));
      timer->start(500);
+
+     setAutoFillBackground(true);
+     setPalette(ViewUtils::GetBackground(palette()));
 }
 
 void WaitDialog::updateProgress()

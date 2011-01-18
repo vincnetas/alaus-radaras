@@ -20,9 +20,6 @@ class AlausRadaras : public QMainWindow
 
 public:
     explicit AlausRadaras(QWidget *parent = 0);
-    DbManager *dbManager;
-    QProgressDialog *dialog;
-    DbPopulator *populator;
     ~AlausRadaras();
 public slots:
     void dbInitFinished();
@@ -30,12 +27,8 @@ private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();
     void on_btnLucky_clicked();
-    void brandTabs_destroyed();
-    void pubList_destroyed();
-    void feelingLucky_destroyed();
     void on_btnExit_clicked();
     void on_btnCounter_clicked();
-    void beerCounter_destroyed();
 private:
     Ui::AlausRadaras *ui;
     BrandTabs *brandTabs;
@@ -43,6 +36,8 @@ private:
     FeelingLucky *feelingLucky;
     WaitDialog *progress;
     BeerCounter *counter;
+    DbManager *dbManager;
+    DbPopulator *populator;
 };
 
 #endif // ALAUSRADARAS_H

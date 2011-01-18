@@ -10,6 +10,8 @@
 #include "dataprovider.h"
 #include <QGeoCoordinate>
 #include <QGeoPositionInfoSource>
+#include "viewutils.h"
+#include "qskineticscroller.h"
 PubList::PubList(QWidget *parent, PubListType type, QString id) :
     QMainWindow(parent),
     ui(new Ui::PubList),
@@ -20,6 +22,7 @@ PubList::PubList(QWidget *parent, PubListType type, QString id) :
 
     dataProvider = new DataProvider(this);
     pubView = NULL;
+    map = NULL;
 
     switch(this->type)
     {
@@ -37,25 +40,30 @@ PubList::PubList(QWidget *parent, PubListType type, QString id) :
         break;
     }
 
+    //this->startGPS();
+
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
+
+
+    pubListView = new QListView(ui->centralwidget);
+    pubListView->setObjectName(QString::fromUtf8("listView"));
+    pubListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+
     pubListModel = new PubListModel(this, pubs);
-    this->ui->listView->setModel(pubListModel);
-    this->ui->listView->show();
-    QListView::connect(this->ui->listView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
-    this->startGPS();
+    pubListView->setModel(pubListModel);
+
+    pubListScroller = new QsKineticScroller(this);
+    pubListScroller->enableKineticScrollFor(pubListView);
+
+    ui->listVerticalLayout->addWidget(pubListView);
+
+    QListView::connect(pubListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
+
+
 }
 
-PubList::~PubList()
-{
-    for(int i = 0; i < pubs.size() ; i++) {
-        delete pubs[i];
-    }
-
-    delete map;
-    delete pubListModel;
-    delete pubView;
-    delete ui;
-    delete dataProvider;
-}
 
 void PubList::showPub(QString pubId)
 {
@@ -63,23 +71,16 @@ void PubList::showPub(QString pubId)
     pubView = new PubView(this,newPub);
     pubView->setModal(true);
     pubView->showFullScreen();
-    connect(pubView,SIGNAL(accepted()), this,SLOT(pubview_accepted()));
 }
 
 void PubList::on_btnMap_clicked()
 {
-    map = new BeerMap(this);
+    if(map == NULL) {
+        map = new BeerMap(this);
+    }
     map->setPubs(this->pubs);
     map->showFullScreen();
-    connect(map,SIGNAL(destroyed()), this,SLOT(map_destroyed()));
 }
-
-void PubList::map_destroyed()
-{
-    delete map;
-    map = NULL;
-}
-
 
 void PubList::pubview_accepted()
 {
@@ -126,8 +127,8 @@ void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
 {
     if (geoPositionInfo.isValid())
     {
-        // We've got the position. No need to continue the listening.
-        locationDataSource->stopUpdates();
+//        // We've got the position. No need to continue the listening.
+//        locationDataSource->stopUpdates();
 
         // Save the position information into a member variable
         myPositionInfo = geoPositionInfo;
@@ -138,4 +139,18 @@ void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
         qreal longitude = geoCoordinate.longitude();
         qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
     }
+}
+
+
+PubList::~PubList()
+{
+    for(int i = 0; i < pubs.size() ; i++) {
+        delete pubs[i];
+    }
+    delete pubListView;
+    delete ui;
+    delete pubView;
+    delete pubListModel;
+    delete dataProvider;
+    delete map;
 }

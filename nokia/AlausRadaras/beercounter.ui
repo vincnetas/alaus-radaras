@@ -17,9 +17,6 @@
    <iconset resource="Images.qrc">
     <normaloff>:/images/alus.png</normaloff>:/images/alus.png</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">#BeerCounter{ border-image:url(:/images/background.png); } </string>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout" stretch="4,0,0,5,0,1">
     <item>

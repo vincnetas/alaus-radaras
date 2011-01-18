@@ -14,7 +14,7 @@ class DbManager : public QObject
 {
     Q_OBJECT
 public:
-    QSqlDatabase* db;
+    QSqlDatabase db;
     explicit DbManager(QObject *parent = 0);
     ~DbManager();
      bool init();

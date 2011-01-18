@@ -9,8 +9,13 @@
 #include "publistmodel.h"
 #include "dataprovider.h"
 #include "beermap.h"
-#include <QGeoPositionInfo>
-#include <QGeoPositionInfoSource>
+#include <qgeopositioninfosource.h>
+#include <qgeosatelliteinfosource.h>
+#include <qgeopositioninfo.h>
+#include <qgeosatelliteinfo.h>
+#include <qskineticscroller.h>
+
+QTM_USE_NAMESPACE
 
 namespace Ui {
     class PubList;
@@ -30,21 +35,25 @@ private slots:
     void pubList_itemClicked(const QModelIndex &current);
     void pubview_accepted();
     void on_btnBack_clicked();
-    void map_destroyed();
     void on_btnMap_clicked();
     void positionUpdated(QGeoPositionInfo geoPositionInfo);
 private:
+
     Ui::PubList *ui;
-    PubListType type;
-    QString id;
     QList<BeerPub*> pubs;
     PubView *pubView;
     PubListModel* pubListModel;
     DataProvider* dataProvider;
     BeerMap* map;
+    QListView* pubListView;
 
     QPointer<QGeoPositionInfoSource> locationDataSource;
     QGeoPositionInfo myPositionInfo;
+
+     QsKineticScroller *pubListScroller;
+
+    PubListType type;
+    QString id;
 
     void showPub(QString pubId);
     void startGPS();

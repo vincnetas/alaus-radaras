@@ -13,17 +13,15 @@
 
 DbManager::DbManager(QObject *parent) : QObject(parent)
 {
-    db = NULL;
 }
 
 bool DbManager::init()
 {
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-       db.setDatabaseName("alaus.radaras.db");
-       if (!db.open()) {
-           return false;
-       }
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("alaus.radaras.db");
+    if (!db.open()) {
+        return false;
+    }
     return true;
 }
 
@@ -43,12 +41,12 @@ bool DbManager::populateIfNotLatest()
 
 bool DbManager::isDbLatest()
 {
-    return false;
     QSqlQuery query("PRAGMA user_version");
          while (query.next()) {
              uint userVersion = query.value(0).toUInt();
              return userVersion == DB_VERSION;
          }
+    query.clear();
     return false;
 }
 
@@ -123,6 +121,7 @@ bool DbManager::createDb()
     insertQoutes(query);
     insertAssociations(query);
     query.exec(QString("PRAGMA user_version=%1;").arg(DB_VERSION));
+    query.clear();
     return true;
 
 }
@@ -152,7 +151,7 @@ void DbManager::insertBrands(QSqlQuery &query)
 
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting brands";
 
 }
@@ -182,7 +181,7 @@ void DbManager::insertTags(QSqlQuery &query)
 
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting tags";
 
 }
@@ -227,7 +226,7 @@ void DbManager::insertPubs(QSqlQuery &query)
 
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting pubs";
 
 }
@@ -267,7 +266,7 @@ void DbManager::insertCountries(QSqlQuery &query)
 
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting countries";
 
 }
@@ -296,7 +295,7 @@ void DbManager::insertQoutes(QSqlQuery &query)
 
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting qoutes";
 
 }
@@ -351,7 +350,7 @@ void DbManager::insertAssociations(QSqlQuery &query)
         }
      }
      file.close();
-
+     query.clear();
      qDebug() << "end inserting associations";
 
 }
@@ -368,16 +367,13 @@ void DbManager::dropTables()
        query.exec("drop table if exists brands_tags");
        query.exec("drop table if exists qoutes");
        query.exec("PRAGMA user_version=1;");
+       query.clear();
 
 }
 
 DbManager::~DbManager()
 {
-    //this->dropTables();
-    if(db != NULL) {
-        if(db->isOpen()) {
-            db->close();
+        if(db.isOpen()) {
+            db.close();
         }
-    }
-    delete db;
 }

@@ -2,6 +2,7 @@
 #include "ui_feelinglucky.h"
 #include "dataprovider.h"
 #include "feelingluckyinfo.h"
+#include "viewutils.h"
 
 FeelingLucky::FeelingLucky(QWidget *parent) :
     QMainWindow(parent),
@@ -16,21 +17,20 @@ FeelingLucky::FeelingLucky(QWidget *parent) :
 
     pubList = NULL;
     pubView = NULL;
+
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
 }
 
 void FeelingLucky::on_btnBeer_clicked()
 {
+    //TODO : hack.
+    if(pubList != NULL)
+       delete pubList;
     pubList = new PubList(this,BRAND,luckyInfo.brandId);
     pubList->setHeader(luckyInfo.brandId);
     pubList->setHeader(luckyInfo.brandName);
     pubList->showFullScreen();
-    connect(this->pubList,SIGNAL(destroyed()),this,SLOT(publist_destroyed()));
-
-}
-void FeelingLucky::publist_destroyed()
-{
-    delete pubList;
-    pubList = NULL;
 }
 
 void FeelingLucky::on_btnBack_clicked()
@@ -42,7 +42,6 @@ void FeelingLucky::pubview_accepted()
 {
     delete pubView;
     pubView = NULL;
-
 }
 
 void FeelingLucky::on_btnPub_clicked()

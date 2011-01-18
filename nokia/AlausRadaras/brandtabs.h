@@ -8,6 +8,7 @@
 #include "countrylistmodel.h"
 #include "taglistmodel.h"
 #include "brandlist.h"
+#include "qskineticscroller.h"
 
 namespace Ui {
     class BrandTabs;
@@ -26,8 +27,6 @@ private slots:
     void tagList_itemClicked(const QModelIndex &current);
 
     void on_btnClose_clicked();
-    void publist_destroyed();
-    void brandList_destroyed();
 private:
     Ui::BrandTabs *ui;
     PubList *pubList;
@@ -36,6 +35,10 @@ private:
     TagListModel* tagsModel;
     BrandList *brandList;
     QListView *brandListView;
+    QsKineticScroller *brandListScroller;
+    QsKineticScroller *tagsListScroller;
+    QsKineticScroller *countryListScroller;
+
 };
 
 #endif // BRANDTABS_H

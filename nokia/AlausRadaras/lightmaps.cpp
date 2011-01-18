@@ -87,3 +87,9 @@ void LightMaps::mouseReleaseEvent(QMouseEvent *event) {
     update();
 }
 
+LightMaps::~LightMaps()
+{
+    delete m_normalMap;
+
+}
+

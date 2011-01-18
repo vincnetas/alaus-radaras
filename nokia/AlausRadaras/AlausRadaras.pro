@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += sql
-QT       += network
+QT       += core gui sql network
 TARGET = AlausRadaras
 TEMPLATE = app
 
@@ -34,7 +32,8 @@ SOURCES += main.cpp\
     beermap.cpp \
     dbpopulator.cpp \
     waitdialog.cpp \
-    beercounter.cpp
+    beercounter.cpp \
+    viewutils.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -58,7 +57,8 @@ HEADERS  += alausradaras.h \
     beermap.h \
     dbpopulator.h \
     waitdialog.h \
-    beercounter.h
+    beercounter.h \
+    viewutils.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -72,7 +72,7 @@ FORMS    += alausradaras.ui \
     beercounter.ui
 
 CONFIG += mobility
-MOBILITY = location
+MOBILITY += location
 
 
 symbian {
