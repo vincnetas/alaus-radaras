@@ -2,6 +2,8 @@
 #include "ui_brandlist.h"
 #include "brandlistmodel.h"
 #include "publist.h"
+#include "viewutils.h"
+#include "qskineticscroller.h"
 
 BrandList::BrandList(QWidget *parent, BrandListType tp, QString ids) :
     QMainWindow(parent),
@@ -9,6 +11,7 @@ BrandList::BrandList(QWidget *parent, BrandListType tp, QString ids) :
     type(tp),
     ui(new Ui::BrandList)
 {
+    pubList = NULL;
     ui->setupUi(this);
 
     brandListModel = new BrandListModel(this);
@@ -24,6 +27,16 @@ BrandList::BrandList(QWidget *parent, BrandListType tp, QString ids) :
 
     ui->brandListView->setModel(brandListModel);
     QListView::connect(ui->brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
+
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
+
+    ui->brandListView->setAutoFillBackground(true);
+    ui->brandListView->setPalette(ViewUtils::GetBackground(ui->brandListView->palette()));
+
+    brandListScroller = new QsKineticScroller(this);
+    brandListScroller->enableKineticScrollFor(ui->brandListView);
+
 }
 
 void BrandList::brandList_itemClicked(const QModelIndex &current)
@@ -45,16 +58,9 @@ void BrandList::on_btnBack_clicked()
     this->close();
 }
 
-void BrandList::publist_destroyed()
-{
-    delete pubList;
-    pubList = NULL;
-
-}
-
-
 BrandList::~BrandList()
 {
+    delete brandListScroller;
     delete pubList;
     delete brandListModel;
     delete ui;

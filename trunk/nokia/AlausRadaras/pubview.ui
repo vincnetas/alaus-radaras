@@ -17,9 +17,6 @@
    <iconset resource="Images.qrc">
     <normaloff>:/images/bok_title.png</normaloff>:/images/bok_title.png</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">#PubView{ border-image:url(:/images/background.png); } </string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="pubNameLabel">
@@ -85,9 +82,6 @@
    </item>
    <item>
     <widget class="QListView" name="brandListView">
-     <property name="styleSheet">
-      <string notr="true">#brandListView{ border-image:url(:/images/background.png); } </string>
-     </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>

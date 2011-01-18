@@ -6,7 +6,8 @@
 #include <QMessageBox>
 #include <publist.h>
 #include "QsKineticScroller.h"
-
+#include "viewutils.h"
+#include <QDebug>
 BrandTabs::BrandTabs(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BrandTabs)
@@ -18,16 +19,13 @@ BrandTabs::BrandTabs(QWidget *parent) :
 
 
     brandListView = new QListView(ui->tabBrands);
-    brandListView->setObjectName(QString::fromUtf8("brandListView"));
-    brandListView->setStyleSheet(QString::fromUtf8("#brandListView { border-image:url(:/images/background.png); } "));
     brandListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     brandListView->setVerticalScrollMode(QListView::ScrollPerPixel);
-    brandListView->setHorizontalScrollMode(QListView::ScrollPerPixel);
 
     brandListView->setUniformItemSizes (true);
-    QsKineticScroller *listKineticScroller = new QsKineticScroller(this);
-    listKineticScroller->enableKineticScrollFor(brandListView);
 
+    brandListScroller = new QsKineticScroller(this);
+    brandListScroller->enableKineticScrollFor(brandListView);
     ui->verticalLayout_2->addWidget(brandListView);
 
     QListView::connect(brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
@@ -36,30 +34,14 @@ BrandTabs::BrandTabs(QWidget *parent) :
     brandsModel->setQuery("select icon, title, id from brands");
     brandListView->setModel(brandsModel);
 
-
-
-//    QListWidget *brandList = new QListWidget(this);
-//    brandList->setUniformItemSizes(true);
-//    brandList->setVerticalScrollMode(QListView::ScrollPerPixel);
-//    brandList->setHorizontalScrollMode(QListView::ScrollPerPixel);
-//    QSqlQuery brands("select icon, title, id from brands");
-//    while(brands.next()) {
-
-//        QListWidgetItem *newItem = new QListWidgetItem;
-//            newItem->setText(brands.value(1).toString());
-//            brandList->addItem(newItem);
-
-//    }
-
-//    QsKineticScroller *listKineticScroller = new QsKineticScroller(this);
-//    listKineticScroller->enableKineticScrollFor(brandList);
-
-//    ui->verticalLayout_2->addWidget(brandList);
-
-
     countryModel = new CountryListModel();
     countryModel->setQuery("select name, code from countries");
     ui->countryListView->setModel(countryModel);
+
+    ui->countryListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->countryListView->setVerticalScrollMode(QListView::ScrollPerPixel);
+    countryListScroller = new QsKineticScroller(this);
+    countryListScroller->enableKineticScrollFor(ui->countryListView);
 
     QListView::connect(ui->countryListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(countryList_itemClicked(QModelIndex)));
 
@@ -67,6 +49,25 @@ BrandTabs::BrandTabs(QWidget *parent) :
     tagsModel->setQuery("select title, code from tags");
     ui->tagListView->setModel(tagsModel);
     QListView::connect(ui->tagListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(tagList_itemClicked(QModelIndex)));
+
+    ui->tagListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tagListView->setVerticalScrollMode(QListView::ScrollPerPixel);
+    tagsListScroller = new QsKineticScroller(this);
+    tagsListScroller->enableKineticScrollFor(ui->tagListView);
+
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
+
+    brandListView->setPalette(ViewUtils::GetBackground(brandListView->palette()));
+    brandListView->setAutoFillBackground(true);
+
+    ui->tagListView->setPalette(ViewUtils::GetBackground(ui->tagListView->palette()));
+    ui->tagListView->setAutoFillBackground(true);
+
+    ui->countryListView->setPalette(ViewUtils::GetBackground(ui->countryListView->palette()));
+    ui->countryListView->setAutoFillBackground(true);
+
+
 }
 
 void BrandTabs::brandList_itemClicked(const QModelIndex &current)
@@ -99,17 +100,7 @@ void BrandTabs::tagList_itemClicked(const QModelIndex &current)
 
 }
 
-void BrandTabs::publist_destroyed()
-{
-    delete pubList;
-    pubList = NULL;
-}
 
-void BrandTabs::brandList_destroyed()
-{
-    delete brandList;
-    brandList = NULL;
-}
 
 void BrandTabs::on_btnClose_clicked()
 {
@@ -118,11 +109,16 @@ void BrandTabs::on_btnClose_clicked()
 
 BrandTabs::~BrandTabs()
 {
-    delete brandListView;
-    delete tagsModel;
-    delete countryModel;
-    delete brandsModel;
-    delete pubList;
-    delete brandList;
+    qDebug() << "BrandTabs destroyed";
     delete ui;
+    delete pubList;
+    delete brandsModel;
+    delete countryModel;
+    delete tagsModel;
+    delete brandListView;
+    delete brandListScroller;
+    delete tagsListScroller;
+    delete countryListScroller;
+    delete brandList;
+
 }

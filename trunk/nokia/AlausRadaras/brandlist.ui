@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">#BrandList { border-image:url(:/images/background.png); } </string>
@@ -37,9 +34,6 @@ color:#736F6E;
     </item>
     <item>
      <widget class="QListView" name="brandListView">
-      <property name="styleSheet">
-       <string notr="true">#brandListView { border-image:url(:/images/background.png); } </string>
-      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>

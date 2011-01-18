@@ -6,13 +6,14 @@
 #include <QEvent>
 #include <QTimer>
 #include <cstddef> // for NULL
+#include <QDebug>
 
 // A number of mouse moves are ignored after a press to differentiate
 // it from a press & drag.
 static const int gMaxIgnoredMouseMoves = 4;
 // The timer measures the drag speed & handles kinetic scrolling. Adjusting
 // the timer interval will change the scrolling speed and smoothness.
-static const int gTimerInterval = 45;
+static const int gTimerInterval = 30;
 // The speed measurement is imprecise, limit it so that the scrolling is not
 // too fast.
 static const int gMaxDecelerationSpeed = 30;
@@ -61,6 +62,7 @@ QsKineticScroller::QsKineticScroller(QObject *parent)
 // needed by smart pointer
 QsKineticScroller::~QsKineticScroller()
 {
+    qDebug() << "qsk destroyed";
 }
 
 void QsKineticScroller::enableKineticScrollFor(QAbstractScrollArea* scrollArea)
@@ -147,7 +149,7 @@ bool QsKineticScroller::eventFilter(QObject* object, QEvent* event)
             QMouseEvent* mouseRelease = new QMouseEvent(QEvent::MouseButtonRelease,
                d->lastPressPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
 
-            d->ignoredMouseActions = 2;
+            d->ignoredMouseActions = 4;
             QApplication::postEvent(object, mousePress);
             QApplication::postEvent(object, mouseRelease);
          }

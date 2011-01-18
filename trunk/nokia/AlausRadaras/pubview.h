@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <brandlistmodel.h>
+#include <qskineticscroller.h>
 namespace Ui {
     class PubView;
 }
@@ -18,6 +19,7 @@ public:
 private:
     Ui::PubView *ui;
     BrandListModel* brandsModel;
+    QsKineticScroller* brandListScroller;
 private slots:
     void on_closeButton_clicked();
 };

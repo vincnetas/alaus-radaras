@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "brandlistmodel.h"
 #include "publist.h"
+#include "qskineticscroller.h"
 
 
 namespace Ui {
@@ -23,13 +24,16 @@ public:
 
 private:
     Ui::BrandList *ui;
-    BrandListType type;
+
     BrandListModel *brandListModel;
     PubList *pubList;
+    QsKineticScroller* brandListScroller;
+
     QString id;
+    BrandListType type;
+
 private slots:
     void brandList_itemClicked(const QModelIndex &current);
-    void publist_destroyed();
     void on_btnBack_clicked();
 };
 

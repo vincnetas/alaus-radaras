@@ -1,5 +1,6 @@
 #include "beercounter.h"
 #include "ui_beercounter.h"
+#include "viewutils.h"
 
 BeerCounter::BeerCounter(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +12,9 @@ BeerCounter::BeerCounter(QWidget *parent) :
     int currentCount = settings.value("CurrentCount", 0).toInt();
     ui->btnCount->setText(QString::number(currentCount));
     this->showQoute(currentCount);
+
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
 }
 
 void BeerCounter::on_btnBack_clicked()
@@ -42,10 +46,7 @@ void BeerCounter::on_btnClear_clicked()
 
 void BeerCounter::showQoute(int count)
 {
-    if(count <= 10)
-        this->ui->qouteLabel->setText(dataProvider->getQoute(count));
-    else
-        this->ui->qouteLabel->setText("ececeecee");
+    this->ui->qouteLabel->setText(dataProvider->getQoute(count));
 }
 
 BeerCounter::~BeerCounter()
