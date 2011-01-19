@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     beerpub.cpp \
     publist.cpp \
     publistmodel.cpp \
-    flickcharm.cpp \
     qskineticscroller.cpp \
     calculationhelper.cpp \
     slippymap.cpp \
@@ -45,7 +44,6 @@ HEADERS  += alausradaras.h \
     beerpub.h \
     publist.h \
     publistmodel.h \
-    flickcharm.h \
     qskineticscroller.h \
     calculationhelper.h \
     slippymap.h \

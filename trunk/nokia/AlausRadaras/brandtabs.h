@@ -34,7 +34,6 @@ private:
     CountryListModel* countryModel;
     TagListModel* tagsModel;
     BrandList *brandList;
-    QListView *brandListView;
     QsKineticScroller *brandListScroller;
     QsKineticScroller *tagsListScroller;
     QsKineticScroller *countryListScroller;
