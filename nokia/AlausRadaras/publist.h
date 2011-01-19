@@ -45,7 +45,6 @@ private:
     PubListModel* pubListModel;
     DataProvider* dataProvider;
     BeerMap* map;
-    QListView* pubListView;
 
     QPointer<QGeoPositionInfoSource> locationDataSource;
     QGeoPositionInfo myPositionInfo;

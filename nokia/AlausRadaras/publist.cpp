@@ -45,21 +45,13 @@ PubList::PubList(QWidget *parent, PubListType type, QString id) :
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
 
-
-    pubListView = new QListView(ui->centralwidget);
-    pubListView->setObjectName(QString::fromUtf8("listView"));
-    pubListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-
     pubListModel = new PubListModel(this, pubs);
-    pubListView->setModel(pubListModel);
+    ui->pubListView->setModel(pubListModel);
 
     pubListScroller = new QsKineticScroller(this);
-    pubListScroller->enableKineticScrollFor(pubListView);
+    pubListScroller->enableKineticScrollFor( ui->pubListView);
 
-    ui->listVerticalLayout->addWidget(pubListView);
-
-    QListView::connect(pubListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
+    QListView::connect(ui->pubListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
 
 
 }
@@ -147,7 +139,6 @@ PubList::~PubList()
     for(int i = 0; i < pubs.size() ; i++) {
         delete pubs[i];
     }
-    delete pubListView;
     delete ui;
     delete pubView;
     delete pubListModel;

@@ -33,7 +33,6 @@ BrandList::BrandList(QWidget *parent, BrandListType tp, QString ids) :
 
     ui->brandListView->setAutoFillBackground(true);
     ui->brandListView->setPalette(ViewUtils::GetBackground(ui->brandListView->palette()));
-
     brandListScroller = new QsKineticScroller(this);
     brandListScroller->enableKineticScrollFor(ui->brandListView);
 
