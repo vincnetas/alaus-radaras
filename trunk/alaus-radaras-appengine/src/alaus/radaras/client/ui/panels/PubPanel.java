@@ -17,6 +17,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -39,14 +40,22 @@ public class PubPanel extends Composite {
 	@UiField
 	Image editImage;
 	
-	private Pub pub;
+	private final Pub pub;
 	
-	private final Map<String, BeerInfoWidget> beerWidgets = new HashMap<String, BeerInfoWidget>();
-
 	public PubPanel(Pub pub) {
+		this.pub = pub;
+		
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		setPub(pub);
+		if (pub.getBeerIds().isEmpty()) {
+			 beerPanel.add(new Label("... no info yet"));
+		} else {
+			for (String beerId : pub.getBeerIds()) {
+				addBeer(beerId);
+			}
+		}
+		
+		title.setText(pub.getTitle());
 	}
 	
 	@UiHandler("editImage")
@@ -60,6 +69,7 @@ public class PubPanel extends Composite {
 
 					@Override
 					public void onSuccess(Pub result) {
+						Window.alert("saved");
 						Stat.getHandlerManager().fireEvent(new PubAddedEvent(result));
 						hide();
 					}
@@ -72,9 +82,7 @@ public class PubPanel extends Composite {
 	}
 	
 	private void addBeer(String beerId) {
-		BeerInfoWidget beerInfoWidget = new BeerInfoWidget(beerId);
-		beerWidgets.put(beerId, beerInfoWidget);
-		beerPanel.add(beerInfoWidget);
+		beerPanel.add(new BeerInfoWidget(beerId));
 	}
 	
 	/**
@@ -82,25 +90,7 @@ public class PubPanel extends Composite {
 	 */
 	public Pub getPub() {
 		pub.setTitle(title.getText());
-		pub.setBeerIds(new HashSet<String>(beerWidgets.keySet()));
 		
 		return pub;
-	}
-
-	/**
-	 * @param pub the pub to set
-	 */
-	public void setPub(Pub pub) {
-		if (pub.getBeerIds().isEmpty()) {
-			 beerPanel.add(new Label("... no info yet"));
-		} else {
-			for (String beerId : pub.getBeerIds()) {
-				addBeer(beerId);
-			}
-		}
-		
-		title.setText(pub.getTitle());
-		
-		this.pub = pub;
 	}
 }

@@ -41,5 +41,4 @@ public interface BeerServiceAsync {
 	void getPubUpdates(String id, AsyncCallback<List<Pub>> callback);
 
 
-	
 }

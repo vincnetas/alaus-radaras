@@ -41,4 +41,5 @@ public interface BeerService extends RemoteService {
 	Beer saveBeer(Beer beer);
 	
 	List<Pub> getPubUpdates(String id);
+	
 }

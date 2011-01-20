@@ -11,7 +11,7 @@ import alaus.radaras.client.events.PubAddedEvent;
 import alaus.radaras.client.events.PubAddedHandler;
 import alaus.radaras.client.events.StartAddPubHandler;
 import alaus.radaras.client.ui.dialogs.EditDialog;
-import alaus.radaras.client.ui.edit.EditPubWidget;
+import alaus.radaras.client.ui.edit.AddPubWidget;
 import alaus.radaras.shared.DistanceCalculator;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
@@ -22,7 +22,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.maps.client.InfoWindow;
 import com.google.gwt.maps.client.InfoWindowContent;
 import com.google.gwt.maps.client.MapWidget;
-import com.google.gwt.maps.client.control.Control;
 import com.google.gwt.maps.client.control.ControlAnchor;
 import com.google.gwt.maps.client.control.ControlPosition;
 import com.google.gwt.maps.client.control.LargeMapControl3D;
@@ -34,10 +33,7 @@ import com.google.gwt.maps.client.geocode.LocationCallback;
 import com.google.gwt.maps.client.geocode.Placemark;
 import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.maps.client.geom.LatLngBounds;
-import com.google.gwt.maps.client.geom.Size;
-import com.google.gwt.maps.client.overlay.Icon;
 import com.google.gwt.maps.client.overlay.Marker;
-import com.google.gwt.maps.client.overlay.MarkerOptions;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
@@ -122,7 +118,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				Pub pub = new Pub();
 				pub.setLocation(latLngToLocation(location));
 				
-				final EditPubWidget editPubWidget = new EditPubWidget(pub);
+				final AddPubWidget editPubWidget = new AddPubWidget(pub);
 				EditDialog editDialog = new EditDialog(editPubWidget, "Add Pub") {
 					
 					@Override
@@ -192,27 +188,44 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		return LatLng.newInstance(position.getLatitude(), position.getLongitude());
 	}
 
-	private Map<Pub, Marker> pubs = new HashMap<Pub, Marker>();
+	private Map<Pub, PubMarker> pubs = new HashMap<Pub, PubMarker>();
 	
-	
+	class PubMarker extends Marker {
+		
+		private Pub pub;
+		
+		public PubMarker(Pub pub) {
+			super(locationToLatLng(pub.getLocation()));
+			setPub(pub);
+			
+			addMarkerClickHandler(new MarkerClickHandler() {
+				
+				@Override
+				public void onClick(MarkerClickEvent event) {
+					InfoWindow infoWindow = mapWidget.getInfoWindow();
+					infoWindow.open(PubMarker.this, new InfoWindowContent(new PubPanel(PubMarker.this.pub)));									
+				}
+			});
+		}
+		
+		public void setPub(Pub pub) {
+			this.pub = pub;
+		}
+	}
 	
 	@Override
 	public void pubAdded(final Pub pub) {
-		if (pub.getLocation() != null) {			
-			if (!pubs.containsKey(pub)) {
-				final Marker marker = new Marker(locationToLatLng(pub.getLocation()));
-
-				marker.addMarkerClickHandler(new MarkerClickHandler() {
-					
-					@Override
-					public void onClick(MarkerClickEvent event) {
-						InfoWindow infoWindow = mapWidget.getInfoWindow();
-						infoWindow.open(marker, new InfoWindowContent(new PubPanel(pub)));									
-					}
-				});
-				
+		if (pub.getLocation() != null) {
+			PubMarker marker = pubs.get(pub);
+			
+			if (marker == null) {
+				marker = new PubMarker(pub);
+		
 				mapWidget.addOverlay(marker);
+				pubs.put(pub, marker);
 			}
+			
+			marker.setPub(pub);
 		}
 	}
 
