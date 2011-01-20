@@ -12,9 +12,4 @@ import alaus.radaras.shared.model.Brand;
  */
 public class BrandDaoImpl extends BaseDaoImpl<Brand> implements BrandDao {
 
-	@Override
-	public Class<Brand> getClazz() {
-		return Brand.class;
-	}
-
 }

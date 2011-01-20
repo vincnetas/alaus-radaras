@@ -3,6 +3,9 @@
  */
 package alaus.radaras.server.dao.impl;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -17,18 +20,13 @@ import alaus.radaras.server.dao.IdProvider;
 import alaus.radaras.server.dao.PMF;
 import alaus.radaras.shared.model.Updatable;
 
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
 import com.google.inject.Inject;
 
 /**
  * @author Vincentas
  *
  */
-public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
-
-	@Inject
-	UserService userService;
+public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	
 	@Inject
 	IdProvider idProvider;
@@ -39,7 +37,6 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@Override
 	public T add(T object) {
 		object.setId(getIdProvider().getId());
-		setUpdateInfo(object);
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -51,22 +48,11 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		return object;
 	}
 	
-	private void setUpdateInfo(T object) {
-		object.setLastUpdate(new Date());
-		User user = getUserService().getCurrentUser();
-		if (user != null) {
-			object.setUpdatedBy(user.getEmail());
-			object.setApproved(true);
-		}
-	}
-
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#save(alaus.radaras.shared.model.Updatable)
 	 */
 	@Override
 	public T save(T object) {
-		setUpdateInfo(object);
-		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			pm.makePersistent(object);
@@ -81,7 +67,6 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public List<T> add(List<T> list) {
 		for (T object : list) {
 			object.setId(getIdProvider().getId());
-			setUpdateInfo(object);
 		}
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -94,7 +79,12 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		return list;
 	}
 	
-	public abstract Class<T> getClazz();
+	@SuppressWarnings("unchecked")
+	public Class<T> getClazz() {
+	    Type daoType = getClass().getGenericSuperclass();
+	    Type[] params = ((ParameterizedType) daoType).getActualTypeArguments();
+	    return (Class<T>) params[0];
+	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -102,29 +92,10 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());
-			query.setFilter("parentId == NULL");
+			query.setFilter("parentId == null");
 			
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
-			} finally {
-				query.closeAll();
-			}
-		} finally {
-			pm.close();
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<T> getUpdated(Date since) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			Query query = pm.newQuery(getClazz());
-			query.declareParameters("since");
-			query.setFilter("lastUpdate >= since && parentId == NULL");
-
-			try {
-				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
 			} finally {
 				query.closeAll();
 			}
@@ -164,7 +135,7 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		try {
 			Query query = pm.newQuery(getClazz());
 			query.declareParameters("since");
-			query.setFilter("lastUpdate >= since && parentId == NULL");
+			query.setFilter("lastUpdate >= since && parentId == null");
 
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
@@ -184,9 +155,10 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public List<T> getUpdates(String id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery(getClazz());
-			query.declareParameters("id");
-			query.setFilter("parentId == id AND approved == NULL ORDER BY lastUpdate ASC");
+			Query query = pm.newQuery(getClazz());			
+			query.setFilter("parentId == id && approved == null");
+			query.setOrdering("lastUpdate ASC");
+			query.declareParameters("String id");
 
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute(id));
@@ -205,15 +177,14 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@Override
 	public List<T> getUpdates() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
+		try {			
+			List<T> result = new ArrayList<T>();			
 			Query query = pm.newQuery(getClazz());
-			query.setFilter("parentId == NULL AND (modified == TRUE OR approved == NULL)");
-
-			try {
-				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
-			} finally {
-				query.closeAll();
-			}
+			query.setFilter("parentId == null && modified == true");
+			
+			result.addAll(pm.detachCopyAll((List<T>)query.execute()));
+			
+			return result;
 		} finally {
 			pm.close();
 		}
@@ -232,6 +203,28 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		}
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#getApproved()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getApproved() {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Query query = pm.newQuery(getClazz());			
+			query.setFilter("parentId == null && approved == true");
+
+			try {
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
+			} finally {
+				query.closeAll();
+			}
+		} finally {
+			pm.close();
+		}
+	}
+
 	/**
 	 * @return the idProvider
 	 */
@@ -245,25 +238,5 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public void setIdProvider(IdProvider idProvider) {
 		this.idProvider = idProvider;
 	}
-
-
-
-	/**
-	 * @return the userService
-	 */
-	public UserService getUserService() {
-		return userService;
-	}
-
-
-
-	/**
-	 * @param userService the userService to set
-	 */
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
-	
 	
 }

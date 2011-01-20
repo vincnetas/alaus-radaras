@@ -10,6 +10,7 @@ import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.maps.client.InfoWindow;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -37,8 +38,11 @@ public class PubPanel extends Composite {
 	
 	private final Pub pub;
 	
-	public PubPanel(Pub pub) {
+	private InfoWindow infoWindow;
+	
+	public PubPanel(InfoWindow infoWindow, Pub pub) {
 		this.pub = pub;
+		this.infoWindow = infoWindow;
 		
 		initWidget(uiBinder.createAndBindUi(this));
 		
@@ -55,12 +59,19 @@ public class PubPanel extends Composite {
 	
 	@UiHandler("editImage")
 	void onEditButtonClick(ClickEvent event) {
+		infoWindow.close();
 		final EditPubWidget editPubWidget = new EditPubWidget(pub);
+		
 		EditDialog editPubDialog = new EditDialog(editPubWidget, "Edit Pub") {
 			
 			@Override
 			public void onOkButtonClick(ClickEvent event) {
-				Stat.getBeerService().updatePub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
+				Pub a = editPubWidget.getPub();
+				Pub update = new Pub();
+				update.setParentId(a.getId());
+				update.setBeerIds(a.getBeerIds());
+				
+				Stat.getBeerService().updatePub(update, new BaseAsyncCallback<Pub>() {
 
 					@Override
 					public void onSuccess(Pub result) {

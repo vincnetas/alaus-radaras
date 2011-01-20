@@ -18,8 +18,6 @@ public interface BaseDao<T extends Updatable> {
 
 	List<T> getAll();
 	
-	List<T> getUpdated(Date since);
-	
 	List<T> getDeleted(Date since);
 	
 	/**
@@ -38,6 +36,8 @@ public interface BaseDao<T extends Updatable> {
 	List<T> getUpdates();
 	
 	T get(String id);
+	
+	List<T> getApproved();
 
 	
 }

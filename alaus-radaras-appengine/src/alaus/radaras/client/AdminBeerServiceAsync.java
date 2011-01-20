@@ -18,4 +18,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface AdminBeerServiceAsync {
 
 	void getPubUpdates(AsyncCallback<List<UpdateRecord<Pub>>> callback);
+
+	void applyUpdate(String id, AsyncCallback<Pub> callback);
+
+	void rejectUpdate(String id, AsyncCallback<Pub> callback);
 }

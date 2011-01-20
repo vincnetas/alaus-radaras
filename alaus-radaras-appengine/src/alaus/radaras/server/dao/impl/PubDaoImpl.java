@@ -12,8 +12,4 @@ import alaus.radaras.shared.model.Pub;
  */
 public class PubDaoImpl extends BaseDaoImpl<Pub> implements PubDao {
 
-	@Override
-	public Class<Pub> getClazz() {
-		return Pub.class;
-	}
 }
