@@ -40,6 +40,23 @@ public class Updatable implements Serializable {
 
 	@Persistent
 	private String parentId;
+	
+	@Persistent
+	private Boolean modified;
+
+	/**
+	 * @return the modified
+	 */
+	public Boolean isModified() {
+		return (modified == null) ? false : true;
+	}
+
+	/**
+	 * @param modified the modified to set
+	 */
+	public void setModified(Boolean modified) {
+		this.modified = modified;
+	}
 
 	/**
 	 * @return the lastUpdate
@@ -139,3 +156,6 @@ public class Updatable implements Serializable {
 		// TODO Auto-generated method stub
 		return super.hashCode();
 	}}
+
+
+

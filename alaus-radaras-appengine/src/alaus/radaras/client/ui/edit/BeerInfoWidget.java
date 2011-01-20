@@ -5,7 +5,6 @@ package alaus.radaras.client.ui.edit;
 
 import java.util.Set;
 
-import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
 import alaus.radaras.shared.Utils;
 import alaus.radaras.shared.model.Beer;
@@ -13,6 +12,7 @@ import alaus.radaras.shared.model.Beer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -30,12 +30,14 @@ public class BeerInfoWidget extends Composite {
 
 	@UiField
 	Label label;
+	
+	private Beer beer;
 
 	public BeerInfoWidget(String beerId) {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		label.setText("Loading...");
-		Stat.getBeerService().loadBeer(Utils.set(beerId), new BaseAsyncCallback<Set<Beer>>() {
+		Stat.getBeerService().loadBeer(Utils.set(beerId), new AsyncCallback<Set<Beer>>() {
 
 			@Override
 			public void onSuccess(Set<Beer> result) {
@@ -60,7 +62,8 @@ public class BeerInfoWidget extends Composite {
 		setBeer(beer);
 	}
 	
-	public void setBeer(Beer beer) {
+	private void setBeer(Beer beer) {
+		this.beer = beer;
 		label.setText(beer.getTitle());
 	}
 }

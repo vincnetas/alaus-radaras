@@ -1,8 +1,7 @@
 package alaus.radaras.client.ui.edit;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.Set;
 
 import alaus.radaras.client.Stat;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestBox;
@@ -39,15 +38,21 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 	@UiField
 	VerticalPanel beerPanel;
 	
-	private final Map<String, BeerInfoWidget> beerWidgets = new HashMap<String, BeerInfoWidget>();
+	private final Pub pub;
 	
-	private Pub pub;
+	private Set<String> beerIds = new HashSet<String>();
 	
 	public AddPubWidget(Pub pub) {
+		this.pub = pub;
+		
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		beerSuggest.addSelectionHandler(this);		
-		setPub(pub);
+		beerSuggest.addSelectionHandler(this);	
+		
+		title.setText(pub.getTitle());
+		for (String beerId : pub.getBeerIds()) {
+			addBeer(beerId);
+		}				
 	}
 
 	@Override
@@ -69,6 +74,7 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 			
 			@Override
 			public void onSuccess(Beer result) {
+				beerIds.add(result.getId());
 				addBeer(result);				
 			}
 			
@@ -79,16 +85,26 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 		});
 	}
 	
-	private void addBeer(String beerId) {
-		BeerInfoWidget beerInfoWidget = new BeerInfoWidget(beerId);
-		beerWidgets.put(beerId, beerInfoWidget);
-		beerPanel.add(beerInfoWidget);
+	private void addBeer(final String beerId) {
+		beerPanel.add(new RemovePanel(new BeerInfoWidget(beerId)) {
+			
+			@Override
+			public void onRemove() {
+				beerIds.remove(beerId);
+				beerPanel.remove(this);
+			}
+		});
 	}
 	
-	private void addBeer(Beer beer) {
-		BeerInfoWidget beerInfoWidget = new BeerInfoWidget(beer);
-		beerWidgets.put(beer.getId(), beerInfoWidget);
-		beerPanel.add(beerInfoWidget);
+	private void addBeer(final Beer beer) {
+		beerPanel.add(new RemovePanel(new BeerInfoWidget(beer)) {
+			
+			@Override
+			public void onRemove() {
+				beerIds.remove(beer.getId());
+				beerPanel.remove(this);
+			}
+		});
 	}
 	
 	/**
@@ -96,20 +112,8 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 	 */
 	public Pub getPub() {
 		pub.setTitle(title.getText());
-		pub.setBeerIds(new HashSet<String>(beerWidgets.keySet()));
+		pub.setBeerIds(beerIds);
 		
 		return pub;
 	}
-
-	/**
-	 * @param pub the pub to set
-	 */
-	public void setPub(Pub pub) {
-		for (String beerId : pub.getBeerIds()) {
-			addBeer(beerId);
-		}
-		title.setText(pub.getTitle());
-		
-		this.pub = pub;
-	}	
 }
