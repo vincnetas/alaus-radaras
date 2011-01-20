@@ -125,7 +125,8 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	}
 
 	@Override
-	public Pub savePub(Pub pub) {
+	public Pub updatePub(Pub pub) {
+		
 		getPubDao().save(pub);
 		return pub;
 	}
@@ -192,15 +193,5 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	public Beer addBeer(Beer beer) {
 		return getBeerDao().add(beer);
 	}
-
-	/* (non-Javadoc)
-	 * @see alaus.radaras.client.BeerService#getPubWithModifications(java.lang.String)
-	 */
-	@Override
-	public List<Pub> getPubUpdates(String id) {
-		return getPubDao().getUpdates(id);
-	}
-
-	
 	
 }

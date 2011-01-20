@@ -32,8 +32,14 @@ public class Updatable implements Serializable {
 	@Persistent
 	private Date lastUpdate;
 
+	/**
+	 * Indicates if this object was moderated. True indicates that this change
+	 * was approved, false indicates that change was rejected and null indicates
+	 * that value is still pending for moderation. This also applies to base
+	 * objects.
+	 */
 	@Persistent
-	Boolean approved;
+	private Boolean approved;
 	
 	@Persistent
 	private String updatedBy;

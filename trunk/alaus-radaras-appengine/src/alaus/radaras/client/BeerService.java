@@ -32,14 +32,36 @@ public interface BeerService extends RemoteService {
 
 	IPLocation getMyLocation();
 
-	Pub addPub(Pub pub);
+
+
+	
 
 	Beer addBeer(Beer beer);
-
-	Pub savePub(Pub pub);
-
+	
 	Beer saveBeer(Beer beer);
 	
-	List<Pub> getPubUpdates(String id);
+	
+	
+	/**
+	 * This method adds update for pub indicated by parentId. Passed in object
+	 * values will be compared with current base object values and all but
+	 * changed values will be set to null and stored
+	 * 
+	 * @param pub Pub update information
+	 * @return Returns stored update information.
+	 */
+	Pub updatePub(Pub pub);
+	
+	/**
+	 * This method adds pub to system. Pub will be added as unmoderated object
+	 * and will not appear in results. If adding user has rights to approve,
+	 * object will be automatically approved. If added pub was approved can be
+	 * determined by returned object.
+	 * 
+	 * @param pub
+	 *            Pub to add
+	 * @return Returns added pub
+	 */
+	Pub addPub(Pub pub);
 	
 }
