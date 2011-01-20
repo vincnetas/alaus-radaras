@@ -29,6 +29,12 @@ public class UpdateRecord<T extends Updatable> implements Serializable {
 	 */
 	private List<T> updates;
 
+	public UpdateRecord() {
+		/*
+		 * Empty default constructor
+		 */
+	}
+	
 	public UpdateRecord(T current, List<T> updates) {
 		this.current = current;
 		this.updates = updates;

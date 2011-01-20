@@ -10,6 +10,7 @@ import alaus.radaras.client.BeerService;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.PubService;
 import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
@@ -39,6 +40,9 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	
 	@Inject
 	private IPLocator locator;
+	
+	@Inject
+	private PubService pubService;
 
 	/**
 	 * 
@@ -65,7 +69,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public List<Pub> findPubs(Location location, double radius) {
-		return getPubDao().getAll();
+		return getPubService().findPubs(location, radius);
 	}
 
 	@Override
@@ -126,9 +130,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 
 	@Override
 	public Pub updatePub(Pub pub) {
-		
-		getPubDao().save(pub);
-		return pub;
+		return getPubService().addUpdate(pub);
 	}
 	
 	/* (non-Javadoc)
@@ -183,7 +185,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public Pub addPub(Pub pub) {
-		return getPubDao().add(pub);
+		return getPubService().add(pub);
 	}
 
 	/* (non-Javadoc)
@@ -193,5 +195,21 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	public Beer addBeer(Beer beer) {
 		return getBeerDao().add(beer);
 	}
+
+	/**
+	 * @return the pubService
+	 */
+	public PubService getPubService() {
+		return pubService;
+	}
+
+	/**
+	 * @param pubService the pubService to set
+	 */
+	public void setPubService(PubService pubService) {
+		this.pubService = pubService;
+	}
+	
+	
 	
 }

@@ -47,6 +47,10 @@ public class Updatable implements Serializable {
 	@Persistent
 	private String parentId;
 	
+	/**
+	 * Indicates that this object was modified. Applies only to base objects.
+	 * For updates this field should always be false
+	 */
 	@Persistent
 	private Boolean modified;
 
@@ -54,7 +58,7 @@ public class Updatable implements Serializable {
 	 * @return the modified
 	 */
 	public Boolean isModified() {
-		return (modified == null) ? false : true;
+		return modified;
 	}
 
 	/**
@@ -127,7 +131,7 @@ public class Updatable implements Serializable {
 	 * @return the approved
 	 */
 	public Boolean isApproved() {
-		return (approved != null) ? approved : false;
+		return approved;
 	}
 
 	/**

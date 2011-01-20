@@ -1,10 +1,9 @@
 package alaus.radaras.server;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import alaus.radaras.client.AdminBeerService;
-import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.PubService;
 import alaus.radaras.shared.model.Pub;
 import alaus.radaras.shared.model.UpdateRecord;
 
@@ -17,34 +16,45 @@ import com.google.inject.Singleton;
  */
 @Singleton
 public class AdminBeerServiceImpl extends RemoteServiceServlet implements AdminBeerService {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2591649769173838411L;
 
 	@Inject
-	private PubDao pubDao;
+	private PubService pubService;
 	
 	@Override
 	public List<UpdateRecord<Pub>> getPubUpdates() {
-		List<UpdateRecord<Pub>> result = new ArrayList<UpdateRecord<Pub>>();
-		List<Pub> updates = getPubDao().getUpdates();
-		for (Pub pub : updates) {
-			result.add(new UpdateRecord<Pub>(pub, getPubDao().getUpdates(pub.getId())));
-		}
-		
-		return result;
+		return getPubService().getUpdates();
+	}
+
+	@Override
+	public Pub applyUpdate(String id) {
+		return getPubService().applyUpdate(id);
+	}
+
+	@Override
+	public Pub rejectUpdate(String id) {
+		return getPubService().rejectUpdate(id);
 	}
 
 	/**
-	 * @return the pubDao
+	 * @return the pubService
 	 */
-	public PubDao getPubDao() {
-		return pubDao;
+	public PubService getPubService() {
+		return pubService;
 	}
 
 	/**
-	 * @param pubDao the pubDao to set
+	 * @param pubService the pubService to set
 	 */
-	public void setPubDao(PubDao pubDao) {
-		this.pubDao = pubDao;
+	public void setPubService(PubService pubService) {
+		this.pubService = pubService;
 	}
+	
+	
 	
 	
 

@@ -15,4 +15,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface AdminBeerService extends RemoteService {
 	
 	List<UpdateRecord<Pub>> getPubUpdates();
+	
+	Pub applyUpdate(String id);
+	
+	Pub rejectUpdate(String id);
 }
