@@ -3,6 +3,7 @@ package alaus.radaras.client.ui.edit;
 import java.util.HashSet;
 import java.util.Set;
 
+import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestBox;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestion;
@@ -15,7 +16,6 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
@@ -48,6 +48,7 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		beerSuggest.addSelectionHandler(this);		
 		
 		this.pub = pub;
+		
 		for (String beerId : pub.getBeerIds()) {
 			addBeer(beerId);
 		}		
@@ -70,22 +71,17 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		Beer beer = new Beer();
 		beer.setTitle(beerNameSuggestion);
 		
-		Stat.getBeerService().addBeer(beer, new AsyncCallback<Beer>() {
+		Stat.getBeerService().addBeer(beer, new BaseAsyncCallback<Beer>() {
 			
 			@Override
 			public void onSuccess(Beer result) {
-				beerIds.add(result.getId());
 				addBeer(result);				
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.toString());
 			}
 		});
 	}
 	
 	private void addBeer(final String beerId) {
+		beerIds.add(beerId);
 		beerPanel.add(new RemovePanel(new BeerInfoWidget(beerId)) {
 			
 			@Override
@@ -97,6 +93,7 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	}
 	
 	private void addBeer(final Beer beer) {
+		beerIds.add(beer.getId());
 		beerPanel.add(new RemovePanel(new BeerInfoWidget(beer)) {
 			
 			@Override

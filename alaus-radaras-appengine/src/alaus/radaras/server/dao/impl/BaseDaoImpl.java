@@ -186,7 +186,7 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		try {
 			Query query = pm.newQuery(getClazz());
 			query.declareParameters("id");
-			query.setFilter("parentId == id");
+			query.setFilter("parentId == id AND approved == NULL ORDER BY lastUpdate ASC");
 
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute(id));
@@ -196,8 +196,29 @@ public abstract class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		} finally {
 			pm.close();
 		}
-	}
+	}	
 	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#getUpdates()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getUpdates() {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Query query = pm.newQuery(getClazz());
+			query.setFilter("parentId == NULL AND (modified == TRUE OR approved == NULL)");
+
+			try {
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute());
+			} finally {
+				query.closeAll();
+			}
+		} finally {
+			pm.close();
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#get(java.lang.String)
 	 */

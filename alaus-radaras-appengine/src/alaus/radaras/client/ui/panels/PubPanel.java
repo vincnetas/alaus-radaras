@@ -1,9 +1,5 @@
 package alaus.radaras.client.ui.panels;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-
 import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
 import alaus.radaras.client.events.PubAddedEvent;
@@ -17,7 +13,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -65,11 +60,10 @@ public class PubPanel extends Composite {
 			
 			@Override
 			public void onOkButtonClick(ClickEvent event) {
-				Stat.getBeerService().savePub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
+				Stat.getBeerService().updatePub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
 
 					@Override
 					public void onSuccess(Pub result) {
-						Window.alert("saved");
 						Stat.getHandlerManager().fireEvent(new PubAddedEvent(result));
 						hide();
 					}

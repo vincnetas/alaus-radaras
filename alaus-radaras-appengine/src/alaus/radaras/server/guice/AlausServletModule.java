@@ -1,5 +1,6 @@
 package alaus.radaras.server.guice;
 
+import alaus.radaras.server.AdminBeerServiceImpl;
 import alaus.radaras.server.BeerServiceImpl;
 import alaus.radaras.server.ImageServlet;
 import alaus.radaras.server.JsonDataServlet;
@@ -30,6 +31,7 @@ class AlausServletModule extends ServletModule {
 		bind(UserService.class).toInstance(UserServiceFactory.getUserService());		
 		
 		serve("/beerEngine/beerService").with(BeerServiceImpl.class);
+		serve("/beerEngine/adminBeerService").with(AdminBeerServiceImpl.class);
 		serve("/data").with(JsonDataServlet.class);		
 		serve("/admin/upload").with(UploadServlet.class);
 		serve("/image/beer/*").with(ImageServlet.class);

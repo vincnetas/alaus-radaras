@@ -26,10 +26,16 @@ public interface BaseDao<T extends Updatable> {
 	 * 
 	 * @param id
 	 *            Object id
-	 * @return Returns list of updates with status APPLIED and UPDATE that have
-	 *         parentId of specified object
+	 * @return Returns not moderated object with specified parent id.
 	 */
 	List<T> getUpdates(String id);
+	
+	/**
+	 * 
+	 * @return Returns base objects that have any changes pending for
+	 *         moderation.
+	 */
+	List<T> getUpdates();
 	
 	T get(String id);
 

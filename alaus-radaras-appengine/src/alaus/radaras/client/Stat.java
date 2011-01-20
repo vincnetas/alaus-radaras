@@ -16,6 +16,8 @@ public class Stat {
 	
 	private static BeerServiceAsync beerService;
 	
+	private static AdminBeerServiceAsync adminBeerService;
+	
 	public synchronized static HandlerManager getHandlerManager() {
 		if (handlerManager == null) {
 			handlerManager = new HandlerManager(null);
@@ -30,6 +32,14 @@ public class Stat {
 		}
 		
 		return beerService;
+	}
+	
+	public synchronized static AdminBeerServiceAsync getAdminBeerService() {
+		if (adminBeerService == null) {
+			adminBeerService = GWT.create(AdminBeerService.class);
+		}
+		
+		return adminBeerService;
 	}
 	
 	
