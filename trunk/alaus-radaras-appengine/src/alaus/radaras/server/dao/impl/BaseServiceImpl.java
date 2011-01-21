@@ -4,8 +4,12 @@
 package alaus.radaras.server.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.ObjectUtils;
 
 import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.BaseService;
@@ -50,6 +54,8 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		T parent = getParent(update);
 		parent.setModified(true);
 		
+		prepareUpdate(update, parent);
+		
 		update.setApproved(null);
 		update.setModified(false);
 		update.setLastUpdate(new Date());		
@@ -58,8 +64,8 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		getBaseDao().save(parent);
 		return getBaseDao().add(update);
 	}
-	
-	private T getParent(T update) {
+
+    private T getParent(T update) {
 		T parent = getBaseDao().get(update.getParentId());
 		if (parent == null) {
 			throw new Error("Parent doesn't exists for update " + update);
@@ -96,6 +102,8 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 			return getBaseDao().save(parent);
 		}
 	}
+    
+	protected abstract void prepareUpdate(T update, T parent);
 	
 	protected abstract void applyUpdate(T object, T update);
 
@@ -166,6 +174,23 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	 * @return the baseDao
 	 */
 	public abstract BaseDao<T> getBaseDao();
+
+
+    protected <R> R nullIfEqual(R update, R value) {
+        R result = update;
+        
+        if (value instanceof Collection) {
+            if (CollectionUtils.isEqualCollection((Collection) update, (Collection) value)) {
+                result = null;
+            }
+        } else {
+            if (ObjectUtils.equals(update, value)) {
+                result = null;
+            }
+        }
+        
+        return result;
+    }
 
 	protected <R> R defaultIfNull(R value, R defaultValue) {
 		return (value != null) ? value : defaultValue;
