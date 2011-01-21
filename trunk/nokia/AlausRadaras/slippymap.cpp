@@ -109,6 +109,7 @@ void SlippyMap::pan(const QPoint &delta) {
 void SlippyMap::setPubs(QList<BeerPub*> &pubs)
 {
     this->pubs = pubs;
+    invalidate();
 }
 
 void SlippyMap::handleNetworkData(QNetworkReply *reply) {
@@ -150,7 +151,7 @@ void SlippyMap::download() {
 
     QString path = "http://tile.openstreetmap.org/%1/%2/%3.png";
     m_url = QUrl(path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y()));
-   // qDebug() << "getting data with url  " + path.arg(zoom).arg(grab.x()).arg(grab.y());
+    qDebug() << "getting data with url  " + path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y());
     QNetworkRequest request;
     request.setUrl(m_url);
     request.setRawHeader("User-Agent", "Nokia Beer Radar (Qt)");

@@ -7,6 +7,7 @@
 #include "beercounter.h"
 #include "publist.h"
 #include "brandlist.h"
+#include "beermap.h"
 
 namespace Ui {
     class MainController;
@@ -34,8 +35,9 @@ private:
     PubView *pubView;
     FeelingLucky *feelingLucky;
     BrandList *brandList;
-    QStack<int> history;
+    BeerMap *map;
 
+    QStack<int> history;
     void clearHistory();
 
 

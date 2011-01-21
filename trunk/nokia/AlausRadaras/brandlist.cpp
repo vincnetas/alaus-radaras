@@ -59,7 +59,5 @@ void BrandList::on_btnBack_clicked()
 
 BrandList::~BrandList()
 {
-    delete brandListScroller;
-    delete brandListModel;
     delete ui;
 }

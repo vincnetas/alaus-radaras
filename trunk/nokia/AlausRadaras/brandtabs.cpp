@@ -103,10 +103,4 @@ BrandTabs::~BrandTabs()
 {
     qDebug() << "BrandTabs destroyed";
     delete ui;
-    delete brandsModel;
-    delete countryModel;
-    delete tagsModel;
-    delete brandListScroller;
-    delete tagsListScroller;
-    delete countryListScroller;
 }

@@ -17,20 +17,18 @@ class BeerMap : public QWidget
 
 public:
     explicit BeerMap(QWidget *parent = 0);
-    void setPubs(QList<BeerPub*> &pubs);
+    void showPubs(QList<BeerPub*> &pubs);
     ~BeerMap();
 
 private:
     Ui::BeerMap *ui;
-    QList<BeerPub*> pubs;
     LightMaps *maps;
-    PubView *pub;
 private slots:
     void on_btnBack_clicked();
-    void pub_accepted();
     void showPub(QString pubId);
 signals:
     void Back();
+    void PubSelected(QString pubId);
 
 };
 

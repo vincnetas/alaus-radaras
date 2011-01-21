@@ -51,7 +51,5 @@ void PubView::on_closeButton_clicked()
 PubView::~PubView()
 {
     qDebug() << "pubview destructor called";
-    delete brandListScroller;
     delete ui;
-    delete brandsModel;
 }
