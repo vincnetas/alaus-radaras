@@ -37,8 +37,27 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 		pub.setTags(defaultIfNull(update.getTags(), pub.getTags()));
 		pub.setTitle(defaultIfNull(update.getTitle(), pub.getTitle()));
 	}
+	
+	/* (non-Javadoc)
+     * @see alaus.radaras.server.dao.impl.BaseServiceImpl#prepareUpdate(alaus.radaras.shared.model.Updatable, alaus.radaras.shared.model.Updatable)
+     */
+    @Override
+    protected void prepareUpdate(Pub update, Pub pub) {
+        update.setAddress(nullIfEqual(update.getAddress(), pub.getAddress()));
+        update.setBeerIds(nullIfEqual(update.getBeerIds(), pub.getBeerIds()));
+        update.setCity(nullIfEqual(update.getCity(), pub.getCity()));
+        update.setCountry(nullIfEqual(update.getCountry(), pub.getCountry()));
+        update.setDescription(nullIfEqual(update.getDescription(), pub.getDescription()));
+        update.setHomepage(nullIfEqual(update.getHomepage(), pub.getHomepage()));
+        update.setHours(nullIfEqual(update.getHours(), pub.getHours()));
+        update.setLatitude(nullIfEqual(update.getLatitude(), pub.getLatitude()));
+        update.setLongitude(nullIfEqual(update.getLongitude(), pub.getLongitude()));
+        update.setPhone(nullIfEqual(update.getPhone(), pub.getPhone()));
+        update.setTags(nullIfEqual(update.getTags(), pub.getTags()));
+        update.setTitle(nullIfEqual(update.getTitle(), pub.getTitle()));
+    }
 
-	@Override
+    @Override
 	public List<Pub> findPubs(Location location, double radius) {
 		return getPubDao().getApproved();
 	}
