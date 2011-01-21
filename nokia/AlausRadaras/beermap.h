@@ -11,7 +11,7 @@ namespace Ui {
     class BeerMap;
 }
 
-class BeerMap : public QMainWindow
+class BeerMap : public QWidget
 {
     Q_OBJECT
 
@@ -29,6 +29,8 @@ private slots:
     void on_btnBack_clicked();
     void pub_accepted();
     void showPub(QString pubId);
+signals:
+    void Back();
 
 };
 

@@ -3,7 +3,7 @@
 #include "viewutils.h"
 
 BeerCounter::BeerCounter(QWidget *parent) :
-    QMainWindow(parent),
+    QWidget(parent),
     ui(new Ui::BeerCounter)
 {
     dataProvider = new DataProvider(this);
@@ -19,7 +19,7 @@ BeerCounter::BeerCounter(QWidget *parent) :
 
 void BeerCounter::on_btnBack_clicked()
 {
-    this->close();
+    emit Back();
 }
 
 void BeerCounter::on_btnCount_clicked()
