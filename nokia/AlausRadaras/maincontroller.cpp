@@ -1,7 +1,7 @@
 #include "maincontroller.h"
 #include "ui_maincontroller.h"
 #include <QDebug>
-enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingLuckyView, BrandListView };
+enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingLuckyView, BrandListView, BeerMapView };
 
 MainController::MainController(QWidget *parent) :
     QMainWindow(parent),
@@ -32,6 +32,7 @@ MainController::MainController(QWidget *parent) :
     pubView = new PubView(this);
     feelingLucky = new FeelingLucky(this);
     brandList = new BrandList(this);
+    map = new BeerMap(this);
 
     ui->setupUi(this);
     ui->stackedWidget->addWidget(mainWidget);
@@ -41,6 +42,7 @@ MainController::MainController(QWidget *parent) :
     ui->stackedWidget->addWidget(pubView);
     ui->stackedWidget->addWidget(feelingLucky);
     ui->stackedWidget->addWidget(brandList);
+    ui->stackedWidget->addWidget(map);
 
     connect(mainWidget,SIGNAL(BrandsSelected()),this,SLOT(showBrandTabs()));
     connect(mainWidget,SIGNAL(ExitApp()),this,SLOT(close()));
@@ -66,6 +68,9 @@ MainController::MainController(QWidget *parent) :
     connect(brandList,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
 
     connect(pubView,SIGNAL(Back()),this,SLOT(goBack()));
+
+    connect(map,SIGNAL(Back()),this,SLOT(goBack()));
+    connect(map,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
 
     showWidget(MainView);
 }
@@ -116,7 +121,8 @@ void MainController::showBrandList(BrandListType type, QString id, QString heade
 
 void MainController::showMap(QList<BeerPub*> pubs)
 {
-
+    map->showPubs(pubs);
+    showWidget(BeerMapView);
 }
 
 void MainController::showPub(QString pubId)

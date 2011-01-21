@@ -126,8 +126,5 @@ void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
 PubList::~PubList()
 {
     delete dataProvider;
-    delete pubListScroller;
     delete ui;
-    delete pubListModel;
-    delete dataProvider;
 }

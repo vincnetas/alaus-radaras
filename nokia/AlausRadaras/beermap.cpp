@@ -1,48 +1,44 @@
 #include "beermap.h"
 #include "ui_beermap.h"
 #include "lightmaps.h"
+#include "viewutils.h"
 
 BeerMap::BeerMap(QWidget *parent) :
     QWidget(parent),
+    maps(0),
     ui(new Ui::BeerMap)
 {
     ui->setupUi(this);
-    maps = new LightMaps(this);
-    maps->setCenter(54.686647, 25.282788);
-    connect(maps, SIGNAL(pubSelected(QString)),this, SLOT(showPub(QString)));
-    this->ui->layout->addWidget(maps);
-    pub = NULL;
+    setAutoFillBackground(true);
+    setPalette(ViewUtils::GetBackground(palette()));
 }
 
 void BeerMap::on_btnBack_clicked()
 {
-    this->close();
+    emit Back();
 }
 
-void BeerMap::setPubs(QList<BeerPub*> &pubs)
+void BeerMap::showPubs(QList<BeerPub*> &pubs)
 {
-    this->pubs = pubs;
-    this->maps->setPubs(pubs);
+    if(!maps) {
+        maps = new LightMaps(this);
+        connect(maps, SIGNAL(pubSelected(QString)),this, SLOT(showPub(QString)));
+        this->ui->layout->addWidget(maps);
+    }
+
+    maps->setPubs(pubs);
+    maps->setCenter(54.686647, 25.282788);
+
 }
 
 
 void BeerMap::showPub(QString pubId)
 {
-//    pub = new PubView(this,pubId);
-//    //pub->setModal(true);
-//    pub->showFullScreen();
-//    connect(pub,SIGNAL(accepted()), this,SLOT(pub_accepted()));
+ emit PubSelected(pubId);
 }
 
-void BeerMap::pub_accepted()
-{
-    delete pub;
-    pub = NULL;
-}
 
 BeerMap::~BeerMap()
 {
-    delete pub;
-    delete maps;
     delete ui;
 }
