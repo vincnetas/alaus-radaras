@@ -8,13 +8,14 @@ namespace Ui {
     class PubView;
 }
 
-class PubView : public QDialog
+class PubView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit PubView(QWidget *parent = 0, QString pubId = "");
+    explicit PubView(QWidget *parent = 0);
     ~PubView();
+    void showPub(QString pubId);
 
 private:
     Ui::PubView *ui;
@@ -22,6 +23,8 @@ private:
     QsKineticScroller* brandListScroller;
 private slots:
     void on_closeButton_clicked();
+signals:
+    void Back();
 };
 
 #endif // PUBVIEW_H

@@ -10,19 +10,18 @@
 #include "dbpopulator.h"
 #include "waitdialog.h"
 #include "beercounter.h"
+#include "enums.h"
 namespace Ui {
     class AlausRadaras;
 }
 
-class AlausRadaras : public QMainWindow
+class AlausRadaras : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit AlausRadaras(QWidget *parent = 0);
     ~AlausRadaras();
-public slots:
-    void dbInitFinished();
 private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();
@@ -31,13 +30,12 @@ private slots:
     void on_btnCounter_clicked();
 private:
     Ui::AlausRadaras *ui;
-    BrandTabs *brandTabs;
-    PubList *pubList;
-    FeelingLucky *feelingLucky;
-    WaitDialog *progress;
-    BeerCounter *counter;
-    DbManager *dbManager;
-    DbPopulator *populator;
+signals:
+    void BrandsSelected();
+    void PubListSelected(PubListType type, QString id, QString header);
+    void LetsCount();
+    void ExitApp();
+    void FeelingLucky();
 };
 
 #endif // ALAUSRADARAS_H

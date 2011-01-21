@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     dbpopulator.cpp \
     waitdialog.cpp \
     beercounter.cpp \
-    viewutils.cpp
+    viewutils.cpp \
+    maincontroller.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -56,7 +57,8 @@ HEADERS  += alausradaras.h \
     dbpopulator.h \
     waitdialog.h \
     beercounter.h \
-    viewutils.h
+    viewutils.h \
+    maincontroller.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -67,7 +69,8 @@ FORMS    += alausradaras.ui \
     brandlist.ui \
     beermap.ui \
     waitdialog.ui \
-    beercounter.ui
+    beercounter.ui \
+    maincontroller.ui
 
 CONFIG += mobility
 MOBILITY += location

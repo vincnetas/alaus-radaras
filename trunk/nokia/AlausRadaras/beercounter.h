@@ -8,7 +8,7 @@ namespace Ui {
     class BeerCounter;
 }
 
-class BeerCounter : public QMainWindow
+class BeerCounter : public QWidget
 {
     Q_OBJECT
 
@@ -25,6 +25,8 @@ private:
     QSettings settings;
     DataProvider *dataProvider;
     void showQoute(int count);
+signals:
+    void Back();
 };
 
 #endif // BEERCOUNTER_H

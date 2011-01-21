@@ -3,7 +3,7 @@
 #include "lightmaps.h"
 
 BeerMap::BeerMap(QWidget *parent) :
-    QMainWindow(parent),
+    QWidget(parent),
     ui(new Ui::BeerMap)
 {
     ui->setupUi(this);
@@ -28,10 +28,10 @@ void BeerMap::setPubs(QList<BeerPub*> &pubs)
 
 void BeerMap::showPub(QString pubId)
 {
-    pub = new PubView(this,pubId);
-    pub->setModal(true);
-    pub->showFullScreen();
-    connect(pub,SIGNAL(accepted()), this,SLOT(pub_accepted()));
+//    pub = new PubView(this,pubId);
+//    //pub->setModal(true);
+//    pub->showFullScreen();
+//    connect(pub,SIGNAL(accepted()), this,SLOT(pub_accepted()));
 }
 
 void BeerMap::pub_accepted()

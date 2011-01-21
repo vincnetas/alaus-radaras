@@ -1,5 +1,5 @@
 #include <QtGui/QApplication>
-#include "alausradaras.h"
+#include "maincontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("alausradaras.lt");
     QCoreApplication::setApplicationName("Alaus radaras");
 
-    AlausRadaras w;
+    MainController w;
 
     w.showFullScreen();
 

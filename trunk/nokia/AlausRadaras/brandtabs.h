@@ -1,20 +1,19 @@
 #ifndef BRANDTABS_H
 #define BRANDTABS_H
 
-#include <QMainWindow>
 #include <QModelIndex>
-#include "publist.h"
+#include <QShowEvent>
+#include <QWidget>
 #include "brandlistmodel.h"
 #include "countrylistmodel.h"
 #include "taglistmodel.h"
-#include "brandlist.h"
 #include "qskineticscroller.h"
-
+#include "enums.h"
 namespace Ui {
     class BrandTabs;
 }
 
-class BrandTabs : public QMainWindow
+class BrandTabs : public QWidget
 {
     Q_OBJECT
 
@@ -25,19 +24,22 @@ private slots:
     void brandList_itemClicked(const QModelIndex &current);
     void countryList_itemClicked(const QModelIndex &current);
     void tagList_itemClicked(const QModelIndex &current);
-
+    void loadTabData(int index);
     void on_btnClose_clicked();
 private:
     Ui::BrandTabs *ui;
-    PubList *pubList;
     BrandListModel* brandsModel;
     CountryListModel* countryModel;
     TagListModel* tagsModel;
-    BrandList *brandList;
     QsKineticScroller *brandListScroller;
     QsKineticScroller *tagsListScroller;
     QsKineticScroller *countryListScroller;
-
+protected:
+    void showEvent( QShowEvent * event );
+signals:
+    void PubListSelected(PubListType type, QString id, QString header);
+    void BrandListSelected(BrandListType type, QString id, QString header);
+    void Back();
 };
 
 #endif // BRANDTABS_H

@@ -12,41 +12,16 @@
 #include <QGeoPositionInfoSource>
 #include "viewutils.h"
 #include "qskineticscroller.h"
-PubList::PubList(QWidget *parent, PubListType type, QString id) :
-    QMainWindow(parent),
-    ui(new Ui::PubList),
-    id(id),
-    type(type)
+PubList::PubList(QWidget *parent) :
+    QWidget(parent),
+    pubListModel(0),
+    ui(new Ui::PubList)
 {
     ui->setupUi(this);
 
     dataProvider = new DataProvider(this);
-    pubView = NULL;
-    map = NULL;
-
-    switch(this->type)
-    {
-        case ALL:
-            pubs = dataProvider->getAllPubs();
-        break;
-        case BRAND:
-            pubs = dataProvider->getPubsByBrandId(this->id);
-        break;
-        case COUNTRY:
-            pubs = dataProvider->getPubsByCountry(this->id);
-         break;
-            case TAG:
-                 pubs = dataProvider->getPubsByTag(this->id);
-        break;
-    }
-
-    //this->startGPS();
-
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
-
-    pubListModel = new PubListModel(this, pubs);
-    ui->pubListView->setModel(pubListModel);
 
     pubListScroller = new QsKineticScroller(this);
     pubListScroller->enableKineticScrollFor( ui->pubListView);
@@ -56,28 +31,43 @@ PubList::PubList(QWidget *parent, PubListType type, QString id) :
 
 }
 
-
-void PubList::showPub(QString pubId)
+void PubList::showPubList(PubListType type, QString id, QString header)
 {
-    QString newPub = pubId;
-    pubView = new PubView(this,newPub);
-    pubView->setModal(true);
-    pubView->showFullScreen();
+    if(pubs.size() > 0) {
+
+        for(int i = 0; i < pubs.size() ; i++) {
+            delete pubs[i];
+        }
+    }
+    if(pubListModel) {
+        delete pubListModel;
+    }
+
+    switch(type)
+    {
+        case ALL:
+            pubs = dataProvider->getAllPubs();
+        break;
+        case BRAND:
+            pubs = dataProvider->getPubsByBrandId(id);
+        break;
+        case COUNTRY:
+            pubs = dataProvider->getPubsByCountry(id);
+        break;
+        case TAG:
+            pubs = dataProvider->getPubsByTag(id);
+        break;
+    }
+
+    pubListModel = new PubListModel(this, pubs);
+    ui->pubListView->setModel(pubListModel);
+
+    setHeader(header);
 }
 
 void PubList::on_btnMap_clicked()
 {
-    if(map == NULL) {
-        map = new BeerMap(this);
-    }
-    map->setPubs(this->pubs);
-    map->showFullScreen();
-}
-
-void PubList::pubview_accepted()
-{
-    delete pubView;
-    pubView = NULL;
+    emit MapSelected(this->pubs);
 }
 
 void PubList::setHeader(QString text)
@@ -87,14 +77,13 @@ void PubList::setHeader(QString text)
 
 void PubList::on_btnBack_clicked()
 {
- this->close();
+    emit Back();
 }
 
 void PubList::pubList_itemClicked(const QModelIndex &current)
 {
 
-    QVariant data = current.data(Qt::EditRole);
-    this->showPub(data.toString());
+    emit PubSelected(current.data(Qt::EditRole).toString());
 
 }
 
@@ -136,12 +125,9 @@ void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
 
 PubList::~PubList()
 {
-    for(int i = 0; i < pubs.size() ; i++) {
-        delete pubs[i];
-    }
+    delete dataProvider;
+    delete pubListScroller;
     delete ui;
-    delete pubView;
     delete pubListModel;
     delete dataProvider;
-    delete map;
 }
