@@ -62,7 +62,44 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0,6">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="mapButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Images.qrc">
+         <normaloff>:/images/map_01.png</normaloff>:/images/map_01.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="directionsButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Images.qrc">
+         <normaloff>:/images/directions.png</normaloff>:/images/directions.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QLabel" name="pubAddressLabel">
        <property name="font">
@@ -71,7 +108,7 @@
         </font>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>sdfsdfsdfsdf</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

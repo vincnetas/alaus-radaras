@@ -20,6 +20,9 @@ SlippyMap::SlippyMap(QObject *parent) :
     m_emptyTile = QPixmap(CalculationHelper::tileSize, CalculationHelper::tileSize);
 m_emptyTile.fill(Qt::lightGray);
 
+QPainter p(&m_emptyTile);
+p.drawText(CalculationHelper::tileSize/3, CalculationHelper::tileSize/2, "Kraunasi....");
+
 QNetworkDiskCache *cache = new QNetworkDiskCache;
 cache->setCacheDirectory(QDesktopServices::storageLocation
                          (QDesktopServices::CacheLocation));
@@ -106,7 +109,7 @@ void SlippyMap::pan(const QPoint &delta) {
     invalidate();
 }
 
-void SlippyMap::setPubs(QList<BeerPub*> &pubs)
+void SlippyMap::setPubs(QList<BeerPub*> pubs)
 {
     this->pubs = pubs;
     invalidate();

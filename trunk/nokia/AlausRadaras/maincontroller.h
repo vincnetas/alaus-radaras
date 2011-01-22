@@ -53,6 +53,7 @@ private slots:
     void showMain();
     void showFeelingLucky();
     void goBack();
+    void showPubMap(QString pubId);
 
 };
 

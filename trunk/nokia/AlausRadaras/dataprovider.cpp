@@ -26,6 +26,11 @@ QList<BeerPub*> DataProvider::getPubsByTag(QString tagCode)
     return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y  FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = '%1'").arg(tagCode)));
 }
 
+BeerPub* DataProvider::getPub(QString pubId)
+{
+    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y  from pubs where id='%1'").arg(pubId))).at(0);
+}
+
 FeelingLuckyInfo DataProvider::feelingLucky()
 {
     FeelingLuckyInfo lucky;

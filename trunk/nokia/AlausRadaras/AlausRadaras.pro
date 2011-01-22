@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     waitdialog.cpp \
     beercounter.cpp \
     viewutils.cpp \
-    maincontroller.cpp
+    maincontroller.cpp \
+    makecall.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -58,7 +59,8 @@ HEADERS  += alausradaras.h \
     waitdialog.h \
     beercounter.h \
     viewutils.h \
-    maincontroller.h
+    maincontroller.h \
+    makecall.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -74,6 +76,18 @@ FORMS    += alausradaras.ui \
 
 CONFIG += mobility
 MOBILITY += location
+
+#LIBS += -lsendas2 \
+#-lmsgs \
+#-letext \
+#-lefsrv \
+#-lcharconv \
+#-lgsmu\
+#-etel3rdparty.lib\
+#-e32base.lib\
+#-euser.lib
+
+#MMP_RULES += "LIBRARY etel3rdparty.lib"
 
 
 symbian {
