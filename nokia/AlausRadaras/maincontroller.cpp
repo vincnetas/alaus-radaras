@@ -68,6 +68,7 @@ MainController::MainController(QWidget *parent) :
     connect(brandList,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
 
     connect(pubView,SIGNAL(Back()),this,SLOT(goBack()));
+    connect(pubView,SIGNAL(PubMapSelected(QString)),this,SLOT(showPubMap(QString)));
 
     connect(map,SIGNAL(Back()),this,SLOT(goBack()));
     connect(map,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
@@ -148,6 +149,15 @@ void MainController::goBack()
 {
     history.pop();
     showWidget(history.pop());
+}
+
+void MainController::showPubMap(QString pubId)
+{
+    DataProvider d(this);
+    BeerPub *pub = d.getPub(pubId);
+    qDebug() << pub->id();
+    map->showSinglePub(pub);
+    showWidget(BeerMapView);
 }
 
 

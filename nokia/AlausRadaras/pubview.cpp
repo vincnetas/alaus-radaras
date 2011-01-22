@@ -6,6 +6,8 @@
 #include <QSqlError>
 #include "viewutils.h"
 #include <qskineticscroller.h>
+#include <QDesktopServices>
+#include <QUrl>
 PubView::PubView(QWidget *parent) :
     QWidget(parent),
     brandsModel(0),
@@ -21,17 +23,24 @@ PubView::PubView(QWidget *parent) :
 
      brandListScroller = new QsKineticScroller(this);
      brandListScroller->enableKineticScrollFor(ui->brandListView);
+
+     //until we don't have GPS
+     ui->directionsButton->setVisible(false);
 }
 
 void PubView::showPub(QString pubId)
 {
 
-    QSqlQuery query(QString("SELECT id, title, address, phone from pubs where id='%1'").arg(pubId));
+    QSqlQuery query(QString("SELECT id, title, address, phone, longtitude, latitude from pubs where id='%1'").arg(pubId));
     while (query.next()) {
         ui->pubPhoneLabel->setText(query.value(3).toString());
         ui->pubAddressLabel->setText(query.value(2).toString());
         ui->pubNameLabel->setText(query.value(1).toString());
+        this->id = query.value(0).toString();
+        this->lat = query.value(4).toString();
+        this->lng = query.value(5).toString();
     }
+    query.clear();
     if(!brandsModel) {
         brandsModel = new BrandListModel();
     }
@@ -41,6 +50,16 @@ void PubView::showPub(QString pubId)
     ui->brandListView->setModel(brandsModel);
 
 
+}
+
+void PubView::on_directionsButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl(QString("http://maps.google.com/maps?q=%1,%2").arg(this->lat,this->lng)));
+}
+
+void PubView::on_mapButton_clicked()
+{
+     emit PubMapSelected(this->id);
 }
 
 void PubView::on_closeButton_clicked()

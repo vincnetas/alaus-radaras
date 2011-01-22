@@ -15,5 +15,6 @@
         <file>images/tab_tag_02.png</file>
         <file>images/balloon_overlay_unfocused.9.png</file>
         <file>images/balloon_overlay_focused.9.png</file>
+        <file>images/directions.png</file>
     </qresource>
 </RCC>

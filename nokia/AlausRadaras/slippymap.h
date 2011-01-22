@@ -25,7 +25,7 @@ public:
     void render(QPainter *p, const QRect &rect);
     void invalidate();
     void pan(const QPoint &delta);
-    void setPubs(QList<BeerPub*> &pubs);
+    void setPubs(QList<BeerPub*> pubs);
     QList<PubContainer> pubCoordinates;
 signals:
 
