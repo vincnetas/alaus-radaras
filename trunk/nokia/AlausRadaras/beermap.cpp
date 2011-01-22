@@ -17,11 +17,13 @@ BeerMap::BeerMap(QWidget *parent) :
         connect(maps, SIGNAL(pubSelected(QString)),this, SLOT(showPubInfo(QString)));
         this->ui->layout->addWidget(maps);
     }
+    locationAlreadyUpdated = false;
 
 }
 
 void BeerMap::on_btnBack_clicked()
 {
+    locationAlreadyUpdated = false;
     emit Back();
 }
 
@@ -29,6 +31,15 @@ void BeerMap::showPubs(QList<BeerPub*> &pubs)
 {
     maps->setPubs(pubs);
     maps->setCenter(54.686647, 25.282788);
+
+}
+
+void BeerMap::locationChanged(qreal lat, qreal lon)
+{
+
+    if(!locationAlreadyUpdated) {
+        maps->setCenter(lat, lon);
+    }
 
 }
 

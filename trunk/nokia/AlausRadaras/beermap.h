@@ -19,11 +19,13 @@ public:
     explicit BeerMap(QWidget *parent = 0);
     void showPubs(QList<BeerPub*> &pubs);
     void showSinglePub(BeerPub *pub);
+    void locationChanged(qreal lat, qreal lon);
     ~BeerMap();
 
 private:
     Ui::BeerMap *ui;
     LightMaps *maps;
+    bool locationAlreadyUpdated;
 private slots:
     void on_btnBack_clicked();
     void showPubInfo(QString pubId);

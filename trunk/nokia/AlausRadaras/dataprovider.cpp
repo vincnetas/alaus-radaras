@@ -76,7 +76,7 @@ QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
         pub->setLatitude(query->value(3).toDouble());
         pub->setTile(QPoint(query->value(4).toInt(),query->value(5).toInt()));
         pub->setTilePixel(QPoint(query->value(6).toInt(),query->value(7).toInt()));
-        pub->setDistance(0);
+        pub->setDistance(-1);
         pubs.append(pub);
         //qDebug() << query->value(4).toString() << " "  << query->value(5).toString();
     }

@@ -19,6 +19,7 @@ public:
     static qreal latitudeFromTile(qreal ty);
     static QPoint tilePixelForTile(QPointF tile);
     static QPointF tileForCoordinatePrecise(qreal lat, qreal lon);
+    static qreal getDistance(qreal &lat1, qreal &lon1, qreal &lat2, qreal &lon2,char unit);
 };
 
 #endif // CALCULATIONHELPER_H

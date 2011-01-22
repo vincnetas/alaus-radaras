@@ -1,6 +1,7 @@
 #include "maincontroller.h"
 #include "ui_maincontroller.h"
 #include <QDebug>
+#include <QGeoPositionInfoSource>
 enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingLuckyView, BrandListView, BeerMapView };
 
 MainController::MainController(QWidget *parent) :
@@ -112,6 +113,7 @@ void MainController::showPubList(PubListType type, QString id, QString header)
 
     pubList->showPubList(type, id, header);
     showWidget(PubListView);
+    QTimer::singleShot(500,this,SLOT(startLocationUpdates()));
 
 }
 void MainController::showBrandList(BrandListType type, QString id, QString header)
@@ -124,6 +126,7 @@ void MainController::showMap(QList<BeerPub*> pubs)
 {
     map->showPubs(pubs);
     showWidget(BeerMapView);
+    QTimer::singleShot(500,this,SLOT(startLocationUpdates()));
 }
 
 void MainController::showPub(QString pubId)
@@ -147,8 +150,13 @@ void MainController::clearHistory()
 
 void MainController::goBack()
 {
+    if(ui->stackedWidget->currentIndex() == PubListView ||
+       ui->stackedWidget->currentIndex() == BeerMapView ) {
+        QTimer::singleShot(300,this,SLOT(stopLocationUpdates()));
+    }
     history.pop();
     showWidget(history.pop());
+
 }
 
 void MainController::showPubMap(QString pubId)
@@ -160,6 +168,62 @@ void MainController::showPubMap(QString pubId)
     showWidget(BeerMapView);
 }
 
+void MainController::positionUpdated(QGeoPositionInfo geoPositionInfo)
+{
+    qDebug() << "Position updated";
+    if (geoPositionInfo.isValid())
+    {
+        // Save the position information into a member variable
+        myPositionInfo = geoPositionInfo;
+
+        // Get the current location as latitude and longitude
+        QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
+        qreal latitude = geoCoordinate.latitude();
+        qreal longitude = geoCoordinate.longitude();
+        if(ui->stackedWidget->currentIndex() == PubListView) {
+            pubList->locationChanged(latitude,longitude);
+        } else if (ui->stackedWidget->currentIndex() == BeerMapView) {
+            map->locationChanged(latitude,longitude);
+        }
+        qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
+    }
+}
+void MainController::stopLocationUpdates()
+{
+    if (locationDataSource)
+    {
+        locationDataSource->stopUpdates();
+
+    }
+}
+
+void MainController::startLocationUpdates()
+{
+    // Obtain the location data source if it is not obtained already
+    qDebug() << "Start GPS";
+    if (!locationDataSource)
+    {
+        qDebug() << "nolocation data source";
+        locationDataSource =
+            QGeoPositionInfoSource::createDefaultSource(this);
+        // Whenever the location data source signals that the current
+        // position is updated, the positionUpdated function is called
+        connect(locationDataSource, SIGNAL(positionUpdated(QGeoPositionInfo)),
+                      this, SLOT(positionUpdated(QGeoPositionInfo)));
+        // Start listening for position updates
+
+         QFlags<QGeoPositionInfoSource::PositioningMethod> flags = locationDataSource->preferredPositioningMethods();
+         if(flags.testFlag(QGeoPositionInfoSource::SatellitePositioningMethods))
+             qDebug() << "satelite available";
+         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
+             qDebug() << "non-satelite available";
+         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
+             qDebug() << "nall methods available";
+    }
+    locationDataSource->requestUpdate();
+    locationDataSource->setUpdateInterval(15000);
+    locationDataSource->startUpdates();
+}
 
 
 MainController::~MainController()
