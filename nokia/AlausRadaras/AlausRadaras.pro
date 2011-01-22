@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql network
-TARGET = AlausRadaras
+TARGET = Alaus Radaras
 TEMPLATE = app
 
 
@@ -89,6 +89,7 @@ MOBILITY += location
 
 #MMP_RULES += "LIBRARY etel3rdparty.lib"
 
+ICON = alus.svg
 
 symbian {
     TARGET.UID3 = 0xece1c5e8

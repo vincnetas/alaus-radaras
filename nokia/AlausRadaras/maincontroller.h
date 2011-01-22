@@ -9,6 +9,13 @@
 #include "brandlist.h"
 #include "beermap.h"
 
+#include <qgeopositioninfosource.h>
+#include <qgeosatelliteinfosource.h>
+#include <qgeopositioninfo.h>
+#include <qgeosatelliteinfo.h>
+#include <qskineticscroller.h>
+QTM_USE_NAMESPACE
+
 namespace Ui {
     class MainController;
 }
@@ -40,6 +47,9 @@ private:
     QStack<int> history;
     void clearHistory();
 
+    QPointer<QGeoPositionInfoSource> locationDataSource;
+    QGeoPositionInfo myPositionInfo;
+
 
 private slots:
     void dbInitFinished();
@@ -54,6 +64,9 @@ private slots:
     void showFeelingLucky();
     void goBack();
     void showPubMap(QString pubId);
+    void positionUpdated(QGeoPositionInfo geoPositionInfo);
+    void startLocationUpdates();
+    void stopLocationUpdates();
 
 };
 

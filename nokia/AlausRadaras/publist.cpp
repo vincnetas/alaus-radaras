@@ -12,6 +12,13 @@
 #include <QGeoPositionInfoSource>
 #include "viewutils.h"
 #include "qskineticscroller.h"
+#include "calculationhelper.h"
+
+bool sortPubsByDistance( const BeerPub * p1 , const BeerPub * p2 )
+{
+        return p2->distance() > p1->distance();
+}
+
 PubList::PubList(QWidget *parent) :
     QWidget(parent),
     pubListModel(0),
@@ -29,6 +36,24 @@ PubList::PubList(QWidget *parent) :
     QListView::connect(ui->pubListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
 
 
+}
+
+void PubList::locationChanged(qreal lat, qreal lon)
+{
+    if(pubListModel) {
+        if(pubs.size() > 0) {
+            for(int i = 0; i < pubs.size(); i++) {
+                qreal p1 = pubs[i]->latitude();
+                qreal p2 = pubs[i]->longitude();
+                qreal distance = CalculationHelper::getDistance(p1,p2,lat,lon,'M');
+                qDebug() << QString::number(distance);
+                pubs[i]->setDistance(distance);
+            }
+            //pubs are pointers.. so..
+            qSort(pubs.begin(),pubs.end(),sortPubsByDistance);
+            pubListModel->refresh();
+        }
+    }
 }
 
 void PubList::showPubList(PubListType type, QString id, QString header)
@@ -59,7 +84,7 @@ void PubList::showPubList(PubListType type, QString id, QString header)
         break;
     }
 
-    pubListModel = new PubListModel(this, pubs);
+    pubListModel = new PubListModel(this, &pubs);
     ui->pubListView->setModel(pubListModel);
 
     setHeader(header);
@@ -87,40 +112,7 @@ void PubList::pubList_itemClicked(const QModelIndex &current)
 
 }
 
-void PubList::startGPS()
-{
-    // Obtain the location data source if it is not obtained already
-    if (!locationDataSource)
-    {
-        locationDataSource =
-            QGeoPositionInfoSource::createDefaultSource(this);
-        // Whenever the location data source signals that the current
-        // position is updated, the positionUpdated function is called
-        connect(locationDataSource, SIGNAL(positionUpdated(QGeoPositionInfo)),
-                      this, SLOT(positionUpdated(QGeoPositionInfo)));
 
-        // Start listening for position updates
-        locationDataSource->startUpdates();
-    }
-}
-
-void PubList::positionUpdated(QGeoPositionInfo geoPositionInfo)
-{
-    if (geoPositionInfo.isValid())
-    {
-//        // We've got the position. No need to continue the listening.
-//        locationDataSource->stopUpdates();
-
-        // Save the position information into a member variable
-        myPositionInfo = geoPositionInfo;
-
-        // Get the current location as latitude and longitude
-        QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
-        qreal latitude = geoCoordinate.latitude();
-        qreal longitude = geoCoordinate.longitude();
-        qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
-    }
-}
 
 
 PubList::~PubList()
