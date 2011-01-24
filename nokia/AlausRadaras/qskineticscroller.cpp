@@ -10,15 +10,15 @@
 
 // A number of mouse moves are ignored after a press to differentiate
 // it from a press & drag.
-static const int gMaxIgnoredMouseMoves = 3;
+static const int gMaxIgnoredMouseMoves = 8;
 // The timer measures the drag speed & handles kinetic scrolling. Adjusting
 // the timer interval will change the scrolling speed and smoothness.
-static const int gTimerInterval = 15;
+static const int gTimerInterval = 30;
 // The speed measurement is imprecise, limit it so that the scrolling is not
 // too fast.
-static const int gMaxDecelerationSpeed = 30;
+static const int gMaxDecelerationSpeed = 100;
 // influences how fast the scroller decelerates
-static const int gFriction = 3;
+static const int gFriction = 2;
 
 class QsKineticScrollerImpl
 {

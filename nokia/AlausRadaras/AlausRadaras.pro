@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql network
-TARGET = Alaus Radaras
+TARGET = AlausRadaras
 TEMPLATE = app
 
 
@@ -96,6 +96,16 @@ symbian {
     TARGET.CAPABILITY += NetworkServices Location
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
+    ICON = alus.svg
+vendorinfo = \
+"%{\"alausradaras.lt\"}" \
+":\"alausradaras.lt\""
+
+my_deployment.pkg_prerules = packageheader vendorinfo
+
+packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 0, 0, TYPE=SA"
+my_deployment.pkg_prerules = packageheader vendorinfo
+DEPLOYMENT += my_deployment
 }
 
 RESOURCES += \
