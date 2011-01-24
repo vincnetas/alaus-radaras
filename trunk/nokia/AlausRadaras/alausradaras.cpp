@@ -6,6 +6,7 @@
 #include <QDialog>
 #include "enums.h"
 #include "viewutils.h"
+#include <QDesktopServices>
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AlausRadaras)
@@ -17,6 +18,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
 
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
+    connect(ui->txtUpdate,SIGNAL(linkActivated(QString)),this,SLOT(loadUpdate(QString)));
 }
 
 void AlausRadaras::on_btnBrands_clicked()
@@ -42,6 +44,16 @@ void AlausRadaras::on_btnCounter_clicked()
 void AlausRadaras::on_btnExit_clicked()
 {
     emit ExitApp();
+}
+
+void AlausRadaras::setUpdateVersion(QString version)
+{
+    ui->txtUpdate->setText(QString::fromUtf8("<a href=''>Nauja versija %1! Atsisiuskite cia.</a>").arg(version));
+}
+
+void AlausRadaras::loadUpdate(QString string)
+{
+    QDesktopServices::openUrl(QUrl("http://alausradaras.lt/nokia/"));
 }
 
 AlausRadaras::~AlausRadaras()

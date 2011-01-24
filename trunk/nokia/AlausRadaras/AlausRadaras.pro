@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     beercounter.cpp \
     viewutils.cpp \
     maincontroller.cpp \
-    makecall.cpp
+    makecall.cpp \
+    updatechecker.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -60,7 +61,8 @@ HEADERS  += alausradaras.h \
     beercounter.h \
     viewutils.h \
     maincontroller.h \
-    makecall.h
+    makecall.h \
+    updatechecker.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \

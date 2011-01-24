@@ -22,12 +22,14 @@ class AlausRadaras : public QWidget
 public:
     explicit AlausRadaras(QWidget *parent = 0);
     ~AlausRadaras();
+    void setUpdateVersion(QString version);
 private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();
     void on_btnLucky_clicked();
     void on_btnExit_clicked();
     void on_btnCounter_clicked();
+    void loadUpdate(QString string);
 private:
     Ui::AlausRadaras *ui;
 signals:
