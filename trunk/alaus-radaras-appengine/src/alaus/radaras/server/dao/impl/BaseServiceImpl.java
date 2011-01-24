@@ -180,9 +180,13 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
         R result = update;
         
         if (value instanceof Collection) {
-            if (CollectionUtils.isEqualCollection((Collection) update, (Collection) value)) {
-                result = null;
-            }
+        	if (value != null && update != null) {
+	            if (CollectionUtils.isEqualCollection((Collection) update, (Collection) value)) {
+	                result = null;
+	            }
+        	} else if (update == null) {
+        		result = null;
+        	}
         } else {
             if (ObjectUtils.equals(update, value)) {
                 result = null;
