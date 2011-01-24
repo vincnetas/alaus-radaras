@@ -75,6 +75,9 @@ MainController::MainController(QWidget *parent) :
     connect(map,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
 
     showWidget(MainView);
+
+    connect(&updater,SIGNAL(updateAvalable(QString)),SLOT(onUpdateAvailable(QString)));
+    QTimer::singleShot(500,&updater,SLOT(checkForUpdates()));
 }
 
 void MainController::showFeelingLucky()
@@ -225,6 +228,10 @@ void MainController::startLocationUpdates()
     locationDataSource->startUpdates();
 }
 
+void MainController::onUpdateAvailable(QString version)
+{
+    mainWidget->setUpdateVersion(version);
+}
 
 MainController::~MainController()
 {

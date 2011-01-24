@@ -14,6 +14,7 @@
 #include <qgeopositioninfo.h>
 #include <qgeosatelliteinfo.h>
 #include <qskineticscroller.h>
+#include "updatechecker.h"
 QTM_USE_NAMESPACE
 
 namespace Ui {
@@ -43,6 +44,7 @@ private:
     FeelingLucky *feelingLucky;
     BrandList *brandList;
     BeerMap *map;
+    UpdateChecker updater;
 
     QStack<int> history;
     void clearHistory();
@@ -67,6 +69,7 @@ private slots:
     void positionUpdated(QGeoPositionInfo geoPositionInfo);
     void startLocationUpdates();
     void stopLocationUpdates();
+    void onUpdateAvailable(QString version);
 
 };
 
