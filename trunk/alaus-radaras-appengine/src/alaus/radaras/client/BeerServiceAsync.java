@@ -6,7 +6,7 @@ import java.util.Set;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.IPLocation;
-import alaus.radaras.shared.model.Location;
+import alaus.radaras.shared.model.LocationBounds;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -16,7 +16,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface BeerServiceAsync {
 	
-	void findPubs(Location location, double radius, AsyncCallback<List<Pub>> callback);
+	void findPubs(LocationBounds bounds, AsyncCallback<List<Pub>> callback);
 
 	void getBeerSuggestions(String queryString, int limit, AsyncCallback<List<Beer>> callback);
 

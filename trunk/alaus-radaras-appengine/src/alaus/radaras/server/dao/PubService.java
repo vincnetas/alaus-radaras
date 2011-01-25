@@ -5,7 +5,7 @@ package alaus.radaras.server.dao;
 
 import java.util.List;
 
-import alaus.radaras.shared.model.Location;
+import alaus.radaras.shared.model.LocationBounds;
 import alaus.radaras.shared.model.Pub;
 
 /**
@@ -14,6 +14,6 @@ import alaus.radaras.shared.model.Pub;
  */
 public interface PubService extends BaseService<Pub> {
 
-	List<Pub> findPubs(Location location, double radius);
+	List<Pub> findPubs(LocationBounds bounds);
 
 }
