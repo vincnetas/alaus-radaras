@@ -3,9 +3,9 @@
  */
 package alaus.radaras.client.ui.filter;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import alaus.radaras.client.BaseAsyncCallback;
@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Vincentas
  * 
  */
-public abstract class BaseFilter extends Composite implements PubAddedHandler, PubRemovedHandler {
+public abstract class BaseFilter<E, T extends FilterWidget<E>> extends Composite implements PubAddedHandler, PubRemovedHandler {
 
     protected final PubFilter filter = new PubFilter();
     
@@ -43,59 +43,67 @@ public abstract class BaseFilter extends Composite implements PubAddedHandler, P
         Stat.getHandlerManager().addHandler(PubAddedHandler.type, this);
         Stat.getHandlerManager().addHandler(PubRemovedHandler.type, this);
     }
+    
+    private final Map<T, Set<Pub>> widgetPubs = new HashMap<T, Set<Pub>>();
 
-    private final List<Widget> widgets = new ArrayList<Widget>();
-
-    private final Set<Pub> pubs = new HashSet<Pub>();
-
+    private final Map<Pub, Set<T>> pubWidgets = new HashMap<Pub, Set<T>>(); 
+    
     @Override
     public void pubAdded(final Pub pub) {
-        if (pubs.contains(pub)) {
-            return;
+        if (!pubWidgets.containsKey(pub)) {
+        	pubWidgets.put(pub, new HashSet<T>());
+        	
+	        getFilterWidgets(pub, new BaseAsyncCallback<Set<T>>() {
+	
+	            @Override
+	            public void onSuccess(Set<T> widgets) {
+	            	if (pubWidgets.containsKey(pub)) {
+	            		pubWidgets.get(pub).addAll(widgets);
+	            		
+		            	for (T widget : widgets) {
+							if (!widgetPubs.containsKey(widget)) {
+								widgetPubs.put(widget, new HashSet<Pub>());
+								panel.add(widget);
+							}
+							
+							widgetPubs.get(widget).add(pub);
+						}
+	            	}
+	            }
+	        });
         }
-        
-        getFilterWidgets(pub, new BaseAsyncCallback<Set<Widget>>() {
-
-            @Override
-            public void onSuccess(Set<Widget> filterWidgets) {
-                if (!pubs.contains(pub)) {
-                    for (Widget widget : filterWidgets) {
-                        if (!widgets.contains(widget)) {
-                            panel.add(widget);
-                        }
-                    }
-                    widgets.addAll(filterWidgets);
-
-                    pubs.add(pub);
-                }
-            }
-        });
-
     }
 
     @Override
     public void pubRemoved(final Pub pub) {
-        if (!pubs.contains(pub)) {
-            return;
+        if (pubWidgets.containsKey(pub)) {
+        	Set<T> widgets = pubWidgets.get(pub);
+        	for (Widget widget : widgets) {
+				Set<Pub> pubs = widgetPubs.get(widget);
+				pubs.remove(pub);
+				
+				if (pubs.isEmpty()) {
+					panel.remove(widget);
+					widgetPubs.remove(widget);
+				}
+			}
+        	
+        	pubWidgets.remove(pub);
         }
-        
-        getFilterWidgets(pub, new BaseAsyncCallback<Set<Widget>>() {
-
-            @Override
-            public void onSuccess(Set<Widget> filterWidgets) {
-                if (pubs.contains(pub)) {
-                    for (Widget widget : filterWidgets) {
-                        widgets.remove(widget);
-                        if (!widgets.contains(widget)) {
-                            panel.remove(widget);
-                        }
-                    }
-
-                    pubs.remove(pub);
-                }
-            }
-        });
     }
 
-    protected abstract void getFilterWidgets(Pub pub, AsyncCallback<Set<Widget>> callback);
+    protected abstract void getFilterWidgets(Pub pub, AsyncCallback<Set<T>> callback);
+        
+	protected T getWidget(E value) {
+		T result = null;
+		for (T widget : widgetPubs.keySet()) {
+			if (widget.isFor(value)) {
+				result = widget;
+				break;
+			}
+		}
+
+		return result;
+	}
+
 }

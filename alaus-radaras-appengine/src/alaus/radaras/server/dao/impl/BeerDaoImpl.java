@@ -35,11 +35,11 @@ public class BeerDaoImpl extends BaseDaoImpl<Beer> implements BeerDao {
 	private static Beer getBeer(String id) {
 		Beer result = new Beer();
 		
-		result.setBrandId(Integer.toString(RandomUtils.nextInt(10000)));
+		result.setBrandId(Integer.toString(RandomUtils.nextInt(10)));
 		result.setDescription(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(80) + 20));
 		result.setId(id);
 		result.setTags(getBeerTags());
-		result.setTitle(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(10) + 10));
+		result.setTitle("Beer " + id);
 		
 		return result;
 	}
