@@ -9,10 +9,12 @@ import alaus.radaras.client.Stat;
 import alaus.radaras.client.events.ChangeUserLocationHandler;
 import alaus.radaras.client.events.PubAddedEvent;
 import alaus.radaras.client.events.PubAddedHandler;
+import alaus.radaras.client.events.PubFilterHandler;
 import alaus.radaras.client.events.PubRemovedEvent;
 import alaus.radaras.client.events.StartAddPubHandler;
 import alaus.radaras.client.ui.dialogs.EditDialog;
 import alaus.radaras.client.ui.edit.AddPubWidget;
+import alaus.radaras.client.ui.filter.PubFilter;
 import alaus.radaras.shared.DistanceCalculator;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.LocationBounds;
@@ -193,7 +195,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 
 	private Map<Pub, PubMarker> pubs = new HashMap<Pub, PubMarker>();
 	
-	class PubMarker extends Marker {
+	class PubMarker extends Marker implements PubFilterHandler {
 		
 		private Pub pub;
 		
@@ -221,8 +223,11 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		public Pub getPub() {
 			return pub;
 		}
-		
-		
+
+        @Override
+        public void filter(PubFilter filter) {
+            setVisible(filter.match(getPub()));
+        }
 	}
 	
 	@Override

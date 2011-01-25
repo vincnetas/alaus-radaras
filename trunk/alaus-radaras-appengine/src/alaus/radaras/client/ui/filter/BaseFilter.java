@@ -3,8 +3,9 @@
  */
 package alaus.radaras.client.ui.filter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import alaus.radaras.client.Stat;
 import alaus.radaras.client.events.PubAddedHandler;
@@ -38,20 +39,29 @@ public abstract class BaseFilter extends Composite implements PubAddedHandler, P
 		Stat.getHandlerManager().addHandler(PubRemovedHandler.type, this);
 	}
 
-	private Map<Pub, Widget> widgets = new HashMap<Pub, Widget>();
+	private final List<Widget> widgets = new ArrayList<Widget>();
 	
 	@Override
-	public void pubAdded(Pub pub) {		
-		Widget button = getPubWidget(pub);
-		panel.add(button);
-		widgets.put(pub, button);
+	public void pubAdded(Pub pub) {
+	    Set<Widget> filterWidgets = getFilterWidgets(pub);
+	    for (Widget widget : filterWidgets) {
+            if (!widgets.contains(widget)) {
+                panel.add(widget);
+            }
+        }
+	    widgets.addAll(filterWidgets);
 	}
 
 	@Override
 	public void pubRemoved(Pub pub) {
-		panel.remove(widgets.get(pub));
-	}
+	    Set<Widget> filterWidgets = getFilterWidgets(pub);
+	    for (Widget widget : filterWidgets) {
+            widgets.remove(widget);
+            if (!widgets.contains(widget)) {
+                panel.remove(widget);
+            }
+        }
+	}	
 	
-	protected abstract Widget getPubWidget(Pub pub);
-
+	protected abstract Set<Widget> getFilterWidgets(Pub pub);
 }
