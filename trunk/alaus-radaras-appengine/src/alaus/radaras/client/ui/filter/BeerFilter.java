@@ -15,6 +15,7 @@ import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -24,11 +25,9 @@ import com.google.gwt.user.client.ui.Widget;
  *
  */
 public class BeerFilter extends BaseFilter {
-
-    private final PubBeerFilter filter;
     
     @Override
-    protected Set<Widget> getFilterWidgets(Pub pub) {
+    protected void getFilterWidgets(final Pub pub, AsyncCallback<Set<Widget>> callback) {
         Set<Widget> result = new HashSet<Widget>();
         
         for (final String beerId : pub.getBeerIds()) {
@@ -38,9 +37,9 @@ public class BeerFilter extends BaseFilter {
                 @Override
                 public void onValueChange(ValueChangeEvent<Boolean> arg0) {
                     if (arg0.getValue()) {
-                        filter.addBeer(beerId);
+                        filter.addPub(pub);
                     } else {
-                        filter.removeBeer(beerId);
+                        filter.removePub(pub);
                     }
                     
                     Stat.getHandlerManager().fireEvent(new PubFilterEvent(filter));
@@ -48,11 +47,7 @@ public class BeerFilter extends BaseFilter {
             });
         }
         
-        return result;
-    }
-    
-    private Set<Beer> getPubBeers(Pub pub) {
-        Stat.getBeerService().loadBeer(pub.getBeerIds(), new )
+        callback.onSuccess(result);
     }
     
     class BeerFilterWidget extends CheckBox {
@@ -85,28 +80,6 @@ public class BeerFilter extends BaseFilter {
             }
             
             return result;
-        }       
-    }
-    
-    class PubBeerFilter implements PubFilter {
-
-        private final Set<String> beerIds = new HashSet<String>();
-        
-        @Override
-        public boolean match(Pub pub) {
-            if (beerIds.isEmpty()) {
-                return true;
-            }
-            
-            return pub.getBeerIds().containsAll(beerIds);
-        }
-
-        public void addBeer(String beerId) {
-            beerIds.add(beerId);
-        }
-        
-        public void removeBeer(String beerId) {
-            beerIds.remove(beerId);
         }       
     }
 }
