@@ -9,11 +9,13 @@ import alaus.radaras.client.Stat;
 import alaus.radaras.client.events.ChangeUserLocationHandler;
 import alaus.radaras.client.events.PubAddedEvent;
 import alaus.radaras.client.events.PubAddedHandler;
+import alaus.radaras.client.events.PubRemovedEvent;
 import alaus.radaras.client.events.StartAddPubHandler;
 import alaus.radaras.client.ui.dialogs.EditDialog;
 import alaus.radaras.client.ui.edit.AddPubWidget;
 import alaus.radaras.shared.DistanceCalculator;
 import alaus.radaras.shared.model.Location;
+import alaus.radaras.shared.model.LocationBounds;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.core.client.GWT;
@@ -158,10 +160,10 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		}		
 	}
 	
-	private void findPubs(LatLng location) {
+	private void findPubs(LocationBounds bounds) {
 		clearPubs();
 		
-		Stat.getBeerService().findPubs(latLngToLocation(location), 10, new BaseAsyncCallback<List<Pub>>() {
+		Stat.getBeerService().findPubs(bounds, new BaseAsyncCallback<List<Pub>>() {
 			
 			@Override
 			public void onSuccess(List<Pub> result) {
@@ -174,8 +176,9 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 	}
 	
 	private void clearPubs() {
-		for (Marker marker : pubs.values()) {
+		for (PubMarker marker : pubs.values()) {
 			mapWidget.removeOverlay(marker);
+			Stat.getHandlerManager().fireEvent(new PubRemovedEvent(marker.getPub()));
 		}		
 		pubs.clear();		
 	}
@@ -211,6 +214,15 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		public void setPub(Pub pub) {
 			this.pub = pub;
 		}
+
+		/**
+		 * @return the pub
+		 */
+		public Pub getPub() {
+			return pub;
+		}
+		
+		
 	}
 	
 	@Override
@@ -239,7 +251,12 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				Placemark placemark = locations.get(0);
 				mapWidget.setZoomLevel(mapWidget.getBoundsZoomLevel(placemark.getExtendedData().getBounds()));
 				mapWidget.panTo(placemark.getPoint());
-				findPubs(placemark.getPoint());
+				
+				LocationBounds bounds = new LocationBounds(
+						latLngToLocation(mapWidget.getBounds().getSouthWest()),
+						latLngToLocation(mapWidget.getBounds().getNorthEast())
+						);
+				findPubs(bounds);
 			}
 			
 			@Override

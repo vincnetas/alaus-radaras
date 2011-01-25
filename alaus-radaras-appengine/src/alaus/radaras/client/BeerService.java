@@ -6,7 +6,7 @@ import java.util.Set;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.IPLocation;
-import alaus.radaras.shared.model.Location;
+import alaus.radaras.shared.model.LocationBounds;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -24,7 +24,7 @@ public interface BeerService extends RemoteService {
 
 	Set<Brand> loadBrand(Set<String> brandIds);
 
-	List<Pub> findPubs(Location location, double radius);
+	List<Pub> findPubs(LocationBounds bounds);
 
 	List<Beer> getBeerSuggestions(String queryString, int limit);
 

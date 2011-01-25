@@ -15,7 +15,7 @@ import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.IPLocation;
-import alaus.radaras.shared.model.Location;
+import alaus.radaras.shared.model.LocationBounds;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -68,8 +68,8 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 * @see alaus.radaras.client.GreetingService#findPubs(alaus.radaras.shared.model.Location, double)
 	 */
 	@Override
-	public List<Pub> findPubs(Location location, double radius) {
-		return getPubService().findPubs(location, radius);
+	public List<Pub> findPubs(LocationBounds bounds) {
+		return getPubService().findPubs(bounds);
 	}
 
 	@Override
