@@ -13,6 +13,7 @@ import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -22,10 +23,8 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class TagFilter extends BaseFilter {
 
-    private final PubTagFilter filter;
-    
     @Override
-    protected Set<Widget> getFilterWidgets(Pub pub) {
+    protected void getFilterWidgets(final Pub pub, AsyncCallback<Set<Widget>> callback) {
         Set<Widget> result = new HashSet<Widget>();
         
         for (final String tag : getPubBeerTags(pub)) {
@@ -35,9 +34,9 @@ public class TagFilter extends BaseFilter {
                 @Override
                 public void onValueChange(ValueChangeEvent<Boolean> arg0) {
                     if (arg0.getValue()) {
-                        filter.addTag(tag);
+                        filter.addPub(pub);
                     } else {
-                        filter.removeTag(tag);
+                        filter.removePub(pub);
                     }
                     
                     Stat.getHandlerManager().fireEvent(new PubFilterEvent(filter));
@@ -45,13 +44,9 @@ public class TagFilter extends BaseFilter {
             });
         }
         
-        return result;
+        callback.onSuccess(result);
     }
-    
-    private Set<String> getPubBeerTags(Pub pub) {
-        
-    }
-    
+
     class TagFilterWidget extends CheckBox {
         
         private final String tag;
@@ -82,28 +77,6 @@ public class TagFilter extends BaseFilter {
             }
             
             return result;
-        }       
-    }
-    
-    class PubTagFilter implements PubFilter {
-
-        private final Set<String> tags = new HashSet<String>();
-        
-        @Override
-        public boolean match(Pub pub) {
-            if (tags.isEmpty()) {
-                return true;
-            }
-            
-            return getPubBeerTags(pub).containsAll(tags);
-        }
-
-        public void addTag(String country) {
-            tags.add(country.toLowerCase());
-        }
-        
-        public void removeTag(String country) {
-            tags.remove(country.toLowerCase());
         }       
     }
 }

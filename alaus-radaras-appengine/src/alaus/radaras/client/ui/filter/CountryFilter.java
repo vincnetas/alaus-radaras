@@ -3,9 +3,7 @@
  */
 package alaus.radaras.client.ui.filter;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import alaus.radaras.client.Stat;
@@ -15,6 +13,7 @@ import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -24,10 +23,8 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class CountryFilter extends BaseFilter {
 
-    private final PubCountryFilter filter;
-    
 	@Override
-	protected Set<Widget> getFilterWidgets(Pub pub) {
+	protected void getFilterWidgets(final Pub pub, AsyncCallback<Set<Widget>> callback) {
 	    Set<Widget> result = new HashSet<Widget>();
 	    
 	    for (final Brand brand : getPubBrands(pub)) {
@@ -37,9 +34,9 @@ public class CountryFilter extends BaseFilter {
 	            @Override
 	            public void onValueChange(ValueChangeEvent<Boolean> arg0) {
 	                if (arg0.getValue()) {
-	                    filter.addCountry(brand.getCountry());
+	                    filter.addPub(pub);
 	                } else {
-	                    filter.removeCountry(brand.getCountry());
+	                    filter.removePub(pub);
 	                }
 	                
 	                Stat.getHandlerManager().fireEvent(new PubFilterEvent(filter));
@@ -47,13 +44,9 @@ public class CountryFilter extends BaseFilter {
 	        });
         }
 		
-		return result;
+		callback.onSuccess(result);
 	}
-	
-	private Set<Brand> getPubBrands(Pub pub) {
-	    
-	}
-	
+
 	class CountryFilterWidget extends CheckBox {
 	    
 	    private final String country;
@@ -85,36 +78,5 @@ public class CountryFilter extends BaseFilter {
             
             return result;
         }	    
-	}
-	
-	class PubCountryFilter implements PubFilter {
-
-	    private final Set<String> countries = new HashSet<String>();
-	    
-        @Override
-        public boolean match(Pub pub) {
-            if (countries.isEmpty()) {
-                return true;
-            }
-            
-            boolean result = false;
-            
-            for (Brand brand : getPubBrands(pub)) {
-                if (countries.contains(brand.getCountry().toLowerCase())) {
-                    result = true;
-                    break;
-                }
-            }
-            
-            return result;
-        }
-
-        public void addCountry(String country) {
-            countries.add(country.toLowerCase());
-        }
-        
-        public void removeCountry(String country) {
-            countries.remove(country.toLowerCase());
-        }	    
-	}
+	}	
 }
