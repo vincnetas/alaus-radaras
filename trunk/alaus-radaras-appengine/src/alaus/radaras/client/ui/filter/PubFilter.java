@@ -3,6 +3,7 @@
  */
 package alaus.radaras.client.ui.filter;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,11 +25,11 @@ public class PubFilter {
         return pubs.contains(pub);
     }
 
-    public void addPub(Pub pub) {
-        pubs.add(pub);
+    public void addPubs(Collection<Pub> pubs) {
+        this.pubs.addAll(pubs);
     }
     
-    public void removePub(Pub pub) {
-        pubs.remove(pub);
+    public void removePubs(Collection<Pub> pubs) {
+        this.pubs.removeAll(pubs);
     }   
 }

@@ -67,29 +67,29 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 	public List<Pub> findPubs(LocationBounds bounds) {
     	List<Pub> result = new ArrayList<Pub>();
     	
-    	for (int i = 0, n = RandomUtils.nextInt(30) + 5; i < n; i++) {
-    		result.add(getPub(bounds));    		
+    	for (int i = 0, n = RandomUtils.nextInt(10) + 20; i < n; i++) {
+    		result.add(getPub(bounds, Integer.toString(i)));    		
     	}
     
     	return result;
 //		return getPubDao().getApproved();
     }
     	
-	private static Pub getPub(LocationBounds bounds) {
+	private static Pub getPub(LocationBounds bounds, String id) {
 		Pub pub = new Pub();
-
+		
 		pub.setAddress(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(20) + 8));
 		pub.setBeerIds(getBeerIds());
 		pub.setCity(getCity());
 		pub.setCountry("Country " + RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(10) + 8));
 		pub.setDescription(RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(80) + 20));
 		pub.setHomepage("http://www.delfi.lt");
-		pub.setId(Long.toString(System.currentTimeMillis()));
+		pub.setId(id);
 		pub.setLatitude(getDouble(bounds.getSouthWest().getLatitude(), bounds.getNorthEast().getLatitude()));
 		pub.setLongitude(getDouble(bounds.getSouthWest().getLongitude(), bounds.getNorthEast().getLongitude()));
 		pub.setPhone("+34552242342");
 		pub.setTags(getPubTags());
-		pub.setTitle("Title " + RandomStringUtils.randomAlphabetic(RandomUtils.nextInt(20) + 8));
+		pub.setTitle("Title " + id);
 
 		return pub;
 	}
@@ -98,7 +98,7 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 		Set<String> result = new HashSet<String>();
 		
 		for (int i = 0, n = RandomUtils.nextInt(8) + 3; i < n; i++) {
-			result.add(Integer.toString(RandomUtils.nextInt()));
+			result.add(Integer.toString(RandomUtils.nextInt(10)));
 		}
 		
 		return result;

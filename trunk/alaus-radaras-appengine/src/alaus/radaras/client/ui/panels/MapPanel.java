@@ -65,7 +65,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		Stat.getHandlerManager().addHandler(StartAddPubHandler.type, this);
 		Stat.getHandlerManager().addHandler(PubAddedHandler.type, this);
 		Stat.getHandlerManager().addHandler(ChangeUserLocationHandler.type, this);
-		
 	}
 	
 	private double getCircleRadius() {
@@ -201,7 +200,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		
 		public PubMarker(Pub pub) {
 			super(locationToLatLng(pub.getLocation()));
-			setPub(pub);
+			this.pub = pub;
 			
 			addMarkerClickHandler(new MarkerClickHandler() {
 				
@@ -211,10 +210,8 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 					infoWindow.open(PubMarker.this, new InfoWindowContent(new PubPanel(infoWindow, PubMarker.this.pub)));									
 				}
 			});
-		}
-		
-		public void setPub(Pub pub) {
-			this.pub = pub;
+			
+			Stat.getHandlerManager().addHandler(PubFilterHandler.type, this);
 		}
 
 		/**
@@ -241,8 +238,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				mapWidget.addOverlay(marker);
 				pubs.put(pub, marker);
 			}
-			
-			marker.setPub(pub);
 		}
 	}
 
