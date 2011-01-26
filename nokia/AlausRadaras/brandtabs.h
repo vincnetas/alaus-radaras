@@ -7,7 +7,6 @@
 #include "brandlistmodel.h"
 #include "countrylistmodel.h"
 #include "taglistmodel.h"
-#include "qskineticscroller.h"
 #include "enums.h"
 namespace Ui {
     class BrandTabs;
@@ -31,9 +30,6 @@ private:
     BrandListModel* brandsModel;
     CountryListModel* countryModel;
     TagListModel* tagsModel;
-    QsKineticScroller *brandListScroller;
-    QsKineticScroller *tagsListScroller;
-    QsKineticScroller *countryListScroller;
 protected:
     void showEvent( QShowEvent * event );
 signals:

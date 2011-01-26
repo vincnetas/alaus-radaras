@@ -14,11 +14,11 @@ signals:
 
 public slots:
     void checkForUpdates();
-
+private slots:
+        void replyFinished(QNetworkReply* reply);
 signals:
-    void updateAvalable(QString version);
+    void updateAvalable(QString text);
 private:
-    void replyFinished(QNetworkReply* reply);
     QString getUniqueDeviceId();
 
 };

@@ -13,7 +13,6 @@
 #include <qgeosatelliteinfosource.h>
 #include <qgeopositioninfo.h>
 #include <qgeosatelliteinfo.h>
-#include <qskineticscroller.h>
 #include "updatechecker.h"
 QTM_USE_NAMESPACE
 

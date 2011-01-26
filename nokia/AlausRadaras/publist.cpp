@@ -11,7 +11,7 @@
 #include <QGeoCoordinate>
 #include <QGeoPositionInfoSource>
 #include "viewutils.h"
-#include "qskineticscroller.h"
+#include "qtscroller.h"
 #include "calculationhelper.h"
 
 bool sortPubsByDistance( const BeerPub * p1 , const BeerPub * p2 )
@@ -30,9 +30,7 @@ PubList::PubList(QWidget *parent) :
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
 
-    pubListScroller = new QsKineticScroller(this);
-    pubListScroller->enableKineticScrollFor( ui->pubListView);
-
+    QtScroller::grabGesture(ui->pubListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
     QListView::connect(ui->pubListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(pubList_itemClicked(QModelIndex)));
 
 

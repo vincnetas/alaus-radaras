@@ -46,14 +46,14 @@ void AlausRadaras::on_btnExit_clicked()
     emit ExitApp();
 }
 
-void AlausRadaras::setUpdateVersion(QString version)
+void AlausRadaras::setUpdateVersion(QString text)
 {
-    ui->txtUpdate->setText(QString::fromUtf8("<a href=''>Nauja versija %1! Atsisiuskite cia.</a>").arg(version));
+    ui->txtUpdate->setText(text);
 }
 
 void AlausRadaras::loadUpdate(QString string)
 {
-    QDesktopServices::openUrl(QUrl("http://alausradaras.lt/nokia/"));
+    QDesktopServices::openUrl(QUrl(string));
 }
 
 AlausRadaras::~AlausRadaras()

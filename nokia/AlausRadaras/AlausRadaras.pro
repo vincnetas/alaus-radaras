@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network
+QT       += core gui sql network webkit
 TARGET = AlausRadaras
 TEMPLATE = app
 
@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     beerpub.cpp \
     publist.cpp \
     publistmodel.cpp \
-    qskineticscroller.cpp \
     calculationhelper.cpp \
     slippymap.cpp \
     lightmaps.cpp \
@@ -35,7 +34,12 @@ SOURCES += main.cpp\
     viewutils.cpp \
     maincontroller.cpp \
     makecall.cpp \
-    updatechecker.cpp
+    updatechecker.cpp \
+qtflickgesture.cpp \
+           qtscroller.cpp \
+           qtscrollerfilter.cpp \
+           qtscrollerproperties.cpp \
+           qtscrollevent.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -47,7 +51,6 @@ HEADERS  += alausradaras.h \
     beerpub.h \
     publist.h \
     publistmodel.h \
-    qskineticscroller.h \
     calculationhelper.h \
     slippymap.h \
     lightmaps.h \
@@ -62,7 +65,15 @@ HEADERS  += alausradaras.h \
     viewutils.h \
     maincontroller.h \
     makecall.h \
-    updatechecker.h
+    updatechecker.h \
+    qtflickgesture_p.h \
+           qtscroller.h \
+           qtscroller_p.h \
+           qtscrollerfilter_p.h \
+           qtscrollerproperties.h \
+           qtscrollerproperties_p.h \
+           qtscrollevent.h \
+           qtscrollevent_p.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -91,7 +102,12 @@ MOBILITY += location
 
 #MMP_RULES += "LIBRARY etel3rdparty.lib"
 
+
+#INCLUDEPATH += "C:/projects/alausradaras/nokia/AlausRadaras/kineticscroller"
 ICON = alus.svg
+#QTSCROLLER_OUT = $$OUT_PWD/kineticscroller
+#include(kineticscroller/qtscroller.pri)
+
 
 symbian {
     TARGET.UID3 = 0xece1c5e8
@@ -100,8 +116,8 @@ symbian {
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
     ICON = alus.svg
 vendorinfo = \
-"%{\"alausradaras.lt\"}" \
-":\"alausradaras.lt\""
+"%{\"X-Medikai\"}" \
+":\"X-Medikai\""
 
 my_deployment.pkg_prerules = packageheader vendorinfo
 

@@ -10,7 +10,6 @@
 #include "dataprovider.h"
 #include "enums.h"
 #include <beerpub.h>
-#include "qskineticscroller.h"
 
 
 
@@ -42,8 +41,6 @@ private:
     QList<BeerPub*> pubs;
     PubListModel* pubListModel;
     DataProvider* dataProvider;
-
-    QsKineticScroller *pubListScroller;
 
 signals:
     void MapSelected(QList<BeerPub*> pubs);

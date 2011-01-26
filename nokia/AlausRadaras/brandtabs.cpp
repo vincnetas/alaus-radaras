@@ -4,8 +4,8 @@
 #include "brandlistmodel.h"
 #include "countrylistmodel.h"
 #include "taglistmodel.h"
-#include "QsKineticScroller.h"
 #include "viewutils.h"
+#include "qtscroller.h"
 BrandTabs::BrandTabs(QWidget *parent) :
     QWidget(parent),
     brandsModel(0),
@@ -21,14 +21,9 @@ BrandTabs::BrandTabs(QWidget *parent) :
 
     //kinetic scrolling
 
-    tagsListScroller = new QsKineticScroller(this);
-    tagsListScroller->enableKineticScrollFor(ui->tagListView);
-
-    brandListScroller = new QsKineticScroller(this);
-    brandListScroller->enableKineticScrollFor(ui->brandListView);
-
-    countryListScroller = new QsKineticScroller(this);
-    countryListScroller->enableKineticScrollFor(ui->countryListView);
+    QtScroller::grabGesture(ui->tagListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
+    QtScroller::grabGesture(ui->brandListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
+    QtScroller::grabGesture(ui->countryListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
 
     //performance background
     setAutoFillBackground(true);
