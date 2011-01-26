@@ -13,11 +13,13 @@
 	CLLocationCoordinate2D coordinate;
 	NSString *title;
 	NSString *subtitle;
+	NSString *pubId;
 }
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *subtitle;
+@property (nonatomic, retain) NSString *pubId;
 
 //- (id) initWithCoords:(CLLocationCoordinate2D) coords name:(NSString*) inputName;
 @end

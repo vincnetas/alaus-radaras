@@ -14,6 +14,7 @@
 @synthesize coordinate;
 @synthesize title;
 @synthesize subtitle;
+@synthesize pubId;
 
 -init {
 	return self;

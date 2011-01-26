@@ -35,7 +35,7 @@
 -(IBAction) clickVietos:(id) sender {
 	MapViewController *vietosView = 
 	[[MapViewController alloc] initWithNibName:nil bundle:nil];
-	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:vietosView animated:YES];
 	[vietosView release];
 }
