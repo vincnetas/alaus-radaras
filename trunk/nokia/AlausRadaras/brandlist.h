@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include "brandlistmodel.h"
-#include "qskineticscroller.h"
 #include "enums.h"
 
 namespace Ui {
@@ -24,7 +23,6 @@ private:
     Ui::BrandList *ui;
 
     BrandListModel *brandListModel;
-    QsKineticScroller* brandListScroller;
 
     QString id;
     BrandListType type;

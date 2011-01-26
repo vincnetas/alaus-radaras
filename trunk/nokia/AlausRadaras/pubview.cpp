@@ -5,7 +5,8 @@
 #include <QDebug>
 #include <QSqlError>
 #include "viewutils.h"
-#include <qskineticscroller.h>
+#include "qtscroller.h"
+
 #include <QDesktopServices>
 #include <QUrl>
 PubView::PubView(QWidget *parent) :
@@ -21,8 +22,7 @@ PubView::PubView(QWidget *parent) :
      ui->brandListView->setAutoFillBackground(true);
      ui->brandListView->setPalette(ViewUtils::GetBackground(ui->brandListView->palette()));
 
-     brandListScroller = new QsKineticScroller(this);
-     brandListScroller->enableKineticScrollFor(ui->brandListView);
+     QtScroller::grabGesture(ui->brandListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
 
      //until we don't have GPS
      ui->directionsButton->setVisible(false);

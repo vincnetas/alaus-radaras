@@ -3,14 +3,6 @@
 
 #include <QDialog>
 #include <brandlistmodel.h>
-#include <qskineticscroller.h>
-
-#ifdef Q_OS_SYMBIAN
-
-#include <etel3rdparty.h>
-
-#endif
-
 namespace Ui {
     class PubView;
 }
@@ -27,7 +19,6 @@ public:
 private:
     Ui::PubView *ui;
     BrandListModel* brandsModel;
-    QsKineticScroller* brandListScroller;
     QString id;
     QString lat;
     QString lng;

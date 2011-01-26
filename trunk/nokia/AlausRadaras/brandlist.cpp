@@ -3,8 +3,7 @@
 #include "brandlistmodel.h"
 #include "publist.h"
 #include "viewutils.h"
-#include "qskineticscroller.h"
-
+#include "qtscroller.h"
 BrandList::BrandList(QWidget *parent) :
     QWidget(parent),
     brandListModel(0),
@@ -19,8 +18,8 @@ BrandList::BrandList(QWidget *parent) :
 
     ui->brandListView->setAutoFillBackground(true);
     ui->brandListView->setPalette(ViewUtils::GetBackground(ui->brandListView->palette()));
-    brandListScroller = new QsKineticScroller(this);
-    brandListScroller->enableKineticScrollFor(ui->brandListView);
+    QtScroller::grabGesture(ui->brandListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
+
 
 }
 

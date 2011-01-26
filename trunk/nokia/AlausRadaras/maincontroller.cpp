@@ -20,6 +20,8 @@ MainController::MainController(QWidget *parent) :
         populator = new DbPopulator(this,dbManager);
         populator->start();
         connect(populator,SIGNAL(finished()),this,SLOT(dbInitFinished()));
+        //safeguard. Let it crash. after one minute, if its not done.
+        QTimer::singleShot(60000,this,SLOT(dbInitFinished()));
 
     } else {
         populator = NULL;
@@ -141,8 +143,10 @@ void MainController::showPub(QString pubId)
 
 void MainController::dbInitFinished()
 {
-    progress->close();
-    progress->deleteLater();
+    if(progress) {
+        progress->close();
+        progress->deleteLater();
+    }
 }
 
 void MainController::clearHistory()

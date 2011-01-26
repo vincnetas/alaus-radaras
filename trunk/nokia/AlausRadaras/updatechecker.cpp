@@ -2,6 +2,7 @@
 #include <QNetworkAccessManager>
 #include <QUuid>
 #include <QSettings>
+#include <QDebug>
 
 const QString UpdateChecker::VERSION = QString("1.0");
 
@@ -19,18 +20,20 @@ void UpdateChecker::checkForUpdates()
             this, SLOT(replyFinished(QNetworkReply*)));
 
     QString url = QString("http://alausradaras.lt/nokia/update.php?ver=%1&id=%2").arg(VERSION,getUniqueDeviceId());
+    qDebug() << url;
     manager->get(QNetworkRequest(QUrl(url)));
-    manager->deleteLater();
+    qDebug() << "check for updates";
 }
 
 void UpdateChecker::replyFinished(QNetworkReply* reply)
 {
+    qDebug() << "reply";
     QUrl url = reply->url();
     if(!reply->error()) {
 
-        QString version(reply->readAll());
-        if(version != VERSION) {
-            emit updateAvalable(version);
+        QString replyText(reply->readAll());
+        if(!replyText.isEmpty()) {
+            emit updateAvalable(replyText);
         }
 
     }
