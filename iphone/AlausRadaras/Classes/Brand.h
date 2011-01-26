@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Brand : NSObject {
-	NSString *icon;
+	NSString *icon; 
 	NSString *label;
 }
 

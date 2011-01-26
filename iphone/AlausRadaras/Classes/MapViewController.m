@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "PubAnnotationView.h"
+#import "Pub.h"
 
 @implementation MapViewController
 
@@ -21,7 +22,7 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 }
 
  - (void)viewDidLoad {
-	 NSLog(@"viewDidLoad");
+	 NSLog(@"MapViewController viewDidLoad");
 	 [super viewDidLoad];
 	 //mapView.mapType = MKMapTypeSatellite;
 	 mapView.mapType=MKMapTypeStandard;
@@ -45,10 +46,8 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 
 
 - (void)loadPubAnnotations {
-	NSStringEncoding *encoding;
-	NSError* error;
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:&encoding error:&error];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
 	
 	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
 	
@@ -63,22 +62,33 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 			coord.longitude = [[values objectAtIndex:6]doubleValue];
 			
 			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
+			[pubAnnotation setPubId:[values objectAtIndex:0]];
 			[pubAnnotation setTitle:[values objectAtIndex:1]];
 			[pubAnnotation setSubtitle:[values objectAtIndex:2]];
 			
 			[mapView addAnnotation:pubAnnotation];
-			[pubAnnotation release];
+			//[pubAnnotation release]; /* realising cause navigation problems */
 		}
 	}
 }
  
+/*
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	NSLog(@"viewForAnnotation");
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
 		//Don't trample the user location annotation (pulsing blue dot).
 		return nil;
 	}
-		
+	
+	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
+	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
+	[customAnnotationView setImage:pinImage];
+	customAnnotationView.leftCalloutAccessoryView = leftIconView;
+
+    customAnnotationView.canShowCallout = YES;
+    return customAnnotationView;
+
+	/*
 	PubAnnotationView *annotationView = nil;
 	PubAnnotationView* myAnnotation = (PubAnnotationView *)annotation;
 	NSString* identifier = @"Pin";
@@ -96,83 +106,72 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 	[annotationView setCanShowCallout:YES];
 	
 	return annotationView;
-}
+}*/
 
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	NSLog(@"calloutAccessoryControlTapped");
-}
-
-- (void) annotationClicked: (id <MKAnnotation>) annotation {
-	PubAnnotation * ann = (PubAnnotation*) annotation;
-	NSLog(@"Annotation clicked: %@", ann.title);
-	
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CustomCalloutMapView" message:[NSString stringWithFormat:@"You clicked at annotation: %@",ann.name] delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-//	[alert show];
-//	[alert release];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-	
-/*
-    NSString *action = (NSString*)context;
-	
-    if([action isEqualToString:GMAP_ANNOTATION_SELECTED]){
-		BOOL annotationAppeared = [[change valueForKey:@"new"] boolValue];
-		if (annotationAppeared) {
-			NSLog(@"annotation selected %@", ((MyAnnotationView*) object).annotation.title);
-			[self showAnnotation:((MyAnnotationView*) object).annotation];
-			((MyAnnotationView*) object).image = [UIImage imageNamed:@"icon-sel.png"];
-		}
-		else {
-			NSLog(@"annotation deselected %@", ((MyAnnotationView*) object).annotation.title);
-			[self hideAnnotation];
-			((MyAnnotationView*) object).image = [UIImage imageNamed:@"icon.png"];
-		}
-	}*/
-}
-
-- (void)showAnnotation:(PubAnnotation*)annotation {
-	NSLog(@"showAnnotation");
-//	self.moreInfoView.text.text = annotation.title;
-//	[UIView beginAnimations: @"moveCNGCallout" context: nil];
-//	[UIView setAnimationDelegate: self];
-//	[UIView setAnimationDuration: 0.5];
-//	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//	self.moreInfoView.frame = CGRectMake(10.0, 250.0, self.moreInfoView.frame.size.width, self.moreInfoView.frame.size.height);
-//	[UIView commitAnimations];	
-	
-}
-
-- (void)hideAnnotation {
-	NSLog(@"hideAnnotation");
-//	self.moreInfoView.text.text = nil;
-//	[UIView beginAnimations: @"moveCNGCalloutOff" context: nil];
-//	[UIView setAnimationDelegate: self];
-//	[UIView setAnimationDuration: 0.5];
-//	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//	self.moreInfoView.frame = CGRectMake(10.0, 250.0 + 300, self.moreInfoView.frame.size.width, self.moreInfoView.frame.size.height);
-//	[UIView commitAnimations];
-}
-
-- (void) stopFollowLocation {
-	NSLog(@"stopFollowLocation called. Good place to put stop follow location annotation code.");
-	
-	PubAnnotation * annotation;
-	for (annotation in mapView.selectedAnnotations) {
-		[mapView deselectAnnotation:annotation animated:NO];
+- (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
+	if ([annotation isKindOfClass:[MKUserLocation class]]) {
+		//Don't trample the user location annotation (pulsing blue dot).
+		return nil;
 	}
 	
-	[self hideAnnotation];
+	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
+	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
+	[customAnnotationView setImage:pinImage];
+    customAnnotationView.canShowCallout = YES;
+	//UIImageView *leftIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LeftIconImage.png"]];
+	//customAnnotationView.leftCalloutAccessoryView = leftIconView;
+	UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//	[rightButton addTarget:self action:@selector(annotationViewClick:) forControlEvents:UIControlEventTouchUpInside];
+	customAnnotationView.rightCalloutAccessoryView = rightButton;
+    return customAnnotationView;
 }
 
+//- (IBAction) annotationViewClick:(id) sender {
+//    NSLog(@"clicked");
+//}
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
+	PubAnnotation *pubAnnotation = view.annotation;
 
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+	NSString *fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	
+	PubDetailViewController *pubDetailView = 
+			[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			if ([pubAnnotation.pubId isEqualToString:[values objectAtIndex:0]]) {
+			//	pubDetailView.pubTitleLabel.text = pubAnnotation.title;
+			//	pubDetailView.pubTitleShortLabel.text = [values objectAtIndex:1];
+			//	pubDetailView.pubTitleShortLabel.text = [values objectAtIndex:1];
+			
+				Pub *tempPub = [[Pub alloc]init];
+				tempPub.pubId = [values objectAtIndex:0];
+				tempPub.pubTitle = [values objectAtIndex:1];
+				tempPub.pubAddress = [values objectAtIndex:2];
+				tempPub.phone = [values objectAtIndex:3];
+				tempPub.webpage = [values objectAtIndex:4];
+					 NSLog(@"Set Pub");
+				pubDetailView.currentPub = tempPub;
+				
+				[tempPub release];
+		
+			}
+		}
+	}
+	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	[self presentModalViewController:pubDetailView animated:YES];
+	
+	
+
+	[pubAnnotation release];
+	[pubDetailView release];
+
+}
 
 
 
@@ -181,7 +180,8 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+	NSLog(@"MapViewController: Recieved a Memory Warning... Oooops..");
+
     // Release any cached data, images, etc. that aren't in use.
 }
 

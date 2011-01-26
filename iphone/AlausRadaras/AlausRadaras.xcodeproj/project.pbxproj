@@ -22,13 +22,12 @@
 		C953E93A12EF718D001BD656 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E93912EF718D001BD656 /* Brand.m */; };
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
-		C97BF0AC12EA0A95004519F0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0AB12EA0A95004519F0 /* background.png */; };
-		C97BF0B312EA0B1C004519F0 /* batonas.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0B212EA0B1C004519F0 /* batonas.png */; };
-		C97BF0B812EA0C3D004519F0 /* bokalas_vol_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0B712EA0C3D004519F0 /* bokalas_vol_3.png */; };
 		C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0BB12EA0C7E004519F0 /* icon.png */; };
+		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
+		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
+		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
-		C9C1CC1212EA3AAB003C7CC5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C1CC1112EA3AAB003C7CC5 /* pin.png */; };
 		C9D74DCA12EF3B9F008DE8E8 /* brands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */; };
 		C9D74DCB12EF3B9F008DE8E8 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC612EF3B9F008DE8E8 /* countries.txt */; };
 		C9D74DCC12EF3B9F008DE8E8 /* pubs.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */; };
@@ -119,13 +118,14 @@
 		C9642B3612EE35940033F9B8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C9642B3712EE35940033F9B8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
-		C97BF0AB12EA0A95004519F0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		C97BF0B212EA0B1C004519F0 /* batonas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batonas.png; sourceTree = "<group>"; };
-		C97BF0B712EA0C3D004519F0 /* bokalas_vol_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokalas_vol_3.png; sourceTree = "<group>"; };
 		C97BF0BB12EA0C7E004519F0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
+		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
+		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
+		C9A313F712F097990005ED6C /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pub.h; sourceTree = "<group>"; };
+		C9A313F812F097990005ED6C /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pub.m; sourceTree = "<group>"; };
 		C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C9C1CC1112EA3AAB003C7CC5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = brands.txt; path = resources/db/brands.txt; sourceTree = "<group>"; };
 		C9D74DC612EF3B9F008DE8E8 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = countries.txt; path = resources/db/countries.txt; sourceTree = "<group>"; };
 		C9D74DC712EF3B9F008DE8E8 /* pubs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubs.txt; path = resources/db/pubs.txt; sourceTree = "<group>"; };
@@ -222,6 +222,8 @@
 				C953E80B12EF5B7B001BD656 /* PubAnnotation.m */,
 				C953E81112EF5D71001BD656 /* PubAnnotationView.h */,
 				C953E81212EF5D71001BD656 /* PubAnnotationView.m */,
+				C9A3137B12F08E880005ED6C /* PubDetailViewController.h */,
+				C9A3137C12F08E880005ED6C /* PubDetailViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -269,6 +271,7 @@
 				C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */,
 				C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */,
 				C9642B3812EE35940033F9B8 /* MapViewController.xib */,
+				C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,6 +293,8 @@
 			children = (
 				C953E93812EF718D001BD656 /* Brand.h */,
 				C953E93912EF718D001BD656 /* Brand.m */,
+				C9A313F712F097990005ED6C /* Pub.h */,
+				C9A313F812F097990005ED6C /* Pub.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -297,10 +302,6 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
-				C9C1CC1112EA3AAB003C7CC5 /* pin.png */,
-				C97BF0B712EA0C3D004519F0 /* bokalas_vol_3.png */,
-				C97BF0AB12EA0A95004519F0 /* background.png */,
-				C97BF0B212EA0B1C004519F0 /* batonas.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -415,7 +416,7 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
-			projectRoot = iphone;
+			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* AlausRadaras */,
 			);
@@ -429,11 +430,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* AlausRadarasViewController.xib in Resources */,
-				C97BF0AC12EA0A95004519F0 /* background.png in Resources */,
-				C97BF0B312EA0B1C004519F0 /* batonas.png in Resources */,
-				C97BF0B812EA0C3D004519F0 /* bokalas_vol_3.png in Resources */,
 				C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */,
-				C9C1CC1212EA3AAB003C7CC5 /* pin.png in Resources */,
 				C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */,
 				C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */,
 				C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */,
@@ -496,6 +493,7 @@
 				C9D74EDE12EF4733008DE8E8 /* brand_vilniaus_kvietinis.png in Resources */,
 				C9D74EDF12EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png in Resources */,
 				C9D74EE012EF4733008DE8E8 /* brand_zubr.png in Resources */,
+				C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +513,8 @@
 				C953E80C12EF5B7B001BD656 /* PubAnnotation.m in Sources */,
 				C953E81312EF5D71001BD656 /* PubAnnotationView.m in Sources */,
 				C953E93A12EF718D001BD656 /* Brand.m in Sources */,
+				C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */,
+				C9A313F912F097990005ED6C /* Pub.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

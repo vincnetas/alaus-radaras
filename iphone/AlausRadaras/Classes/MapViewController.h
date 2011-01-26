@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "PubAnnotation.h"
 #import "PubAnnotationView.h"
+#import "PubDetailViewController.h"
 
 @interface MapViewController : UIViewController<MKMapViewDelegate> {
 	IBOutlet MKMapView *mapView;
