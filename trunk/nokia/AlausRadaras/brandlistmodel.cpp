@@ -37,6 +37,6 @@ QVariant BrandListModel::data(const QModelIndex &index, int role) const
 }
 BrandListModel::~BrandListModel()
 {
- qDebug() << "Destroying BrandListModel ";
+ //qDebug() << "Destroying BrandListModel ";
 
 }

@@ -31,7 +31,7 @@ PubView::PubView(QWidget *parent) :
 void PubView::showPub(QString pubId)
 {
 
-    QSqlQuery query(QString("SELECT id, title, address, phone, longtitude, latitude from pubs where id='%1'").arg(pubId));
+    QSqlQuery query(QString("SELECT id, title, address  || ', ' || city, phone, longtitude, latitude, city from pubs where id='%1'").arg(pubId));
     while (query.next()) {
         ui->pubPhoneLabel->setText(query.value(3).toString());
         ui->pubAddressLabel->setText(query.value(2).toString());
@@ -69,6 +69,6 @@ void PubView::on_closeButton_clicked()
 
 PubView::~PubView()
 {
-    qDebug() << "pubview destructor called";
+    //qDebug() << "pubview destructor called";
     delete ui;
 }

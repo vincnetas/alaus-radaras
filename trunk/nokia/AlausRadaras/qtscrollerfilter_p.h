@@ -78,12 +78,6 @@ protected:
 
     bool eventFilter(QObject *o, QEvent *e);
 
-    //+++ QWebView
-    bool eventFilter_QWebView(QWebView *web, QEvent *event);
-    QWebFrame *scrollingFrameAt_QWebView(QWebView *web, const QPoint &pos) const;
-    //WebCore::VisibleSelection oldWebSelection;
-    QMap<QWebView *, QWebFrame *> scrollingFrames;
-
     //+++ QAbstractScrollArea
     bool eventFilter_QAbstractScrollArea(QAbstractScrollArea *area, QEvent *event);
     bool canStartScrollingAt_QAbstractScrollArea(QAbstractScrollArea *area, const QPoint &pos) const;

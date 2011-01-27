@@ -46,7 +46,7 @@ bool UpdateChecker::needToCheckForUpdates()
 
 void UpdateChecker::replyFinished(QNetworkReply* reply)
 {
-    qDebug() << "reply";
+    //qDebug() << "reply";
     QUrl url = reply->url();
     if(!reply->error()) {
 

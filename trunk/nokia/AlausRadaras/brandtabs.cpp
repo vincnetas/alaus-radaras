@@ -96,6 +96,6 @@ void BrandTabs::on_btnClose_clicked()
 
 BrandTabs::~BrandTabs()
 {
-    qDebug() << "BrandTabs destroyed";
+    //qDebug() << "BrandTabs destroyed";
     delete ui;
 }

@@ -1,37 +1,61 @@
-alaus_namai	Alaus namai	A. Goštauto g. 8, Vilnius	8 5 260 9637	http://www.alausnamai.lt/	54.6932528	25.270084
-alaus_baras_just	Alaus baras (Justiniškės)	Justiniškių g. 91 ,Vilnius	(5) 2422480		54.7171368	25.2216737
-blusyne	Blusynė	Savičiaus g. 5-1, Vilnius	(5) 2122012	http://www.blusyne.lt/	54.6792624	25.2886435
-belmontas	Belmontas	Belmonto g.17, Vilnius	8 686 14656	http://www.belmontas.lt/	54.6852651	25.3572492
-burito	Burito	A. Mickevičiaus g. 2a, Vilnius	(617) 66268		54.6903759	25.2561
-bobo	Bobo	Trakų g. 15, Vilnius	67777335	http://www.bobo.lt/	54.680379	25.2818101
-pogo	PoGo Baras	Vilniaus g. 12, Vilnius	37066259613	http://www.pogobaras.lt	54.6859567	25.2795064
-bravaria	Bravaria	Ozo g. 25, Vilnius	  8 652 21121	http://www.bravaria.lt/	54.7127277	25.2717928
-bunte_gans	Bunte Gans	Aušros Vartų g. 11, Vilnius	(8 5) 212 83 12 	http://www.buntegans.lt/	54.6762947	25.2882825
-busi_trecias	Būsi trečias	Totorių g. 18. Vilnius	(8 5) 231 26 98	http://www.busitrecias.lt/	54.6845751	25.2823112
-dominink_karciama	Domininkonų karčiama	Domininkonų g. 6, Vilnius	8 600 01977	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Karcema.html	54.6811882	25.2843802
-jalta	Jalta	Vykinto g. 17a, Vilnius	+370 6 501 2114	http://www.facebook.com/group.php?gid=77247649677&ref=search	54.6892177	25.2516716
-snekutis_old_town	Šnekutis (Old Town)	Šv. Stepono 8, Vilnius	8 650 57058	http://www.alutis.lt/snekutis/stepono.php	54.6750192	25.2824646
-snekutis_uzupis	Šnekutis (Užupis)	Polocko 7, Vilnius	8 650 49058	http://www.alutis.lt/snekutis/polocko.php	54.6812654	25.3012616
-plieno_paukste	Plieno paukštė	K. Kalinausko 11, Vilnius	(5) 2312181		54.6826155	25.2724954
-rene	Renė	Antokolskio g. 13, Vilnius	 8 5 2126858	http://www.kwak.lt/	54.6792602	25.2855335
-pilies_mene	Pilies menė	Pilies g. 8, Vilnius	(8 5) 2612552	http://piliesmene.meniu.lt	54.6840313	25.2894708
-cactus	Cactus	Bokšto 7, Vilnius	+370 601 12555	http://www.cactusbar.lt/	54.6805646	25.2903254
-simo_baras	Šimo baras	Laisvės pr. 88, Vilnius	(8 5) 2752832		54.6893865	25.2800243
-alaus_baras_pyli	Alaus baras (Pylimo)	 Pylimo g. 60, Vilnius	868238097		54.6729071	25.2862764
-molinis_asotis	Molinis Ąsotis	Naugarduko g. 32, Vilnius	 (5) 2333073		54.6747256	25.2694839
-b6	B6	Bazilijonų g. 6	(8 603) 29332		54.6741394	25.2859476
-tores	Tores	Užupio g. 40, Vilnius	+370 655 3 2626	http://www.tores.lt/	54.6809148	25.2979667
-stopke	Stopkė	Užupio 2a, Vilnius		http://www.stopke.lt/	54.6805511	25.2922544
-uzupio_picerija	Užupio picerija	Paupio g. 3, Vilnius	(8 5) 2153666		54.6800877	25.2958167
-obuolys	Obuolio aludė	Šnipiškių g. 3, Vilnius	+370 527 24234	http://www.applepub.lt/	54.6938689	25.2775397
-mamutas	Mamutas	Savanorių 16, Vilnius 	(5) 2331131		54.6774303	25.2551304
-dolce_vita	Dolce-Vita	Trakų g. 11/Pranciškonų g. 2, Vilnius	5 2312 444	http://www.dolce-vita.lt/	54.6794895	25.2807925
-bambalyne	Bambalynė	Stiklių g. 7, Vilnius	+370 676 00075	http://bambalyne.lt/	54.6800344	25.2863445
-alaus_studija	Alaus studija	S. Žukausko 20, Vilnius	8 685 60885		54.7076179	25.2958828
-savas_kampas	Savas kampas	Vokiečių g. 4, Vilnius	852123203	http://www.savaskampas.lt/	54.678471	25.2860236
-chillout	Chillout baras	Pylimo g. 8/2, Vilnius		http://www.facebook.com/pages/Chillout-baras/103914669678344?v=info	54.6842615	25.2771523
-bermudai	Bermudai	Upes 6, Vilnius	37065570262	http://www.bermudaiclub.lt/	54.6961061	25.2691852
-prie_katedros	Prie Katedros	Gedimino pr. 5, Vilnius	8 605 77555	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Prie_Katedros.html	54.6864964	25.2832854
-wall_street	Wall Street	Lvovo g. 25, Vilnius	8 52 195916	http://www.wallst.lt/	54.6955893	25.2802079
-keisti_zenklai	Keisti ženklai	Trakų g. 13, Vilnius	(8 5) 2610779		54.6803049	25.2813502
-gorky_bar	Gorky Bar	Pilies g. 34, Vilnius	8 652 18035		54.6818804	25.2891853
+﻿avilys	Avilys	Vilniaus g. 34	Kaunas	(8~699) 66239	http://www.avilys.lt	54.8964901	23.893033
+baras_91	Baras 91	Islandijos pl. 91	Kaunas	8 (37) 311591	http://www.facebook.com/pages/Baras-91/102766274339	54.9344564	23.9655301
+bo	B.O. (BlueOrange)	Muitinės 9	Kaunas	(8-37) 20 65 42	http://www.blueorange.lt	54.8955624	23.8893676
+bravaria_kaunas	Bravaria	Karaliaus Mindaugo g. 47	Kaunas	8 699 92462	http://www.bravaria.lt/	54.8927722	23.9163126
+skliautas	Skliautas	Rotušės aikštė 26	Kaunas	8 37 206843	http://www.skliautas.com	54.8972258	23.8869994
+suflerio_budele	Suflerio būdelė	M. Daukšos g. 34	Kaunas	8 676 36928	http://www.facebook.com/profile.php?id=1184255123	54.8980329	23.8914108
+dzempub	Džem'pub	Laisvės al. 59	Kaunas	8 (657) 45003	http://www.dzempub.lt/	54.897368	23.9138872
+sadute	Sadutė	Rotušės a. 4	Kaunas	868508662	http://www.sadute.lt/	54.896473	23.8874186
+jums	Jums	Laisvės al. 61	Kaunas	(686) 38262		54.8974158	23.9126351
+antipops	Antipops	Laisvės al. 51A	Kaunas	8 679 05200	http://www.antipops.lt/	54.8973275	23.9146219
+kauno_alus	Kauno alus	Savanorių pr. 11	Kaunas	(8 37) 20 52 74	http://www.kaunoalus.lt/	54.8985435	23.901876
+zalias_ratas	Žalias ratas	Laisvės al. 36B	Kaunas	(8 37) 200 071	http://www.zaliasratas.lt	54.8971898	23.9177966
+bernelius_smukle	Bernelių smuklė	K. Donelaičio str. 11	Kaunas	+370 686 57 449	http://www.berneliusmukle.lt	54.8986509	23.9232703
+abato_mene	Abato menė	Vilniaus g. 7	Kaunas	37067993033	http://www.facebook.com/pages/Abato-mene/123093944388415	54.8965696	23.8901613
+shamrock	Shamrock	Vilniaus g. 13	Kaunas	864154100	http://www.shamrock.lt	54.8966339	23.8897413
+juodasis_katinas	Juodojo Katino smuklė	Žvejų g. 21/Teatro g. 1	Klaipėda	(8 46) 411167	http://www.kbr.lt/	55.708564	21.131396
+memelis	Memelis	Žvejų g. 4	Klaipėda	 8(46)403041	http://www.memelis.lt	55.7087002	21.1313655
+haemmerli	Haemmerli	Didžioji vandens g. 13/Galinė g. 16	Klaipėda	(8 46) 311209	http://haemmerli.meniu.lt/	55.695725	21.14999
+hbh	HBH Juozo Alus	Žibininkai	Kretinga	+370 445 44678	http://www.hbhjuozas.lt/	55.974567	21.150742
+baras1925	Baras 1925	J. Basanavičiaus g. 4	Palanga	8-460 52526	http://www.baras1925.lt/	55.9165657	21.0648979
+pajurio_zibintas	Pajūrio žibintas	J. Basanavičiaus g. 36	Palanga	(460) 51901 +370 698 84099		55.9188841	21.0566831
+palangos_vetra	Palangos vėtra	Daukanto g. 35 / S. Dariaus ir S. Girėno g. 17	Palanga	(8-460) 49490	http://www.palangosvetra.lt/	55.925867	21.087847
+livonija	Livonija	Naujojo sodo g. 1	Klaipėda	(8 46) 228822		55.7112514	21.1303142
+sindbado_oaze	Sindbado oazė	Didžioji Vandens g. 20	Klaipėda	(46) 211786		55.7082946	21.1361209
+alaus_namai	Alaus namai	A. Goštauto g. 8	Vilnius	8 5 260 9637	http://www.alausnamai.lt/	54.6932528	25.270084
+alaus_baras_just	Alaus baras (Justiniškės)	Justiniškių g. 91	Vilnius	(5) 2422480		54.7171368	25.2216737
+blusyne	Blusynė	Savičiaus g. 5-1	Vilnius	(5) 2122012	http://www.blusyne.lt/	54.6792624	25.2886435
+belmontas	Belmontas	Belmonto g.17	Vilnius	8 686 14656	http://www.belmontas.lt/	54.6852651	25.3572492
+burito	Burito	A. Mickevičiaus g. 2a	Vilnius	(617) 66268		54.6903759	25.2561
+bobo	Bobo	Trakų g. 15	Vilnius	67777335	http://www.bobo.lt/	54.680379	25.2818101
+pogo	PoGo Baras	Vilniaus g. 12	Vilnius	37066259613	http://www.pogobaras.lt	54.6859567	25.2795064
+bravaria	Bravaria	Ozo g. 25	Vilnius	  8 652 21121	http://www.bravaria.lt/	54.7127277	25.2717928
+bunte_gans	Bunte Gans	Aušros Vartų g. 11	Vilnius	(8 5) 212 83 12 	http://www.buntegans.lt/	54.6762947	25.2882825
+busi_trecias	Būsi trečias	Totorių g. 18.	Vilnius	(8 5) 231 26 98	http://www.busitrecias.lt/	54.6845751	25.2823112
+dominink_karciama	Domininkonų karčiama	Domininkonų g. 6	Vilnius	8 600 01977	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Karcema.html	54.6811882	25.2843802
+jalta	Jalta	Vykinto g. 17a	Vilnius	+370 6 501 2114	http://www.facebook.com/group.php?gid=77247649677&ref=search	54.6892177	25.2516716
+snekutis_old_town	Šnekutis (Old Town)	Šv. Stepono 8	Vilnius	8 650 57058	http://www.alutis.lt/snekutis/stepono.php	54.6750192	25.2824646
+snekutis_uzupis	Šnekutis (Užupis)	Polocko 7	Vilnius	8 650 49058	http://www.alutis.lt/snekutis/polocko.php	54.6812654	25.3012616
+plieno_paukste	Plieno paukštė	K. Kalinausko 11	Vilnius	(5) 2312181		54.6826155	25.2724954
+rene	Renė	Antokolskio g. 13	Vilnius	 8 5 2126858	http://www.kwak.lt/	54.6792602	25.2855335
+pilies_mene	Pilies menė	Pilies g. 8	Vilnius	(8 5) 2612552	http://piliesmene.meniu.lt	54.6840313	25.2894708
+cactus	Cactus	Bokšto 7	Vilnius	+370 601 12555	http://www.cactusbar.lt/	54.6805646	25.2903254
+simo_baras	Šimo baras	Laisvės pr. 88	Vilnius	(8 5) 2752832		54.6893865	25.2800243
+alaus_baras_pyli	Alaus baras (Pylimo)	 Pylimo g. 60	Vilnius	868238097		54.6729071	25.2862764
+molinis_asotis	Molinis Ąsotis	Naugarduko g. 32	Vilnius	 (5) 2333073		54.6747256	25.2694839
+b6	B6	Bazilijonų g. 6	Vilnius	(8 603) 29332		54.6741394	25.2859476
+tores	Tores	Užupio g. 40	Vilnius	+370 655 3 2626	http://www.tores.lt/	54.6809148	25.2979667
+stopke	Stopkė	Užupio 2a	Vilnius		http://www.stopke.lt/	54.6805511	25.2922544
+uzupio_picerija	Užupio picerija	Paupio g. 3	Vilnius	(8 5) 2153666		54.6800877	25.2958167
+obuolys	Obuolio aludė	Šnipiškių g. 3	Vilnius	+370 527 24234	http://www.applepub.lt/	54.6938689	25.2775397
+mamutas	Mamutas	Savanorių 16 	Vilnius	(5) 2331131		54.6774303	25.2551304
+dolce_vita	Dolce-Vita	Trakų g. 11/Pranciškonų g. 2	Vilnius	5 2312 444	http://www.dolce-vita.lt/	54.6794895	25.2807925
+bambalyne	Bambalynė	Stiklių g. 7	Vilnius	+370 676 00075	http://bambalyne.lt/	54.6800344	25.2863445
+alaus_studija	Alaus studija	S. Žukausko 20	Vilnius	8 685 60885		54.7076179	25.2958828
+savas_kampas	Savas kampas	Vokiečių g. 4	Vilnius	852123203	http://www.savaskampas.lt/	54.678471	25.2860236
+chillout	Chillout baras	Pylimo g. 8/2	Vilnius		http://www.facebook.com/pages/Chillout-baras/103914669678344?v=info	54.6842615	25.2771523
+bermudai	Bermudai	Upes 6	Vilnius	37065570262	http://www.bermudaiclub.lt/	54.6961061	25.2691852
+prie_katedros	Prie Katedros	Gedimino pr. 5	Vilnius	8 605 77555	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Prie_Katedros.html	54.6864964	25.2832854
+wall_street	Wall Street	Lvovo g. 25	Vilnius	8 52 195916	http://www.wallst.lt/	54.6955893	25.2802079
+keisti_zenklai	Keisti ženklai	Trakų g. 13	Vilnius	(8 5) 2610779		54.6803049	25.2813502
+gorky_bar	Gorky Bar	Pilies g. 34	Vilnius	8 652 18035		54.6818804	25.2891853

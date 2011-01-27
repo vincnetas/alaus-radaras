@@ -71,7 +71,7 @@ QPoint CalculationHelper::tilePixelForTile(QPointF tile)
     QPoint point;
     qreal x = (tile.x() - int(tile.x()));
     qreal y = (tile.y() - int(tile.y()));
-    qDebug() << "Tile for pixel " << QString::number(x) << " " << QString::number(y);
+    //qDebug() << "Tile for pixel " << QString::number(x) << " " << QString::number(y);
     point.setX(int(x * tileSize));
     point.setY(int(y * tileSize));
     return point;

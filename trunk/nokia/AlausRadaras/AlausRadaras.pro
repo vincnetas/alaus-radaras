@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network webkit
+QT       += core gui sql network
 TARGET = AlausRadaras
 TEMPLATE = app
 

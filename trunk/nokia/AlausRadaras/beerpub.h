@@ -9,6 +9,7 @@ class BeerPub : public QObject
     Q_OBJECT
     Q_PROPERTY(QString id READ id WRITE setId)
     Q_PROPERTY(QString title READ title WRITE setTitle)
+    Q_PROPERTY(QString city READ city WRITE setCity)
     Q_PROPERTY(qreal latitude READ latitude WRITE setLatitude)
     Q_PROPERTY(qreal longitude READ longitude WRITE setLongitude)
     Q_PROPERTY(qreal distance READ distance WRITE setDistance)
@@ -22,6 +23,10 @@ public:
 
     QString title() const;
     void setTitle(const QString &);
+
+    QString city() const;
+    void setCity(const QString &);
+
 
     qreal latitude() const;
     void setLatitude(const qreal &);
@@ -44,6 +49,7 @@ public slots:
 private:
      QString m_id;
     QString m_title;
+    QString m_city;
     qreal m_longitude;
     qreal m_latitude;
     qreal m_distance;
