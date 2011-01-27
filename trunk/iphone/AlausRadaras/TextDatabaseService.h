@@ -15,4 +15,10 @@
 
 - (NSMutableArray *) findPubsHavingBrand:(NSString *)brand;
 
+- (NSMutableArray *) getBrandsByTag:(NSString *)tagId;
+- (NSMutableArray *) getBrandsByCountry:(NSString *)countryId;
+
+- (NSMutableArray *) getTags;
+- (NSMutableArray *) getCountries;
+
 @end
