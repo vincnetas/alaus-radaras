@@ -135,7 +135,7 @@
 	
 //	int section = indexPath.section;
 //	NSMutableArray *sectionItems = [sections objectAtIndex:section];
-	/**/
+	/*
 	int numOfBrands = [brandList count];
 	int rowNum = 0;
 	for(int brandNum = 0; brandNum<numOfBrands/3;brandNum++){
@@ -172,8 +172,8 @@
 			}
 		}
 	}
+	*/
 	
-	/*
 	int n = [brandList count];
 	int i=0,i1=0; 
 	while(i<n){
@@ -210,7 +210,7 @@
 			i++;
 		}
 		i1++;
-	}*/
+	}
 	 
 	return hlcell;
 }

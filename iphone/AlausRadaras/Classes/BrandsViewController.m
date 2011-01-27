@@ -7,15 +7,15 @@
 //
 
 #import "BrandsViewController.h"
-#import "BrandsTableCell.h"
-#import "TextDatabaseService.h"
+
 
 @implementation BrandsViewController
 
 @synthesize brandList, brandsTable, brandCell;
-@synthesize beerCatagoriesControl;
+@synthesize beerCatagoriesControl,brandsDetails;
 
 - (void)dealloc {
+	[brandsDetails release];
 	[beerCatagoriesControl release];
 	[brandList release];
 	[brandsTable release];
@@ -42,11 +42,9 @@
 	/* Separator color */ 
 	brandsTable.separatorColor = [UIColor grayColor];
 
-	//[NSString stringWithContentsOfFile:@"brands.txt"];
-	 NSStringEncoding *encoding;
-	 NSError* error;
+
 	 NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	 NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:&encoding error:&error];
+	 NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
 
 	 NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
 
@@ -65,6 +63,13 @@
 		 }
 	 }
 	 
+	 category = 0;
+
+	 TextDatabaseService *service = [[TextDatabaseService alloc]init];
+	 tagsList = [service getTags];
+	 countryList = [service getCountries]; 
+	 
+	 [service release];
  }
 
 
@@ -77,22 +82,24 @@
 	switch (self.beerCatagoriesControl.selectedSegmentIndex) {
 		case 0:
 			NSLog(@"Segment Alus selected.");
+			category = 0;
 			break;
 		case 1:
 			NSLog(@"Segment Salys selected.");
+			category = 1;
 			break;
 		case 2:
 			NSLog(@"Segment Tipai selected.");
+			category = 2;
 			break;
 			
 		default:
 			break;
 	}
-	
+	[brandsTable reloadData];
 }
 
 
-	
 	
 
 #pragma mark -
@@ -103,52 +110,97 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	switch (category) {
+		case 0:
+			return [brandList count];
+		case 1:
+			return [countryList count];
+		case 2:
+			return [tagsList count];
+		default:
+			break;
+	}
 	return [brandList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *CellIdentifier = @"Cell";
 	BrandsTableCell *cell = (BrandsTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	//UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if (cell == nil) {
 		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
-
         cell = brandCell;		
 		self.brandCell = nil;
-//		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-//	cell.textLabel.text = [[brandList objectAtIndex:indexPath.row] label]; 
-//		NSLog(@"%@", [brand label]);
+	switch (category) {
+		case 0:
+			cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
+			cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
+			break;
+		case 1:
+			cell.labelText.text = [[countryList objectAtIndex:indexPath.row] displayValue];
+			cell.brandIcon.image = [UIImage imageNamed:@"map_02.png"];
+			break;
+		case 2:
+			cell.labelText.text = [[tagsList objectAtIndex:indexPath.row] displayValue];
+			cell.brandIcon.image = [UIImage imageNamed:@"tag_02.png"];
+			break;
+		default:
+			break;
+	}
 
-	cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
-	cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
-		
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	NSLog(@"didSelectRowAtIndexPath: %@",[[brandList objectAtIndex:indexPath.row]pubsString]);
-	
+		
 	TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	NSMutableArray *pubs = 
-		[service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];
-		 		 
-	 MapViewController *vietosView = 
-		 [[MapViewController alloc] initWithNibName:nil bundle:nil];
-	 	 
+	
+	switch (category) {
+		case 0:{
+			NSMutableArray *pubs = [service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];		 		 
+			[self showMapWithPubs:pubs];
+			[pubs release];	
+			break;
+		} case 1: {	
+			NSMutableArray *brands = [service getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
+			[self showBrandDetails:brands title:[[countryList objectAtIndex:indexPath.row]displayValue]];
+			[brands release];
+			break;
+		} case 2: {
+			NSMutableArray *brands = [service getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
+			[self showBrandDetails:brands title:[[countryList objectAtIndex:indexPath.row]displayValue]];
+			[brands release];
+			break;
+		}
+		default:
+			break;
+	}
+
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
+	[service release];
+}
+
+- (void) showMapWithPubs:(NSMutableArray *)pubs {
+	MapViewController *vietosView = 
+		[[MapViewController alloc] initWithNibName:nil bundle:nil];
+	
 	[vietosView setPubsOnMap:pubs];	 
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
-	 
-	[vietosView release];
-	[pubs release];	
-	[service release];
 	
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[vietosView release];
 }
+
+- (void) showBrandDetails:(NSMutableArray *)brands title:(NSString *) titleText{
+	[brandsDetails setBrandList:brands];
+	brandsDetails.titleLabel.text = titleText;
+	
+	brandsDetails.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
+	[self presentModalViewController:brandsDetails animated:YES];
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
