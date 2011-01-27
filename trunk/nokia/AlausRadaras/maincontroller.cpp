@@ -2,7 +2,7 @@
 #include "ui_maincontroller.h"
 #include <QDebug>
 #include <QGeoPositionInfoSource>
-enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingLuckyView, BrandListView, BeerMapView };
+enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingLuckyView, BrandListView, BeerMapView, SinglePubMapView };
 
 MainController::MainController(QWidget *parent) :
     QMainWindow(parent),
@@ -36,6 +36,7 @@ MainController::MainController(QWidget *parent) :
     feelingLucky = new FeelingLucky(this);
     brandList = new BrandList(this);
     map = new BeerMap(this);
+    singleMap = new BeerMap(this);
 
     ui->setupUi(this);
     ui->stackedWidget->addWidget(mainWidget);
@@ -46,6 +47,7 @@ MainController::MainController(QWidget *parent) :
     ui->stackedWidget->addWidget(feelingLucky);
     ui->stackedWidget->addWidget(brandList);
     ui->stackedWidget->addWidget(map);
+    ui->stackedWidget->addWidget(singleMap);
 
     connect(mainWidget,SIGNAL(BrandsSelected()),this,SLOT(showBrandTabs()));
     connect(mainWidget,SIGNAL(ExitApp()),this,SLOT(close()));
@@ -76,6 +78,7 @@ MainController::MainController(QWidget *parent) :
     connect(map,SIGNAL(Back()),this,SLOT(goBack()));
     connect(map,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
 
+    connect(singleMap,SIGNAL(Back()),this,SLOT(goBack()));
     showWidget(MainView);
 
     connect(&updater,SIGNAL(updateAvalable(QString)),SLOT(onUpdateAvailable(QString)));
@@ -107,7 +110,6 @@ void MainController::showBrandTabs()
 
 void MainController::showWidget(int index)
 {
-    qDebug() << "showWidget " << QString::number(index);
     ui->stackedWidget->setCurrentIndex(index);
     ui->stackedWidget->currentWidget()->showFullScreen();
     history.push(index);
@@ -170,14 +172,13 @@ void MainController::showPubMap(QString pubId)
 {
     DataProvider d(this);
     BeerPub *pub = d.getPub(pubId);
-    qDebug() << pub->id();
-    map->showSinglePub(pub);
-    showWidget(BeerMapView);
+    singleMap->showSinglePub(pub);
+    showWidget(SinglePubMapView);
 }
 
 void MainController::positionUpdated(QGeoPositionInfo geoPositionInfo)
 {
-    qDebug() << "Position updated";
+//    qDebug() << "Position updated";
     if (geoPositionInfo.isValid())
     {
         // Save the position information into a member variable
@@ -192,7 +193,7 @@ void MainController::positionUpdated(QGeoPositionInfo geoPositionInfo)
         } else if (ui->stackedWidget->currentIndex() == BeerMapView) {
             map->locationChanged(latitude,longitude);
         }
-        qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
+       // qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
     }
 }
 void MainController::stopLocationUpdates()
@@ -207,10 +208,10 @@ void MainController::stopLocationUpdates()
 void MainController::startLocationUpdates()
 {
     // Obtain the location data source if it is not obtained already
-    qDebug() << "Start GPS";
+   // qDebug() << "Start GPS";
     if (!locationDataSource)
     {
-        qDebug() << "nolocation data source";
+     //   qDebug() << "nolocation data source";
         locationDataSource =
             QGeoPositionInfoSource::createDefaultSource(this);
         // Whenever the location data source signals that the current
@@ -219,13 +220,13 @@ void MainController::startLocationUpdates()
                       this, SLOT(positionUpdated(QGeoPositionInfo)));
         // Start listening for position updates
 
-         QFlags<QGeoPositionInfoSource::PositioningMethod> flags = locationDataSource->preferredPositioningMethods();
-         if(flags.testFlag(QGeoPositionInfoSource::SatellitePositioningMethods))
-             qDebug() << "satelite available";
-         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
-             qDebug() << "non-satelite available";
-         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
-             qDebug() << "nall methods available";
+//         QFlags<QGeoPositionInfoSource::PositioningMethod> flags = locationDataSource->preferredPositioningMethods();
+//         if(flags.testFlag(QGeoPositionInfoSource::SatellitePositioningMethods))
+//             qDebug() << "satelite available";
+//         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
+//             qDebug() << "non-satelite available";
+//         if(flags.testFlag(QGeoPositionInfoSource::NonSatellitePositioningMethods))
+//             qDebug() << "nall methods available";
     }
     locationDataSource->requestUpdate();
     locationDataSource->setUpdateInterval(15000);

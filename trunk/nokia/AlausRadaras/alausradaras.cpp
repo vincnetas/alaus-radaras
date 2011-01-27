@@ -19,6 +19,19 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
     connect(ui->txtUpdate,SIGNAL(linkActivated(QString)),this,SLOT(loadUpdate(QString)));
+
+    settingsView = new Settings(this);
+    connect(settingsView,SIGNAL(accepted()),this,SLOT(settings_accepted()));
+}
+
+void AlausRadaras::on_btnSettings_clicked()
+{
+    settingsView->setModal(true);
+    settingsView->showFullScreen();
+}
+void AlausRadaras::settings_accepted()
+{
+    settingsView->close();
 }
 
 void AlausRadaras::on_btnBrands_clicked()
@@ -55,6 +68,7 @@ void AlausRadaras::loadUpdate(QString string)
 {
     QDesktopServices::openUrl(QUrl(string));
 }
+
 
 AlausRadaras::~AlausRadaras()
 {

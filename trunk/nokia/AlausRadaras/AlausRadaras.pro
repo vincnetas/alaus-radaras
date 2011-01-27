@@ -39,7 +39,8 @@ qtflickgesture.cpp \
            qtscroller.cpp \
            qtscrollerfilter.cpp \
            qtscrollerproperties.cpp \
-           qtscrollevent.cpp
+           qtscrollevent.cpp \
+    settings.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -73,7 +74,8 @@ HEADERS  += alausradaras.h \
            qtscrollerproperties.h \
            qtscrollerproperties_p.h \
            qtscrollevent.h \
-           qtscrollevent_p.h
+           qtscrollevent_p.h \
+    settings.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -85,7 +87,8 @@ FORMS    += alausradaras.ui \
     beermap.ui \
     waitdialog.ui \
     beercounter.ui \
-    maincontroller.ui
+    maincontroller.ui \
+    settings.ui
 
 CONFIG += mobility
 MOBILITY += location

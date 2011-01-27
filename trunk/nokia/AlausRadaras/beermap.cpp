@@ -51,9 +51,9 @@ void BeerMap::showPubInfo(QString pubId)
 
 void BeerMap::showSinglePub(BeerPub* pub)
 {
+   locationAlreadyUpdated = true;
    QList<BeerPub*> list;
    list.append(pub);
-   qDebug() << list.size();
    maps->setPubs(list);
    maps->setCenter(pub->latitude(),pub->longitude());
 

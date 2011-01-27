@@ -39,6 +39,7 @@ private:
     QNetworkAccessManager m_manager;
     QUrl m_url;
     QList<BeerPub*> pubs;
+    bool canAccessInternet;
 
 private slots:
     void handleNetworkData(QNetworkReply *reply);

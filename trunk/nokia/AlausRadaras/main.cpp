@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
 
 
     QtScrollerProperties sp;
-    sp.setScrollMetric(QtScrollerProperties::AcceleratingFlickMaximumTime, 5.00);
-    sp.setScrollMetric(QtScrollerProperties::MaximumVelocity, 900.0 / 1000);
+    sp.setScrollMetric(QtScrollerProperties::DragVelocitySmoothingFactor, qreal(0.25));
 
     QtScrollerProperties::setDefaultScrollerProperties(sp);
 
