@@ -147,7 +147,6 @@ void MainController::dbInitFinished()
 {
     if(progress) {
         progress->close();
-        progress->deleteLater();
     }
 }
 

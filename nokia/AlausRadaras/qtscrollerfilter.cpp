@@ -3,8 +3,6 @@
 #include <qtscroller.h>
 #include <QAbstractItemView>
 #include <QScrollBar>
-#include <QWebFrame>
-#include <QWebView>
 #include <QGestureEvent>
 #include <QGesture>
 #include <QGraphicsView>
@@ -92,9 +90,6 @@ bool QtScrollerFilter::eventFilter(QObject *o, QEvent *e)
     if (o->isWidgetType()) {
         QWidget *w = static_cast<QWidget *>(o);
         
-        if (QWebView *web = qobject_cast<QWebView *>(w))
-            result |= eventFilter_QWebView(web, e);
-
          if (w->parentWidget()) {
             if (QAbstractScrollArea *area = qobject_cast<QAbstractScrollArea *>(w->parentWidget())) {
                 if (area->viewport() == w) {             
@@ -107,79 +102,6 @@ bool QtScrollerFilter::eventFilter(QObject *o, QEvent *e)
         }
     }
     return result;
-}
-
-bool QtScrollerFilter::eventFilter_QWebView(QWebView *view, QEvent *event)
-{
-    switch (event->type()) {
-    case QtScrollPrepareEvent::ScrollPrepare: {
-        QtScrollPrepareEvent *se = static_cast<QtScrollPrepareEvent *>(event);
-        scrollingFrames[view] = 0;
-
-        if (view->page()) {
-            if (QWebFrame *frame = scrollingFrameAt_QWebView(view, se->startPos().toPoint())) {
-                scrollingFrames[view] = frame;
-                
-                // there's no way to do that from outside of QtWebKit
-                //// remember old selection so that we can restore it later
-                //oldWebSelection = d->frame->selection()->selection();
-
-                se->setViewportSize(frame->geometry().size());
-                se->setContentPosRange(QRectF(frame->scrollBarMinimum(Qt::Horizontal),
-                                              frame->scrollBarMinimum(Qt::Vertical),
-                                              frame->scrollBarMaximum(Qt::Horizontal),
-                                              frame->scrollBarMaximum(Qt::Vertical)));
-                se->setContentPos(QPointF(frame->scrollPosition()));
-                se->accept();                
-                return true;
-            }
-        }
-        return false;
-    } 
-    case QtScrollEvent::Scroll: {
-        if (QWebFrame *frame = scrollingFrames.value(view)) {
-            QtScrollEvent *se = static_cast<QtScrollEvent *>(event);
-            // no way to do that from outside of QtWebKit
-            //// restore the old selection
-            //if (se->scrollState() == QScrollEvent::ScrollStarted)
-            //    frame->d->frame->selection()->setSelection(d->oldWebSelection, CharacterGranularity);
-
-            frame->setScrollPosition(se->contentPos().toPoint());
-
-        } else {
-            return false;
-        }
-    }
-    default:
-        return false;
-    }
-}
-
-QWebFrame *QtScrollerFilter::scrollingFrameAt_QWebView(QWebView *view, const QPoint &pos) const
-{
-    if (!view->page())
-         return 0;
-
-    QWebFrame *mainFrame = view->page()->mainFrame();
-    QWebHitTestResult hitTest = mainFrame->hitTestContent(pos);
-    QWebFrame *hitFrame = hitTest.frame();
-         
-    if (!hitFrame)
-        return 0;
-
-    QRect vsbrect = hitFrame->scrollBarGeometry(Qt::Vertical);
-    QRect hsbrect = hitFrame->scrollBarGeometry(Qt::Horizontal);
-
-    if (!vsbrect.isEmpty() && vsbrect.contains(hitTest.pos() - hitFrame->scrollPosition()))
-        return 0;
-    if (!hsbrect.isEmpty() && hsbrect.contains(hitTest.pos() - hitFrame->scrollPosition()))
-        return 0;
-
-    QSize range = hitFrame->contentsSize() - hitFrame->geometry().size();
-    
-    while (hitFrame && range.width() <= 1 && range.height() <= 1)
-        hitFrame = hitFrame->parentFrame();
-    return hitFrame;
 }
     
 bool QtScrollerFilter::eventFilter_QAbstractScrollArea(QAbstractScrollArea *area, QEvent *event)

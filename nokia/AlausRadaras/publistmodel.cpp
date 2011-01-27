@@ -38,15 +38,18 @@ QVariant PubListModel::data( const QModelIndex & index, int role /* = Qt::Displa
             data.append(pubs->at(index.row())->title());
             data.append("\n ");
             if(pubs->at(index.row())->distance() == -1) {
-                data.append("laukiu atstumo...");
+                data.append("? m");
             }
             else if(pubs->at(index.row())->distance() > 1000)  {
                 data.append(distance.setNum(pubs->at(index.row())->distance() / 1000, 'g', 3));
                 data.append(" km");
             } else {
                 data.append(distance.setNum(pubs->at(index.row())->distance(), 'f', 0));
-                data.append(" metru");
+                data.append(QString::fromUtf8(" metru"));
             }
+            data.append(" (");
+            data.append(pubs->at(index.row())->city());
+            data.append(")");
                 return  data;
            // return pubs[index.row()]->title();
         }

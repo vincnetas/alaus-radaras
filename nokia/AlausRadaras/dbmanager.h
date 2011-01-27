@@ -23,7 +23,7 @@ public:
 public slots:
 
 private:
-    static const uint DB_VERSION = 3;
+    static const uint DB_VERSION = 4;
 
     bool createDb();
 

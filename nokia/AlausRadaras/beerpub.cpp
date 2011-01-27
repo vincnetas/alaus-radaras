@@ -29,6 +29,18 @@ qreal BeerPub::latitude() const
     return m_latitude;
 }
 
+QString BeerPub::city() const
+{
+    return m_city;
+}
+
+void BeerPub::setCity(const QString &city)
+{
+    m_city = city;
+}
+
+
+
 void BeerPub::setLatitude(const qreal &lat)
 {
     m_latitude = lat;

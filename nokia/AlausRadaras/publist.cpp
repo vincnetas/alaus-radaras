@@ -44,7 +44,7 @@ void PubList::locationChanged(qreal lat, qreal lon)
                 qreal p1 = pubs[i]->latitude();
                 qreal p2 = pubs[i]->longitude();
                 qreal distance = CalculationHelper::getDistance(p1,p2,lat,lon,'M');
-                qDebug() << QString::number(distance);
+                //qDebug() << QString::number(distance);
                 pubs[i]->setDistance(distance);
             }
             //pubs are pointers.. so..

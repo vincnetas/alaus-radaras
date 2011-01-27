@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include "calculationhelper.h"
+#include <QStringBuilder>
 
 
 DbManager::DbManager(QObject *parent) : QObject(parent)
@@ -57,6 +58,7 @@ bool DbManager::createDb()
     query.exec("CREATE TABLE pubs("
                    "id 		TEXT PRIMARY KEY, "
                    "title 		TEXT NOT NULL, "
+                   "city 		TEXT NOT NULL, "
                    "longtitude REAL NOT NULL, "
                    "latitude 	REAL NOT NULL, "
                    "address 	TEXT, "
@@ -67,51 +69,51 @@ bool DbManager::createDb()
                    "tile_y INTEGER,"
                    "tile_pixel_x INTEGER,"
                    "tile_pixel_y INTEGER);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands("
                "id 			TEXT PRIMARY KEY, "
                "title 			TEXT NOT NULL, "
                "icon			TEXT, "
                "description 	TEXT);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE tags("
                "code			TEXT NOT NULL, "
                "title			TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE pubs_brands("
                "pub_id			TEXT NOT NULL, "
                "brand_id 		TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec( "CREATE TABLE countries("
                 "code			TEXT NOT NULL,"
                 "name			TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands_countries("
                "brand_id			TEXT NOT NULL,"
                "country			TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     query.exec("CREATE TABLE brands_tags("
                 "brand_id			TEXT NOT NULL,"
                 "tag				TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
     query.exec("CREATE TABLE qoutes("
                 "amount			INTEGER NOT NULL,"
                 "text			TEXT NOT NULL);");
-    if(query.lastError().isValid())
-        qDebug() << query.lastError();
+//    if(query.lastError().isValid())
+//        qDebug() << query.lastError();
 
     //cowboy coding. But i hate c++ delegates with pointers
     insertBrands(query);
@@ -129,7 +131,7 @@ bool DbManager::createDb()
 void DbManager::insertBrands(QSqlQuery &query)
 {
 
-     qDebug() << "begin sinserting brands";
+     //qDebug() << "begin sinserting brands";
      query.prepare("INSERT INTO brands (id, title, icon) "
                        "VALUES (:id, :title, :icon)");
 
@@ -146,20 +148,20 @@ void DbManager::insertBrands(QSqlQuery &query)
              query.bindValue(":title", columns.at(1));
              query.bindValue(":icon", columns.at(0));
              query.exec();
-             if(query.lastError().isValid())
-                 qDebug() << query.lastError();
+//             if(query.lastError().isValid())
+//                 qDebug() << query.lastError();
 
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting brands";
+     //qDebug() << "end inserting brands";
 
 }
 
 void DbManager::insertTags(QSqlQuery &query)
 {
 
-     qDebug() << "begin inserting tags";
+    // qDebug() << "begin inserting tags";
 
      query.prepare("INSERT INTO tags "
                        "VALUES (:code, :title)");
@@ -176,22 +178,22 @@ void DbManager::insertTags(QSqlQuery &query)
         query.bindValue(":code", columns.at(0));
         query.bindValue(":title", columns.at(1));
         query.exec();
-        if(query.lastError().isValid())
-            qDebug() << query.lastError();
+//        if(query.lastError().isValid())
+//            qDebug() << query.lastError();
 
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting tags";
+    // qDebug() << "end inserting tags";
 
 }
 
 void DbManager::insertPubs(QSqlQuery &query)
 {
 
-     qDebug() << "begin inserting pubs";
+    // qDebug() << "begin inserting pubs";
 
-     query.prepare("INSERT INTO pubs VALUES (:id, :title, :longitude, :latitude,  :address, :notes, :phone, :url, :tile_x, :tile_y,:tile_pixel_x, :tile_pixel_y )");
+     query.prepare("INSERT INTO pubs VALUES (:id, :title, :city, :longitude, :latitude,  :address, :notes, :phone, :url, :tile_x, :tile_y,:tile_pixel_x, :tile_pixel_y )");
 
      QFile file(":/db/pubs.txt");
      file.open(QFile::ReadOnly | QFile::Text);
@@ -204,39 +206,40 @@ void DbManager::insertPubs(QSqlQuery &query)
 
         QStringList columns = line.split("\t");
 
-        qDebug() << "\n" << columns.at(1);
-        Location loc = getLocation(columns.at(5),columns.at(6));
-        qDebug() << loc.tile.x() << " " << loc.tile.y() << " " << loc.tilePixel.x() << " " << loc.tilePixel.y();
+        //qDebug() << "\n" << columns.at(1);
+        Location loc = getLocation(columns.at(6),columns.at(7));
+       // qDebug() << loc.tile.x() << " " << loc.tile.y() << " " << loc.tilePixel.x() << " " << loc.tilePixel.y();
 
         query.bindValue(":id", columns.at(0));
         query.bindValue(":title", columns.at(1));
         query.bindValue(":address", columns.at(2));
-        query.bindValue(":phone", columns.at(3));
-        query.bindValue(":url", columns.at(4));
-        query.bindValue(":latitude", columns.at(5));
-        query.bindValue(":longitude", columns.at(6));
+        query.bindValue(":city", columns.at(3));
+        query.bindValue(":phone", columns.at(4));
+        query.bindValue(":url", columns.at(5));
+        query.bindValue(":latitude", columns.at(6));
+        query.bindValue(":longitude", columns.at(7));
         query.bindValue(":notes","");
         query.bindValue(":tile_x", loc.tile.x());
         query.bindValue(":tile_y", loc.tile.y());
         query.bindValue(":tile_pixel_x", loc.tilePixel.x());
         query.bindValue(":tile_pixel_y",loc.tilePixel.y());
         query.exec();
-        if(query.lastError().isValid())
-            qDebug() << query.lastError();
+//        if(query.lastError().isValid())
+//            qDebug() << query.lastError();
 
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting pubs";
+     //qDebug() << "end inserting pubs";
 
 }
 
 Location DbManager::getLocation(QString latitude, QString longitude)
 {
     Location loc;
-    qDebug() << "Lat long" << QString::number(latitude.toDouble()) << " " << QString::number(longitude.toDouble());
+   // qDebug() << "Lat long" << QString::number(latitude.toDouble()) << " " << QString::number(longitude.toDouble());
     QPointF tileFullPoint = CalculationHelper::tileForCoordinate(latitude.toDouble(), longitude.toDouble());
-    qDebug() << "FullPoint: " << QString::number(tileFullPoint.x()) << " " << QString::number(tileFullPoint.y());
+  //  qDebug() << "FullPoint: " << QString::number(tileFullPoint.x()) << " " << QString::number(tileFullPoint.y());
     loc.tile = QPoint((int)tileFullPoint.x(),(int)tileFullPoint.y());
     loc.tilePixel = CalculationHelper::tilePixelForTile(tileFullPoint);
     return loc;
@@ -245,7 +248,7 @@ Location DbManager::getLocation(QString latitude, QString longitude)
 void DbManager::insertCountries(QSqlQuery &query)
 {
 
-     qDebug() << "begin inserting countries";
+//     qDebug() << "begin inserting countries";
 
      query.prepare("INSERT INTO countries VALUES (:code, :name)");
 
@@ -261,20 +264,20 @@ void DbManager::insertCountries(QSqlQuery &query)
         query.bindValue(":code", columns.at(0));
         query.bindValue(":name", columns.at(1));
         query.exec();
-        if(query.lastError().isValid())
-            qDebug() << query.lastError();
+//        if(query.lastError().isValid())
+//            qDebug() << query.lastError();
 
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting countries";
+   //  qDebug() << "end inserting countries";
 
 }
 
 void DbManager::insertQoutes(QSqlQuery &query)
 {
 
-     qDebug() << "begin inserting qoutes";
+     //qDebug() << "begin inserting qoutes";
 
      query.prepare("INSERT INTO qoutes VALUES (:amount, :text)");
 
@@ -290,20 +293,20 @@ void DbManager::insertQoutes(QSqlQuery &query)
         query.bindValue(":amount", columns.at(0));
         query.bindValue(":text", columns.at(1));
         query.exec();
-        if(query.lastError().isValid())
-            qDebug() << query.lastError();
+//        if(query.lastError().isValid())
+//            qDebug() << query.lastError();
 
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting qoutes";
+     //qDebug() << "end inserting qoutes";
 
 }
 
 void DbManager::insertAssociations(QSqlQuery &query)
 {
 
-     qDebug() << "begin inserting associations";
+     //qDebug() << "begin inserting associations";
 
 
      QFile file(":/db/brands.txt");
@@ -316,29 +319,29 @@ void DbManager::insertAssociations(QSqlQuery &query)
 
         QStringList columns = line.split("\t");
 
-        qDebug() << "Inserting brand<->pub association: ";
+       // qDebug() << "Inserting brand<->pub association: ";
         QStringList pubs = columns.at(2).split(",");
         query.prepare("INSERT INTO pubs_brands VALUES (:pub_id,:brand_id)");
         for (int i = 0; i < pubs.length(); i++) {
             query.bindValue(":brand_id", columns.at(0));
             query.bindValue(":pub_id", pubs.at(i).trimmed());
             query.exec();
-            if(query.lastError().isValid())
-                qDebug() << query.lastError();
+//            if(query.lastError().isValid())
+//                qDebug() << query.lastError();
         }
 
-        qDebug() << "Inserting brand<->country association: ";
+        //qDebug() << "Inserting brand<->country association: ";
         QStringList countries = columns.at(3).split(",");
         query.prepare("INSERT INTO brands_countries VALUES (:brand_id, :country)");
         for (int i = 0; i < countries.length(); i++) {
             query.bindValue(":brand_id", columns.at(0));
             query.bindValue(":country", countries.at(i).trimmed());
             query.exec();
-            if(query.lastError().isValid())
-                qDebug() << query.lastError();
+//            if(query.lastError().isValid())
+//                qDebug() << query.lastError();
         }
 
-        qDebug() << "Inserting brand<->tag association: ";
+       // qDebug() << "Inserting brand<->tag association: ";
         QStringList tags = columns.at(4).split(",");
         query.prepare("INSERT INTO brands_tags VALUES (:brand_id, :country)");
         for (int i = 0; i < tags.length(); i++) {
@@ -351,12 +354,12 @@ void DbManager::insertAssociations(QSqlQuery &query)
      }
      file.close();
      query.clear();
-     qDebug() << "end inserting associations";
+     //qDebug() << "end inserting associations";
 
 }
 void DbManager::dropTables()
 {
-    qDebug() << "Deleting tables and setting user version to initial value";
+   // qDebug() << "Deleting tables and setting user version to initial value";
     QSqlQuery query;
        query.exec("drop table if exists pubs");
        query.exec("drop table if exists brands");
