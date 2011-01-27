@@ -8,6 +8,7 @@
 
 #import "PubDetailViewController.h"
 #import "Brand.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation PubDetailViewController
 
@@ -79,7 +80,43 @@
 	[self dismissModalViewControllerAnimated:YES];	
 }
 
+- (IBAction) showOnMap:(id)sender {
+	NSLog(@"showOnMap");
+	
+	// TODO: Implement
+	
+	MapViewController *vietosView = 
+		[[MapViewController alloc] initWithNibName:nil bundle:nil];
+	
+	NSMutableArray *pubs = [[NSMutableArray alloc]init];
 
+	[pubs addObject:currentPub];
+	[vietosView setPubsOnMap:pubs];
+	
+	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
+	[self presentModalViewController:vietosView animated:YES];
+	
+	[vietosView release];
+	[pubs release];
+}
+
+- (IBAction) dialNumber:(id)sender {
+	NSString *phonenumber = [NSString stringWithFormat:@"tel://%@", currentPub.phone];
+	phonenumber = [phonenumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+
+	NSLog(@"dialNumber: %@", phonenumber);
+
+	// TODO: Maybe show alert box before dialing?
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+}
+
+- (IBAction) navigateToPub:(id)sender {
+	NSLog(@"navigateToPub");
+	
+	// TODO: implement
+	
+}
 
 #pragma mark -
 #pragma mark UITableViewDelegate methods
@@ -98,10 +135,47 @@
 	
 //	int section = indexPath.section;
 //	NSMutableArray *sectionItems = [sections objectAtIndex:section];
+	/**/
+	int numOfBrands = [brandList count];
+	int rowNum = 0;
+	for(int brandNum = 0; brandNum<numOfBrands/3;brandNum++){
+		
+	   	for (rowNum = 0; rowNum < numOfBrands; rowNum++) {
+
+			int colNum = 0;	
+			for (colNum =0; colNum<4; colNum++) {
+					
+					Brand *item = [brandList objectAtIndex:brandNum];
+
+					CGRect rect = CGRectMake(70*colNum, 0, 64, 64);
+					UIButton *button=[[UIButton alloc] initWithFrame:rect];
+					[button setFrame:rect];
+					UIImage *buttonImageNormal=[UIImage imageNamed:item.icon];
+	//				[button setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+					[button setBackgroundColor:[UIColor greenColor]];
+					[button setContentMode:UIViewContentModeCenter];
+					
+					NSString *tagValue = [NSString stringWithFormat:@"%d%d", indexPath.section+0, 0];
+					button.tag = [tagValue intValue];
+					//	[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+					[hlcell.contentView addSubview:button];
+					[button release];
+					
+					UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(31+(100*colNum)-15, 66, 95, 12)] autorelease];
+					
+					label.text = item.label;
+					label.textColor = [UIColor lightGrayColor];
+					label.backgroundColor = [UIColor grayColor];
+					label.textAlignment = UITextAlignmentCenter;
+					label.font = [UIFont fontWithName:@"ArialMT" size:12]; 
+					[hlcell.contentView addSubview:label];
+			}
+		}
+	}
 	
+	/*
 	int n = [brandList count];
 	int i=0,i1=0; 
-	
 	while(i<n){
 		int yy = 4 +i1*74;
 		int j=0;
@@ -135,8 +209,9 @@
 			
 			i++;
 		}
-		i1 = i1+1;
-	}
+		i1++;
+	}*/
+	 
 	return hlcell;
 }
 

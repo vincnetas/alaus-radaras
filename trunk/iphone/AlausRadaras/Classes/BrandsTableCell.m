@@ -7,7 +7,7 @@
 //
 
 #import "BrandsTableCell.h"
-
+#import "TextDatabaseService.h"
 
 @implementation BrandsTableCell
 
