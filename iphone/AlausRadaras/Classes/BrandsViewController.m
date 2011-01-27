@@ -8,12 +8,15 @@
 
 #import "BrandsViewController.h"
 #import "BrandsTableCell.h"
+#import "TextDatabaseService.h"
 
 @implementation BrandsViewController
 
 @synthesize brandList, brandsTable, brandCell;
+@synthesize beerCatagoriesControl;
 
 - (void)dealloc {
+	[beerCatagoriesControl release];
 	[brandList release];
 	[brandsTable release];
 	[brandCell release];
@@ -55,6 +58,7 @@
 			Brand *brand = [[Brand alloc]init];
 			brand.icon = [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]];
 			brand.label =	[values objectAtIndex:1];
+			brand.pubsString =	[values objectAtIndex:2];
 
 			[brandList addObject:brand];
 			[brand release];
@@ -64,6 +68,32 @@
  }
 
 
+
+#pragma mark -
+#pragma mark Segment Controller methods
+
+
+-(IBAction) beerCategoryControlIndexChanged {
+	switch (self.beerCatagoriesControl.selectedSegmentIndex) {
+		case 0:
+			NSLog(@"Segment Alus selected.");
+			break;
+		case 1:
+			NSLog(@"Segment Salys selected.");
+			break;
+		case 2:
+			NSLog(@"Segment Tipai selected.");
+			break;
+			
+		default:
+			break;
+	}
+	
+}
+
+
+	
+	
 
 #pragma mark -
 #pragma mark Table view methods
@@ -99,6 +129,24 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	NSLog(@"didSelectRowAtIndexPath: %@",[[brandList objectAtIndex:indexPath.row]pubsString]);
+	
+	TextDatabaseService *service = [[TextDatabaseService alloc]init];
+	NSMutableArray *pubs = 
+		[service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];
+		 		 
+	 MapViewController *vietosView = 
+		 [[MapViewController alloc] initWithNibName:nil bundle:nil];
+	 	 
+	[vietosView setPubsOnMap:pubs];	 
+	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	[self presentModalViewController:vietosView animated:YES];
+	 
+	[vietosView release];
+	[pubs release];	
+	[service release];
+	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

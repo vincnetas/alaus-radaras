@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Brand.h"
+#import "MapViewController.h"
 
 @class BrandsTableCell;
 
@@ -16,11 +17,19 @@
 	
 	UITableView *brandsTable;
 	BrandsTableCell *brandCell;
+	
+	UISegmentedControl *beerCatagoriesControl;
 }
 
 @property(nonatomic, retain) NSMutableArray *brandList;
 @property (nonatomic, retain) IBOutlet BrandsTableCell *brandCell;
 @property (nonatomic, retain) IBOutlet 	UITableView *brandsTable;
 
+@property (nonatomic,retain) IBOutlet UISegmentedControl *beerCatagoriesControl;
+
+
+
 - (IBAction) gotoPreviousView:(id)sender;
+- (IBAction) beerCategoryControlIndexChanged;
+
 @end

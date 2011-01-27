@@ -17,6 +17,7 @@
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
 
+
 -(IBAction) clickPint:(id) sender;
 -(IBAction) clickAlus:(id) sender;
 -(IBAction) clickVietos:(id) sender;

@@ -7,7 +7,7 @@
 //
 
 #import "AlausRadarasViewController.h"
-
+#import "Pub.h"
 
 @implementation AlausRadarasViewController
 
@@ -34,10 +34,34 @@
 
 -(IBAction) clickVietos:(id) sender {
 	MapViewController *vietosView = 
-	[[MapViewController alloc] initWithNibName:nil bundle:nil];
+			[[MapViewController alloc] initWithNibName:nil bundle:nil];
+
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	NSMutableArray *pubs = [[NSMutableArray alloc]init];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			Pub *pub = [[Pub alloc]init];
+
+			pub.latitude = [values objectAtIndex:5];
+			pub.longitude = [values objectAtIndex:6];
+			[pub setPubId:[values objectAtIndex:0]];
+			[pub setPubTitle:[values objectAtIndex:1]];
+			[pub setPubAddress:[values objectAtIndex:2]];
+
+			[pubs addObject:pub];
+			[pub release]; // realising cause navigation problems 
+		}
+	}
+	[vietosView setPubsOnMap:pubs];
+	
 	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:vietosView animated:YES];
+	
 	[vietosView release];
+	[pubs release];
 }
 
 

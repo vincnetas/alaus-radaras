@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Pub.h"
+#import "MapViewController.h"
 
 @interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UILabel *pubTitleShortLabel;
@@ -32,5 +33,8 @@
 
 
 - (IBAction) gotoPreviousView:(id)sender;
+- (IBAction) showOnMap:(id)sender;
+- (IBAction) dialNumber:(id)sender;
+- (IBAction) navigateToPub:(id)sender;
 
 @end

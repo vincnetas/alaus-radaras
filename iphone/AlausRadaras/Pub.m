@@ -11,6 +11,6 @@
 
 @implementation Pub
 
-@synthesize pubId, pubTitle, pubAddress, phone, webpage; 
+@synthesize pubId, pubTitle, pubAddress, phone, webpage, latitude, longitude; 
 
 @end

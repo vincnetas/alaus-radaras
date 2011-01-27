@@ -13,10 +13,10 @@
 
 @implementation MapViewController
 
-@synthesize mapView;
-NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
+@synthesize mapView,pubsOnMap;
 
 - (void)dealloc {
+	[pubsOnMap release];
 	[mapView release];
 	[super dealloc];
 }
@@ -46,6 +46,25 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 
 
 - (void)loadPubAnnotations {
+	
+	for (Pub *pub in pubsOnMap) {
+	//	if (![line isEqualToString:@""]) {
+			CLLocationCoordinate2D coord;
+			coord.latitude = [pub.latitude doubleValue];
+			coord.longitude = [pub.longitude doubleValue];
+			
+			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
+			[pubAnnotation setPubId:pub.pubId];
+			[pubAnnotation setTitle:pub.pubTitle];
+			[pubAnnotation setSubtitle:pub.pubAddress];
+			
+			[mapView addAnnotation:pubAnnotation];
+			//[pubAnnotation release]; /* realising cause navigation problems */
+	//	}
+	}
+	
+	/* Version 1:
+	
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
 	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
 	
@@ -56,9 +75,7 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 			NSArray *values = [line componentsSeparatedByString:@"	"];
 			
 			CLLocationCoordinate2D coord;
-			//	workingCoordinate.latitude = 54.689313;
-			//	workingCoordinate.longitude = 25.282631;
-			coord.latitude = [[values objectAtIndex:5]doubleValue];//[NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]];
+			coord.latitude = [[values objectAtIndex:5]doubleValue];
 			coord.longitude = [[values objectAtIndex:6]doubleValue];
 			
 			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
@@ -67,9 +84,10 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 			[pubAnnotation setSubtitle:[values objectAtIndex:2]];
 			
 			[mapView addAnnotation:pubAnnotation];
-			//[pubAnnotation release]; /* realising cause navigation problems */
+			//[pubAnnotation release]; // realising cause navigation problems 
 		}
 	}
+	*/
 }
  
 /*
@@ -145,9 +163,6 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"	"];
 			if ([pubAnnotation.pubId isEqualToString:[values objectAtIndex:0]]) {
-			//	pubDetailView.pubTitleLabel.text = pubAnnotation.title;
-			//	pubDetailView.pubTitleShortLabel.text = [values objectAtIndex:1];
-			//	pubDetailView.pubTitleShortLabel.text = [values objectAtIndex:1];
 			
 				Pub *tempPub = [[Pub alloc]init];
 				tempPub.pubId = [values objectAtIndex:0];
@@ -155,7 +170,9 @@ NSString * const GMAP_ANNOTATION_SELECTED = @"gmapselected";
 				tempPub.pubAddress = [values objectAtIndex:2];
 				tempPub.phone = [values objectAtIndex:3];
 				tempPub.webpage = [values objectAtIndex:4];
-					 NSLog(@"Set Pub");
+				tempPub.latitude = [values objectAtIndex:5];
+				tempPub.longitude = [values objectAtIndex:6];
+
 				pubDetailView.currentPub = tempPub;
 				
 				[tempPub release];

@@ -14,10 +14,11 @@
 
 @interface MapViewController : UIViewController<MKMapViewDelegate> {
 	IBOutlet MKMapView *mapView;
+	NSMutableArray *pubsOnMap;
 }
 
 @property(nonatomic, retain) IBOutlet MKMapView *mapView;
-extern NSString *const GMAP_ANNOTATION_SELECTED;
+@property(nonatomic, retain) NSMutableArray *pubsOnMap;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (void)loadPubAnnotations;

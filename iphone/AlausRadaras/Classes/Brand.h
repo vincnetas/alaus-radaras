@@ -11,9 +11,12 @@
 @interface Brand : NSObject {
 	NSString *icon; 
 	NSString *label;
+	NSString *pubsString;
+
 }
 
 @property (nonatomic, retain) NSString *icon;
 @property (nonatomic, retain) NSString *label;
+@property (nonatomic, retain) NSString *pubsString;
 
 @end
