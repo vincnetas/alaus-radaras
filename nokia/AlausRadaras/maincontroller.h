@@ -43,6 +43,7 @@ private:
     FeelingLucky *feelingLucky;
     BrandList *brandList;
     BeerMap *map;
+    BeerMap *singleMap;
     UpdateChecker updater;
 
     QStack<int> history;

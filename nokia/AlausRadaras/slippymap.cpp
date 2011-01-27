@@ -111,6 +111,10 @@ void SlippyMap::pan(const QPoint &delta) {
 
 void SlippyMap::setPubs(QList<BeerPub*> pubs)
 {
+    //hack. We must show this every time we refresh this window. Move to
+    //common settings class someday
+    QSettings settings;
+    this->canAccessInternet = settings.value("InternetEnabled",true).toBool();
     this->pubs = pubs;
     invalidate();
 }
@@ -151,15 +155,15 @@ void SlippyMap::download() {
         m_url = QUrl();
         return;
     }
-
-    QString path = "http://tile.openstreetmap.org/%1/%2/%3.png";
-    m_url = QUrl(path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y()));
-    qDebug() << "getting data with url  " + path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y());
-    QNetworkRequest request;
-    request.setUrl(m_url);
-    request.setRawHeader("User-Agent", "Nokia Beer Radar (Qt)");
-    request.setAttribute(QNetworkRequest::User, QVariant(grab));
-    m_manager.get(request);
+    if(canAccessInternet) {
+        QString path = "http://tile.openstreetmap.org/%1/%2/%3.png";
+        m_url = QUrl(path.arg(CalculationHelper::zoom).arg(grab.x()).arg(grab.y()));
+        QNetworkRequest request;
+        request.setUrl(m_url);
+        request.setRawHeader("User-Agent", "Nokia Beer Radar (Qt)");
+        request.setAttribute(QNetworkRequest::User, QVariant(grab));
+        m_manager.get(request);
+    }
 }
 QRect SlippyMap::tileRect(const QPoint &tp) {
     QPoint t = tp - m_tilesRect.topLeft();

@@ -3,6 +3,7 @@
 #include <QUuid>
 #include <QSettings>
 #include <QDebug>
+#include <QDateTime>
 
 const QString UpdateChecker::VERSION = QString("1.0");
 
@@ -15,14 +16,32 @@ UpdateChecker::UpdateChecker(QObject *parent) :
 
 void UpdateChecker::checkForUpdates()
 {
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-    connect(manager, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(replyFinished(QNetworkReply*)));
+    if(needToCheckForUpdates()) {
+        QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+        connect(manager, SIGNAL(finished(QNetworkReply*)),
+                this, SLOT(replyFinished(QNetworkReply*)));
 
-    QString url = QString("http://alausradaras.lt/nokia/update.php?ver=%1&id=%2").arg(VERSION,getUniqueDeviceId());
-    qDebug() << url;
-    manager->get(QNetworkRequest(QUrl(url)));
-    qDebug() << "check for updates";
+        QString url = QString("http://alausradaras.lt/nokia/update.php?ver=%1&id=%2").arg(VERSION,getUniqueDeviceId());
+        manager->get(QNetworkRequest(QUrl(url)));
+    }
+}
+
+bool UpdateChecker::needToCheckForUpdates()
+{
+    QSettings settings;
+    if(settings.value("UpdatesEnabled",true).toBool() && settings.value("InternetEnabled",true).toBool()) {
+        if(settings.value("UpdateFrequency",0).toInt() == 0) {
+            return true;
+        } else {
+            int date = settings.value("LastUpdateCheck",0).toInt();
+            QDateTime dateTime = QDateTime::fromTime_t(date).addDays(7);
+            if(dateTime < QDateTime::currentDateTime()) {
+                return true;
+            }
+        }
+    }
+    return false;
+
 }
 
 void UpdateChecker::replyFinished(QNetworkReply* reply)
@@ -35,6 +54,8 @@ void UpdateChecker::replyFinished(QNetworkReply* reply)
         if(!replyText.isEmpty()) {
             emit updateAvalable(replyText);
         }
+        QSettings settings;
+        settings.setValue("LastUpdateCheck",QDateTime::currentDateTime().toTime_t());
 
     }
     reply->deleteLater();

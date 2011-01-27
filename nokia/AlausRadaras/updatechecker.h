@@ -20,6 +20,7 @@ signals:
     void updateAvalable(QString text);
 private:
     QString getUniqueDeviceId();
+    bool needToCheckForUpdates();
 
 };
 
