@@ -13,8 +13,10 @@
 @implementation PubDetailViewController
 
 @synthesize brandList, brandsTable,currentPub, pubTitleShortLabel, pubTitleLabel,pubAddressLabel,pubCallLabel;
+@synthesize userCoordinates;
 
 - (void)dealloc {
+	[userCoordinates release];
 	[currentPub release];
 	[pubTitleShortLabel release];
 	[pubTitleLabel release];
@@ -37,8 +39,6 @@
 	 brandsTable.backgroundColor = [UIColor clearColor];
 	 brandsTable.opaque = NO;
 	 brandsTable.backgroundView = nil; 
-	 
-	 
 	 
 	 
 	 pubTitleShortLabel.text = currentPub.pubTitle;
@@ -112,10 +112,11 @@
 }
 
 - (IBAction) navigateToPub:(id)sender {
-	NSLog(@"navigateToPub");
+	NSLog(@"navigateToPub: %@, %@", currentPub.latitude, currentPub.longitude);
 	
-	// TODO: implement
-	
+	NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%@,%@", userCoordinates, currentPub.latitude, currentPub.longitude];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:googleMapsURLString]];
+	[googleMapsURLString release];
 }
 
 #pragma mark -

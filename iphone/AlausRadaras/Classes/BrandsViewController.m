@@ -13,8 +13,11 @@
 
 @synthesize brandList, brandsTable, brandCell;
 @synthesize beerCatagoriesControl,brandsDetails;
+@synthesize searchBar, isSearchOn;
 
 - (void)dealloc {
+	[searchBar release];
+	[isSearchOn release];	
 	[brandsDetails release];
 	[beerCatagoriesControl release];
 	[brandList release];
@@ -70,6 +73,18 @@
 	 countryList = [service getCountries]; 
 	 
 	 [service release];
+	 
+	 /* Search initialization */	 
+	 searchBar = [[UISearchBar alloc] init];
+	 searchBar.placeholder = @"Type a search term";
+	 searchBar.tintColor = [UIColor blackColor];
+	 searchBar.delegate = self;
+	 [searchBar sizeToFit];
+	 self.isSearchOn = NO;
+	 [searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+	 [searchBar sizeToFit];
+	 
+	 
  }
 
 
@@ -164,14 +179,14 @@
 			[pubs release];	
 			break;
 		} case 1: {	
-			NSMutableArray *brands = [service getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
-			[self showBrandDetails:brands title:[[countryList objectAtIndex:indexPath.row]displayValue]];
-			[brands release];
+			NSMutableArray *brandsByCountry = [service getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
+			[self showBrandDetails:brandsByCountry title:[[countryList objectAtIndex:indexPath.row]displayValue]];
+			[brandsByCountry release];
 			break;
 		} case 2: {
-			NSMutableArray *brands = [service getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
-			[self showBrandDetails:brands title:[[countryList objectAtIndex:indexPath.row]displayValue]];
-			[brands release];
+			NSMutableArray *brandsByTag = [service getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
+			[self showBrandDetails:brandsByTag title:[[tagsList objectAtIndex:indexPath.row]displayValue]];
+			[brandsByTag release];
 			break;
 		}
 		default:
@@ -196,7 +211,7 @@
 - (void) showBrandDetails:(NSMutableArray *)brands title:(NSString *) titleText{
 	[brandsDetails setBrandList:brands];
 	brandsDetails.titleLabel.text = titleText;
-	
+	[[brandsDetails brandsTable]reloadData];
 	brandsDetails.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:brandsDetails animated:YES];
 }
@@ -207,6 +222,21 @@
 }
 
 
+#pragma mark -
+#pragma mark UISearchBar methods
+
+
+- (IBAction) toggleSearch: (id) object {
+    isSearchOn = ! isSearchOn;
+    
+    if (isSearchOn) {
+		brandsTable.tableHeaderView = searchBar; // show the search bar on top of table
+    } else {
+        brandsTable.tableHeaderView = nil;
+        [searchBar resignFirstResponder ]; 
+    }
+    [brandsTable scrollRectToVisible:[[brandsTable tableHeaderView] bounds] animated:NO]; // scroll to top so we see the search bar
+}
 
 
 
