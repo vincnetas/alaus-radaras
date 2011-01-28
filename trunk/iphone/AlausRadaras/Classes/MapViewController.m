@@ -28,7 +28,7 @@
 	 mapView.mapType=MKMapTypeStandard;
 	 //mapView.mapType=MKMapTypeHybrid;
 	 mapView.showsUserLocation = YES;
-	 
+
 	 CLLocationCoordinate2D sweLoc = {54.689313,25.282631};
 	 MKCoordinateSpan sweSpan = MKCoordinateSpanMake(0.073226, 0.119476);
 	 MKCoordinateRegion sweRegion = MKCoordinateRegionMake(sweLoc, sweSpan);
@@ -62,69 +62,8 @@
 			//[pubAnnotation release]; /* realising cause navigation problems */
 	//	}
 	}
-	
-	/* Version 1:
-	
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"	"];
-			
-			CLLocationCoordinate2D coord;
-			coord.latitude = [[values objectAtIndex:5]doubleValue];
-			coord.longitude = [[values objectAtIndex:6]doubleValue];
-			
-			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
-			[pubAnnotation setPubId:[values objectAtIndex:0]];
-			[pubAnnotation setTitle:[values objectAtIndex:1]];
-			[pubAnnotation setSubtitle:[values objectAtIndex:2]];
-			
-			[mapView addAnnotation:pubAnnotation];
-			//[pubAnnotation release]; // realising cause navigation problems 
-		}
-	}
-	*/
 }
  
-/*
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-	NSLog(@"viewForAnnotation");
-	if ([annotation isKindOfClass:[MKUserLocation class]]) {
-		//Don't trample the user location annotation (pulsing blue dot).
-		return nil;
-	}
-	
-	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
-	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
-	[customAnnotationView setImage:pinImage];
-	customAnnotationView.leftCalloutAccessoryView = leftIconView;
-
-    customAnnotationView.canShowCallout = YES;
-    return customAnnotationView;
-
-	/*
-	PubAnnotationView *annotationView = nil;
-	PubAnnotationView* myAnnotation = (PubAnnotationView *)annotation;
-	NSString* identifier = @"Pin";
-	PubAnnotationView *newAnnotationView = 
-		(PubAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-	
-	if (nil == newAnnotationView) {
-		newAnnotationView = 
-			[[[PubAnnotationView alloc] initWithAnnotation:myAnnotation reuseIdentifier:identifier] autorelease];
-	}
-	
-	annotationView = newAnnotationView;
-		
-	[annotationView setEnabled:YES];
-	[annotationView setCanShowCallout:YES];
-	
-	return annotationView;
-}*/
 
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -180,6 +119,11 @@
 			}
 		}
 	}
+//	CLLocation *userLoc = mapView.userLocation.location;
+    CLLocationCoordinate2D userCoordinate = mapView.userLocation.location.coordinate;
+
+	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
+	
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:pubDetailView animated:YES];
 	

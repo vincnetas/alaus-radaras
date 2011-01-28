@@ -15,7 +15,7 @@
 
 @class BrandsTableCell;
 
-@interface BrandsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface BrandsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>{
 	NSMutableArray *brandList;
 	NSMutableArray *tagsList;
 	NSMutableArray *countryList;
@@ -28,6 +28,10 @@
 	BrandsDetailViewController *brandsDetails;
 	
 	int category;
+	
+	/* Search */
+	UISearchBar *searchBar;
+    BOOL isSearchOn;
 }
 
 @property (nonatomic, retain) NSMutableArray *brandList;
@@ -38,8 +42,12 @@
 
 @property(nonatomic, retain) IBOutlet BrandsDetailViewController *brandsDetails;
 
+@property (nonatomic, retain) UISearchBar *searchBar; 
+@property (nonatomic, assign) BOOL isSearchOn;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (IBAction) beerCategoryControlIndexChanged;
+- (IBAction) toggleSearch: (id) object;
+
 
 @end

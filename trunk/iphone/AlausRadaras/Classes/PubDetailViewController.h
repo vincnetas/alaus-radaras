@@ -17,8 +17,8 @@
 	UILabel *pubCallLabel;
 
 	Pub *currentPub;
+	NSString *userCoordinates;
 	NSMutableArray *brandList;
-
 	UITableView *brandsTable;
 }
 
@@ -30,6 +30,7 @@
 
 @property(nonatomic, retain) NSMutableArray *brandList;
 @property (nonatomic, retain) Pub *currentPub;
+@property (nonatomic, retain) NSString *userCoordinates;
 
 
 - (IBAction) gotoPreviousView:(id)sender;
