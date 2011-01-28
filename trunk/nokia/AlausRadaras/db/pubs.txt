@@ -10,7 +10,7 @@ jums	Jums	Laisvės al. 61	Kaunas	(686) 38262		54.8974158	23.9126351
 antipops	Antipops	Laisvės al. 51A	Kaunas	8 679 05200	http://www.antipops.lt/	54.8973275	23.9146219
 kauno_alus	Kauno alus	Savanorių pr. 11	Kaunas	(8 37) 20 52 74	http://www.kaunoalus.lt/	54.8985435	23.901876
 zalias_ratas	Žalias ratas	Laisvės al. 36B	Kaunas	(8 37) 200 071	http://www.zaliasratas.lt	54.8971898	23.9177966
-bernelius_smukle	Bernelių smuklė	K. Donelaičio str. 11	Kaunas	+370 686 57 449	http://www.berneliusmukle.lt	54.8986509	23.9232703
+berneliu_smukle	Bernelių smuklė	K. Donelaičio str. 11	Kaunas	+370 686 57 449	http://www.berneliusmukle.lt	54.8986509	23.9232703
 abato_mene	Abato menė	Vilniaus g. 7	Kaunas	37067993033	http://www.facebook.com/pages/Abato-mene/123093944388415	54.8965696	23.8901613
 shamrock	Shamrock	Vilniaus g. 13	Kaunas	864154100	http://www.shamrock.lt	54.8966339	23.8897413
 juodasis_katinas	Juodojo Katino smuklė	Žvejų g. 21/Teatro g. 1	Klaipėda	(8 46) 411167	http://www.kbr.lt/	55.708564	21.131396

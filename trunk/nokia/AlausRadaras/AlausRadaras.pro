@@ -113,7 +113,7 @@ ICON = alus.svg
 
 
 symbian {
-    TARGET.UID3 = 0xece1c5e8
+    TARGET.UID3 = 0x2003986A
     TARGET.CAPABILITY += NetworkServices Location
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
