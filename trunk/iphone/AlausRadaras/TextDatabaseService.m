@@ -7,12 +7,14 @@
 //
 
 #import "TextDatabaseService.h"
-#import "Pub.h"
-#import "Brand.h"
-#import "CodeValue.h"
+
 
 @implementation TextDatabaseService
 
+int pubPhoneIndex = 4;
+int pubWebIndex = 5;
+int pubLatitudeIndex = 6;
+int pubLongitudeIndex = 7;
 
 // Rename
 - (NSMutableArray *) findPubsHavingBrand:(NSString *)pubsString {
@@ -33,8 +35,8 @@
 				[pub setPubId:[values objectAtIndex:0]];
 				[pub setPubTitle:[values objectAtIndex:1]];
 				[pub setPubAddress:[values objectAtIndex:2]];
-				pub.latitude = [values objectAtIndex:5];
-				pub.longitude = [values objectAtIndex:6];
+				pub.latitude = [values objectAtIndex:pubLatitudeIndex];
+				pub.longitude = [values objectAtIndex:pubLongitudeIndex];
 
 				[pubs addObject:pub];
 				[pub release]; // realising cause navigation problems 
@@ -103,7 +105,55 @@
 	return brands;
 }
 
+- (NSMutableArray *) getPubs {
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	NSMutableArray *pubs = [[NSMutableArray alloc]init];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			Pub *pub = [[Pub alloc]init];
+			
+			[pub setPubId:[values objectAtIndex:0]];
+			[pub setPubTitle:[values objectAtIndex:1]];
+			[pub setPubAddress:[values objectAtIndex:2]];
+			[pub setLatitude:[values objectAtIndex:pubLatitudeIndex]];
+			[pub setLongitude:[values objectAtIndex:pubLongitudeIndex]];
+			
+			[pubs addObject:pub];
+			[pub release]; 
+		}
+	}
+	return pubs;
+}
 
+
+- (Pub *) getPubWithId:(NSString *)pubId {
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+	NSString *fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			if ([pubId isEqualToString:[values objectAtIndex:0]]) {
+				
+				Pub *pub = [[Pub alloc]init];
+				
+				[pub setPubId:[values objectAtIndex:0]];
+				[pub setPubTitle:[values objectAtIndex:1]];
+				[pub setPubAddress:[values objectAtIndex:2]];
+				[pub setPhone:[values objectAtIndex:pubPhoneIndex]];
+				[pub setWebpage:[values objectAtIndex:pubWebIndex]];
+				[pub setLatitude:[values objectAtIndex:pubLatitudeIndex]];
+				[pub setLongitude:[values objectAtIndex:pubLongitudeIndex]];
+				
+				return pub;
+			}
+		}
+	}
+}
 
 /*
  */
@@ -154,6 +204,32 @@
 		}
 	}
 	return tags;
+}
+
+- (NSString *) getQuote:(int) beersDrank {
+	NSLog(@"+getQuote beers:%i", beersDrank);
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"qoutes" ofType:@"txt"];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	NSMutableArray *quotes = [[NSMutableArray alloc]init];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			if (beersDrank == [[values objectAtIndex:0]intValue]) {
+				[quotes addObject:[values objectAtIndex:1]];				
+			} else {
+				if (quotes.count != 0) {
+					break;
+				}
+			}
+		}
+	}	
+	int i = (arc4random()%(quotes.count));
+	NSString *quote = [quotes objectAtIndex:i];
+	[quotes release];
+	
+	return quote;
+	
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Pub.h"
+#import "Brand.h"
+#import "CodeValue.h"
 
 @interface TextDatabaseService : NSObject {
 
@@ -18,7 +20,12 @@
 - (NSMutableArray *) getBrandsByTag:(NSString *)tagId;
 - (NSMutableArray *) getBrandsByCountry:(NSString *)countryId;
 
+- (NSMutableArray *) getPubs;
+- (Pub *) getPubWithId:(NSString *)pubId;
 - (NSMutableArray *) getTags;
 - (NSMutableArray *) getCountries;
+
+- (NSString *) getQuote:(int) beersDrank;
+
 
 @end

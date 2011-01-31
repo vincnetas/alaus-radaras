@@ -13,14 +13,33 @@
 #import "PubDetailViewController.h"
 
 @interface MapViewController : UIViewController<MKMapViewDelegate> {
-	IBOutlet MKMapView *mapView;
+	IBOutlet MKMapView *map;
 	NSMutableArray *pubsOnMap;
+	NSMutableArray *pubsAlreadyOnMap;
+	
+	/* Inforamtion bar */
+	UILabel *infoLabel;
+	
+	/* Map Configuaration */
+	BOOL showAll;
+	
+	/* City Segment */
+	UISegmentedControl *citySegmentControl;
+
 }
 
-@property(nonatomic, retain) IBOutlet MKMapView *mapView;
+@property(nonatomic, retain) IBOutlet MKMapView *map;
 @property(nonatomic, retain) NSMutableArray *pubsOnMap;
+@property(nonatomic, retain) NSMutableArray *pubsAlreadyOnMap;
+
+@property(nonatomic, retain) IBOutlet UILabel *infoLabel;
+
+@property (nonatomic,retain) IBOutlet UISegmentedControl *citySegmentControl;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (void)loadPubAnnotations;
+- (IBAction) locateMe:(id)sender;
+- (IBAction) cityIndexChanged;
+
 
 @end

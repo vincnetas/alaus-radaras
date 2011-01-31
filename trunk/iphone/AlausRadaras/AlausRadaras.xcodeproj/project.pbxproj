@@ -29,17 +29,82 @@
 		C960136412F0C69200DB53C0 /* lucky.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135612F0C69200DB53C0 /* lucky.png */; };
 		C960136512F0C69200DB53C0 /* map_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135712F0C69200DB53C0 /* map_01.png */; };
 		C960136612F0C69200DB53C0 /* map_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135812F0C69200DB53C0 /* map_02.png */; };
-		C960136712F0C69200DB53C0 /* newbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135912F0C69200DB53C0 /* newbackground.png */; };
-		C960136812F0C69200DB53C0 /* oldpin.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135A12F0C69200DB53C0 /* oldpin.png */; };
 		C960136912F0C69200DB53C0 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135B12F0C69200DB53C0 /* pin.png */; };
 		C960136A12F0C69200DB53C0 /* tag_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135C12F0C69200DB53C0 /* tag_01.png */; };
 		C960136B12F0C69200DB53C0 /* tag_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135D12F0C69200DB53C0 /* tag_02.png */; };
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
+		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
+		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
 		C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0BB12EA0C7E004519F0 /* icon.png */; };
+		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
+		C986CB4412F3F83800865F6D /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB4312F3F83800865F6D /* pin@2x.png */; };
+		C986CB5812F3FDB900865F6D /* beer_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB5612F3FDB900865F6D /* beer_01@2x.png */; };
+		C986CB5912F3FDB900865F6D /* beer_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB5712F3FDB900865F6D /* beer_02@2x.png */; };
+		C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */; };
+		C986CF3512F45B7100865F6D /* brand_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */; };
+		C986CF3612F45B7100865F6D /* brand_belmonto_ypatingas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */; };
+		C986CF3712F45B7100865F6D /* brand_bernard_cerne.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0112F45B7100865F6D /* brand_bernard_cerne.png */; };
+		C986CF3812F45B7100865F6D /* brand_birzu_sirvenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0212F45B7100865F6D /* brand_birzu_sirvenos.png */; };
+		C986CF3912F45B7100865F6D /* brand_bravaria.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0312F45B7100865F6D /* brand_bravaria.png */; };
+		C986CF3A12F45B7100865F6D /* brand_budweiser_budar.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0412F45B7100865F6D /* brand_budweiser_budar.png */; };
+		C986CF3B12F45B7100865F6D /* brand_busi_trecias.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0512F45B7100865F6D /* brand_busi_trecias.png */; };
+		C986CF3C12F45B7100865F6D /* brand_butautu_dvaro.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0612F45B7100865F6D /* brand_butautu_dvaro.png */; };
+		C986CF3D12F45B7100865F6D /* brand_chodovar.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0712F45B7100865F6D /* brand_chodovar.png */; };
+		C986CF3E12F45B7100865F6D /* brand_daujotu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0812F45B7100865F6D /* brand_daujotu.png */; };
+		C986CF3F12F45B7100865F6D /* brand_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0912F45B7100865F6D /* brand_default.png */; };
+		C986CF4012F45B7100865F6D /* brand_dundulio.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0A12F45B7100865F6D /* brand_dundulio.png */; };
+		C986CF4112F45B7100865F6D /* brand_ekstra_tvirtoves.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0B12F45B7100865F6D /* brand_ekstra_tvirtoves.png */; };
+		C986CF4212F45B7100865F6D /* brand_erdinger.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0C12F45B7100865F6D /* brand_erdinger.png */; };
+		C986CF4312F45B7100865F6D /* brand_franziskaner.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0D12F45B7100865F6D /* brand_franziskaner.png */; };
+		C986CF4412F45B7100865F6D /* brand_grimbergen.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0E12F45B7100865F6D /* brand_grimbergen.png */; };
+		C986CF4512F45B7100865F6D /* brand_gubernijos_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0F12F45B7100865F6D /* brand_gubernijos_kvietinis.png */; };
+		C986CF4612F45B7100865F6D /* brand_guinness.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1012F45B7100865F6D /* brand_guinness.png */; };
+		C986CF4712F45B7100865F6D /* brand_heineken.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1112F45B7100865F6D /* brand_heineken.png */; };
+		C986CF4812F45B7100865F6D /* brand_hoegaarden.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1212F45B7100865F6D /* brand_hoegaarden.png */; };
+		C986CF4912F45B7100865F6D /* brand_jovaru_snekutis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1312F45B7100865F6D /* brand_jovaru_snekutis.png */; };
+		C986CF4A12F45B7100865F6D /* brand_kalnapilis_grand.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1412F45B7100865F6D /* brand_kalnapilis_grand.png */; };
+		C986CF4B12F45B7100865F6D /* brand_kanapinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1512F45B7100865F6D /* brand_kanapinis.png */; };
+		C986CF4C12F45B7100865F6D /* brand_katedros_medaus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1612F45B7100865F6D /* brand_katedros_medaus.png */; };
+		C986CF4D12F45B7100865F6D /* brand_katedros_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1712F45B7100865F6D /* brand_katedros_sviesusis.png */; };
+		C986CF4E12F45B7100865F6D /* brand_katedros_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1812F45B7100865F6D /* brand_katedros_tamsusis.png */; };
+		C986CF4F12F45B7100865F6D /* brand_kilkenny.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1912F45B7100865F6D /* brand_kilkenny.png */; };
+		C986CF5012F45B7100865F6D /* brand_kozel.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1A12F45B7100865F6D /* brand_kozel.png */; };
+		C986CF5112F45B7100865F6D /* brand_krusovice.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1B12F45B7100865F6D /* brand_krusovice.png */; };
+		C986CF5212F45B7100865F6D /* brand_kunigaiksciu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1C12F45B7100865F6D /* brand_kunigaiksciu.png */; };
+		C986CF5312F45B7100865F6D /* brand_leffe.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1D12F45B7100865F6D /* brand_leffe.png */; };
+		C986CF5412F45B7100865F6D /* brand_murphys_stout.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1E12F45B7100865F6D /* brand_murphys_stout.png */; };
+		C986CF5512F45B7100865F6D /* brand_new_castle_brown_ale.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1F12F45B7100865F6D /* brand_new_castle_brown_ale.png */; };
+		C986CF5612F45B7100865F6D /* brand_pilies_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2012F45B7100865F6D /* brand_pilies_alus.png */; };
+		C986CF5712F45B7100865F6D /* brand_raudonuju_dobilu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2112F45B7100865F6D /* brand_raudonuju_dobilu.png */; };
+		C986CF5812F45B7100865F6D /* brand_rinkuskiu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2212F45B7100865F6D /* brand_rinkuskiu.png */; };
+		C986CF5912F45B7100865F6D /* brand_samson.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2312F45B7100865F6D /* brand_samson.png */; };
+		C986CF5A12F45B7100865F6D /* brand_staropramen.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2412F45B7100865F6D /* brand_staropramen.png */; };
+		C986CF5B12F45B7100865F6D /* brand_svyturys_baltas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2512F45B7100865F6D /* brand_svyturys_baltas.png */; };
+		C986CF5C12F45B7100865F6D /* brand_svyturys_baltijos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2612F45B7100865F6D /* brand_svyturys_baltijos.png */; };
+		C986CF5D12F45B7100865F6D /* brand_svyturys_ekstra.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2712F45B7100865F6D /* brand_svyturys_ekstra.png */; };
+		C986CF5E12F45B7100865F6D /* brand_tauro_tradicinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2812F45B7100865F6D /* brand_tauro_tradicinis.png */; };
+		C986CF5F12F45B7100865F6D /* brand_tores.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2912F45B7100865F6D /* brand_tores.png */; };
+		C986CF6012F45B7100865F6D /* brand_tucher.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2A12F45B7100865F6D /* brand_tucher.png */; };
+		C986CF6112F45B7100865F6D /* brand_utenos_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2B12F45B7100865F6D /* brand_utenos_dark.png */; };
+		C986CF6212F45B7100865F6D /* brand_utenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2C12F45B7100865F6D /* brand_utenos.png */; };
+		C986CF6312F45B7100865F6D /* brand_varniuku_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2D12F45B7100865F6D /* brand_varniuku_alus.png */; };
+		C986CF6412F45B7100865F6D /* brand_veltins.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2E12F45B7100865F6D /* brand_veltins.png */; };
+		C986CF6512F45B7100865F6D /* brand_velvet.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2F12F45B7100865F6D /* brand_velvet.png */; };
+		C986CF6612F45B7100865F6D /* brand_vilkmerges_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3012F45B7100865F6D /* brand_vilkmerges_tamsusis.png */; };
+		C986CF6712F45B7100865F6D /* brand_vilniaus_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3112F45B7100865F6D /* brand_vilniaus_kvietinis.png */; };
+		C986CF6812F45B7100865F6D /* brand_vilniaus_nefiltruotas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3212F45B7100865F6D /* brand_vilniaus_nefiltruotas.png */; };
+		C986CF6912F45B7100865F6D /* brand_zubr.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3312F45B7100865F6D /* brand_zubr.png */; };
+		C986CFD912F4703400865F6D /* pub_obuolys.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CFD812F4703400865F6D /* pub_obuolys.png */; };
+		C986CFFF12F4756900865F6D /* pub_alaus_studija@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CFFE12F4756900865F6D /* pub_alaus_studija@2x.png */; };
+		C986D00D12F479E100865F6D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C986D00C12F479E000865F6D /* back.png */; };
+		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
+		C9911F4712F1F80600AF4ECE /* TextDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9911F4612F1F80600AF4ECE /* TextDatabaseService.m */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
+		C9BC0B9712F5A791002DB792 /* pub_kauno_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */; };
+		C9BC0C4A12F5C344002DB792 /* pub_memelis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0C4912F5C344002DB792 /* pub_memelis.png */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
 		C9D74DCA12EF3B9F008DE8E8 /* brands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */; };
@@ -47,60 +112,7 @@
 		C9D74DCC12EF3B9F008DE8E8 /* pubs.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */; };
 		C9D74DCD12EF3B9F008DE8E8 /* qoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC812EF3B9F008DE8E8 /* qoutes.txt */; };
 		C9D74DCE12EF3B9F008DE8E8 /* tags.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC912EF3B9F008DE8E8 /* tags.txt */; };
-		C9D74EAB12EF4733008DE8E8 /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7512EF4733008DE8E8 /* brand_backoriu_tamsusis.png */; };
-		C9D74EAC12EF4733008DE8E8 /* brand_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7612EF4733008DE8E8 /* brand_belmonto_sviesusis.png */; };
-		C9D74EAD12EF4733008DE8E8 /* brand_belmonto_ypatingas.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7712EF4733008DE8E8 /* brand_belmonto_ypatingas.png */; };
-		C9D74EAE12EF4733008DE8E8 /* brand_bernard_cerne.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7812EF4733008DE8E8 /* brand_bernard_cerne.png */; };
-		C9D74EAF12EF4733008DE8E8 /* brand_birzu_sirvenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7912EF4733008DE8E8 /* brand_birzu_sirvenos.png */; };
-		C9D74EB012EF4733008DE8E8 /* brand_bravaria.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7A12EF4733008DE8E8 /* brand_bravaria.png */; };
-		C9D74EB112EF4733008DE8E8 /* brand_budweiser_budar.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7B12EF4733008DE8E8 /* brand_budweiser_budar.png */; };
-		C9D74EB212EF4733008DE8E8 /* brand_busi_trecias.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7C12EF4733008DE8E8 /* brand_busi_trecias.png */; };
-		C9D74EB312EF4733008DE8E8 /* brand_butautu_dvaro.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7D12EF4733008DE8E8 /* brand_butautu_dvaro.png */; };
-		C9D74EB412EF4733008DE8E8 /* brand_chodovar.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7E12EF4733008DE8E8 /* brand_chodovar.png */; };
-		C9D74EB512EF4733008DE8E8 /* brand_daujotu.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E7F12EF4733008DE8E8 /* brand_daujotu.png */; };
-		C9D74EB612EF4733008DE8E8 /* brand_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8012EF4733008DE8E8 /* brand_default.png */; };
-		C9D74EB712EF4733008DE8E8 /* brand_dundulio.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8112EF4733008DE8E8 /* brand_dundulio.png */; };
-		C9D74EB812EF4733008DE8E8 /* brand_ekstra_tvirtoves.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8212EF4733008DE8E8 /* brand_ekstra_tvirtoves.png */; };
-		C9D74EB912EF4733008DE8E8 /* brand_erdinger.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8312EF4733008DE8E8 /* brand_erdinger.png */; };
-		C9D74EBA12EF4733008DE8E8 /* brand_franziskaner.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8412EF4733008DE8E8 /* brand_franziskaner.png */; };
-		C9D74EBB12EF4733008DE8E8 /* brand_grimbergen.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8512EF4733008DE8E8 /* brand_grimbergen.png */; };
-		C9D74EBC12EF4733008DE8E8 /* brand_gubernijos_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8612EF4733008DE8E8 /* brand_gubernijos_kvietinis.png */; };
-		C9D74EBD12EF4733008DE8E8 /* brand_guinness.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8712EF4733008DE8E8 /* brand_guinness.png */; };
-		C9D74EBE12EF4733008DE8E8 /* brand_heineken.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8812EF4733008DE8E8 /* brand_heineken.png */; };
-		C9D74EBF12EF4733008DE8E8 /* brand_hoegaarden.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8912EF4733008DE8E8 /* brand_hoegaarden.png */; };
-		C9D74EC012EF4733008DE8E8 /* brand_jovaru_snekutis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8A12EF4733008DE8E8 /* brand_jovaru_snekutis.png */; };
-		C9D74EC112EF4733008DE8E8 /* brand_kalnapilis_grand.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8B12EF4733008DE8E8 /* brand_kalnapilis_grand.png */; };
-		C9D74EC212EF4733008DE8E8 /* brand_kanapinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8C12EF4733008DE8E8 /* brand_kanapinis.png */; };
-		C9D74EC312EF4733008DE8E8 /* brand_katedros_medaus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8D12EF4733008DE8E8 /* brand_katedros_medaus.png */; };
-		C9D74EC412EF4733008DE8E8 /* brand_katedros_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8E12EF4733008DE8E8 /* brand_katedros_sviesusis.png */; };
-		C9D74EC512EF4733008DE8E8 /* brand_katedros_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E8F12EF4733008DE8E8 /* brand_katedros_tamsusis.png */; };
-		C9D74EC612EF4733008DE8E8 /* brand_kilkenny.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9012EF4733008DE8E8 /* brand_kilkenny.png */; };
-		C9D74EC712EF4733008DE8E8 /* brand_kozel.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9112EF4733008DE8E8 /* brand_kozel.png */; };
-		C9D74EC812EF4733008DE8E8 /* brand_krusovice.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9212EF4733008DE8E8 /* brand_krusovice.png */; };
-		C9D74EC912EF4733008DE8E8 /* brand_kunigaiksciu.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9312EF4733008DE8E8 /* brand_kunigaiksciu.png */; };
-		C9D74ECA12EF4733008DE8E8 /* brand_leffe.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9412EF4733008DE8E8 /* brand_leffe.png */; };
-		C9D74ECB12EF4733008DE8E8 /* brand_murphys_stout.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9512EF4733008DE8E8 /* brand_murphys_stout.png */; };
-		C9D74ECC12EF4733008DE8E8 /* brand_new_castle_brown_ale.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9612EF4733008DE8E8 /* brand_new_castle_brown_ale.png */; };
-		C9D74ECD12EF4733008DE8E8 /* brand_pilies_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9712EF4733008DE8E8 /* brand_pilies_alus.png */; };
-		C9D74ECE12EF4733008DE8E8 /* brand_raudonuju_dobilu.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9812EF4733008DE8E8 /* brand_raudonuju_dobilu.png */; };
-		C9D74ECF12EF4733008DE8E8 /* brand_rinkuskiu.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9912EF4733008DE8E8 /* brand_rinkuskiu.png */; };
-		C9D74ED012EF4733008DE8E8 /* brand_samson.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9A12EF4733008DE8E8 /* brand_samson.png */; };
-		C9D74ED112EF4733008DE8E8 /* brand_staropramen.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9B12EF4733008DE8E8 /* brand_staropramen.png */; };
-		C9D74ED212EF4733008DE8E8 /* brand_svyturys_baltas.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9C12EF4733008DE8E8 /* brand_svyturys_baltas.png */; };
-		C9D74ED312EF4733008DE8E8 /* brand_svyturys_baltijos.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9D12EF4733008DE8E8 /* brand_svyturys_baltijos.png */; };
-		C9D74ED412EF4733008DE8E8 /* brand_svyturys_ekstra.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9E12EF4733008DE8E8 /* brand_svyturys_ekstra.png */; };
-		C9D74ED512EF4733008DE8E8 /* brand_tauro_tradicinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74E9F12EF4733008DE8E8 /* brand_tauro_tradicinis.png */; };
-		C9D74ED612EF4733008DE8E8 /* brand_tores.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA012EF4733008DE8E8 /* brand_tores.png */; };
-		C9D74ED712EF4733008DE8E8 /* brand_tucher.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA112EF4733008DE8E8 /* brand_tucher.png */; };
-		C9D74ED812EF4733008DE8E8 /* brand_utenos_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA212EF4733008DE8E8 /* brand_utenos_dark.png */; };
-		C9D74ED912EF4733008DE8E8 /* brand_utenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA312EF4733008DE8E8 /* brand_utenos.png */; };
-		C9D74EDA12EF4733008DE8E8 /* brand_varniuku_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA412EF4733008DE8E8 /* brand_varniuku_alus.png */; };
-		C9D74EDB12EF4733008DE8E8 /* brand_veltins.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA512EF4733008DE8E8 /* brand_veltins.png */; };
-		C9D74EDC12EF4733008DE8E8 /* brand_velvet.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA612EF4733008DE8E8 /* brand_velvet.png */; };
-		C9D74EDD12EF4733008DE8E8 /* brand_vilkmerges_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA712EF4733008DE8E8 /* brand_vilkmerges_tamsusis.png */; };
-		C9D74EDE12EF4733008DE8E8 /* brand_vilniaus_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA812EF4733008DE8E8 /* brand_vilniaus_kvietinis.png */; };
-		C9D74EDF12EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EA912EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png */; };
-		C9D74EE012EF4733008DE8E8 /* brand_zubr.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D74EAA12EF4733008DE8E8 /* brand_zubr.png */; };
+		C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */; };
 		C9E5021412EE0D3F00ADD54C /* BrandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */; };
 		C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */; };
 /* End PBXBuildFile section */
@@ -138,20 +150,89 @@
 		C960135612F0C69200DB53C0 /* lucky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lucky.png; path = resources/images/lucky.png; sourceTree = "<group>"; };
 		C960135712F0C69200DB53C0 /* map_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_01.png; path = resources/images/map_01.png; sourceTree = "<group>"; };
 		C960135812F0C69200DB53C0 /* map_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_02.png; path = resources/images/map_02.png; sourceTree = "<group>"; };
-		C960135912F0C69200DB53C0 /* newbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newbackground.png; path = resources/images/newbackground.png; sourceTree = "<group>"; };
-		C960135A12F0C69200DB53C0 /* oldpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oldpin.png; path = resources/images/oldpin.png; sourceTree = "<group>"; };
 		C960135B12F0C69200DB53C0 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = resources/images/pin.png; sourceTree = "<group>"; };
 		C960135C12F0C69200DB53C0 /* tag_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tag_01.png; path = resources/images/tag_01.png; sourceTree = "<group>"; };
 		C960135D12F0C69200DB53C0 /* tag_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tag_02.png; path = resources/images/tag_02.png; sourceTree = "<group>"; };
 		C9642B3612EE35940033F9B8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C9642B3712EE35940033F9B8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
+		C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsDetailViewController.h; sourceTree = "<group>"; };
+		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
+		C976847712F22A2900D4E9F3 /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeValue.h; sourceTree = "<group>"; };
+		C976847812F22A2900D4E9F3 /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeValue.m; sourceTree = "<group>"; };
 		C97BF0BB12EA0C7E004519F0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
+		C986CB4312F3F83800865F6D /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin@2x.png"; path = "resources/images/pin@2x.png"; sourceTree = "<group>"; };
+		C986CB5612F3FDB900865F6D /* beer_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_01@2x.png"; path = "resources/images/beer_01@2x.png"; sourceTree = "<group>"; };
+		C986CB5712F3FDB900865F6D /* beer_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_02@2x.png"; path = "resources/images/beer_02@2x.png"; sourceTree = "<group>"; };
+		C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_backoriu_tamsusis.png; path = resources/brands/brand_backoriu_tamsusis.png; sourceTree = "<group>"; };
+		C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_sviesusis.png; path = resources/brands/brand_belmonto_sviesusis.png; sourceTree = "<group>"; };
+		C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_ypatingas.png; path = resources/brands/brand_belmonto_ypatingas.png; sourceTree = "<group>"; };
+		C986CF0112F45B7100865F6D /* brand_bernard_cerne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_bernard_cerne.png; path = resources/brands/brand_bernard_cerne.png; sourceTree = "<group>"; };
+		C986CF0212F45B7100865F6D /* brand_birzu_sirvenos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_birzu_sirvenos.png; path = resources/brands/brand_birzu_sirvenos.png; sourceTree = "<group>"; };
+		C986CF0312F45B7100865F6D /* brand_bravaria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_bravaria.png; path = resources/brands/brand_bravaria.png; sourceTree = "<group>"; };
+		C986CF0412F45B7100865F6D /* brand_budweiser_budar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_budweiser_budar.png; path = resources/brands/brand_budweiser_budar.png; sourceTree = "<group>"; };
+		C986CF0512F45B7100865F6D /* brand_busi_trecias.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_busi_trecias.png; path = resources/brands/brand_busi_trecias.png; sourceTree = "<group>"; };
+		C986CF0612F45B7100865F6D /* brand_butautu_dvaro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_butautu_dvaro.png; path = resources/brands/brand_butautu_dvaro.png; sourceTree = "<group>"; };
+		C986CF0712F45B7100865F6D /* brand_chodovar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_chodovar.png; path = resources/brands/brand_chodovar.png; sourceTree = "<group>"; };
+		C986CF0812F45B7100865F6D /* brand_daujotu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_daujotu.png; path = resources/brands/brand_daujotu.png; sourceTree = "<group>"; };
+		C986CF0912F45B7100865F6D /* brand_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_default.png; path = resources/brands/brand_default.png; sourceTree = "<group>"; };
+		C986CF0A12F45B7100865F6D /* brand_dundulio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_dundulio.png; path = resources/brands/brand_dundulio.png; sourceTree = "<group>"; };
+		C986CF0B12F45B7100865F6D /* brand_ekstra_tvirtoves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_ekstra_tvirtoves.png; path = resources/brands/brand_ekstra_tvirtoves.png; sourceTree = "<group>"; };
+		C986CF0C12F45B7100865F6D /* brand_erdinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_erdinger.png; path = resources/brands/brand_erdinger.png; sourceTree = "<group>"; };
+		C986CF0D12F45B7100865F6D /* brand_franziskaner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_franziskaner.png; path = resources/brands/brand_franziskaner.png; sourceTree = "<group>"; };
+		C986CF0E12F45B7100865F6D /* brand_grimbergen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_grimbergen.png; path = resources/brands/brand_grimbergen.png; sourceTree = "<group>"; };
+		C986CF0F12F45B7100865F6D /* brand_gubernijos_kvietinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_gubernijos_kvietinis.png; path = resources/brands/brand_gubernijos_kvietinis.png; sourceTree = "<group>"; };
+		C986CF1012F45B7100865F6D /* brand_guinness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_guinness.png; path = resources/brands/brand_guinness.png; sourceTree = "<group>"; };
+		C986CF1112F45B7100865F6D /* brand_heineken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_heineken.png; path = resources/brands/brand_heineken.png; sourceTree = "<group>"; };
+		C986CF1212F45B7100865F6D /* brand_hoegaarden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_hoegaarden.png; path = resources/brands/brand_hoegaarden.png; sourceTree = "<group>"; };
+		C986CF1312F45B7100865F6D /* brand_jovaru_snekutis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_jovaru_snekutis.png; path = resources/brands/brand_jovaru_snekutis.png; sourceTree = "<group>"; };
+		C986CF1412F45B7100865F6D /* brand_kalnapilis_grand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kalnapilis_grand.png; path = resources/brands/brand_kalnapilis_grand.png; sourceTree = "<group>"; };
+		C986CF1512F45B7100865F6D /* brand_kanapinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kanapinis.png; path = resources/brands/brand_kanapinis.png; sourceTree = "<group>"; };
+		C986CF1612F45B7100865F6D /* brand_katedros_medaus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_medaus.png; path = resources/brands/brand_katedros_medaus.png; sourceTree = "<group>"; };
+		C986CF1712F45B7100865F6D /* brand_katedros_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_sviesusis.png; path = resources/brands/brand_katedros_sviesusis.png; sourceTree = "<group>"; };
+		C986CF1812F45B7100865F6D /* brand_katedros_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_tamsusis.png; path = resources/brands/brand_katedros_tamsusis.png; sourceTree = "<group>"; };
+		C986CF1912F45B7100865F6D /* brand_kilkenny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kilkenny.png; path = resources/brands/brand_kilkenny.png; sourceTree = "<group>"; };
+		C986CF1A12F45B7100865F6D /* brand_kozel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kozel.png; path = resources/brands/brand_kozel.png; sourceTree = "<group>"; };
+		C986CF1B12F45B7100865F6D /* brand_krusovice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_krusovice.png; path = resources/brands/brand_krusovice.png; sourceTree = "<group>"; };
+		C986CF1C12F45B7100865F6D /* brand_kunigaiksciu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kunigaiksciu.png; path = resources/brands/brand_kunigaiksciu.png; sourceTree = "<group>"; };
+		C986CF1D12F45B7100865F6D /* brand_leffe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_leffe.png; path = resources/brands/brand_leffe.png; sourceTree = "<group>"; };
+		C986CF1E12F45B7100865F6D /* brand_murphys_stout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_murphys_stout.png; path = resources/brands/brand_murphys_stout.png; sourceTree = "<group>"; };
+		C986CF1F12F45B7100865F6D /* brand_new_castle_brown_ale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_new_castle_brown_ale.png; path = resources/brands/brand_new_castle_brown_ale.png; sourceTree = "<group>"; };
+		C986CF2012F45B7100865F6D /* brand_pilies_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_pilies_alus.png; path = resources/brands/brand_pilies_alus.png; sourceTree = "<group>"; };
+		C986CF2112F45B7100865F6D /* brand_raudonuju_dobilu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_raudonuju_dobilu.png; path = resources/brands/brand_raudonuju_dobilu.png; sourceTree = "<group>"; };
+		C986CF2212F45B7100865F6D /* brand_rinkuskiu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_rinkuskiu.png; path = resources/brands/brand_rinkuskiu.png; sourceTree = "<group>"; };
+		C986CF2312F45B7100865F6D /* brand_samson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_samson.png; path = resources/brands/brand_samson.png; sourceTree = "<group>"; };
+		C986CF2412F45B7100865F6D /* brand_staropramen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_staropramen.png; path = resources/brands/brand_staropramen.png; sourceTree = "<group>"; };
+		C986CF2512F45B7100865F6D /* brand_svyturys_baltas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_baltas.png; path = resources/brands/brand_svyturys_baltas.png; sourceTree = "<group>"; };
+		C986CF2612F45B7100865F6D /* brand_svyturys_baltijos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_baltijos.png; path = resources/brands/brand_svyturys_baltijos.png; sourceTree = "<group>"; };
+		C986CF2712F45B7100865F6D /* brand_svyturys_ekstra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_ekstra.png; path = resources/brands/brand_svyturys_ekstra.png; sourceTree = "<group>"; };
+		C986CF2812F45B7100865F6D /* brand_tauro_tradicinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tauro_tradicinis.png; path = resources/brands/brand_tauro_tradicinis.png; sourceTree = "<group>"; };
+		C986CF2912F45B7100865F6D /* brand_tores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tores.png; path = resources/brands/brand_tores.png; sourceTree = "<group>"; };
+		C986CF2A12F45B7100865F6D /* brand_tucher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tucher.png; path = resources/brands/brand_tucher.png; sourceTree = "<group>"; };
+		C986CF2B12F45B7100865F6D /* brand_utenos_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_utenos_dark.png; path = resources/brands/brand_utenos_dark.png; sourceTree = "<group>"; };
+		C986CF2C12F45B7100865F6D /* brand_utenos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_utenos.png; path = resources/brands/brand_utenos.png; sourceTree = "<group>"; };
+		C986CF2D12F45B7100865F6D /* brand_varniuku_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_varniuku_alus.png; path = resources/brands/brand_varniuku_alus.png; sourceTree = "<group>"; };
+		C986CF2E12F45B7100865F6D /* brand_veltins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_veltins.png; path = resources/brands/brand_veltins.png; sourceTree = "<group>"; };
+		C986CF2F12F45B7100865F6D /* brand_velvet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_velvet.png; path = resources/brands/brand_velvet.png; sourceTree = "<group>"; };
+		C986CF3012F45B7100865F6D /* brand_vilkmerges_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilkmerges_tamsusis.png; path = resources/brands/brand_vilkmerges_tamsusis.png; sourceTree = "<group>"; };
+		C986CF3112F45B7100865F6D /* brand_vilniaus_kvietinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilniaus_kvietinis.png; path = resources/brands/brand_vilniaus_kvietinis.png; sourceTree = "<group>"; };
+		C986CF3212F45B7100865F6D /* brand_vilniaus_nefiltruotas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilniaus_nefiltruotas.png; path = resources/brands/brand_vilniaus_nefiltruotas.png; sourceTree = "<group>"; };
+		C986CF3312F45B7100865F6D /* brand_zubr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_zubr.png; path = resources/brands/brand_zubr.png; sourceTree = "<group>"; };
+		C986CFD812F4703400865F6D /* pub_obuolys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_obuolys.png; path = resources/pubs/pub_obuolys.png; sourceTree = "<group>"; };
+		C986CFFE12F4756900865F6D /* pub_alaus_studija@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pub_alaus_studija@2x.png"; path = "resources/pubs/pub_alaus_studija@2x.png"; sourceTree = "<group>"; };
+		C986D00C12F479E000865F6D /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = resources/images/back.png; sourceTree = "<group>"; };
+		C986D03012F481A100865F6D /* LuckyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyController.h; sourceTree = "<group>"; };
+		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
+		C9911F4512F1F80600AF4ECE /* TextDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextDatabaseService.h; sourceTree = "<group>"; };
+		C9911F4612F1F80600AF4ECE /* TextDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextDatabaseService.m; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
 		C9A313F712F097990005ED6C /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pub.h; sourceTree = "<group>"; };
 		C9A313F812F097990005ED6C /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pub.m; sourceTree = "<group>"; };
+		C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_kauno_alus.png; path = resources/pubs/pub_kauno_alus.png; sourceTree = "<group>"; };
+		C9BC0C4912F5C344002DB792 /* pub_memelis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_memelis.png; path = resources/pubs/pub_memelis.png; sourceTree = "<group>"; };
 		C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = brands.txt; path = resources/db/brands.txt; sourceTree = "<group>"; };
@@ -159,60 +240,8 @@
 		C9D74DC712EF3B9F008DE8E8 /* pubs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubs.txt; path = resources/db/pubs.txt; sourceTree = "<group>"; };
 		C9D74DC812EF3B9F008DE8E8 /* qoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = qoutes.txt; path = resources/db/qoutes.txt; sourceTree = "<group>"; };
 		C9D74DC912EF3B9F008DE8E8 /* tags.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tags.txt; path = resources/db/tags.txt; sourceTree = "<group>"; };
-		C9D74E7512EF4733008DE8E8 /* brand_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_backoriu_tamsusis.png; path = resources/brands/brand_backoriu_tamsusis.png; sourceTree = "<group>"; };
-		C9D74E7612EF4733008DE8E8 /* brand_belmonto_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_sviesusis.png; path = resources/brands/brand_belmonto_sviesusis.png; sourceTree = "<group>"; };
-		C9D74E7712EF4733008DE8E8 /* brand_belmonto_ypatingas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_ypatingas.png; path = resources/brands/brand_belmonto_ypatingas.png; sourceTree = "<group>"; };
-		C9D74E7812EF4733008DE8E8 /* brand_bernard_cerne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_bernard_cerne.png; path = resources/brands/brand_bernard_cerne.png; sourceTree = "<group>"; };
-		C9D74E7912EF4733008DE8E8 /* brand_birzu_sirvenos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_birzu_sirvenos.png; path = resources/brands/brand_birzu_sirvenos.png; sourceTree = "<group>"; };
-		C9D74E7A12EF4733008DE8E8 /* brand_bravaria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_bravaria.png; path = resources/brands/brand_bravaria.png; sourceTree = "<group>"; };
-		C9D74E7B12EF4733008DE8E8 /* brand_budweiser_budar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_budweiser_budar.png; path = resources/brands/brand_budweiser_budar.png; sourceTree = "<group>"; };
-		C9D74E7C12EF4733008DE8E8 /* brand_busi_trecias.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_busi_trecias.png; path = resources/brands/brand_busi_trecias.png; sourceTree = "<group>"; };
-		C9D74E7D12EF4733008DE8E8 /* brand_butautu_dvaro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_butautu_dvaro.png; path = resources/brands/brand_butautu_dvaro.png; sourceTree = "<group>"; };
-		C9D74E7E12EF4733008DE8E8 /* brand_chodovar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_chodovar.png; path = resources/brands/brand_chodovar.png; sourceTree = "<group>"; };
-		C9D74E7F12EF4733008DE8E8 /* brand_daujotu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_daujotu.png; path = resources/brands/brand_daujotu.png; sourceTree = "<group>"; };
-		C9D74E8012EF4733008DE8E8 /* brand_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_default.png; path = resources/brands/brand_default.png; sourceTree = "<group>"; };
-		C9D74E8112EF4733008DE8E8 /* brand_dundulio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_dundulio.png; path = resources/brands/brand_dundulio.png; sourceTree = "<group>"; };
-		C9D74E8212EF4733008DE8E8 /* brand_ekstra_tvirtoves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_ekstra_tvirtoves.png; path = resources/brands/brand_ekstra_tvirtoves.png; sourceTree = "<group>"; };
-		C9D74E8312EF4733008DE8E8 /* brand_erdinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_erdinger.png; path = resources/brands/brand_erdinger.png; sourceTree = "<group>"; };
-		C9D74E8412EF4733008DE8E8 /* brand_franziskaner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_franziskaner.png; path = resources/brands/brand_franziskaner.png; sourceTree = "<group>"; };
-		C9D74E8512EF4733008DE8E8 /* brand_grimbergen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_grimbergen.png; path = resources/brands/brand_grimbergen.png; sourceTree = "<group>"; };
-		C9D74E8612EF4733008DE8E8 /* brand_gubernijos_kvietinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_gubernijos_kvietinis.png; path = resources/brands/brand_gubernijos_kvietinis.png; sourceTree = "<group>"; };
-		C9D74E8712EF4733008DE8E8 /* brand_guinness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_guinness.png; path = resources/brands/brand_guinness.png; sourceTree = "<group>"; };
-		C9D74E8812EF4733008DE8E8 /* brand_heineken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_heineken.png; path = resources/brands/brand_heineken.png; sourceTree = "<group>"; };
-		C9D74E8912EF4733008DE8E8 /* brand_hoegaarden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_hoegaarden.png; path = resources/brands/brand_hoegaarden.png; sourceTree = "<group>"; };
-		C9D74E8A12EF4733008DE8E8 /* brand_jovaru_snekutis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_jovaru_snekutis.png; path = resources/brands/brand_jovaru_snekutis.png; sourceTree = "<group>"; };
-		C9D74E8B12EF4733008DE8E8 /* brand_kalnapilis_grand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kalnapilis_grand.png; path = resources/brands/brand_kalnapilis_grand.png; sourceTree = "<group>"; };
-		C9D74E8C12EF4733008DE8E8 /* brand_kanapinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kanapinis.png; path = resources/brands/brand_kanapinis.png; sourceTree = "<group>"; };
-		C9D74E8D12EF4733008DE8E8 /* brand_katedros_medaus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_medaus.png; path = resources/brands/brand_katedros_medaus.png; sourceTree = "<group>"; };
-		C9D74E8E12EF4733008DE8E8 /* brand_katedros_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_sviesusis.png; path = resources/brands/brand_katedros_sviesusis.png; sourceTree = "<group>"; };
-		C9D74E8F12EF4733008DE8E8 /* brand_katedros_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_katedros_tamsusis.png; path = resources/brands/brand_katedros_tamsusis.png; sourceTree = "<group>"; };
-		C9D74E9012EF4733008DE8E8 /* brand_kilkenny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kilkenny.png; path = resources/brands/brand_kilkenny.png; sourceTree = "<group>"; };
-		C9D74E9112EF4733008DE8E8 /* brand_kozel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kozel.png; path = resources/brands/brand_kozel.png; sourceTree = "<group>"; };
-		C9D74E9212EF4733008DE8E8 /* brand_krusovice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_krusovice.png; path = resources/brands/brand_krusovice.png; sourceTree = "<group>"; };
-		C9D74E9312EF4733008DE8E8 /* brand_kunigaiksciu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_kunigaiksciu.png; path = resources/brands/brand_kunigaiksciu.png; sourceTree = "<group>"; };
-		C9D74E9412EF4733008DE8E8 /* brand_leffe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_leffe.png; path = resources/brands/brand_leffe.png; sourceTree = "<group>"; };
-		C9D74E9512EF4733008DE8E8 /* brand_murphys_stout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_murphys_stout.png; path = resources/brands/brand_murphys_stout.png; sourceTree = "<group>"; };
-		C9D74E9612EF4733008DE8E8 /* brand_new_castle_brown_ale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_new_castle_brown_ale.png; path = resources/brands/brand_new_castle_brown_ale.png; sourceTree = "<group>"; };
-		C9D74E9712EF4733008DE8E8 /* brand_pilies_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_pilies_alus.png; path = resources/brands/brand_pilies_alus.png; sourceTree = "<group>"; };
-		C9D74E9812EF4733008DE8E8 /* brand_raudonuju_dobilu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_raudonuju_dobilu.png; path = resources/brands/brand_raudonuju_dobilu.png; sourceTree = "<group>"; };
-		C9D74E9912EF4733008DE8E8 /* brand_rinkuskiu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_rinkuskiu.png; path = resources/brands/brand_rinkuskiu.png; sourceTree = "<group>"; };
-		C9D74E9A12EF4733008DE8E8 /* brand_samson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_samson.png; path = resources/brands/brand_samson.png; sourceTree = "<group>"; };
-		C9D74E9B12EF4733008DE8E8 /* brand_staropramen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_staropramen.png; path = resources/brands/brand_staropramen.png; sourceTree = "<group>"; };
-		C9D74E9C12EF4733008DE8E8 /* brand_svyturys_baltas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_baltas.png; path = resources/brands/brand_svyturys_baltas.png; sourceTree = "<group>"; };
-		C9D74E9D12EF4733008DE8E8 /* brand_svyturys_baltijos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_baltijos.png; path = resources/brands/brand_svyturys_baltijos.png; sourceTree = "<group>"; };
-		C9D74E9E12EF4733008DE8E8 /* brand_svyturys_ekstra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_svyturys_ekstra.png; path = resources/brands/brand_svyturys_ekstra.png; sourceTree = "<group>"; };
-		C9D74E9F12EF4733008DE8E8 /* brand_tauro_tradicinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tauro_tradicinis.png; path = resources/brands/brand_tauro_tradicinis.png; sourceTree = "<group>"; };
-		C9D74EA012EF4733008DE8E8 /* brand_tores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tores.png; path = resources/brands/brand_tores.png; sourceTree = "<group>"; };
-		C9D74EA112EF4733008DE8E8 /* brand_tucher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_tucher.png; path = resources/brands/brand_tucher.png; sourceTree = "<group>"; };
-		C9D74EA212EF4733008DE8E8 /* brand_utenos_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_utenos_dark.png; path = resources/brands/brand_utenos_dark.png; sourceTree = "<group>"; };
-		C9D74EA312EF4733008DE8E8 /* brand_utenos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_utenos.png; path = resources/brands/brand_utenos.png; sourceTree = "<group>"; };
-		C9D74EA412EF4733008DE8E8 /* brand_varniuku_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_varniuku_alus.png; path = resources/brands/brand_varniuku_alus.png; sourceTree = "<group>"; };
-		C9D74EA512EF4733008DE8E8 /* brand_veltins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_veltins.png; path = resources/brands/brand_veltins.png; sourceTree = "<group>"; };
-		C9D74EA612EF4733008DE8E8 /* brand_velvet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_velvet.png; path = resources/brands/brand_velvet.png; sourceTree = "<group>"; };
-		C9D74EA712EF4733008DE8E8 /* brand_vilkmerges_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilkmerges_tamsusis.png; path = resources/brands/brand_vilkmerges_tamsusis.png; sourceTree = "<group>"; };
-		C9D74EA812EF4733008DE8E8 /* brand_vilniaus_kvietinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilniaus_kvietinis.png; path = resources/brands/brand_vilniaus_kvietinis.png; sourceTree = "<group>"; };
-		C9D74EA912EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_vilniaus_nefiltruotas.png; path = resources/brands/brand_vilniaus_nefiltruotas.png; sourceTree = "<group>"; };
-		C9D74EAA12EF4733008DE8E8 /* brand_zubr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_zubr.png; path = resources/brands/brand_zubr.png; sourceTree = "<group>"; };
+		C9DA6F0512F34E0700D9886A /* BeerCounterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerCounterController.h; sourceTree = "<group>"; };
+		C9DA6F0612F34E0700D9886A /* BeerCounterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeerCounterController.m; sourceTree = "<group>"; };
 		C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsViewController.m; sourceTree = "<group>"; };
 		C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsViewController.xib; path = Classes/BrandsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,10 +269,16 @@
 				1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* AlausRadarasViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */,
+				C9DA6F0512F34E0700D9886A /* BeerCounterController.h */,
+				C9DA6F0612F34E0700D9886A /* BeerCounterController.m */,
+				C986D03012F481A100865F6D /* LuckyController.h */,
+				C986D03112F481A100865F6D /* LuckyController.m */,
 				C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */,
 				C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */,
 				C92E59A812EE146E00412BFA /* BrandsTableCell.h */,
 				C92E59A912EE146E00412BFA /* BrandsTableCell.m */,
+				C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */,
+				C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */,
 				C9642B3612EE35940033F9B8 /* MapViewController.h */,
 				C9642B3712EE35940033F9B8 /* MapViewController.m */,
 				C953E80A12EF5B7B001BD656 /* PubAnnotation.h */,
@@ -267,6 +302,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9911F4112F1F7BE00AF4ECE /* Services */,
 				C98EDF7A12EB665B00D8B4A0 /* Domain */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -289,6 +325,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C986CFD512F4702D00865F6D /* pubs */,
 				C9A941DA12EA129B00992FAD /* images */,
 				C9D74E7212EF4727008DE8E8 /* brands */,
 				C9D74DC212EF3B4F008DE8E8 /* db */,
@@ -316,6 +353,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C986CFD512F4702D00865F6D /* pubs */ = {
+			isa = PBXGroup;
+			children = (
+				C9BC0C4912F5C344002DB792 /* pub_memelis.png */,
+				C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */,
+				C986CFFE12F4756900865F6D /* pub_alaus_studija@2x.png */,
+				C986CFD812F4703400865F6D /* pub_obuolys.png */,
+			);
+			name = pubs;
+			sourceTree = "<group>";
+		};
 		C98EDF7A12EB665B00D8B4A0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,13 +371,28 @@
 				C953E93912EF718D001BD656 /* Brand.m */,
 				C9A313F712F097990005ED6C /* Pub.h */,
 				C9A313F812F097990005ED6C /* Pub.m */,
+				C976847712F22A2900D4E9F3 /* CodeValue.h */,
+				C976847812F22A2900D4E9F3 /* CodeValue.m */,
 			);
 			name = Domain;
+			sourceTree = "<group>";
+		};
+		C9911F4112F1F7BE00AF4ECE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C9911F4512F1F80600AF4ECE /* TextDatabaseService.h */,
+				C9911F4612F1F80600AF4ECE /* TextDatabaseService.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C986D00C12F479E000865F6D /* back.png */,
+				C986CB5612F3FDB900865F6D /* beer_01@2x.png */,
+				C986CB5712F3FDB900865F6D /* beer_02@2x.png */,
+				C986CB3C12F3F74300865F6D /* background@2x.png */,
 				C960135012F0C69200DB53C0 /* background.png */,
 				C960135112F0C69200DB53C0 /* batonas.png */,
 				C960135212F0C69200DB53C0 /* bokalas_vol_3.png */,
@@ -339,9 +402,8 @@
 				C960135612F0C69200DB53C0 /* lucky.png */,
 				C960135712F0C69200DB53C0 /* map_01.png */,
 				C960135812F0C69200DB53C0 /* map_02.png */,
-				C960135912F0C69200DB53C0 /* newbackground.png */,
-				C960135A12F0C69200DB53C0 /* oldpin.png */,
 				C960135B12F0C69200DB53C0 /* pin.png */,
+				C986CB4312F3F83800865F6D /* pin@2x.png */,
 				C960135C12F0C69200DB53C0 /* tag_01.png */,
 				C960135D12F0C69200DB53C0 /* tag_02.png */,
 			);
@@ -363,60 +425,60 @@
 		C9D74E7212EF4727008DE8E8 /* brands */ = {
 			isa = PBXGroup;
 			children = (
-				C9D74E7512EF4733008DE8E8 /* brand_backoriu_tamsusis.png */,
-				C9D74E7612EF4733008DE8E8 /* brand_belmonto_sviesusis.png */,
-				C9D74E7712EF4733008DE8E8 /* brand_belmonto_ypatingas.png */,
-				C9D74E7812EF4733008DE8E8 /* brand_bernard_cerne.png */,
-				C9D74E7912EF4733008DE8E8 /* brand_birzu_sirvenos.png */,
-				C9D74E7A12EF4733008DE8E8 /* brand_bravaria.png */,
-				C9D74E7B12EF4733008DE8E8 /* brand_budweiser_budar.png */,
-				C9D74E7C12EF4733008DE8E8 /* brand_busi_trecias.png */,
-				C9D74E7D12EF4733008DE8E8 /* brand_butautu_dvaro.png */,
-				C9D74E7E12EF4733008DE8E8 /* brand_chodovar.png */,
-				C9D74E7F12EF4733008DE8E8 /* brand_daujotu.png */,
-				C9D74E8012EF4733008DE8E8 /* brand_default.png */,
-				C9D74E8112EF4733008DE8E8 /* brand_dundulio.png */,
-				C9D74E8212EF4733008DE8E8 /* brand_ekstra_tvirtoves.png */,
-				C9D74E8312EF4733008DE8E8 /* brand_erdinger.png */,
-				C9D74E8412EF4733008DE8E8 /* brand_franziskaner.png */,
-				C9D74E8512EF4733008DE8E8 /* brand_grimbergen.png */,
-				C9D74E8612EF4733008DE8E8 /* brand_gubernijos_kvietinis.png */,
-				C9D74E8712EF4733008DE8E8 /* brand_guinness.png */,
-				C9D74E8812EF4733008DE8E8 /* brand_heineken.png */,
-				C9D74E8912EF4733008DE8E8 /* brand_hoegaarden.png */,
-				C9D74E8A12EF4733008DE8E8 /* brand_jovaru_snekutis.png */,
-				C9D74E8B12EF4733008DE8E8 /* brand_kalnapilis_grand.png */,
-				C9D74E8C12EF4733008DE8E8 /* brand_kanapinis.png */,
-				C9D74E8D12EF4733008DE8E8 /* brand_katedros_medaus.png */,
-				C9D74E8E12EF4733008DE8E8 /* brand_katedros_sviesusis.png */,
-				C9D74E8F12EF4733008DE8E8 /* brand_katedros_tamsusis.png */,
-				C9D74E9012EF4733008DE8E8 /* brand_kilkenny.png */,
-				C9D74E9112EF4733008DE8E8 /* brand_kozel.png */,
-				C9D74E9212EF4733008DE8E8 /* brand_krusovice.png */,
-				C9D74E9312EF4733008DE8E8 /* brand_kunigaiksciu.png */,
-				C9D74E9412EF4733008DE8E8 /* brand_leffe.png */,
-				C9D74E9512EF4733008DE8E8 /* brand_murphys_stout.png */,
-				C9D74E9612EF4733008DE8E8 /* brand_new_castle_brown_ale.png */,
-				C9D74E9712EF4733008DE8E8 /* brand_pilies_alus.png */,
-				C9D74E9812EF4733008DE8E8 /* brand_raudonuju_dobilu.png */,
-				C9D74E9912EF4733008DE8E8 /* brand_rinkuskiu.png */,
-				C9D74E9A12EF4733008DE8E8 /* brand_samson.png */,
-				C9D74E9B12EF4733008DE8E8 /* brand_staropramen.png */,
-				C9D74E9C12EF4733008DE8E8 /* brand_svyturys_baltas.png */,
-				C9D74E9D12EF4733008DE8E8 /* brand_svyturys_baltijos.png */,
-				C9D74E9E12EF4733008DE8E8 /* brand_svyturys_ekstra.png */,
-				C9D74E9F12EF4733008DE8E8 /* brand_tauro_tradicinis.png */,
-				C9D74EA012EF4733008DE8E8 /* brand_tores.png */,
-				C9D74EA112EF4733008DE8E8 /* brand_tucher.png */,
-				C9D74EA212EF4733008DE8E8 /* brand_utenos_dark.png */,
-				C9D74EA312EF4733008DE8E8 /* brand_utenos.png */,
-				C9D74EA412EF4733008DE8E8 /* brand_varniuku_alus.png */,
-				C9D74EA512EF4733008DE8E8 /* brand_veltins.png */,
-				C9D74EA612EF4733008DE8E8 /* brand_velvet.png */,
-				C9D74EA712EF4733008DE8E8 /* brand_vilkmerges_tamsusis.png */,
-				C9D74EA812EF4733008DE8E8 /* brand_vilniaus_kvietinis.png */,
-				C9D74EA912EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png */,
-				C9D74EAA12EF4733008DE8E8 /* brand_zubr.png */,
+				C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */,
+				C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */,
+				C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */,
+				C986CF0112F45B7100865F6D /* brand_bernard_cerne.png */,
+				C986CF0212F45B7100865F6D /* brand_birzu_sirvenos.png */,
+				C986CF0312F45B7100865F6D /* brand_bravaria.png */,
+				C986CF0412F45B7100865F6D /* brand_budweiser_budar.png */,
+				C986CF0512F45B7100865F6D /* brand_busi_trecias.png */,
+				C986CF0612F45B7100865F6D /* brand_butautu_dvaro.png */,
+				C986CF0712F45B7100865F6D /* brand_chodovar.png */,
+				C986CF0812F45B7100865F6D /* brand_daujotu.png */,
+				C986CF0912F45B7100865F6D /* brand_default.png */,
+				C986CF0A12F45B7100865F6D /* brand_dundulio.png */,
+				C986CF0B12F45B7100865F6D /* brand_ekstra_tvirtoves.png */,
+				C986CF0C12F45B7100865F6D /* brand_erdinger.png */,
+				C986CF0D12F45B7100865F6D /* brand_franziskaner.png */,
+				C986CF0E12F45B7100865F6D /* brand_grimbergen.png */,
+				C986CF0F12F45B7100865F6D /* brand_gubernijos_kvietinis.png */,
+				C986CF1012F45B7100865F6D /* brand_guinness.png */,
+				C986CF1112F45B7100865F6D /* brand_heineken.png */,
+				C986CF1212F45B7100865F6D /* brand_hoegaarden.png */,
+				C986CF1312F45B7100865F6D /* brand_jovaru_snekutis.png */,
+				C986CF1412F45B7100865F6D /* brand_kalnapilis_grand.png */,
+				C986CF1512F45B7100865F6D /* brand_kanapinis.png */,
+				C986CF1612F45B7100865F6D /* brand_katedros_medaus.png */,
+				C986CF1712F45B7100865F6D /* brand_katedros_sviesusis.png */,
+				C986CF1812F45B7100865F6D /* brand_katedros_tamsusis.png */,
+				C986CF1912F45B7100865F6D /* brand_kilkenny.png */,
+				C986CF1A12F45B7100865F6D /* brand_kozel.png */,
+				C986CF1B12F45B7100865F6D /* brand_krusovice.png */,
+				C986CF1C12F45B7100865F6D /* brand_kunigaiksciu.png */,
+				C986CF1D12F45B7100865F6D /* brand_leffe.png */,
+				C986CF1E12F45B7100865F6D /* brand_murphys_stout.png */,
+				C986CF1F12F45B7100865F6D /* brand_new_castle_brown_ale.png */,
+				C986CF2012F45B7100865F6D /* brand_pilies_alus.png */,
+				C986CF2112F45B7100865F6D /* brand_raudonuju_dobilu.png */,
+				C986CF2212F45B7100865F6D /* brand_rinkuskiu.png */,
+				C986CF2312F45B7100865F6D /* brand_samson.png */,
+				C986CF2412F45B7100865F6D /* brand_staropramen.png */,
+				C986CF2512F45B7100865F6D /* brand_svyturys_baltas.png */,
+				C986CF2612F45B7100865F6D /* brand_svyturys_baltijos.png */,
+				C986CF2712F45B7100865F6D /* brand_svyturys_ekstra.png */,
+				C986CF2812F45B7100865F6D /* brand_tauro_tradicinis.png */,
+				C986CF2912F45B7100865F6D /* brand_tores.png */,
+				C986CF2A12F45B7100865F6D /* brand_tucher.png */,
+				C986CF2B12F45B7100865F6D /* brand_utenos_dark.png */,
+				C986CF2C12F45B7100865F6D /* brand_utenos.png */,
+				C986CF2D12F45B7100865F6D /* brand_varniuku_alus.png */,
+				C986CF2E12F45B7100865F6D /* brand_veltins.png */,
+				C986CF2F12F45B7100865F6D /* brand_velvet.png */,
+				C986CF3012F45B7100865F6D /* brand_vilkmerges_tamsusis.png */,
+				C986CF3112F45B7100865F6D /* brand_vilniaus_kvietinis.png */,
+				C986CF3212F45B7100865F6D /* brand_vilniaus_nefiltruotas.png */,
+				C986CF3312F45B7100865F6D /* brand_zubr.png */,
 			);
 			name = brands;
 			sourceTree = "<group>";
@@ -481,60 +543,6 @@
 				C9D74DCC12EF3B9F008DE8E8 /* pubs.txt in Resources */,
 				C9D74DCD12EF3B9F008DE8E8 /* qoutes.txt in Resources */,
 				C9D74DCE12EF3B9F008DE8E8 /* tags.txt in Resources */,
-				C9D74EAB12EF4733008DE8E8 /* brand_backoriu_tamsusis.png in Resources */,
-				C9D74EAC12EF4733008DE8E8 /* brand_belmonto_sviesusis.png in Resources */,
-				C9D74EAD12EF4733008DE8E8 /* brand_belmonto_ypatingas.png in Resources */,
-				C9D74EAE12EF4733008DE8E8 /* brand_bernard_cerne.png in Resources */,
-				C9D74EAF12EF4733008DE8E8 /* brand_birzu_sirvenos.png in Resources */,
-				C9D74EB012EF4733008DE8E8 /* brand_bravaria.png in Resources */,
-				C9D74EB112EF4733008DE8E8 /* brand_budweiser_budar.png in Resources */,
-				C9D74EB212EF4733008DE8E8 /* brand_busi_trecias.png in Resources */,
-				C9D74EB312EF4733008DE8E8 /* brand_butautu_dvaro.png in Resources */,
-				C9D74EB412EF4733008DE8E8 /* brand_chodovar.png in Resources */,
-				C9D74EB512EF4733008DE8E8 /* brand_daujotu.png in Resources */,
-				C9D74EB612EF4733008DE8E8 /* brand_default.png in Resources */,
-				C9D74EB712EF4733008DE8E8 /* brand_dundulio.png in Resources */,
-				C9D74EB812EF4733008DE8E8 /* brand_ekstra_tvirtoves.png in Resources */,
-				C9D74EB912EF4733008DE8E8 /* brand_erdinger.png in Resources */,
-				C9D74EBA12EF4733008DE8E8 /* brand_franziskaner.png in Resources */,
-				C9D74EBB12EF4733008DE8E8 /* brand_grimbergen.png in Resources */,
-				C9D74EBC12EF4733008DE8E8 /* brand_gubernijos_kvietinis.png in Resources */,
-				C9D74EBD12EF4733008DE8E8 /* brand_guinness.png in Resources */,
-				C9D74EBE12EF4733008DE8E8 /* brand_heineken.png in Resources */,
-				C9D74EBF12EF4733008DE8E8 /* brand_hoegaarden.png in Resources */,
-				C9D74EC012EF4733008DE8E8 /* brand_jovaru_snekutis.png in Resources */,
-				C9D74EC112EF4733008DE8E8 /* brand_kalnapilis_grand.png in Resources */,
-				C9D74EC212EF4733008DE8E8 /* brand_kanapinis.png in Resources */,
-				C9D74EC312EF4733008DE8E8 /* brand_katedros_medaus.png in Resources */,
-				C9D74EC412EF4733008DE8E8 /* brand_katedros_sviesusis.png in Resources */,
-				C9D74EC512EF4733008DE8E8 /* brand_katedros_tamsusis.png in Resources */,
-				C9D74EC612EF4733008DE8E8 /* brand_kilkenny.png in Resources */,
-				C9D74EC712EF4733008DE8E8 /* brand_kozel.png in Resources */,
-				C9D74EC812EF4733008DE8E8 /* brand_krusovice.png in Resources */,
-				C9D74EC912EF4733008DE8E8 /* brand_kunigaiksciu.png in Resources */,
-				C9D74ECA12EF4733008DE8E8 /* brand_leffe.png in Resources */,
-				C9D74ECB12EF4733008DE8E8 /* brand_murphys_stout.png in Resources */,
-				C9D74ECC12EF4733008DE8E8 /* brand_new_castle_brown_ale.png in Resources */,
-				C9D74ECD12EF4733008DE8E8 /* brand_pilies_alus.png in Resources */,
-				C9D74ECE12EF4733008DE8E8 /* brand_raudonuju_dobilu.png in Resources */,
-				C9D74ECF12EF4733008DE8E8 /* brand_rinkuskiu.png in Resources */,
-				C9D74ED012EF4733008DE8E8 /* brand_samson.png in Resources */,
-				C9D74ED112EF4733008DE8E8 /* brand_staropramen.png in Resources */,
-				C9D74ED212EF4733008DE8E8 /* brand_svyturys_baltas.png in Resources */,
-				C9D74ED312EF4733008DE8E8 /* brand_svyturys_baltijos.png in Resources */,
-				C9D74ED412EF4733008DE8E8 /* brand_svyturys_ekstra.png in Resources */,
-				C9D74ED512EF4733008DE8E8 /* brand_tauro_tradicinis.png in Resources */,
-				C9D74ED612EF4733008DE8E8 /* brand_tores.png in Resources */,
-				C9D74ED712EF4733008DE8E8 /* brand_tucher.png in Resources */,
-				C9D74ED812EF4733008DE8E8 /* brand_utenos_dark.png in Resources */,
-				C9D74ED912EF4733008DE8E8 /* brand_utenos.png in Resources */,
-				C9D74EDA12EF4733008DE8E8 /* brand_varniuku_alus.png in Resources */,
-				C9D74EDB12EF4733008DE8E8 /* brand_veltins.png in Resources */,
-				C9D74EDC12EF4733008DE8E8 /* brand_velvet.png in Resources */,
-				C9D74EDD12EF4733008DE8E8 /* brand_vilkmerges_tamsusis.png in Resources */,
-				C9D74EDE12EF4733008DE8E8 /* brand_vilniaus_kvietinis.png in Resources */,
-				C9D74EDF12EF4733008DE8E8 /* brand_vilniaus_nefiltruotas.png in Resources */,
-				C9D74EE012EF4733008DE8E8 /* brand_zubr.png in Resources */,
 				C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */,
 				C960135E12F0C69200DB53C0 /* background.png in Resources */,
 				C960135F12F0C69200DB53C0 /* batonas.png in Resources */,
@@ -545,11 +553,72 @@
 				C960136412F0C69200DB53C0 /* lucky.png in Resources */,
 				C960136512F0C69200DB53C0 /* map_01.png in Resources */,
 				C960136612F0C69200DB53C0 /* map_02.png in Resources */,
-				C960136712F0C69200DB53C0 /* newbackground.png in Resources */,
-				C960136812F0C69200DB53C0 /* oldpin.png in Resources */,
 				C960136912F0C69200DB53C0 /* pin.png in Resources */,
 				C960136A12F0C69200DB53C0 /* tag_01.png in Resources */,
 				C960136B12F0C69200DB53C0 /* tag_02.png in Resources */,
+				C986CB3D12F3F74300865F6D /* background@2x.png in Resources */,
+				C986CB4412F3F83800865F6D /* pin@2x.png in Resources */,
+				C986CB5812F3FDB900865F6D /* beer_01@2x.png in Resources */,
+				C986CB5912F3FDB900865F6D /* beer_02@2x.png in Resources */,
+				C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */,
+				C986CF3512F45B7100865F6D /* brand_belmonto_sviesusis.png in Resources */,
+				C986CF3612F45B7100865F6D /* brand_belmonto_ypatingas.png in Resources */,
+				C986CF3712F45B7100865F6D /* brand_bernard_cerne.png in Resources */,
+				C986CF3812F45B7100865F6D /* brand_birzu_sirvenos.png in Resources */,
+				C986CF3912F45B7100865F6D /* brand_bravaria.png in Resources */,
+				C986CF3A12F45B7100865F6D /* brand_budweiser_budar.png in Resources */,
+				C986CF3B12F45B7100865F6D /* brand_busi_trecias.png in Resources */,
+				C986CF3C12F45B7100865F6D /* brand_butautu_dvaro.png in Resources */,
+				C986CF3D12F45B7100865F6D /* brand_chodovar.png in Resources */,
+				C986CF3E12F45B7100865F6D /* brand_daujotu.png in Resources */,
+				C986CF3F12F45B7100865F6D /* brand_default.png in Resources */,
+				C986CF4012F45B7100865F6D /* brand_dundulio.png in Resources */,
+				C986CF4112F45B7100865F6D /* brand_ekstra_tvirtoves.png in Resources */,
+				C986CF4212F45B7100865F6D /* brand_erdinger.png in Resources */,
+				C986CF4312F45B7100865F6D /* brand_franziskaner.png in Resources */,
+				C986CF4412F45B7100865F6D /* brand_grimbergen.png in Resources */,
+				C986CF4512F45B7100865F6D /* brand_gubernijos_kvietinis.png in Resources */,
+				C986CF4612F45B7100865F6D /* brand_guinness.png in Resources */,
+				C986CF4712F45B7100865F6D /* brand_heineken.png in Resources */,
+				C986CF4812F45B7100865F6D /* brand_hoegaarden.png in Resources */,
+				C986CF4912F45B7100865F6D /* brand_jovaru_snekutis.png in Resources */,
+				C986CF4A12F45B7100865F6D /* brand_kalnapilis_grand.png in Resources */,
+				C986CF4B12F45B7100865F6D /* brand_kanapinis.png in Resources */,
+				C986CF4C12F45B7100865F6D /* brand_katedros_medaus.png in Resources */,
+				C986CF4D12F45B7100865F6D /* brand_katedros_sviesusis.png in Resources */,
+				C986CF4E12F45B7100865F6D /* brand_katedros_tamsusis.png in Resources */,
+				C986CF4F12F45B7100865F6D /* brand_kilkenny.png in Resources */,
+				C986CF5012F45B7100865F6D /* brand_kozel.png in Resources */,
+				C986CF5112F45B7100865F6D /* brand_krusovice.png in Resources */,
+				C986CF5212F45B7100865F6D /* brand_kunigaiksciu.png in Resources */,
+				C986CF5312F45B7100865F6D /* brand_leffe.png in Resources */,
+				C986CF5412F45B7100865F6D /* brand_murphys_stout.png in Resources */,
+				C986CF5512F45B7100865F6D /* brand_new_castle_brown_ale.png in Resources */,
+				C986CF5612F45B7100865F6D /* brand_pilies_alus.png in Resources */,
+				C986CF5712F45B7100865F6D /* brand_raudonuju_dobilu.png in Resources */,
+				C986CF5812F45B7100865F6D /* brand_rinkuskiu.png in Resources */,
+				C986CF5912F45B7100865F6D /* brand_samson.png in Resources */,
+				C986CF5A12F45B7100865F6D /* brand_staropramen.png in Resources */,
+				C986CF5B12F45B7100865F6D /* brand_svyturys_baltas.png in Resources */,
+				C986CF5C12F45B7100865F6D /* brand_svyturys_baltijos.png in Resources */,
+				C986CF5D12F45B7100865F6D /* brand_svyturys_ekstra.png in Resources */,
+				C986CF5E12F45B7100865F6D /* brand_tauro_tradicinis.png in Resources */,
+				C986CF5F12F45B7100865F6D /* brand_tores.png in Resources */,
+				C986CF6012F45B7100865F6D /* brand_tucher.png in Resources */,
+				C986CF6112F45B7100865F6D /* brand_utenos_dark.png in Resources */,
+				C986CF6212F45B7100865F6D /* brand_utenos.png in Resources */,
+				C986CF6312F45B7100865F6D /* brand_varniuku_alus.png in Resources */,
+				C986CF6412F45B7100865F6D /* brand_veltins.png in Resources */,
+				C986CF6512F45B7100865F6D /* brand_velvet.png in Resources */,
+				C986CF6612F45B7100865F6D /* brand_vilkmerges_tamsusis.png in Resources */,
+				C986CF6712F45B7100865F6D /* brand_vilniaus_kvietinis.png in Resources */,
+				C986CF6812F45B7100865F6D /* brand_vilniaus_nefiltruotas.png in Resources */,
+				C986CF6912F45B7100865F6D /* brand_zubr.png in Resources */,
+				C986CFD912F4703400865F6D /* pub_obuolys.png in Resources */,
+				C986CFFF12F4756900865F6D /* pub_alaus_studija@2x.png in Resources */,
+				C986D00D12F479E100865F6D /* back.png in Resources */,
+				C9BC0B9712F5A791002DB792 /* pub_kauno_alus.png in Resources */,
+				C9BC0C4A12F5C344002DB792 /* pub_memelis.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +640,11 @@
 				C953E93A12EF718D001BD656 /* Brand.m in Sources */,
 				C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */,
 				C9A313F912F097990005ED6C /* Pub.m in Sources */,
+				C9911F4712F1F80600AF4ECE /* TextDatabaseService.m in Sources */,
+				C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */,
+				C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */,
+				C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */,
+				C986D03212F481A100865F6D /* LuckyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,9 +686,9 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};

@@ -17,7 +17,6 @@
 
 - (void)dealloc {
 	[searchBar release];
-	[isSearchOn release];	
 	[brandsDetails release];
 	[beerCatagoriesControl release];
 	[brandList release];
@@ -151,6 +150,9 @@
 		case 0:
 			cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
 			cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
+			if (cell.brandIcon.image == nil) {
+				cell.brandIcon.image = [UIImage imageNamed:@"brand_default.png"];
+			}
 			break;
 		case 1:
 			cell.labelText.text = [[countryList objectAtIndex:indexPath.row] displayValue];
@@ -233,9 +235,9 @@
 		brandsTable.tableHeaderView = searchBar; // show the search bar on top of table
     } else {
         brandsTable.tableHeaderView = nil;
-        [searchBar resignFirstResponder ]; 
+        [searchBar resignFirstResponder]; 
     }
-    [brandsTable scrollRectToVisible:[[brandsTable tableHeaderView] bounds] animated:NO]; // scroll to top so we see the search bar
+	[brandsTable scrollRectToVisible:[[brandsTable tableHeaderView] bounds] animated:YES]; // scroll to top so we see the search bar
 }
 
 

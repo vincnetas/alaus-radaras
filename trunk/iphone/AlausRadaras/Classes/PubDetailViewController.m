@@ -12,10 +12,13 @@
 
 @implementation PubDetailViewController
 
-@synthesize brandList, brandsTable,currentPub, pubTitleShortLabel, pubTitleLabel,pubAddressLabel,pubCallLabel;
+@synthesize pubLogoImage,pubInternetAddessLabel, pubTitleShortLabel, pubTitleLabel, pubAddressLabel, pubCallLabel;
+@synthesize brandList, brandsTable, currentPub;
 @synthesize userCoordinates;
 
 - (void)dealloc {
+	[pubLogoImage release];
+	[pubInternetAddessLabel release];
 	[userCoordinates release];
 	[currentPub release];
 	[pubTitleShortLabel release];
@@ -44,8 +47,9 @@
 	 pubTitleShortLabel.text = currentPub.pubTitle;
 	 pubTitleLabel.text = currentPub.pubTitle;
  	 pubAddressLabel.text = currentPub.pubAddress;
+	 pubInternetAddessLabel.text = currentPub.webpage;
 	 pubCallLabel.text = currentPub.phone;
-
+	 pubLogoImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"pub_%@.png", currentPub.pubId]];
 	 
 	 /* TODO: REDO */
 	 NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
@@ -101,23 +105,40 @@
 }
 
 - (IBAction) dialNumber:(id)sender {
-	NSString *phonenumber = [NSString stringWithFormat:@"tel://%@", currentPub.phone];
-	phonenumber = [phonenumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+	UIAlertView* alertView = 
+	[[UIAlertView alloc] initWithTitle:@"Tai skambinam baran, tep?"
+							   message:nil 
+							  delegate:self 
+					 cancelButtonTitle:@"NE!"
+					 otherButtonTitles:@"Skambinam!", nil];
+	[alertView show];
+	[alertView release];
+}
 
-	NSLog(@"dialNumber: %@", phonenumber);
-
-	// TODO: Maybe show alert box before dialing?
-	
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if(buttonIndex == 1) {
+		NSString *phonenumber = [NSString stringWithFormat:@"tel://%@", currentPub.phone];
+		phonenumber = [phonenumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+		NSLog(@"Calling pub: %@", phonenumber);
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+	}
 }
 
 - (IBAction) navigateToPub:(id)sender {
 	NSLog(@"navigateToPub: %@, %@", currentPub.latitude, currentPub.longitude);
 	
-	NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%@,%@", userCoordinates, currentPub.latitude, currentPub.longitude];
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:googleMapsURLString]];
-	[googleMapsURLString release];
+	[[UIApplication sharedApplication] openURL:
+		[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%@,%@", 
+							  userCoordinates, currentPub.latitude, currentPub.longitude]]];
 }
+
+
+- (IBAction) openWebpage:(id)sender {
+	NSLog(@"openWebpage: %@", currentPub.webpage);
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentPub.webpage]];
+}
+
 
 #pragma mark -
 #pragma mark UITableViewDelegate methods
@@ -189,6 +210,10 @@
 			UIButton *button=[[UIButton alloc] initWithFrame:rect];
 			[button setFrame:rect];
 			UIImage *buttonImageNormal=[UIImage imageNamed:item.icon];
+			if (buttonImageNormal == nil) {
+				buttonImageNormal = [UIImage imageNamed:@"brand_default.png"];
+			}
+		
 			[button setBackgroundImage:buttonImageNormal	forState:UIControlStateNormal];
 			[button setContentMode:UIViewContentModeCenter];
 			
@@ -205,7 +230,7 @@
 			label.textColor = [UIColor lightGrayColor];
 			label.backgroundColor = [UIColor clearColor];
 			label.textAlignment = UITextAlignmentCenter;
-			label.font = [UIFont fontWithName:@"ArialMT" size:12]; 
+			label.font = [UIFont fontWithName:@"ArialMT" size:10]; 
 			[hlcell.contentView addSubview:label];
 			
 			i++;
@@ -228,7 +253,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {  
 	//NSMutableArray *sectionItems = [sections objectAtIndex:indexPath.section];
 	int numRows = [brandList count]/4;
-	return numRows * 80.0;
+	return numRows * 95.0;
 } 
 
 #pragma mark -

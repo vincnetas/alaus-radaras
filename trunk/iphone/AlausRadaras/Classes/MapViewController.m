@@ -10,14 +10,20 @@
 #import <MapKit/MapKit.h>
 #import "PubAnnotationView.h"
 #import "Pub.h"
+#import "TextDatabaseService.h"
 
 @implementation MapViewController
 
-@synthesize mapView,pubsOnMap;
+@synthesize map,pubsOnMap, pubsAlreadyOnMap;
+@synthesize infoLabel;
+@synthesize citySegmentControl;
 
 - (void)dealloc {
+	[citySegmentControl release];
+	[infoLabel release];
+	[pubsAlreadyOnMap release];
 	[pubsOnMap release];
-	[mapView release];
+	[map release];
 	[super dealloc];
 }
 
@@ -25,18 +31,23 @@
 	 NSLog(@"MapViewController viewDidLoad");
 	 [super viewDidLoad];
 	 //mapView.mapType = MKMapTypeSatellite;
-	 mapView.mapType=MKMapTypeStandard;
+	 map.mapType=MKMapTypeStandard;
 	 //mapView.mapType=MKMapTypeHybrid;
-	 mapView.showsUserLocation = YES;
+	 map.showsUserLocation = YES;
+	// CLLocationCoordinate2D userPosition = mapView.userLocation.location.coordinate;
+	 CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
+	 
+	 MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.04, 0.05);
+	 MKCoordinateRegion region = MKCoordinateRegionMake(centerOfVilnius, coordSpan);
 
-	 CLLocationCoordinate2D sweLoc = {54.689313,25.282631};
-	 MKCoordinateSpan sweSpan = MKCoordinateSpanMake(0.073226, 0.119476);
-	 MKCoordinateRegion sweRegion = MKCoordinateRegionMake(sweLoc, sweSpan);
-	 
-	 mapView.region = sweRegion;
-	 
+	 map.region = region;
+	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];//WithObjects:@"asdf", nil];
+
 	 [self loadPubAnnotations];
-
+//	 [self dynamicLoadPubAnnotationsForRegion: map];
+	 
+//showAll Radius
+	 
  }
 
 
@@ -44,9 +55,62 @@
 	[self dismissModalViewControllerAnimated:YES];	
 }
 
+- (IBAction) locateMe:(id)sender {
+	[self locateMe];
+}
+
+
+
+- (void)dynamicLoadPubAnnotationsForRegion:(MKMapView *)mapView {
+//NSLog(@"%f", sqrt(17) ); 
+	NSLog(@"dynamicLoadPubAnnotationsForRegion");
+	double centerLat = mapView.region.center.latitude;
+	double centerLong = mapView.region.center.longitude;
+	
+	double latitudeLength = mapView.region.span.latitudeDelta/2.0;
+	double longitudeLength = mapView.region.span.longitudeDelta/2.0;
+
+	double lengthFromCenter = sqrt(latitudeLength * latitudeLength + longitudeLength * longitudeLength);
+	
+	NSLog(@"map.region.center.latitude: %f", mapView.region.center.latitude);
+	NSLog(@"map.region.center.longitude: %f", mapView.region.center.longitude);
+	NSLog(@"map.region.span.latitudeDelta/2.0: %f", mapView.region.span.latitudeDelta/2.0);
+	NSLog(@"map.region.span.longitudeDelta/2.0: %f", mapView.region.span.longitudeDelta/2.0);
+	NSLog(@"lengthFromCenter: %f", lengthFromCenter);
+
+//	[mapView removeAnnotations:mapView.annotations];
+	
+	for (Pub *pub in pubsOnMap) {
+		CLLocationCoordinate2D coord;
+		coord.latitude = [pub.latitude doubleValue];
+		coord.longitude = [pub.longitude doubleValue];
+		
+		double pubFromCenter = sqrt((coord.latitude-centerLat)*(coord.latitude-centerLat) + 
+									(coord.longitude-centerLong)*(coord.longitude-centerLong));
+
+		
+		if (pubFromCenter <= lengthFromCenter){		
+
+			if ([self.pubsAlreadyOnMap containsObject:pub.pubId]){
+				continue;
+			}
+			
+			[self.pubsAlreadyOnMap addObject:pub.pubId];
+
+			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
+			[pubAnnotation setPubId:pub.pubId];
+			[pubAnnotation setTitle:pub.pubTitle];
+			[pubAnnotation setSubtitle:pub.pubAddress];
+
+			[map addAnnotation:pubAnnotation];
+
+		}
+	}
+	NSLog(@"Total pubs: %i. Pubs on map:", pubsAlreadyOnMap.count);
+
+}
 
 - (void)loadPubAnnotations {
-	
 	for (Pub *pub in pubsOnMap) {
 	//	if (![line isEqualToString:@""]) {
 			CLLocationCoordinate2D coord;
@@ -58,7 +122,7 @@
 			[pubAnnotation setTitle:pub.pubTitle];
 			[pubAnnotation setSubtitle:pub.pubAddress];
 			
-			[mapView addAnnotation:pubAnnotation];
+			[map addAnnotation:pubAnnotation];
 			//[pubAnnotation release]; /* realising cause navigation problems */
 	//	}
 	}
@@ -66,6 +130,8 @@
  
 
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
+//	NSLog(@"viewForAnnotation");
+
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
 		//Don't trample the user location annotation (pulsing blue dot).
 		return nil;
@@ -75,64 +141,118 @@
 	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
 	[customAnnotationView setImage:pinImage];
     customAnnotationView.canShowCallout = YES;
-	//UIImageView *leftIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LeftIconImage.png"]];
-	//customAnnotationView.leftCalloutAccessoryView = leftIconView;
+	
+//	UIImageView *leftIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pub_obuolys_icon.png"]];
+//	customAnnotationView.leftCalloutAccessoryView = leftIconView;
+	
 	UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 //	[rightButton addTarget:self action:@selector(annotationViewClick:) forControlEvents:UIControlEventTouchUpInside];
 	customAnnotationView.rightCalloutAccessoryView = rightButton;
     return customAnnotationView;
 }
 
-//- (IBAction) annotationViewClick:(id) sender {
-//    NSLog(@"clicked");
-//}
+/* Animating droping pins */
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views { 
+	NSLog(@"didAddAnnotationViews");
+	MKAnnotationView *annotationView; 
+
+	for (annotationView in views) {
+		if (annotationView.annotation == mapView.userLocation) {
+			[self locateMe];
+        }
+		
+		CGRect endFrame = annotationView.frame;
+		annotationView.frame = CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y - 200.0, annotationView.frame.size.width, annotationView.frame.size.height);
+		
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.1];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+		[annotationView setFrame:endFrame];
+		[UIView commitAnimations];
+	}
+}
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-
 	PubAnnotation *pubAnnotation = view.annotation;
 
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
-	NSString *fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	
 	PubDetailViewController *pubDetailView = 
-			[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
+		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"	"];
-			if ([pubAnnotation.pubId isEqualToString:[values objectAtIndex:0]]) {
-			
-				Pub *tempPub = [[Pub alloc]init];
-				tempPub.pubId = [values objectAtIndex:0];
-				tempPub.pubTitle = [values objectAtIndex:1];
-				tempPub.pubAddress = [values objectAtIndex:2];
-				tempPub.phone = [values objectAtIndex:3];
-				tempPub.webpage = [values objectAtIndex:4];
-				tempPub.latitude = [values objectAtIndex:5];
-				tempPub.longitude = [values objectAtIndex:6];
-
-				pubDetailView.currentPub = tempPub;
-				
-				[tempPub release];
-		
-			}
-		}
-	}
-//	CLLocation *userLoc = mapView.userLocation.location;
-    CLLocationCoordinate2D userCoordinate = mapView.userLocation.location.coordinate;
-
-	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
+	TextDatabaseService *service = [[TextDatabaseService alloc]init];
+	pubDetailView.currentPub = [service getPubWithId:pubAnnotation.pubId];
+	[service release];
 	
+    CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
+	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:pubDetailView animated:YES];
-	
-	
 
 	[pubAnnotation release];
 	[pubDetailView release];
-
 }
+
+- (void) locateMe {
+	MKCoordinateSpan span = MKCoordinateSpanMake(0.03, 0.04);
+	MKCoordinateRegion region = MKCoordinateRegionMake(map.userLocation.coordinate, span);
+	[map setRegion:region animated:YES];
+	[map regionThatFits:region];
+}
+
+/*
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+	NSLog(@"regionWillChangeAnimated");
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+	NSLog(@"regionDidChangeAnimated");
+	[self dynamicLoadPubAnnotationsForRegion: mapView];
+}
+
+- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView {
+	NSLog(@"mapViewWillStartLoadingMap");	
+}
+*/
+
+
+
+
+-(IBAction) cityIndexChanged {
+	switch (self.citySegmentControl.selectedSegmentIndex) {
+		case 0:
+			NSLog(@"Segment Vilnius selected.");
+			[self showRegionWithLatitude:54.689313 Longitude:25.282631];
+			break;
+		case 1:
+			NSLog(@"Segment Kaunas selected.");
+			[self showRegionWithLatitude:54.896872 Longitude:23.892426];
+			break;
+		case 2:
+			NSLog(@"Segment Klaipėda selected.");
+			[self showRegionWithLatitude:55.698541 Longitude:21.147317];
+			break;
+			
+		default:
+			break;
+	}
+}
+
+- (void) showRegionWithLatitude:(double)lat Longitude:(double)lon {
+	CLLocationCoordinate2D regionCenter = {lat,lon};
+	MKCoordinateSpan span = MKCoordinateSpanMake(0.03, 0.04);
+	MKCoordinateRegion region = MKCoordinateRegionMake(regionCenter, span);
+	[map setRegion:region animated:YES];
+	[map regionThatFits:region];	
+	
+}
+
+
+
+
+
+
+
+
+
 
 
 
