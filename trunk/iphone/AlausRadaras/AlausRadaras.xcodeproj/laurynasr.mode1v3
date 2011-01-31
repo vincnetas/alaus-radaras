@@ -267,21 +267,17 @@
 								<string>C98EDF7A12EB665B00D8B4A0</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>C986CFD512F4702D00865F6D</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>C9C1CB4E12EA30B2003C7CC5</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>9</integer>
-									<integer>0</integer>
+									<integer>57</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 175}, {246, 687}}</string>
+							<string>{{0, 350}, {246, 687}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -318,7 +314,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BrandsViewController.m</string>
+								<string>LuckyController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +322,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>BrandsViewController.m</string>
+										<string>LuckyController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C90EC0A412F725D9001A014E</string>
+										<string>C90EC0C512F73C9A001A014E</string>
 										<key>history</key>
 										<array>
 											<string>C9E5021B12EE0D5900ADD54C</string>
@@ -373,13 +369,11 @@
 											<string>C986D01E12F4800200865F6D</string>
 											<string>C986D01F12F4800200865F6D</string>
 											<string>C986D02012F4800200865F6D</string>
-											<string>C986D02112F4800200865F6D</string>
 											<string>C986D02212F4800200865F6D</string>
 											<string>C986D02312F4800200865F6D</string>
 											<string>C986D02412F4800200865F6D</string>
 											<string>C986D02512F4800200865F6D</string>
 											<string>C986D02612F4800200865F6D</string>
-											<string>C986D03D12F485F100865F6D</string>
 											<string>C986D03E12F485F100865F6D</string>
 											<string>C9BC0B9B12F5A850002DB792</string>
 											<string>C9BC0BB212F5AB5A002DB792</string>
@@ -400,7 +394,9 @@
 											<string>C9BC0C7512F5DD98002DB792</string>
 											<string>C9BC0C7A12F5DF65002DB792</string>
 											<string>C9BC0C7B12F5DF65002DB792</string>
-											<string>C9099B5312F6033A001B5DF5</string>
+											<string>C90EC0C012F73C9A001A014E</string>
+											<string>C90EC0C112F73C9A001A014E</string>
+											<string>C986D03D12F485F100865F6D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -598,6 +594,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C987EB8912EF824E00E8C4EE</string>
+		<string>C90EC0C312F73C9A001A014E</string>
+		<string>C90EC0C412F73C9A001A014E</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>C97BF0A712EA0A8B004519F0</string>
 		<string>/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras.xcodeproj</string>
 	</array>
@@ -775,10 +776,10 @@
 									<key>Frame</key>
 									<string>{{584, 0}, {696, 481}}</string>
 									<key>RubberWindowFrame</key>
-									<string>256 92 1280 942 0 0 1280 778 </string>
+									<string>256 316 1280 942 0 0 1280 1002 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>256 92 1280 942 0 0 1280 778 </string>
+								<string>256 316 1280 942 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -801,18 +802,18 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>C9099B5712F6033A001B5DF5</string>
+				<string>C90EC0B512F73C98001A014E</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>C9099B5812F6033A001B5DF5</string>
-				<string>C9099B5912F6033A001B5DF5</string>
-				<string>C9099B5A12F6033A001B5DF5</string>
-				<string>C9099B5B12F6033A001B5DF5</string>
-				<string>C9099B5C12F6033A001B5DF5</string>
+				<string>C90EC0B612F73C98001A014E</string>
+				<string>C90EC0B712F73C98001A014E</string>
+				<string>C90EC0B812F73C98001A014E</string>
+				<string>C90EC0B912F73C98001A014E</string>
+				<string>C90EC0BA12F73C98001A014E</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>256 92 1280 942 0 0 1280 778 </string>
+			<string>256 316 1280 942 0 0 1280 1002 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
@@ -946,7 +947,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1214, 297}}</string>
 								<key>RubberWindowFrame</key>
-								<string>15 71 1214 338 0 0 1280 778 </string>
+								<string>3 88 1214 338 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -969,13 +970,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>C9099B5D12F6033A001B5DF5</string>
+				<string>C90EC0BB12F73C98001A014E</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>15 71 1214 338 0 0 1280 778 </string>
+			<string>3 88 1214 338 0 0 1280 1002 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
@@ -1033,21 +1034,21 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1C78EAB2065D492600B07095</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>LuckyController.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1280, 0}}</string>
+								<string>{{0, 0}, {1280, 286}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 4 1280 998 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>0pt</string>
+							<string>286pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -1085,14 +1086,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 5}, {1280, 952}}</string>
+								<string>{{0, 291}, {1280, 666}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 4 1280 998 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXCVSModule</string>
 							<key>Proportion</key>
-							<string>952pt</string>
+							<string>666pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -1110,7 +1111,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>C987EB8912EF824E00E8C4EE</string>
-				<string>C960134F12F0C65F00DB53C0</string>
+				<string>C90EC0BF12F73C98001A014E</string>
 				<string>1C78EAB2065D492600B07095</string>
 				<string>1CD052920623707200166675</string>
 			</array>
