@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -272,8 +272,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="35549817"/>
 							<reference ref="701784939"/>
-							<reference ref="566030786"/>
 							<reference ref="121146233"/>
+							<reference ref="566030786"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -365,7 +365,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>MapViewController</string>
 					<string>UIResponder</string>
-					<string>{{646, 271}, {320, 480}}</string>
+					<string>{{637, 110}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

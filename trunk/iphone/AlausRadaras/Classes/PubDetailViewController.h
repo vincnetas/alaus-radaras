@@ -16,7 +16,7 @@
 	UILabel *pubAddressLabel;
 	UILabel *pubCallLabel;
 	UILabel *pubInternetAddessLabel;
-
+	UIButton *directionsButton;
 	UIImageView *pubLogoImage;
 	
 	Pub *currentPub;
@@ -30,6 +30,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *pubAddressLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pubInternetAddessLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pubCallLabel;
+@property (nonatomic, retain) IBOutlet UIButton *directionsButton;
+
 @property (nonatomic, retain) IBOutlet 	UITableView *brandsTable;
 @property (nonatomic, retain) IBOutlet 	UIImageView *pubLogoImage;
 

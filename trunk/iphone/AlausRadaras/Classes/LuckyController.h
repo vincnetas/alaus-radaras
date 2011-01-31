@@ -7,13 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeelingLucky.h";
 
 
 @interface LuckyController : UIViewController {
-
+	FeelingLucky *feelingLucky;
+	
+	UILabel *pubLabel;
+	UILabel *brandLabel;
+	UIImageView *brandImage;
 }
 
-- (IBAction) gotoPreviousView;
+@property (nonatomic, retain) FeelingLucky *feelingLucky;
+@property (nonatomic, retain) IBOutlet UILabel *pubLabel;
+@property (nonatomic, retain) IBOutlet UILabel *brandLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *brandImage;
 
+- (IBAction) gotoPreviousView;
+- (IBAction) showPubDetailView;
 
 @end

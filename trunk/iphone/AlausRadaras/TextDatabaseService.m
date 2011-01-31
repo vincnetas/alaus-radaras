@@ -105,6 +105,27 @@ int pubLongitudeIndex = 7;
 	return brands;
 }
 
+- (NSMutableArray *) getBrands {
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	NSMutableArray *brandList = [[NSMutableArray alloc]initWithCapacity:[lines count]];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"	"];
+			
+			Brand *brand = [[Brand alloc]init];
+			brand.icon = [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]];
+			brand.label =	[values objectAtIndex:1];
+			brand.pubsString =	[values objectAtIndex:2];
+			
+			[brandList addObject:brand];
+			[brand release];
+		}
+	}
+	return brandList;
+}
+
 - (NSMutableArray *) getPubs {
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
 	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
@@ -230,6 +251,37 @@ int pubLongitudeIndex = 7;
 	
 	return quote;
 	
+}
+
+/*
+ SHOULD BE:
+ 1. Get all pubs in the area near me
+ 2. Select random pub.
+ 3. Get list of beers in the pub.
+ 4.1 If list == nil goto 2
+ 4.2 If list != nil goto 5
+ 5. Select random brand.
+ 6. Return Pub and brand
+ 
+ CURRENT:
+ 1. Get all brands
+ 2. Select random pub.
+ 3. Get Pubs
+ 4. Select random pub
+ */
+- (FeelingLucky *) feelingLucky {
+	NSMutableArray *brands = [self getBrands];
+	int i = (arc4random()%(brands.count));
+	Brand *brand = [brands objectAtIndex:i];
+	NSArray *pubIds = [brand.pubsString componentsSeparatedByString:@","];
+	i = (arc4random()%(pubIds.count));
+	Pub *pub = [self getPubWithId:
+		[[pubIds objectAtIndex:i] stringByReplacingOccurrencesOfString:@" " withString:@""]];
+	FeelingLucky *lucky = [[FeelingLucky alloc]init];
+	[lucky setPub:pub];
+	[lucky setBrand:brand];
+	//TODO: release?
+	return lucky;
 }
 
 @end
