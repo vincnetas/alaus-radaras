@@ -177,7 +177,7 @@
 	switch (category) {
 		case 0:{
 			NSMutableArray *pubs = [service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];		 		 
-			[self showMapWithPubs:pubs];
+			[self showMapWithPubs:pubs title:[[brandList objectAtIndex:indexPath.row]label]];
 			[pubs release];	
 			break;
 		} case 1: {	
@@ -199,18 +199,19 @@
 	[service release];
 }
 
-- (void) showMapWithPubs:(NSMutableArray *)pubs {
+- (void) showMapWithPubs:(NSMutableArray *)pubs title:(NSString *) titleText {
 	MapViewController *vietosView = 
 		[[MapViewController alloc] initWithNibName:nil bundle:nil];
 	
-	[vietosView setPubsOnMap:pubs];	 
+	[vietosView setPubsOnMap:pubs];
+
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
-	
+	vietosView.infoLabel.text = [NSString stringWithFormat:@"%@ alus",titleText];
 	[vietosView release];
 }
 
-- (void) showBrandDetails:(NSMutableArray *)brands title:(NSString *) titleText{
+- (void) showBrandDetails:(NSMutableArray *)brands title:(NSString *) titleText {
 	[brandsDetails setBrandList:brands];
 	brandsDetails.titleLabel.text = titleText;
 	[[brandsDetails brandsTable]reloadData];
