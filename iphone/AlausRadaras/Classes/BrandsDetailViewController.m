@@ -56,7 +56,7 @@
 	for(Brand *brand in brandList) {
 		[pubs addObjectsFromArray:[service findPubsHavingBrand:brand.pubsString]];
 	}
-	[self showMapWithPubs:pubs];
+	[self showMapWithPubs:pubs WithInfo:titleLabel.text];
 	[service release];
 }
 
@@ -85,6 +85,9 @@
 
 	cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
 	cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
+	if (cell.brandIcon.image == nil) {
+		cell.brandIcon.image = [UIImage imageNamed:@"brand_default.png"];
+	}
 	
     return cell;
 }
@@ -97,7 +100,7 @@
 	TextDatabaseService *service = [[TextDatabaseService alloc]init];
 	
 	NSMutableArray *pubs = [service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];		 		 
-	[self showMapWithPubs:pubs];
+	[self showMapWithPubs:pubs WithInfo:[[brandList objectAtIndex:indexPath.row]label]];
 	[pubs release];	
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
@@ -105,14 +108,15 @@
 }
 
 
-- (void) showMapWithPubs:(NSMutableArray *)pubs {
+- (void) showMapWithPubs:(NSMutableArray *)pubs WithInfo:(NSString *) info {
 	MapViewController *vietosView = 
 		[[MapViewController alloc] initWithNibName:nil bundle:nil];
 	
-	[vietosView setPubsOnMap:pubs];	 
+	[vietosView setPubsOnMap:pubs];	
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
-	
+	vietosView.infoLabel.text = 
+		[NSString stringWithFormat:@"%@ alus", info];	
 	[vietosView release];
 }
 

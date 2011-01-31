@@ -15,7 +15,10 @@
 	UILabel *pubTitleLabel;
 	UILabel *pubAddressLabel;
 	UILabel *pubCallLabel;
+	UILabel *pubInternetAddessLabel;
 
+	UIImageView *pubLogoImage;
+	
 	Pub *currentPub;
 	NSString *userCoordinates;
 	NSMutableArray *brandList;
@@ -25,8 +28,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pubAddressLabel;
+@property (nonatomic, retain) IBOutlet UILabel *pubInternetAddessLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pubCallLabel;
 @property (nonatomic, retain) IBOutlet 	UITableView *brandsTable;
+@property (nonatomic, retain) IBOutlet 	UIImageView *pubLogoImage;
 
 @property(nonatomic, retain) NSMutableArray *brandList;
 @property (nonatomic, retain) Pub *currentPub;
@@ -37,5 +42,6 @@
 - (IBAction) showOnMap:(id)sender;
 - (IBAction) dialNumber:(id)sender;
 - (IBAction) navigateToPub:(id)sender;
+- (IBAction) openWebpage:(id)sender;
 
 @end
