@@ -12,11 +12,12 @@
 
 @implementation PubDetailViewController
 
-@synthesize pubLogoImage,pubInternetAddessLabel, pubTitleShortLabel, pubTitleLabel, pubAddressLabel, pubCallLabel;
+@synthesize directionsButton, pubLogoImage,pubInternetAddessLabel, pubTitleShortLabel, pubTitleLabel, pubAddressLabel, pubCallLabel;
 @synthesize brandList, brandsTable, currentPub;
 @synthesize userCoordinates;
 
 - (void)dealloc {
+	[directionsButton release];
 	[pubLogoImage release];
 	[pubInternetAddessLabel release];
 	[userCoordinates release];
@@ -73,7 +74,10 @@
 		 }
 	 }
 	 
-	 
+	 /* Disable if I view didn't get users coordinates */
+	 if (userCoordinates == nil) {
+		 directionsButton.enabled = NO;
+	 }
 	 
  }
 

@@ -7,7 +7,7 @@
 //
 
 #import "BrandsViewController.h"
-
+#import "TextDatabaseService.h"
 
 @implementation BrandsViewController
 
@@ -44,30 +44,10 @@
 	/* Separator color */ 
 	brandsTable.separatorColor = [UIColor grayColor];
 
-
-	 NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	 NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-
-	 NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-
-	 brandList = [[NSMutableArray alloc]initWithCapacity:[lines count]];
-	 for (NSString *line in lines) {
-		 if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"	"];
-
-			Brand *brand = [[Brand alloc]init];
-			brand.icon = [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]];
-			brand.label =	[values objectAtIndex:1];
-			brand.pubsString =	[values objectAtIndex:2];
-
-			[brandList addObject:brand];
-			[brand release];
-		 }
-	 }
-	 
 	 category = 0;
-
+	 
 	 TextDatabaseService *service = [[TextDatabaseService alloc]init];
+	 brandList = [service getBrands];
 	 tagsList = [service getTags];
 	 countryList = [service getCountries]; 
 	 
