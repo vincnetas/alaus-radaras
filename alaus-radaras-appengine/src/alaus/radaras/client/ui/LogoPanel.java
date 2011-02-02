@@ -19,6 +19,8 @@ public class LogoPanel extends Composite {
 	interface LogoPanelUiBinder extends UiBinder<Widget, LogoPanel> {
 	}
 
+	
+	
 	public LogoPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
