@@ -34,8 +34,8 @@ class AlausServletModule extends ServletModule {
 		bind(PubService.class).to(PubServiceImpl.class);
 		
 		serve("/beerEngine/beerService").with(BeerServiceImpl.class);
-		serve("/adminPanel/beerService").with(BeerServiceImpl.class);
-		serve("/adminPanel/adminBeerService").with(AdminBeerServiceImpl.class);
+		serve("/adminEngine/beerService").with(BeerServiceImpl.class);
+		serve("/adminEngine/adminBeerService").with(AdminBeerServiceImpl.class);
 		serve("/data").with(JsonDataServlet.class);		
 		serve("/admin/upload").with(UploadServlet.class);
 		serve("/image/beer/*").with(ImageServlet.class);

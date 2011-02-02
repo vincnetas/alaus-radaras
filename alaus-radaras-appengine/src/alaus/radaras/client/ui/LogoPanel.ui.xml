@@ -7,12 +7,12 @@
 			font-weight: bold;
 		}
 		.logoText {
-			font-size: x-large;
+			font-size: large;
 			text-align: center;
 			width: 100%;
 		}
 		.platformLogo {
-			margin: 3px;
+			margin: 8px 11px 3px 11px;
 			width: 44px;
 			height: 44px;
 		}
@@ -26,10 +26,9 @@
 		<g:SimplePanel styleName="{style.panel}">
 			<g:VerticalPanel>
 				<g:HorizontalPanel width="100%">
-					<g:Label styleName="{style.logoText}">Alaus radaras</g:Label>	
+					<g:Label styleName="{style.logoText}">Turėk po ranka</g:Label>	
 				</g:HorizontalPanel>
 				<g:HorizontalPanel>
-					<g:Image styleName="{style.platformLogo}" url="/img/alus.png"></g:Image>
 					<g:Image styleName="{style.platformLogo}" url="/img/android.png"></g:Image>
 					<g:Image styleName="{style.platformLogo}" url="/img/apple.png"></g:Image>
 					<g:Image styleName="{style.platformLogo}" url="/img/ovi.png"></g:Image>					
