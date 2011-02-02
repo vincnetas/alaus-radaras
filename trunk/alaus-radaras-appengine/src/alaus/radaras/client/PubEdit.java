@@ -6,14 +6,10 @@ package alaus.radaras.client;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
-import com.google.gwt.cell.client.AbstractEditableCell;
 import com.google.gwt.cell.client.ButtonCell;
 import com.google.gwt.cell.client.EditTextCell;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.TextInputCell;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.text.shared.SimpleSafeHtmlRenderer;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
@@ -28,10 +24,18 @@ public class PubEdit {
 
 	private static final ProvidesKey<Pub> KEY_PROVIDER = new ProvidesKey<Pub>() {
 		public Object getKey(Pub item) {
-			return item.getId();
+			return valueOrDefault(item.getId());
 		}
 	};
-
+	
+	private static String valueOrDefault(String value) {
+		if (value == null) {
+			value = "undefined";
+		}
+		
+		return value;
+	}
+	
 	public static CellTable<Pub> getTable() {
 		final CellTable<Pub> table = new CellTable<Pub>(KEY_PROVIDER);
 		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
@@ -40,8 +44,8 @@ public class PubEdit {
 			final EditTextCell titleCell = new EditTextCell();
 			Column<Pub, String> titleColumn = new Column<Pub, String>(titleCell) {
 				@Override
-				public String getValue(Pub object) {
-					return object.getTitle();
+				public String getValue(Pub object) {					
+					return valueOrDefault(object.getTitle());
 				}
 			};
 			titleColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -58,7 +62,7 @@ public class PubEdit {
 			Column<Pub, String> countryColumn = new Column<Pub, String>(countryCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return valueOrDefault(object.getCountry());
 				}
 			};
 			countryColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -75,7 +79,7 @@ public class PubEdit {
 			Column<Pub, String> cityColumn = new Column<Pub, String>(cityCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return valueOrDefault(object.getCity());
 				}
 			};
 			cityColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -92,7 +96,7 @@ public class PubEdit {
 			Column<Pub, String> addressColumn = new Column<Pub, String>(addressCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return valueOrDefault(object.getAddress());
 				}
 			};
 			addressColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -125,7 +129,7 @@ public class PubEdit {
 			Column<Pub, String> phoneColumn = new Column<Pub, String>(phoneCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return valueOrDefault(object.getPhone());
 				}
 			};
 			phoneColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -138,20 +142,20 @@ public class PubEdit {
 		}
 		
 		{
-			final EditTextCell descriptionCell = new EditTextCell();
-			Column<Pub, String> descriptionColumn = new Column<Pub, String>(descriptionCell) {
-				@Override
-				public String getValue(Pub object) {
-					return object.getTitle();
-				}
-			};
-			descriptionColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
-				@Override
-				public void update(int arg0, Pub arg1, String arg2) {
-					arg1.setDescription(arg2);
-				}
-			});
-			table.addColumn(descriptionColumn, "Description");
+//			final EditTextCell descriptionCell = new EditTextCell();
+//			Column<Pub, String> descriptionColumn = new Column<Pub, String>(descriptionCell) {
+//				@Override
+//				public String getValue(Pub object) {
+//					return valueOrDefault(object.getDescription());
+//				}
+//			};
+//			descriptionColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
+//				@Override
+//				public void update(int arg0, Pub arg1, String arg2) {
+//					arg1.setDescription(arg2);
+//				}
+//			});
+//			table.addColumn(descriptionColumn, "Description");
 		}
 		
 		{
@@ -159,7 +163,7 @@ public class PubEdit {
 			Column<Pub, String> homepageColumn = new Column<Pub, String>(homepageCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return valueOrDefault(object.getHomepage());
 				}
 			};
 			homepageColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
@@ -176,7 +180,7 @@ public class PubEdit {
 			Column<Pub, String> saveColumn = new Column<Pub, String>(saveCell) {
 				@Override
 				public String getValue(Pub object) {
-					return object.getTitle();
+					return "Save";
 				}
 			};
 			saveColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {

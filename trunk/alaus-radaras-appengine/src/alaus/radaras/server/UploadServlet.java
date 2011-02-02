@@ -120,7 +120,8 @@ public class UploadServlet extends HttpServlet {
 			Brand brand = new Brand();
 			brand.setId(columns[0]);
 			brand.setTitle(columns[1]);
-			brand.setIcon(columns[0]);
+			brand.setIcon(columns[0]);			
+			brand.setApproved(true);
 			
 			result.add(brand);
 		}
@@ -138,9 +139,11 @@ public class UploadServlet extends HttpServlet {
 			pub.setId(columns[0]);
 			pub.setTitle(columns[1]);
 			pub.setAddress(columns[2]);
-			pub.setPhone(columns[3]);
-			pub.setHomepage(columns[4]);
-			pub.setLocation(new Location(Double.parseDouble(columns[6]), Double.parseDouble(columns[5])));
+			pub.setCity(columns[3]);
+			pub.setPhone(columns[4]);
+			pub.setHomepage(columns[5]);
+			pub.setLocation(new Location(Double.parseDouble(columns[7]), Double.parseDouble(columns[6])));
+			pub.setApproved(true);
 			
 			result.add(pub);
 		}

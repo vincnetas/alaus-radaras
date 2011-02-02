@@ -11,12 +11,14 @@ import alaus.radaras.server.dao.IdProvider;
  */
 public class IdProviderImpl implements IdProvider {
 
+	private long lastId = System.currentTimeMillis();
+	
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.IdProvider#getId()
 	 */
 	@Override
-	public String getId() {
-		return String.valueOf(System.currentTimeMillis());
+	public synchronized String getId() {
+		return String.valueOf(lastId++);
 	}
 
 }

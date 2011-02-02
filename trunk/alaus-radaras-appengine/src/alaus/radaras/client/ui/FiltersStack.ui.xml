@@ -10,17 +10,17 @@
 	<g:DecoratorPanel>
 		<g:StackLayoutPanel ui:field="stackPanel" height="400px" width="200px">
 			<g:stack>
-				<g:header size='25'>Beer</g:header>
+				<g:header size='25'>Alus</g:header>
 				<f:BeerFilter></f:BeerFilter>
 			</g:stack>
 			<g:stack>
-				<g:header size='25'>Tag</g:header>
+				<g:header size='25'>Tipai</g:header>
 				<f:TagFilter></f:TagFilter>
 			</g:stack>
 			<g:stack>
-				<g:header size='25'>Country</g:header>
+				<g:header size='25'>Šalys</g:header>
 				<f:CountryFilter></f:CountryFilter>
 			</g:stack>
 		</g:StackLayoutPanel>
 	</g:DecoratorPanel>
-</ui:UiBinder> 
+</ui:UiBinder>
