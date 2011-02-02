@@ -207,7 +207,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				@Override
 				public void onClick(MarkerClickEvent event) {
 					InfoWindow infoWindow = mapWidget.getInfoWindow();
-					infoWindow.open(PubMarker.this, new InfoWindowContent(new PubPanel(infoWindow, PubMarker.this.pub)));									
+					infoWindow.open(PubMarker.this, new InfoWindowContent(new PubPanel(PubMarker.this.pub)));									
 				}
 			});
 			

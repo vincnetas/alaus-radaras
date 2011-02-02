@@ -19,13 +19,8 @@
 		}		
 	</ui:style>
 	<g:VerticalPanel width="100%">
-		<g:FlowPanel width="100%">
-			<g:Label styleName="{style.pubTitle}" ui:field="title"></g:Label>
-			<g:Image ui:field="editImage" styleName="{style.editImage}" url="img/pencil.png" width="16px" height="16px"></g:Image>				
-		</g:FlowPanel>
-		<g:VerticalPanel>
-			<g:Label>We are serving</g:Label>
-			<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
-		</g:VerticalPanel>
+		<g:Label styleName="{style.pubTitle}" ui:field="title"></g:Label>
+		<g:Label>We are serving</g:Label>
+		<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
 	</g:VerticalPanel>
 </ui:UiBinder> 

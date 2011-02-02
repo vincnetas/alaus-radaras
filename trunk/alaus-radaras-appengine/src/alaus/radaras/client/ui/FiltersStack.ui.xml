@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:f="urn:import:alaus.radaras.client.ui.filter">
+	<ui:style>
+		/* Add CSS here. See the GWT docs on UI Binder for more details */
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:DecoratorPanel>
+		<g:StackLayoutPanel ui:field="stackPanel" height="400px" width="200px">
+			<g:stack>
+				<g:header size='25'>Beer</g:header>
+				<f:BeerFilter></f:BeerFilter>
+			</g:stack>
+			<g:stack>
+				<g:header size='25'>Tag</g:header>
+				<f:TagFilter></f:TagFilter>
+			</g:stack>
+			<g:stack>
+				<g:header size='25'>Country</g:header>
+				<f:CountryFilter></f:CountryFilter>
+			</g:stack>
+		</g:StackLayoutPanel>
+	</g:DecoratorPanel>
+</ui:UiBinder> 
