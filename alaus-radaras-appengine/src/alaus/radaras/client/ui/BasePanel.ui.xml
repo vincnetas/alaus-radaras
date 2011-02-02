@@ -6,34 +6,29 @@
 		.important {
 			font-weight: bold;
 		}
+		.logo {
+			margin: 15px;
+			}
+		.logoText {
+			font-size: x-large;
+			margin: 5px;
+			font-weight: bold;
+			}
 	</ui:style>
 
-	<g:DockLayoutPanel width="100%" height="100%">
-		<g:north size="50">
-			<r:CityPanel></r:CityPanel>
-		</g:north>
-		<g:south size="50">
-			<g:Button>Add</g:Button>
-		</g:south>
 
-		<g:west size="300">
-			<g:StackLayoutPanel ui:field="stackPanel">
-				<g:stack>
-					<g:header size='30'>Beer</g:header>
-					<f:BeerFilter></f:BeerFilter>
-				</g:stack>
-				<g:stack>
-					<g:header size='30'>Tag</g:header>
-					<f:TagFilter></f:TagFilter>
-				</g:stack>
-				<g:stack>
-					<g:header size='30'>Country</g:header>
-					<f:CountryFilter></f:CountryFilter>
-				</g:stack>
-			</g:StackLayoutPanel>
-		</g:west>
-		<g:center>
+	<g:AbsolutePanel width="100%" height="100%">
+		<g:at left="0" top="0">
 			<p:MapPanel></p:MapPanel>
-		</g:center>
-	</g:DockLayoutPanel>
+		</g:at>
+		<g:at left="20" top="10">
+			<r:LogoPanel/>
+		</g:at>
+		<g:at left="30" top="134">
+			<r:FiltersStack/>
+		</g:at>
+		<g:at left="167" top="10">
+			<r:CityPanel/>
+		</g:at>
+	</g:AbsolutePanel>
 </ui:UiBinder> 

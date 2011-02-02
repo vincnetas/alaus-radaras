@@ -2,18 +2,11 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-		/* Add CSS here. See the GWT docs on UI Binder for more details */
-		.important {
-			font-weight: bold;
-		}
-		.textBox {
-			height: 26px;
-			float: left;
-			font-size: 22px;
-		}
+		.asas {
+			padding: 5px;
+			}
 	</ui:style>
-	<g:HTMLPanel width="100%">
-		<g:Image styleName="{style.textBox}" url="/img/city.gif" height="32px" width="32px"/>
-		<g:TextBox styleName="{style.textBox}" ui:field="textBox"/>
-	</g:HTMLPanel>
+	<g:DecoratorPanel>
+		<g:TextBox ui:field="textBox"/>
+	</g:DecoratorPanel>
 </ui:UiBinder> 

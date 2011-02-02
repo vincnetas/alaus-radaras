@@ -19,7 +19,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -36,7 +36,7 @@ public abstract class BaseFilter<E, T extends FilterWidget<E>> extends Composite
     }
 
     @UiField
-    FlowPanel panel;
+    Panel panel;
 
     public BaseFilter() {
         initWidget(uiBinder.createAndBindUi(this));

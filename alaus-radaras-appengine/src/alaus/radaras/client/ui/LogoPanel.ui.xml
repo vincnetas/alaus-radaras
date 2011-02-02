@@ -7,8 +7,9 @@
 			font-weight: bold;
 		}
 	</ui:style>
-	<g:ScrollPanel>
-		<g:VerticalPanel ui:field="panel">
-		</g:VerticalPanel>
-	</g:ScrollPanel>
+	<g:DecoratorPanel>
+		<g:SimplePanel>
+			<g:Image url="/img/beer.png"></g:Image>
+		</g:SimplePanel>
+	</g:DecoratorPanel>
 </ui:UiBinder> 
