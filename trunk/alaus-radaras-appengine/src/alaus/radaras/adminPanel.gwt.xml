@@ -9,4 +9,5 @@
 	<source path='shared' />
 	
 	<entry-point class="alaus.radaras.client.AdminPanel" />
+	<inherits name="alaus.radaras.adminPanel"/>
 </module>

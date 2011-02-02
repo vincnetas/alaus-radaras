@@ -21,13 +21,13 @@
 		<g:at left="0" top="0">
 			<p:MapPanel></p:MapPanel>
 		</g:at>
-		<g:at left="20" top="10">
+		<g:at left="30" top="487">
 			<r:LogoPanel/>
 		</g:at>
-		<g:at left="30" top="134">
+		<g:at left="30" top="70">
 			<r:FiltersStack/>
 		</g:at>
-		<g:at left="167" top="10">
+		<g:at left="30" top="30">
 			<r:CityPanel/>
 		</g:at>
 	</g:AbsolutePanel>

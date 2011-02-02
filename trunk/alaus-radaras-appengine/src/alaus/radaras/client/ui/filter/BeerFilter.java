@@ -12,7 +12,6 @@ import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.CheckBox;
 
 
 /**
@@ -42,20 +41,9 @@ public class BeerFilter extends BaseFilter<Beer, BeerFilterWidget> {
 		        callback.onSuccess(result);
 			}
 		});
-    }    
+    }   
+    
+    
 }
 
-class BeerFilterWidget extends FilterWidget<Beer> {
-    
-	private CheckBox checkBox;
-    
-    public BeerFilterWidget(Beer beer, PubFilter filter) {
-    	super(beer, filter);
-    	
-        checkBox = new CheckBox(beer.getTitle());
-        checkBox.addValueChangeHandler(this);
-        
-    	initWidget(checkBox);         
-    }
-}
 

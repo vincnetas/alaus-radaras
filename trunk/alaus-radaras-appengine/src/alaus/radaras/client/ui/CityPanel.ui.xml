@@ -2,11 +2,13 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-		.asas {
-			padding: 5px;
+		.inputBox {
+			padding: 2px;
+			margin: 0px;
+			width: 192px;
 			}
 	</ui:style>
 	<g:DecoratorPanel>
-		<g:TextBox ui:field="textBox"/>
+		<g:TextBox ui:field="textBox" styleName="{style.inputBox}"/>
 	</g:DecoratorPanel>
 </ui:UiBinder> 

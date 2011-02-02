@@ -195,16 +195,3 @@ public class PubEdit {
 
 }
 
-class LocationCell extends AbstractEditableCell<Location, Pub> {
-
-	@Override
-	public boolean isEditing(com.google.gwt.cell.client.Cell.Context arg0, Element arg1, Location arg2) {
-		return false;
-	}
-
-	@Override
-	public void render(com.google.gwt.cell.client.Cell.Context arg0, Location arg1, SafeHtmlBuilder arg2) {
-		arg2.append(SimpleSafeHtmlRenderer.getInstance().render(arg1.getLatitude() + " " + arg1.getLongitude()));
-	}
-	
-}
