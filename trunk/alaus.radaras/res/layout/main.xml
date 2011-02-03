@@ -6,7 +6,7 @@
     android:background="@drawable/background"
     >
 <ImageView 
-	android:id="@+id/imgTitleButton"
+	android:id="@+id/counter"
 	android:src="@drawable/bok_title" 
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -29,29 +29,29 @@
 	
 <Button 
 	android:text="@string/NearValue" 
-	android:id="@+id/ButtonNear" 
+	android:id="@+id/around" 
 	android:layout_width="fill_parent"
 	android:layout_marginLeft="40px" 
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/imgTitleButton" android:textSize="30dp" android:layout_height="40dp"></Button>
+	android:layout_below="@id/counter" android:textSize="30dp" android:layout_height="40dp"></Button>
 <Button 
 	android:text="@string/BrandValue" 
-	android:id="@+id/ButtonBrand" 
+	android:id="@+id/search" 
 	android:layout_width="fill_parent" 
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_marginLeft="40px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/ButtonNear" android:textSize="30dp" android:layout_height="40dp"></Button>
+	android:layout_below="@id/around" android:textSize="30dp" android:layout_height="40dp"></Button>
 <Button 
 	android:text="@string/LuckyValue" 
-	android:id="@+id/ButtonLucky" 
+	android:id="@+id/lucky" 
 	android:layout_width="fill_parent" 
 	android:layout_centerInParent="true"
 	android:layout_marginLeft="40px"
 	android:layout_marginTop="10px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/ButtonBrand" android:layout_height="40dp" android:textSize="30dp"></Button>
+	android:layout_below="@id/search" android:layout_height="40dp" android:textSize="30dp"></Button>
 </RelativeLayout >
