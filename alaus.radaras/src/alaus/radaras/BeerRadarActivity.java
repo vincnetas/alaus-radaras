@@ -1,10 +1,12 @@
 package alaus.radaras;
 
+import alaus.radaras.service.BeerRadarUpdate;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BeerRadarActivity extends Activity {
@@ -14,7 +16,7 @@ public class BeerRadarActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.newmain);
+        setContentView(R.layout.main);
         
 		getCounterView().setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -68,9 +70,9 @@ public class BeerRadarActivity extends Activity {
     
     @Override
     public void onResume(){
-//    	final SettingsManager settings = new SettingsManager(this);
-//        TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
-//        counter.setText(settings.getTotalCount().toString());
+    	final SettingsManager settings = new SettingsManager(this);
+        TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
+        counter.setText(settings.getTotalCount().toString());
         
         super.onResume();
     }
