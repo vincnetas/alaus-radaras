@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface Brand : NSObject {
+	NSString *brandId;
 	NSString *icon; 
 	NSString *label;
 	NSString *pubsString;
 
 }
 
+@property (nonatomic, retain) NSString *brandId;
 @property (nonatomic, retain) NSString *icon;
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic, retain) NSString *pubsString;

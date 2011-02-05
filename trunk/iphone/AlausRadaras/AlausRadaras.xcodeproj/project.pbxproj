@@ -15,10 +15,13 @@
 		2899E5220DE3E06400AC0155 /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* AlausRadarasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */; };
+		C916C30D12FC77C100AF396A /* BeerRadarSqlite.java in Sources */ = {isa = PBXBuildFile; fileRef = C916C30C12FC77C100AF396A /* BeerRadarSqlite.java */; };
+		C916C32D12FC7B9300AF396A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32612FC7B9300AF396A /* FMResultSet.m */; };
+		C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */; };
+		C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
 		C953E80C12EF5B7B001BD656 /* PubAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E80B12EF5B7B001BD656 /* PubAnnotation.m */; };
-		C953E81312EF5D71001BD656 /* PubAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E81212EF5D71001BD656 /* PubAnnotationView.m */; };
 		C953E93A12EF718D001BD656 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E93912EF718D001BD656 /* Brand.m */; };
 		C960135E12F0C69200DB53C0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135012F0C69200DB53C0 /* background.png */; };
 		C960135F12F0C69200DB53C0 /* batonas.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135112F0C69200DB53C0 /* batonas.png */; };
@@ -34,6 +37,9 @@
 		C960136B12F0C69200DB53C0 /* tag_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135D12F0C69200DB53C0 /* tag_02.png */; };
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
+		C96A85F712F7516F0021B30B /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A85F612F7516F0021B30B /* FeelingLucky.m */; };
+		C96A86A712F767E40021B30B /* bottle_cap.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86A612F767E40021B30B /* bottle_cap.png */; };
+		C96A86AD12F76AE70021B30B /* bottle_cap_back.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86AC12F76AE70021B30B /* bottle_cap_back.png */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
 		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
 		C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0BB12EA0C7E004519F0 /* icon.png */; };
@@ -103,10 +109,13 @@
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
+		C9AEAB2012FDD72200EB81B1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */; };
+		C9AEAB2612FDD8AF00EB81B1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AEAB2512FDD8AF00EB81B1 /* Default.png */; };
 		C9BC0B9712F5A791002DB792 /* pub_kauno_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */; };
 		C9BC0C4A12F5C344002DB792 /* pub_memelis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0C4912F5C344002DB792 /* pub_memelis.png */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
+		C9CEFD2612FB1BF80010E6FF /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = C9CEFD2512FB1BF80010E6FF /* internet.png */; };
 		C9D74DCA12EF3B9F008DE8E8 /* brands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */; };
 		C9D74DCB12EF3B9F008DE8E8 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC612EF3B9F008DE8E8 /* countries.txt */; };
 		C9D74DCC12EF3B9F008DE8E8 /* pubs.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */; };
@@ -115,6 +124,9 @@
 		C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */; };
 		C9E5021412EE0D3F00ADD54C /* BrandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */; };
 		C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */; };
+		C9E8E25612F9FAD400E927C1 /* beer-radar-db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */; };
+		C9E8E26612F9FB0600E927C1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */; };
+		C9EDF27512F89F8E00E9069A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EDF27412F89F8E00E9069A /* close.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,14 +143,19 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlausRadaras_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlausRadaras_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlausRadaras-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C916C30C12FC77C100AF396A /* BeerRadarSqlite.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BeerRadarSqlite.java; sourceTree = "<group>"; };
+		C916C32612FC7B9300AF396A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = Classes/FMDB/FMResultSet.m; sourceTree = "<group>"; };
+		C916C32712FC7B9300AF396A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = Classes/FMDB/FMResultSet.h; sourceTree = "<group>"; };
+		C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = Classes/FMDB/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		C916C32A12FC7B9300AF396A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = Classes/FMDB/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		C916C32B12FC7B9300AF396A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Classes/FMDB/FMDatabase.m; sourceTree = "<group>"; };
+		C916C32C12FC7B9300AF396A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Classes/FMDB/FMDatabase.h; sourceTree = "<group>"; };
 		C92E59A812EE146E00412BFA /* BrandsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsTableCell.h; sourceTree = "<group>"; };
 		C92E59A912EE146E00412BFA /* BrandsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsTableCell.m; sourceTree = "<group>"; };
 		C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsTableCell.xib; path = Classes/BrandsTableCell.xib; sourceTree = "<group>"; };
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
 		C953E80A12EF5B7B001BD656 /* PubAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubAnnotation.h; sourceTree = "<group>"; };
 		C953E80B12EF5B7B001BD656 /* PubAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubAnnotation.m; sourceTree = "<group>"; };
-		C953E81112EF5D71001BD656 /* PubAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubAnnotationView.h; sourceTree = "<group>"; };
-		C953E81212EF5D71001BD656 /* PubAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubAnnotationView.m; sourceTree = "<group>"; };
 		C953E93812EF718D001BD656 /* Brand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brand.h; path = Classes/Brand.h; sourceTree = "<group>"; };
 		C953E93912EF718D001BD656 /* Brand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Brand.m; path = Classes/Brand.m; sourceTree = "<group>"; };
 		C960135012F0C69200DB53C0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = resources/images/background.png; sourceTree = "<group>"; };
@@ -156,6 +173,10 @@
 		C9642B3612EE35940033F9B8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C9642B3712EE35940033F9B8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
+		C96A85F512F7516F0021B30B /* FeelingLucky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingLucky.h; sourceTree = "<group>"; };
+		C96A85F612F7516F0021B30B /* FeelingLucky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingLucky.m; sourceTree = "<group>"; };
+		C96A86A612F767E40021B30B /* bottle_cap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottle_cap.png; path = resources/images/bottle_cap.png; sourceTree = "<group>"; };
+		C96A86AC12F76AE70021B30B /* bottle_cap_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bottle_cap_back.png; path = resources/images/bottle_cap_back.png; sourceTree = "<group>"; };
 		C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsDetailViewController.h; sourceTree = "<group>"; };
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
 		C976847712F22A2900D4E9F3 /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeValue.h; sourceTree = "<group>"; };
@@ -231,10 +252,13 @@
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
 		C9A313F712F097990005ED6C /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pub.h; sourceTree = "<group>"; };
 		C9A313F812F097990005ED6C /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pub.m; sourceTree = "<group>"; };
+		C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C9AEAB2512FDD8AF00EB81B1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_kauno_alus.png; path = resources/pubs/pub_kauno_alus.png; sourceTree = "<group>"; };
 		C9BC0C4912F5C344002DB792 /* pub_memelis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_memelis.png; path = resources/pubs/pub_memelis.png; sourceTree = "<group>"; };
 		C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9CEFD2512FB1BF80010E6FF /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = internet.png; path = resources/images/internet.png; sourceTree = "<group>"; };
 		C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = brands.txt; path = resources/db/brands.txt; sourceTree = "<group>"; };
 		C9D74DC612EF3B9F008DE8E8 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = countries.txt; path = resources/db/countries.txt; sourceTree = "<group>"; };
 		C9D74DC712EF3B9F008DE8E8 /* pubs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubs.txt; path = resources/db/pubs.txt; sourceTree = "<group>"; };
@@ -244,6 +268,9 @@
 		C9DA6F0612F34E0700D9886A /* BeerCounterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeerCounterController.m; sourceTree = "<group>"; };
 		C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsViewController.m; sourceTree = "<group>"; };
 		C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsViewController.xib; path = Classes/BrandsViewController.xib; sourceTree = "<group>"; };
+		C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beer-radar-db.sqlite"; sourceTree = "<group>"; };
+		C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		C9EDF27412F89F8E00E9069A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = resources/images/close.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +283,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */,
 				C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */,
+				C9E8E26612F9FB0600E927C1 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +311,6 @@
 				C9642B3712EE35940033F9B8 /* MapViewController.m */,
 				C953E80A12EF5B7B001BD656 /* PubAnnotation.h */,
 				C953E80B12EF5B7B001BD656 /* PubAnnotation.m */,
-				C953E81112EF5D71001BD656 /* PubAnnotationView.h */,
-				C953E81212EF5D71001BD656 /* PubAnnotationView.m */,
 				C9A3137B12F08E880005ED6C /* PubDetailViewController.h */,
 				C9A3137C12F08E880005ED6C /* PubDetailViewController.m */,
 			);
@@ -302,6 +328,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C916C31912FC7B8700AF396A /* FMDB */,
 				C9911F4112F1F7BE00AF4ECE /* Services */,
 				C98EDF7A12EB665B00D8B4A0 /* Domain */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -309,6 +336,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -325,12 +353,16 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9AEAB2512FDD8AF00EB81B1 /* Default.png */,
+				C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */,
+				C916C30C12FC77C100AF396A /* BeerRadarSqlite.java */,
 				C986CFD512F4702D00865F6D /* pubs */,
 				C9A941DA12EA129B00992FAD /* images */,
 				C9D74E7212EF4727008DE8E8 /* brands */,
 				C9D74DC212EF3B4F008DE8E8 /* db */,
 				C97BF0BB12EA0C7E004519F0 /* icon.png */,
 				8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */,
+				C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */,
 				C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */,
@@ -353,6 +385,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C916C31912FC7B8700AF396A /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				C916C32612FC7B9300AF396A /* FMResultSet.m */,
+				C916C32712FC7B9300AF396A /* FMResultSet.h */,
+				C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */,
+				C916C32A12FC7B9300AF396A /* FMDatabaseAdditions.h */,
+				C916C32B12FC7B9300AF396A /* FMDatabase.m */,
+				C916C32C12FC7B9300AF396A /* FMDatabase.h */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 		C986CFD512F4702D00865F6D /* pubs */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +418,8 @@
 				C9A313F812F097990005ED6C /* Pub.m */,
 				C976847712F22A2900D4E9F3 /* CodeValue.h */,
 				C976847812F22A2900D4E9F3 /* CodeValue.m */,
+				C96A85F512F7516F0021B30B /* FeelingLucky.h */,
+				C96A85F612F7516F0021B30B /* FeelingLucky.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -389,6 +436,10 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C9CEFD2512FB1BF80010E6FF /* internet.png */,
+				C9EDF27412F89F8E00E9069A /* close.png */,
+				C96A86AC12F76AE70021B30B /* bottle_cap_back.png */,
+				C96A86A612F767E40021B30B /* bottle_cap.png */,
 				C986D00C12F479E000865F6D /* back.png */,
 				C986CB5612F3FDB900865F6D /* beer_01@2x.png */,
 				C986CB5712F3FDB900865F6D /* beer_02@2x.png */,
@@ -619,6 +670,13 @@
 				C986D00D12F479E100865F6D /* back.png in Resources */,
 				C9BC0B9712F5A791002DB792 /* pub_kauno_alus.png in Resources */,
 				C9BC0C4A12F5C344002DB792 /* pub_memelis.png in Resources */,
+				C96A86A712F767E40021B30B /* bottle_cap.png in Resources */,
+				C96A86AD12F76AE70021B30B /* bottle_cap_back.png in Resources */,
+				C9EDF27512F89F8E00E9069A /* close.png in Resources */,
+				C9E8E25612F9FAD400E927C1 /* beer-radar-db.sqlite in Resources */,
+				C9CEFD2612FB1BF80010E6FF /* internet.png in Resources */,
+				C9AEAB2012FDD72200EB81B1 /* Default@2x.png in Resources */,
+				C9AEAB2612FDD8AF00EB81B1 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +694,6 @@
 				C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */,
 				C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */,
 				C953E80C12EF5B7B001BD656 /* PubAnnotation.m in Sources */,
-				C953E81312EF5D71001BD656 /* PubAnnotationView.m in Sources */,
 				C953E93A12EF718D001BD656 /* Brand.m in Sources */,
 				C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */,
 				C9A313F912F097990005ED6C /* Pub.m in Sources */,
@@ -645,6 +702,11 @@
 				C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */,
 				C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */,
 				C986D03212F481A100865F6D /* LuckyController.m in Sources */,
+				C96A85F712F7516F0021B30B /* FeelingLucky.m in Sources */,
+				C916C30D12FC77C100AF396A /* BeerRadarSqlite.java in Sources */,
+				C916C32D12FC7B9300AF396A /* FMResultSet.m in Sources */,
+				C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */,
+				C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,13 +744,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.2;
+				SYMROOT = /Users/laurynasr/Documents/xCodeProjects/AlausRadaras/build;
 			};
 			name = Debug;
 		};
@@ -696,13 +760,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};

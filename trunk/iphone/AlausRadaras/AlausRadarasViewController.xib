@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="83"/>
 			<integer value="50"/>
+			<integer value="83"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -333,14 +333,12 @@
 						<int key="IBUINumberOfLines">5</int>
 						<int key="IBUITextAlignment">1</int>
 					</object>
-					<object class="IBUIButton" id="827760606">
+					<object class="IBUIButton" id="871264669">
 						<reference key="NSNextResponder" ref="81143068"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{41, 171}, {62, 57}}</string>
+						<string key="NSFrame">{{284, 11}, {27, 27}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
 						<bool key="IBUIOpaque">NO</bool>
-						<float key="IBUIAlpha">0.92000001668930054</float>
-						<int key="IBUIContentMode">1</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -353,8 +351,27 @@
 						<reference key="IBUINormalTitleShadowColor" ref="1002924018"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">bottle_cap_back.png</string>
+							<string key="NSResourceName">close.png</string>
 						</object>
+					</object>
+					<object class="IBUIButton" id="170434885">
+						<reference key="NSNextResponder" ref="81143068"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{6, 11}, {72, 37}}</string>
+						<reference key="NSSuperview" ref="81143068"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="901795005"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">reset</string>
+						<reference key="IBUIHighlightedTitleColor" ref="408591078"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="1002924018"/>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
@@ -505,19 +522,6 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
-					<object class="IBUIImageView" id="969045249">
-						<reference key="NSNextResponder" ref="857259892"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{105, 97}, {105, 78}}</string>
-						<reference key="NSSuperview" ref="857259892"/>
-						<int key="IBUIContentMode">1</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">bottle_cap.png</string>
-						</object>
-					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
@@ -649,14 +653,6 @@
 					<int key="connectionID">100</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">gotoPreviousView</string>
-						<reference key="source" ref="397567913"/>
-						<reference key="destination" ref="301449804"/>
-					</object>
-					<int key="connectionID">104</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">brandImage</string>
 						<reference key="source" ref="301449804"/>
@@ -682,21 +678,38 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">gotoPreviousView</string>
+						<reference key="source" ref="871264669"/>
+						<reference key="destination" ref="120889754"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">122</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">gotoPreviousView</string>
+						<reference key="source" ref="397567913"/>
+						<reference key="destination" ref="301449804"/>
+					</object>
+					<int key="connectionID">123</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">resetCount</string>
+						<reference key="source" ref="170434885"/>
+						<reference key="destination" ref="120889754"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">125</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">showPubDetailView</string>
 						<reference key="source" ref="606650879"/>
 						<reference key="destination" ref="301449804"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">113</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">gotoPreviousView</string>
-						<reference key="source" ref="827760606"/>
-						<reference key="destination" ref="120889754"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">117</int>
+					<int key="connectionID">128</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -790,7 +803,8 @@
 							<reference ref="925215957"/>
 							<reference ref="483956934"/>
 							<reference ref="182425877"/>
-							<reference ref="827760606"/>
+							<reference ref="871264669"/>
+							<reference ref="170434885"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -831,7 +845,6 @@
 							<reference ref="606650879"/>
 							<reference ref="542881780"/>
 							<reference ref="811972015"/>
-							<reference ref="969045249"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -889,13 +902,13 @@
 						<reference key="parent" ref="857259892"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">115</int>
-						<reference key="object" ref="969045249"/>
-						<reference key="parent" ref="857259892"/>
+						<int key="objectID">118</int>
+						<reference key="object" ref="871264669"/>
+						<reference key="parent" ref="81143068"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">116</int>
-						<reference key="object" ref="827760606"/>
+						<int key="objectID">124</int>
+						<reference key="object" ref="170434885"/>
 						<reference key="parent" ref="81143068"/>
 					</object>
 				</object>
@@ -915,10 +928,9 @@
 					<string>11.IBViewBoundsToFrameTransform</string>
 					<string>112.IBPluginDependency</string>
 					<string>112.IBViewBoundsToFrameTransform</string>
-					<string>115.IBPluginDependency</string>
-					<string>115.IBViewBoundsToFrameTransform</string>
-					<string>116.IBPluginDependency</string>
-					<string>116.IBViewBoundsToFrameTransform</string>
+					<string>118.IBPluginDependency</string>
+					<string>118.IBViewBoundsToFrameTransform</string>
+					<string>124.IBPluginDependency</string>
 					<string>13.IBPluginDependency</string>
 					<string>13.IBViewBoundsToFrameTransform</string>
 					<string>14.IBPluginDependency</string>
@@ -987,12 +999,9 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAwwAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABAwAAAwkwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCLAAAw2EAAA</bytes>
-					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABCAAAAw68AAA</bytes>
@@ -1087,7 +1096,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">117</int>
+			<int key="maxID">128</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1605,18 +1614,16 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>batonas.png</string>
 				<string>bokalas_vol_3.png</string>
-				<string>bottle_cap.png</string>
-				<string>bottle_cap_back.png</string>
 				<string>burbuliukas.png</string>
+				<string>close.png</string>
 				<string>lucky.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{264, 78}</string>
 				<string>{372, 300}</string>
-				<string>{261, 228}</string>
-				<string>{261, 228}</string>
 				<string>{320, 300}</string>
+				<string>{512, 512}</string>
 				<string>{305, 105}</string>
 			</object>
 		</object>

@@ -52,33 +52,15 @@
 	 pubCallLabel.text = currentPub.phone;
 	 pubLogoImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"pub_%@.png", currentPub.pubId]];
 	 
-	 /* TODO: REDO */
-	 NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	 NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	 NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	 
-	 brandList = [[NSMutableArray alloc]initWithCapacity:[lines count]];
-	 for (NSString *line in lines) {
-		 if (![line isEqualToString:@""]) {
-			 
-			 NSArray *values = [line componentsSeparatedByString:@"	"];
-			 
-			 if ([[values objectAtIndex:2] rangeOfString: currentPub.pubId].location != NSNotFound){
-				 Brand *brand = [[Brand alloc]init];
-				 brand.icon = [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]];
-				 brand.label =	[values objectAtIndex:1];
-				 
-				 [brandList addObject:brand];
-				 [brand release];
-			 }
-		 }
-	 }
+	 AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	 brandList = [appDelegate getBrandsByPubId:currentPub.pubId];
 	 
 	 /* Disable if I view didn't get users coordinates */
 	 if (userCoordinates == nil) {
 		 directionsButton.enabled = NO;
 	 }
-	 
+	 NSLog(@"PubDetailViewController viewDidLoad");
+
  }
 
 #pragma mark -

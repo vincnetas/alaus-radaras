@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="40"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -220,7 +220,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="180775549"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">tag_01.png</string>
+							<string key="NSResourceName">internet.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="71994876">
@@ -1423,16 +1423,16 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>call.png</string>
 				<string>directions.png</string>
+				<string>internet.png</string>
 				<string>lucky.png</string>
 				<string>map_01.png</string>
-				<string>tag_01.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{64, 64}</string>
 				<string>{64, 64}</string>
-				<string>{305, 105}</string>
 				<string>{64, 64}</string>
+				<string>{305, 105}</string>
 				<string>{64, 64}</string>
 			</object>
 		</object>

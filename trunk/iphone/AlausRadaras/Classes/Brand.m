@@ -11,6 +11,6 @@
 
 @implementation Brand
 
-@synthesize icon, label, pubsString;
+@synthesize brandId, icon, label, pubsString;
 
 @end 

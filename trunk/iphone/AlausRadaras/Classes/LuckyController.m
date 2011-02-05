@@ -7,21 +7,31 @@
 //
 
 #import "LuckyController.h"
-#import "TextDatabaseService.h"
 #import "PubDetailViewController.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation LuckyController
 
 @synthesize feelingLucky;
 @synthesize pubLabel, brandLabel, brandImage;
 
+
+- (void)dealloc {
+	[feelingLucky release];
+	[pubLabel release];
+	[brandLabel release];
+	[brandImage release];
+    [super dealloc];
+}
+
 - (void)viewDidLoad {
-	NSLog(@"LuckyController viewDidLoad");
 	[super viewDidLoad];
 	
 	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	self.view.backgroundColor = background;
 	[background release];
+	
+	NSLog(@"LuckyController viewDidLoad");
 }
 
 - (IBAction) gotoPreviousView {
@@ -30,22 +40,22 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	NSLog(@"viewDidAppear");
-	if (feelingLucky == nil) {
-		TextDatabaseService *service = [[TextDatabaseService alloc]init];
-		feelingLucky = [service feelingLucky];
 
+	if (feelingLucky == nil){	
+		AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];		
+		feelingLucky = [appDelegate feelingLucky];
+		
+		pubId = [feelingLucky.pub.pubId copy];
 		pubLabel.text = feelingLucky.pub.pubTitle;
 		brandLabel.text = feelingLucky.brand.label;
 		brandImage.image = [UIImage imageNamed:feelingLucky.brand.icon];
 		if (brandImage.image == nil) {
 			brandImage.image = [UIImage imageNamed:@"brand_default.png"];		
 		}
-		[service release];
-	}
+	}	
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void) viewDidDisappear:(BOOL)animated {
 	NSLog(@"viewDidDisappear");
 }
 
@@ -54,13 +64,18 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 	
-	pubDetailView.currentPub = feelingLucky.pub;	
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+
+	pubDetailView.currentPub =  [appDelegate getPubById:pubId];//feelingLucky.pub;
+	
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:pubDetailView animated:YES];
-	[pubDetailView release];
+	//[pubDetailView release];
 }
 
 - (void)didReceiveMemoryWarning {
+	NSLog(@"LuckyController didReceiveMemoryWarning");
+	
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -74,9 +89,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

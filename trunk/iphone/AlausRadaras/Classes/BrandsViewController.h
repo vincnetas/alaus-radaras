@@ -10,7 +10,6 @@
 #import "Brand.h"
 #import "MapViewController.h"
 #import "BrandsTableCell.h"
-#import "TextDatabaseService.h"
 #import "BrandsDetailViewController.h"
 
 @class BrandsTableCell;

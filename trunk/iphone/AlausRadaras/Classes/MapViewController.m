@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "PubAnnotationView.h"
 #import "Pub.h"
-#import "TextDatabaseService.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation MapViewController
 
@@ -60,6 +60,21 @@
 }
 
 
+- (void)loadPubAnnotations {
+	for (Pub *pub in pubsOnMap) {
+		CLLocationCoordinate2D coord;
+		coord.latitude = pub.latitude;
+		coord.longitude = pub.longitude;
+		
+		PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
+		[pubAnnotation setPubId:pub.pubId];
+		[pubAnnotation setTitle:pub.pubTitle];
+		[pubAnnotation setSubtitle:pub.pubAddress];
+		
+		[map addAnnotation:pubAnnotation];
+	}
+}
+
 
 - (void)dynamicLoadPubAnnotationsForRegion:(MKMapView *)mapView {
 //NSLog(@"%f", sqrt(17) ); 
@@ -82,8 +97,8 @@
 	
 	for (Pub *pub in pubsOnMap) {
 		CLLocationCoordinate2D coord;
-		coord.latitude = [pub.latitude doubleValue];
-		coord.longitude = [pub.longitude doubleValue];
+		coord.latitude = pub.latitude;
+		coord.longitude = pub.longitude;
 		
 		double pubFromCenter = sqrt((coord.latitude-centerLat)*(coord.latitude-centerLat) + 
 									(coord.longitude-centerLong)*(coord.longitude-centerLong));
@@ -110,23 +125,6 @@
 
 }
 
-- (void)loadPubAnnotations {
-	for (Pub *pub in pubsOnMap) {
-	//	if (![line isEqualToString:@""]) {
-			CLLocationCoordinate2D coord;
-			coord.latitude = [pub.latitude doubleValue];
-			coord.longitude = [pub.longitude doubleValue];
-			
-			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
-			[pubAnnotation setPubId:pub.pubId];
-			[pubAnnotation setTitle:pub.pubTitle];
-			[pubAnnotation setSubtitle:pub.pubAddress];
-			
-			[map addAnnotation:pubAnnotation];
-			//[pubAnnotation release]; /* realising cause navigation problems */
-	//	}
-	}
-}
  
 
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
@@ -178,9 +176,8 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	pubDetailView.currentPub = [service getPubWithId:pubAnnotation.pubId];
-	[service release];
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	pubDetailView.currentPub = [appDelegate getPubById:pubAnnotation.pubId];
 	
     CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
 	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
@@ -212,8 +209,6 @@
 	NSLog(@"mapViewWillStartLoadingMap");	
 }
 */
-
-
 
 
 -(IBAction) cityIndexChanged {

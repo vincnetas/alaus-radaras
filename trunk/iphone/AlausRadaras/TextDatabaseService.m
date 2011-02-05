@@ -35,8 +35,8 @@ int pubLongitudeIndex = 7;
 				[pub setPubId:[values objectAtIndex:0]];
 				[pub setPubTitle:[values objectAtIndex:1]];
 				[pub setPubAddress:[values objectAtIndex:2]];
-				pub.latitude = [values objectAtIndex:pubLatitudeIndex];
-				pub.longitude = [values objectAtIndex:pubLongitudeIndex];
+				pub.latitude = [[values objectAtIndex:pubLatitudeIndex]doubleValue];
+				pub.longitude = [[values objectAtIndex:pubLongitudeIndex]doubleValue];
 
 				[pubs addObject:pub];
 				[pub release]; // realising cause navigation problems 
@@ -139,8 +139,8 @@ int pubLongitudeIndex = 7;
 			[pub setPubId:[values objectAtIndex:0]];
 			[pub setPubTitle:[values objectAtIndex:1]];
 			[pub setPubAddress:[values objectAtIndex:2]];
-			[pub setLatitude:[values objectAtIndex:pubLatitudeIndex]];
-			[pub setLongitude:[values objectAtIndex:pubLongitudeIndex]];
+			[pub setLatitude:[[values objectAtIndex:pubLatitudeIndex]doubleValue]];
+			[pub setLongitude:[[values objectAtIndex:pubLongitudeIndex]doubleValue]];
 			
 			[pubs addObject:pub];
 			[pub release]; 
@@ -167,8 +167,8 @@ int pubLongitudeIndex = 7;
 				[pub setPubAddress:[values objectAtIndex:2]];
 				[pub setPhone:[values objectAtIndex:pubPhoneIndex]];
 				[pub setWebpage:[values objectAtIndex:pubWebIndex]];
-				[pub setLatitude:[values objectAtIndex:pubLatitudeIndex]];
-				[pub setLongitude:[values objectAtIndex:pubLongitudeIndex]];
+				[pub setLatitude:[[values objectAtIndex:pubLatitudeIndex]doubleValue]];
+				[pub setLongitude:[[values objectAtIndex:pubLongitudeIndex]doubleValue]];
 				
 				return pub;
 			}

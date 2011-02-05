@@ -7,7 +7,7 @@
 //
 
 #import "BrandsViewController.h"
-#import "TextDatabaseService.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation BrandsViewController
 
@@ -45,14 +45,12 @@
 	brandsTable.separatorColor = [UIColor grayColor];
 
 	 category = 0;
-	 
-	 TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	 brandList = [service getBrands];
-	 tagsList = [service getTags];
-	 countryList = [service getCountries]; 
-	 
-	 [service release];
-	 
+	 	 
+	 AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	 brandList = [appDelegate getBrands];
+	 tagsList = [appDelegate getTags];
+	 countryList = [appDelegate getCountries];
+	 	 
 	 /* Search initialization */	 
 	 searchBar = [[UISearchBar alloc] init];
 	 searchBar.placeholder = @"Type a search term";
@@ -152,21 +150,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+
 	switch (category) {
 		case 0:{
-			NSMutableArray *pubs = [service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];		 		 
+			NSMutableArray *pubs = [appDelegate getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];
 			[self showMapWithPubs:pubs title:[[brandList objectAtIndex:indexPath.row]label]];
 			[pubs release];	
 			break;
 		} case 1: {	
-			NSMutableArray *brandsByCountry = [service getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByCountry = [appDelegate getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByCountry title:[[countryList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByCountry release];
 			break;
 		} case 2: {
-			NSMutableArray *brandsByTag = [service getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByTag = [appDelegate getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByTag title:[[tagsList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByTag release];
 			break;
@@ -174,9 +172,7 @@
 		default:
 			break;
 	}
-
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
-	[service release];
 }
 
 - (void) showMapWithPubs:(NSMutableArray *)pubs title:(NSString *) titleText {

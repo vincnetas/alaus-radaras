@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextDatabaseService.h"
 
 @interface BeerCounterController : UIViewController {
 	UILabel *beerCountLabel;
 	UILabel *talkLabel;
 	IBOutlet UIImageView *bubbleImage;
 	
-	int beerCount;
+	int currentBeerCount;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *beerCountLabel;

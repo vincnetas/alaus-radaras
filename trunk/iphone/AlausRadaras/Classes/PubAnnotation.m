@@ -8,7 +8,6 @@
 
 #import "PubAnnotation.h"
 
-
 @implementation PubAnnotation
 
 @synthesize coordinate;
