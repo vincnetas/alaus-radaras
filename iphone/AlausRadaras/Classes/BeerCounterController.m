@@ -7,12 +7,11 @@
 //
 
 #import "BeerCounterController.h"
-
+#import "AlausRadarasAppDelegate.h"
 
 @implementation BeerCounterController
 
 @synthesize talkLabel, beerCountLabel;
-
 
 - (void)dealloc {
 	[beerCountLabel release];
@@ -27,30 +26,54 @@
 	self.view.backgroundColor = background;
 	[background release];
 	
-	bubbleImage.hidden = YES;
-	talkLabel.hidden = YES;
+	currentBeerCount = 0;
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	if (standardUserDefaults) {
+		currentBeerCount = [standardUserDefaults integerForKey:@"CurrentBeers"];
+	}
 	
-	beerCount = 0;
+	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	talkLabel.text = [appDelegate getQuote:currentBeerCount];
+
+	NSLog(@"BeerCounterController viewDidLoad");
 }
 
 - (IBAction) resetCount {
-	bubbleImage.hidden = YES;
-	talkLabel.hidden = YES;
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	if (standardUserDefaults) {
+		int beerCount = 0;
+		beerCount = [standardUserDefaults integerForKey:@"TotalBeers"];
+		beerCount += currentBeerCount;
+		[standardUserDefaults setInteger:beerCount forKey:@"TotalBeers"];
+		[standardUserDefaults setInteger:0 forKey:@"CurrentBeers"];
+		[standardUserDefaults synchronize];
+	}
+	currentBeerCount = 0;
+	
+	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	talkLabel.text = [appDelegate getQuote:currentBeerCount];
 }
 
 - (IBAction) drinkABeer {	
-	bubbleImage.hidden = NO;
-	talkLabel.hidden = NO;
-	beerCount++;
+	currentBeerCount++;
 	
-	beerCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];
+	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
 
-	if (beerCount >= 11) {
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	if (standardUserDefaults) {
+		[standardUserDefaults setInteger:currentBeerCount forKey:@"CurrentBeers"];
+		[standardUserDefaults synchronize];
+	}
+	
+	if (currentBeerCount >= 11) {
 		talkLabel.text = @"Zzz.. zZz..";
 		return;
 	};
-	
-	if (beerCount == 5) {
+
+
+	if (currentBeerCount == 5) {
 		UIAlertView* alertView = 
 		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
 								   message:nil 
@@ -61,9 +84,9 @@
 		[alertView release];	
 	}
 	
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	talkLabel.text = [service getQuote:beerCount];
-	[service release];
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	NSString* quote = [appDelegate getQuote:currentBeerCount];
+	talkLabel.text = quote;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

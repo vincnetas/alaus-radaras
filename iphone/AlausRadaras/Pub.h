@@ -13,18 +13,23 @@
 	NSString *pubId;
 	NSString *pubTitle; 
 	NSString *pubAddress;
+	NSString *city;
 	NSString *phone;
 	NSString *webpage;
-	NSString *latitude;
-	NSString *longitude;
+	double latitude;
+	double longitude;
 }
 
 @property (nonatomic, retain) NSString *pubId;
 @property (nonatomic, retain) NSString *pubTitle;
 @property (nonatomic, retain) NSString *pubAddress;
+@property (nonatomic, retain) NSString *city;
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *webpage;
-@property (nonatomic, retain) NSString *latitude;
-@property (nonatomic, retain) NSString *longitude;
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
+
+-(id) initWithId:(NSString *)pubId Title:(NSString *)pubTitle Address:(NSString *) pubAddress City:(NSString *) pubCity
+		   Phone:(NSString *)phone Webpage:(NSString *) webpage Lat:(double) latitude Long:(double) longitude;
 
 @end

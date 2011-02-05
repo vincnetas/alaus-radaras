@@ -8,7 +8,7 @@
 
 #import "AlausRadarasViewController.h"
 #import "Pub.h"
-#import "TextDatabaseService.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation AlausRadarasViewController
 
@@ -19,6 +19,27 @@
 	[beerCounterController release];
 	[pintCountLabel release];
     [super dealloc];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+	/* Application setup */
+    [super viewDidLoad];
+	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
+	self.view.backgroundColor = background;
+	[background release];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	/* Get Total Beers from user defaults */
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	beerCount = 0;
+	if (standardUserDefaults) {
+		beerCount = [standardUserDefaults integerForKey:@"TotalBeers"];
+		int currentBeerCount = [standardUserDefaults integerForKey:@"CurrentBeers"];
+		beerCount += currentBeerCount;
+	}
+	pintCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];;
 }
 
 -(IBAction) clickPint:(id) sender {
@@ -39,12 +60,11 @@
 -(IBAction) clickPlaces:(id) sender {
 	MapViewController *vietosView = 
 			[[MapViewController alloc] initWithNibName:nil bundle:nil];
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
-	[vietosView setPubsOnMap:[service getPubs]];
+
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[vietosView setPubsOnMap:[[appDelegate getPubs]autorelease]];
 	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:vietosView animated:YES];
-	
-	[service release];
 	[vietosView release];
 }
 
@@ -54,20 +74,6 @@
 }
 
 
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	/* Application setup */
-    [super viewDidLoad];
-	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
-	self.view.backgroundColor = background;
-	[background release];
-
-	/* Custom initialization */
-	pintCount = 0;
-
-}
 
 
 - (void)didReceiveMemoryWarning {

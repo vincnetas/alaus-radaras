@@ -8,6 +8,7 @@
 
 #import "BrandsDetailViewController.h"
 #import "Brand.h"
+#import "AlausRadarasAppDelegate.h"
 
 @implementation BrandsDetailViewController
 
@@ -50,14 +51,13 @@
 
 - (IBAction) showOnMap:(id)sender {
 	NSLog(@"showOnMap");
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
 	NSMutableArray *pubs = [[NSMutableArray alloc]init];
 
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 	for(Brand *brand in brandList) {
-		[pubs addObjectsFromArray:[service findPubsHavingBrand:brand.pubsString]];
+		[pubs addObjectsFromArray:[appDelegate getPubsByBrandId:brand.brandId]];
 	}
 	[self showMapWithPubs:pubs WithInfo:titleLabel.text];
-	[service release];
 }
 
 
@@ -95,16 +95,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	NSLog(@"didSelectRowAtIndexPath: %@",[[brandList objectAtIndex:indexPath.row]pubsString]);
+	NSLog(@"didSelectRowAtIndexPath: %@",[[brandList objectAtIndex:indexPath.row]brandId]);
 	
-	TextDatabaseService *service = [[TextDatabaseService alloc]init];
+	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	NSMutableArray *pubs = [service findPubsHavingBrand:[[brandList objectAtIndex:indexPath.row]pubsString]];		 		 
+	NSMutableArray *pubs = [appDelegate getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];		 		 
 	[self showMapWithPubs:pubs WithInfo:[[brandList objectAtIndex:indexPath.row]label]];
 	[pubs release];	
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
-	[service release];
 }
 
 

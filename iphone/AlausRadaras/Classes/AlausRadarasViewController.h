@@ -15,7 +15,7 @@
 
 @interface AlausRadarasViewController : UIViewController {
 	UILabel *pintCountLabel;
-	NSInteger pintCount;
+	int beerCount;
 	
 	IBOutlet BeerCounterController *beerCounterController;
 	IBOutlet LuckyController *luckyController;

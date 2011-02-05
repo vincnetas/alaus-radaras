@@ -12,18 +12,18 @@
 
 @interface LuckyController : UIViewController {
 	FeelingLucky *feelingLucky;
-	
 	UILabel *pubLabel;
 	UILabel *brandLabel;
 	UIImageView *brandImage;
+	
+	NSString *pubId;
 }
-
 @property (nonatomic, retain) FeelingLucky *feelingLucky;
 @property (nonatomic, retain) IBOutlet UILabel *pubLabel;
 @property (nonatomic, retain) IBOutlet UILabel *brandLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *brandImage;
 
 - (IBAction) gotoPreviousView;
-- (IBAction) showPubDetailView;
+- (IBAction) showPubDetailView ;
 
 @end

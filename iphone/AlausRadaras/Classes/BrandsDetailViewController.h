@@ -10,8 +10,6 @@
 #import "Brand.h"
 #import "MapViewController.h"
 #import "BrandsTableCell.h"
-#import "TextDatabaseService.h"
-
 
 @interface BrandsDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	UILabel *titleLabel;
