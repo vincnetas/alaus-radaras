@@ -2,16 +2,16 @@
 {
 	1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 793}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 845}}";
 			sepNavSelRange = "{178, 175}";
-			sepNavVisRange = "{33, 1207}";
+			sepNavVisRange = "{3, 742}";
 		};
 	};
 	1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 1560}}";
-			sepNavSelRange = "{2672, 0}";
-			sepNavVisRange = "{1393, 1775}";
+			sepNavIntBoundsRect = "{{0, 0}, {810, 1755}}";
+			sepNavSelRange = "{1406, 0}";
+			sepNavVisRange = "{468, 1229}";
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
@@ -23,16 +23,16 @@
 	};
 	28D7ACF60DDB3853001CB0EB /* AlausRadarasViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 644}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 442}}";
 			sepNavSelRange = "{377, 14}";
-			sepNavVisRange = "{0, 730}";
+			sepNavVisRange = "{0, 729}";
 		};
 	};
 	28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {831, 1521}}";
+			sepNavIntBoundsRect = "{{0, 0}, {831, 1573}}";
 			sepNavSelRange = "{779, 457}";
-			sepNavVisRange = "{240, 1742}";
+			sepNavVisRange = "{441, 1204}";
 			sepNavWindowFrame = "{{198, 55}, {1082, 774}}";
 		};
 	};
@@ -48,8 +48,8 @@
 		breakpoints = (
 			C9A313BA12F093460005ED6C /* MapViewController.m:185 */,
 			C9A3141F12F09BEE0005ED6C /* MapViewController.m:179 */,
-			C916C3EB12FC896600AF396A /* AlausRadarasAppDelegate.m:64 */,
-			C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:74 */,
+			C916C3EB12FC896600AF396A /* AlausRadarasAppDelegate.m:66 */,
+			C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:76 */,
 			C998DCFE12FDB7FC00E74B91 /* LuckyController.m:63 */,
 			C998DD1712FDBA9700E74B91 /* LuckyController.m:47 */,
 			C98A417212FEACA2001E04A2 /* PubDetailViewController.m:95 */,
@@ -306,6 +306,98 @@
 			C9071B2512FEE21300BDA053 /* PBXTextBookmark */ = C9071B2512FEE21300BDA053 /* PBXTextBookmark */;
 			C9071B2612FEE21300BDA053 /* PBXTextBookmark */ = C9071B2612FEE21300BDA053 /* PBXTextBookmark */;
 			C9071B3212FEE3E200BDA053 /* PBXTextBookmark */ = C9071B3212FEE3E200BDA053 /* PBXTextBookmark */;
+			C9071B3712FEE62C00BDA053 /* PBXBookmark */ = C9071B3712FEE62C00BDA053 /* PBXBookmark */;
+			C9071B3C12FEE64C00BDA053 /* PBXTextBookmark */ = C9071B3C12FEE64C00BDA053 /* PBXTextBookmark */;
+			C9071B3D12FEE64C00BDA053 /* PlistBookmark */ = C9071B3D12FEE64C00BDA053 /* PlistBookmark */;
+			C9071B3E12FEE64C00BDA053 /* PlistBookmark */ = C9071B3E12FEE64C00BDA053 /* PlistBookmark */;
+			C9071B4112FEE64C00BDA053 /* PlistBookmark */ = C9071B4112FEE64C00BDA053 /* PlistBookmark */;
+			C9071B4612FEE66900BDA053 /* PlistBookmark */ = C9071B4612FEE66900BDA053 /* PlistBookmark */;
+			C9071B4712FEE66900BDA053 /* PlistBookmark */ = C9071B4712FEE66900BDA053 /* PlistBookmark */;
+			C9071B6212FF058B00BDA053 /* PlistBookmark */ = C9071B6212FF058B00BDA053 /* PlistBookmark */;
+			C9071B6512FF141700BDA053 /* PlistBookmark */ = C9071B6512FF141700BDA053 /* PlistBookmark */;
+			C9071B6612FF141700BDA053 /* PBXBookmark */ = C9071B6612FF141700BDA053 /* PBXBookmark */;
+			C9071B6712FF141700BDA053 /* PBXBookmark */ = C9071B6712FF141700BDA053 /* PBXBookmark */;
+			C9071B6812FF141700BDA053 /* PBXBookmark */ = C9071B6812FF141700BDA053 /* PBXBookmark */;
+			C9071B6912FF141700BDA053 /* PBXBookmark */ = C9071B6912FF141700BDA053 /* PBXBookmark */;
+			C9071B6A12FF141700BDA053 /* PBXBookmark */ = C9071B6A12FF141700BDA053 /* PBXBookmark */;
+			C9071B6B12FF141700BDA053 /* PBXBookmark */ = C9071B6B12FF141700BDA053 /* PBXBookmark */;
+			C9071B6C12FF141700BDA053 /* PBXBookmark */ = C9071B6C12FF141700BDA053 /* PBXBookmark */;
+			C9071B6D12FF141700BDA053 /* PBXBookmark */ = C9071B6D12FF141700BDA053 /* PBXBookmark */;
+			C9071B6E12FF141700BDA053 /* PBXBookmark */ = C9071B6E12FF141700BDA053 /* PBXBookmark */;
+			C9071B6F12FF141700BDA053 /* PBXTextBookmark */ = C9071B6F12FF141700BDA053 /* PBXTextBookmark */;
+			C9071B7012FF141700BDA053 /* PBXTextBookmark */ = C9071B7012FF141700BDA053 /* PBXTextBookmark */;
+			C9071B7112FF141700BDA053 /* PBXTextBookmark */ = C9071B7112FF141700BDA053 /* PBXTextBookmark */;
+			C9071B7212FF141700BDA053 /* PBXTextBookmark */ = C9071B7212FF141700BDA053 /* PBXTextBookmark */;
+			C9071B7712FF148A00BDA053 /* PBXTextBookmark */ = C9071B7712FF148A00BDA053 /* PBXTextBookmark */;
+			C9071B7812FF148A00BDA053 /* PBXTextBookmark */ = C9071B7812FF148A00BDA053 /* PBXTextBookmark */;
+			C9071B7912FF148A00BDA053 /* PBXTextBookmark */ = C9071B7912FF148A00BDA053 /* PBXTextBookmark */;
+			C9071B7A12FF148A00BDA053 /* PBXTextBookmark */ = C9071B7A12FF148A00BDA053 /* PBXTextBookmark */;
+			C9071B7D12FF14C600BDA053 /* PBXTextBookmark */ = C9071B7D12FF14C600BDA053 /* PBXTextBookmark */;
+			C9071B7E12FF14C600BDA053 /* PBXTextBookmark */ = C9071B7E12FF14C600BDA053 /* PBXTextBookmark */;
+			C9071B7F12FF14C600BDA053 /* PBXTextBookmark */ = C9071B7F12FF14C600BDA053 /* PBXTextBookmark */;
+			C9071B8212FF151400BDA053 /* PBXTextBookmark */ = C9071B8212FF151400BDA053 /* PBXTextBookmark */;
+			C9071B8312FF151400BDA053 /* PBXTextBookmark */ = C9071B8312FF151400BDA053 /* PBXTextBookmark */;
+			C9071B8412FF151400BDA053 /* PBXTextBookmark */ = C9071B8412FF151400BDA053 /* PBXTextBookmark */;
+			C9071B8712FF155300BDA053 /* PBXTextBookmark */ = C9071B8712FF155300BDA053 /* PBXTextBookmark */;
+			C9071B8812FF155300BDA053 /* PBXTextBookmark */ = C9071B8812FF155300BDA053 /* PBXTextBookmark */;
+			C9071B8912FF155300BDA053 /* PBXTextBookmark */ = C9071B8912FF155300BDA053 /* PBXTextBookmark */;
+			C9071B8C12FF159B00BDA053 /* PBXTextBookmark */ = C9071B8C12FF159B00BDA053 /* PBXTextBookmark */;
+			C9071B8D12FF159B00BDA053 /* PBXTextBookmark */ = C9071B8D12FF159B00BDA053 /* PBXTextBookmark */;
+			C9071B8E12FF159B00BDA053 /* PBXTextBookmark */ = C9071B8E12FF159B00BDA053 /* PBXTextBookmark */;
+			C9071B8F12FF159B00BDA053 /* PBXTextBookmark */ = C9071B8F12FF159B00BDA053 /* PBXTextBookmark */;
+			C9071B9212FF15CA00BDA053 /* PBXTextBookmark */ = C9071B9212FF15CA00BDA053 /* PBXTextBookmark */;
+			C9071B9312FF15CA00BDA053 /* PBXTextBookmark */ = C9071B9312FF15CA00BDA053 /* PBXTextBookmark */;
+			C9071B9412FF15CA00BDA053 /* PBXTextBookmark */ = C9071B9412FF15CA00BDA053 /* PBXTextBookmark */;
+			C9071B9712FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9712FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9812FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9812FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9912FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9912FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9A12FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9A12FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9B12FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9B12FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9C12FF15FF00BDA053 /* PBXTextBookmark */ = C9071B9C12FF15FF00BDA053 /* PBXTextBookmark */;
+			C9071B9F12FF167F00BDA053 /* PBXTextBookmark */ = C9071B9F12FF167F00BDA053 /* PBXTextBookmark */;
+			C9071BA012FF16B600BDA053 /* PBXTextBookmark */ = C9071BA012FF16B600BDA053 /* PBXTextBookmark */;
+			C9071BA312FF16C600BDA053 /* PBXTextBookmark */ = C9071BA312FF16C600BDA053 /* PBXTextBookmark */;
+			C9071BA612FF170400BDA053 /* PBXTextBookmark */ = C9071BA612FF170400BDA053 /* PBXTextBookmark */;
+			C9071BA712FF170400BDA053 /* PBXTextBookmark */ = C9071BA712FF170400BDA053 /* PBXTextBookmark */;
+			C9071BA812FF170400BDA053 /* PBXTextBookmark */ = C9071BA812FF170400BDA053 /* PBXTextBookmark */;
+			C9071BAD12FF176600BDA053 /* PBXTextBookmark */ = C9071BAD12FF176600BDA053 /* PBXTextBookmark */;
+			C9071BAE12FF176600BDA053 /* PBXTextBookmark */ = C9071BAE12FF176600BDA053 /* PBXTextBookmark */;
+			C9071BAF12FF176600BDA053 /* PBXTextBookmark */ = C9071BAF12FF176600BDA053 /* PBXTextBookmark */;
+			C9071BB212FF179200BDA053 /* PBXTextBookmark */ = C9071BB212FF179200BDA053 /* PBXTextBookmark */;
+			C9071BB512FF17CE00BDA053 /* PBXTextBookmark */ = C9071BB512FF17CE00BDA053 /* PBXTextBookmark */;
+			C9071BB812FF180200BDA053 /* PBXTextBookmark */ = C9071BB812FF180200BDA053 /* PBXTextBookmark */;
+			C9071BB912FF180200BDA053 /* PBXTextBookmark */ = C9071BB912FF180200BDA053 /* PBXTextBookmark */;
+			C9071BBA12FF180200BDA053 /* PBXTextBookmark */ = C9071BBA12FF180200BDA053 /* PBXTextBookmark */;
+			C9071BBD12FF182000BDA053 /* PBXTextBookmark */ = C9071BBD12FF182000BDA053 /* PBXTextBookmark */;
+			C9071BBE12FF182000BDA053 /* PBXTextBookmark */ = C9071BBE12FF182000BDA053 /* PBXTextBookmark */;
+			C9071BBF12FF182000BDA053 /* PBXTextBookmark */ = C9071BBF12FF182000BDA053 /* PBXTextBookmark */;
+			C9071BC212FF187000BDA053 /* PBXTextBookmark */ = C9071BC212FF187000BDA053 /* PBXTextBookmark */;
+			C9071BC312FF187000BDA053 /* PBXTextBookmark */ = C9071BC312FF187000BDA053 /* PBXTextBookmark */;
+			C9071BC412FF187000BDA053 /* PBXTextBookmark */ = C9071BC412FF187000BDA053 /* PBXTextBookmark */;
+			C9071BC512FF18D700BDA053 /* PBXTextBookmark */ = C9071BC512FF18D700BDA053 /* PBXTextBookmark */;
+			C9071BC612FF18D700BDA053 /* PBXTextBookmark */ = C9071BC612FF18D700BDA053 /* PBXTextBookmark */;
+			C9071BC712FF18D700BDA053 /* PBXTextBookmark */ = C9071BC712FF18D700BDA053 /* PBXTextBookmark */;
+			C9071BC812FF194900BDA053 /* PBXTextBookmark */ = C9071BC812FF194900BDA053 /* PBXTextBookmark */;
+			C9071BC912FF194900BDA053 /* PBXTextBookmark */ = C9071BC912FF194900BDA053 /* PBXTextBookmark */;
+			C9071BCA12FF194900BDA053 /* PBXTextBookmark */ = C9071BCA12FF194900BDA053 /* PBXTextBookmark */;
+			C9071BD112FF1C0B00BDA053 /* PlistBookmark */ = C9071BD112FF1C0B00BDA053 /* PlistBookmark */;
+			C9071BD212FF1C0B00BDA053 /* PBXTextBookmark */ = C9071BD212FF1C0B00BDA053 /* PBXTextBookmark */;
+			C9071BD312FF1C0B00BDA053 /* PBXTextBookmark */ = C9071BD312FF1C0B00BDA053 /* PBXTextBookmark */;
+			C9071BD412FF1C0B00BDA053 /* PBXTextBookmark */ = C9071BD412FF1C0B00BDA053 /* PBXTextBookmark */;
+			C9071BD712FF1CB200BDA053 /* PBXTextBookmark */ = C9071BD712FF1CB200BDA053 /* PBXTextBookmark */;
+			C9071BD812FF1CB200BDA053 /* PBXTextBookmark */ = C9071BD812FF1CB200BDA053 /* PBXTextBookmark */;
+			C9071BD912FF1CB200BDA053 /* PBXTextBookmark */ = C9071BD912FF1CB200BDA053 /* PBXTextBookmark */;
+			C9071BDA12FF1CB200BDA053 /* PBXTextBookmark */ = C9071BDA12FF1CB200BDA053 /* PBXTextBookmark */;
+			C9071BDB12FF1CDF00BDA053 /* PBXTextBookmark */ = C9071BDB12FF1CDF00BDA053 /* PBXTextBookmark */;
+			C9071BDC12FF1CDF00BDA053 /* PBXTextBookmark */ = C9071BDC12FF1CDF00BDA053 /* PBXTextBookmark */;
+			C9071BDD12FF1CDF00BDA053 /* PBXTextBookmark */ = C9071BDD12FF1CDF00BDA053 /* PBXTextBookmark */;
+			C9071BE012FF1D8C00BDA053 /* PBXTextBookmark */ = C9071BE012FF1D8C00BDA053 /* PBXTextBookmark */;
+			C9071BE112FF1D8C00BDA053 /* PBXTextBookmark */ = C9071BE112FF1D8C00BDA053 /* PBXTextBookmark */;
+			C9071BE212FF1D8C00BDA053 /* PBXTextBookmark */ = C9071BE212FF1D8C00BDA053 /* PBXTextBookmark */;
+			C9071BE512FF1DCC00BDA053 /* PBXTextBookmark */ = C9071BE512FF1DCC00BDA053 /* PBXTextBookmark */;
+			C9071BE812FF1DDE00BDA053 /* PBXTextBookmark */ = C9071BE812FF1DDE00BDA053 /* PBXTextBookmark */;
+			C9071BE912FF1DDE00BDA053 /* PBXTextBookmark */ = C9071BE912FF1DDE00BDA053 /* PBXTextBookmark */;
+			C9071BEA12FF1DDE00BDA053 /* PBXTextBookmark */ = C9071BEA12FF1DDE00BDA053 /* PBXTextBookmark */;
 			C916C3AA12FC849100AF396A = C916C3AA12FC849100AF396A /* PBXTextBookmark */;
 			C916C43A12FCA1B900AF396A = C916C43A12FCA1B900AF396A /* PBXTextBookmark */;
 			C916C4A012FCA9D700AF396A = C916C4A012FCA9D700AF396A /* PBXTextBookmark */;
@@ -524,6 +616,11 @@
 			sepNavVisRange = "{0, 364}";
 		};
 	};
+	8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{61, 88}, {1082, 867}}";
+		};
+	};
 	C9071A1212FEC3AB00BDA053 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
@@ -539,7 +636,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 92";
 		rLen = 0;
-		rLoc = 3680;
+		rLoc = 8650;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 1626;
@@ -549,7 +646,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 88";
 		rLen = 0;
-		rLoc = 3243;
+		rLoc = 8213;
 		rType = 0;
 		vrLen = 1568;
 		vrLoc = 1626;
@@ -569,7 +666,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 89";
 		rLen = 0;
-		rLoc = 3253;
+		rLoc = 8223;
 		rType = 0;
 		vrLen = 1565;
 		vrLoc = 1626;
@@ -579,7 +676,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 108";
 		rLen = 0;
-		rLoc = 3680;
+		rLoc = 8650;
 		rType = 0;
 		vrLen = 1309;
 		vrLoc = 1626;
@@ -599,7 +696,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 101";
 		rLen = 0;
-		rLoc = 3624;
+		rLoc = 8594;
 		rType = 0;
 		vrLen = 1486;
 		vrLoc = 1626;
@@ -609,7 +706,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 113";
 		rLen = 0;
-		rLoc = 4493;
+		rLoc = 9465;
 		rType = 0;
 		vrLen = 1936;
 		vrLoc = 2325;
@@ -619,7 +716,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 89";
 		rLen = 0;
-		rLoc = 3140;
+		rLoc = 8110;
 		rType = 0;
 		vrLen = 1139;
 		vrLoc = 1987;
@@ -639,7 +736,7 @@
 		fRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */;
 		name = "brands.txt: 16";
 		rLen = 0;
-		rLoc = 950;
+		rLoc = 51;
 		rType = 0;
 		vrLen = 3228;
 		vrLoc = 0;
@@ -678,8 +775,8 @@
 		isa = PBXTextBookmark;
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 88";
-		rLen = 29;
-		rLoc = 2605;
+		rLen = 33;
+		rLoc = 7571;
 		rType = 0;
 		vrLen = 1239;
 		vrLoc = 1481;
@@ -718,8 +815,8 @@
 		isa = PBXTextBookmark;
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 88";
-		rLen = 29;
-		rLoc = 2605;
+		rLen = 33;
+		rLoc = 7571;
 		rType = 0;
 		vrLen = 1237;
 		vrLoc = 1481;
@@ -729,7 +826,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 87";
 		rLen = 0;
-		rLoc = 2664;
+		rLoc = 7634;
 		rType = 0;
 		vrLen = 1422;
 		vrLoc = 1877;
@@ -749,7 +846,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 125";
 		rLen = 0;
-		rLoc = 4038;
+		rLoc = 9008;
 		rType = 0;
 		vrLen = 1593;
 		vrLoc = 3296;
@@ -1038,7 +1135,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 173";
 		rLen = 0;
-		rLoc = 4493;
+		rLoc = 9465;
 		rType = 0;
 		vrLen = 1520;
 		vrLoc = 3690;
@@ -1048,7 +1145,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 102";
 		rLen = 0;
-		rLoc = 2015;
+		rLoc = 6981;
 		rType = 0;
 		vrLen = 1402;
 		vrLoc = 2185;
@@ -1058,7 +1155,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 113";
 		rLen = 0;
-		rLoc = 2015;
+		rLoc = 6981;
 		rType = 0;
 		vrLen = 1506;
 		vrLoc = 2189;
@@ -1088,7 +1185,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 31";
 		rLen = 0;
-		rLoc = 1392;
+		rLoc = 1413;
 		rType = 0;
 		vrLen = 1111;
 		vrLoc = 258;
@@ -1098,7 +1195,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 31";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1094;
 		vrLoc = 279;
@@ -1108,7 +1205,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 31";
 		rLen = 0;
-		rLoc = 1392;
+		rLoc = 1413;
 		rType = 0;
 		vrLen = 1094;
 		vrLoc = 279;
@@ -1128,7 +1225,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 270";
 		rLen = 0;
-		rLoc = 8436;
+		rLoc = 13408;
 		rType = 0;
 		vrLen = 2008;
 		vrLoc = 7571;
@@ -1138,7 +1235,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 121";
 		rLen = 0;
-		rLoc = 2811;
+		rLoc = 7781;
 		rType = 0;
 		vrLen = 1551;
 		vrLoc = 2618;
@@ -1148,7 +1245,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 121";
 		rLen = 0;
-		rLoc = 2811;
+		rLoc = 7781;
 		rType = 0;
 		vrLen = 1515;
 		vrLoc = 2658;
@@ -1158,7 +1255,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 31";
 		rLen = 0;
-		rLoc = 1392;
+		rLoc = 1413;
 		rType = 0;
 		vrLen = 1114;
 		vrLoc = 259;
@@ -1168,7 +1265,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 31";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1069;
 		vrLoc = 307;
@@ -1188,7 +1285,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 44";
 		rLen = 0;
-		rLoc = 1275;
+		rLoc = 1296;
 		rType = 0;
 		vrLen = 1304;
 		vrLoc = 279;
@@ -1248,7 +1345,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 91";
 		rLen = 0;
-		rLoc = 2031;
+		rLoc = 6997;
 		rType = 0;
 		vrLen = 1379;
 		vrLoc = 1457;
@@ -1258,7 +1355,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 101";
 		rLen = 0;
-		rLoc = 2487;
+		rLoc = 7453;
 		rType = 0;
 		vrLen = 1403;
 		vrLoc = 1479;
@@ -1268,7 +1365,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 101";
 		rLen = 0;
-		rLoc = 2487;
+		rLoc = 7453;
 		rType = 0;
 		vrLen = 1403;
 		vrLoc = 1479;
@@ -1288,7 +1385,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 53";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1465;
 		vrLoc = 279;
@@ -1298,7 +1395,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 52";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1467;
 		vrLoc = 279;
@@ -1318,7 +1415,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 85";
 		rLen = 12;
-		rLoc = 1785;
+		rLoc = 6751;
 		rType = 0;
 		vrLen = 1784;
 		vrLoc = 1936;
@@ -1358,7 +1455,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 52";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1466;
 		vrLoc = 279;
@@ -1368,7 +1465,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 46";
 		rLen = 0;
-		rLoc = 1269;
+		rLoc = 1192;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 307;
@@ -1378,7 +1475,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 46";
 		rLen = 0;
-		rLoc = 1269;
+		rLoc = 1192;
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 307;
@@ -1428,7 +1525,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 51";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1389;
 		vrLoc = 307;
@@ -1438,7 +1535,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 51";
 		rLen = 0;
-		rLoc = 1391;
+		rLoc = 1412;
 		rType = 0;
 		vrLen = 1425;
 		vrLoc = 393;
@@ -1518,7 +1615,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 47";
 		rLen = 0;
-		rLoc = 1272;
+		rLoc = 1293;
 		rType = 0;
 		vrLen = 1414;
 		vrLoc = 416;
@@ -1528,7 +1625,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 47";
 		rLen = 0;
-		rLoc = 1272;
+		rLoc = 1293;
 		rType = 0;
 		vrLen = 1417;
 		vrLoc = 416;
@@ -1538,7 +1635,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 56";
 		rLen = 0;
-		rLoc = 1553;
+		rLoc = 1574;
 		rType = 0;
 		vrLen = 1621;
 		vrLoc = 418;
@@ -1548,7 +1645,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 56";
 		rLen = 0;
-		rLoc = 1553;
+		rLoc = 1574;
 		rType = 0;
 		vrLen = 1610;
 		vrLoc = 433;
@@ -1562,7 +1659,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 55";
 		rLen = 7;
-		rLoc = 1553;
+		rLoc = 1574;
 		rType = 0;
 		vrLen = 1640;
 		vrLoc = 433;
@@ -1612,7 +1709,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 55";
 		rLen = 7;
-		rLoc = 1553;
+		rLoc = 1574;
 		rType = 0;
 		vrLen = 1493;
 		vrLoc = 580;
@@ -1642,7 +1739,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 55";
 		rLen = 7;
-		rLoc = 1553;
+		rLoc = 1574;
 		rType = 0;
 		vrLen = 1493;
 		vrLoc = 580;
@@ -1652,7 +1749,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 75";
 		rLen = 0;
-		rLoc = 2109;
+		rLoc = 2130;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 1385;
@@ -1662,7 +1759,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 61";
 		rLen = 0;
-		rLoc = 1731;
+		rLoc = 1752;
 		rType = 0;
 		vrLen = 1708;
 		vrLoc = 1389;
@@ -1672,7 +1769,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 89";
 		rLen = 0;
-		rLoc = 2672;
+		rLoc = 2693;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 1393;
@@ -1870,6 +1967,876 @@
 		vrLen = 1124;
 		vrLoc = 1118;
 	};
+	C9071B3712FEE62C00BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+	};
+	C9071B3C12FEE64C00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 67";
+		rLen = 0;
+		rLoc = 1842;
+		rType = 0;
+		vrLen = 1201;
+		vrLoc = 1218;
+	};
+	C9071B3D12FEE64C00BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B3E12FEE64C00BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B4112FEE64C00BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B4612FEE66900BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B4712FEE66900BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			LSRequiresIPhoneOS,
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B6212FF058B00BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B6512FF141700BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071B6612FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C97BF0BB12EA0C7E004519F0 /* icon.png */;
+	};
+	C9071B6712FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */;
+	};
+	C9071B6812FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9CEFD2512FB1BF80010E6FF /* internet.png */;
+	};
+	C9071B6912FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9EDF27412F89F8E00E9069A /* close.png */;
+	};
+	C9071B6A12FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C96A86AC12F76AE70021B30B /* bottle_cap_back.png */;
+	};
+	C9071B6B12FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C986D00C12F479E000865F6D /* back.png */;
+	};
+	C9071B6C12FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C96A86A612F767E40021B30B /* bottle_cap.png */;
+	};
+	C9071B6D12FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */;
+	};
+	C9071B6E12FF141700BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9AEAB2512FDD8AF00EB81B1 /* Default.png */;
+	};
+	C9071B6F12FF141700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9911F4512F1F80600AF4ECE /* TextDatabaseService.h */;
+		name = "TextDatabaseService.h: 19";
+		rLen = 19;
+		rLoc = 335;
+		rType = 0;
+		vrLen = 771;
+		vrLoc = 3;
+	};
+	C9071B7012FF141700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 63";
+		rLen = 0;
+		rLoc = 1235;
+		rType = 0;
+		vrLen = 845;
+		vrLoc = 827;
+	};
+	C9071B7112FF141700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 89";
+		rLen = 0;
+		rLoc = 2693;
+		rType = 0;
+		vrLen = 1431;
+		vrLoc = 1737;
+	};
+	C9071B7212FF141700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 49";
+		rLen = 0;
+		rLoc = 1407;
+		rType = 0;
+		vrLen = 1213;
+		vrLoc = 417;
+	};
+	C9071B7712FF148A00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */;
+		name = "AlausRadarasAppDelegate.h: 10";
+		rLen = 175;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 745;
+		vrLoc = 33;
+	};
+	C9071B7812FF148A00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 115";
+		rLen = 17;
+		rLoc = 7580;
+		rType = 0;
+		vrLen = 1294;
+		vrLoc = 2116;
+	};
+	C9071B7912FF148A00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 29";
+		rLen = 29;
+		rLoc = 580;
+		rType = 0;
+		vrLen = 1151;
+		vrLoc = 417;
+	};
+	C9071B7A12FF148A00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 47";
+		rLen = 0;
+		rLoc = 1293;
+		rType = 0;
+		vrLen = 1265;
+		vrLoc = 418;
+	};
+	C9071B7D12FF14C600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 47";
+		rLen = 0;
+		rLoc = 1293;
+		rType = 0;
+		vrLen = 1262;
+		vrLoc = 418;
+	};
+	C9071B7E12FF14C600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 115";
+		rLen = 17;
+		rLoc = 7580;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 2116;
+	};
+	C9071B7F12FF14C600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 78";
+		rLen = 0;
+		rLoc = 6587;
+		rType = 0;
+		vrLen = 852;
+		vrLoc = 847;
+	};
+	C9071B8212FF151400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 50";
+		rLen = 0;
+		rLoc = 1412;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 433;
+	};
+	C9071B8312FF151400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 78";
+		rLen = 0;
+		rLoc = 6587;
+		rType = 0;
+		vrLen = 828;
+		vrLoc = 847;
+	};
+	C9071B8412FF151400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 225";
+		rLen = 0;
+		rLoc = 7486;
+		rType = 0;
+		vrLen = 1149;
+		vrLoc = 6918;
+	};
+	C9071B8712FF155300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 224";
+		rLen = 0;
+		rLoc = 7486;
+		rType = 0;
+		vrLen = 1003;
+		vrLoc = 6494;
+	};
+	C9071B8812FF155300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 50";
+		rLen = 0;
+		rLoc = 1412;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 433;
+	};
+	C9071B8912FF155300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 39";
+		rLen = 0;
+		rLoc = 1032;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 469;
+	};
+	C9071B8C12FF159B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 195";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 902;
+		vrLoc = 6024;
+	};
+	C9071B8D12FF159B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411412FE9582001E04A2 /* SQLiteManager.h */;
+		name = "SQLiteManager.h: 34";
+		rLen = 0;
+		rLoc = 674;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 232;
+	};
+	C9071B8E12FF159B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 49";
+		rLen = 0;
+		rLoc = 1407;
+		rType = 0;
+		vrLen = 1249;
+		vrLoc = 469;
+	};
+	C9071B8F12FF159B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 46";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1156;
+		vrLoc = 580;
+	};
+	C9071B9212FF15CA00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1157;
+		vrLoc = 580;
+	};
+	C9071B9312FF15CA00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411412FE9582001E04A2 /* SQLiteManager.h */;
+		name = "SQLiteManager.h: 34";
+		rLen = 0;
+		rLoc = 674;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 232;
+	};
+	C9071B9412FF15CA00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 59";
+		rLen = 0;
+		rLoc = 999;
+		rType = 0;
+		vrLen = 836;
+		vrLoc = 787;
+	};
+	C9071B9712FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */;
+		name = "AlausRadarasViewController.m: 33";
+		rLen = 457;
+		rLoc = 779;
+		rType = 0;
+		vrLen = 1204;
+		vrLoc = 441;
+	};
+	C9071B9812FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* AlausRadarasViewController.h */;
+		name = "AlausRadarasViewController.h: 17";
+		rLen = 14;
+		rLoc = 377;
+		rType = 0;
+		vrLen = 729;
+		vrLoc = 0;
+	};
+	C9071B9912FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1070;
+		vrLoc = 393;
+	};
+	C9071B9A12FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411412FE9582001E04A2 /* SQLiteManager.h */;
+		name = "SQLiteManager.h: 34";
+		rLen = 0;
+		rLoc = 674;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 232;
+	};
+	C9071B9B12FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 59";
+		rLen = 0;
+		rLoc = 999;
+		rType = 0;
+		vrLen = 833;
+		vrLoc = 787;
+	};
+	C9071B9C12FF15FF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 58";
+		rLen = 0;
+		rLoc = 955;
+		rType = 0;
+		vrLen = 815;
+		vrLoc = 804;
+	};
+	C9071B9F12FF167F00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 69";
+		rLen = 0;
+		rLoc = 1431;
+		rType = 0;
+		vrLen = 1491;
+		vrLoc = 1933;
+	};
+	C9071BA012FF16B600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 58";
+		rLen = 0;
+		rLoc = 956;
+		rType = 0;
+		vrLen = 832;
+		vrLoc = 806;
+	};
+	C9071BA312FF16C600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 57";
+		rLen = 0;
+		rLoc = 916;
+		rType = 0;
+		vrLen = 850;
+		vrLoc = 827;
+	};
+	C9071BA612FF170400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 58";
+		rLen = 12;
+		rLoc = 925;
+		rType = 0;
+		vrLen = 1148;
+		vrLoc = 1507;
+	};
+	C9071BA712FF170400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */;
+		name = "AlausRadarasAppDelegate.h: 10";
+		rLen = 175;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 774;
+		vrLoc = 3;
+	};
+	C9071BA812FF170400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1163;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 417;
+	};
+	C9071BAD12FF176600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1163;
+		rType = 0;
+		vrLen = 1107;
+		vrLoc = 417;
+	};
+	C9071BAE12FF176600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 58";
+		rLen = 12;
+		rLoc = 925;
+		rType = 0;
+		vrLen = 1148;
+		vrLoc = 1507;
+	};
+	C9071BAF12FF176600BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 106";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 1408;
+		vrLoc = 1677;
+	};
+	C9071BB212FF179200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 123";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 1569;
+		vrLoc = 2381;
+	};
+	C9071BB512FF17CE00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 217";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 6968;
+	};
+	C9071BB812FF180200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 220";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 931;
+		vrLoc = 6881;
+	};
+	C9071BB912FF180200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1163;
+		rType = 0;
+		vrLen = 1108;
+		vrLoc = 416;
+	};
+	C9071BBA12FF180200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 50";
+		rLen = 0;
+		rLoc = 1406;
+		rType = 0;
+		vrLen = 1155;
+		vrLoc = 418;
+	};
+	C9071BBD12FF182000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1153;
+		vrLoc = 418;
+	};
+	C9071BBE12FF182000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 220";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 837;
+		vrLoc = 6975;
+	};
+	C9071BBF12FF182000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 81";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 933;
+		vrLoc = 1156;
+	};
+	C9071BC212FF187000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 200";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 994;
+		vrLoc = 6029;
+	};
+	C9071BC312FF187000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1153;
+		vrLoc = 418;
+	};
+	C9071BC412FF187000BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 43";
+		rLen = 0;
+		rLoc = 1147;
+		rType = 0;
+		vrLen = 1252;
+		vrLoc = 469;
+	};
+	C9071BC512FF18D700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 41";
+		rLen = 0;
+		rLoc = 1099;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 308;
+	};
+	C9071BC612FF18D700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 200";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 904;
+		vrLoc = 6119;
+	};
+	C9071BC712FF18D700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 79";
+		rLen = 0;
+		rLoc = 1629;
+		rType = 0;
+		vrLen = 753;
+		vrLoc = 1255;
+	};
+	C9071BC812FF194900BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 79";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 875;
+		vrLoc = 924;
+	};
+	C9071BC912FF194900BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 41";
+		rLen = 0;
+		rLoc = 1099;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 308;
+	};
+	C9071BCA12FF194900BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 42";
+		rLen = 0;
+		rLoc = 1118;
+		rType = 0;
+		vrLen = 1229;
+		vrLoc = 468;
+	};
+	C9071BD112FF1C0B00BDA053 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9071BD212FF1C0B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 41";
+		rLen = 0;
+		rLoc = 1099;
+		rType = 0;
+		vrLen = 1214;
+		vrLoc = 433;
+	};
+	C9071BD312FF1C0B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 79";
+		rLen = 0;
+		rLoc = 6586;
+		rType = 0;
+		vrLen = 875;
+		vrLoc = 924;
+	};
+	C9071BD412FF1C0B00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 71";
+		rLen = 0;
+		rLoc = 1504;
+		rType = 0;
+		vrLen = 872;
+		vrLoc = 924;
+	};
+	C9071BD712FF1CB200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 71";
+		rLen = 0;
+		rLoc = 1504;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 1065;
+	};
+	C9071BD812FF1CB200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */;
+		name = "pubs.txt: 18";
+		rLen = 0;
+		rLoc = 1843;
+		rType = 0;
+		vrLen = 3286;
+		vrLoc = 3095;
+	};
+	C9071BD912FF1CB200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */;
+		name = "brands.txt: 17";
+		rLen = 0;
+		rLoc = 51;
+		rType = 0;
+		vrLen = 2313;
+		vrLoc = 0;
+	};
+	C9071BDA12FF1CB200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */;
+		name = "brands.txt: 13";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 2147;
+		vrLoc = 0;
+	};
+	C9071BDB12FF1CDF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */;
+		name = "brands.txt: 13";
+		rLen = 0;
+		rLoc = 764;
+		rType = 0;
+		vrLen = 2147;
+		vrLoc = 0;
+	};
+	C9071BDC12FF1CDF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 71";
+		rLen = 0;
+		rLoc = 1504;
+		rType = 0;
+		vrLen = 730;
+		vrLoc = 1065;
+	};
+	C9071BDD12FF1CDF00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 190";
+		rLen = 0;
+		rLoc = 6446;
+		rType = 0;
+		vrLen = 1397;
+		vrLoc = 5094;
+	};
+	C9071BE012FF1D8C00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 51";
+		rLen = 0;
+		rLoc = 1406;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 433;
+	};
+	C9071BE112FF1D8C00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 199";
+		rLen = 0;
+		rLoc = 6572;
+		rType = 0;
+		vrLen = 1063;
+		vrLoc = 1152;
+	};
+	C9071BE212FF1D8C00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 58";
+		rLen = 0;
+		rLoc = 955;
+		rType = 0;
+		vrLen = 1150;
+		vrLoc = 1069;
+	};
+	C9071BE512FF1DCC00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 194";
+		rLen = 0;
+		rLoc = 6502;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 5606;
+	};
+	C9071BE812FF1DDE00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 194";
+		rLen = 0;
+		rLoc = 6502;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 5606;
+	};
+	C9071BE912FF1DDE00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */;
+		name = "AlausRadarasAppDelegate.h: 10";
+		rLen = 175;
+		rLoc = 178;
+		rType = 0;
+		vrLen = 742;
+		vrLoc = 3;
+	};
+	C9071BEA12FF1DDE00BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 44";
+		rLen = 0;
+		rLoc = 1146;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 468;
+	};
 	C916C32612FC7B9300AF396A /* FMResultSet.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {992, 5291}}";
@@ -1922,7 +2889,7 @@
 		vrLen = 947;
 		vrLoc = 0;
 	};
-	C916C3EB12FC896600AF396A /* AlausRadarasAppDelegate.m:64 */ = {
+	C916C3EB12FC896600AF396A /* AlausRadarasAppDelegate.m:66 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1934,7 +2901,7 @@
 		functionName = "-getBrands";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 64;
+		lineNumber = 66;
 		location = AlausRadaras;
 		modificationTime = 318680366.115363;
 		originalNumberOfMultipleMatches = 1;
@@ -2005,7 +2972,7 @@
 		fRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */;
 		name = "brands.txt: 16";
 		rLen = 0;
-		rLoc = 950;
+		rLoc = 51;
 		rType = 0;
 		vrLen = 3017;
 		vrLoc = 0;
@@ -2015,7 +2982,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 405";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -2027,7 +2994,7 @@
 		rLen = 11;
 		rLoc = 6154;
 		rType = 0;
-		vrLen = 2908;
+		vrLen = 2871;
 		vrLoc = 3510;
 	};
 	C92E59A812EE146E00412BFA /* BrandsTableCell.h */ = {
@@ -2422,7 +3389,7 @@
 		rLen = 11;
 		rLoc = 6154;
 		rType = 0;
-		vrLen = 2908;
+		vrLen = 2871;
 		vrLoc = 3510;
 	};
 	C98A411112FE94AB001E04A2 /* PBXTextBookmark */ = {
@@ -2432,7 +3399,7 @@
 		rLen = 11;
 		rLoc = 6154;
 		rType = 0;
-		vrLen = 2908;
+		vrLen = 2871;
 		vrLoc = 3510;
 	};
 	C98A411212FE94AB001E04A2 /* PBXTextBookmark */ = {
@@ -2440,24 +3407,24 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 404";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
 	};
 	C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {779, 858}}";
-			sepNavSelRange = "{314, 0}";
-			sepNavVisRange = "{314, 272}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 793}}";
+			sepNavSelRange = "{674, 0}";
+			sepNavVisRange = "{232, 748}";
 			sepNavWindowFrame = "{{38, 109}, {1082, 867}}";
 		};
 	};
 	C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {779, 8632}}";
-			sepNavSelRange = "{525, 0}";
-			sepNavVisRange = "{382, 250}";
+			sepNavIntBoundsRect = "{{0, 0}, {1097, 10218}}";
+			sepNavSelRange = "{955, 0}";
+			sepNavVisRange = "{893, 1119}";
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
@@ -2515,7 +3482,7 @@
 		isa = PBXTextBookmark;
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 29";
-		rLen = 813;
+		rLen = 834;
 		rLoc = 580;
 		rType = 0;
 		vrLen = 1236;
@@ -2566,7 +3533,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 258";
 		rLen = 12;
-		rLoc = 14653;
+		rLoc = 19625;
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 6952;
@@ -2646,7 +3613,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 271";
 		rLen = 0;
-		rLoc = 15296;
+		rLoc = 20268;
 		rType = 0;
 		vrLen = 1581;
 		vrLoc = 6953;
@@ -2656,7 +3623,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 271";
 		rLen = 0;
-		rLoc = 15296;
+		rLoc = 20268;
 		rType = 0;
 		vrLen = 1581;
 		vrLoc = 6953;
@@ -2666,7 +3633,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 271";
 		rLen = 0;
-		rLoc = 15296;
+		rLoc = 20268;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 1067;
@@ -2686,7 +3653,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 331";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -2696,7 +3663,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 341";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -2706,7 +3673,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 345";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -2766,7 +3733,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 271";
 		rLen = 0;
-		rLoc = 15296;
+		rLoc = 20268;
 		rType = 0;
 		vrLen = 1217;
 		vrLoc = 1070;
@@ -2776,7 +3743,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 190";
 		rLen = 0;
-		rLoc = 12757;
+		rLoc = 17729;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 4413;
@@ -2806,7 +3773,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 190";
 		rLen = 0;
-		rLoc = 12757;
+		rLoc = 17729;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 4430;
@@ -2816,7 +3783,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 118";
 		rLen = 0;
-		rLoc = 10291;
+		rLoc = 15263;
 		rType = 0;
 		vrLen = 1538;
 		vrLoc = 2351;
@@ -2836,7 +3803,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 118";
 		rLen = 0;
-		rLoc = 10291;
+		rLoc = 15263;
 		rType = 0;
 		vrLen = 1540;
 		vrLoc = 2351;
@@ -2846,7 +3813,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 193";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1572;
 		vrLoc = 4203;
@@ -2856,7 +3823,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 193";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1618;
 		vrLoc = 4203;
@@ -2909,7 +3876,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 193";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1618;
 		vrLoc = 4203;
@@ -2969,7 +3936,7 @@
 		comments = "Incompatible type for argument 7 of 'initWithId:Title:Address:City:Phone:Webpage:Lat:Long:'";
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		rLen = 0;
-		rLoc = 63;
+		rLoc = 65;
 		rType = 1;
 	};
 	C98A419512FEADF2001E04A2 /* PBXTextBookmark */ = {
@@ -2977,7 +3944,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 317";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -2987,7 +3954,7 @@
 		comments = "Incompatible type for argument 7 of 'initWithId:Title:Address:City:Phone:Webpage:Lat:Long:'";
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		rLen = 0;
-		rLoc = 63;
+		rLoc = 65;
 		rType = 1;
 	};
 	C98A419712FEAE5C001E04A2 /* PBXTextBookmark */ = {
@@ -2995,7 +3962,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 324";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -3005,7 +3972,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 324";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -3117,7 +4084,7 @@
 		rLen = 0;
 		rLoc = 2925;
 		rType = 0;
-		vrLen = 5265;
+		vrLen = 5228;
 		vrLoc = 1153;
 	};
 	C98A41AA12FEAF49001E04A2 /* PBXTextBookmark */ = {
@@ -3169,7 +4136,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 193";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 4346;
@@ -3179,7 +4146,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 194";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1475;
 		vrLoc = 4346;
@@ -3189,7 +4156,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 193";
 		rLen = 0;
-		rLoc = 12859;
+		rLoc = 17831;
 		rType = 0;
 		vrLen = 1797;
 		vrLoc = 4143;
@@ -3199,7 +4166,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 198";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 3935;
@@ -3209,7 +4176,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 198";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 3935;
@@ -3389,7 +4356,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 198";
 		rLen = 0;
-		rLoc = 12873;
+		rLoc = 17845;
 		rType = 0;
 		vrLen = 1956;
 		vrLoc = 12041;
@@ -3399,7 +4366,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 340";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 0;
 		vrLoc = 2952;
@@ -3409,7 +4376,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 61";
 		rLen = 0;
-		rLoc = 1393;
+		rLoc = 1414;
 		rType = 0;
 		vrLen = 1482;
 		vrLoc = 371;
@@ -3429,7 +4396,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 49";
 		rLen = 328;
-		rLoc = 1784;
+		rLoc = 1805;
 		rType = 0;
 		vrLen = 1149;
 		vrLoc = 154;
@@ -3479,7 +4446,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 74";
 		rLen = 0;
-		rLoc = 9318;
+		rLoc = 14290;
 		rType = 0;
 		vrLen = 1262;
 		vrLoc = 1171;
@@ -3489,7 +4456,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 47";
 		rLen = 0;
-		rLoc = 1620;
+		rLoc = 6587;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 170;
@@ -3629,7 +4596,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 95";
 		rLen = 0;
-		rLoc = 9318;
+		rLoc = 14290;
 		rType = 0;
 		vrLen = 1287;
 		vrLoc = 1592;
@@ -3659,7 +4626,7 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 49";
 		rLen = 328;
-		rLoc = 1784;
+		rLoc = 1805;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 190;
@@ -3699,16 +4666,16 @@
 		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
 		name = "AlausRadarasAppDelegate.m: 43";
 		rLen = 0;
-		rLoc = 1734;
+		rLoc = 1755;
 		rType = 0;
 		vrLen = 386;
 		vrLoc = 2556;
 	};
 	C9911F4512F1F80600AF4ECE /* TextDatabaseService.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 646}}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 455}}";
 			sepNavSelRange = "{335, 19}";
-			sepNavVisRange = "{0, 774}";
+			sepNavVisRange = "{3, 771}";
 		};
 	};
 	C9911F4612F1F80600AF4ECE /* TextDatabaseService.m */ = {
@@ -3816,7 +4783,7 @@
 		vrLen = 1069;
 		vrLoc = 7534;
 	};
-	C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:74 */ = {
+	C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:76 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -3828,7 +4795,7 @@
 		functionName = "-applicationDidReceiveMemoryWarning:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 74;
+		lineNumber = 76;
 		location = AlausRadaras;
 		modificationTime = 318680366.116906;
 		originalNumberOfMultipleMatches = 1;
@@ -4176,9 +5143,9 @@
 	};
 	C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1027, 897}}";
-			sepNavSelRange = "{950, 0}";
-			sepNavVisRange = "{0, 3228}";
+			sepNavIntBoundsRect = "{{0, 0}, {978, 884}}";
+			sepNavSelRange = "{764, 0}";
+			sepNavVisRange = "{0, 2147}";
 			sepNavWindowFrame = "{{198, 59}, {1082, 867}}";
 		};
 	};
@@ -4192,8 +5159,8 @@
 	C9D74DC712EF3B9F008DE8E8 /* pubs.txt */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1202, 793}}";
-			sepNavSelRange = "{2925, 0}";
-			sepNavVisRange = "{1153, 5265}";
+			sepNavSelRange = "{1843, 0}";
+			sepNavVisRange = "{3095, 3286}";
 		};
 	};
 	C9D74DC812EF3B9F008DE8E8 /* qoutes.txt */ = {
@@ -4221,8 +5188,8 @@
 	C9DA6F0612F34E0700D9886A /* BeerCounterController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {797, 2431}}";
-			sepNavSelRange = "{993, 0}";
-			sepNavVisRange = "{1118, 1124}";
+			sepNavSelRange = "{1842, 0}";
+			sepNavVisRange = "{1218, 1201}";
 		};
 	};
 	C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */ = {

@@ -1,11 +1,11 @@
-﻿backoriu_tamsusis	Bačkorių tamsusis	alaus_namai	lt	dark, rural
+backoriu_tamsusis	Bačkorių tamsusis	alaus_namai	lt	dark, rural
 belmonto_ypatingas	Belmonto ypatingasis	belmontas	lt	dark, rural
-belmonto_sviesus	Belmonto šviesusis	belmontas	lt	lager, rural
+belmonto_sviesusis	Belmonto šviesusis	belmontas	lt	lager, rural
 bernard_cerne	Bernard Černe	dolce_vita, alaus_studija,pajurio_zibintas	cz	dark, foreign
 birzu_miezinis	Biržų miežinis	shamrock	lt	rural
 birzu_sirvenos	Biržų Širvenos	b6, alaus_namai, obuolys,shamrock	lt	lager, rural
 bravaria	Bravaria	bravaria,bravaria_kaunas	lt	lager
-budweiser	Budweiser BUDVAR	busi_trecias, plieno_paukste, simo_baras, dolce_vita, alaus_studija, obuolys	cz	foreign, lager
+budweiser_budvar	Budweiser BUDVAR		cz	foreign, lager
 busi_trecias	Būsi Trečias	busi_trecias	lt	rural, dark
 butautu_dvaro	Butautų Dvaro	mamutas,livonija	lt	rural, dark
 carlsberg	Carlsberg	juodasis_katinas	dk	foreign, lager
@@ -19,10 +19,10 @@ franziskaner	Franziskaner	savas_kampas	de	white, foreign
 grimbergen	Grimbergen	jalta,skliautas,abato_mene,shamrock	be	foreign, dark, strong
 grimbergen_lager	Grimbergen šviesus	skliautas,zalias_ratas,abato_mene, shamrock	be	foreign, strong
 gubernijos_kvietinis	Gubernijos kvietinis	alaus_namai	lt	white
-guiness	Guiness	alaus_studija, obuolys,juodasis_katinas,palangos_vetra	ie	foreign, dark
+guinness	Guinness	alaus_studija, obuolys,juodasis_katinas,palangos_vetra	ie	foreign, dark
 hbh	HBH Juozo alus	hbh	lt	rural, dark
 heineken	Heineken	pogo, savas_kampas, wall_street, alaus_studija,bo,dzempub,jums	nl	lager, foreign
-hoegarden	Hoegarden	wall_street, obuolys,abato_mene	be	white, foreign
+hoegaarden	Hoegaarden	wall_street, obuolys,abato_mene	be	white, foreign
 jovaru_snekutis	Jovarų šnekutis	bermudai	lt	rural, lager
 kalnapilis_grand	Kalnapilis Grand	busi_trecias, pilies_mene, mamutas, obuolys, bo,berneliu_smukle,baras1925	lt	lager
 kanapinis	Kanapinis tamsus	bermudai, obuolys, dzempub	lt	rural, dark
@@ -30,7 +30,7 @@ katedros_medaus	Katedros Medaus	prie_katedros, dominink_karciama	lt	rural, lager
 katedros_sviesusis	Katedros Šviesusis	prie_katedros, dominink_karciama	lt	rural, lager
 katedros_tamsusis	Katedros Tamsusis	prie_katedros, dominink_karciama,dzempub	lt	rural, dark
 kozel	Kozel	obuolys,wall_street, bo,baras1925,sindbado_oaze	cz	foreign, dark, light
-krusovec	Krušovec	blusyne, simo_baras, alaus_studija,bo	cz	foreign, dark, light
+krusovice	Krušovice	blusyne, simo_baras, alaus_studija,bo	cz	foreign, dark, light
 kunigaiksciu	Kunigaikščių	mamutas, keisti_zenklai	lt	rural, strong
 memelis_sviesus	Memelio Šviesusis Gyvasis	memelis	lt	rural, lager
 memelis_karamelinis	Memelio Karamelinis Vyšnių	memelis	lt	rural
@@ -48,18 +48,18 @@ sinkoriu_tamsus	Šinkorių tamsusis	sadute	lt	rural, dark
 staropramen	Staropramen	burito, obuolys	cz	foreign, lager
 svyturys_baltas	Švyturys Baltas	busi_trecias, pilies_mene, uzupio_picerija,bo,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas	lt	white
 svyturys_baltijos	Švyturys Baltijos	molinis_asotis, mamutas,skliautas, bo	lt	dark, strong
-svyturys_extra	Švyturys Extra	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas,baras1925	lt	lager
+svyturys_ekstra	Švyturys Ekstra	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas,baras1925	lt	lager
 tauro_tradicinis	Tauro Tradicinis	mamutas	lt	lager, strong
 tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
 tucher	Tucher	obuolys	de	foreign, white
 tucher_weis	Tucher šviesus	bo	de	foreign, white
 utenos	utenos	pilies_mene, alaus_baras_just,bo	lt	lager
-varniuku	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
+varniuku_alus	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
 veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
 vilkmerges	Vilkmergės	berneliu_smukle	lt	rural
 vilkmerges_tamsusis	Vilkmergės tamsusis	alaus_namai,haemmerli	lt	rural, dark
 vilniaus_kvietinis	Vilniaus kvietinis	bermudai, pogo, obuolys	lt	white
-vilniaus_nefiltr	Vilniaus nefiltruotas	bermudai, alaus_namai	lt	lager
+vilniaus_nefiltruotas	Vilniaus nefiltruotas	bermudai, alaus_namai	lt	lager
 volf_engelman	Volf Engelman	suflerio_budele, dzempub, sadute, jums, berneliu_smukle	lt	lager
 warsteiner	Warsteiner	bunte_gans, plieno_paukste, wall_street	de	foreign, lager
 zubr	Zubr	savas_kampas	cz	foreign, lager
