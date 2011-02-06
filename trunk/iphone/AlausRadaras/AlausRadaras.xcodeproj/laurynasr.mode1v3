@@ -269,19 +269,20 @@
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>50</integer>
-									<integer>38</integer>
+									<integer>16</integer>
+									<integer>14</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 285}, {246, 688}}</string>
+							<string>{{0, 78}, {246, 688}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -318,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BeerCounterController.m</string>
+								<string>AlausRadarasAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>BeerCounterController.m</string>
+										<string>AlausRadarasAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C9071B3212FEE3E200BDA053</string>
+										<string>C9071BEA12FF1DDE00BDA053</string>
 										<key>history</key>
 										<array>
 											<string>C92E5B1012EE236100412BFA</string>
@@ -351,7 +352,6 @@
 											<string>C9BC0C7512F5DD98002DB792</string>
 											<string>C96A860512F754BC0021B30B</string>
 											<string>C96A860612F754BC0021B30B</string>
-											<string>C96A86BD12F771F20021B30B</string>
 											<string>C96A86BE12F771F20021B30B</string>
 											<string>C96A86BF12F771F20021B30B</string>
 											<string>C96A86C012F771F20021B30B</string>
@@ -367,28 +367,19 @@
 											<string>C96A86CA12F771F20021B30B</string>
 											<string>C96A86CB12F771F20021B30B</string>
 											<string>C96A86CC12F771F20021B30B</string>
-											<string>C96A86CE12F771F20021B30B</string>
-											<string>C9EDF28B12F8AD9C00E9069A</string>
-											<string>C9EDF28C12F8AD9C00E9069A</string>
 											<string>C916C3AA12FC849100AF396A</string>
 											<string>C916C4A112FCA9D700AF396A</string>
 											<string>C998D97012FD4A6F00E74B91</string>
 											<string>C998D9C212FD51A700E74B91</string>
 											<string>C998DB4612FD7D5D00E74B91</string>
-											<string>C998DB7A12FD858300E74B91</string>
-											<string>C998DBE712FD8F1700E74B91</string>
 											<string>C998DD3412FDBD5A00E74B91</string>
 											<string>C998DDCC12FDD29200E74B91</string>
-											<string>C9AEAB2C12FDE2DA00EB81B1</string>
-											<string>C9AEAB2D12FDE2DA00EB81B1</string>
 											<string>C98A412112FE9D75001E04A2</string>
-											<string>C98A412212FE9D75001E04A2</string>
 											<string>C98A419B12FEAE89001E04A2</string>
 											<string>C98A419C12FEAE89001E04A2</string>
 											<string>C98A419D12FEAE89001E04A2</string>
 											<string>C98A419E12FEAE89001E04A2</string>
 											<string>C98A419F12FEAE89001E04A2</string>
-											<string>C98A41A912FEAF49001E04A2</string>
 											<string>C98A41D212FEB338001E04A2</string>
 											<string>C98A41D312FEB338001E04A2</string>
 											<string>C98A41D412FEB338001E04A2</string>
@@ -400,22 +391,33 @@
 											<string>C9071A1F12FEC4F600BDA053</string>
 											<string>C9071A2212FEC53900BDA053</string>
 											<string>C9071A2812FEC6F900BDA053</string>
-											<string>C9071A2912FEC6F900BDA053</string>
 											<string>C9071A2A12FEC6F900BDA053</string>
 											<string>C9071A6012FECED900BDA053</string>
 											<string>C9071A6112FECED900BDA053</string>
 											<string>C9071A6212FECED900BDA053</string>
 											<string>C9071A6712FECF5300BDA053</string>
-											<string>C9071AAC12FED43300BDA053</string>
-											<string>C9071AB612FED47900BDA053</string>
-											<string>C9071AC212FED56100BDA053</string>
 											<string>C9071AC312FED56100BDA053</string>
-											<string>C9071ACC12FED5FD00BDA053</string>
-											<string>C9071AE212FED6E000BDA053</string>
-											<string>C9071AF412FED8E900BDA053</string>
-											<string>C9071B1A12FEE1B400BDA053</string>
 											<string>C9071B2412FEE21300BDA053</string>
-											<string>C9071B2512FEE21300BDA053</string>
+											<string>C9071B3C12FEE64C00BDA053</string>
+											<string>C9071B6612FF141700BDA053</string>
+											<string>C9071B6712FF141700BDA053</string>
+											<string>C9071B6812FF141700BDA053</string>
+											<string>C9071B6912FF141700BDA053</string>
+											<string>C9071B6A12FF141700BDA053</string>
+											<string>C9071B6B12FF141700BDA053</string>
+											<string>C9071B6C12FF141700BDA053</string>
+											<string>C9071B6D12FF141700BDA053</string>
+											<string>C9071B6E12FF141700BDA053</string>
+											<string>C9071B6F12FF141700BDA053</string>
+											<string>C9071B9712FF15FF00BDA053</string>
+											<string>C9071B9812FF15FF00BDA053</string>
+											<string>C9071B9A12FF15FF00BDA053</string>
+											<string>C9071BD112FF1C0B00BDA053</string>
+											<string>C9071BD812FF1CB200BDA053</string>
+											<string>C9071BDB12FF1CDF00BDA053</string>
+											<string>C9071BE812FF1DDE00BDA053</string>
+											<string>C9071BE912FF1DDE00BDA053</string>
+											<string>C9071BE012FF1D8C00BDA053</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -613,7 +615,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C9071B3312FEE3E200BDA053</string>
 		<string>C9071AF712FED8E900BDA053</string>
 		<string>C9071AF812FED8E900BDA053</string>
 		<string>1CD10A99069EF8BA00B06720</string>

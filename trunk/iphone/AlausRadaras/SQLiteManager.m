@@ -76,6 +76,129 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		NSLog(@"Database opened");
 	}
 
+	/*
+	//	Inserts go here
+	NSLog(@"Inserting data");
+	[db beginTransaction];
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			[db executeUpdate:@"insert into brands (brandId, label, icon) values (?, ?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1],
+			 [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
+		}
+	}
+	[db commit];
+	
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			[db executeUpdate:@"insert into pubs (pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1],
+			 [values objectAtIndex:2],
+			 [values objectAtIndex:3],
+			 [values objectAtIndex:4],
+			 [values objectAtIndex:5],
+			 [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
+			 [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
+		}
+	}
+	[db commit];    
+	
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"tags" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			[db executeUpdate:@"insert into tags (code, title) values (?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1]];
+		}
+	}
+	[db commit];
+	
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			[db executeUpdate:@"insert into countries (code, name) values (?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1]];
+		}
+	}
+	[db commit];
+	
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"qoutes" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			[db executeUpdate:@"insert into quotes (amount, text) values (?, ?)",
+			 [NSNumber numberWithInt:[[values objectAtIndex:0]intValue]],
+			 [values objectAtIndex:1]];
+		}
+	}
+	[db commit];
+	
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			
+			NSLog(@"Inserting brand<->pub association: %@", [values objectAtIndex:0]);
+			NSArray *pubIds = [[values objectAtIndex:2] componentsSeparatedByString:@","];
+			for (NSString *pubId in pubIds) {
+				[db executeUpdate:@"insert into pubs_brands (brand_id, pub_id) values (?, ?)",
+				 [values objectAtIndex:0],
+				 [pubId stringByReplacingOccurrencesOfString:@" " withString:@""]];                     
+			}
+			
+			NSLog(@"Inserting brand<->country association: %@", [values objectAtIndex:0]);
+			NSArray *countries = [[values objectAtIndex:3] componentsSeparatedByString:@","];
+			for (NSString *country in countries) {
+				[db executeUpdate:@"insert into brands_countries (brand_id, country) values (?, ?)",
+				 [values objectAtIndex:0],
+				 [country stringByReplacingOccurrencesOfString:@" " withString:@""]];                   
+			}
+			
+			NSLog(@"Inserting brand<->tag association: %@", [values objectAtIndex:0]);
+			NSArray *tags = [[values objectAtIndex:4] componentsSeparatedByString:@","];
+			for (NSString *tag in tags) {
+				tag = [tag stringByReplacingOccurrencesOfString:@" " withString:@""];
+				tag = [tag stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+				[db executeUpdate:@"insert into brands_tags (brand_id, tag) values (?, ?)",
+				 [values objectAtIndex:0],
+				 tag];                       
+			}
+		}
+	}
+	[db commit];
+	NSLog(@"Data inserted");
+	*/
 }
 
 
@@ -113,6 +236,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
  * Scheme & data are created/inserted
  */
 - (void) createNewDatabase {
+	/*
 	NSLog(@"Creating new database");
 	NSLog(@"Droping tables");
 	[db executeUpdate:@"DROP TABLE IF EXISTS pubs_brands;"];
@@ -167,7 +291,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	[db executeUpdate:@"CREATE TABLE quotes("
 										 "amount			INTEGER NOT NULL,"
 										 "text			TEXT NOT NULL);"];
-	
+	*/
 	NSLog(@"Tables created");
 	NSLog(@"Inserting data");
 	[db beginTransaction];

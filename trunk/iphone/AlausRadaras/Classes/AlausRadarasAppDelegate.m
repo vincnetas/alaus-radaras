@@ -38,12 +38,14 @@
 		NSLog(@"Application Version: %.2f", appVersion);
 		if (appVersion != dbVersion) {
 			NSLog(@"Updating Database");
-
-//			Creates database using scripts
-//			[[SQLiteManager sharedManager] createNewDatabase];
 			
 //			Copies prefiled database
+//			Comment me
 			[[SQLiteManager sharedManager] copyDatabase];
+		
+//			Creates database using scripts
+//			[[SQLiteManager sharedManager] createNewDatabase];
+		
 			[standardUserDefaults setDouble:appVersion forKey:@"DatabaseVersion"];
 			[standardUserDefaults synchronize];
 		}
