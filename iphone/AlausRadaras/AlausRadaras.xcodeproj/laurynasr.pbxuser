@@ -40,7 +40,7 @@
 		activeArchitecturePreference = armv7;
 		activeBuildConfigurationName = Release;
 		activeExecutable = C97BF09212EA0A83004519F0 /* AlausRadaras */;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* AlausRadaras */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* AlausRadaras */,
@@ -294,6 +294,18 @@
 			C9071B0812FEDA9600BDA053 /* PBXTextBookmark */ = C9071B0812FEDA9600BDA053 /* PBXTextBookmark */;
 			C9071B0C12FEDC4200BDA053 /* PBXTextBookmark */ = C9071B0C12FEDC4200BDA053 /* PBXTextBookmark */;
 			C9071B0D12FEDC4200BDA053 /* PBXTextBookmark */ = C9071B0D12FEDC4200BDA053 /* PBXTextBookmark */;
+			C9071B1412FEDE4700BDA053 /* PBXTextBookmark */ = C9071B1412FEDE4700BDA053 /* PBXTextBookmark */;
+			C9071B1512FEDE4700BDA053 /* XCBuildMessageTextBookmark */ = C9071B1512FEDE4700BDA053 /* XCBuildMessageTextBookmark */;
+			C9071B1612FEDE4700BDA053 /* PBXTextBookmark */ = C9071B1612FEDE4700BDA053 /* PBXTextBookmark */;
+			C9071B1A12FEE1B400BDA053 /* PBXBookmark */ = C9071B1A12FEE1B400BDA053 /* PBXBookmark */;
+			C9071B1B12FEE1B400BDA053 /* PBXTextBookmark */ = C9071B1B12FEE1B400BDA053 /* PBXTextBookmark */;
+			C9071B1C12FEE1B400BDA053 /* PBXTextBookmark */ = C9071B1C12FEE1B400BDA053 /* PBXTextBookmark */;
+			C9071B1D12FEE1B400BDA053 /* PBXTextBookmark */ = C9071B1D12FEE1B400BDA053 /* PBXTextBookmark */;
+			C9071B2212FEE20100BDA053 /* PBXTextBookmark */ = C9071B2212FEE20100BDA053 /* PBXTextBookmark */;
+			C9071B2412FEE21300BDA053 /* PBXTextBookmark */ = C9071B2412FEE21300BDA053 /* PBXTextBookmark */;
+			C9071B2512FEE21300BDA053 /* PBXTextBookmark */ = C9071B2512FEE21300BDA053 /* PBXTextBookmark */;
+			C9071B2612FEE21300BDA053 /* PBXTextBookmark */ = C9071B2612FEE21300BDA053 /* PBXTextBookmark */;
+			C9071B3212FEE3E200BDA053 /* PBXTextBookmark */ = C9071B3212FEE3E200BDA053 /* PBXTextBookmark */;
 			C916C3AA12FC849100AF396A = C916C3AA12FC849100AF396A /* PBXTextBookmark */;
 			C916C43A12FCA1B900AF396A = C916C43A12FCA1B900AF396A /* PBXTextBookmark */;
 			C916C4A012FCA9D700AF396A = C916C4A012FCA9D700AF396A /* PBXTextBookmark */;
@@ -896,7 +908,7 @@
 		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
 		name = "BeerCounterController.h: 16";
 		rLen = 0;
-		rLoc = 337;
+		rLoc = 332;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 0;
@@ -906,7 +918,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 39";
 		rLen = 0;
-		rLoc = 1244;
+		rLoc = 1815;
 		rType = 0;
 		vrLen = 1438;
 		vrLoc = 0;
@@ -1226,7 +1238,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 39";
 		rLen = 0;
-		rLoc = 1244;
+		rLoc = 1815;
 		rType = 0;
 		vrLen = 1397;
 		vrLoc = 0;
@@ -1466,7 +1478,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 35";
 		rLen = 0;
-		rLoc = 624;
+		rLoc = 1068;
 		rType = 0;
 		vrLen = 1528;
 		vrLoc = 216;
@@ -1476,7 +1488,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 42";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1733;
 		rType = 0;
 		vrLen = 1524;
 		vrLoc = 217;
@@ -1486,7 +1498,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 37";
 		rLen = 0;
-		rLoc = 786;
+		rLoc = 1357;
 		rType = 0;
 		vrLen = 1536;
 		vrLoc = 256;
@@ -1610,7 +1622,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 41";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1733;
 		rType = 0;
 		vrLen = 1430;
 		vrLoc = 156;
@@ -1620,7 +1632,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 41";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1733;
 		rType = 0;
 		vrLen = 1448;
 		vrLoc = 216;
@@ -1670,7 +1682,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 41";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1733;
 		rType = 0;
 		vrLen = 1372;
 		vrLoc = 216;
@@ -1680,7 +1692,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 45";
 		rLen = 0;
-		rLoc = 1162;
+		rLoc = 1733;
 		rType = 0;
 		vrLen = 1692;
 		vrLoc = 895;
@@ -1690,7 +1702,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 49";
 		rLen = 0;
-		rLoc = 1245;
+		rLoc = 1816;
 		rType = 0;
 		vrLen = 1731;
 		vrLoc = 625;
@@ -1700,7 +1712,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 93";
 		rLen = 0;
-		rLoc = 2630;
+		rLoc = 3201;
 		rType = 0;
 		vrLen = 1319;
 		vrLoc = 1977;
@@ -1710,7 +1722,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 100";
 		rLen = 0;
-		rLoc = 2853;
+		rLoc = 3424;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2057;
@@ -1720,7 +1732,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 111";
 		rLen = 26;
-		rLoc = 3146;
+		rLoc = 3717;
 		rType = 0;
 		vrLen = 1262;
 		vrLoc = 2057;
@@ -1730,7 +1742,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 111";
 		rLen = 26;
-		rLoc = 3146;
+		rLoc = 3717;
 		rType = 0;
 		vrLen = 1262;
 		vrLoc = 2057;
@@ -1740,10 +1752,123 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 111";
 		rLen = 26;
-		rLoc = 3146;
+		rLoc = 3717;
 		rType = 0;
 		vrLen = 948;
 		vrLoc = 2057;
+	};
+	C9071B1412FEDE4700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411412FE9582001E04A2 /* SQLiteManager.h */;
+		name = "SQLiteManager.h: 17";
+		rLen = 0;
+		rLoc = 314;
+		rType = 0;
+		vrLen = 272;
+		vrLoc = 314;
+	};
+	C9071B1512FEDE4700BDA053 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'SQLiteManager' may not respond to '+sharedSQLiteManager'";
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 28;
+		rType = 1;
+	};
+	C9071B1612FEDE4700BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 29";
+		rLen = 0;
+		rLoc = 525;
+		rType = 0;
+		vrLen = 250;
+		vrLoc = 382;
+	};
+	C9071B1A12FEE1B400BDA053 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */;
+	};
+	C9071B1B12FEE1B400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
+		name = "BeerCounterController.h: 21";
+		rLen = 0;
+		rLoc = 520;
+		rType = 0;
+		vrLen = 580;
+		vrLoc = 0;
+	};
+	C9071B1C12FEE1B400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 101";
+		rLen = 0;
+		rLoc = 3467;
+		rType = 0;
+		vrLen = 673;
+		vrLoc = 0;
+	};
+	C9071B1D12FEE1B400BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 30";
+		rLen = 0;
+		rLoc = 634;
+		rType = 0;
+		vrLen = 756;
+		vrLoc = 190;
+	};
+	C9071B2212FEE20100BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 38";
+		rLen = 0;
+		rLoc = 1041;
+		rType = 0;
+		vrLen = 1055;
+		vrLoc = 422;
+	};
+	C9071B2412FEE21300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
+		name = "BeerCounterController.h: 11";
+		rLen = 0;
+		rLoc = 228;
+		rType = 0;
+		vrLen = 609;
+		vrLoc = 0;
+	};
+	C9071B2512FEE21300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 38";
+		rLen = 0;
+		rLoc = 1041;
+		rType = 0;
+		vrLen = 1055;
+		vrLoc = 422;
+	};
+	C9071B2612FEE21300BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 39";
+		rLen = 0;
+		rLoc = 1043;
+		rType = 0;
+		vrLen = 1084;
+		vrLoc = 422;
+	};
+	C9071B3212FEE3E200BDA053 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
+		name = "BeerCounterController.m: 37";
+		rLen = 0;
+		rLoc = 993;
+		rType = 0;
+		vrLen = 1124;
+		vrLoc = 1118;
 	};
 	C916C32612FC7B9300AF396A /* FMResultSet.m */ = {
 		uiCtxt = {
@@ -2322,17 +2447,17 @@
 	};
 	C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1023, 806}}";
-			sepNavSelRange = "{623, 0}";
-			sepNavVisRange = "{43, 1289}";
+			sepNavIntBoundsRect = "{{0, 0}, {779, 858}}";
+			sepNavSelRange = "{314, 0}";
+			sepNavVisRange = "{314, 272}";
 			sepNavWindowFrame = "{{38, 109}, {1082, 867}}";
 		};
 	};
 	C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {831, 8723}}";
-			sepNavSelRange = "{847, 19}";
-			sepNavVisRange = "{485, 1090}";
+			sepNavIntBoundsRect = "{{0, 0}, {779, 8632}}";
+			sepNavSelRange = "{525, 0}";
+			sepNavVisRange = "{382, 250}";
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
@@ -3234,7 +3359,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 85";
 		rLen = 0;
-		rLoc = 2937;
+		rLoc = 3508;
 		rType = 0;
 		vrLen = 1285;
 		vrLoc = 1615;
@@ -3244,7 +3369,7 @@
 		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
 		name = "BeerCounterController.h: 16";
 		rLen = 0;
-		rLoc = 337;
+		rLoc = 332;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 0;
@@ -3334,7 +3459,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 85";
 		rLen = 0;
-		rLoc = 2937;
+		rLoc = 3508;
 		rType = 0;
 		vrLen = 1494;
 		vrLoc = 93;
@@ -3374,7 +3499,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 42";
 		rLen = 398;
-		rLoc = 1272;
+		rLoc = 1843;
 		rType = 0;
 		vrLen = 1491;
 		vrLoc = 534;
@@ -3728,7 +3853,7 @@
 		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
 		name = "BeerCounterController.h: 16";
 		rLen = 0;
-		rLoc = 337;
+		rLoc = 332;
 		rType = 0;
 		vrLen = 553;
 		vrLoc = 0;
@@ -3845,7 +3970,7 @@
 		fRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */;
 		name = "BeerCounterController.m: 89";
 		rLen = 0;
-		rLoc = 2980;
+		rLoc = 3551;
 		rType = 0;
 		vrLen = 1177;
 		vrLoc = 1758;
@@ -4088,16 +4213,16 @@
 	};
 	C9DA6F0512F34E0700D9886A /* BeerCounterController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 644}}";
-			sepNavSelRange = "{337, 0}";
-			sepNavVisRange = "{0, 553}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 434}}";
+			sepNavSelRange = "{228, 0}";
+			sepNavVisRange = "{0, 609}";
 		};
 	};
 	C9DA6F0612F34E0700D9886A /* BeerCounterController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 2223}}";
-			sepNavSelRange = "{3146, 26}";
-			sepNavVisRange = "{2057, 948}";
+			sepNavIntBoundsRect = "{{0, 0}, {797, 2431}}";
+			sepNavSelRange = "{993, 0}";
+			sepNavVisRange = "{1118, 1124}";
 		};
 	};
 	C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */ = {

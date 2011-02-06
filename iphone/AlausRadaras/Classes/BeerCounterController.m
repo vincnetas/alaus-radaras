@@ -11,9 +11,10 @@
 
 @implementation BeerCounterController
 
-@synthesize talkLabel, beerCountLabel;
+@synthesize talkLabel, beerCountLabel, beerButton;
 
 - (void)dealloc {
+	[beerButton release];
 	[beerCountLabel release];
 	[talkLabel release];
     [super dealloc];
@@ -26,9 +27,25 @@
 	self.view.backgroundColor = background;
 	[background release];
 	
+	UILongPressGestureRecognizer *longPressGR;	
+	UIGestureRecognizer *recognizer;
+	recognizer = [[ UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+	recognizer.delegate = self;
+	
+	longPressGR = (UILongPressGestureRecognizer *)recognizer;
+	longPressGR.minimumPressDuration = 1.0;
+	longPressGR.allowableMovement = 50.0;
+	[beerButton addGestureRecognizer:longPressGR];
+	
 	currentBeerCount = 0;
 	
 	NSLog(@"BeerCounterController viewDidLoad");
+}
+
+-(void) handleLongPress:(UILongPressGestureRecognizer *)recognizer  {
+	if (currentBeerCount != 0) {
+		[self resetCount];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {
