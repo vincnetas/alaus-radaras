@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="1"/>
 			<integer value="43"/>
-			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -112,12 +112,6 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUICustomView" ref="609994084"/>
 								<reference key="IBUIToolbar" ref="290814236"/>
-							</object>
-							<object class="IBUIBarButtonItem" id="841138581">
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="290814236"/>
-								<int key="IBUISystemItemIdentifier">12</int>
 							</object>
 						</object>
 						<reference key="IBUITintColor" ref="260973525"/>
@@ -388,14 +382,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">toggleSearch:</string>
-						<reference key="source" ref="841138581"/>
-						<reference key="destination" ref="372490531"/>
-					</object>
-					<int key="connectionID">70</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">showOnMap:</string>
 						<reference key="source" ref="886804761"/>
 						<reference key="destination" ref="949061505"/>
@@ -456,7 +442,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="241890066"/>
-							<reference ref="841138581"/>
 							<reference ref="798718725"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
@@ -529,11 +514,6 @@
 						<reference key="parent" ref="815154602"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">68</int>
-						<reference key="object" ref="841138581"/>
-						<reference key="parent" ref="290814236"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="798718725"/>
 						<reference key="parent" ref="290814236"/>
@@ -583,8 +563,6 @@
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 					<string>6.IBViewBoundsToFrameTransform</string>
-					<string>68.IBPluginDependency</string>
-					<string>68.showNotes</string>
 					<string>7.IBPluginDependency</string>
 					<string>81.IBPluginDependency</string>
 					<string>81.IBViewBoundsToFrameTransform</string>
@@ -618,8 +596,6 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwigAAA</bytes>
 					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

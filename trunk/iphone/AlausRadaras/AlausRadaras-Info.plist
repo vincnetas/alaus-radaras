@@ -26,14 +26,6 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSJavaNeeded</key>
-	<string>YES</string>
-	<key>NSJavaPath</key>
-	<array>
-		<string>AlausRadaras.jar</string>
-	</array>
-	<key>NSJavaRoot</key>
-	<string>Contents/Resources/Java</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 </dict>

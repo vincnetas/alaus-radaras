@@ -15,9 +15,8 @@
 	UILabel *pubLabel;
 	UILabel *brandLabel;
 	UIImageView *brandImage;
-	
-	NSString *pubId;
 }
+
 @property (nonatomic, retain) FeelingLucky *feelingLucky;
 @property (nonatomic, retain) IBOutlet UILabel *pubLabel;
 @property (nonatomic, retain) IBOutlet UILabel *brandLabel;

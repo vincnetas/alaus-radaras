@@ -8,7 +8,7 @@
 
 #import "LuckyController.h"
 #import "PubDetailViewController.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation LuckyController
 
@@ -42,10 +42,9 @@
 - (void)viewDidAppear:(BOOL)animated {
 
 	if (feelingLucky == nil){	
-		AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];		
-		feelingLucky = [appDelegate feelingLucky];
-		
-		pubId = [feelingLucky.pub.pubId copy];
+		//AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];		
+
+		feelingLucky = 	[[SQLiteManager sharedManager] feelingLucky];//[appDelegate feelingLucky];
 		pubLabel.text = feelingLucky.pub.pubTitle;
 		brandLabel.text = feelingLucky.brand.label;
 		brandImage.image = [UIImage imageNamed:feelingLucky.brand.icon];
@@ -64,9 +63,9 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 	
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+//	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 
-	pubDetailView.currentPub =  [appDelegate getPubById:pubId];//feelingLucky.pub;
+	pubDetailView.currentPub =  feelingLucky.pub;//[appDelegate getPubById:pubId];//feelingLucky.pub;
 	
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:pubDetailView animated:YES];

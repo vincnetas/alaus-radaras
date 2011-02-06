@@ -8,7 +8,7 @@
 
 #import "BrandsDetailViewController.h"
 #import "Brand.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation BrandsDetailViewController
 
@@ -53,11 +53,11 @@
 	NSLog(@"showOnMap");
 	NSMutableArray *pubs = [[NSMutableArray alloc]init];
 
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 	for(Brand *brand in brandList) {
-		[pubs addObjectsFromArray:[appDelegate getPubsByBrandId:brand.brandId]];
+		[pubs addObjectsFromArray:[[SQLiteManager sharedManager] getPubsByBrandId:brand.brandId]];
 	}
 	[self showMapWithPubs:pubs WithInfo:titleLabel.text];
+	[pubs release];
 }
 
 
@@ -96,10 +96,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	NSLog(@"didSelectRowAtIndexPath: %@",[[brandList objectAtIndex:indexPath.row]brandId]);
-	
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	NSMutableArray *pubs = [appDelegate getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];		 		 
+		
+	NSMutableArray *pubs = [[SQLiteManager sharedManager] getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];		 		 
 	[self showMapWithPubs:pubs WithInfo:[[brandList objectAtIndex:indexPath.row]label]];
 	[pubs release];	
 	
