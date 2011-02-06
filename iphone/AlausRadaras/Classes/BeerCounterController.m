@@ -7,7 +7,7 @@
 //
 
 #import "BeerCounterController.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation BeerCounterController
 
@@ -27,16 +27,24 @@
 	[background release];
 	
 	currentBeerCount = 0;
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	if (standardUserDefaults) {
-		currentBeerCount = [standardUserDefaults integerForKey:@"CurrentBeers"];
-	}
 	
-	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	talkLabel.text = [appDelegate getQuote:currentBeerCount];
-
 	NSLog(@"BeerCounterController viewDidLoad");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	/* Get Total Beers from user defaults */
+	if (currentBeerCount == 0) {
+		NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+		if (standardUserDefaults) {
+			currentBeerCount = [standardUserDefaults integerForKey:@"CurrentBeers"];
+		}
+		if (currentBeerCount > 10) {
+			talkLabel.text = [[SQLiteManager sharedManager]getQuote:10];
+		} else {
+			talkLabel.text = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
+		}
+		beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
+	}
 }
 
 - (IBAction) resetCount {
@@ -52,8 +60,7 @@
 	currentBeerCount = 0;
 	
 	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	talkLabel.text = [appDelegate getQuote:currentBeerCount];
+	talkLabel.text = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
 }
 
 - (IBAction) drinkABeer {	
@@ -66,9 +73,19 @@
 		[standardUserDefaults setInteger:currentBeerCount forKey:@"CurrentBeers"];
 		[standardUserDefaults synchronize];
 	}
-	
-	if (currentBeerCount >= 11) {
-		talkLabel.text = @"Zzz.. zZz..";
+
+	if (currentBeerCount == 10) {
+		UIAlertView* alertView = 
+		[[UIAlertView alloc] initWithTitle:@"Sveikiname!. Pasiekiete naują lygį - galite ropoti!"
+								   message:nil 
+								  delegate:self 
+						 cancelButtonTitle:@"Valio!"
+						 otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];	
+	}
+	if (currentBeerCount > 10) {
+		//talkLabel.text = @"Zzz.. zZz..";
 		return;
 	};
 
@@ -78,14 +95,13 @@
 		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
 								   message:nil 
 								  delegate:self 
-						 cancelButtonTitle:@"Užteks,važiuoju"
+						 cancelButtonTitle:@"Kviečiam!"
 						 otherButtonTitles:@"Dar vieną!", nil];
 		[alertView show];
 		[alertView release];	
 	}
 	
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	NSString* quote = [appDelegate getQuote:currentBeerCount];
+	NSString* quote = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
 	talkLabel.text = quote;
 }
 

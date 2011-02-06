@@ -1,5 +1,5 @@
 dark	Tamsus
-larger	Šviesus
+lager	Šviesus
 white	Kvietinis
 foreign	Užsienietiškas
 rural	Kaimiškas

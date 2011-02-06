@@ -41,7 +41,6 @@
 
 
 - (IBAction) gotoPreviousView:(id)sender;
-- (IBAction) showOnMap:(id)sender;
 - (IBAction) dialNumber:(id)sender;
 - (IBAction) navigateToPub:(id)sender;
 - (IBAction) openWebpage:(id)sender;

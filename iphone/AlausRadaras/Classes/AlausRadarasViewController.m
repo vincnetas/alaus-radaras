@@ -8,7 +8,7 @@
 
 #import "AlausRadarasViewController.h"
 #import "Pub.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h";
 
 @implementation AlausRadarasViewController
 
@@ -43,8 +43,6 @@
 }
 
 -(IBAction) clickPint:(id) sender {
-//	pintCount++;
-//	pintCountLabel.text = [NSString stringWithFormat:@"%d",pintCount];
 	beerCounterController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:beerCounterController animated:YES];
 }
@@ -61,8 +59,8 @@
 	MapViewController *vietosView = 
 			[[MapViewController alloc] initWithNibName:nil bundle:nil];
 
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[vietosView setPubsOnMap:[[appDelegate getPubs]autorelease]];
+	//AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[vietosView setPubsOnMap:[[[SQLiteManager sharedManager]getPubs]autorelease]];
 	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:vietosView animated:YES];
 	[vietosView release];

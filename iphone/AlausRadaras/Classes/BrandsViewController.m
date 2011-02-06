@@ -7,7 +7,7 @@
 //
 
 #import "BrandsViewController.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation BrandsViewController
 
@@ -45,11 +45,10 @@
 	brandsTable.separatorColor = [UIColor grayColor];
 
 	 category = 0;
-	 	 
-	 AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	 brandList = [appDelegate getBrands];
-	 tagsList = [appDelegate getTags];
-	 countryList = [appDelegate getCountries];
+	 
+	 brandList =  [[SQLiteManager sharedManager] getBrands];
+	 tagsList = [[SQLiteManager sharedManager] getTags];
+	 countryList = [[SQLiteManager sharedManager] getCountries];
 	 	 
 	 /* Search initialization */	 
 	 searchBar = [[UISearchBar alloc] init];
@@ -150,21 +149,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 		
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 
 	switch (category) {
 		case 0:{
-			NSMutableArray *pubs = [appDelegate getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];
+			NSMutableArray *pubs = [[SQLiteManager sharedManager]getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];
 			[self showMapWithPubs:pubs title:[[brandList objectAtIndex:indexPath.row]label]];
 			[pubs release];	
 			break;
 		} case 1: {	
-			NSMutableArray *brandsByCountry = [appDelegate getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByCountry = [[SQLiteManager sharedManager] getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByCountry title:[[countryList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByCountry release];
 			break;
 		} case 2: {
-			NSMutableArray *brandsByTag = [appDelegate getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByTag = [[SQLiteManager sharedManager] getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByTag title:[[tagsList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByTag release];
 			break;

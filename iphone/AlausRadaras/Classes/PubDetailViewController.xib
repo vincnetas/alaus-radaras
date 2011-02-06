@@ -78,7 +78,7 @@
 						<string key="NSFrame">{{0, 44}, {320, 137}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<float key="IBUIAlpha">0.30422535538673401</float>
-						<int key="IBUIContentMode">5</int>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -906,7 +906,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>PubDetailViewController</string>
 					<string>UIResponder</string>
-					<string>{{634, 163}, {320, 480}}</string>
+					<string>{{619, 133}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+UAAA</bytes>

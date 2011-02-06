@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "PubAnnotationView.h"
 #import "Pub.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation MapViewController
 
@@ -176,8 +176,7 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 
-	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	pubDetailView.currentPub = [appDelegate getPubById:pubAnnotation.pubId];
+	pubDetailView.currentPub = [[SQLiteManager sharedManager] getPubById:pubAnnotation.pubId];
 	
     CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
 	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];

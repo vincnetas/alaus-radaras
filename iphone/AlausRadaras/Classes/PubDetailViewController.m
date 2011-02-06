@@ -8,7 +8,7 @@
 
 #import "PubDetailViewController.h"
 #import "Brand.h"
-#import "AlausRadarasAppDelegate.h"
+#import "SQLiteManager.h"
 
 @implementation PubDetailViewController
 
@@ -52,8 +52,8 @@
 	 pubCallLabel.text = currentPub.phone;
 	 pubLogoImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"pub_%@.png", currentPub.pubId]];
 	 
-	 AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	 brandList = [appDelegate getBrandsByPubId:currentPub.pubId];
+	 //AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
+	 brandList = [[SQLiteManager sharedManager] getBrandsByPubId:currentPub.pubId];
 	 
 	 /* Disable if I view didn't get users coordinates */
 	 if (userCoordinates == nil) {
@@ -68,26 +68,6 @@
 
 - (IBAction) gotoPreviousView:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];	
-}
-
-- (IBAction) showOnMap:(id)sender {
-	NSLog(@"showOnMap");
-	
-	// TODO: Implement
-	
-	MapViewController *vietosView = 
-		[[MapViewController alloc] initWithNibName:nil bundle:nil];
-	
-	NSMutableArray *pubs = [[NSMutableArray alloc]init];
-
-	[pubs addObject:currentPub];
-	[vietosView setPubsOnMap:pubs];
-	
-	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
-	[self presentModalViewController:vietosView animated:YES];
-	
-	[vietosView release];
-	[pubs release];
 }
 
 - (IBAction) dialNumber:(id)sender {
@@ -111,10 +91,10 @@
 }
 
 - (IBAction) navigateToPub:(id)sender {
-	NSLog(@"navigateToPub: %@, %@", currentPub.latitude, currentPub.longitude);
+	NSLog(@"navigateToPub: %.8lf, %.8lf", currentPub.latitude, currentPub.longitude);
 	
 	[[UIApplication sharedApplication] openURL:
-		[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%@,%@", 
+		[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%.8lf,%.8lf", 
 							  userCoordinates, currentPub.latitude, currentPub.longitude]]];
 }
 
@@ -140,48 +120,7 @@
 		hlcell.accessoryType = UITableViewCellAccessoryNone;
 		hlcell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
-	
-//	int section = indexPath.section;
-//	NSMutableArray *sectionItems = [sections objectAtIndex:section];
-	/*
-	int numOfBrands = [brandList count];
-	int rowNum = 0;
-	for(int brandNum = 0; brandNum<numOfBrands/3;brandNum++){
 		
-	   	for (rowNum = 0; rowNum < numOfBrands; rowNum++) {
-
-			int colNum = 0;	
-			for (colNum =0; colNum<4; colNum++) {
-					
-					Brand *item = [brandList objectAtIndex:brandNum];
-
-					CGRect rect = CGRectMake(70*colNum, 0, 64, 64);
-					UIButton *button=[[UIButton alloc] initWithFrame:rect];
-					[button setFrame:rect];
-					UIImage *buttonImageNormal=[UIImage imageNamed:item.icon];
-	//				[button setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
-					[button setBackgroundColor:[UIColor greenColor]];
-					[button setContentMode:UIViewContentModeCenter];
-					
-					NSString *tagValue = [NSString stringWithFormat:@"%d%d", indexPath.section+0, 0];
-					button.tag = [tagValue intValue];
-					//	[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-					[hlcell.contentView addSubview:button];
-					[button release];
-					
-					UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(31+(100*colNum)-15, 66, 95, 12)] autorelease];
-					
-					label.text = item.label;
-					label.textColor = [UIColor lightGrayColor];
-					label.backgroundColor = [UIColor grayColor];
-					label.textAlignment = UITextAlignmentCenter;
-					label.font = [UIFont fontWithName:@"ArialMT" size:12]; 
-					[hlcell.contentView addSubview:label];
-			}
-		}
-	}
-	*/
-	
 	int n = [brandList count];
 	int i=0,i1=0; 
 	while(i<n){
