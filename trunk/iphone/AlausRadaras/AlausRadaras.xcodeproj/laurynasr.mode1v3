@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -273,125 +271,17 @@
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
-								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>65</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>66</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>67</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>70</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>71</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>72</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>73</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>74</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>75</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>76</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>77</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>78</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>79</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>80</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>81</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>82</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>83</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>84</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>85</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>86</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>87</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>88</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>89</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>90</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>91</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>92</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>93</integer>
-									<integer>64</integer>
-								</array>
-								<array>
-									<integer>94</integer>
-									<integer>64</integer>
+									<integer>50</integer>
+									<integer>38</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 978}, {246, 688}}</string>
+							<string>{{0, 285}, {246, 688}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -421,6 +311,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -438,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C9071B0D12FEDC4200BDA053</string>
+										<string>C9071B3212FEE3E200BDA053</string>
 										<key>history</key>
 										<array>
 											<string>C92E5B1012EE236100412BFA</string>
@@ -510,7 +402,6 @@
 											<string>C9071A2812FEC6F900BDA053</string>
 											<string>C9071A2912FEC6F900BDA053</string>
 											<string>C9071A2A12FEC6F900BDA053</string>
-											<string>C9071A5C12FECED900BDA053</string>
 											<string>C9071A6012FECED900BDA053</string>
 											<string>C9071A6112FECED900BDA053</string>
 											<string>C9071A6212FECED900BDA053</string>
@@ -522,7 +413,9 @@
 											<string>C9071ACC12FED5FD00BDA053</string>
 											<string>C9071AE212FED6E000BDA053</string>
 											<string>C9071AF412FED8E900BDA053</string>
-											<string>C9071B0C12FEDC4200BDA053</string>
+											<string>C9071B1A12FEE1B400BDA053</string>
+											<string>C9071B2412FEE21300BDA053</string>
+											<string>C9071B2512FEE21300BDA053</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -720,6 +613,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C9071B3312FEE3E200BDA053</string>
 		<string>C9071AF712FED8E900BDA053</string>
 		<string>C9071AF812FED8E900BDA053</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -749,7 +643,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SQLiteManager.h</string>
+								<string>SQLiteManager.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -820,7 +714,7 @@
 			<key>WindowToolGUID</key>
 			<string>C97BF0A712EA0A8B004519F0</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeerCounterController : UIViewController {
+@interface BeerCounterController : UIViewController<UIGestureRecognizerDelegate> {
 	UILabel *beerCountLabel;
 	UILabel *talkLabel;
-	IBOutlet UIImageView *bubbleImage;
+	
 	
 	int currentBeerCount;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *beerCountLabel;
 @property (nonatomic, retain) IBOutlet UILabel *talkLabel;
+@property (nonatomic, retain) IBOutlet UIButton *beerButton;
 
 - (IBAction) resetCount;
 - (IBAction) drinkABeer;
