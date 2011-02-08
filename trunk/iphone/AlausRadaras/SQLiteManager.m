@@ -210,7 +210,24 @@ static SQLiteManager *sharedSQLiteManager = nil;
  * With all the data inserted
  */
 
-- (void) copyDatabase {
+- (void) copyDatabaseIfNotExists {
+	/* Copy database if needed */
+	NSError *error;
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	BOOL success = [fileManager fileExistsAtPath:databasePath]; 
+	
+	if(!success) {
+		NSLog(@"Database not found, copying the NEW database");
+		NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
+		success = [fileManager copyItemAtPath:defaultDBPath toPath:databasePath error:&error];
+		if (!success) 
+			NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+	} else {
+		NSLog(@"Database exists");	
+	}
+}
+
+- (void) recreateDatabase {
 	/* delete the old db. */
 	NSLog(@"Removing the OLD database");
 	NSFileManager *fileManager = [NSFileManager defaultManager];

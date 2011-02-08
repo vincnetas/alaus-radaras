@@ -41,7 +41,7 @@
 			
 //			Copies prefiled database
 //			Comment me
-			[[SQLiteManager sharedManager] copyDatabase];
+			[[SQLiteManager sharedManager] recreateDatabase];
 		
 //			Creates database using scripts
 //			[[SQLiteManager sharedManager] createNewDatabase];
@@ -49,6 +49,7 @@
 			[standardUserDefaults setDouble:appVersion forKey:@"DatabaseVersion"];
 			[standardUserDefaults synchronize];
 		}
+		[[SQLiteManager sharedManager] copyDatabaseIfNotExists];
 	}
 
 	// Override point for customization after application launch.

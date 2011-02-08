@@ -72,7 +72,7 @@
 
 - (IBAction) dialNumber:(id)sender {
 	UIAlertView* alertView = 
-	[[UIAlertView alloc] initWithTitle:@"Tai skambinam baran, tep?"
+	[[UIAlertView alloc] initWithTitle:@"Tai skambinam į barą?"
 							   message:nil 
 							  delegate:self 
 					 cancelButtonTitle:@"NE!"
@@ -90,18 +90,14 @@
 	}
 }
 
-- (IBAction) navigateToPub:(id)sender {
-	NSLog(@"navigateToPub: %.8lf, %.8lf", currentPub.latitude, currentPub.longitude);
-	
+- (IBAction) navigateToPub:(id)sender {	
 	[[UIApplication sharedApplication] openURL:
 		[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%.8lf,%.8lf", 
 							  userCoordinates, currentPub.latitude, currentPub.longitude]]];
 }
 
 
-- (IBAction) openWebpage:(id)sender {
-	NSLog(@"openWebpage: %@", currentPub.webpage);
-	
+- (IBAction) openWebpage:(id)sender {	
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentPub.webpage]];
 }
 

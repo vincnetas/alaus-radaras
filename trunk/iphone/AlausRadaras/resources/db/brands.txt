@@ -29,10 +29,10 @@ kanapinis	Kanapinis tamsus	bermudai, obuolys, dzempub	lt	rural, dark
 katedros_medaus	Katedros Medaus	prie_katedros, dominink_karciama	lt	rural, lager
 katedros_sviesusis	Katedros Šviesusis	prie_katedros, dominink_karciama	lt	rural, lager
 katedros_tamsusis	Katedros Tamsusis	prie_katedros, dominink_karciama,dzempub	lt	rural, dark
-kozel	Kozel	obuolys,wall_street, bo,baras1925,sindbado_oaze	cz	foreign, dark, light
+kozel	Kozel	obuolys,wall_street, bo,baras1925,sindbado_oaze,alaus_studija	cz	foreign, dark, light
 krusovice	Krušovice	blusyne, simo_baras, alaus_studija,bo	cz	foreign, dark, light
 kunigaiksciu	Kunigaikščių	mamutas, keisti_zenklai	lt	rural, strong
-memelis_sviesus	Memelio Šviesusis Gyvasis	memelis	lt	rural, lager
+memelis_sviesus	Memelio Šviesusis Gyvasis	memelis, baras16_19	lt	rural, lager
 memelis_karamelinis	Memelio Karamelinis Vyšnių	memelis	lt	rural
 memelis_juodas	Memelio Juodasis Degintas	memelis	lt	rural, dark
 memelis_kvietinis	Memelio Kvietinis Medaus	memelis	lt	rural, white
@@ -47,8 +47,8 @@ sinkoriu	Šinkorių	sadute	lt	rural
 sinkoriu_tamsus	Šinkorių tamsusis	sadute	lt	rural, dark
 staropramen	Staropramen	burito, obuolys	cz	foreign, lager
 svyturys_baltas	Švyturys Baltas	busi_trecias, pilies_mene, uzupio_picerija,bo,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas	lt	white
-svyturys_baltijos	Švyturys Baltijos	molinis_asotis, mamutas,skliautas, bo	lt	dark, strong
-svyturys_ekstra	Švyturys Ekstra	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas,baras1925	lt	lager
+svyturys_baltijos	Švyturys Baltijos	molinis_asotis, mamutas,skliautas, bo, baras16_19	lt	dark, strong
+svyturys_ekstra	Švyturys Ekstra	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas,baras1925,baras16_19	lt	lager
 tauro_tradicinis	Tauro Tradicinis	mamutas	lt	lager, strong
 tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
 tucher	Tucher	obuolys	de	foreign, white

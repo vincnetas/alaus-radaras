@@ -121,8 +121,6 @@
 
 		}
 	}
-	NSLog(@"Total pubs: %i. Pubs on map:", pubsAlreadyOnMap.count);
-
 }
 
  
@@ -151,7 +149,6 @@
 
 /* Animating droping pins */
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views { 
-	NSLog(@"didAddAnnotationViews");
 	MKAnnotationView *annotationView; 
 
 	for (annotationView in views) {
@@ -213,15 +210,12 @@
 -(IBAction) cityIndexChanged {
 	switch (self.citySegmentControl.selectedSegmentIndex) {
 		case 0:
-			NSLog(@"Segment Vilnius selected.");
 			[self showRegionWithLatitude:54.689313 Longitude:25.282631];
 			break;
 		case 1:
-			NSLog(@"Segment Kaunas selected.");
 			[self showRegionWithLatitude:54.896872 Longitude:23.892426];
 			break;
 		case 2:
-			NSLog(@"Segment Klaipėda selected.");
 			[self showRegionWithLatitude:55.698541 Longitude:21.147317];
 			break;
 			

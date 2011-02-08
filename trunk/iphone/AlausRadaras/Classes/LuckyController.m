@@ -67,7 +67,7 @@
 
 	pubDetailView.currentPub =  feelingLucky.pub;//[appDelegate getPubById:pubId];//feelingLucky.pub;
 	
-	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	pubDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:pubDetailView animated:YES];
 	//[pubDetailView release];
 }

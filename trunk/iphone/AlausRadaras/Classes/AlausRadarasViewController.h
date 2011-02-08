@@ -19,7 +19,6 @@
 	
 	IBOutlet BeerCounterController *beerCounterController;
 	IBOutlet LuckyController *luckyController;
-
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
