@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -269,16 +271,49 @@
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
+								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
-									<integer>0</integer>
+									<integer>43</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>48</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>49</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>50</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>51</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>54</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>55</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>59</integer>
+									<integer>36</integer>
+								</array>
+								<array>
+									<integer>60</integer>
+									<integer>36</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {246, 619}}</string>
+							<string>{{0, 452}, {246, 619}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -308,14 +343,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AlausRadarasAppDelegate.h</string>
+								<string>Icon-Small@2x.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,11 +356,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AlausRadarasAppDelegate.h</string>
+										<string>Icon-Small@2x.png</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C9466BEC1301C05600DF7239</string>
+										<string>C9E3F5EA1301C24F005CB470</string>
 										<key>history</key>
 										<array>
 											<string>C92E5B1012EE236100412BFA</string>
@@ -339,7 +372,6 @@
 											<string>C9911FD612F206D800AF4ECE</string>
 											<string>C97683EB12F21EB300D4E9F3</string>
 											<string>C986CF7712F4603900865F6D</string>
-											<string>C986D01E12F4800200865F6D</string>
 											<string>C986D01F12F4800200865F6D</string>
 											<string>C986D02012F4800200865F6D</string>
 											<string>C9BC0B9B12F5A850002DB792</string>
@@ -392,9 +424,7 @@
 											<string>C9D4710D1300A235009C04AF</string>
 											<string>C90AA22C1300A8B4002EE7AA</string>
 											<string>C90AA2451300AC97002EE7AA</string>
-											<string>C90AA2461300AC97002EE7AA</string>
 											<string>C90AA2471300AC97002EE7AA</string>
-											<string>C9A6320413015CB8004BFD28</string>
 											<string>C9ACA4301301AD1800EBBBC9</string>
 											<string>C9ACA4321301AD1800EBBBC9</string>
 											<string>C9ACA4331301AD1800EBBBC9</string>
@@ -414,7 +444,11 @@
 											<string>C9466BE91301C05600DF7239</string>
 											<string>C9466BEA1301C05600DF7239</string>
 											<string>C9466BEB1301C05600DF7239</string>
-											<string>C9071BE912FF1DDE00BDA053</string>
+											<string>C9E3F5DB1301C239005CB470</string>
+											<string>C9E3F5DC1301C239005CB470</string>
+											<string>C9E3F5E81301C24F005CB470</string>
+											<string>C9E3F5E91301C24F005CB470</string>
+											<string>C90AA2461300AC97002EE7AA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -426,14 +460,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {794, 521}}</string>
+								<string>{{0, 0}, {794, 343}}</string>
 								<key>RubberWindowFrame</key>
 								<string>68 323 1062 678 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>521pt</string>
+							<string>343pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -446,14 +480,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 526}, {794, 111}}</string>
+								<string>{{0, 348}, {794, 289}}</string>
 								<key>RubberWindowFrame</key>
 								<string>68 323 1062 678 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>111pt</string>
+							<string>289pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -472,9 +506,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>C9466BBE1301B52500DF7239</string>
+				<string>C9E3F5E01301C239005CB470</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>C9466BBF1301B52500DF7239</string>
+				<string>C9E3F5E11301C239005CB470</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -612,10 +646,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C9466BD61301BBA900DF7239</string>
-		<string>C9466BD71301BBA900DF7239</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>C97BF0A712EA0A8B004519F0</string>
 		<string>/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras.xcodeproj</string>
 	</array>
@@ -641,7 +671,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SQLiteManager.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -658,8 +688,6 @@
 							<string>85pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -699,7 +727,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>C97BF0A712EA0A8B004519F0</string>
-				<string>C9466BC01301B52500DF7239</string>
+				<string>C9E3F5E21301C239005CB470</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -712,7 +740,7 @@
 			<key>WindowToolGUID</key>
 			<string>C97BF0A712EA0A8B004519F0</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
