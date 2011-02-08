@@ -17,6 +17,11 @@
 		28D7ACF80DDB3853001CB0EB /* AlausRadarasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */; };
 		C9071A7712FED00E00BDA053 /* beer-radar-schema.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */; };
 		C9071B1012FEDDB900BDA053 /* bokalas_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */; };
+		C9071C2012FF31F500BDA053 /* kur_as.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071C1F12FF31F500BDA053 /* kur_as.png */; };
+		C90AA23E1300AAB5002EE7AA /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23A1300AAB5002EE7AA /* Icon-Small.png */; };
+		C90AA23F1300AAB5002EE7AA /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */; };
+		C90AA2401300AAB5002EE7AA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23C1300AAB5002EE7AA /* Icon.png */; };
+		C90AA2411300AAB5002EE7AA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23D1300AAB5002EE7AA /* Icon@2x.png */; };
 		C916C32D12FC7B9300AF396A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32612FC7B9300AF396A /* FMResultSet.m */; };
 		C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */; };
 		C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
@@ -50,11 +55,8 @@
 		C96A86AD12F76AE70021B30B /* bottle_cap_back.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86AC12F76AE70021B30B /* bottle_cap_back.png */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
 		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
-		C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C97BF0BB12EA0C7E004519F0 /* icon.png */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986CB4412F3F83800865F6D /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB4312F3F83800865F6D /* pin@2x.png */; };
-		C986CB5812F3FDB900865F6D /* beer_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB5612F3FDB900865F6D /* beer_01@2x.png */; };
-		C986CB5912F3FDB900865F6D /* beer_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB5712F3FDB900865F6D /* beer_02@2x.png */; };
 		C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */; };
 		C986CF3512F45B7100865F6D /* brand_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */; };
 		C986CF3612F45B7100865F6D /* brand_belmonto_ypatingas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */; };
@@ -118,13 +120,13 @@
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
-		C9AEAB2012FDD72200EB81B1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */; };
-		C9AEAB2612FDD8AF00EB81B1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AEAB2512FDD8AF00EB81B1 /* Default.png */; };
 		C9BC0B9712F5A791002DB792 /* pub_kauno_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */; };
 		C9BC0C4A12F5C344002DB792 /* pub_memelis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0C4912F5C344002DB792 /* pub_memelis.png */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
 		C9CEFD2612FB1BF80010E6FF /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = C9CEFD2512FB1BF80010E6FF /* internet.png */; };
+		C9D470E613009A5C009C04AF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D470E513009A5C009C04AF /* Default@2x.png */; };
+		C9D471121300A267009C04AF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D471111300A267009C04AF /* Default.png */; };
 		C9D74DCA12EF3B9F008DE8E8 /* brands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */; };
 		C9D74DCB12EF3B9F008DE8E8 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC612EF3B9F008DE8E8 /* countries.txt */; };
 		C9D74DCC12EF3B9F008DE8E8 /* pubs.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */; };
@@ -154,6 +156,11 @@
 		8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlausRadaras-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beer-radar-schema.sqlite"; sourceTree = "<group>"; };
 		C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bokalas_btn.png; path = resources/images/bokalas_btn.png; sourceTree = "<group>"; };
+		C9071C1F12FF31F500BDA053 /* kur_as.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kur_as.png; path = resources/images/kur_as.png; sourceTree = "<group>"; };
+		C90AA23A1300AAB5002EE7AA /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "resources/images/Icon-Small.png"; sourceTree = "<group>"; };
+		C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "resources/images/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		C90AA23C1300AAB5002EE7AA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = resources/images/Icon.png; sourceTree = "<group>"; };
+		C90AA23D1300AAB5002EE7AA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "resources/images/Icon@2x.png"; sourceTree = "<group>"; };
 		C916C32612FC7B9300AF396A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = Classes/FMDB/FMResultSet.m; sourceTree = "<group>"; };
 		C916C32712FC7B9300AF396A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = Classes/FMDB/FMResultSet.h; sourceTree = "<group>"; };
 		C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = Classes/FMDB/FMDatabaseAdditions.m; sourceTree = "<group>"; };
@@ -198,11 +205,8 @@
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
 		C976847712F22A2900D4E9F3 /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeValue.h; sourceTree = "<group>"; };
 		C976847812F22A2900D4E9F3 /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeValue.m; sourceTree = "<group>"; };
-		C97BF0BB12EA0C7E004519F0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
 		C986CB4312F3F83800865F6D /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin@2x.png"; path = "resources/images/pin@2x.png"; sourceTree = "<group>"; };
-		C986CB5612F3FDB900865F6D /* beer_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_01@2x.png"; path = "resources/images/beer_01@2x.png"; sourceTree = "<group>"; };
-		C986CB5712F3FDB900865F6D /* beer_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_02@2x.png"; path = "resources/images/beer_02@2x.png"; sourceTree = "<group>"; };
 		C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_backoriu_tamsusis.png; path = resources/brands/brand_backoriu_tamsusis.png; sourceTree = "<group>"; };
 		C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_sviesusis.png; path = resources/brands/brand_belmonto_sviesusis.png; sourceTree = "<group>"; };
 		C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_ypatingas.png; path = resources/brands/brand_belmonto_ypatingas.png; sourceTree = "<group>"; };
@@ -271,13 +275,13 @@
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
 		C9A313F712F097990005ED6C /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pub.h; sourceTree = "<group>"; };
 		C9A313F812F097990005ED6C /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pub.m; sourceTree = "<group>"; };
-		C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		C9AEAB2512FDD8AF00EB81B1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_kauno_alus.png; path = resources/pubs/pub_kauno_alus.png; sourceTree = "<group>"; };
 		C9BC0C4912F5C344002DB792 /* pub_memelis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_memelis.png; path = resources/pubs/pub_memelis.png; sourceTree = "<group>"; };
 		C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9CEFD2512FB1BF80010E6FF /* internet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = internet.png; path = resources/images/internet.png; sourceTree = "<group>"; };
+		C9D470E513009A5C009C04AF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/images/Default@2x.png"; sourceTree = "<group>"; };
+		C9D471111300A267009C04AF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resources/images/Default.png; sourceTree = "<group>"; };
 		C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = brands.txt; path = resources/db/brands.txt; sourceTree = "<group>"; };
 		C9D74DC612EF3B9F008DE8E8 /* countries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = countries.txt; path = resources/db/countries.txt; sourceTree = "<group>"; };
 		C9D74DC712EF3B9F008DE8E8 /* pubs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubs.txt; path = resources/db/pubs.txt; sourceTree = "<group>"; };
@@ -355,7 +359,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -372,13 +375,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C9AEAB2512FDD8AF00EB81B1 /* Default.png */,
-				C9AEAB1F12FDD72200EB81B1 /* Default@2x.png */,
 				C986CFD512F4702D00865F6D /* pubs */,
 				C9A941DA12EA129B00992FAD /* images */,
 				C9D74E7212EF4727008DE8E8 /* brands */,
 				C9D74DC212EF3B4F008DE8E8 /* db */,
-				C97BF0BB12EA0C7E004519F0 /* icon.png */,
 				C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */,
 				8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */,
 				C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */,
@@ -395,6 +395,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */,
 				C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */,
 				C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -464,16 +465,14 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C9D471041300A198009C04AF /* apple */,
+				C9071C1F12FF31F500BDA053 /* kur_as.png */,
 				C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */,
 				C9CEFD2512FB1BF80010E6FF /* internet.png */,
 				C9EDF27412F89F8E00E9069A /* close.png */,
 				C96A86AC12F76AE70021B30B /* bottle_cap_back.png */,
 				C96A86A612F767E40021B30B /* bottle_cap.png */,
 				C986D00C12F479E000865F6D /* back.png */,
-				C986CB5612F3FDB900865F6D /* beer_01@2x.png */,
-				C986CB5712F3FDB900865F6D /* beer_02@2x.png */,
-				C986CB3C12F3F74300865F6D /* background@2x.png */,
-				C960135012F0C69200DB53C0 /* background.png */,
 				C960135112F0C69200DB53C0 /* batonas.png */,
 				C960135212F0C69200DB53C0 /* bokalas_vol_3.png */,
 				C960135312F0C69200DB53C0 /* burbuliukas.png */,
@@ -488,6 +487,21 @@
 				C960135D12F0C69200DB53C0 /* tag_02.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		C9D471041300A198009C04AF /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				C90AA23A1300AAB5002EE7AA /* Icon-Small.png */,
+				C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */,
+				C90AA23C1300AAB5002EE7AA /* Icon.png */,
+				C90AA23D1300AAB5002EE7AA /* Icon@2x.png */,
+				C960135012F0C69200DB53C0 /* background.png */,
+				C986CB3C12F3F74300865F6D /* background@2x.png */,
+				C9D471111300A267009C04AF /* Default.png */,
+				C9D470E513009A5C009C04AF /* Default@2x.png */,
+			);
+			name = apple;
 			sourceTree = "<group>";
 		};
 		C9D74DC212EF3B4F008DE8E8 /* db */ = {
@@ -614,7 +628,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* AlausRadarasViewController.xib in Resources */,
-				C97BF0BC12EA0C7E004519F0 /* icon.png in Resources */,
 				C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */,
 				C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */,
 				C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */,
@@ -638,8 +651,6 @@
 				C960136B12F0C69200DB53C0 /* tag_02.png in Resources */,
 				C986CB3D12F3F74300865F6D /* background@2x.png in Resources */,
 				C986CB4412F3F83800865F6D /* pin@2x.png in Resources */,
-				C986CB5812F3FDB900865F6D /* beer_01@2x.png in Resources */,
-				C986CB5912F3FDB900865F6D /* beer_02@2x.png in Resources */,
 				C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */,
 				C986CF3512F45B7100865F6D /* brand_belmonto_sviesusis.png in Resources */,
 				C986CF3612F45B7100865F6D /* brand_belmonto_ypatingas.png in Resources */,
@@ -704,8 +715,6 @@
 				C9EDF27512F89F8E00E9069A /* close.png in Resources */,
 				C9E8E25612F9FAD400E927C1 /* beer-radar-db.sqlite in Resources */,
 				C9CEFD2612FB1BF80010E6FF /* internet.png in Resources */,
-				C9AEAB2012FDD72200EB81B1 /* Default@2x.png in Resources */,
-				C9AEAB2612FDD8AF00EB81B1 /* Default.png in Resources */,
 				C928FBFA12FE00AB00D19918 /* pub_alaus_namai.png in Resources */,
 				C928FBFB12FE00AB00D19918 /* pub_bobo.png in Resources */,
 				C928FBFC12FE00AB00D19918 /* pub_bunte_gans.png in Resources */,
@@ -715,6 +724,13 @@
 				C928FC0412FE012800D19918 /* pub_wall_street.png in Resources */,
 				C9071A7712FED00E00BDA053 /* beer-radar-schema.sqlite in Resources */,
 				C9071B1012FEDDB900BDA053 /* bokalas_btn.png in Resources */,
+				C9071C2012FF31F500BDA053 /* kur_as.png in Resources */,
+				C9D470E613009A5C009C04AF /* Default@2x.png in Resources */,
+				C9D471121300A267009C04AF /* Default.png in Resources */,
+				C90AA23E1300AAB5002EE7AA /* Icon-Small.png in Resources */,
+				C90AA23F1300AAB5002EE7AA /* Icon-Small@2x.png in Resources */,
+				C90AA2401300AAB5002EE7AA /* Icon.png in Resources */,
+				C90AA2411300AAB5002EE7AA /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,11 +814,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.2;

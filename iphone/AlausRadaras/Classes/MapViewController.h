@@ -21,7 +21,7 @@
 	UILabel *infoLabel;
 	
 	/* Map Configuaration */
-	BOOL showAll;
+	BOOL rearrangeWithPub;
 	
 	/* City Segment */
 	UISegmentedControl *citySegmentControl;

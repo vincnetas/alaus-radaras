@@ -91,6 +91,17 @@
 		[standardUserDefaults synchronize];
 	}
 
+	if (currentBeerCount == 5) {
+		UIAlertView* alertView = 
+		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
+								   message:nil 
+								  delegate:self 
+						 cancelButtonTitle:@"Jau kviečiu"
+						 otherButtonTitles:@"Dar vieną!", nil];
+		[alertView show];
+		[alertView release];
+	}
+	
 	if (currentBeerCount == 10) {
 		UIAlertView* alertView = 
 		[[UIAlertView alloc] initWithTitle:@"Sveikiname!. Pasiekiete naują lygį - galite ropoti!"
@@ -105,18 +116,6 @@
 		//talkLabel.text = @"Zzz.. zZz..";
 		return;
 	};
-
-
-	if (currentBeerCount == 5) {
-		UIAlertView* alertView = 
-		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
-								   message:nil 
-								  delegate:self 
-						 cancelButtonTitle:@"Kviečiam!"
-						 otherButtonTitles:@"Dar vieną!", nil];
-		[alertView show];
-		[alertView release];	
-	}
 	
 	NSString* quote = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
 	talkLabel.text = quote;
@@ -126,6 +125,7 @@
 	if(buttonIndex == 0) {
 		// TODO show taxi list?
 		NSLog(@"Calling taxi");
+		//talkLabel.text = @"Prašyk aplinkinių taksi numerio!";
 	}
 }
 

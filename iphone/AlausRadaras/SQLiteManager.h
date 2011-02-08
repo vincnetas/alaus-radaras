@@ -31,7 +31,8 @@
 
 - (void) refresh;
 - (void) initializeDatabase;
-- (void) copyDatabase;
+- (void) copyDatabaseIfNotExists;
+- (void) recreateDatabase;
 - (void) createNewDatabase;
 
 - (NSMutableArray *) getBrands;

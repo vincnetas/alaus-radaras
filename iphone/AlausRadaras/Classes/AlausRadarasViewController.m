@@ -43,7 +43,7 @@
 }
 
 -(IBAction) clickPint:(id) sender {
-	beerCounterController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	beerCounterController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
 	[self presentModalViewController:beerCounterController animated:YES];
 }
 
@@ -58,10 +58,8 @@
 -(IBAction) clickPlaces:(id) sender {
 	MapViewController *vietosView = 
 			[[MapViewController alloc] initWithNibName:nil bundle:nil];
-
-	//AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[vietosView setPubsOnMap:[[[SQLiteManager sharedManager]getPubs]autorelease]];
-	vietosView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
+	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
 	[vietosView release];
 }

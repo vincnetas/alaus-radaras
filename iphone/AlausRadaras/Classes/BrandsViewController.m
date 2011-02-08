@@ -178,7 +178,6 @@
 		[[MapViewController alloc] initWithNibName:nil bundle:nil];
 	
 	[vietosView setPubsOnMap:pubs];
-
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
 	vietosView.infoLabel.text = [NSString stringWithFormat:@"%@ alus",titleText];
@@ -189,7 +188,7 @@
 	[brandsDetails setBrandList:brands];
 	brandsDetails.titleLabel.text = titleText;
 	[[brandsDetails brandsTable]reloadData];
-	brandsDetails.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;	
+	brandsDetails.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:brandsDetails animated:YES];
 }
 
