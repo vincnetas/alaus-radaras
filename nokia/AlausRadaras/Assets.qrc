@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>db/brands.txt</file>
-        <file>db/countries.txt</file>
-        <file>db/pubs.txt</file>
-        <file>db/qoutes.txt</file>
-        <file>db/tags.txt</file>
-    </qresource>
-</RCC>
