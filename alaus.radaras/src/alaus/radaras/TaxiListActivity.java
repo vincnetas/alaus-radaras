@@ -1,0 +1,53 @@
+package alaus.radaras;
+
+import java.util.List;
+
+import alaus.radaras.adapters.TaxiListAdapter;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.model.Taxi;
+import android.content.Intent;
+import android.location.Location;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+public class TaxiListActivity extends AbstractLocationActivity {
+
+
+	private ListView list;
+	private List<Taxi> taxies;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.list);
+
+		list = (ListView)findViewById(R.id.list);
+		list.setOnItemClickListener(new ListView.OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+				Taxi taxi = taxies.get(position);
+				Intent intent = new Intent(Intent.ACTION_DIAL);
+				intent.setData(Uri.parse("tel:" + taxi.getPhone()));
+				startActivity(intent);
+			}
+		});
+	}
+
+	@Override
+	protected void locationUpdated(Location location) {
+		
+		
+		taxies = BeerRadar.getInstance(this).getTaxies(location);
+		Log.e("d",String.valueOf(taxies.size()));
+		list.setAdapter(new TaxiListAdapter(this, taxies));
+		
+
+	}
+
+}

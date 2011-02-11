@@ -92,16 +92,4 @@ public class BrandListAdapter extends BaseAdapter {
         return convertView;
     }
 
-//    private CharSequence formatDistance(double distance) {
-//		// TODO Auto-generated method stub
-//    	if(distance > 1)
-//    	{
-//			return kilometeresFormat.format(distance) + " km";
-//    	}
-//    	else
-//    	{
-//			return meteresFormat.format(distance * 1000) + " m";
-//    	}
-//	}
-
 }

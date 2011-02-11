@@ -19,7 +19,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		
 		public static String DB_NAME = "beer-radar";
 		
-		public static int DB_VERSION = 1;
+		public static int DB_VERSION = 9;
 		
 		public static String PUBS = 
 	        "CREATE TABLE pubs(" +
@@ -28,6 +28,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"longtitude REAL NOT NULL, " +
 	        	"latitude 	REAL NOT NULL, " +
 	        	"address 	TEXT, " +
+	        	"city 		TEXT, " +
 	        	"notes	 	TEXT, " +
 	        	"phone	 	TEXT, " +
 	        	"url	 	TEXT);";
@@ -68,6 +69,14 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        "CREATE TABLE qoutes(" +
 	        	"amount			INTEGER NOT NULL," +
 	        	"text			TEXT NOT NULL);";
+		
+		public static String TAXI = 
+	        "CREATE TABLE taxi(" +
+	        	"title 		TEXT NOT NULL, " +
+	        	"phone	 	TEXT, " +
+	        	"city 		TEXT, " +
+	        	"longitude REAL NOT NULL, " +
+	        	"latitude 	REAL NOT NULL);";
 	}
 	
     public BeerRadarSQLiteOpenHelper(Context context) 
@@ -93,6 +102,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.BRANDS_TAGS);
 	        db.execSQL(Definition.QOUTES);
+	        db.execSQL(Definition.TAXI);
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
     	}
@@ -105,6 +115,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     	insertCountries(db);
     	insertQoutes(db);
     	insertAssociations(db);
+    	insertTaxies(db);
     	Log.i(LOG_TAG, "Finished inserting initial data");
     	
     }
@@ -140,10 +151,11 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     			values.put("id", columns[0]);
     			values.put("title", columns[1]);
     			values.put("address", columns[2]);
-    			values.put("phone", columns[3]);
-    			values.put("url", columns[4]);
-    			values.put("latitude", columns[5]);
-    			values.put("longtitude", columns[6]);
+    			values.put("city", columns[3]);
+    			values.put("phone", columns[4]);
+    			values.put("url", columns[5]);
+    			values.put("latitude", columns[6]);
+    			values.put("longtitude", columns[7]);
     			db.insert("pubs", null, values);
     		}    		
     	} catch (Exception e) {
@@ -247,6 +259,27 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     		Log.e(LOG_TAG, e.getMessage());
     	}		
 	}
+	
+	private void insertTaxies(SQLiteDatabase db) {
+    	try {
+    		BufferedReader reader = new BufferedReader(
+    				new InputStreamReader(context.getAssets().open("taxi.txt")));
+    		String line = null;
+    		while ((line = reader.readLine()) != null) {
+    			Log.i(LOG_TAG, "Inserting taxies: " + line);
+    			String[] columns = line.split("\t");
+    			ContentValues values = new ContentValues();
+    			values.put("title", columns[0]);
+    			values.put("phone", columns[1]);
+    			values.put("city", columns[2]);
+    			values.put("latitude", columns[3]);
+    			values.put("longitude", columns[4]);
+    			db.insert("taxi", null, values);
+    		}
+    	} catch (Exception e) {
+    		Log.e(LOG_TAG, e.getMessage());
+    	}		
+	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -254,10 +287,14 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
         		+ oldVersion  + " to " + newVersion + 
         		", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS pubs_brands;");
+        db.execSQL("DROP TABLE IF EXISTS brands_countries;");
+        db.execSQL("DROP TABLE IF EXISTS brands_tags;");
         db.execSQL("DROP TABLE IF EXISTS pubs;");
         db.execSQL("DROP TABLE IF EXISTS brands;");
         db.execSQL("DROP TABLE IF EXISTS tags;");
         db.execSQL("DROP TABLE IF EXISTS countries;");
+        db.execSQL("DROP TABLE IF EXISTS qoutes;");
+        db.execSQL("DROP TABLE IF EXISTS taxi;");
         onCreate(db);
 	}
 }

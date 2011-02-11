@@ -1,10 +1,11 @@
 /**
  * 
  */
-package alaus.radaras;
+package alaus.radaras.map.overlay;
 
 import java.util.ArrayList;
 
+import alaus.radaras.PubActivity;
 import alaus.radaras.service.model.Pub;
 import android.content.Context;
 import android.content.Intent;
@@ -54,7 +55,7 @@ public class PubOverlay extends BalloonItemizedOverlay<PubOverlayItem> {
 		Pub pub = pubOverlayItem.getPub();
 		
 		Intent intent = new Intent(context, PubActivity.class);
-		intent.putExtra(PubActivity.PUBID, pub.getId());
+		intent.putExtra(PubActivity.PUB_ID_PARAM, pub.getId());
 		context.startActivity(intent);
 		
 		return true;

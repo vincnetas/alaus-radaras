@@ -7,12 +7,13 @@ import java.util.Map;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
-import alaus.radaras.service.model.Location;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
+import alaus.radaras.service.model.Taxi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 
 /**
  * Entry point for BeerRadar service. 
@@ -36,13 +37,13 @@ public abstract class BeerRadar {
 		return instance;
 	}
 
-	public abstract List<Brand> getBrands();
+	public abstract List<Brand> getBrands(Location location);
 
 	public abstract List<Brand> getBrandsByPubId(String pubId);
 
-	public abstract List<Brand> getBrandsByCountry(String country);
+	public abstract List<Brand> getBrandsByCountry(String country, Location location);
 
-	public abstract List<Brand> getBrandsByTag(String tag);
+	public abstract List<Brand> getBrandsByTag(String tag, Location location);
 
 	public abstract List<Pub> getPubsByBrandId(String brandId, Location location);
 
@@ -56,17 +57,21 @@ public abstract class BeerRadar {
 
 	public abstract Brand getBrand(String brandId);
 
-	public abstract FeelingLucky feelingLucky();
+	public abstract FeelingLucky feelingLucky(Location location);
 
 	public abstract Drawable getImage(String url);
 
 	public abstract Qoute getQoute(int amount);
 
-	public abstract List<Country> getCountries();
+	public abstract List<Country> getCountries(Location location);
 
-	public abstract List<Tag> getTags();
+	public abstract List<Tag> getTags(Location location);
 
 	public abstract Tag getTag(String code);
 
 	public abstract Country getCountry(String code);
+	
+	public abstract double getMaxDistance();
+
+	public abstract List<Taxi> getTaxies(Location location);
 }

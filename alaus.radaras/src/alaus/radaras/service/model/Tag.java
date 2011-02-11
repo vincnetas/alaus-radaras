@@ -1,6 +1,6 @@
 package alaus.radaras.service.model;
 
-public class Tag {
+public class Tag extends MultipleLocation {
 	
 	private String code;
 	

@@ -28,25 +28,29 @@
   </TextView>
 	
 <Button 
-	android:text="@string/NearValue" 
+	android:text="@string/main_near_value" 
 	android:id="@+id/around" 
 	android:layout_width="fill_parent"
 	android:layout_marginLeft="40px" 
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/counter" android:textSize="30dp" android:layout_height="40dp"></Button>
+	android:layout_below="@id/counter" 
+	android:textSize="30dp" 
+	android:layout_height="40dp"></Button>
 <Button 
-	android:text="@string/BrandValue" 
+	android:text="@string/main_brand_value" 
 	android:id="@+id/search" 
 	android:layout_width="fill_parent" 
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_marginLeft="40px"
 	android:background="@drawable/batonas"
-	android:layout_below="@id/around" android:textSize="30dp" android:layout_height="40dp"></Button>
+	android:layout_below="@id/around" 
+	android:textSize="30dp" 
+	android:layout_height="40dp"></Button>
 <Button 
-	android:text="@string/LuckyValue" 
+	android:text="@string/main_lucky_value" 
 	android:id="@+id/lucky" 
 	android:layout_width="fill_parent" 
 	android:layout_centerInParent="true"

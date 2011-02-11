@@ -5,10 +5,16 @@ import alaus.radaras.alerts.CallTaxiAlert;
 import alaus.radaras.alerts.NewLevelAlert;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.model.Qoute;
+import alaus.radaras.settings.SettingsManager;
+import alaus.radaras.utils.Utils;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -17,12 +23,16 @@ import android.widget.TextView;
 
 public class BeerCounterActivity extends Activity {
 
+	private  SettingsManager settings;
+	
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+	    settings = new SettingsManager(this);
+	    
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	    setContentView(R.layout.counter);
 	    
-	    final SettingsManager settings = new SettingsManager(this);
+
 
 	    update(settings.getCurrentCount(),settings.getTotalCount());
 	    
@@ -45,12 +55,18 @@ public class BeerCounterActivity extends Activity {
 			@Override
 			public boolean onLongClick(View v) {
 				  
-				settings.resetCurrent();
-				update(0,settings.getTotalCount());
+				resetCurrentCount();
 			    return true;
 			}
+
+			
 	    });
 	    
+	}
+	
+	private void resetCurrentCount() {
+		settings.resetCurrent();
+		update(0,settings.getTotalCount());
 	}
 
 	private void update(Integer currentCount, Integer totalCount) {
@@ -60,7 +76,7 @@ public class BeerCounterActivity extends Activity {
 		}
 		else {
 			qoute = new Qoute();
-			qoute.setText("земля в илюминаторе.... земля в илюминаторе....");
+			qoute.setText(getString(R.string.counter_max_level_qoute));
 		}
 		 ((TextView)findViewById(R.id.counterCurrent)).setText(currentCount.toString());
 		 ((TextView)findViewById(R.id.counterQoute)).setText(qoute.getText());
@@ -87,5 +103,35 @@ public class BeerCounterActivity extends Activity {
 			return new NewLevelAlert(this,10);
 		}
 		return null;
+	}
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_menu, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.settings:
+	    	  startActivity(new Intent(this, SettingsActivity.class));
+	        return true;
+	    case R.id.callTaxi:
+	    	startActivity(new Intent(this, TaxiListActivity.class));
+	    	return true;
+	    case R.id.clearCounter:
+	    	resetCurrentCount();
+	    	return true;
+	    case R.id.submitPub:
+	    	BeerRadarApp app = ((BeerRadarApp)getApplication());
+	    	Utils.showPubSubmitDialog(this, app.getLastKnownLocation());
+	    	return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
 	}
 }

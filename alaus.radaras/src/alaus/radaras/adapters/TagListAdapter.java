@@ -16,11 +16,9 @@ import android.widget.TextView;
 public class TagListAdapter extends BaseAdapter {
 
 	private List<Tag> tags;
-	private Context context;
 	private LayoutInflater inflater;
 	
 	public TagListAdapter(Context context, List<Tag> tags) {
-		this.context = context;
 		this.tags = tags;
 		this.inflater = LayoutInflater.from(context);
 	}
@@ -37,7 +35,6 @@ public class TagListAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		// TODO unkown
 		return 0;
 	}
 

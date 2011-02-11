@@ -1,6 +1,6 @@
 package alaus.radaras.service.model;
 
-public class Country {
+public class Country extends MultipleLocation {
 
 	private String code;
 	

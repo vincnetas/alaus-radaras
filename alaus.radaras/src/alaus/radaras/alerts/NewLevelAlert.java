@@ -1,5 +1,6 @@
 package alaus.radaras.alerts;
 
+import alaus.radaras.R;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -12,12 +13,12 @@ public class NewLevelAlert extends BeerCountAlert {
 
 	@Override
 	public String getPositive() {
-		return "Varom toliau!";
+		return context.getString(R.string.alert_new_level_yes);
 	}
 
 	@Override
 	public String getNegative() {
-		return "Nu dar vieną";
+		return context.getString(R.string.alert_new_level_no);
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class NewLevelAlert extends BeerCountAlert {
 
 	@Override
 	public CharSequence getText() {
-		return "Sveikiname!. Pasiekiete naują lygį - galite ropoti!";
+		return context.getString(R.string.alert_new_level_message);
 	}
 
 }

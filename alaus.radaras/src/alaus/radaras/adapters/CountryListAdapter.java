@@ -17,11 +17,9 @@ public class CountryListAdapter extends BaseAdapter {
 
 
 	private List<Country> countries;
-	private Context context;
 	private LayoutInflater inflater;
 	
 	public CountryListAdapter(Context context, List<Country> countries) {
-		this.context = context;
 		this.countries = countries;
 		this.inflater = LayoutInflater.from(context);
 	}
@@ -38,7 +36,6 @@ public class CountryListAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		// TODO unkown
 		return 0;
 	}
 

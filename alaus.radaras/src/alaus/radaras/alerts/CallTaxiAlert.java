@@ -1,10 +1,11 @@
 package alaus.radaras.alerts;
 
+import alaus.radaras.R;
+import alaus.radaras.TaxiListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
 
 public class CallTaxiAlert extends BeerCountAlert {
 
@@ -15,12 +16,12 @@ public class CallTaxiAlert extends BeerCountAlert {
 
 	@Override
 	public String getPositive() {
-		return "Užteks, važiuoju";
+		return context.getString(R.string.alert_taxi_yes);
 	}
 
 	@Override
 	public String getNegative() {
-		return "Dar vieną!";
+		return context.getString(R.string.alert_taxi_no);
 	}
 
 	@Override
@@ -29,9 +30,7 @@ public class CallTaxiAlert extends BeerCountAlert {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Intent intent = new Intent(Intent.ACTION_DIAL);
-				intent.setData(Uri.parse("tel:+37052444888"));
-				context.startActivity(intent);
+				context.startActivity(new Intent(context, TaxiListActivity.class));
 				
 			}
 		};
@@ -39,7 +38,7 @@ public class CallTaxiAlert extends BeerCountAlert {
 
 	@Override
 	public CharSequence getText() {
-		return "Tai gal jau taksi? A?";
+		return context.getString(R.string.alert_taxi_message);
 	}
 
 }

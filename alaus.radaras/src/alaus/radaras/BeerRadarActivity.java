@@ -1,15 +1,20 @@
 package alaus.radaras;
 
-import alaus.radaras.service.BeerRadarUpdate;
-import android.app.Activity;
+//import alaus.radaras.service.BeerRadarUpdate;
+import alaus.radaras.settings.SettingsManager;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class BeerRadarActivity extends Activity {
+public class BeerRadarActivity extends AbstractLocationActivity {
 	
     /** Called when the activity is first created. */
     @Override
@@ -21,7 +26,6 @@ public class BeerRadarActivity extends Activity {
 		getCounterView().setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(BeerRadarActivity.this, "Beer counter", Toast.LENGTH_SHORT);
 				startActivity(new Intent(BeerRadarActivity.this, BeerCounterActivity.class));
 			}
 		});
@@ -29,15 +33,13 @@ public class BeerRadarActivity extends Activity {
 		getAroundView().setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(BeerRadarActivity.this, "Beer around you", Toast.LENGTH_SHORT);
-				startActivity(new Intent(BeerRadarActivity.this, GimeLocation.class));
+				startActivity(new Intent(BeerRadarActivity.this, PubLocationActivity.class));
 			}
 		});
 		
 		getSearchView().setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(BeerRadarActivity.this, "Beer search", Toast.LENGTH_SHORT);
                 startActivity(new Intent(BeerRadarActivity.this, BrandTabWidget.class));
 			}
 		});
@@ -45,14 +47,47 @@ public class BeerRadarActivity extends Activity {
 		getLuckyView().setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(BeerRadarActivity.this, "Feeling lucky", Toast.LENGTH_SHORT);
                 startActivity(new Intent(BeerRadarActivity.this, LuckyActivity.class));
 			}
 		});
-
+		
+		   
+		checkIfLocationIsEnabled();
     }
     
-    private View getAroundView() {
+    private void checkIfLocationIsEnabled() {
+    	
+    	final SettingsManager settings = new SettingsManager(getApplicationContext());
+    	   if(settings.askOnNoLocation() && 
+    			   ((BeerRadarApp)getApplication()).getLocationProvider().getAvailableProvidersCount() == 0) {
+    		   
+    		   LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+    		   final View layout = inflater.inflate(R.layout.dialog_location_enable_request,null);
+
+    		 
+    		   new AlertDialog.Builder(this)
+    		   .setView(layout)
+    		   .setTitle(getString(R.string.location_disabled_header))
+			   .setPositiveButton(getString(R.string.location_disabled_yes), new DialogInterface.OnClickListener() {
+				      public void onClick(DialogInterface dialog, int which) {
+				    	  boolean stopAsking = ((CheckBox)layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
+				    	  settings.setAskOnNoLocation(!stopAsking);
+				    	  Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS );
+				    	    startActivity(myIntent);
+				 
+				    } })
+			   .setNegativeButton(getString(R.string.location_disabled_no), new DialogInterface.OnClickListener() {
+				      public void onClick(DialogInterface dialog, int which) {
+				    	  boolean stopAsking = ((CheckBox)layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
+				    	  settings.setAskOnNoLocation(!stopAsking);
+				    	  dialog.dismiss();
+				    } })
+				 .show();
+		   }
+
+	}
+
+	private View getAroundView() {
     	return findViewById(R.id.around);
     }
     
@@ -76,4 +111,11 @@ public class BeerRadarActivity extends Activity {
         
         super.onResume();
     }
+
+	@Override
+	protected void locationUpdated(Location location) {
+		//do nothing. we just need this to get location fix asap.
+		
+	}
+	
 }

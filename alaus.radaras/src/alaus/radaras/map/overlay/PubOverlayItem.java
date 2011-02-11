@@ -1,7 +1,7 @@
 /**
  * 
  */
-package alaus.radaras;
+package alaus.radaras.map.overlay;
 
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.utils.Utils;
