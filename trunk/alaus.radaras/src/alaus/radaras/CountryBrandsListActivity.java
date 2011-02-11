@@ -3,6 +3,7 @@ package alaus.radaras;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.model.Country;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,15 +15,17 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 
 	protected static final String COUNTRY = "country";
 
+	private Country country;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-			final String countryId = getIntent().getExtras().getString(COUNTRY);
-			BeerRadar dao = BeerRadar.getInstance(this);
-			Country country = dao.getCountry(countryId);
+		
 			setContentView(R.layout.country_brand_list);
-			showBrands(dao.getBrandsByCountry(countryId), R.id.countryBrandList);
+		
+			final String countryId = getIntent().getExtras().getString(COUNTRY);
+			country = BeerRadar.getInstance(this).getCountry(countryId);
+
 			
 			TextView countryName = (TextView)findViewById(R.id.countryBrandHeader);
 			countryName.setText(country.getName());
@@ -33,14 +36,22 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 				@Override
 				public void onClick(View v) {
 					
-					Intent inte = new Intent(CountryBrandsListActivity.this, GimeLocation.class);
-	        		inte.putExtra(GimeLocation.COUNTRY_ID, countryId);
+					Intent inte = new Intent(CountryBrandsListActivity.this, PubLocationActivity.class);
+	        		inte.putExtra(PubLocationActivity.COUNTRY_ID, countryId);
 	        		startActivity(inte);
 					
 				}
 			});
 			
         
+	}
+
+
+	@Override
+	protected void locationUpdated(Location location) {
+		showBrands(BeerRadar.getInstance(this).getBrandsByCountry(country.getCode(), location), R.id.countryBrandList);
+		
+		
 	}
 	
 }

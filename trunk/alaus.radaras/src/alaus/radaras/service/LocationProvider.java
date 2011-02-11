@@ -1,4 +1,4 @@
-package alaus.radaras;
+package alaus.radaras.service;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +14,8 @@ import android.util.Log;
 
 public class LocationProvider extends Observable implements LocationListener{
 
+	
+	public enum LocationPrecision { ANY , HIGH}
 	private Context context;
 	private LocationManager manager;
 	
@@ -21,7 +23,7 @@ public class LocationProvider extends Observable implements LocationListener{
 	private static final int GPS_MIN_UPDATE_TIME = 1000 * 15;//15 seconds;
 	private static final int NETWORK_MIN_DISTANCE = 30;
 	private static final int NETWORK_MIN_UPDATE_TIME = 2 * 60 * 1000; //2 minutes
-	private static final int ALLOWED_TIME_THRESHOLD = 5 * 60 * 1000; //5 minutes
+	private static final int ALLOWED_TIME_THRESHOLD = 1 * 60 * 1000; //1 minutes
 	private static final Boolean DEBUG = false;
 	private Location lastKnownLocation = null;
 	private Boolean hasSubscriptions = false;
@@ -36,6 +38,15 @@ public class LocationProvider extends Observable implements LocationListener{
 		 Log.i("BeerLocationProvider", "initUpdateRequester ");
 
 		 LocationManager locMng = getLocationManager();
+		 
+		 if(lastKnownLocation == null) {
+			 if(locMng.getLastKnownLocation("network") == null) {
+				 lastKnownLocation = getDefaultMockLocation();
+			 } else {
+				 lastKnownLocation = locMng.getLastKnownLocation("network");
+			 }
+		 }
+		 
 		 if(!hasSubscriptions) {
 			 List<String> locationProviders  = locMng.getProviders(true);
 			 for(String provider : locationProviders)
@@ -46,11 +57,20 @@ public class LocationProvider extends Observable implements LocationListener{
 				 else {
 					 locMng.requestLocationUpdates(provider, NETWORK_MIN_DISTANCE, NETWORK_MIN_UPDATE_TIME, this);
 				 }
+				 hasSubscriptions = true;
 			 }
-		 	//hasSubscriptions  = true;
 		 }
 		 
+		 
 		
+	}
+
+	public Location getDefaultMockLocation() {
+		Location loc = new Location("network");
+		//Vilnius
+    	loc.setLatitude(54.686723);
+    	loc.setLongitude(25.28238); //54.683333	 25.316667 for testing, if used with 500 meters, those have no beers
+    	return loc;
 	}
 
 	public void killAll() {
@@ -165,9 +185,42 @@ public class LocationProvider extends Observable implements LocationListener{
 		addObserver(obs);
 		initUpdateRequester();
 	}
+	
+	public void unSubscribe(Observer obs) {
+		Log.i("BeerLocationProvider", "received unsubscribe");
+		deleteObserver(obs);
+		if(countObservers() == 0) {
+			killAll();
+		}
+	}
 
 	synchronized public Location getLastKnownLocation() {
 		return lastKnownLocation;
+	}
+
+	public boolean locationIsAccurateEnough(
+			LocationPrecision locationPrecission, Location location) {
+		
+		  if(location != null && location.getProvider() != null) {
+			  
+		        long lastLocationUpdateDelta = new Date().getTime() - location.getTime();
+			  if(lastLocationUpdateDelta > ALLOWED_TIME_THRESHOLD) {
+				  return false;
+			  }
+			  
+			  
+			  if(location.getProvider().equals("gps")) {
+				  return true;
+			  } else if (locationPrecission == LocationPrecision.ANY) {
+				  return true;
+			  }
+		  }
+		return false;
+	}
+
+	public int getAvailableProvidersCount() {
+		return getLocationManager().getProviders(true).size();
+	
 	}
 
 }

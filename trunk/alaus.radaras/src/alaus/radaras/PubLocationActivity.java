@@ -9,16 +9,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 
+import alaus.radaras.map.overlay.PubOverlay;
+import alaus.radaras.map.overlay.PubOverlayItem;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.LocationProvider;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.utils.Utils;
-import android.content.Context;
-import android.location.Criteria;
-import android.location.GpsStatus;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +29,7 @@ import com.google.android.maps.MyLocationOverlay;
  * @author Vincentas based on :
  *         http://mobiforge.com/developing/story/using-google-maps-android
  */
-public class GimeLocation extends MapActivity  implements Observer {
-
-	private LocationProvider locationProvider;
+public class PubLocationActivity extends MapActivity  implements Observer {
 	
 	public static final String BRAND_ID = "brandId";
 	
@@ -41,15 +37,10 @@ public class GimeLocation extends MapActivity  implements Observer {
 	
 	public static final String COUNTRY_ID = "countryId";
 
-	private BeerRadar beerRadarDao;
-
 	private MyLocationOverlay locationOverlay;
+	
+	private PubOverlay pubOverlay;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.google.android.maps.MapActivity#onCreate(android.os.Bundle)
-	 */
 	@Override
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
@@ -60,74 +51,29 @@ public class GimeLocation extends MapActivity  implements Observer {
 		
 		getMapView().getOverlays().add(locationOverlay);		
 		getMapView().setBuiltInZoomControls(true);
-		
-		//Log.i("GimeLocation", "onCreate ");
-		
-		//fakeProvider();
-		
-//		locationOverlay.runOnFirstFix(new Runnable() {
-//			
-//			@Override
-//			public void run() {
 
-					setupMap(getLocationProvider().getLastKnownLocation());		
-//			}
-//		});
-		
+		setupMap(getLocationProvider().getLastKnownLocation());		
+
 		setTitle();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.google.android.maps.MapActivity#onPause()
-	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
 		locationOverlay.disableMyLocation();
-		killLocationProvider();
+		getLocationProvider().unSubscribe(this);
 	}
 	
-////	private void fakeProvider() {
-//	
-//		
-//		final LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//				
-//		locationManager.addTestProvider(LocationManager.GPS_PROVIDER, false, false, false, false, false, false, false, Criteria.POWER_LOW, Criteria.ACCURACY_FINE);
-//		locationManager.setTestProviderEnabled(LocationManager.GPS_PROVIDER, true);
-//		locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
-//		locationManager.setTestProviderLocation(LocationManager.GPS_PROVIDER, location);
-//		
-//		Runnable runnable = new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				while (keepRunning) {
-//					try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					locationManager.setTestProviderStatus(LocationManager.GPS_PROVIDER, GpsStatus.GPS_EVENT_FIRST_FIX, null, System.currentTimeMillis());
-//				}
-//			}
-//		};
-//		
-//		new Thread(runnable).start();
-//	}
-	
-	private boolean keepRunning = true;
+
 
 	private MapView getMapView() {
 		return (MapView) findViewById(R.id.mapView);
 	}	
 
-	/* (non-Javadoc)
-	 * @see com.google.android.maps.MapActivity#onDestroy()
-	 */
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		keepRunning = false;
 	}
 
 	private String getString(String key) {
@@ -154,15 +100,7 @@ public class GimeLocation extends MapActivity  implements Observer {
 		return getString(COUNTRY_ID);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
-	 */
-	@Override
-	protected boolean isRouteDisplayed() {
-		return false;
-	}
+
 	
 	private void setTitle() {
 		String caption = "";
@@ -181,34 +119,33 @@ public class GimeLocation extends MapActivity  implements Observer {
 	}
 
 	private synchronized void populateMap(Location location) {
-		alaus.radaras.service.model.Location loc = new alaus.radaras.service.model.Location();
-		if(location != null) {
-		 loc = new alaus.radaras.service.model.Location(location.getLongitude(), location.getLatitude());
-		}
 			
 		List<Pub> pubs;
 		BeerRadar dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
-			pubs = dao.getPubsByBrandId(getBrandId(), loc);
+			pubs = dao.getPubsByBrandId(getBrandId(), location);
 		} else if (getCountryId() != null) {
-			pubs = dao.getPubsByCountry(getCountryId(), loc);
+			pubs = dao.getPubsByCountry(getCountryId(), location);
 		} else if (getTagId() != null) {
-			pubs = dao.getPubsByTag(getTagId(), loc);
+			pubs = dao.getPubsByTag(getTagId(), location);
 		} else {
-			pubs = dao.getNearbyPubs(loc);
+			pubs = dao.getNearbyPubs(location);
 		}
 
 		if (pubs == null) {
 			pubs = new ArrayList<Pub>();
 		}
 
-		PubOverlay pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.pin), this, getMapView());
+		if(pubOverlay == null)
+			pubOverlay = new PubOverlay(getResources().getDrawable(R.drawable.pin), this, getMapView());
+		pubOverlay.clean();
 		
 		for (Pub pub : pubs) {
 			pubOverlay.addOverlay(new PubOverlayItem(pub));
 		}
 		
+
 		getMapView().getOverlays().add(pubOverlay);
 	}
 
@@ -219,21 +156,12 @@ public class GimeLocation extends MapActivity  implements Observer {
 		return BeerRadar.getInstance(this);
 	}
 
-	/**
-	 * @param beerRadarDao
-	 *            the beerRadarDao to set
-	 */
-	public void setBeerRadarDao(BeerRadar beerRadarDao) {
-		this.beerRadarDao = beerRadarDao;
-	}
-
 	/*
 	 * Basic Map setup
 	 */
 	private void setupMap(Location location) {
 	
 //		Log.i("GimeLocation", "setupMap ");
-		populateMap(location);
 
 		MapController mapController = getMapView().getController();
 
@@ -244,7 +172,8 @@ public class GimeLocation extends MapActivity  implements Observer {
 		if(location != null) {
 			mapController.animateTo(Utils.geoPoint(location));
 		}
-
+		
+		populateMap(location);
 	}
 
 	@Override
@@ -254,33 +183,23 @@ public class GimeLocation extends MapActivity  implements Observer {
 	}
 	
 	private LocationProvider getLocationProvider() {
-		if (locationProvider == null) {
-			locationProvider = initLocationProvider();
-			//Log.i("GimeLocation", "initLocationProvider ");
-		}
-		return locationProvider;
+		return ((BeerRadarApp)getApplication()).getLocationProvider();
 	}
 
-	private LocationProvider initLocationProvider() {
-		LocationProvider provider = new LocationProvider(getBaseContext());
-		return provider;
-	}
-
-	private void killLocationProvider() {
-		if (locationProvider != null) {
-			locationProvider.deleteObserver(this);
-		//	Log.i("GimeLocation", "killLocationProvider ");
-		}
-		getLocationProvider().killAll();
-	};
 	
 	@Override
 	protected void onResume() {
 		getLocationProvider().subscribe(this);
 		setupMap(getLocationProvider().getLastKnownLocation());
 		super.onResume();
-		Toast.makeText(GimeLocation.this, "Palaukite, bandau nustatyti Jūsų vietą...", Toast.LENGTH_LONG).show();
+		Toast.makeText(PubLocationActivity.this, getString(R.string.waiting_for_location), Toast.LENGTH_LONG).show();
 		//Log.i("GimeLocation", "onResume ");
+	}
+	
+	
+	@Override
+	protected boolean isRouteDisplayed() {
+		return false;
 	}
 
 }

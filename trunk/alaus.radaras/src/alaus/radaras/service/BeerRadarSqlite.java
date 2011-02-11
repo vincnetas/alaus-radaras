@@ -1,64 +1,103 @@
 package alaus.radaras.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import alaus.radaras.R;
+import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
-import alaus.radaras.service.model.Location;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
+import alaus.radaras.service.model.Taxi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.util.Log;
 
 class BeerRadarSqlite extends BeerRadar {
-
+	
 	private SQLiteDatabase db;
 	
 	private Context context;
 	
+	private SettingsManager settings;
+	
 	BeerRadarSqlite(Context context) {
 		this.db = new BeerRadarSQLiteOpenHelper(context).getReadableDatabase();
+		this.settings = new alaus.radaras.settings.SettingsManager(context);
 		this.context = context;
 	}
 	
-	public List<Brand> getBrands() {
-		List<Brand> brands = new ArrayList<Brand>();
-		Cursor cursor = db.query(
-			"brands", 
-			new String[] {"id", "title", "icon", "description"},
-			null, 
-			null, 
-			null, 
-			null, 
-			"title asc");
+
+	public List<Brand> getBrandsByTag(String tag, Location location) {
+		
+		return getBrands("SELECT b.id, b.title, b.icon, b.description, p.latitude, p.longtitude FROM brands b " +
+				"INNER JOIN brands_tags bt ON b.id = bt.brand_id AND bt.tag = ? "  +
+				"INNER JOIN pubs_brands as pb on pb.brand_id = b.id " +
+				"INNER JOIN pubs as p on p.id=pb.pub_id " +
+				"ORDER BY b.title asc ",
+				new String[] { tag },
+				location);
+		
+	}
+	
+	public List<Brand> getBrands(Location location) {
+		return getBrands("SELECT b.id, b.title, b.icon, b.description, p.latitude, p.longtitude FROM brands b " +
+				"INNER JOIN pubs_brands as pb on pb.brand_id = b.id " +
+				"INNER JOIN pubs as p on p.id=pb.pub_id " +
+				"ORDER by b.title asc",
+				new String[]{}, 
+				location);
+	}
+	
+
+	public List<Brand> getBrandsByCountry(String country, Location location) {
+		
+		return getBrands("SELECT b.id, b.title, b.icon, b.description, p.latitude, p.longtitude  FROM brands b " +
+				"INNER JOIN brands_countries bc ON b.id = bc.brand_id AND bc.country = ? " +
+				"INNER JOIN pubs_brands as pb on pb.brand_id = b.id " +
+				"INNER JOIN pubs as p on p.id=pb.pub_id " +
+				"ORDER BY b.title asc ",
+				new String[] { country },
+				location);
+	}
+	
+	private List<Brand> getBrands(String query, String[] params, Location location) {
+		Map<String,Brand> brandMap = new HashMap<String, Brand>();
+		Cursor cursor = db.rawQuery(query, params );
 		if (cursor.moveToFirst()) {
 			do {
-				brands.add(toBrand(cursor));
+				DataTransfomer.addToBrands(cursor, brandMap);
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
-		return brands;
+		List<Brand> values = new ArrayList<Brand>(brandMap.values());
+		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		return values;
+		
 	}
 	
 	public List<Brand> getBrandsByPubId(String pubId) {
 		List<Brand> brands = new ArrayList<Brand>();
 		Cursor cursor = db.rawQuery(
 				"SELECT id, title, icon, description " +
-				"FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = ?", 
+				"FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = ? " +
+				"ORDER BY title asc ", 
 				new String[] { pubId });
 		if (cursor.moveToFirst()) {
 			do {
-				brands.add(toBrand(cursor));
+				brands.add(DataTransfomer.toBrand(cursor));
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
@@ -67,92 +106,67 @@ class BeerRadarSqlite extends BeerRadar {
 		return brands;
 	}
 	
-	public List<Brand> getBrandsByCountry(String country) {
-		List<Brand> brands = new ArrayList<Brand>();
-		Cursor cursor = db.rawQuery(
-				"SELECT id, title, icon, description " +
-				"FROM brands b INNER JOIN brands_countries bc ON b.id = bc.brand_id AND bc.country = ?", 
-				new String[] { country });
-		if (cursor.moveToFirst()) {
-			do {
-				brands.add(toBrand(cursor));
-			} while (cursor.moveToNext());
-		}
-		if (cursor != null && !cursor.isClosed()) {
-			cursor.close();
-		}
-		return brands;
-	}
-	
-	public List<Brand> getBrandsByTag(String tag) {
-		List<Brand> brands = new ArrayList<Brand>();
-		Cursor cursor = db.rawQuery(
-				"SELECT id, title, icon, description " +
-				"FROM brands b INNER JOIN brands_tags bt ON b.id = bt.brand_id AND bt.tag = ?", 
-				new String[] { tag });
-		if (cursor.moveToFirst()) {
-			do {
-				brands.add(toBrand(cursor));
-			} while (cursor.moveToNext());
-		}
-		if (cursor != null && !cursor.isClosed()) {
-			cursor.close();
-		}
-		return brands;
-	}
 
 	public List<Pub> getPubsByBrandId(String brandId, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
-			"SELECT id, title, address, notes, phone, url, latitude, longtitude " +
-			"FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = ?", 
+			"SELECT id, title, address, notes, phone, url, latitude, longtitude, city " +
+			"FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = ? " +
+			"ORDER by title asc", 
 			new String[] { brandId });
 		if (cursor.moveToFirst()) {
 			do {
-				pubs.add(toPub(cursor));
+				pubs.add(DataTransfomer.toPub(cursor));
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
 		return pubs;
 	}
 	
+
+
 	public List<Pub> getPubsByTag(String tag, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
-			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude " +
+			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude, city " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
-				"INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = ?", 
+				"INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = ? " +
+				"ORDER BY title asc", 
 			new String[] { tag });
 		if (cursor.moveToFirst()) {
 			do {
-				pubs.add(toPub(cursor));
+				pubs.add(DataTransfomer.toPub(cursor));
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
 		return pubs;
 	}
 	
 	public List<Pub> getPubsByCountry(String country, Location location) {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.rawQuery(
-			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude " +
+			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude, city " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
-				"INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = ?", 
+				"INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = ? " +
+				"ORDER by title asc", 
 			new String[] { country });
 		if (cursor.moveToFirst()) {
 			do {
-				pubs.add(toPub(cursor));
+				pubs.add(DataTransfomer.toPub(cursor));
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
 		return pubs;
 	}
 	
@@ -161,7 +175,7 @@ class BeerRadarSqlite extends BeerRadar {
 		List<Pub> pubs = new ArrayList<Pub>();
 		Cursor cursor = db.query(
 			"pubs", 
-			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
+			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude", "city"},
 			null, 
 			null, 
 			null, 
@@ -169,25 +183,26 @@ class BeerRadarSqlite extends BeerRadar {
 			"title asc");
 		if (cursor.moveToFirst()) {
 			do {
-				pubs.add(toPub(cursor));
+				pubs.add(DataTransfomer.toPub(cursor));
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
 		return pubs;
 	}
 	
 	public Pub getPub(String pubId) {
 		Cursor cursor = db.query(
 			"pubs", 
-			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude"},
+			new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude", "city"},
 			"id = ?", 
 			new String[] {pubId}, 
 			null, 
 			null, 
 			"title asc");
-		return (cursor.moveToFirst()) ? toPub(cursor) : null;
+		return (cursor.moveToFirst()) ? DataTransfomer.toPub(cursor) : null;
 	}
 	
 	public Brand getBrand(String brandId) {		
@@ -199,10 +214,38 @@ class BeerRadarSqlite extends BeerRadar {
 				null, 
 				null, 
 				"title asc");
-		return (cursor.moveToFirst()) ? toBrand(cursor) : null;
+		return (cursor.moveToFirst()) ? DataTransfomer.toBrand(cursor) : null;
 	}
 	
-	public FeelingLucky feelingLucky() {
+
+	public FeelingLucky feelingLucky(Location location) {
+		
+		
+		List<Pub> pubs = getNearbyPubs(location);
+		
+		Pub pub;
+		
+		if(pubs.size() > 0) {
+			pub = pubs.get(new Random().nextInt(pubs.size()));
+		} else {
+			pub = getRandomPub();
+		}
+		List<Brand> brands = getBrandsByPubId(pub.getId());
+		FeelingLucky lucky = new FeelingLucky();
+		lucky.setPub(pub);
+		if(brands.size() > 0) {
+			lucky.setBrand(brands.get(new Random().nextInt(brands.size())));
+		} else {
+			lucky.setBrand(null);
+		}
+		 
+		
+		return lucky;
+	
+	}
+	
+	private Pub getRandomPub() {
+		
 		Cursor cursor = db.rawQuery(
 				"SELECT id FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
@@ -212,14 +255,11 @@ class BeerRadarSqlite extends BeerRadar {
 		if (cursor.moveToFirst()) {
 			pubId = cursor.getString(0);
 		}
-		
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
 		Pub pub = getPub(pubId);
-		List<Brand> brands = getBrandsByPubId(pubId);
-		FeelingLucky lucky = new FeelingLucky();
-		lucky.setPub(pub);
-		lucky.setBrand(brands.get(new Random().nextInt(brands.size())));
-		
-		return lucky;
+		return pub;
 	}
 	
 	public Drawable getImage(String url) {
@@ -251,48 +291,47 @@ class BeerRadarSqlite extends BeerRadar {
 		}
 	}
 	
-	public List<Country> getCountries() {
-		List<Country> countries = new ArrayList<Country>();
-		Cursor cursor = db.query(
-				"countries", 
-				new String[] {"code", "name"},
-				null, 
-				null, 
-				null, 
-				null, 
-				"name asc");
+		public List<Country> getCountries(Location location) {
+		
+		Map<String,Country> countryMap = new HashMap<String, Country>();
+		Cursor cursor = db.rawQuery("SELECT c.code,c.name, p.latitude, p.longtitude FROM  countries as c "+
+				"INNER JOIN brands_countries as bc on bc.country = c.code " +
+				"INNER JOIN pubs_brands as pb on pb.brand_id = bc.brand_id " +
+				"INNER JOIN pubs as p on p.id=pb.pub_id order by c.name asc", new String[] {});
 
 		if (cursor.moveToFirst()) {
 			do {
-				countries.add(toCountry(cursor));
+				DataTransfomer.addToCountries(cursor, countryMap);
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
-		return countries;
+		List<Country> values = new ArrayList<Country>(countryMap.values());
+		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		return values;
 	}
+
 	
-	public List<Tag> getTags() {
-		List<Tag> tags = new ArrayList<Tag>();
-		Cursor cursor = db.query(
-				"tags", 
-				new String[] {"code", "title"},
-				null, 
-				null, 
-				null, 
-				null, 
-				"title asc");
-		
+	
+	public List<Tag> getTags(Location location) {
+		Map<String,Tag> tagMap = new HashMap<String, Tag>();
+		Cursor cursor = db.rawQuery("SELECT t.code,t.title, p.latitude, p.longtitude FROM  tags as t "+
+				"INNER JOIN brands_tags as bt on bt.tag = t.code " +
+				"INNER JOIN pubs_brands as pb on pb.brand_id = bt.brand_id " +
+				"INNER JOIN pubs as p on p.id=pb.pub_id order by t.title asc", new String[] {});
+
 		if (cursor.moveToFirst()) {
 			do {
-				tags.add(toTag(cursor));
+				DataTransfomer.addToTags(cursor, tagMap);
 			} while (cursor.moveToNext());
 		}
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
-		return tags;
+		List<Tag> values = new ArrayList<Tag>(tagMap.values());
+		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		return values;
 	}
 	
 	public Tag getTag(String code) {
@@ -305,7 +344,7 @@ class BeerRadarSqlite extends BeerRadar {
 				null, 
 				null);
 		if (cursor.moveToFirst()) {
-			return toTag(cursor);
+			return DataTransfomer.toTag(cursor);
 		}
 		return null;
 	}
@@ -320,48 +359,46 @@ class BeerRadarSqlite extends BeerRadar {
 				null, 
 				null);
 		if (cursor.moveToFirst()) {
-			return toCountry(cursor);
+			return DataTransfomer.toCountry(cursor);
 		}
 		return null;
 	}
-	
-	private Brand toBrand(Cursor cursor) {
-		Brand brand = new Brand();
-		brand.setId(cursor.getString(0));
-		brand.setTitle(cursor.getString(1));
-		brand.setIcon(cursor.getString(2));
-		brand.setDescription(cursor.getString(3));
-		return brand;		
+
+
+	@Override
+	public double getMaxDistance() {
+		return settings.getMaxDistance();
 	}
-	
-	private Pub toPub(Cursor cursor) {
-		Pub pub = new Pub();
-		pub.setId(cursor.getString(0));
-		pub.setTitle(cursor.getString(1));
-		pub.setAddress(cursor.getString(2));
-		pub.setNotes(cursor.getString(3));
-		pub.setPhone(cursor.getString(4));
-		pub.setUrl(cursor.getString(5));
+
+
+	@Override
+	public List<Taxi> getTaxies(Location location) {
+		List<Taxi> taxies = new ArrayList<Taxi>();
+		Cursor cursor = db.query(
+			"taxi", 
+			new String[] {"title", "phone", "city", "latitude", "longitude"},
+			null, 
+			null, 
+			null, 
+			null, 
+			"title asc");
+		if (cursor.moveToFirst()) {
+			do {
+				taxies.add(DataTransfomer.toTaxi(cursor));
+			} while (cursor.moveToNext());
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+		Log.e("d",String.valueOf(taxies.size()));
+		Log.e("dlt",String.valueOf(taxies.get(0).getLocation().getLatitude()));
+		Log.e("dlng",String.valueOf(taxies.get(0).getLocation().getLongitude()));
 		
-		Location location = new Location();
-		location.setLatitude(cursor.getDouble(6));
-		location.setLongtitude(cursor.getDouble(7));
-		pub.setLocation(location);
+		Log.e("dlt1",String.valueOf(location.getLatitude()));
+		Log.e("dlng1",String.valueOf(location.getLongitude()));
 		
-		return pub;
+		LocationFilter.filterBySingleLocation(taxies,location, 20000);
+		return taxies;
 	}
 	
-	private Tag toTag(Cursor cursor) {
-		Tag tag = new Tag();
-		tag.setCode(cursor.getString(0));
-		tag.setTitle(cursor.getString(1));
-		return tag;
-	}
-	
-	private Country toCountry(Cursor cursor) {
-		Country country = new Country();
-		country.setCode(cursor.getString(0));
-		country.setName(cursor.getString(1));
-		return country;
-	}
 }

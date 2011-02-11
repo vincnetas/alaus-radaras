@@ -1,13 +1,11 @@
 package alaus.radaras.service.model;
 
 
-public class Pub {
+public class Pub extends SingleLocation {
 
 	private String id;
 	
 	private String title;
-	
-	private Location location;
 	
 	private String address;
 	
@@ -16,6 +14,8 @@ public class Pub {
 	private String phone;
 	
 	private String url;
+	
+	private String city;
 
 	public String getId() {
 		return id;
@@ -33,14 +33,7 @@ public class Pub {
 		this.title = title;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-
+	
 	public String getAddress() {
 		return address;
 	}
@@ -71,5 +64,13 @@ public class Pub {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCity() {
+		return city;
 	}
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:minSdkVersion="4"
-	package="alaus.radaras" android:versionName="1.4.7" android:versionCode="9" android:installLocation="auto">
+	package="alaus.radaras" android:installLocation="auto" android:versionCode="11" android:versionName="1.4.9">
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-sdk android:minSdkVersion="4" />
-	<application android:label="@string/app_name" android:icon="@drawable/bokalas">
+	<application android:name="BeerRadarApp"
+	 android:label="@string/app_name" android:icon="@drawable/bokalas">
 		<uses-library android:name="com.google.android.maps" />
 
 		<activity android:name=".BeerRadarActivity" android:label="@string/app_name">
@@ -16,22 +17,21 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-
-
-
-		<activity android:name=".GimeLocation" android:label="@string/LocationName"></activity>
-		<activity android:label="@string/BrandsName" android:name=".BrandListActivity"></activity>
-		<activity android:name=".PubActivity" android:label="Baras"></activity>
-		<activity android:name=".BeerCounterActivity"></activity>
-		<activity android:name=".LuckyActivity"></activity>
+		<activity android:name=".PubLocationActivity" android:label="@string/activity_location_header"></activity>
+		<activity android:label="@string/activity_brands_header" android:name=".BrandListActivity"></activity>
+		<activity android:name=".PubActivity" android:label="@string/activity_pub_header"></activity>
+		<activity android:name=".BeerCounterActivity" android:label="@string/activity_counter_header"></activity>
+		<activity android:name=".LuckyActivity"  android:label="@string/activity_lucky_header"></activity>
 		<activity android:name=".BrandTabWidget" android:label="@string/app_name"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<activity android:name=".TagListActivity"></activity>
 		<activity android:name=".CountryListActivity"></activity>
-		<activity android:name=".TagBrandsListActivity" android:label="Rūšys pagal tipą"></activity>
-		<activity android:name=".CountryBrandsListActivity" android:label="Rūšys pagal šalį"></activity>
-	</application>
+		<activity android:name=".TagBrandsListActivity" android:label="@string/activity_tag_brands_header"></activity>
+		<activity android:name=".CountryBrandsListActivity" android:label="@string/activity_country_brands_header"></activity>
+		<activity android:name=".SettingsActivity" android:label="@string/activity_settings_header"></activity>
+		<activity android:name=".TaxiListActivity" android:label="@string/activity_taxi_header"></activity>
+</application>
 
 
 
