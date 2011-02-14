@@ -177,18 +177,30 @@
 	
     CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
 	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
-	pubDetailView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+	pubDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:pubDetailView animated:YES];
 
-	[pubAnnotation release];
+//	[pubAnnotation release];
 	[pubDetailView release];
 }
 
 - (void) locateMe {
-	MKCoordinateSpan span = MKCoordinateSpanMake(0.03, 0.04);
-	MKCoordinateRegion region = MKCoordinateRegionMake(map.userLocation.coordinate, span);
-	[map setRegion:region animated:YES];
-	[map regionThatFits:region];
+	// quick hack to check if system has user location
+	if (map.userLocation.coordinate.latitude != -180) {
+		MKCoordinateSpan span = MKCoordinateSpanMake(0.03, 0.04);
+		MKCoordinateRegion region = MKCoordinateRegionMake(map.userLocation.coordinate, span);
+		[map setRegion:region animated:YES];
+		[map regionThatFits:region];
+	} else {
+		UIAlertView* alertView = 
+		[[UIAlertView alloc] initWithTitle:@"Negaliu nustatyti tavo buvimo vietos"
+								   message:nil 
+								  delegate:self 
+						 cancelButtonTitle:@"Tiek to"
+						 otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];
+	}
 }
 
 /*
