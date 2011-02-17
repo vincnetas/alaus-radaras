@@ -34,11 +34,17 @@ public interface BeerService extends RemoteService {
 
 
 
+	List<Brand> getBrands();
 	
+	List<Beer> getBeers();
 
 	Beer addBeer(Beer beer);
 	
 	Beer saveBeer(Beer beer);
+
+	Brand addBrand(Brand brand);
+	
+	Brand saveBrand(Brand brand);
 	
 	
 	

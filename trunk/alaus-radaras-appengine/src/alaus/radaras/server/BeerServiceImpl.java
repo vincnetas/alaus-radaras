@@ -138,8 +138,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public Beer saveBeer(Beer beer) {
-		getBeerDao().save(beer);
-		return beer;
+		return getBeerDao().save(beer);
 	}
 
 	@Override
@@ -208,6 +207,26 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	public void setPubService(PubService pubService) {
 		this.pubService = pubService;
+	}
+
+	@Override
+	public Brand addBrand(Brand brand) {
+		return getBrandDao().add(brand);
+	}
+
+	@Override
+	public Brand saveBrand(Brand brand) {
+		return getBrandDao().save(brand);
+	}
+
+	@Override
+	public List<Brand> getBrands() {
+		return getBrandDao().getAll();
+	}
+
+	@Override
+	public List<Beer> getBeers() {	
+		return getBeerDao().getAll();
 	}
 	
 	

@@ -1,5 +1,6 @@
 package alaus.radaras.shared.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.jdo.annotations.IdentityType;
@@ -28,7 +29,7 @@ public class Brand extends Updatable {
 	private String description;
 
 	@Persistent
-	private Set<String> tags;
+	private Set<String> tags = new HashSet<String>();
 
 	/**
 	 * @return the title
@@ -133,6 +134,36 @@ public class Brand extends Updatable {
 	 */
 	public void setTags(Set<String> tags) {
 		this.tags = tags;
+	}
+	
+	public void setTags(String tags) {
+		Set<String> result = new HashSet<String>();
+		
+		if (tags != null) {
+			String[] strings = tags.split(",");
+			for (String string : strings) {
+				result.add(string.trim().toLowerCase());
+			}
+		}
+		
+		setTags(result);
+	}
+	
+	public String getTagsAsString() {
+		StringBuilder builder = new StringBuilder();
+		
+		boolean first = true;
+		for (String tag : getTags()) {
+			if (!first) {
+				builder.append(", ");
+			} else {
+				first = false;
+			}
+			
+			builder.append(tag);
+		}
+		
+		return builder.toString();
 	}
 
 }

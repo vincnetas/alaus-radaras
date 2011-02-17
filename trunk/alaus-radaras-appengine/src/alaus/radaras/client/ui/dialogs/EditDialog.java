@@ -47,7 +47,9 @@ public abstract class EditDialog extends DialogBox {
 	}
 	
 	@UiHandler("okButton")
-	public abstract void onOkButtonClick(ClickEvent event);
+	public void onOkButtonClick(ClickEvent event) {
+		hide();
+	}
 	
 	@UiHandler("cancelButton")
 	public void onCancelButtonClick(ClickEvent event) {

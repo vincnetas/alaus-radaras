@@ -37,4 +37,12 @@ public interface BeerServiceAsync {
 	void updatePub(Pub pub, AsyncCallback<Pub> callback);
 	
 	void saveBeer(Beer beer, AsyncCallback<Beer> asyncCallback);
+
+	void addBrand(Brand brand, AsyncCallback<Brand> callback);
+
+	void saveBrand(Brand brand, AsyncCallback<Brand> callback);
+
+	void getBrands(AsyncCallback<List<Brand>> callback);
+
+	void getBeers(AsyncCallback<List<Beer>> callback);
 }
