@@ -22,6 +22,9 @@ public class EditBrandWidget extends Composite {
 	TextBox title;
 	
 	@UiField
+	TextBox icon;
+	
+	@UiField
 	TextBox homepage;
 	
 	@UiField
@@ -32,6 +35,9 @@ public class EditBrandWidget extends Composite {
 	
 	@UiField
 	TextArea description;
+	
+	@UiField
+	TextArea tags;
 	
 	private Brand brand;
 
@@ -45,11 +51,13 @@ public class EditBrandWidget extends Composite {
 	 * @return the brand
 	 */
 	public Brand getBrand() {
-		brand.setTitle(title.getText());		
+		brand.setTitle(title.getText());	
+		brand.setIcon(icon.getText());
 		brand.setHomePage(homepage.getText());
 		brand.setCountry(country.getText());
 		brand.setHomeTown(hometown.getText());
 		brand.setDescription(description.getText());
+		brand.setTags(tags.getText());
 		
 		return brand;
 	}
@@ -59,10 +67,12 @@ public class EditBrandWidget extends Composite {
 	 */
 	public void setBrand(Brand brand) {
 		title.setText(brand.getTitle());
+		icon.setText(brand.getIcon());
 		homepage.setText(brand.getHomePage());
 		country.setText(brand.getCountry());
 		hometown.setText(brand.getHomeTown());
 		description.setText(brand.getDescription());
+		tags.setText(brand.getTagsAsString());
 		
 		this.brand = brand;
 	}
