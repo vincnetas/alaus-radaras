@@ -1,0 +1,8 @@
+lt	Lietuviškas
+cz	Čekiškas
+de	Vokiškas
+be	Belgiškas
+nl	Olandiškas
+ie	Airiškas
+uk	Angliškas
+fr	Prancūziškas
