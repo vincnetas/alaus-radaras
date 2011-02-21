@@ -15,6 +15,7 @@
 @synthesize pintCountLabel;
 
 - (void)dealloc {
+	[settingsController release];
 	[luckyController release];
 	[beerCounterController release];
 	[pintCountLabel release];
@@ -70,6 +71,10 @@
 }
 
 
+-(IBAction) clickSettings:(id) sender {
+	settingsController.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
+	[self presentModalViewController:settingsController animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -11,7 +11,7 @@
 #import "MapViewController.h"
 #import "BeerCounterController.h"
 #import "LuckyController.h"
-
+#import "SettingsController.h"
 
 @interface AlausRadarasViewController : UIViewController {
 	UILabel *pintCountLabel;
@@ -19,6 +19,8 @@
 	
 	IBOutlet BeerCounterController *beerCounterController;
 	IBOutlet LuckyController *luckyController;
+	IBOutlet SettingsController *settingsController;
+
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
@@ -27,6 +29,8 @@
 -(IBAction) clickBeers:(id) sender;
 -(IBAction) clickPlaces:(id) sender;
 -(IBAction) clickLucky:(id) sender;
+-(IBAction) clickSettings:(id) sender;
+
 
 @end
 

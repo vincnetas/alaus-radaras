@@ -114,134 +114,10 @@
 		C986D00D12F479E100865F6D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C986D00C12F479E000865F6D /* back.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
 		C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */; };
-		C99E8AC61302FAA2002D3745 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		C99E8AC71302FAA2002D3745 /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */; };
-		C99E8AC81302FAA2002D3745 /* BrandsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */; };
-		C99E8AC91302FAA2002D3745 /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
-		C99E8ACA1302FAA2002D3745 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
-		C99E8ACB1302FAA2002D3745 /* brands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC512EF3B9F008DE8E8 /* brands.txt */; };
-		C99E8ACC1302FAA2002D3745 /* countries.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC612EF3B9F008DE8E8 /* countries.txt */; };
-		C99E8ACD1302FAA2002D3745 /* pubs.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC712EF3B9F008DE8E8 /* pubs.txt */; };
-		C99E8ACE1302FAA2002D3745 /* qoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC812EF3B9F008DE8E8 /* qoutes.txt */; };
-		C99E8ACF1302FAA2002D3745 /* tags.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9D74DC912EF3B9F008DE8E8 /* tags.txt */; };
-		C99E8AD01302FAA2002D3745 /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
-		C99E8AD11302FAA2002D3745 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135012F0C69200DB53C0 /* background.png */; };
-		C99E8AD21302FAA2002D3745 /* batonas.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135112F0C69200DB53C0 /* batonas.png */; };
-		C99E8AD31302FAA2002D3745 /* bokalas_vol_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135212F0C69200DB53C0 /* bokalas_vol_3.png */; };
-		C99E8AD41302FAA2002D3745 /* burbuliukas.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135312F0C69200DB53C0 /* burbuliukas.png */; };
-		C99E8AD51302FAA2002D3745 /* call.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135412F0C69200DB53C0 /* call.png */; };
-		C99E8AD61302FAA2002D3745 /* directions.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135512F0C69200DB53C0 /* directions.png */; };
-		C99E8AD71302FAA2002D3745 /* lucky.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135612F0C69200DB53C0 /* lucky.png */; };
-		C99E8AD81302FAA2002D3745 /* map_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135712F0C69200DB53C0 /* map_01.png */; };
-		C99E8AD91302FAA2002D3745 /* map_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135812F0C69200DB53C0 /* map_02.png */; };
-		C99E8ADA1302FAA2002D3745 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135B12F0C69200DB53C0 /* pin.png */; };
-		C99E8ADB1302FAA2002D3745 /* tag_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135C12F0C69200DB53C0 /* tag_01.png */; };
-		C99E8ADC1302FAA2002D3745 /* tag_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135D12F0C69200DB53C0 /* tag_02.png */; };
-		C99E8ADD1302FAA2002D3745 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
-		C99E8ADE1302FAA2002D3745 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB4312F3F83800865F6D /* pin@2x.png */; };
-		C99E8ADF1302FAA2002D3745 /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */; };
-		C99E8AE01302FAA2002D3745 /* brand_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */; };
-		C99E8AE11302FAA2002D3745 /* brand_belmonto_ypatingas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0012F45B7100865F6D /* brand_belmonto_ypatingas.png */; };
-		C99E8AE21302FAA2002D3745 /* brand_bernard_cerne.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0112F45B7100865F6D /* brand_bernard_cerne.png */; };
-		C99E8AE31302FAA2002D3745 /* brand_birzu_sirvenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0212F45B7100865F6D /* brand_birzu_sirvenos.png */; };
-		C99E8AE41302FAA2002D3745 /* brand_bravaria.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0312F45B7100865F6D /* brand_bravaria.png */; };
-		C99E8AE51302FAA2002D3745 /* brand_budweiser_budar.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0412F45B7100865F6D /* brand_budweiser_budar.png */; };
-		C99E8AE61302FAA2002D3745 /* brand_busi_trecias.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0512F45B7100865F6D /* brand_busi_trecias.png */; };
-		C99E8AE71302FAA2002D3745 /* brand_butautu_dvaro.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0612F45B7100865F6D /* brand_butautu_dvaro.png */; };
-		C99E8AE81302FAA2002D3745 /* brand_chodovar.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0712F45B7100865F6D /* brand_chodovar.png */; };
-		C99E8AE91302FAA2002D3745 /* brand_daujotu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0812F45B7100865F6D /* brand_daujotu.png */; };
-		C99E8AEA1302FAA2002D3745 /* brand_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0912F45B7100865F6D /* brand_default.png */; };
-		C99E8AEB1302FAA2002D3745 /* brand_dundulio.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0A12F45B7100865F6D /* brand_dundulio.png */; };
-		C99E8AEC1302FAA2002D3745 /* brand_ekstra_tvirtoves.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0B12F45B7100865F6D /* brand_ekstra_tvirtoves.png */; };
-		C99E8AED1302FAA2002D3745 /* brand_erdinger.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0C12F45B7100865F6D /* brand_erdinger.png */; };
-		C99E8AEE1302FAA2002D3745 /* brand_franziskaner.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0D12F45B7100865F6D /* brand_franziskaner.png */; };
-		C99E8AEF1302FAA2002D3745 /* brand_grimbergen.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0E12F45B7100865F6D /* brand_grimbergen.png */; };
-		C99E8AF01302FAA2002D3745 /* brand_gubernijos_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF0F12F45B7100865F6D /* brand_gubernijos_kvietinis.png */; };
-		C99E8AF11302FAA2002D3745 /* brand_guinness.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1012F45B7100865F6D /* brand_guinness.png */; };
-		C99E8AF21302FAA2002D3745 /* brand_heineken.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1112F45B7100865F6D /* brand_heineken.png */; };
-		C99E8AF31302FAA2002D3745 /* brand_hoegaarden.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1212F45B7100865F6D /* brand_hoegaarden.png */; };
-		C99E8AF41302FAA2002D3745 /* brand_jovaru_snekutis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1312F45B7100865F6D /* brand_jovaru_snekutis.png */; };
-		C99E8AF51302FAA2002D3745 /* brand_kalnapilis_grand.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1412F45B7100865F6D /* brand_kalnapilis_grand.png */; };
-		C99E8AF61302FAA2002D3745 /* brand_kanapinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1512F45B7100865F6D /* brand_kanapinis.png */; };
-		C99E8AF71302FAA2002D3745 /* brand_katedros_medaus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1612F45B7100865F6D /* brand_katedros_medaus.png */; };
-		C99E8AF81302FAA2002D3745 /* brand_katedros_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1712F45B7100865F6D /* brand_katedros_sviesusis.png */; };
-		C99E8AF91302FAA2002D3745 /* brand_katedros_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1812F45B7100865F6D /* brand_katedros_tamsusis.png */; };
-		C99E8AFA1302FAA2002D3745 /* brand_kilkenny.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1912F45B7100865F6D /* brand_kilkenny.png */; };
-		C99E8AFB1302FAA2002D3745 /* brand_kozel.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1A12F45B7100865F6D /* brand_kozel.png */; };
-		C99E8AFC1302FAA2002D3745 /* brand_krusovice.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1B12F45B7100865F6D /* brand_krusovice.png */; };
-		C99E8AFD1302FAA2002D3745 /* brand_kunigaiksciu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1C12F45B7100865F6D /* brand_kunigaiksciu.png */; };
-		C99E8AFE1302FAA2002D3745 /* brand_leffe.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1D12F45B7100865F6D /* brand_leffe.png */; };
-		C99E8AFF1302FAA2002D3745 /* brand_murphys_stout.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1E12F45B7100865F6D /* brand_murphys_stout.png */; };
-		C99E8B001302FAA2002D3745 /* brand_new_castle_brown_ale.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF1F12F45B7100865F6D /* brand_new_castle_brown_ale.png */; };
-		C99E8B011302FAA2002D3745 /* brand_pilies_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2012F45B7100865F6D /* brand_pilies_alus.png */; };
-		C99E8B021302FAA2002D3745 /* brand_raudonuju_dobilu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2112F45B7100865F6D /* brand_raudonuju_dobilu.png */; };
-		C99E8B031302FAA2002D3745 /* brand_rinkuskiu.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2212F45B7100865F6D /* brand_rinkuskiu.png */; };
-		C99E8B041302FAA2002D3745 /* brand_samson.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2312F45B7100865F6D /* brand_samson.png */; };
-		C99E8B051302FAA2002D3745 /* brand_staropramen.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2412F45B7100865F6D /* brand_staropramen.png */; };
-		C99E8B061302FAA2002D3745 /* brand_svyturys_baltas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2512F45B7100865F6D /* brand_svyturys_baltas.png */; };
-		C99E8B071302FAA2002D3745 /* brand_svyturys_baltijos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2612F45B7100865F6D /* brand_svyturys_baltijos.png */; };
-		C99E8B081302FAA2002D3745 /* brand_svyturys_ekstra.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2712F45B7100865F6D /* brand_svyturys_ekstra.png */; };
-		C99E8B091302FAA2002D3745 /* brand_tauro_tradicinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2812F45B7100865F6D /* brand_tauro_tradicinis.png */; };
-		C99E8B0A1302FAA2002D3745 /* brand_tores.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2912F45B7100865F6D /* brand_tores.png */; };
-		C99E8B0B1302FAA2002D3745 /* brand_tucher.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2A12F45B7100865F6D /* brand_tucher.png */; };
-		C99E8B0C1302FAA2002D3745 /* brand_utenos_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2B12F45B7100865F6D /* brand_utenos_dark.png */; };
-		C99E8B0D1302FAA2002D3745 /* brand_utenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2C12F45B7100865F6D /* brand_utenos.png */; };
-		C99E8B0E1302FAA2002D3745 /* brand_varniuku_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2D12F45B7100865F6D /* brand_varniuku_alus.png */; };
-		C99E8B0F1302FAA2002D3745 /* brand_veltins.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2E12F45B7100865F6D /* brand_veltins.png */; };
-		C99E8B101302FAA2002D3745 /* brand_velvet.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF2F12F45B7100865F6D /* brand_velvet.png */; };
-		C99E8B111302FAA2002D3745 /* brand_vilkmerges_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3012F45B7100865F6D /* brand_vilkmerges_tamsusis.png */; };
-		C99E8B121302FAA2002D3745 /* brand_vilniaus_kvietinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3112F45B7100865F6D /* brand_vilniaus_kvietinis.png */; };
-		C99E8B131302FAA2002D3745 /* brand_vilniaus_nefiltruotas.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3212F45B7100865F6D /* brand_vilniaus_nefiltruotas.png */; };
-		C99E8B141302FAA2002D3745 /* brand_zubr.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3312F45B7100865F6D /* brand_zubr.png */; };
-		C99E8B151302FAA2002D3745 /* pub_obuolys.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CFD812F4703400865F6D /* pub_obuolys.png */; };
-		C99E8B161302FAA2002D3745 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C986D00C12F479E000865F6D /* back.png */; };
-		C99E8B171302FAA2002D3745 /* pub_kauno_alus.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0B9612F5A791002DB792 /* pub_kauno_alus.png */; };
-		C99E8B181302FAA2002D3745 /* pub_memelis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BC0C4912F5C344002DB792 /* pub_memelis.png */; };
-		C99E8B191302FAA2002D3745 /* bottle_cap.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86A612F767E40021B30B /* bottle_cap.png */; };
-		C99E8B1A1302FAA2002D3745 /* bottle_cap_back.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86AC12F76AE70021B30B /* bottle_cap_back.png */; };
-		C99E8B1B1302FAA2002D3745 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EDF27412F89F8E00E9069A /* close.png */; };
-		C99E8B1C1302FAA2002D3745 /* beer-radar-db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */; };
-		C99E8B1D1302FAA2002D3745 /* internet.png in Resources */ = {isa = PBXBuildFile; fileRef = C9CEFD2512FB1BF80010E6FF /* internet.png */; };
-		C99E8B1E1302FAA2002D3745 /* pub_alaus_namai.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF312FE00AB00D19918 /* pub_alaus_namai.png */; };
-		C99E8B1F1302FAA2002D3745 /* pub_bobo.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF412FE00AB00D19918 /* pub_bobo.png */; };
-		C99E8B201302FAA2002D3745 /* pub_bunte_gans.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF512FE00AB00D19918 /* pub_bunte_gans.png */; };
-		C99E8B211302FAA2002D3745 /* pub_pogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF612FE00AB00D19918 /* pub_pogo.png */; };
-		C99E8B221302FAA2002D3745 /* pub_cactus.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF812FE00AB00D19918 /* pub_cactus.png */; };
-		C99E8B231302FAA2002D3745 /* pub_avilys.png in Resources */ = {isa = PBXBuildFile; fileRef = C928FBF912FE00AB00D19918 /* pub_avilys.png */; };
-		C99E8B241302FAA2002D3745 /* beer-radar-schema.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */; };
-		C99E8B251302FAA2002D3745 /* bokalas_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */; };
-		C99E8B261302FAA2002D3745 /* kur_as.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071C1F12FF31F500BDA053 /* kur_as.png */; };
-		C99E8B271302FAA2002D3745 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D470E513009A5C009C04AF /* Default@2x.png */; };
-		C99E8B281302FAA2002D3745 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D471111300A267009C04AF /* Default.png */; };
-		C99E8B291302FAA2002D3745 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23A1300AAB5002EE7AA /* Icon-Small.png */; };
-		C99E8B2A1302FAA2002D3745 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */; };
-		C99E8B2B1302FAA2002D3745 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23C1300AAB5002EE7AA /* Icon.png */; };
-		C99E8B2C1302FAA2002D3745 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23D1300AAB5002EE7AA /* Icon@2x.png */; };
-		C99E8B2E1302FAA2002D3745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		C99E8B2F1302FAA2002D3745 /* AlausRadarasAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */; };
-		C99E8B301302FAA2002D3745 /* AlausRadarasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */; };
-		C99E8B311302FAA2002D3745 /* BrandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */; };
-		C99E8B321302FAA2002D3745 /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
-		C99E8B331302FAA2002D3745 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
-		C99E8B341302FAA2002D3745 /* PubAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E80B12EF5B7B001BD656 /* PubAnnotation.m */; };
-		C99E8B351302FAA2002D3745 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E93912EF718D001BD656 /* Brand.m */; };
-		C99E8B361302FAA2002D3745 /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
-		C99E8B371302FAA2002D3745 /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
-		C99E8B381302FAA2002D3745 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
-		C99E8B391302FAA2002D3745 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
-		C99E8B3A1302FAA2002D3745 /* BeerCounterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */; };
-		C99E8B3B1302FAA2002D3745 /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
-		C99E8B3C1302FAA2002D3745 /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A85F612F7516F0021B30B /* FeelingLucky.m */; };
-		C99E8B3D1302FAA2002D3745 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32612FC7B9300AF396A /* FMResultSet.m */; };
-		C99E8B3E1302FAA2002D3745 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */; };
-		C99E8B3F1302FAA2002D3745 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
-		C99E8B401302FAA2002D3745 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */; };
-		C99E8B421302FAA2002D3745 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		C99E8B431302FAA2002D3745 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		C99E8B441302FAA2002D3745 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		C99E8B451302FAA2002D3745 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
-		C99E8B461302FAA2002D3745 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
-		C99E8B471302FAA2002D3745 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */; };
+		C99452251312F1C900732314 /* popup-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452241312F1C900732314 /* popup-background.png */; };
+		C994524B1312FD6B00732314 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C994524A1312FD6B00732314 /* SettingsController.m */; };
+		C994525A1313005500732314 /* black-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452581313005500732314 /* black-background.png */; };
+		C994525B1313005500732314 /* black-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452591313005500732314 /* black-background@2x.png */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
@@ -391,7 +267,11 @@
 		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
 		C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
 		C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
-		C99E8B4C1302FAA2002D3745 /* AlausRadaras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlausRadaras.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C99452241312F1C900732314 /* popup-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popup-background.png"; path = "resources/images/popup-background.png"; sourceTree = "<group>"; };
+		C99452491312FD6B00732314 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		C994524A1312FD6B00732314 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		C99452581313005500732314 /* black-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background.png"; path = "resources/images/black-background.png"; sourceTree = "<group>"; };
+		C99452591313005500732314 /* black-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background@2x.png"; path = "resources/images/black-background@2x.png"; sourceTree = "<group>"; };
 		C99E8B4E1302FAA2002D3745 /* AlausRadaras-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlausRadaras-Info copy.plist"; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
@@ -433,19 +313,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C99E8B411302FAA2002D3745 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C99E8B421302FAA2002D3745 /* Foundation.framework in Frameworks */,
-				C99E8B431302FAA2002D3745 /* UIKit.framework in Frameworks */,
-				C99E8B441302FAA2002D3745 /* CoreGraphics.framework in Frameworks */,
-				C99E8B451302FAA2002D3745 /* MapKit.framework in Frameworks */,
-				C99E8B461302FAA2002D3745 /* CoreLocation.framework in Frameworks */,
-				C99E8B471302FAA2002D3745 /* libsqlite3.0.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -460,6 +327,8 @@
 				C9DA6F0612F34E0700D9886A /* BeerCounterController.m */,
 				C986D03012F481A100865F6D /* LuckyController.h */,
 				C986D03112F481A100865F6D /* LuckyController.m */,
+				C99452491312FD6B00732314 /* SettingsController.h */,
+				C994524A1312FD6B00732314 /* SettingsController.m */,
 				C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */,
 				C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */,
 				C92E59A812EE146E00412BFA /* BrandsTableCell.h */,
@@ -480,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* AlausRadaras.app */,
-				C99E8B4C1302FAA2002D3745 /* AlausRadaras.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -599,6 +467,7 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C99452241312F1C900732314 /* popup-background.png */,
 				C9D471041300A198009C04AF /* apple */,
 				C9071C1F12FF31F500BDA053 /* kur_as.png */,
 				C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */,
@@ -626,6 +495,8 @@
 		C9D471041300A198009C04AF /* apple */ = {
 			isa = PBXGroup;
 			children = (
+				C99452581313005500732314 /* black-background.png */,
+				C99452591313005500732314 /* black-background@2x.png */,
 				C90AA23A1300AAB5002EE7AA /* Icon-Small.png */,
 				C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */,
 				C90AA23C1300AAB5002EE7AA /* Icon.png */,
@@ -731,23 +602,6 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* AlausRadaras.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C99E8AC41302FAA2002D3745 /* AlausRadaras copy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C99E8B481302FAA2002D3745 /* Build configuration list for PBXNativeTarget "AlausRadaras copy" */;
-			buildPhases = (
-				C99E8AC51302FAA2002D3745 /* Resources */,
-				C99E8B2D1302FAA2002D3745 /* Sources */,
-				C99E8B411302FAA2002D3745 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "AlausRadaras copy";
-			productName = AlausRadaras;
-			productReference = C99E8B4C1302FAA2002D3745 /* AlausRadaras.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -768,7 +622,6 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* AlausRadaras */,
-				C99E8AC41302FAA2002D3745 /* AlausRadaras copy */,
 			);
 		};
 /* End PBXProject section */
@@ -881,116 +734,9 @@
 				C90AA23F1300AAB5002EE7AA /* Icon-Small@2x.png in Resources */,
 				C90AA2401300AAB5002EE7AA /* Icon.png in Resources */,
 				C90AA2411300AAB5002EE7AA /* Icon@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C99E8AC51302FAA2002D3745 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C99E8AC61302FAA2002D3745 /* MainWindow.xib in Resources */,
-				C99E8AC71302FAA2002D3745 /* AlausRadarasViewController.xib in Resources */,
-				C99E8AC81302FAA2002D3745 /* BrandsViewController.xib in Resources */,
-				C99E8AC91302FAA2002D3745 /* BrandsTableCell.xib in Resources */,
-				C99E8ACA1302FAA2002D3745 /* MapViewController.xib in Resources */,
-				C99E8ACB1302FAA2002D3745 /* brands.txt in Resources */,
-				C99E8ACC1302FAA2002D3745 /* countries.txt in Resources */,
-				C99E8ACD1302FAA2002D3745 /* pubs.txt in Resources */,
-				C99E8ACE1302FAA2002D3745 /* qoutes.txt in Resources */,
-				C99E8ACF1302FAA2002D3745 /* tags.txt in Resources */,
-				C99E8AD01302FAA2002D3745 /* PubDetailViewController.xib in Resources */,
-				C99E8AD11302FAA2002D3745 /* background.png in Resources */,
-				C99E8AD21302FAA2002D3745 /* batonas.png in Resources */,
-				C99E8AD31302FAA2002D3745 /* bokalas_vol_3.png in Resources */,
-				C99E8AD41302FAA2002D3745 /* burbuliukas.png in Resources */,
-				C99E8AD51302FAA2002D3745 /* call.png in Resources */,
-				C99E8AD61302FAA2002D3745 /* directions.png in Resources */,
-				C99E8AD71302FAA2002D3745 /* lucky.png in Resources */,
-				C99E8AD81302FAA2002D3745 /* map_01.png in Resources */,
-				C99E8AD91302FAA2002D3745 /* map_02.png in Resources */,
-				C99E8ADA1302FAA2002D3745 /* pin.png in Resources */,
-				C99E8ADB1302FAA2002D3745 /* tag_01.png in Resources */,
-				C99E8ADC1302FAA2002D3745 /* tag_02.png in Resources */,
-				C99E8ADD1302FAA2002D3745 /* background@2x.png in Resources */,
-				C99E8ADE1302FAA2002D3745 /* pin@2x.png in Resources */,
-				C99E8ADF1302FAA2002D3745 /* brand_backoriu_tamsusis.png in Resources */,
-				C99E8AE01302FAA2002D3745 /* brand_belmonto_sviesusis.png in Resources */,
-				C99E8AE11302FAA2002D3745 /* brand_belmonto_ypatingas.png in Resources */,
-				C99E8AE21302FAA2002D3745 /* brand_bernard_cerne.png in Resources */,
-				C99E8AE31302FAA2002D3745 /* brand_birzu_sirvenos.png in Resources */,
-				C99E8AE41302FAA2002D3745 /* brand_bravaria.png in Resources */,
-				C99E8AE51302FAA2002D3745 /* brand_budweiser_budar.png in Resources */,
-				C99E8AE61302FAA2002D3745 /* brand_busi_trecias.png in Resources */,
-				C99E8AE71302FAA2002D3745 /* brand_butautu_dvaro.png in Resources */,
-				C99E8AE81302FAA2002D3745 /* brand_chodovar.png in Resources */,
-				C99E8AE91302FAA2002D3745 /* brand_daujotu.png in Resources */,
-				C99E8AEA1302FAA2002D3745 /* brand_default.png in Resources */,
-				C99E8AEB1302FAA2002D3745 /* brand_dundulio.png in Resources */,
-				C99E8AEC1302FAA2002D3745 /* brand_ekstra_tvirtoves.png in Resources */,
-				C99E8AED1302FAA2002D3745 /* brand_erdinger.png in Resources */,
-				C99E8AEE1302FAA2002D3745 /* brand_franziskaner.png in Resources */,
-				C99E8AEF1302FAA2002D3745 /* brand_grimbergen.png in Resources */,
-				C99E8AF01302FAA2002D3745 /* brand_gubernijos_kvietinis.png in Resources */,
-				C99E8AF11302FAA2002D3745 /* brand_guinness.png in Resources */,
-				C99E8AF21302FAA2002D3745 /* brand_heineken.png in Resources */,
-				C99E8AF31302FAA2002D3745 /* brand_hoegaarden.png in Resources */,
-				C99E8AF41302FAA2002D3745 /* brand_jovaru_snekutis.png in Resources */,
-				C99E8AF51302FAA2002D3745 /* brand_kalnapilis_grand.png in Resources */,
-				C99E8AF61302FAA2002D3745 /* brand_kanapinis.png in Resources */,
-				C99E8AF71302FAA2002D3745 /* brand_katedros_medaus.png in Resources */,
-				C99E8AF81302FAA2002D3745 /* brand_katedros_sviesusis.png in Resources */,
-				C99E8AF91302FAA2002D3745 /* brand_katedros_tamsusis.png in Resources */,
-				C99E8AFA1302FAA2002D3745 /* brand_kilkenny.png in Resources */,
-				C99E8AFB1302FAA2002D3745 /* brand_kozel.png in Resources */,
-				C99E8AFC1302FAA2002D3745 /* brand_krusovice.png in Resources */,
-				C99E8AFD1302FAA2002D3745 /* brand_kunigaiksciu.png in Resources */,
-				C99E8AFE1302FAA2002D3745 /* brand_leffe.png in Resources */,
-				C99E8AFF1302FAA2002D3745 /* brand_murphys_stout.png in Resources */,
-				C99E8B001302FAA2002D3745 /* brand_new_castle_brown_ale.png in Resources */,
-				C99E8B011302FAA2002D3745 /* brand_pilies_alus.png in Resources */,
-				C99E8B021302FAA2002D3745 /* brand_raudonuju_dobilu.png in Resources */,
-				C99E8B031302FAA2002D3745 /* brand_rinkuskiu.png in Resources */,
-				C99E8B041302FAA2002D3745 /* brand_samson.png in Resources */,
-				C99E8B051302FAA2002D3745 /* brand_staropramen.png in Resources */,
-				C99E8B061302FAA2002D3745 /* brand_svyturys_baltas.png in Resources */,
-				C99E8B071302FAA2002D3745 /* brand_svyturys_baltijos.png in Resources */,
-				C99E8B081302FAA2002D3745 /* brand_svyturys_ekstra.png in Resources */,
-				C99E8B091302FAA2002D3745 /* brand_tauro_tradicinis.png in Resources */,
-				C99E8B0A1302FAA2002D3745 /* brand_tores.png in Resources */,
-				C99E8B0B1302FAA2002D3745 /* brand_tucher.png in Resources */,
-				C99E8B0C1302FAA2002D3745 /* brand_utenos_dark.png in Resources */,
-				C99E8B0D1302FAA2002D3745 /* brand_utenos.png in Resources */,
-				C99E8B0E1302FAA2002D3745 /* brand_varniuku_alus.png in Resources */,
-				C99E8B0F1302FAA2002D3745 /* brand_veltins.png in Resources */,
-				C99E8B101302FAA2002D3745 /* brand_velvet.png in Resources */,
-				C99E8B111302FAA2002D3745 /* brand_vilkmerges_tamsusis.png in Resources */,
-				C99E8B121302FAA2002D3745 /* brand_vilniaus_kvietinis.png in Resources */,
-				C99E8B131302FAA2002D3745 /* brand_vilniaus_nefiltruotas.png in Resources */,
-				C99E8B141302FAA2002D3745 /* brand_zubr.png in Resources */,
-				C99E8B151302FAA2002D3745 /* pub_obuolys.png in Resources */,
-				C99E8B161302FAA2002D3745 /* back.png in Resources */,
-				C99E8B171302FAA2002D3745 /* pub_kauno_alus.png in Resources */,
-				C99E8B181302FAA2002D3745 /* pub_memelis.png in Resources */,
-				C99E8B191302FAA2002D3745 /* bottle_cap.png in Resources */,
-				C99E8B1A1302FAA2002D3745 /* bottle_cap_back.png in Resources */,
-				C99E8B1B1302FAA2002D3745 /* close.png in Resources */,
-				C99E8B1C1302FAA2002D3745 /* beer-radar-db.sqlite in Resources */,
-				C99E8B1D1302FAA2002D3745 /* internet.png in Resources */,
-				C99E8B1E1302FAA2002D3745 /* pub_alaus_namai.png in Resources */,
-				C99E8B1F1302FAA2002D3745 /* pub_bobo.png in Resources */,
-				C99E8B201302FAA2002D3745 /* pub_bunte_gans.png in Resources */,
-				C99E8B211302FAA2002D3745 /* pub_pogo.png in Resources */,
-				C99E8B221302FAA2002D3745 /* pub_cactus.png in Resources */,
-				C99E8B231302FAA2002D3745 /* pub_avilys.png in Resources */,
-				C99E8B241302FAA2002D3745 /* beer-radar-schema.sqlite in Resources */,
-				C99E8B251302FAA2002D3745 /* bokalas_btn.png in Resources */,
-				C99E8B261302FAA2002D3745 /* kur_as.png in Resources */,
-				C99E8B271302FAA2002D3745 /* Default@2x.png in Resources */,
-				C99E8B281302FAA2002D3745 /* Default.png in Resources */,
-				C99E8B291302FAA2002D3745 /* Icon-Small.png in Resources */,
-				C99E8B2A1302FAA2002D3745 /* Icon-Small@2x.png in Resources */,
-				C99E8B2B1302FAA2002D3745 /* Icon.png in Resources */,
-				C99E8B2C1302FAA2002D3745 /* Icon@2x.png in Resources */,
+				C99452251312F1C900732314 /* popup-background.png in Resources */,
+				C994525A1313005500732314 /* black-background.png in Resources */,
+				C994525B1313005500732314 /* black-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,32 +766,7 @@
 				C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */,
 				C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */,
 				C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C99E8B2D1302FAA2002D3745 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C99E8B2E1302FAA2002D3745 /* main.m in Sources */,
-				C99E8B2F1302FAA2002D3745 /* AlausRadarasAppDelegate.m in Sources */,
-				C99E8B301302FAA2002D3745 /* AlausRadarasViewController.m in Sources */,
-				C99E8B311302FAA2002D3745 /* BrandsViewController.m in Sources */,
-				C99E8B321302FAA2002D3745 /* BrandsTableCell.m in Sources */,
-				C99E8B331302FAA2002D3745 /* MapViewController.m in Sources */,
-				C99E8B341302FAA2002D3745 /* PubAnnotation.m in Sources */,
-				C99E8B351302FAA2002D3745 /* Brand.m in Sources */,
-				C99E8B361302FAA2002D3745 /* PubDetailViewController.m in Sources */,
-				C99E8B371302FAA2002D3745 /* Pub.m in Sources */,
-				C99E8B381302FAA2002D3745 /* BrandsDetailViewController.m in Sources */,
-				C99E8B391302FAA2002D3745 /* CodeValue.m in Sources */,
-				C99E8B3A1302FAA2002D3745 /* BeerCounterController.m in Sources */,
-				C99E8B3B1302FAA2002D3745 /* LuckyController.m in Sources */,
-				C99E8B3C1302FAA2002D3745 /* FeelingLucky.m in Sources */,
-				C99E8B3D1302FAA2002D3745 /* FMResultSet.m in Sources */,
-				C99E8B3E1302FAA2002D3745 /* FMDatabaseAdditions.m in Sources */,
-				C99E8B3F1302FAA2002D3745 /* FMDatabase.m in Sources */,
-				C99E8B401302FAA2002D3745 /* SQLiteManager.m in Sources */,
+				C994524B1312FD6B00732314 /* SettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,51 +829,11 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "ED0C3F82-D0B1-46AF-8EA2-28BF70FD77AA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED0C3F82-D0B1-46AF-8EA2-28BF70FD77AA";
+				PROVISIONING_PROFILE = "1B12A7E4-B1A6-4B7B-AAD4-423675177831";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1B12A7E4-B1A6-4B7B-AAD4-423675177831";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
-		};
-		C99E8B491302FAA2002D3745 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AlausRadaras_Prefix.pch;
-				INFOPLIST_FILE = "AlausRadaras-Info copy.plist";
-				PRODUCT_NAME = AlausRadaras;
-			};
-			name = Debug;
-		};
-		C99E8B4A1302FAA2002D3745 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AlausRadaras_Prefix.pch;
-				INFOPLIST_FILE = "AlausRadaras-Info copy.plist";
-				PRODUCT_NAME = AlausRadaras;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C99E8B4B1302FAA2002D3745 /* Distribution */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AlausRadaras_Prefix.pch;
-				INFOPLIST_FILE = "AlausRadaras-Info copy.plist";
-				PRODUCT_NAME = AlausRadaras;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Distribution;
 		};
 		C9EA04A11301F5C100266EEA /* Distribution */ = {
 			isa = XCBuildConfiguration;
@@ -1206,16 +887,6 @@
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
 				C9EA04A11301F5C100266EEA /* Distribution */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C99E8B481302FAA2002D3745 /* Build configuration list for PBXNativeTarget "AlausRadaras copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C99E8B491302FAA2002D3745 /* Debug */,
-				C99E8B4A1302FAA2002D3745 /* Release */,
-				C99E8B4B1302FAA2002D3745 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

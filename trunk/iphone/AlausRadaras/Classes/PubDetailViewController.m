@@ -15,6 +15,7 @@
 @synthesize directionsButton, pubLogoImage,pubInternetAddessLabel, pubTitleShortLabel, pubTitleLabel, pubAddressLabel, pubCallLabel;
 @synthesize brandList, brandsTable, currentPub;
 @synthesize userCoordinates;
+@synthesize reportPubInfoView;
 
 - (void)dealloc {
 	[directionsButton release];
@@ -34,7 +35,6 @@
 
  - (void)viewDidLoad {
 	 [super viewDidLoad];
-	 NSLog(@"PubDetailViewController viewDidLoad");
 	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	 self.view.backgroundColor = background;
 	 [background release];
@@ -60,7 +60,9 @@
 		 directionsButton.enabled = NO;
 	 }
 	 NSLog(@"PubDetailViewController viewDidLoad");
-
+	 
+	 self.reportPubInfoView.frame = CGRectMake(0.0, 700.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
+	 [self.view addSubview:self.reportPubInfoView];
  }
 
 #pragma mark -
@@ -100,6 +102,31 @@
 - (IBAction) openWebpage:(id)sender {	
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentPub.webpage]];
 }
+
+- (IBAction) reportPubInfo:(id)sender {
+	[UIView beginAnimations: @"moveCNGCallout" context: nil];
+	[UIView setAnimationDelegate: self];
+	[UIView setAnimationDuration: 0.5];
+	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+	self.reportPubInfoView.frame = CGRectMake(0.0, 50.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
+	[UIView commitAnimations];	
+	//[self.view addSubview:self.reportPubInfoView];
+}
+
+- (IBAction) closeReportPubInfo:(id)sender {
+	[UIView beginAnimations: @"moveCNGCallout" context: nil];
+	[UIView setAnimationDelegate: self];
+	[UIView setAnimationDuration: 0.5];
+	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+	self.reportPubInfoView.frame = CGRectMake(0.0, 700.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
+	[UIView commitAnimations];	
+	//[self.view addSubview:self.reportPubInfoView];
+}
+
+- (IBAction) keyboardDoneAction: (id)sender {
+	[sender resignFirstResponder];
+}
+
 
 
 #pragma mark -

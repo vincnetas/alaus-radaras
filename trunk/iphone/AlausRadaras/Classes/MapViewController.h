@@ -41,5 +41,4 @@
 - (IBAction) locateMe:(id)sender;
 - (IBAction) cityIndexChanged;
 
-
 @end

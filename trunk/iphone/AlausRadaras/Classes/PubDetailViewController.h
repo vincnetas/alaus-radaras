@@ -23,6 +23,8 @@
 	NSString *userCoordinates;
 	NSMutableArray *brandList;
 	UITableView *brandsTable;
+	
+	IBOutlet UIView *reportPubInfoView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -39,10 +41,14 @@
 @property (nonatomic, retain) Pub *currentPub;
 @property (nonatomic, retain) NSString *userCoordinates;
 
+@property (retain) IBOutlet UIView *reportPubInfoView;
+
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (IBAction) dialNumber:(id)sender;
 - (IBAction) navigateToPub:(id)sender;
 - (IBAction) openWebpage:(id)sender;
+- (IBAction) reportPubInfo:(id)sender;
+- (IBAction) closeReportPubInfo:(id)sender;
 
 @end
