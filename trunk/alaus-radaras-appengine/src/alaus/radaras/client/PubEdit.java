@@ -58,7 +58,7 @@ public class PubEdit {
 		}
 		
 		{
-			final TextInputCell countryCell = new TextInputCell();
+			final EditTextCell countryCell = new EditTextCell();
 			Column<Pub, String> countryColumn = new Column<Pub, String>(countryCell) {
 				@Override
 				public String getValue(Pub object) {
@@ -140,24 +140,7 @@ public class PubEdit {
 			});
 			table.addColumn(phoneColumn, "Phone");
 		}
-		
-		{
-//			final EditTextCell descriptionCell = new EditTextCell();
-//			Column<Pub, String> descriptionColumn = new Column<Pub, String>(descriptionCell) {
-//				@Override
-//				public String getValue(Pub object) {
-//					return valueOrDefault(object.getDescription());
-//				}
-//			};
-//			descriptionColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {				
-//				@Override
-//				public void update(int arg0, Pub arg1, String arg2) {
-//					arg1.setDescription(arg2);
-//				}
-//			});
-//			table.addColumn(descriptionColumn, "Description");
-		}
-		
+
 		{
 			final EditTextCell homepageCell = new EditTextCell();
 			Column<Pub, String> homepageColumn = new Column<Pub, String>(homepageCell) {
@@ -187,7 +170,22 @@ public class PubEdit {
 				
 				@Override
 				public void update(int arg0, Pub arg1, String arg2) {
-					Window.alert("saved");
+					Pub pub = new Pub();
+					pub.setTitle(arg1.getTitle());
+					pub.setCountry(arg1.getCountry());
+					pub.setCity(arg1.getCity());
+					pub.setAddress(arg1.getAddress());
+					pub.setLocation(arg1.getLocation());
+					pub.setPhone(arg1.getPhone());
+					pub.setHomepage(arg1.getHomepage());
+					pub.setParentId(arg1.getId());
+					
+					Stat.getBeerService().savePub(pub, new BaseAsyncCallback<Pub>() {
+
+						@Override
+						public void onSuccess(Pub pub) {
+						}
+					});					
 				}
 			});
 			table.addColumn(saveColumn, "Save");

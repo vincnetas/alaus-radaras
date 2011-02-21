@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import alaus.radaras.client.BeerService;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
+import alaus.radaras.server.dao.BrandService;
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.server.dao.PubService;
 import alaus.radaras.server.locator.IPLocator;
@@ -43,6 +44,12 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	
 	@Inject
 	private PubService pubService;
+	
+	@Inject
+	private BrandService brandService;
+	
+	@Inject
+	private alaus.radaras.server.dao.BeerService beerService;
 
 	/**
 	 * 
@@ -138,7 +145,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public Beer saveBeer(Beer beer) {
-		return getBeerDao().save(beer);
+		return getBeerService().addUpdate(beer);
 	}
 
 	@Override
@@ -192,7 +199,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	 */
 	@Override
 	public Beer addBeer(Beer beer) {
-		return getBeerDao().add(beer);
+		return getBeerService().add(beer);
 	}
 
 	/**
@@ -211,12 +218,12 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 
 	@Override
 	public Brand addBrand(Brand brand) {
-		return getBrandDao().add(brand);
+		return getBrandService().add(brand);
 	}
 
 	@Override
 	public Brand saveBrand(Brand brand) {
-		return getBrandDao().save(brand);
+		return getBrandService().addUpdate(brand);
 	}
 
 	@Override
@@ -227,6 +234,39 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	@Override
 	public List<Beer> getBeers() {	
 		return getBeerDao().getAll();
+	}
+
+	@Override
+	public Pub savePub(Pub pub) {
+		return getPubService().addUpdate(pub);
+	}
+
+	/**
+	 * @return the brandService
+	 */
+	public BrandService getBrandService() {
+		return brandService;
+	}
+
+	/**
+	 * @param brandService the brandService to set
+	 */
+	public void setBrandService(BrandService brandService) {
+		this.brandService = brandService;
+	}
+
+	/**
+	 * @return the beerService
+	 */
+	public alaus.radaras.server.dao.BeerService getBeerService() {
+		return beerService;
+	}
+
+	/**
+	 * @param beerService the beerService to set
+	 */
+	public void setBeerService(alaus.radaras.server.dao.BeerService beerService) {
+		this.beerService = beerService;
 	}
 	
 	

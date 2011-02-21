@@ -45,6 +45,8 @@ public interface BeerService extends RemoteService {
 	Brand addBrand(Brand brand);
 	
 	Brand saveBrand(Brand brand);
+		
+	Pub savePub(Pub pub);
 	
 	
 	

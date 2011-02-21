@@ -81,7 +81,18 @@ public class AdminPanel extends Composite {
 					 */
 					@Override
 					public void onOkButtonClick(ClickEvent event) {
-						Stat.getBeerService().saveBrand(editBrandWidget.getBrand(), new BaseAsyncCallback<Brand>() {
+						Brand brand = editBrandWidget.getBrand();
+						Brand update = new Brand();
+						update.setTitle(brand.getTitle());
+						update.setIcon(brand.getIcon());
+						update.setHomePage(brand.getHomePage());
+						update.setCountry(brand.getCountry());
+						update.setHomeTown(brand.getHomeTown());
+						update.setDescription(brand.getDescription());
+						update.setTags(brand.getTags());
+						update.setParentId(brand.getId());
+						
+						Stat.getBeerService().saveBrand(update, new BaseAsyncCallback<Brand>() {
 							
 							@Override
 							public void onSuccess(Brand arg0) {								
@@ -109,7 +120,15 @@ public class AdminPanel extends Composite {
 					 */
 					@Override
 					public void onOkButtonClick(ClickEvent event) {
-						Stat.getBeerService().saveBeer(editBeerWidget.getBeer(), new BaseAsyncCallback<Beer>() {
+						Beer beer = editBeerWidget.getBeer();
+						Beer update = new Beer();
+						update.setTitle(beer.getTitle());
+						update.setBrandId(beer.getBrandId());
+						update.setDescription(beer.getDescription());
+						update.setTags(beer.getTags());
+						update.setParentId(beer.getId());
+						
+						Stat.getBeerService().saveBeer(update, new BaseAsyncCallback<Beer>() {
 							
 							@Override
 							public void onSuccess(Beer arg0) {								
