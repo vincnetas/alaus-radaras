@@ -23,6 +23,4 @@ public interface BaseService<T extends Updatable> {
 	T rejectUpdate(String id);
 
 	List<UpdateRecord<T>> getUpdates();
-	
-	
 }

@@ -62,10 +62,21 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		update.setUpdatedBy(getUserEmail());
 
 		getBaseDao().save(parent);
-		return getBaseDao().add(update);
+		
+		T result = getBaseDao().add(update);		
+		if (canApplyUpdate(update)) {
+			result = applyUpdate(update.getId());
+		} 
+		
+		return result;
+	}
+	
+	private boolean canApplyUpdate(T update) {
+    	// TODO implement permission checking
+		return true;
 	}
 
-    private T getParent(T update) {
+	private T getParent(T update) {
 		T parent = getBaseDao().get(update.getParentId());
 		if (parent == null) {
 			throw new Error("Parent doesn't exists for update " + update);
