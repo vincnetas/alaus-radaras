@@ -1,0 +1,7 @@
+dark	Tamsus
+lager	Šviesus
+white	Kvietinis
+foreign	Užsienietiškas
+rural	Kaimiškas
+strong	Stiprus
+light	Lengvas
