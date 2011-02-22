@@ -46,6 +46,15 @@ public abstract class BeerTable extends CellTable<Beer> {
 			}
 			
 		}, "Brans");
+		
+		addColumn(new TextColumn<Beer>() {
+			
+			@Override
+			public String getValue(Beer arg0) {				
+				return arg0.getIcon();
+			}
+			
+		}, "Icon");	
 
 		addColumn(new TextColumn<Beer>() {
 			

@@ -41,10 +41,10 @@ public class Pub extends Updatable {
 	private String hours;
 	
 	@Persistent
-	private Set<String> tags;
+	private Set<String> tags = new HashSet<String>();
 	
 	@Persistent
-	private Set<String> beerIds;
+	private Set<String> beerIds = new HashSet<String>();
 	
 	/**
 	 * @return the title

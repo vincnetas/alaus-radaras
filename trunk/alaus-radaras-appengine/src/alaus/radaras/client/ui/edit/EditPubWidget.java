@@ -5,6 +5,7 @@ import java.util.Set;
 
 import alaus.radaras.client.BaseAsyncCallback;
 import alaus.radaras.client.Stat;
+import alaus.radaras.client.ui.SelectLocationWidget;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestBox;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestion;
 import alaus.radaras.shared.model.Beer;
@@ -15,10 +16,9 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -30,7 +30,25 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	}
 	
 	@UiField
-	Label title;
+	TextBox title;
+	
+	@UiField
+	TextBox country;
+	
+	@UiField
+	TextBox city;
+	
+	@UiField
+	TextBox address;
+	
+	@UiField
+	SelectLocationWidget location;
+	
+	@UiField
+	TextBox phone;
+	
+	@UiField
+	TextBox homepage;
 	
 	@UiField
 	BeerSuggestBox beerSuggest;
@@ -38,22 +56,16 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	@UiField
 	VerticalPanel beerPanel;
 	
-	private final Pub pub;
+	private Pub pub;
 	
 	private Set<String> beerIds = new HashSet<String>();
 	
 	public EditPubWidget(Pub pub) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		beerSuggest.addSelectionHandler(this);		
+		beerSuggest.addSelectionHandler(this);			
 		
-		this.pub = pub;
-		
-		for (String beerId : pub.getBeerIds()) {
-			addBeer(beerId);
-		}		
-		
-		title.setText(pub.getTitle());
+		setPub(pub);
 	}
 
 	@Override
@@ -104,10 +116,34 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		});
 	}
 	
+	public void setPub(Pub pub) {		
+		title.setText(pub.getTitle());
+		country.setText(pub.getCountry());
+		city.setText(pub.getCity());
+		address.setText(pub.getAddress());
+		location.setLocation(pub.getLocation());
+		phone.setText(pub.getPhone());
+		homepage.setText(pub.getHomepage());
+		
+		for (String beerId : pub.getBeerIds()) {
+			addBeer(beerId);
+		}
+		
+		this.pub = pub;
+	}
+	
 	/**
 	 * @return the pub
 	 */
 	public Pub getPub() {
+		pub.setTitle(title.getText());
+		pub.setCountry(country.getText());
+		pub.setCity(city.getText());
+		pub.setAddress(address.getText());
+		pub.setLocation(location.getLocation());
+		pub.setPhone(phone.getText());
+		pub.setHomepage(homepage.getText());
+		
 		pub.setBeerIds(beerIds);
 		
 		return pub;

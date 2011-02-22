@@ -43,7 +43,12 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		object.setLastUpdate(new Date());		
 		object.setUpdatedBy(getUserEmail());
 		
-		return getBaseDao().add(object);
+		T result = getBaseDao().add(object);
+		if (canApplyUpdate(object)) {
+			result = applyUpdate(object.getId());
+		} 
+		
+		return result;
 	}
 
 	@Override
