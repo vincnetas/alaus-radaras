@@ -24,6 +24,9 @@ public class Beer extends Updatable {
 	private String brandId;
 
 	@Persistent
+	private String icon;
+
+	@Persistent
 	private String description;
 
 	@Persistent
@@ -118,4 +121,18 @@ public class Beer extends Updatable {
 		
 		return builder.toString();
 	}
+
+	/**
+	 * @return the icon
+	 */
+	public String getIcon() {
+		return icon;
+	}
+
+	/**
+	 * @param icon the icon to set
+	 */
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}	
 }

@@ -9,6 +9,7 @@
 	<g:HTMLPanel>
 		<g:Label>Title</g:Label><g:TextBox ui:field="title"></g:TextBox>
 		<g:Label>Brand</g:Label><s:BrandSuggestBox ui:field="brand"></s:BrandSuggestBox>
+		<g:Label>Icon</g:Label><g:TextBox ui:field="icon"></g:TextBox>
 		<g:Label>Description</g:Label><g:TextArea ui:field="description"></g:TextArea>
 		<g:Label>Tags</g:Label><g:TextArea ui:field="tags"></g:TextArea>
 	</g:HTMLPanel>

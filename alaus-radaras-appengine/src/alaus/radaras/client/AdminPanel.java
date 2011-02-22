@@ -3,12 +3,12 @@
  */
 package alaus.radaras.client;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import alaus.radaras.client.ui.dialogs.EditDialog;
 import alaus.radaras.client.ui.edit.EditBeerWidget;
 import alaus.radaras.client.ui.edit.EditBrandWidget;
+import alaus.radaras.client.ui.edit.EditPubWidget;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Location;
@@ -20,7 +20,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Panel;
@@ -36,10 +35,8 @@ public class AdminPanel extends Composite {
 
 	interface AdminPanelUiBinder extends UiBinder<Widget, AdminPanel> {
 	}
-		
-	private List<Pub> data = new ArrayList<Pub>();
 
-	private CellTable<Pub> table = PubEdit.getTable();
+	private PubTable pubTable;
 	
 	private BrandTable brandTable;
 	
@@ -126,6 +123,7 @@ public class AdminPanel extends Composite {
 						update.setBrandId(beer.getBrandId());
 						update.setDescription(beer.getDescription());
 						update.setTags(beer.getTags());
+						update.setIcon(beer.getIcon());
 						update.setParentId(beer.getId());
 						
 						Stat.getBeerService().saveBeer(update, new BaseAsyncCallback<Beer>() {
@@ -144,21 +142,66 @@ public class AdminPanel extends Composite {
 			}
 		};
 		
-		pubsPanel.add(table);
+		pubTable = new PubTable() {
+			
+			@Override
+			public void editPub(Pub arg1) {
+				final EditPubWidget editPubWidget = new EditPubWidget(arg1);
+				EditDialog editDialog = new EditDialog(editPubWidget, "Edit Pub") {
+
+					/* (non-Javadoc)
+					 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
+					 */
+					@Override
+					public void onOkButtonClick(ClickEvent event) {
+						Pub pub = editPubWidget.getPub(); 
+						Pub update = new Pub();
+						update.setTitle(pub.getTitle());
+						update.setCountry(pub.getCountry());
+						update.setCity(pub.getCity());
+						update.setAddress(pub.getAddress());
+						update.setLocation(pub.getLocation());
+						update.setPhone(pub.getPhone());
+						update.setHomepage(pub.getHomepage());
+						update.setBeerIds(pub.getBeerIds());
+						update.setParentId(pub.getId());
+						
+						Stat.getBeerService().savePub(update, new BaseAsyncCallback<Pub>() {
+
+							@Override
+							public void onSuccess(Pub pub) {
+								hide();
+								redraw();
+							}
+						});					
+
+					}
+					
+				};
+				
+				editDialog.center();			
+			}
+		};
+		
+		pubsPanel.add(pubTable);
 		brandPanel.add(brandTable);
 		beerPanel.add(beerTable);
 		
-		Stat.getBeerService().findPubs(new LocationBounds(new Location(10, 20), new Location(10, 20)), new BaseAsyncCallback<List<Pub>>() {
-			@Override
-			public void onSuccess(List<Pub> result) {
-				setData(result);
-			}
-		});
-		
+
+		updatePubs();
 		updateBrands();
 		updateBeers();
 	}
 	
+	private void updatePubs() {
+		Stat.getBeerService().findPubs(new LocationBounds(new Location(10, 20), new Location(10, 20)), new BaseAsyncCallback<List<Pub>>() {
+			@Override
+			public void onSuccess(List<Pub> result) {
+				pubTable.setRowData(result);
+			}
+		});
+	}
+
 	private void updateBrands() {
 		Stat.getBeerService().getBrands(new BaseAsyncCallback<List<Brand>>() {
 			
@@ -181,9 +224,27 @@ public class AdminPanel extends Composite {
 
 	@UiHandler("addPubButton")
 	public void addPubButtonClicked(ClickEvent event) {
-		Pub pub = new Pub();
-		getData().add(0, pub);
-		setData(getData());	
+		final EditPubWidget editPubWidget = new EditPubWidget(new Pub());
+		EditDialog editDialog = new EditDialog(editPubWidget, "Add new pub") {
+
+			/* (non-Javadoc)
+			 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
+			 */
+			@Override
+			public void onOkButtonClick(ClickEvent event) {
+				Stat.getBeerService().addPub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
+					
+					@Override
+					public void onSuccess(Pub arg0) {
+						updatePubs();
+						hide();
+					}
+				});
+			}
+			
+		};
+		
+		editDialog.center();
 	}
 	
 	@UiHandler("addBrandButton")
@@ -234,23 +295,5 @@ public class AdminPanel extends Composite {
 		};
 		
 		editDialog.center();
-	}
-	 
-	
-	/**
-	 * @return the data
-	 */
-	public List<Pub> getData() {
-		return data;
-	}
-
-	/**
-	 * @param data the data to set
-	 */
-	public void setData(List<Pub> data) {
-		this.data = data;
-		
-		table.setRowCount(data.size(), true);
-		table.setRowData(data);
 	}
 }

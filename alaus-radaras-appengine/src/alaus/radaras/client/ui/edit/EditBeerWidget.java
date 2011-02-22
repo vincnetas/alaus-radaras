@@ -35,6 +35,9 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 	BrandSuggestBox brand;
 	
 	@UiField
+	TextBox icon;
+	
+	@UiField
 	TextArea description;
 	
 	@UiField
@@ -58,6 +61,7 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 		beer.setBrandId(brandValue.getId());
 		beer.setDescription(description.getText());
 		beer.setTags(tags.getText());
+		beer.setIcon(icon.getText());
 		
 		return beer;
 	}
@@ -71,13 +75,16 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 
 			@Override
 			public void onSuccess(Set<Brand> arg0) {				
-				brand.setText(arg0.toArray(new Brand[1])[0].getTitle());
+				Brand value = arg0.toArray(new Brand[1])[0];
+				brandValue = value;
+				brand.setText(value.getTitle());
 			}
 			
 		});
 
 		description.setText(beer.getDescription());
 		tags.setText(beer.getTagsAsString());
+		icon.setText(beer.getIcon());
 		
 		this.beer = beer;
 	}

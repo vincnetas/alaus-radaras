@@ -20,6 +20,7 @@
 			background-color: white;
 			width: 200px;
 			height: 84px;
+			
 		}
 	</ui:style>
 	<g:DecoratorPanel>
@@ -29,9 +30,9 @@
 					<g:Label styleName="{style.logoText}">Turėk po ranka</g:Label>	
 				</g:HorizontalPanel>
 				<g:HorizontalPanel>
-					<g:Image styleName="{style.platformLogo}" url="/img/android.png"></g:Image>
-					<g:Image styleName="{style.platformLogo}" url="/img/apple.png"></g:Image>
-					<g:Image styleName="{style.platformLogo}" url="/img/ovi.png"></g:Image>					
+					<g:Image styleName="{style.platformLogo}" url="/img/android.png" altText="Android"></g:Image>
+					<g:Image styleName="{style.platformLogo}" url="/img/apple.png" altText="Apple"></g:Image>
+					<g:Image styleName="{style.platformLogo}" url="/img/ovi.png" altText="Nokia"></g:Image>
 				</g:HorizontalPanel>
 			</g:VerticalPanel>
 		</g:SimplePanel>

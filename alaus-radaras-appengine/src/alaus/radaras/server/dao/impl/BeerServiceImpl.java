@@ -25,6 +25,7 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements BeerServic
 		beer.setBrandId(defaultIfNull(update.getBrandId(), beer.getBrandId()));
 		beer.setDescription(defaultIfNull(update.getDescription(), beer.getDescription()));
 		beer.setTags(defaultIfNull(update.getTags(), beer.getTags()));
+		beer.setIcon(defaultIfNull(update.getIcon(), beer.getIcon()));
 	}
 	
 	/* (non-Javadoc)
@@ -36,6 +37,7 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements BeerServic
     	update.setBrandId(nullIfEqual(update.getBrandId(), beer.getBrandId()));
     	update.setDescription(nullIfEqual(update.getDescription(), beer.getDescription()));
     	update.setTags(nullIfEqual(update.getTags(), beer.getTags()));
+    	update.setIcon(nullIfEqual(update.getIcon(), beer.getIcon()));
     }
  
 	/**

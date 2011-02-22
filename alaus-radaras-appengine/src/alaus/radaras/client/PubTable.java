@@ -3,24 +3,24 @@
  */
 package alaus.radaras.client;
 
+import alaus.radaras.client.ui.dialogs.EditDialog;
+import alaus.radaras.client.ui.edit.EditPubWidget;
 import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.cell.client.ButtonCell;
 import com.google.gwt.cell.client.EditTextCell;
 import com.google.gwt.cell.client.FieldUpdater;
-import com.google.gwt.cell.client.TextInputCell;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.view.client.ProvidesKey;
 
 /**
  * @author Vincentas
  * 
  */
-public class PubEdit {
+public abstract class PubTable extends CellTable<Pub> {
 
 	private static final ProvidesKey<Pub> KEY_PROVIDER = new ProvidesKey<Pub>() {
 		public Object getKey(Pub item) {
@@ -36,9 +36,10 @@ public class PubEdit {
 		return value;
 	}
 	
-	public static CellTable<Pub> getTable() {
-		final CellTable<Pub> table = new CellTable<Pub>(KEY_PROVIDER);
-		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
+	public PubTable() {
+		super(KEY_PROVIDER);
+
+		setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 		
 		{
 			final EditTextCell titleCell = new EditTextCell();
@@ -54,7 +55,7 @@ public class PubEdit {
 					arg1.setTitle(arg2);
 				}
 			});
-			table.addColumn(titleColumn, "Title");
+			addColumn(titleColumn, "Title");
 		}
 		
 		{
@@ -71,7 +72,7 @@ public class PubEdit {
 					arg1.setCountry(arg2);
 				}
 			});
-			table.addColumn(countryColumn, "Country");
+			addColumn(countryColumn, "Country");
 		}
 		
 		{
@@ -88,7 +89,7 @@ public class PubEdit {
 					arg1.setCity(arg2);
 				}
 			});
-			table.addColumn(cityColumn, "City");
+			addColumn(cityColumn, "City");
 		}
 		
 		{
@@ -105,7 +106,7 @@ public class PubEdit {
 					arg1.setAddress(arg2);
 				}
 			});
-			table.addColumn(addressColumn, "Address");
+			addColumn(addressColumn, "Address");
 		}		
 		
 		{
@@ -121,7 +122,7 @@ public class PubEdit {
 					arg1.setLocation(arg2);
 				}
 			});
-			table.addColumn(locationColumn, "Location");
+			addColumn(locationColumn, "Location");
 		}
 		
 		{
@@ -138,7 +139,7 @@ public class PubEdit {
 					arg1.setPhone(arg2);
 				}
 			});
-			table.addColumn(phoneColumn, "Phone");
+			addColumn(phoneColumn, "Phone");
 		}
 
 		{
@@ -155,7 +156,7 @@ public class PubEdit {
 					arg1.setHomepage(arg2);
 				}
 			});
-			table.addColumn(homepageColumn, "Homepage");
+			addColumn(homepageColumn, "Homepage");
 		}
 		
 		{
@@ -163,37 +164,22 @@ public class PubEdit {
 			Column<Pub, String> saveColumn = new Column<Pub, String>(saveCell) {
 				@Override
 				public String getValue(Pub object) {
-					return "Save";
+					return "Edit";
 				}
 			};
 			saveColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {
 				
 				@Override
 				public void update(int arg0, Pub arg1, String arg2) {
-					Pub pub = new Pub();
-					pub.setTitle(arg1.getTitle());
-					pub.setCountry(arg1.getCountry());
-					pub.setCity(arg1.getCity());
-					pub.setAddress(arg1.getAddress());
-					pub.setLocation(arg1.getLocation());
-					pub.setPhone(arg1.getPhone());
-					pub.setHomepage(arg1.getHomepage());
-					pub.setParentId(arg1.getId());
-					
-					Stat.getBeerService().savePub(pub, new BaseAsyncCallback<Pub>() {
-
-						@Override
-						public void onSuccess(Pub pub) {
-						}
-					});					
+					editPub(arg1);
 				}
+
 			});
-			table.addColumn(saveColumn, "Save");
+			addColumn(saveColumn, "Edit");
 		}
-		
-		return table;
 	}
 	
+	public abstract void editPub(Pub arg1);
 
 }
 
