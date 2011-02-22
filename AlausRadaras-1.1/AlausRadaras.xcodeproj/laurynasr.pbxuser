@@ -2,16 +2,16 @@
 {
 	1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {733, 832}}";
+			sepNavIntBoundsRect = "{{0, 0}, {951, 832}}";
 			sepNavSelRange = "{1097, 0}";
-			sepNavVisRange = "{560, 680}";
+			sepNavVisRange = "{485, 820}";
 		};
 	};
 	1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {873, 1768}}";
-			sepNavSelRange = "{1380, 0}";
-			sepNavVisRange = "{417, 1380}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1560}}";
+			sepNavSelRange = "{1201, 0}";
+			sepNavVisRange = "{469, 1241}";
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
@@ -38,7 +38,7 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeArchitecturePreference = armv7;
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = C97BF09212EA0A83004519F0 /* AlausRadaras */;
 		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* AlausRadaras */;
@@ -118,7 +118,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					731,
+					773,
 					20,
 					48,
 					43,
@@ -197,13 +197,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 318967132;
-			PBXWorkspaceStateSaveDate = 318967132;
+			PBXPerProjectTemplateStateSaveDate = 320086904;
+			PBXWorkspaceStateSaveDate = 320086904;
 		};
 		perUserProjectItems = {
-			C990BA0D13030D1500E9EE55 = C990BA0D13030D1500E9EE55 /* PlistBookmark */;
-			C990BA1713030D5500E9EE55 = C990BA1713030D5500E9EE55 /* PlistBookmark */;
-			C9EFEF3C13030D630090A611 /* PlistBookmark */ = C9EFEF3C13030D630090A611 /* PlistBookmark */;
+			C9C9749D1314271700EBA6F0 /* PlistBookmark */ = C9C9749D1314271700EBA6F0 /* PlistBookmark */;
+			C9C9749E1314271700EBA6F0 /* PBXTextBookmark */ = C9C9749E1314271700EBA6F0 /* PBXTextBookmark */;
+			C9C974AE1314346400EBA6F0 /* PBXTextBookmark */ = C9C974AE1314346400EBA6F0 /* PBXTextBookmark */;
+			C9C974AF1314346400EBA6F0 /* PlistBookmark */ = C9C974AF1314346400EBA6F0 /* PlistBookmark */;
 		};
 		sourceControlManager = C97BF0A912EA0A8B004519F0 /* Source Control */;
 		userBuildSettings = {
@@ -517,30 +518,6 @@
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
-	C990BA0D13030D1500E9EE55 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
-		rLen = 3;
-		rLoc = 0;
-	};
-	C990BA1713030D5500E9EE55 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775808;
-	};
 	C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:77 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
@@ -693,6 +670,50 @@
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
+	C9C9749D1314271700EBA6F0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadarasCodeBase/CleanSource/tags/iphone/AlausRadaras-1.1/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	C9C9749E1314271700EBA6F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */;
+		name = "AlausRadarasAppDelegate.h: 44";
+		rLen = 0;
+		rLoc = 1097;
+		rType = 0;
+		vrLen = 820;
+		vrLoc = 485;
+	};
+	C9C974AE1314346400EBA6F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */;
+		name = "AlausRadarasAppDelegate.m: 45";
+		rLen = 0;
+		rLoc = 1201;
+		rType = 0;
+		vrLen = 1241;
+		vrLoc = 469;
+	};
+	C9C974AF1314346400EBA6F0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleDevelopmentRegion,
+		);
+		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadarasCodeBase/CleanSource/tags/iphone/AlausRadaras-1.1/AlausRadaras-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
 	C9D74DC512EF3B9F008DE8E8 /* brands.txt */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {978, 884}}";
@@ -756,17 +777,5 @@
 		uiCtxt = {
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
-	};
-	C9EFEF3C13030D630090A611 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Users/laurynasr/Documents/xCodeProjects/AlausRadaras/AlausRadaras-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
 	};
 }
