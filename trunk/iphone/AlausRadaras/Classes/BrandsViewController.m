@@ -46,9 +46,12 @@
 
 	 category = 0;
 	 
-	 brandList =  [[SQLiteManager sharedManager] getBrands];
-	 tagsList = [[SQLiteManager sharedManager] getTags];
-	 countryList = [[SQLiteManager sharedManager] getCountries];
+	 brandList =  [[SQLiteManager sharedManager] getBrandsLocationBased];
+
+	 countryList = [[SQLiteManager sharedManager] getCountriesLocationBased];	 
+	 
+	 tagsList = [[SQLiteManager sharedManager] getTagsLocationBased];
+
 	 	 
 	 /* Search initialization */	 
 	 searchBar = [[UISearchBar alloc] init];

@@ -18,6 +18,8 @@
 	NSString *webpage;
 	double latitude;
 	double longitude;
+	double distance;
+
 }
 
 @property (nonatomic, retain) NSString *pubId;
@@ -28,6 +30,8 @@
 @property (nonatomic, retain) NSString *webpage;
 @property (nonatomic, assign) double latitude;
 @property (nonatomic, assign) double longitude;
+@property (nonatomic, assign) double distance;
+
 
 -(id) initWithId:(NSString *)pubId Title:(NSString *)pubTitle Address:(NSString *) pubAddress City:(NSString *) pubCity
 		   Phone:(NSString *)phone Webpage:(NSString *) webpage Lat:(double) latitude Long:(double) longitude;

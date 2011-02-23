@@ -15,6 +15,7 @@
 @synthesize pintCountLabel;
 
 - (void)dealloc {
+//	[mapController release];
 	[settingsController release];
 	[luckyController release];
 	[beerCounterController release];
@@ -63,6 +64,9 @@
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
 	[vietosView release];
+//	[mapController setPubsOnMap:[[[SQLiteManager sharedManager]getPubs]autorelease]];
+//	mapController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
+//	[self presentModalViewController:mapController animated:YES];
 }
 
 -(IBAction) clickLucky:(id) sender {

@@ -54,6 +54,7 @@
 		C96A86AD12F76AE70021B30B /* bottle_cap_back.png in Resources */ = {isa = PBXBuildFile; fileRef = C96A86AC12F76AE70021B30B /* bottle_cap_back.png */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
 		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
+		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986CB4412F3F83800865F6D /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB4312F3F83800865F6D /* pin@2x.png */; };
 		C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */; };
@@ -205,6 +206,8 @@
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
 		C976847712F22A2900D4E9F3 /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeValue.h; sourceTree = "<group>"; };
 		C976847812F22A2900D4E9F3 /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeValue.m; sourceTree = "<group>"; };
+		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
+		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
 		C986CB4312F3F83800865F6D /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin@2x.png"; path = "resources/images/pin@2x.png"; sourceTree = "<group>"; };
 		C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_backoriu_tamsusis.png; path = resources/brands/brand_backoriu_tamsusis.png; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 			children = (
 				C98A411412FE9582001E04A2 /* SQLiteManager.h */,
 				C98A411512FE9582001E04A2 /* SQLiteManager.m */,
+				C97E184C131468B5004756A0 /* LocationManager.h */,
+				C97E184D131468B5004756A0 /* LocationManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -767,6 +772,7 @@
 				C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */,
 				C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */,
 				C994524B1312FD6B00732314 /* SettingsController.m in Sources */,
+				C97E184E131468B5004756A0 /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,7 +831,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;

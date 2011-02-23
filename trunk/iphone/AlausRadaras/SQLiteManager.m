@@ -7,7 +7,7 @@
 //
 
 #import "SQLiteManager.h"
-
+#import "LocationManager.h"
 
 @implementation SQLiteManager
 
@@ -69,13 +69,20 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	[db setTraceExecution:FALSE];
     //[db setShouldCacheStatements:YES];	// kind of experimentalish.
 	
+//	int err = sqlite3_open([databasePath fileSystemRepresentation], db );
+//	if(err != SQLITE_OK) {
+//        NSLog(@"error opening!: %d", err);
+//		return;
+//	}
+//	NSLog(@"Database opened");
+	
     if (![db open]) {
         NSLog(@"Could not open db.");
 		return;
     } else {
 		NSLog(@"Database opened");
 	}
-
+	 	
 	/*
 	//	Inserts go here
 	NSLog(@"Inserting data");
@@ -438,7 +445,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 - (NSMutableArray *) getBrands {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 	FMResultSet *rs = 
-	[db executeQuery:@"select * from brands"];
+	[db executeQuery:@"select * from brands b ORDER by b.label asc"];
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"brandId"]copy];
@@ -451,8 +458,40 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	return result;
 }
 
+- (NSMutableArray *) getBrandsLocationBased {
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM brands b"]];
+
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_brands pb ON b.brandId = pb.brand_id INNER JOIN pubs AS p ON p.pubId=pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.brandId",
+				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	
+	query = [NSString stringWithFormat:@"%@ ORDER by b.label asc", query];
+
+	FMResultSet *rs = 
+		[db executeQuery:query];
+
+	
+	while ([rs next]) {
+		Brand *brand = [[Brand alloc] init];
+		brand.brandId = [[rs stringForColumn:@"brandId"]copy];
+		brand.icon = [[rs stringForColumn:@"icon"]copy];
+		brand.label = [[rs stringForColumn:@"label"]copy];
+		[result addObject:brand];
+		[brand release];
+	}
+	
+	[rs close];
+	return result;
+}
+
 - (NSMutableArray *) getBrandsByPubId:(NSString *)pubId {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
+
 	FMResultSet *rs = 
 	[db executeQuery:@"SELECT * FROM brands b INNER JOIN pubs_brands pb ON b.brandId = pb.brand_id AND pb.pub_id = ?", 
 	 pubId];
@@ -470,9 +509,15 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 - (NSMutableArray *) getBrandsByCountry:(NSString *)country {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM brands b INNER JOIN brands_countries bc ON b.brandId = bc.brand_id AND bc.country = ?", 
-	 country];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM brands b INNER JOIN brands_countries bc ON b.brandId = bc.brand_id AND bc.country = '%@'", country]];
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_brands AS pb ON pb.brand_id = b.brandId INNER JOIN pubs AS p ON p.pubId = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.brandId", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	query = [NSString stringWithFormat:@"%@ ORDER by b.label asc", query];
+	FMResultSet *rs = [db executeQuery:query];
+	
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"brandId"]copy];
@@ -487,9 +532,20 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 - (NSMutableArray *) getBrandsByTag:(NSString *)tag {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM brands b INNER JOIN brands_tags bt ON b.brandId = bt.brand_id AND bt.tag = '%@'", tag]];
+	
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_brands AS pb ON pb.brand_id = b.brandId INNER JOIN pubs AS p ON p.pubId = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.brandId", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	
+	query = [NSString stringWithFormat:@"%@ ORDER by b.label asc", query];
+	
 	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM brands b INNER JOIN brands_tags bt ON b.brandId = bt.brand_id AND bt.tag = ?",
-	 tag];
+		[db executeQuery:query];
+	
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"brandId"]copy];
@@ -508,8 +564,15 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 - (NSMutableArray *) getPubs {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM pubs"];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSString *query = [[NSString alloc] initWithString: [NSString stringWithFormat:@"SELECT pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude , distance(latitude, longitude, %f,%f) as distance FROM pubs", coordinates.latitude, coordinates.longitude]];
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ WHERE distance < %i", query, [[LocationManager sharedManager]getDistance]];
+	}
+	
+	FMResultSet *rs = [db executeQuery:query];
+
     while ([rs next]) {
         Pub* pub = [[Pub alloc] initWithId:[[rs stringForColumn:@"pubId"]copy]
 									 Title:[[rs stringForColumn:@"pubTitle"]copy]
@@ -519,10 +582,12 @@ static SQLiteManager *sharedSQLiteManager = nil;
 								   Webpage:[[rs stringForColumn:@"webpage"]copy]
 									   Lat:[rs doubleForColumn:@"latitude"]
 									  Long:[rs doubleForColumn:@"longitude"]];
+		pub.distance = [rs doubleForColumn:@"distance"];
 		[result addObject:pub];
 		[pub release];
     }
 	[rs close];
+	//[query release];
 	return result;
 }
 
@@ -547,9 +612,13 @@ static SQLiteManager *sharedSQLiteManager = nil;
 - (NSMutableArray *) getPubsByBrandId:(NSString *) brandId {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 	
-	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM pubs p INNER JOIN pubs_brands pb ON p.pubId = pb.pub_id AND pb.brand_id = ?",
-	 brandId];
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude , distance(latitude, longitude, %f,%f) as distance FROM pubs p INNER JOIN pubs_brands pb ON p.pubId = pb.pub_id AND pb.brand_id = '%@'",  coordinates.latitude, coordinates.longitude, brandId]];
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ AND distance < %i", query, [[LocationManager sharedManager]getDistance]];
+	}
+	FMResultSet *rs = [db executeQuery:query];
+	
     while ([rs next]) {
         Pub* pub = [[Pub alloc] initWithId:[rs stringForColumn:@"pubId"]
 									 Title:[rs stringForColumn:@"pubTitle"]
@@ -559,6 +628,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 								   Webpage:[rs stringForColumn:@"webpage"]
 									   Lat:[rs doubleForColumn:@"latitude"]
 									  Long:[rs doubleForColumn:@"longitude"]];
+		pub.distance = [rs doubleForColumn:@"distance"];
 		[result addObject:pub];
 		[pub release];
     }
@@ -584,6 +654,34 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	return result;
 }
 
+- (NSMutableArray *) getTagsLocationBased {
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select * from tags t"]];
+	
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN brands_tags AS bt ON bt.tag = t.code INNER JOIN pubs_brands AS pb ON pb.brand_id = bt.brand_id INNER JOIN pubs AS p on p.pubId = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY t.title",
+				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	
+	query = [NSString stringWithFormat:@"%@ ORDER BY title asc", query];
+	
+	FMResultSet *rs = 
+		[db executeQuery:query];
+	
+	while ([rs next]) {
+		CodeValue *item = [[CodeValue alloc] init];
+		item.code = [rs stringForColumn:@"code"];
+		item.displayValue = [rs stringForColumn:@"title"];
+		[result addObject:item];
+		[item release];
+	}
+	return result;	
+}
+
+
 #pragma mark -
 #pragma mark Country
 
@@ -601,6 +699,36 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	[rs close];
 	return result;
 }
+
+- (NSMutableArray *) getCountriesLocationBased {
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select * from countries c"]];
+	
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN brands_countries as bc on bc.country = c.code INNER JOIN pubs_brands as pb on pb.brand_id = bc.brand_id INNER JOIN pubs AS p ON p.pubId = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY c.code",
+				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	
+	query = [NSString stringWithFormat:@"%@ ORDER BY name asc", query];
+	
+	FMResultSet *rs = 
+		[db executeQuery:query];
+
+	
+	while ([rs next]) {
+		CodeValue *item = [[CodeValue alloc] init];
+		item.code = [[rs stringForColumn:@"code"]copy];
+		item.displayValue = [[rs stringForColumn:@"name"]copy];
+		[result addObject:item];
+		[item release];
+	}
+	[rs close];
+	return result;
+}
+
 
 #pragma mark -
 #pragma mark Feeling Lucky
@@ -772,6 +900,11 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	}
     [db commit];
 }
+
+
+
+
+
 
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "AlausRadarasAppDelegate.h"
-#import "SQLiteManager.h";
+#import "SQLiteManager.h"
+#import "LocationManager.h"
 
 @implementation AlausRadarasAppDelegate
 
@@ -15,7 +16,7 @@
 @synthesize viewController;
 
 - (void)dealloc {
-	[db release];
+	//[db release];
     [viewController release];
     [window release];
     [super dealloc];
@@ -59,6 +60,15 @@
 	// Add the view controller's view to the window and display.
     [self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
+
+	
+//	CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    locationManager.distanceFilter = 1000;  // 1 Km
+//    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+//    [locationManager startUpdatingLocation];
+	
+	[[LocationManager sharedManager]initializeManager];
 
     return YES;
 }
