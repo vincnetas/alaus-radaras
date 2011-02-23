@@ -158,7 +158,7 @@ public class PubActivity extends Activity implements PubErrorSubmited {
 	@Override
 	public void pubErrorSubmited(PubCorrection pubErrorData) {
 		DataPublisher publisher = new DataPublisher();
-		
+		pubErrorData.setPubId(pubId);
 		if(publisher.submitPubCorrection(pubErrorData)){
 			pubError.dismiss();
 			Toast.makeText(getApplicationContext(), getString(R.string.submiting_thanks), Toast.LENGTH_SHORT).show();

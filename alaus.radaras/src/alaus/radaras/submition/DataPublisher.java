@@ -1,11 +1,15 @@
 package alaus.radaras.submition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
+import org.apache.http.message.BasicNameValuePair;
 
 import android.util.Log;
 
@@ -13,19 +17,22 @@ public class DataPublisher {
 	
 	
 	public boolean submitPubCorrection(PubCorrection error) {
-		 HttpParams p=new BasicHttpParams();
-		 p.setParameter("type", "pubCorrection");
-		 p.setParameter("reason", error.getReason().toString());
-		 p.setParameter("pubId", error.getPubId());
-		 p.setParameter("message", error.getMessage());
-		 return postData(p,"http://alausradaras.lt/android/submit.php");	
+		 List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+		 params.add(new BasicNameValuePair("type", "pubCorrection"));
+		 params.add(new BasicNameValuePair("reason", error.getReason().toString()));
+		 params.add(new BasicNameValuePair("pubId", error.getPubId()));
+		 params.add(new BasicNameValuePair("message", error.getMessage()));
+		 return postData(params,"http://alausradaras.lt/android/submit.php");	
 	}
 
-	private boolean postData(HttpParams p, String string) {
-		  HttpClient httpclient = new DefaultHttpClient(p);
+	private boolean postData(List<NameValuePair> params, String string) {
+		  HttpClient httpclient = new DefaultHttpClient();
 		    HttpPost httppost = new HttpPost("http://alausradaras.lt/android/submit.php");
 
 		    try {
+		    	httppost.setEntity(new UrlEncodedFormEntity(params));
+
 		        HttpResponse response = httpclient.execute(httppost);
 		        return response.getStatusLine().getStatusCode() == 200;
 		    } catch (Exception e) {
@@ -36,17 +43,17 @@ public class DataPublisher {
 	}
 
 	public boolean submitNewPub(NewPub newpub) {
-		 HttpParams p=new BasicHttpParams();
-		 p.setParameter("type", "newPub");
-		 p.setParameter("text",newpub.getText());
-		 p.setParameter("isNear", newpub.isNear());
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		 params.add(new BasicNameValuePair("type", "newPub"));
+		 params.add(new BasicNameValuePair("text",newpub.getText()));
+		 params.add(new BasicNameValuePair("isNear", String.valueOf(newpub.isNear())));
 		 if(newpub.getLocation() != null) {
-			 p.setParameter("location.latitude", newpub.getLocation().getLatitude());
-			 p.setParameter("location.longitude", newpub.getLocation().getLongitude());
-			 p.setParameter("location.accuracy", newpub.getLocation().getAccuracy());
-			 p.setParameter("location.provider", newpub.getLocation().getProvider());
+			 params.add(new BasicNameValuePair("location.latitude", String.valueOf(newpub.getLocation().getLatitude())));
+			 params.add(new BasicNameValuePair("location.longitude", String.valueOf(newpub.getLocation().getLongitude())));
+			 params.add(new BasicNameValuePair("location.accuracy", String.valueOf(newpub.getLocation().getAccuracy())));
+			 params.add(new BasicNameValuePair("location.provider", String.valueOf(newpub.getLocation().getProvider())));
 		 }
-		 return postData(p,"http://alausradaras.lt/android/submit.php");	
+		 return postData(params,"http://alausradaras.lt/android/submit.php");	
 	}
 
 }

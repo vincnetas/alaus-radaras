@@ -3,6 +3,7 @@ package alaus.radaras.dialogs;
 import alaus.radaras.R;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 import alaus.radaras.submition.PubCorrection;
 import alaus.radaras.submition.PubCorrectionReason;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 
 public class PubCorrectionDialog extends Dialog implements OnClickListener  {
 
@@ -50,6 +52,15 @@ public class PubCorrectionDialog extends Dialog implements OnClickListener  {
 		this.show();
 		
 	}
+	
+	@Override
+    public void onCreate(Bundle savedInstanceState) 
+    {
+        super.onCreate(savedInstanceState);
+        LayoutParams params = getWindow().getAttributes(); 
+                params.width = LayoutParams.FILL_PARENT; 
+                 getWindow().setAttributes((android.view.WindowManager.LayoutParams) params); 
+    }
 
 	private void bindView() {
 
