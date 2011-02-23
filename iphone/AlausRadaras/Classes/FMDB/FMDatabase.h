@@ -111,6 +111,7 @@
 - (long)useCount;
 - (void)setUseCount:(long)value;
 
+static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **argv);
 
 @end
 

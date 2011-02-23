@@ -11,7 +11,8 @@
 
 @implementation Pub
 
-@synthesize pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude; 
+@synthesize pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude;
+@synthesize distance;
 
 -(id) initWithId:(NSString *) pid Title:(NSString *)title Address:(NSString *) address City:(NSString *) pubCity
 		   Phone:(NSString *) phoneNumber Webpage:(NSString *) web 

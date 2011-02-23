@@ -28,7 +28,6 @@
 }
 
  - (void)viewDidLoad {
-	 NSLog(@"MapViewController viewDidLoad");
 	 [super viewDidLoad];
 	 //mapView.mapType = MKMapTypeSatellite;
 	 map.mapType=MKMapTypeStandard;
@@ -41,15 +40,15 @@
 	 MKCoordinateRegion region = MKCoordinateRegionMake(centerOfVilnius, coordSpan);
 
 	 map.region = region;
-	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];//WithObjects:@"asdf", nil];
+	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];
 
 	 [self loadPubAnnotations];
 //	 [self dynamicLoadPubAnnotationsForRegion: map];
-	 
-//showAll Radius
-	 
  }
 
+//- (void) viewDidAppear:(BOOL)animated {
+//	[self loadPubAnnotations];
+//}
 
 - (IBAction) gotoPreviousView:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];	
@@ -69,8 +68,12 @@
 		PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
 		[pubAnnotation setPubId:pub.pubId];
 		[pubAnnotation setTitle:pub.pubTitle];
-		[pubAnnotation setSubtitle:pub.pubAddress];
 		
+		if (pub.distance != 0){
+			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (%.2f Km)",pub.pubAddress,pub.distance]];
+		} else {
+			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",pub.pubAddress]];			
+		}
 		[map addAnnotation:pubAnnotation];
 	}
 }
@@ -180,13 +183,16 @@
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:pubDetailView animated:YES];
 
-//	[pubAnnotation release];
 	[pubDetailView release];
 }
 
 - (void) locateMe {
 	// quick hack to check if system has user location
 	if (map.userLocation.coordinate.latitude != -180) {
+		
+		CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
+		NSLog(@"%@", [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude, userCoordinate.longitude]);
+		
 		MKCoordinateSpan span = MKCoordinateSpanMake(0.03, 0.04);
 		MKCoordinateRegion region = MKCoordinateRegionMake(map.userLocation.coordinate, span);
 		[map setRegion:region animated:YES];

@@ -18,18 +18,19 @@
 
 @class AlausRadarasViewController;
 
-@interface AlausRadarasAppDelegate : NSObject <UIApplicationDelegate> {
+@interface AlausRadarasAppDelegate : NSObject <UIApplicationDelegate, CLLocationManagerDelegate> {
     UIWindow *window;
     AlausRadarasViewController *viewController;
 	
 	NSString *databaseName;
 	NSString *databasePath;
-	FMDatabase *db;
+	//FMDatabase *db;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet AlausRadarasViewController *viewController;
 
+/*
 - (void) copyDatabaseIfNeeded;
 
 - (void) updateDatabase;
@@ -49,7 +50,7 @@
 
 - (FeelingLucky *) feelingLucky;
 
-- (NSString *) getQuote:(int) amount;
+- (NSString *) getQuote:(int) amount;*/
 /*
 - (void) insertBrands;
 - (void) insertPubs;

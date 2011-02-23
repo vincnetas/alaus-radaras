@@ -7,6 +7,7 @@
 //
 
 #import "SettingsController.h"
+#import "LocationManager.h"
 
 @implementation SettingsController
 
@@ -30,13 +31,22 @@
 	if (standardUserDefaults) {
 		BOOL visibilityControlled = [standardUserDefaults boolForKey:@"VisibilityControlled"];
 		visibilityDistance = [standardUserDefaults integerForKey:@"VisibilityDistance"];
-		if (!visibilityControlled) {
-			visibilityControl.selectedSegmentIndex = 0;
-		} else {
+		
+		[[LocationManager sharedManager]setVisibilityControlled:visibilityControlled];
+		
+		if (visibilityControlled) {
 			visibilityControl.selectedSegmentIndex = 1;
+		} else {
+			visibilityControl.selectedSegmentIndex = 0;
 		}
 		visibleDistanceSlider.value = visibilityDistance;
 	}
+	if (visibilityDistance == 0) {
+		visibilityDistance = 16;
+	}
+	
+	[[LocationManager sharedManager]setDistance:visibilityDistance];
+
 	[self visibilityControlIndexChanged];
 }
 
@@ -81,7 +91,9 @@
 		[standardUserDefaults setBool:visibleDistanceSlider.enabled forKey:@"VisibilityControlled"];
 		[standardUserDefaults setInteger:visibilityDistance forKey:@"VisibilityDistance"];
 		[standardUserDefaults synchronize];
-	}	
+	}
+	[[LocationManager sharedManager]setDistance:visibilityDistance];
+	[[LocationManager sharedManager]setVisibilityControlled:visibleDistanceSlider.enabled ];
 }
 
 - (void)didReceiveMemoryWarning {

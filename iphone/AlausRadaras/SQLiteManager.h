@@ -36,8 +36,12 @@
 - (void) createNewDatabase;
 
 - (NSMutableArray *) getBrands;
+- (NSMutableArray *) getBrandsLocationBased;
+
 - (NSMutableArray *) getBrandsByPubId:(NSString *)pubId;
+
 - (NSMutableArray *) getBrandsByCountry:(NSString *)country;
+
 - (NSMutableArray *) getBrandsByTag:(NSString *)tag;
 
 - (NSMutableArray *) getPubs;
@@ -45,8 +49,10 @@
 - (NSMutableArray *) getPubsByBrandId:(NSString *) brandId;
 
 - (NSMutableArray *) getCountries;
+- (NSMutableArray *) getCountriesLocationBased;
 
 - (NSMutableArray *) getTags;
+- (NSMutableArray *) getTagsLocationBased;
 
 - (FeelingLucky *) feelingLucky;
 
@@ -59,4 +65,5 @@
  - (void) insertQuotes;
  - (void) insertAssociations;
  
+
 @end
