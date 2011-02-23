@@ -1,27 +1,97 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:alaus.radaras.client.ui.edit.suggest" xmlns:r="urn:import:alaus.radaras.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:alaus.radaras.client.ui.edit.suggest"
+	xmlns:r="urn:import:alaus.radaras.client.ui">
 	<ui:style>
 		.important {
 			font-weight: bold;
 		}
+		
 		.title {
 			font-weight: bold;
 			font-size: larger;
 		}
+		
 		.label {
 			font-weight: bold;
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label>Title</g:Label><g:TextBox ui:field="title"></g:TextBox>
-		<g:Label>Country</g:Label><g:TextBox ui:field="country"></g:TextBox>
-		<g:Label>City</g:Label><g:TextBox ui:field="city"></g:TextBox>
-		<g:Label>Address</g:Label><g:TextBox ui:field="address"></g:TextBox>
-		<g:Label>Location</g:Label><r:SelectLocationWidget ui:field="location"></r:SelectLocationWidget>
-		<g:Label>Phone</g:Label><g:TextBox ui:field="phone"></g:TextBox>
-		<g:Label>Homepage</g:Label><g:TextBox ui:field="homepage"></g:TextBox>
-		<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
-		<e:BeerSuggestBox ui:field="beerSuggest"></e:BeerSuggestBox>
+		<g:Grid>
+			<g:row>
+				<g:customCell>
+					<g:Label>Title</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="title"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Country</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="country"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>City</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="city"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Address</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="address"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Location</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<r:SelectLocationWidget ui:field="location"></r:SelectLocationWidget>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Homepage</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="homepage"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Phone</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:TextBox ui:field="phone"></g:TextBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Add beer</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<e:BeerSuggestBox ui:field="beerSuggest"></e:BeerSuggestBox>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Label>Beers</g:Label>
+				</g:customCell>
+				<g:customCell>
+					<g:VerticalPanel ui:field="beerPanel"></g:VerticalPanel>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+
+
 	</g:HTMLPanel>
 </ui:UiBinder> 

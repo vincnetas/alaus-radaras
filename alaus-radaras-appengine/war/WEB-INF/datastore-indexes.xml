@@ -5,4 +5,16 @@
 		<property name="parentId" direction="asc" />
 		<property name="lastUpdate" direction="asc" />
 	</datastore-index>
+
+	<datastore-index kind="Brand" ancestor="false" source="auto">
+		<property name="approved" direction="asc" />
+		<property name="parentId" direction="asc" />
+		<property name="lastUpdate" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Beer" ancestor="false" source="auto">
+		<property name="approved" direction="asc" />
+		<property name="parentId" direction="asc" />
+		<property name="lastUpdate" direction="asc" />
+	</datastore-index>
 </datastore-indexes>
