@@ -6,8 +6,10 @@ import alaus.radaras.submition.NewPub;
 import android.app.Dialog;
 import android.content.Context;
 import android.location.Location;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,6 +37,17 @@ public class NewPubReportDialog extends Dialog implements android.view.View.OnCl
 	
 		
 	}
+	
+	@Override
+    public void onCreate(Bundle savedInstanceState) 
+    {
+        super.onCreate(savedInstanceState);
+
+        LayoutParams params = getWindow().getAttributes(); 
+                params.width = LayoutParams.FILL_PARENT; 
+                 getWindow().setAttributes((android.view.WindowManager.LayoutParams) params); 
+    }
+
 	
 	public void display(Location location) {
 		this.location = location;

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class TaxiListActivity extends AbstractLocationActivity {
 
@@ -46,6 +47,11 @@ public class TaxiListActivity extends AbstractLocationActivity {
 		taxies = BeerRadar.getInstance(this).getTaxies(location);
 		Log.e("d",String.valueOf(taxies.size()));
 		list.setAdapter(new TaxiListAdapter(this, taxies));
+		
+		if(taxies.size() == 0) {
+			Toast.makeText(this, getString(R.string.no_taxies), Toast.LENGTH_LONG).show();
+			
+		}
 		
 
 	}

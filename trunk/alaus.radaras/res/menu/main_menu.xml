@@ -12,7 +12,7 @@
           
           
              <item android:id="@+id/submitPub"
-          android:icon="@android:drawable/ic_menu_call"
+          android:icon="@android:drawable/ic_dialog_info"
           android:title="@string/menu_new_pub" />
           
           
