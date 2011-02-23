@@ -30,9 +30,9 @@
 	};
 	28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 1703}}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 1716}}";
 			sepNavSelRange = "{333, 0}";
-			sepNavVisRange = "{94, 1609}";
+			sepNavVisRange = "{94, 1471}";
 			sepNavWindowFrame = "{{198, 55}, {1082, 774}}";
 		};
 	};
@@ -46,16 +46,16 @@
 			1D6058900D05DD3D006BFB54 /* AlausRadaras */,
 		);
 		breakpoints = (
-			C9A313BA12F093460005ED6C /* MapViewController.m:205 */,
-			C9A3141F12F09BEE0005ED6C /* MapViewController.m:199 */,
+			C9A313BA12F093460005ED6C /* MapViewController.m:211 */,
+			C9A3141F12F09BEE0005ED6C /* MapViewController.m:205 */,
 			C916C3EB12FC896600AF396A /* AlausRadarasAppDelegate.m:77 */,
 			C998DA6812FD6CAC00E74B91 /* AlausRadarasAppDelegate.m:87 */,
 			C998DCFE12FDB7FC00E74B91 /* LuckyController.m:63 */,
 			C998DD1712FDBA9700E74B91 /* LuckyController.m:47 */,
 			C98A417212FEACA2001E04A2 /* PubDetailViewController.m:95 */,
 			C98A417512FEACA4001E04A2 /* PubDetailViewController.m:95 */,
-			C9915B67130880770072784E /* MapViewController.m:213 */,
-			C901C3791309D1E90012B641 /* MapViewController.m:211 */,
+			C9915B67130880770072784E /* MapViewController.m:219 */,
+			C901C3791309D1E90012B641 /* MapViewController.m:217 */,
 		);
 		codeSenseManager = C97BF0AA12EA0A8B004519F0 /* Code sense */;
 		executables = (
@@ -345,6 +345,17 @@
 			C955F21B1315AFBF009BE850 /* PBXTextBookmark */ = C955F21B1315AFBF009BE850 /* PBXTextBookmark */;
 			C955F21C1315AFBF009BE850 /* PBXTextBookmark */ = C955F21C1315AFBF009BE850 /* PBXTextBookmark */;
 			C955F21D1315AFBF009BE850 /* PBXTextBookmark */ = C955F21D1315AFBF009BE850 /* PBXTextBookmark */;
+			C955F2311315B426009BE850 /* PBXTextBookmark */ = C955F2311315B426009BE850 /* PBXTextBookmark */;
+			C955F2321315B426009BE850 /* PBXTextBookmark */ = C955F2321315B426009BE850 /* PBXTextBookmark */;
+			C955F2331315B426009BE850 /* PBXTextBookmark */ = C955F2331315B426009BE850 /* PBXTextBookmark */;
+			C955F2341315B426009BE850 /* PBXTextBookmark */ = C955F2341315B426009BE850 /* PBXTextBookmark */;
+			C955F2351315B426009BE850 /* PBXTextBookmark */ = C955F2351315B426009BE850 /* PBXTextBookmark */;
+			C955F2381315B5BC009BE850 /* PBXTextBookmark */ = C955F2381315B5BC009BE850 /* PBXTextBookmark */;
+			C955F2391315B5BC009BE850 /* PBXTextBookmark */ = C955F2391315B5BC009BE850 /* PBXTextBookmark */;
+			C955F23A1315B5BC009BE850 /* PBXTextBookmark */ = C955F23A1315B5BC009BE850 /* PBXTextBookmark */;
+			C955F23B1315B5BC009BE850 /* PBXTextBookmark */ = C955F23B1315B5BC009BE850 /* PBXTextBookmark */;
+			C955F23C1315B5BC009BE850 /* PBXTextBookmark */ = C955F23C1315B5BC009BE850 /* PBXTextBookmark */;
+			C955F23D1315B5BC009BE850 /* PBXTextBookmark */ = C955F23D1315B5BC009BE850 /* PBXTextBookmark */;
 			C97E181B1314643E004756A0 = C97E181B1314643E004756A0 /* PBXTextBookmark */;
 			C97E186013146BF5004756A0 = C97E186013146BF5004756A0 /* PBXTextBookmark */;
 			C97E186113146BF5004756A0 = C97E186113146BF5004756A0 /* PBXTextBookmark */;
@@ -392,7 +403,7 @@
 			sepNavWindowFrame = "{{61, 88}, {1082, 867}}";
 		};
 	};
-	C901C3791309D1E90012B641 /* MapViewController.m:211 */ = {
+	C901C3791309D1E90012B641 /* MapViewController.m:217 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -404,7 +415,7 @@
 		functionName = "-locateMe";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 211;
+		lineNumber = 217;
 		location = AlausRadaras;
 		modificationTime = 320177805.999142;
 		originalNumberOfMultipleMatches = 1;
@@ -542,7 +553,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 81";
 		rLen = 0;
-		rLoc = 2119;
+		rLoc = 2495;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 1104;
@@ -642,7 +653,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 60";
 		rLen = 0;
-		rLoc = 1446;
+		rLoc = 1822;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 2984;
@@ -652,7 +663,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 1104;
@@ -662,7 +673,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1518;
 		vrLoc = 1104;
@@ -672,7 +683,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1367;
 		vrLoc = 1104;
@@ -682,7 +693,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1519;
 		vrLoc = 1104;
@@ -712,7 +723,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 72";
 		rLen = 0;
-		rLoc = 1731;
+		rLoc = 2107;
 		rType = 0;
 		vrLen = 1518;
 		vrLoc = 1105;
@@ -722,7 +733,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 65";
 		rLen = 0;
-		rLoc = 1480;
+		rLoc = 1856;
 		rType = 0;
 		vrLen = 1443;
 		vrLoc = 1105;
@@ -732,7 +743,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 64";
 		rLen = 18;
-		rLoc = 1459;
+		rLoc = 1835;
 		rType = 0;
 		vrLen = 1309;
 		vrLoc = 3;
@@ -812,7 +823,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 64";
 		rLen = 18;
-		rLoc = 1459;
+		rLoc = 1835;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 44;
@@ -822,7 +833,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 65";
 		rLen = 0;
-		rLoc = 1480;
+		rLoc = 1856;
 		rType = 0;
 		vrLen = 1357;
 		vrLoc = 773;
@@ -832,7 +843,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 46";
 		rLen = 0;
-		rLoc = 1145;
+		rLoc = 1286;
 		rType = 0;
 		vrLen = 1338;
 		vrLoc = 484;
@@ -842,7 +853,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 46";
 		rLen = 0;
-		rLoc = 1145;
+		rLoc = 1286;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 276;
@@ -852,7 +863,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 50";
 		rLen = 0;
-		rLoc = 1221;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1221;
 		vrLoc = 277;
@@ -862,7 +873,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 50";
 		rLen = 0;
-		rLoc = 1221;
+		rLoc = 1408;
 		rType = 0;
 		vrLen = 1221;
 		vrLoc = 277;
@@ -872,7 +883,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 76";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 1179;
@@ -882,7 +893,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 75";
 		rLen = 0;
-		rLoc = 1778;
+		rLoc = 2154;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 1209;
@@ -892,7 +903,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 75";
 		rLen = 0;
-		rLoc = 1778;
+		rLoc = 2154;
 		rType = 0;
 		vrLen = 1339;
 		vrLoc = 1266;
@@ -902,7 +913,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1778;
+		rLoc = 2154;
 		rType = 0;
 		vrLen = 1514;
 		vrLoc = 1269;
@@ -912,7 +923,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1778;
+		rLoc = 2154;
 		rType = 0;
 		vrLen = 1514;
 		vrLoc = 1269;
@@ -1352,7 +1363,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 47";
 		rLen = 0;
-		rLoc = 1218;
+		rLoc = 1405;
 		rType = 0;
 		vrLen = 1251;
 		vrLoc = 380;
@@ -1362,7 +1373,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1358;
 		vrLoc = 1136;
@@ -1372,7 +1383,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 74";
 		rLen = 0;
-		rLoc = 1805;
+		rLoc = 2181;
 		rType = 0;
 		vrLen = 1448;
 		vrLoc = 1166;
@@ -1382,7 +1393,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 76";
 		rLen = 0;
-		rLoc = 2009;
+		rLoc = 2385;
 		rType = 0;
 		vrLen = 1682;
 		vrLoc = 1294;
@@ -1670,7 +1681,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 733";
 		rLen = 0;
-		rLoc = 28349;
+		rLoc = 28852;
 		rType = 0;
 		vrLen = 1670;
 		vrLoc = 23895;
@@ -1700,7 +1711,7 @@
 		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
 		name = "SQLiteManager.m: 828";
 		rLen = 11;
-		rLoc = 31703;
+		rLoc = 32206;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 28046;
@@ -1955,18 +1966,128 @@
 		vrLen = 1939;
 		vrLoc = 21595;
 	};
+	C955F2311315B426009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */;
+		name = "SQLiteManager.m: 742";
+		rLen = 44;
+		rLoc = 26850;
+		rType = 0;
+		vrLen = 1756;
+		vrLoc = 26318;
+	};
+	C955F2321315B426009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9DA6F0512F34E0700D9886A /* BeerCounterController.h */;
+		name = "BeerCounterController.h: 11";
+		rLen = 0;
+		rLoc = 228;
+		rType = 0;
+		vrLen = 609;
+		vrLoc = 0;
+	};
+	C955F2331315B426009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9642B3612EE35940033F9B8 /* MapViewController.h */;
+		name = "MapViewController.h: 42";
+		rLen = 0;
+		rLoc = 1060;
+		rType = 0;
+		vrLen = 1067;
+		vrLoc = 0;
+	};
+	C955F2341315B426009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
+		name = "MapViewController.m: 44";
+		rLen = 0;
+		rLoc = 1277;
+		rType = 0;
+		vrLen = 1203;
+		vrLoc = 277;
+	};
+	C955F2351315B426009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
+		name = "MapViewController.m: 46";
+		rLen = 0;
+		rLoc = 1277;
+		rType = 0;
+		vrLen = 1443;
+		vrLoc = 85;
+	};
+	C955F2381315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C97E184C131468B5004756A0 /* LocationManager.h */;
+		name = "LocationManager.h: 15";
+		rLen = 8;
+		rLoc = 335;
+		rType = 0;
+		vrLen = 771;
+		vrLoc = 0;
+	};
+	C955F2391315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C97E184D131468B5004756A0 /* LocationManager.m */;
+		name = "LocationManager.m: 66";
+		rLen = 0;
+		rLoc = 1321;
+		rType = 0;
+		vrLen = 869;
+		vrLoc = 667;
+	};
+	C955F23A1315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
+		name = "MapViewController.m: 45";
+		rLen = 0;
+		rLoc = 1277;
+		rType = 0;
+		vrLen = 1428;
+		vrLoc = 178;
+	};
+	C955F23B1315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C994524A1312FD6B00732314 /* SettingsController.m */;
+		name = "SettingsController.m: 95";
+		rLen = 11;
+		rLoc = 2771;
+		rType = 0;
+		vrLen = 1408;
+		vrLoc = 1840;
+	};
+	C955F23C1315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */;
+		name = "BrandsDetailViewController.h: 12";
+		rLen = 0;
+		rLoc = 256;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 0;
+	};
+	C955F23D1315B5BC009BE850 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */;
+		name = "BrandsDetailViewController.h: 33";
+		rLen = 0;
+		rLoc = 810;
+		rType = 0;
+		vrLen = 810;
+		vrLoc = 0;
+	};
 	C9642B3612EE35940033F9B8 /* MapViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 639}}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 614}}";
 			sepNavSelRange = "{1060, 0}";
 			sepNavVisRange = "{0, 1067}";
 		};
 	};
 	C9642B3712EE35940033F9B8 /* MapViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 4017}}";
-			sepNavSelRange = "{2009, 0}";
-			sepNavVisRange = "{1294, 1682}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 4186}}";
+			sepNavSelRange = "{1275, 0}";
+			sepNavVisRange = "{178, 1428}";
 		};
 	};
 	C96A85F512F7516F0021B30B /* FeelingLucky.h */ = {
@@ -1985,8 +2106,8 @@
 	};
 	C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 621}}";
-			sepNavSelRange = "{256, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 614}}";
+			sepNavSelRange = "{409, 0}";
 			sepNavVisRange = "{0, 810}";
 		};
 	};
@@ -2087,14 +2208,14 @@
 	C97E184C131468B5004756A0 /* LocationManager.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {859, 614}}";
-			sepNavSelRange = "{684, 80}";
+			sepNavSelRange = "{335, 8}";
 			sepNavVisRange = "{0, 771}";
 		};
 	};
 	C97E184D131468B5004756A0 /* LocationManager.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {859, 1118}}";
-			sepNavSelRange = "{1003, 0}";
+			sepNavSelRange = "{1321, 0}";
 			sepNavVisRange = "{667, 869}";
 		};
 	};
@@ -2203,7 +2324,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 68";
 		rLen = 0;
-		rLoc = 1575;
+		rLoc = 1951;
 		rType = 0;
 		vrLen = 824;
 		vrLoc = 1104;
@@ -2276,9 +2397,9 @@
 	};
 	C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2497, 11635}}";
-			sepNavSelRange = "{23166, 0}";
-			sepNavVisRange = "{21595, 1939}";
+			sepNavIntBoundsRect = "{{0, 0}, {1503, 12662}}";
+			sepNavSelRange = "{15997, 0}";
+			sepNavVisRange = "{15999, 505}";
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
@@ -2318,7 +2439,7 @@
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
-	C9915B67130880770072784E /* MapViewController.m:213 */ = {
+	C9915B67130880770072784E /* MapViewController.m:219 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -2330,7 +2451,7 @@
 		functionName = "-locateMe";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 213;
+		lineNumber = 219;
 		location = AlausRadaras;
 		modificationTime = 320177805.640856;
 		originalNumberOfMultipleMatches = 1;
@@ -2355,9 +2476,9 @@
 	};
 	C994524A1312FD6B00732314 /* SettingsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 1898}}";
-			sepNavSelRange = "{2861, 0}";
-			sepNavVisRange = "{1432, 1663}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 1976}}";
+			sepNavSelRange = "{2771, 11}";
+			sepNavVisRange = "{1840, 1408}";
 		};
 	};
 	C994531013132DCE00732314 /* PBXBookmark */ = {
@@ -2506,7 +2627,7 @@
 			sepNavVisRange = "{1767, 1525}";
 		};
 	};
-	C9A313BA12F093460005ED6C /* MapViewController.m:205 */ = {
+	C9A313BA12F093460005ED6C /* MapViewController.m:211 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -2518,7 +2639,7 @@
 		functionName = "-mapView:annotationView:calloutAccessoryControlTapped:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 205;
+		lineNumber = 211;
 		location = AlausRadaras;
 		modificationTime = 320177805.6469;
 		originalNumberOfMultipleMatches = 1;
@@ -2539,7 +2660,7 @@
 			sepNavWindowFrame = "{{15, 130}, {1082, 867}}";
 		};
 	};
-	C9A3141F12F09BEE0005ED6C /* MapViewController.m:199 */ = {
+	C9A3141F12F09BEE0005ED6C /* MapViewController.m:205 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -2551,7 +2672,7 @@
 		functionName = "-mapView:annotationView:calloutAccessoryControlTapped:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 199;
+		lineNumber = 205;
 		location = AlausRadaras;
 		modificationTime = 320177805.67154;
 		originalNumberOfMultipleMatches = 1;
@@ -2562,7 +2683,7 @@
 		fRef = C9642B3712EE35940033F9B8 /* MapViewController.m */;
 		name = "MapViewController.m: 68";
 		rLen = 0;
-		rLoc = 1575;
+		rLoc = 1951;
 		rType = 0;
 		vrLen = 824;
 		vrLoc = 1104;
@@ -2606,7 +2727,7 @@
 	};
 	C9DA6F0512F34E0700D9886A /* BeerCounterController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {666, 595}}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 614}}";
 			sepNavSelRange = "{228, 0}";
 			sepNavVisRange = "{0, 609}";
 		};

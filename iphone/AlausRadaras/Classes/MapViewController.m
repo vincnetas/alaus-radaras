@@ -11,6 +11,7 @@
 #import "PubAnnotationView.h"
 #import "Pub.h"
 #import "SQLiteManager.h"
+#import "LocationManager.h"
 
 @implementation MapViewController
 
@@ -34,21 +35,26 @@
 	 //mapView.mapType=MKMapTypeHybrid;
 	 map.showsUserLocation = YES;
 	// CLLocationCoordinate2D userPosition = mapView.userLocation.location.coordinate;
-	 CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
-	 
+	 //CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
+	 CLLocationCoordinate2D centerMap = [[LocationManager sharedManager]getLocationCoordinates];//{54.689313,25.282631};
 	 MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.04, 0.05);
-	 MKCoordinateRegion region = MKCoordinateRegionMake(centerOfVilnius, coordSpan);
+	 MKCoordinateRegion region = MKCoordinateRegionMake(centerMap, coordSpan);
 
 	 map.region = region;
 	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];
-
+	 
 	 [self loadPubAnnotations];
 //	 [self dynamicLoadPubAnnotationsForRegion: map];
+	 
+	 NSLog(@"MapViewController viewDidLoad");
  }
 
-//- (void) viewDidAppear:(BOOL)animated {
-//	[self loadPubAnnotations];
-//}
+- (void) viewDidAppear:(BOOL)animated {
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		double di = [[LocationManager sharedManager]getDistance];
+		infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
+	}
+}
 
 - (IBAction) gotoPreviousView:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];	
