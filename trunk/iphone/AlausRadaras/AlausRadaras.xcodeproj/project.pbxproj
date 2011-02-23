@@ -275,7 +275,6 @@
 		C994524A1312FD6B00732314 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		C99452581313005500732314 /* black-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background.png"; path = "resources/images/black-background.png"; sourceTree = "<group>"; };
 		C99452591313005500732314 /* black-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background@2x.png"; path = "resources/images/black-background@2x.png"; sourceTree = "<group>"; };
-		C99E8B4E1302FAA2002D3745 /* AlausRadaras-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlausRadaras-Info copy.plist"; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
@@ -396,7 +395,6 @@
 				C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */,
 				C9642B3812EE35940033F9B8 /* MapViewController.xib */,
 				C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */,
-				C99E8B4E1302FAA2002D3745 /* AlausRadaras-Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

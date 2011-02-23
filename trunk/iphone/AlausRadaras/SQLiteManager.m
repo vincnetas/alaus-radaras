@@ -734,8 +734,16 @@ static SQLiteManager *sharedSQLiteManager = nil;
 #pragma mark Feeling Lucky
 
 - (FeelingLucky *) feelingLucky {
-	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM pubs p INNER JOIN pubs_brands pb ON p.pubId = pb.pub_id ORDER BY RANDOM() LIMIT 1"];
+	
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM pubs p INNER JOIN pubs_brands pb ON p.pubId = pb.pub_id"]];
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ AND distance(p.latitude, p.longitude, %f,%f) < %i", 
+				  query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	query = [NSString stringWithFormat:@"%@ ORDER BY RANDOM() LIMIT 1", query];
+
+	FMResultSet *rs = [db executeQuery:query];
 	
 	FeelingLucky *lucky = [[FeelingLucky alloc]init];
 	while ([rs next]) {
