@@ -7,8 +7,8 @@
 			font-weight: bold;
 		}
 	</ui:style>
-	<g:AbsolutePanel>
+	<g:HorizontalPanel>	
 		<g:SimplePanel ui:field="container"></g:SimplePanel>
 		<g:Label ui:field="remove">X</g:Label>
-	</g:AbsolutePanel>
+	</g:HorizontalPanel>
 </ui:UiBinder> 
