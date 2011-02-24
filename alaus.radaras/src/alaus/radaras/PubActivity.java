@@ -5,12 +5,15 @@ package alaus.radaras;
 
 import java.util.List;
 import alaus.radaras.adapters.PubBrandListAdapter;
+import alaus.radaras.dialogs.PubBrandInfoDialog;
+import alaus.radaras.dialogs.PubBrandInfoDialog.PubBrandInfoSubmited;
 import alaus.radaras.dialogs.PubCorrectionDialog;
 import alaus.radaras.dialogs.PubCorrectionDialog.PubErrorSubmited;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.submition.DataPublisher;
+import alaus.radaras.submition.PubBrandInfo;
 import alaus.radaras.submition.PubCorrection;
 import android.app.Activity;
 import android.content.Intent;
@@ -82,7 +85,7 @@ public class PubActivity extends Activity implements PubErrorSubmited {
 	    	internetImage.setVisibility(View.GONE);
 	    	notesView.setVisibility(View.GONE);
 	    }
-	  
+	 
 	    
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 
@@ -90,6 +93,30 @@ public class PubActivity extends Activity implements PubErrorSubmited {
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				Brand beer = brands.get(position);
+				
+				final PubBrandInfoDialog dialog = new PubBrandInfoDialog(parent.getContext(), pubId, beer.getId());
+				dialog.display();
+				
+				dialog.setOnSubmitedListener(new PubBrandInfoSubmited() {
+					
+					@Override
+					public void pubInfoSubmited(PubBrandInfo brandInfo) {
+						BeerRadarApp app = ((BeerRadarApp)getApplication());
+						brandInfo.setLocation(app.getLastKnownLocation());
+						
+						DataPublisher publisher = new DataPublisher();
+						brandInfo.setPubId(pubId);
+						if(publisher.submitPubBrandInfo(brandInfo)){
+							dialog.dismiss();
+							Toast.makeText(getApplicationContext(), getString(R.string.pub_brand_submit_thanks), 
+									Toast.LENGTH_SHORT).show();
+						} else {
+							pubError.setErrorState(true);
+						}
+						
+					}
+				});
+				
 				Toast.makeText(PubActivity.this, beer.getTitle(), Toast.LENGTH_SHORT).show();
 				
 			}

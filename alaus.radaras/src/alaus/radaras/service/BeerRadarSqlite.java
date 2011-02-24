@@ -1,6 +1,7 @@
 package alaus.radaras.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,10 @@ import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
+import alaus.radaras.sorters.BrandNameSorter;
+import alaus.radaras.sorters.CountryNameSorter;
+import alaus.radaras.sorters.PubNameSorter;
+import alaus.radaras.sorters.TagNameSorter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -84,6 +89,7 @@ class BeerRadarSqlite extends BeerRadar {
 		}
 		List<Brand> values = new ArrayList<Brand>(brandMap.values());
 		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		Collections.sort(values, new BrandNameSorter());
 		return values;
 		
 	}
@@ -103,6 +109,7 @@ class BeerRadarSqlite extends BeerRadar {
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+		Collections.sort(brands, new BrandNameSorter());
 		return brands;
 	}
 	
@@ -123,6 +130,7 @@ class BeerRadarSqlite extends BeerRadar {
 			cursor.close();
 		}
 		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
+		Collections.sort(pubs, new PubNameSorter());
 		return pubs;
 	}
 	
@@ -146,6 +154,7 @@ class BeerRadarSqlite extends BeerRadar {
 			cursor.close();
 		}
 		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
+		Collections.sort(pubs, new PubNameSorter());
 		return pubs;
 	}
 	
@@ -167,6 +176,7 @@ class BeerRadarSqlite extends BeerRadar {
 			cursor.close();
 		}
 		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
+		Collections.sort(pubs, new PubNameSorter());
 		return pubs;
 	}
 	
@@ -190,6 +200,7 @@ class BeerRadarSqlite extends BeerRadar {
 			cursor.close();
 		}
 		LocationFilter.filterBySingleLocation(pubs,location, getMaxDistance());
+		Collections.sort(pubs, new PubNameSorter());
 		return pubs;
 	}
 	
@@ -309,6 +320,7 @@ class BeerRadarSqlite extends BeerRadar {
 		}
 		List<Country> values = new ArrayList<Country>(countryMap.values());
 		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		Collections.sort(values, new CountryNameSorter());
 		return values;
 	}
 
@@ -331,6 +343,7 @@ class BeerRadarSqlite extends BeerRadar {
 		}
 		List<Tag> values = new ArrayList<Tag>(tagMap.values());
 		LocationFilter.filterByLocations(values, location, getMaxDistance());
+		Collections.sort(values, new TagNameSorter());
 		return values;
 	}
 	

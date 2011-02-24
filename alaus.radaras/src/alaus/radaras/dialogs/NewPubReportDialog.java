@@ -72,7 +72,7 @@ public class NewPubReportDialog extends Dialog implements android.view.View.OnCl
 
 		NewPub newpub = new NewPub();
 		newpub.setLocation(location);
-		newpub.setText(input.getText().toString());
+		newpub.setMessage(input.getText().toString());
 		newpub.setNear(near.isChecked());
 		
 		DataPublisher publisher = new DataPublisher();
