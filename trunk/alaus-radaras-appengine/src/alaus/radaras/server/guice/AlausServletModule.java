@@ -1,7 +1,7 @@
 package alaus.radaras.server.guice;
 
 import alaus.radaras.server.AdminBeerServiceImpl;
-import alaus.radaras.server.CVSDataServlet;
+import alaus.radaras.server.CsvDataServlet;
 import alaus.radaras.server.ImageServlet;
 import alaus.radaras.server.JsonDataServlet;
 import alaus.radaras.server.UploadServlet;
@@ -45,7 +45,7 @@ class AlausServletModule extends ServletModule {
 		serve("/adminEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
 		serve("/adminEngine/adminBeerService").with(AdminBeerServiceImpl.class);
 		serve("/json").with(JsonDataServlet.class);		
-		serve("/cvs").with(CVSDataServlet.class);		
+		serve("/csv").with(CsvDataServlet.class);		
 		serve("/admin/upload").with(UploadServlet.class);
 		serve("/image/beer/*").with(ImageServlet.class);
 	}

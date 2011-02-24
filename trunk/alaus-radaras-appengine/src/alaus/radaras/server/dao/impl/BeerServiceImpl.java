@@ -24,7 +24,9 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements BeerServic
 		beer.setTitle(defaultIfNull(update.getTitle(), beer.getTitle()));
 		beer.setBrandId(defaultIfNull(update.getBrandId(), beer.getBrandId()));
 		beer.setDescription(defaultIfNull(update.getDescription(), beer.getDescription()));
-		beer.setTags(defaultIfNull(update.getTags(), beer.getTags()));
+		if (!update.getTags().isEmpty()) {
+			beer.setTags(update.getTags());
+		}
 		beer.setIcon(defaultIfNull(update.getIcon(), beer.getIcon()));
 	}
 	
