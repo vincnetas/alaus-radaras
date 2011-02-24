@@ -8,7 +8,7 @@ public class NewPub {
 	
 	private Location location;
 	
-	private String text;
+	private String message;
 
 	public void setNear(boolean near) {
 		this.near = near;
@@ -26,12 +26,12 @@ public class NewPub {
 		return location;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
-	public String getText() {
-		return text;
+	public String getMessage() {
+		return message;
 	}
 
 }

@@ -39,13 +39,13 @@
 <string name="activity_taxi_header">Taksi iškvietimas</string>
 <string name="no_beers">Nėra alaus... hm gal Jūs sacharoje?</string>
 <string name="menu_settings">Nustatymai</string>
-<string name="menu_pub_error">Pranešti apie klaidą</string>
-<string name="pub_error_header">Pranešti apie klaidą</string>
+<string name="menu_pub_error">Padėk mums</string>
+<string name="pub_error_header">Papasakok ką radai</string>
 <string name="pub_error_bakrupt">Nebėra baro</string>
 <string name="pub_error_contacts">Blogi kontaktai</string>
-<string name="pub_error_beers">Blogi alūs</string>
+<string name="pub_error_beers">Pilsto kažką..</string>
 <string name="pub_error_other">Šiaip blogai</string>
-<string name="pub_error_submit">Pranešu!</string>
+<string name="pub_error_submit">Esu blaivas!</string>
 <string name="pub_error_cancel">Tiek to</string>
 <string name="pub_error_write_something">Suskrebenk ką nors:</string>
 <string name="submiting_wait">Palaukite, siunčiu alų...</string>
@@ -61,4 +61,10 @@
 <string name="submit_pub_cancel">Ne, nieko gero</string>
 <string name="submit_pub_thanks">Tauta tau padėkos! ;)</string>
 <string name="no_taxies">Pasgėrei... tai vat tekst namo pestute eit... nėr čia taksi aplinkui :(</string>
+<string name="pub_brand_status_exists"> Vis dar yra</string>
+<string name="pub_brand_status_discontinued"> Dingo..</string>
+<string name="pub_brand_status_temporary">Šian jau išgėrė.</string>
+<string name="pub_brand_submit_header">Pranešk apie alų</string>
+<string name="pub_brand_submit_write">Ar skanus alus?</string>
+<string name="pub_brand_submit_thanks">Tik alus išgelbės mus! :)</string>
 </resources>
