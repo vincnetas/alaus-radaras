@@ -243,8 +243,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 
 	@Override
 	public void changeLocation(final String location) {
-		Geocoder geocoder = new Geocoder();
-		geocoder.getLocations(location, new LocationCallback() {
+		Stat.getGeocoder().getLocations(location, new LocationCallback() {
 			
 			@Override
 			public void onSuccess(JsArray<Placemark> locations) {

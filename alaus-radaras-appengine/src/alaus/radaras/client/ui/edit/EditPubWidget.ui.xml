@@ -52,7 +52,7 @@
 			</g:row>
 			<g:row>
 				<g:customCell>
-					<g:Label>Location</g:Label>
+					<g:Button ui:field="getLocationButton">Find</g:Button>
 				</g:customCell>
 				<g:customCell>
 					<r:SelectLocationWidget ui:field="location"></r:SelectLocationWidget>

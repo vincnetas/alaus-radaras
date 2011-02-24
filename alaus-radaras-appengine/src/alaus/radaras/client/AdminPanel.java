@@ -227,13 +227,17 @@ public class AdminPanel extends Composite {
 		final EditPubWidget editPubWidget = new EditPubWidget(new Pub());
 		EditDialog editDialog = new EditDialog(editPubWidget, "Add new pub") {
 
-			/* (non-Javadoc)
-			 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com
+			 * .google.gwt.event.dom.client.ClickEvent)
 			 */
 			@Override
 			public void onOkButtonClick(ClickEvent event) {
 				Stat.getBeerService().addPub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
-					
+
 					@Override
 					public void onSuccess(Pub arg0) {
 						updatePubs();
@@ -241,9 +245,9 @@ public class AdminPanel extends Composite {
 					}
 				});
 			}
-			
+
 		};
-		
+
 		editDialog.center();
 	}
 	

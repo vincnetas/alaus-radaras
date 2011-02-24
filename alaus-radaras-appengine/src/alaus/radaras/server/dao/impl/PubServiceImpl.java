@@ -25,7 +25,11 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 	@Override
 	protected void applyUpdate(Pub pub, Pub update) {
 		pub.setAddress(defaultIfNull(update.getAddress(), pub.getAddress()));
-		pub.setBeerIds(defaultIfNull(update.getBeerIds(), pub.getBeerIds()));
+		
+		if (!update.getBeerIds().isEmpty()) {
+			pub.setBeerIds(update.getBeerIds());
+		}
+		
 		pub.setCity(defaultIfNull(update.getCity(), pub.getCity()));
 		pub.setCountry(defaultIfNull(update.getCountry(), pub.getCountry()));
 		pub.setDescription(defaultIfNull(update.getDescription(), pub.getDescription()));

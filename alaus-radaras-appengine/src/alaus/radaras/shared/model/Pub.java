@@ -64,11 +64,12 @@ public class Pub extends Updatable {
 	 * @return the location
 	 */
 	public Location getLocation() {
-		try {
-			return new Location(longitude, latitude);
-		} catch (NullPointerException npe) {
-			return null;
-		}
+		Location result = null;
+		if (longitude != null && latitude != null) {
+			result = new Location(longitude, latitude);
+		} 
+		
+		return result;
 	}
 
 	/**
