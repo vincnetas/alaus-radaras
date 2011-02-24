@@ -5,6 +5,7 @@ package alaus.radaras.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.maps.client.geocode.Geocoder;
 
 /**
  * @author Vincentas
@@ -18,6 +19,16 @@ public class Stat {
 	
 	private static AdminBeerServiceAsync adminBeerService;
 	
+	private static Geocoder geocoder;
+
+	public synchronized static Geocoder getGeocoder() {
+		if (geocoder == null) {
+			geocoder = new Geocoder();
+		}
+		
+		return geocoder;
+	}
+
 	public synchronized static HandlerManager getHandlerManager() {
 		if (handlerManager == null) {
 			handlerManager = new HandlerManager(null);

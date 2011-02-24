@@ -35,12 +35,6 @@ public class SelectLocationWidget extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	public SelectLocationWidget(Location location) {
-		initWidget(uiBinder.createAndBindUi(this));
-		
-		setLocation(location);
-	}
-
 	/**
 	 * @return the location
 	 */

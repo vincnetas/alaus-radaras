@@ -9,13 +9,20 @@ import alaus.radaras.client.ui.SelectLocationWidget;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestBox;
 import alaus.radaras.client.ui.edit.suggest.BeerSuggestion;
 import alaus.radaras.shared.model.Beer;
+import alaus.radaras.shared.model.Location;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.maps.client.geocode.LatLngCallback;
+import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.SuggestOracle.Suggestion;
 import com.google.gwt.user.client.ui.TextBox;
@@ -40,6 +47,9 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 	
 	@UiField
 	TextBox address;
+	
+	@UiField
+	Button getLocationButton;
 	
 	@UiField
 	SelectLocationWidget location;
@@ -148,4 +158,23 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		
 		return pub;
 	}	
+	
+	@UiHandler("getLocationButton")
+	public void getLocationButtonClick(ClickEvent event) {
+		final String place = address.getText() + " " + city.getText() + " " + country.getText();
+		
+		Stat.getGeocoder().getLatLng(place, new LatLngCallback() {
+			
+			@Override
+			public void onSuccess(LatLng point) {
+				Location loc = new Location(point.getLongitude(), point.getLatitude());
+				location.setLocation(loc);
+			}
+			
+			@Override
+			public void onFailure() {
+				Window.alert("Failed location lookup for (" + place + ")");				
+			}
+		});
+	}
 }
