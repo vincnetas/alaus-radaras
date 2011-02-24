@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ import com.google.inject.Singleton;
  *
  */
 @Singleton
-public class CVSDataServlet extends HttpServlet {
+public class CsvDataServlet extends HttpServlet {
 	
 	@Inject
 	private PubDao pubDao;
@@ -53,16 +54,27 @@ public class CVSDataServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String fileName = "data.txt";
+		String fileName = "data.zip";
 		resp.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-		resp.setContentType("text/text");
-		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/zip");
+//		resp.setCharacterEncoding("UTF-8");
 		resp.setStatus(HttpServletResponse.SC_OK);
 
-		List<Pub> pubs = getPubDao().getAll();
+		ZipOutputStream zos = new ZipOutputStream(resp.getOutputStream());
+		PrintWriter writer = new PrintWriter(zos);		
+		
+		zos.putNextEntry(new ZipEntry("pubs.txt"));
+		
 		Map<String, Set<String>> beerMap = new HashMap<String, Set<String>>();
-		PrintWriter writer = resp.getWriter();
-		for (Pub pub : pubs) {
+		
+		boolean firstPub = true;
+		for (Pub pub : getPubDao().getAll()) {
+			if (firstPub) {
+				firstPub = false;
+			} else {
+				writer.append("\r\n");
+			}
+			
 			writer.append(pub.getId()).append("\t");
 			writer.append(pub.getTitle()).append("\t");
 			writer.append(pub.getAddress()).append("\t");
@@ -70,7 +82,7 @@ public class CVSDataServlet extends HttpServlet {
 			writer.append(pub.getPhone()).append("\t");
 			writer.append(pub.getHomepage()).append("\t");
 			writer.append(Double.toString(pub.getLatitude())).append("\t");
-			writer.append(Double.toString(pub.getLongitude())).append("\r\n");
+			writer.append(Double.toString(pub.getLongitude()));
 			
 			for (String beerId : pub.getBeerIds()) {
 				Set<String> set = beerMap.get(beerId);
@@ -82,15 +94,27 @@ public class CVSDataServlet extends HttpServlet {
 				set.add(pub.getId());
 			}
 		}
+		writer.flush();
+		zos.closeEntry();
+		zos.putNextEntry(new ZipEntry("brands.txt"));
 		
-		List<Beer> beers = getBeerDao().getAll();
-		for (Beer beer : beers) {
+		boolean firstBeer = true;
+		for (Beer beer : getBeerDao().getAll()) {
+			if (firstBeer) {
+				firstBeer = false;
+			} else {
+				writer.append("\r\n");
+			}
+			
 			writer.append(beer.getIcon()).append("\t");
 			writer.append(beer.getTitle()).append("\t");
 			writer.append(StringUtils.join(beerMap.get(beer.getId()), ",")).append("\t");
-			writer.append(getBrandDao().get(beer.getBrandId()).getCountry()).append("\t");
-			writer.append(StringUtils.join(beer.getTags(), ",")).append("\r\n");
+			writer.append(getBrandDao().get(beer.getBrandId()).getCountry().toLowerCase()).append("\t");
+			writer.append(StringUtils.join(beer.getTags(), ","));
 		}
+		writer.flush();
+		zos.closeEntry();
+		zos.close();
 	}
 
 	/**

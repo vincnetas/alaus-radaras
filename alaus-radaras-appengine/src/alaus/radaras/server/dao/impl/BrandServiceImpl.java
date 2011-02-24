@@ -27,7 +27,9 @@ public class BrandServiceImpl extends BaseServiceImpl<Brand> implements BrandSer
 		brand.setCountry(defaultIfNull(update.getCountry(), brand.getCountry()));
 		brand.setHomeTown(defaultIfNull(update.getHomeTown(), brand.getHomeTown()));
 		brand.setDescription(defaultIfNull(update.getDescription(), brand.getDescription()));
-		brand.setTags(defaultIfNull(update.getTags(), brand.getTags()));
+		if (!update.getTags().isEmpty()) {
+			brand.setTags(update.getTags());
+		}
 	}
 	
 	/* (non-Javadoc)
