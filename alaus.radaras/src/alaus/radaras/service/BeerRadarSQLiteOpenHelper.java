@@ -19,7 +19,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		
 		public static String DB_NAME = "beer-radar";
 		
-		public static int DB_VERSION = 9;
+		public static int DB_VERSION = 12;
 		
 		public static String PUBS = 
 	        "CREATE TABLE pubs(" +

@@ -43,7 +43,7 @@
 1298412463912	Cactus	Bokšto 7	Vilnius	8 601 12555	http://www.cactusbar.lt/	54.6805646	25.2903254
 1298412463913	Šimo baras	Laisvės pr. 88	Vilnius	8 52 752832		54.716094	25.229244
 1298412463914	Alaus baras (Pylimo)	 Pylimo g. 60	Vilnius	8 682 38097		54.6729071	25.2862764
-1298412463915	Molinis Ąsotis	Naugarduko g. 32	Vilnius	8 52 333073		54.6747256	25.2694839
+1298412463915	Molinis ąsotis	Naugarduko g. 32	Vilnius	8 52 333073		54.6747256	25.2694839
 1298412463916	B6	Bazilijonų g. 6	Vilnius	8 603 29332		54.6741394	25.2859476
 1298412463917	Tores	Užupio g. 40	Vilnius	8 655 32626	http://www.tores.lt/	54.6809148	25.2979667
 1298412463918	Stopkė	Užupio 2a	Vilnius		http://www.stopke.lt/	54.6805511	25.2922544
@@ -55,10 +55,10 @@
 1298412463924	Alaus studija	S. Žukausko 20	Vilnius	8 685 60885	http://alausstudija.lt/	54.7076179	25.2958828
 1298412463925	Savas kampas	Vokiečių g. 4	Vilnius	8 52 123203	http://www.savaskampas.lt/	54.678471	25.2860236
 1298412463926	Chillout baras	Pylimo g. 8/2	Vilnius		http://www.facebook.com/pages/Chillout-baras/103914669678344?v=info	54.6842615	25.2771523
-1298412463927	Bermudai	Upes 6	Vilnius	8 655 70262	http://www.bermudaiclub.lt/	54.6961061	25.2691852
+1298412463927	Bermudai	Upės 6	Vilnius	8 655 70262	http://www.bermudaiclub.lt/	54.6961061	25.2691852
 1298412463928	Prie Katedros	Gedimino pr. 5	Vilnius	8 605 77555	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Prie_Katedros.html	54.6864964	25.2832854
 1298412463929	Wall Street	Lvovo g. 25	Vilnius	8 52 195916	http://www.wallst.lt/	54.6955893	25.2802079
-1298412463930	Keisti ženklai	Trakų g. 13	Vilnius	8 52 610779		54.6803049	25.2813502
+1298412463930	Keisti Ženklai	Trakų g. 13	Vilnius	8 52 610779		54.6803049	25.2813502
 1298412463931	Gorky Bar	Pilies g. 34	Vilnius	8 652 18035		54.6818804	25.2891853
 1298564989990	Gringo	Klaipėdos g. 3	Vilnius	+37065096925	http://www.facebook.com/pages/Gringo-pub/114677415239537	54.6818875	25.2777866
 1298572132631	Pianoman	Islandijos g. 1	Vilnius	+37065096925	http://www.facebook.com/pages/Piano-Man-bar/165700010117626?v=info	54.6839635	25.2787747
