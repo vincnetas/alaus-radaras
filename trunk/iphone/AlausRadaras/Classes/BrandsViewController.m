@@ -8,6 +8,7 @@
 
 #import "BrandsViewController.h"
 #import "SQLiteManager.h"
+#import "LocationManager.h"
 
 @implementation BrandsViewController
 
@@ -44,7 +45,7 @@
 	/* Separator color */ 
 	brandsTable.separatorColor = [UIColor grayColor];
 
-	 category = 0;
+	category = 0;
 	 
 	 brandList =  [[SQLiteManager sharedManager] getBrandsLocationBased];
 
@@ -183,8 +184,17 @@
 	[vietosView setPubsOnMap:pubs];
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
-	vietosView.infoLabel.text = [NSString stringWithFormat:@"%@ alus",titleText];
+	
+	NSString *info = [NSString stringWithFormat:@"%@ alus",titleText];
+	
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		double di = [[LocationManager sharedManager]getDistance];
+		info = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", info, di] ;
+	}
+	
+	vietosView.infoLabel.text = info;
 	[vietosView release];
+//	[info release];
 }
 
 - (void) showBrandDetails:(NSMutableArray *)brands title:(NSString *) titleText {

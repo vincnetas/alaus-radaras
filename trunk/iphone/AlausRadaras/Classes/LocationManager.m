@@ -78,8 +78,49 @@ static LocationManager *sharedLocationManager = nil;
 }
 
 - (BOOL) getVisibilityControlled {
+	if (![self isUserLocationKnown]) {
+		return NO;
+	}	
 	return visibilityControlled;
 }
 
+- (BOOL) isUserLocationKnown {
+	int lat = (int) clLocationManager.location.coordinate.latitude;
+	int lon = (int)clLocationManager.location.coordinate.longitude;
+	NSLog(@"Location Coordinates: Lat: %d, Long: %d",lat,lon);
+	if ((![CLLocationManager locationServicesEnabled]) ||
+		(lat == 0 && lon == 0)) {
+			NSLog(@"getVisibilityControlled NO");
+			return NO;
+	}
+	return YES;
+}	
+
+- (void)locationManager: (CLLocationManager *)manager
+       didFailWithError: (NSError *)error {
+	
+    NSString *errorString;
+    [manager stopUpdatingLocation];
+    NSLog(@"Error: %@",[error localizedDescription]);
+    switch([error code]) {
+        case kCLErrorDenied:
+            //Access denied by user
+            errorString = @"Slepiesi, kad GPS išjungei?";
+            //Do something...
+            break;
+        case kCLErrorLocationUnknown:
+            //Probably temporary...
+            errorString = @"Nežinau kur randiesi... hm gal Jūs sacharoje?";
+            //Do something else...
+            break;
+        default:
+            errorString = @"Kažkas nelabai gero nutiko :(";
+            break;
+	}
+
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorString message:@"" delegate:self cancelButtonTitle:@"Tiek to" otherButtonTitles:nil, nil];
+	[alert show];
+	[alert release];
+}
 
 @end

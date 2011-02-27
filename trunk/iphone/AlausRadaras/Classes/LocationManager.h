@@ -31,5 +31,6 @@
 - (int) getDistance;
 - (void) setVisibilityControlled:(BOOL) value;
 - (BOOL) getVisibilityControlled;
+- (BOOL) isUserLocationKnown;
 
 @end

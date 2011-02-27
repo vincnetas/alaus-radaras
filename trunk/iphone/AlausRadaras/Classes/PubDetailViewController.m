@@ -18,6 +18,7 @@
 @synthesize reportPubInfoView;
 
 - (void)dealloc {
+	[pubBrandSubmit release];
 	[directionsButton release];
 	[pubLogoImage release];
 	[pubInternetAddessLabel release];
@@ -146,10 +147,11 @@
 		
 	int n = [brandList count];
 	int i=0,i1=0; 
+	int j=0;
+	int yy = 4 +i1*74;
 	while(i<n){
-		int yy = 4 +i1*74;
-		int j=0;
-		for(j=0; j<4;j++){
+		yy = 4 +i1*74;
+		for(j=0; j<4; j++){
 			
 			if (i>=n) break;
 			Brand *item = [brandList objectAtIndex:i];
@@ -165,11 +167,10 @@
 			[button setBackgroundImage:buttonImageNormal	forState:UIControlStateNormal];
 			[button setContentMode:UIViewContentModeCenter];
 			
-			NSString *tagValue = [NSString stringWithFormat:@"%d%d", indexPath.section+1, i];
+			NSString *tagValue = [NSString stringWithFormat:@"%d", i];
 			button.tag = [tagValue intValue];
-			//NSLog(@"....tag....%d", button.tag);
-			
-		//	[button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+
+			[button addTarget:self action:@selector(openPubBrandSubmit:) forControlEvents:UIControlEventTouchUpInside];
 			[hlcell.contentView addSubview:button];
 			[button release];
 			
@@ -185,10 +186,37 @@
 		}
 		i1++;
 	}
-	 
+	
+	CGRect rect = CGRectMake(18+80*j, yy, 40, 40);
+	UIButton *button=[[UIButton alloc] initWithFrame:rect];
+	[button setFrame:rect];
+	UIImage *buttonImageNormal=[UIImage imageNamed:@"new_brand.png"];
+	
+	[button setBackgroundImage:buttonImageNormal	forState:UIControlStateNormal];
+	[button setContentMode:UIViewContentModeCenter];
+	
+	//[button addTarget:self action:@selector(openPubBrandSubmit:) forControlEvents:UIControlEventTouchUpInside];
+	[hlcell.contentView addSubview:button];
+	[button release];
+	
+	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake((80*j)-4, yy+44, 80, 12)] autorelease];
+	label.text = @"Pridėk alų";
+	label.textColor = [UIColor lightGrayColor];
+	label.backgroundColor = [UIColor clearColor];
+	label.textAlignment = UITextAlignmentCenter;
+	label.font = [UIFont fontWithName:@"ArialMT" size:10]; 
+	[hlcell.contentView addSubview:label];
+	
 	return hlcell;
 }
 
+- (IBAction) openPubBrandSubmit: (id)sender {
+	Brand *item = [brandList objectAtIndex:[sender tag]];
+	pubBrandSubmit.brand = item;
+	pubBrandSubmit.pubId = currentPub.pubId;
+	pubBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
+	[self presentModalViewController:pubBrandSubmit animated:YES];	
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
@@ -200,7 +228,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {  
 	//NSMutableArray *sectionItems = [sections objectAtIndex:indexPath.section];
-	int numRows = [brandList count]/4;
+	int numRows = [brandList count]%4;
 	return numRows * 95.0;
 } 
 
