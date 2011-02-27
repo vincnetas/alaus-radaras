@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Pub.h"
 #import "MapViewController.h"
-
+#import "PubBrandSubmit.h";
 @interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UILabel *pubTitleShortLabel;
 	UILabel *pubTitleLabel;
@@ -23,8 +23,8 @@
 	NSString *userCoordinates;
 	NSMutableArray *brandList;
 	UITableView *brandsTable;
-	
-	IBOutlet UIView *reportPubInfoView;
+		
+	IBOutlet PubBrandSubmit *pubBrandSubmit;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -50,5 +50,6 @@
 - (IBAction) openWebpage:(id)sender;
 - (IBAction) reportPubInfo:(id)sender;
 - (IBAction) closeReportPubInfo:(id)sender;
+- (IBAction) openPubBrandSubmit: (id)sender;
 
 @end

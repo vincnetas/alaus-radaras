@@ -9,6 +9,7 @@
 #import "AlausRadarasViewController.h"
 #import "Pub.h"
 #import "SQLiteManager.h";
+#import "LocationManager.h";
 
 @implementation AlausRadarasViewController
 
@@ -30,6 +31,8 @@
 	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	self.view.backgroundColor = background;
 	[background release];
+	
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -41,7 +44,7 @@
 		int currentBeerCount = [standardUserDefaults integerForKey:@"CurrentBeers"];
 		beerCount += currentBeerCount;
 	}
-	pintCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];;
+	pintCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];
 }
 
 -(IBAction) clickPint:(id) sender {
@@ -64,9 +67,6 @@
 	vietosView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
 	[self presentModalViewController:vietosView animated:YES];
 	[vietosView release];
-//	[mapController setPubsOnMap:[[[SQLiteManager sharedManager]getPubs]autorelease]];
-//	mapController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;	
-//	[self presentModalViewController:mapController animated:YES];
 }
 
 -(IBAction) clickLucky:(id) sender {

@@ -33,27 +33,28 @@
 	 //mapView.mapType = MKMapTypeSatellite;
 	 map.mapType=MKMapTypeStandard;
 	 //mapView.mapType=MKMapTypeHybrid;
+	 
 	 map.showsUserLocation = YES;
 	// CLLocationCoordinate2D userPosition = mapView.userLocation.location.coordinate;
-	 //CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
-	 CLLocationCoordinate2D centerMap = [[LocationManager sharedManager]getLocationCoordinates];//{54.689313,25.282631};
-	 MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.04, 0.05);
-	 MKCoordinateRegion region = MKCoordinateRegionMake(centerMap, coordSpan);
+	 CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
+	 CLLocationCoordinate2D centerMap = centerOfVilnius;
 
-	 map.region = region;
+	 
 	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];
 	 
 	 [self loadPubAnnotations];
-//	 [self dynamicLoadPubAnnotationsForRegion: map];
+	
+	 if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		 double di = [[LocationManager sharedManager]getDistance];
+		 infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
+		 centerMap = [[LocationManager sharedManager]getLocationCoordinates];
+	 }
+
+	 MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.04, 0.05);
+	 MKCoordinateRegion region = MKCoordinateRegionMake(centerMap, coordSpan);
+	 map.region = region;
 	 
 	 NSLog(@"MapViewController viewDidLoad");
- }
-
-- (void) viewDidAppear:(BOOL)animated {
-	if ([[LocationManager sharedManager]getVisibilityControlled]) {
-		double di = [[LocationManager sharedManager]getDistance];
-		infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
-	}
 }
 
 - (IBAction) gotoPreviousView:(id)sender {
@@ -75,7 +76,7 @@
 		[pubAnnotation setPubId:pub.pubId];
 		[pubAnnotation setTitle:pub.pubTitle];
 		
-		if (pub.distance != 0){
+		if (pub.distance != 0 && [[LocationManager sharedManager]isUserLocationKnown]){
 			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (%.2f Km)",pub.pubAddress,pub.distance]];
 		} else {
 			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",pub.pubAddress]];			
@@ -83,56 +84,6 @@
 		[map addAnnotation:pubAnnotation];
 	}
 }
-
-
-- (void)dynamicLoadPubAnnotationsForRegion:(MKMapView *)mapView {
-//NSLog(@"%f", sqrt(17) ); 
-	NSLog(@"dynamicLoadPubAnnotationsForRegion");
-	double centerLat = mapView.region.center.latitude;
-	double centerLong = mapView.region.center.longitude;
-	
-	double latitudeLength = mapView.region.span.latitudeDelta/2.0;
-	double longitudeLength = mapView.region.span.longitudeDelta/2.0;
-
-	double lengthFromCenter = sqrt(latitudeLength * latitudeLength + longitudeLength * longitudeLength);
-	
-	NSLog(@"map.region.center.latitude: %f", mapView.region.center.latitude);
-	NSLog(@"map.region.center.longitude: %f", mapView.region.center.longitude);
-	NSLog(@"map.region.span.latitudeDelta/2.0: %f", mapView.region.span.latitudeDelta/2.0);
-	NSLog(@"map.region.span.longitudeDelta/2.0: %f", mapView.region.span.longitudeDelta/2.0);
-	NSLog(@"lengthFromCenter: %f", lengthFromCenter);
-
-//	[mapView removeAnnotations:mapView.annotations];
-	
-	for (Pub *pub in pubsOnMap) {
-		CLLocationCoordinate2D coord;
-		coord.latitude = pub.latitude;
-		coord.longitude = pub.longitude;
-		
-		double pubFromCenter = sqrt((coord.latitude-centerLat)*(coord.latitude-centerLat) + 
-									(coord.longitude-centerLong)*(coord.longitude-centerLong));
-
-		
-		if (pubFromCenter <= lengthFromCenter){		
-
-			if ([self.pubsAlreadyOnMap containsObject:pub.pubId]){
-				continue;
-			}
-			
-			[self.pubsAlreadyOnMap addObject:pub.pubId];
-
-			PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:coord];
-			[pubAnnotation setPubId:pub.pubId];
-			[pubAnnotation setTitle:pub.pubTitle];
-			[pubAnnotation setSubtitle:pub.pubAddress];
-
-			[map addAnnotation:pubAnnotation];
-
-		}
-	}
-}
-
- 
 
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
 //	NSLog(@"viewForAnnotation");
@@ -205,7 +156,7 @@
 		[map regionThatFits:region];
 	} else {
 		UIAlertView* alertView = 
-		[[UIAlertView alloc] initWithTitle:@"Negaliu nustatyti tavo buvimo vietos"
+		[[UIAlertView alloc] initWithTitle:@"Nežinau kur randiesi... hm gal Jūs sacharoje?"
 								   message:nil 
 								  delegate:self 
 						 cancelButtonTitle:@"Tiek to"

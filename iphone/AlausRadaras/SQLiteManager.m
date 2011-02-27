@@ -460,16 +460,15 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 - (NSMutableArray *) getBrandsLocationBased {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-	
+
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
-
+	NSLog(@"Im here: %.2f, %.2f",  coordinates.latitude, coordinates.longitude);
+	
 	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM brands b"]];
-
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_brands pb ON b.brandId = pb.brand_id INNER JOIN pubs AS p ON p.pubId=pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.brandId",
 				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
-	
 	query = [NSString stringWithFormat:@"%@ ORDER by b.label asc", query];
 
 	FMResultSet *rs = 
@@ -570,7 +569,6 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ WHERE distance < %i", query, [[LocationManager sharedManager]getDistance]];
 	}
-	
 	FMResultSet *rs = [db executeQuery:query];
 
     while ([rs next]) {
@@ -587,7 +585,6 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		[pub release];
     }
 	[rs close];
-	//[query release];
 	return result;
 }
 
