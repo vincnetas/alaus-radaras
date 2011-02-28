@@ -17,7 +17,6 @@
 		28D7ACF80DDB3853001CB0EB /* AlausRadarasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */; };
 		C9071A7712FED00E00BDA053 /* beer-radar-schema.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */; };
 		C9071B1012FEDDB900BDA053 /* bokalas_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */; };
-		C9071C2012FF31F500BDA053 /* kur_as.png in Resources */ = {isa = PBXBuildFile; fileRef = C9071C1F12FF31F500BDA053 /* kur_as.png */; };
 		C90AA23E1300AAB5002EE7AA /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23A1300AAB5002EE7AA /* Icon-Small.png */; };
 		C90AA23F1300AAB5002EE7AA /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */; };
 		C90AA2401300AAB5002EE7AA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C90AA23C1300AAB5002EE7AA /* Icon.png */; };
@@ -119,6 +118,9 @@
 		C994524B1312FD6B00732314 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C994524A1312FD6B00732314 /* SettingsController.m */; };
 		C994525A1313005500732314 /* black-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452581313005500732314 /* black-background.png */; };
 		C994525B1313005500732314 /* black-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452591313005500732314 /* black-background@2x.png */; };
+		C9948327131C45B000A52587 /* pub_alaus_studija.png in Resources */ = {isa = PBXBuildFile; fileRef = C9948326131C45B000A52587 /* pub_alaus_studija.png */; };
+		C9948376131C51C400A52587 /* PubsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9948374131C51C400A52587 /* PubsViewController.m */; };
+		C9948377131C51C400A52587 /* PubsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9948375131C51C400A52587 /* PubsViewController.xib */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
@@ -161,7 +163,6 @@
 		8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlausRadaras-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beer-radar-schema.sqlite"; sourceTree = "<group>"; };
 		C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bokalas_btn.png; path = resources/images/bokalas_btn.png; sourceTree = "<group>"; };
-		C9071C1F12FF31F500BDA053 /* kur_as.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kur_as.png; path = resources/images/kur_as.png; sourceTree = "<group>"; };
 		C90AA23A1300AAB5002EE7AA /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "resources/images/Icon-Small.png"; sourceTree = "<group>"; };
 		C90AA23B1300AAB5002EE7AA /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "resources/images/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		C90AA23C1300AAB5002EE7AA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = resources/images/Icon.png; sourceTree = "<group>"; };
@@ -278,6 +279,10 @@
 		C994524A1312FD6B00732314 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		C99452581313005500732314 /* black-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background.png"; path = "resources/images/black-background.png"; sourceTree = "<group>"; };
 		C99452591313005500732314 /* black-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background@2x.png"; path = "resources/images/black-background@2x.png"; sourceTree = "<group>"; };
+		C9948326131C45B000A52587 /* pub_alaus_studija.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_alaus_studija.png; path = resources/pubs/pub_alaus_studija.png; sourceTree = "<group>"; };
+		C9948373131C51C400A52587 /* PubsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubsViewController.h; sourceTree = "<group>"; };
+		C9948374131C51C400A52587 /* PubsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubsViewController.m; sourceTree = "<group>"; };
+		C9948375131C51C400A52587 /* PubsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubsViewController.xib; path = Classes/PubsViewController.xib; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
@@ -353,6 +358,8 @@
 				C9A3137C12F08E880005ED6C /* PubDetailViewController.m */,
 				C9C2C225131ADE170097092D /* PubBrandSubmit.h */,
 				C9C2C226131ADE170097092D /* PubBrandSubmit.m */,
+				C9948373131C51C400A52587 /* PubsViewController.h */,
+				C9948374131C51C400A52587 /* PubsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -403,6 +410,7 @@
 				2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */,
 				C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */,
 				C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */,
+				C9948375131C51C400A52587 /* PubsViewController.xib */,
 				C9642B3812EE35940033F9B8 /* MapViewController.xib */,
 				C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */,
 			);
@@ -438,6 +446,7 @@
 		C986CFD512F4702D00865F6D /* pubs */ = {
 			isa = PBXGroup;
 			children = (
+				C9948326131C45B000A52587 /* pub_alaus_studija.png */,
 				C928FBF312FE00AB00D19918 /* pub_alaus_namai.png */,
 				C928FBF412FE00AB00D19918 /* pub_bobo.png */,
 				C928FBF512FE00AB00D19918 /* pub_bunte_gans.png */,
@@ -485,7 +494,6 @@
 				C9C2C2CB131AF8890097092D /* new_brand.png */,
 				C99452241312F1C900732314 /* popup-background.png */,
 				C9D471041300A198009C04AF /* apple */,
-				C9071C1F12FF31F500BDA053 /* kur_as.png */,
 				C9071B0F12FEDDB900BDA053 /* bokalas_btn.png */,
 				C9CEFD2512FB1BF80010E6FF /* internet.png */,
 				C9EDF27412F89F8E00E9069A /* close.png */,
@@ -743,7 +751,6 @@
 				C928FC0012FE00AB00D19918 /* pub_avilys.png in Resources */,
 				C9071A7712FED00E00BDA053 /* beer-radar-schema.sqlite in Resources */,
 				C9071B1012FEDDB900BDA053 /* bokalas_btn.png in Resources */,
-				C9071C2012FF31F500BDA053 /* kur_as.png in Resources */,
 				C9D470E613009A5C009C04AF /* Default@2x.png in Resources */,
 				C9D471121300A267009C04AF /* Default.png in Resources */,
 				C90AA23E1300AAB5002EE7AA /* Icon-Small.png in Resources */,
@@ -754,6 +761,8 @@
 				C994525A1313005500732314 /* black-background.png in Resources */,
 				C994525B1313005500732314 /* black-background@2x.png in Resources */,
 				C9C2C2CC131AF8890097092D /* new_brand.png in Resources */,
+				C9948327131C45B000A52587 /* pub_alaus_studija.png in Resources */,
+				C9948377131C51C400A52587 /* PubsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +796,7 @@
 				C97E184E131468B5004756A0 /* LocationManager.m in Sources */,
 				C9C2C227131ADE170097092D /* PubBrandSubmit.m in Sources */,
 				C9C2C30B131B09340097092D /* DataPublisher.m in Sources */,
+				C9948376131C51C400A52587 /* PubsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

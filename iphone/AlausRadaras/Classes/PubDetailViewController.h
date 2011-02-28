@@ -17,6 +17,7 @@
 	UILabel *pubCallLabel;
 	UILabel *pubInternetAddessLabel;
 	UIButton *directionsButton;
+	IBOutlet UIButton *urlButton;
 	UIImageView *pubLogoImage;
 	
 	Pub *currentPub;
@@ -25,6 +26,8 @@
 	UITableView *brandsTable;
 		
 	IBOutlet PubBrandSubmit *pubBrandSubmit;
+	IBOutlet PubBrandSubmit *addBrandSubmit;
+
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -51,5 +54,6 @@
 - (IBAction) reportPubInfo:(id)sender;
 - (IBAction) closeReportPubInfo:(id)sender;
 - (IBAction) openPubBrandSubmit: (id)sender;
+- (IBAction) openAddBrandSubmit: (id)sender;
 
 @end

@@ -11,15 +11,18 @@
 
 @implementation PubBrandSubmit
 
-@synthesize brand, pubId, pubBrandStatusControl, brandLabel, brandImage;
+@synthesize brand, pubId, pubBrandStatusControl, brandLabel, brandImage, sendBtn;
 
 - (void)dealloc {
+	[status release];
 	[brand release];
 	[pubId release];
 	
 	[pubBrandStatusControl release];
 	[brandLabel release];
 	[brandImage release];
+	[sendBtn release];
+	
     [super dealloc];
 }
 
@@ -29,6 +32,8 @@
 	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
 	self.view.backgroundColor = background;
 	[background release];
+	
+	sendBtn.enabled = NO;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -42,13 +47,18 @@
 - (IBAction) pubBrandStatusChanged {
 	switch (self.pubBrandStatusControl.selectedSegmentIndex) {
 		case 0:
-			
+			status = @"EXISTS";
+			sendBtn.enabled = YES;
 			break;
+			
 		case 1:
-
+			status = @"DISCONTINUED";
+			sendBtn.enabled = YES;
 			break;
-		case 2:
 			
+		case 2:
+			status = @"TEMPORARY_SOLD_OUT";
+			sendBtn.enabled = YES;
 			break;
 		
 		default:
@@ -58,12 +68,36 @@
 
 
 - (IBAction) sendPubBrandSubmit: (id)sender {
-	DataPublisher *dataPublisher = [[DataPublisher alloc]init];
-	[dataPublisher submitPubBrand:brand.brandId pub:pubId status:@"iPhoneTestStatus" message:@""];
+	
+	UIAlertView* alertView = 
+	[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
+							   message:nil 
+							  delegate:self 
+					 cancelButtonTitle:@"Esu blaivas!!"
+					 otherButtonTitles:@"Tiek to", nil];
+	[alertView show];
+	[alertView release];	
+	
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if(buttonIndex == 0) {
+		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
+		[dataPublisher submitPubBrand:brand.brandId pub:pubId status:status message:@""];
+	}
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
+	// Clear everything
+	brandLabel.text = @"";
+	brandImage.image = nil;
+	status = @"";
+	sendBtn.enabled = NO;
+	self.pubBrandStatusControl.selectedSegmentIndex = -1;
+}
 
+- (IBAction) gotoPreviousView {
+	[self.parentViewController dismissModalViewControllerAnimated:YES];	
 }
 
 - (void)didReceiveMemoryWarning {

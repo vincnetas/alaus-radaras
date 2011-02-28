@@ -25,7 +25,7 @@
 	
 	/* City Segment */
 	UISegmentedControl *citySegmentControl;
-
+	BOOL locationBased;
 }
 
 @property(nonatomic, retain) IBOutlet MKMapView *map;
@@ -40,5 +40,7 @@
 - (void)loadPubAnnotations;
 - (IBAction) locateMe:(id)sender;
 - (IBAction) cityIndexChanged;
+
+- (IBAction) showPubList:(id)sender;
 
 @end
