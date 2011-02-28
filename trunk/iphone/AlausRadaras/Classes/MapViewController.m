@@ -12,6 +12,7 @@
 #import "Pub.h"
 #import "SQLiteManager.h"
 #import "LocationManager.h"
+#import "PubsViewController.h"
 
 @implementation MapViewController
 
@@ -30,6 +31,9 @@
 
  - (void)viewDidLoad {
 	 [super viewDidLoad];
+	 
+	 locationBased = [[LocationManager sharedManager]getVisibilityControlled];
+	 
 	 //mapView.mapType = MKMapTypeSatellite;
 	 map.mapType=MKMapTypeStandard;
 	 //mapView.mapType=MKMapTypeHybrid;
@@ -44,7 +48,7 @@
 	 
 	 [self loadPubAnnotations];
 	
-	 if ([[LocationManager sharedManager]getVisibilityControlled]) {
+	 if (locationBased) {
 		 double di = [[LocationManager sharedManager]getDistance];
 		 infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
 		 centerMap = [[LocationManager sharedManager]getLocationCoordinates];
@@ -65,6 +69,18 @@
 	[self locateMe];
 }
 
+- (IBAction) showPubList:(id)sender {
+	PubsViewController *pubsView = 
+		[[PubsViewController alloc] initWithNibName:nil bundle:nil];
+	
+	pubsView.pubList = pubsOnMap;
+	pubsView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
+	[self presentModalViewController:pubsView animated:YES];
+	
+	[pubsView release];
+}
+
+
 
 - (void)loadPubAnnotations {
 	for (Pub *pub in pubsOnMap) {
@@ -76,7 +92,7 @@
 		[pubAnnotation setPubId:pub.pubId];
 		[pubAnnotation setTitle:pub.pubTitle];
 		
-		if (pub.distance != 0 && [[LocationManager sharedManager]isUserLocationKnown]){
+		if (pub.distance != 0 && locationBased){
 			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (%.2f Km)",pub.pubAddress,pub.distance]];
 		} else {
 			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",pub.pubAddress]];			

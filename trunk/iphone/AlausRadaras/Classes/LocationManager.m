@@ -44,6 +44,13 @@ static LocationManager *sharedLocationManager = nil;
 	return clLocationManager.location.coordinate;
 }
 
+- (void)locationManager:(CLLocationManager *)manager 
+	didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+	NSLog(@"didUpdateToLocation: Lat: %.6f, Long: %.6f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
+	NSLog(@"fromLocation: Lat: %.6f, Long: %.6f",oldLocation.coordinate.latitude,oldLocation.coordinate.longitude);
+	[clLocationManager stopUpdatingLocation];	
+}
+
 - (void) setDistance:(int) km {
 	distance = km;
 }
@@ -87,7 +94,7 @@ static LocationManager *sharedLocationManager = nil;
 - (BOOL) isUserLocationKnown {
 	int lat = (int) clLocationManager.location.coordinate.latitude;
 	int lon = (int)clLocationManager.location.coordinate.longitude;
-	NSLog(@"Location Coordinates: Lat: %d, Long: %d",lat,lon);
+	NSLog(@"isUserLocationKnown: Lat: %d, Long: %d",lat,lon);
 	if ((![CLLocationManager locationServicesEnabled]) ||
 		(lat == 0 && lon == 0)) {
 			NSLog(@"getVisibilityControlled NO");

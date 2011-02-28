@@ -51,7 +51,7 @@
 		if (brandImage.image == nil) {
 			brandImage.image = [UIImage imageNamed:@"brand_default.png"];		
 		}
-	}	
+	}
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -63,13 +63,9 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 	
-//	AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-	pubDetailView.currentPub =  feelingLucky.pub;//[appDelegate getPubById:pubId];//feelingLucky.pub;
-	
+	pubDetailView.currentPub =  feelingLucky.pub;
 	pubDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:pubDetailView animated:YES];
-	//[pubDetailView release];
 }
 
 - (void)didReceiveMemoryWarning {

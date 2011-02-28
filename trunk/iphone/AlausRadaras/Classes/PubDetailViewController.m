@@ -9,6 +9,7 @@
 #import "PubDetailViewController.h"
 #import "Brand.h"
 #import "SQLiteManager.h"
+#import "LocationManager.h"
 
 @implementation PubDetailViewController
 
@@ -18,6 +19,8 @@
 @synthesize reportPubInfoView;
 
 - (void)dealloc {
+	[urlButton release];
+	[addBrandSubmit release];
 	[pubBrandSubmit release];
 	[directionsButton release];
 	[pubLogoImage release];
@@ -45,7 +48,6 @@
 	 brandsTable.opaque = NO;
 	 brandsTable.backgroundView = nil; 
 	 
-	 
 	 pubTitleShortLabel.text = currentPub.pubTitle;
 	 pubTitleLabel.text = currentPub.pubTitle;
  	 pubAddressLabel.text = currentPub.pubAddress;
@@ -53,12 +55,21 @@
 	 pubCallLabel.text = currentPub.phone;
 	 pubLogoImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"pub_%@.png", currentPub.pubId]];
 	 
+	 if ([@"" isEqualToString:pubInternetAddessLabel.text]) {
+		 urlButton.hidden = YES;
+	 }
+	 
 	 //AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
 	 brandList = [[SQLiteManager sharedManager] getBrandsByPubId:currentPub.pubId];
 	 
 	 /* Disable if I view didn't get users coordinates */
 	 if (userCoordinates == nil) {
-		 directionsButton.enabled = NO;
+		 if ([[LocationManager sharedManager]isUserLocationKnown]) {
+			 CLLocationCoordinate2D userLoc = [[LocationManager sharedManager]getLocationCoordinates];
+			 userCoordinates = [[NSString stringWithFormat:@"%.8f,%.8f",userLoc.latitude,userLoc.longitude]copy];			 
+		 } else {
+			 directionsButton.enabled = NO;	
+		 }
 	 }
 	 NSLog(@"PubDetailViewController viewDidLoad");
 	 
@@ -94,6 +105,7 @@
 }
 
 - (IBAction) navigateToPub:(id)sender {	
+	NSLog(@"navigateToPub: from %@", userCoordinates);
 	[[UIApplication sharedApplication] openURL:
 		[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/?saddr=%@&daddr=%.8lf,%.8lf", 
 							  userCoordinates, currentPub.latitude, currentPub.longitude]]];
@@ -154,6 +166,7 @@
 		for(j=0; j<4; j++){
 			
 			if (i>=n) break;
+			
 			Brand *item = [brandList objectAtIndex:i];
 			
 			CGRect rect = CGRectMake(18+80*j, yy, 40, 40);
@@ -186,7 +199,11 @@
 		}
 		i1++;
 	}
-	
+	if (j==4) {
+		j = 0;
+		yy = 4+i1*74;
+	}
+	NSLog(@"j:%d yy:%d", j, yy);
 	CGRect rect = CGRectMake(18+80*j, yy, 40, 40);
 	UIButton *button=[[UIButton alloc] initWithFrame:rect];
 	[button setFrame:rect];
@@ -195,7 +212,7 @@
 	[button setBackgroundImage:buttonImageNormal	forState:UIControlStateNormal];
 	[button setContentMode:UIViewContentModeCenter];
 	
-	//[button addTarget:self action:@selector(openPubBrandSubmit:) forControlEvents:UIControlEventTouchUpInside];
+	[button addTarget:self action:@selector(openAddBrandSubmit:) forControlEvents:UIControlEventTouchUpInside];
 	[hlcell.contentView addSubview:button];
 	[button release];
 	
@@ -218,6 +235,11 @@
 	[self presentModalViewController:pubBrandSubmit animated:YES];	
 }
 
+- (IBAction) openAddBrandSubmit: (id)sender {
+	addBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;//UIModalTransitionStyleCoverVertical;	
+	[self presentModalViewController:addBrandSubmit animated:YES];	
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
@@ -228,8 +250,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {  
 	//NSMutableArray *sectionItems = [sections objectAtIndex:indexPath.section];
-	int numRows = [brandList count]%4;
-	return numRows * 95.0;
+	int numRows = ([brandList count]/4) + 1;
+	NSLog(@"Rows %d",numRows);
+	return numRows * 80;//95.0;
 } 
 
 #pragma mark -
