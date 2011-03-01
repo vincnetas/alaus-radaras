@@ -1,69 +1,80 @@
-backoriu_tamsusis	Bačkorių tamsusis	alaus_namai	lt	dark, rural
-belmonto_ypatingas	Belmonto ypatingasis	belmontas	lt	dark, rural
-belmonto_sviesusis	Belmonto šviesusis	belmontas	lt	lager, rural
-bernard_cerne	Bernard Černe	dolce_vita, alaus_studija,pajurio_zibintas	cz	dark, foreign
-birzu_miezinis	Biržų miežinis	shamrock	lt	rural
-birzu_sirvenos	Biržų Širvenos	b6, alaus_namai, obuolys,shamrock	lt	lager, rural
-bravaria	Bravaria	bravaria,bravaria_kaunas	lt	lager
-budweiser_budvar	Budweiser BUDVAR		cz	foreign, lager
-busi_trecias	Būsi Trečias	busi_trecias	lt	rural, dark
-butautu_dvaro	Butautų Dvaro	mamutas,livonija	lt	rural, dark
-carlsberg	Carlsberg	juodasis_katinas	dk	foreign, lager
-chodovar	Chodovar	obuolys	lt	lager
-chodovar_tamsus	Chodovar tamsus	dzempub	lt	dark
-daujotu	Daujotų	alaus_namai	lt	rural
-dundulio	Dundulio	bermudai, alaus_namai	lt	rural
-ekstra_tvirtoves	Ekstra Tvirtovės	pilies_mene	lt	rural, strong
-erdinger	Erdinger	busi_trecias, plieno_paukste, simo_baras, dolce_vita, alaus_studija, obuolys,suflerio_budele	de	white, foreign
-franziskaner	Franziskaner	savas_kampas	de	white, foreign
-grimbergen	Grimbergen	jalta,skliautas,abato_mene,shamrock	be	foreign, dark, strong
-grimbergen_lager	Grimbergen šviesus	skliautas,zalias_ratas,abato_mene, shamrock	be	foreign, strong
-gubernijos_kvietinis	Gubernijos kvietinis	alaus_namai	lt	white
-guinness	Guinness	alaus_studija, obuolys,juodasis_katinas,palangos_vetra	ie	foreign, dark
-hbh	HBH Juozo alus	hbh	lt	rural, dark
-heineken	Heineken	pogo, savas_kampas, wall_street, alaus_studija,bo,dzempub,jums	nl	lager, foreign
-hoegaarden	Hoegaarden	wall_street, obuolys,abato_mene	be	white, foreign
-jovaru_snekutis	Jovarų šnekutis	bermudai	lt	rural, lager
-kalnapilis_grand	Kalnapilis Grand	busi_trecias, pilies_mene, mamutas, obuolys, bo,berneliu_smukle,baras1925	lt	lager
-kanapinis	Kanapinis tamsus	bermudai, obuolys, dzempub	lt	rural, dark
-katedros_medaus	Katedros Medaus	prie_katedros, dominink_karciama	lt	rural, lager
-katedros_sviesusis	Katedros Šviesusis	prie_katedros, dominink_karciama	lt	rural, lager
-katedros_tamsusis	Katedros Tamsusis	prie_katedros, dominink_karciama,dzempub	lt	rural, dark
-kozel	Kozel	obuolys,wall_street, bo,baras1925,sindbado_oaze,alaus_studija	cz	foreign, dark, light
-krusovice	Krušovice	blusyne, simo_baras, alaus_studija,bo	cz	foreign, dark, light
-kunigaiksciu	Kunigaikščių	mamutas, keisti_zenklai	lt	rural, strong
-memelis_sviesus	Memelio Šviesusis Gyvasis	memelis, baras16_19	lt	rural, lager
-memelis_karamelinis	Memelio Karamelinis Vyšnių	memelis	lt	rural
-memelis_juodas	Memelio Juodasis Degintas	memelis	lt	rural, dark
-memelis_kvietinis	Memelio Kvietinis Medaus	memelis	lt	rural, white
-murphys_stout	Murphy's stout	alaus_studija	ie	foreign, dark
-new_castle_brown_ale	Newcastle Brown Ale	alaus_studija	uk	foreign, dark
-pilies	Pilies	pilies_mene	lt	lager
-pogo	PoGO šviesusis	pogo	lt	lager
-raudonuju_dobilu	Raudonųjų Dobilų	chillout, alaus_namai	lt	rural, dark
-rinkuskiu_proginis	Rinkuškių proginis	bermudai, alaus_namai,bo	lt	rural, lager
-samson	Samson	blusyne, pogo, plieno_paukste, alaus_studija,bo,suflerio_budele	cz	foreign, dark
-sinkoriu	Šinkorių	sadute	lt	rural
-sinkoriu_tamsus	Šinkorių tamsusis	sadute	lt	rural, dark
-staropramen	Staropramen	burito, obuolys	cz	foreign, lager
-svyturys_baltas	Švyturys Baltas	busi_trecias, pilies_mene, uzupio_picerija,bo,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas	lt	white
-svyturys_baltijos	Švyturys Baltijos	molinis_asotis, mamutas,skliautas, bo, baras16_19	lt	dark, strong
-svyturys_ekstra	Švyturys Ekstra	jalta, pilies_mene, alaus_baras_just, molinis_asotis, b6, uzupio_picerija, mamutas,skliautas,sadute,zalias_ratas,shamrock,juodasis_katinas,baras1925,baras16_19	lt	lager
-tauro_tradicinis	Tauro Tradicinis	mamutas	lt	lager, strong
-tores	Tores gyvas nefiltruotas	tores	lt	rural, dark
-tucher	Tucher	obuolys	de	foreign, white
-tucher_weis	Tucher šviesus	bo	de	foreign, white
-utenos	utenos	pilies_mene, alaus_baras_just,bo	lt	lager
-varniuku_alus	Varniukų tamsusis	pogo, alaus_baras_pyli, alaus_namai	lt	rural, dark
-veltins	Veltins	bunte_gans, alaus_studija, obuolys	de	foreign, lager
-vilkmerges	Vilkmergės	berneliu_smukle	lt	rural
-vilkmerges_tamsusis	Vilkmergės tamsusis	alaus_namai,haemmerli	lt	rural, dark
-vilniaus_kvietinis	Vilniaus kvietinis	bermudai, pogo, obuolys	lt	white
-vilniaus_nefiltruotas	Vilniaus nefiltruotas	bermudai, alaus_namai	lt	lager
-volf_engelman	Volf Engelman	suflerio_budele, dzempub, sadute, jums, berneliu_smukle	lt	lager
-warsteiner	Warsteiner	bunte_gans, plieno_paukste, wall_street	de	foreign, lager
-zubr	Zubr	savas_kampas	cz	foreign, lager
-leffe	Leffe	obuolys	be	foreign, white, strong
-avilio_sviesusis	Avilio šviesusis	avilys	lt	rural
-medaus_pussviesis	Medaus pusšviesis	avilys	lt	rural
-velvet	Velvet	savas_kampas	cz	foreign
+svyturys_baltas	Švyturio baltas	1298412463872,1298412463911,1298412463877,1298412463904,1298412463919,1298412463874,1298412463884,1298412463885	lt	white
+guinness	Guinness	1298412463920,1298412463912,1298412463891,1298412463924,1298572132631,1298564989990,1298412463885	ir	dark,foreign
+backoriu_tamsusis	Bačkorių tamsusis	1298412463895	lt	dark,rural
+belmonto_ypatingas	Belmonto ypatingasis	1298412463898	lt	dark,rural
+belmonto_sviesusis	Belmonto šviesusis	1298412463898	lt	lager,rural
+bernard_cerne	Bernard Černe	1298412463890,1298412463922,1298412463924	cz	dark,foreign
+birzu_miezinis	Biržų miežinis	1298412463884	lt	rural
+birzu_sirvenos	Biržų Širvenos	1298412463920,1298412463895,1298412463916,1298412463884	lt	lager,rural
+bravaria	Bravaria	1298412463902,1298412463873	lt	lager
+busi_trecias	Būsi Trečias	1298412463904	lt	dark,rural
+butautu_dvaro	Butautų dvaro	1298412463921,1298412463893	lt	dark,rural
+carlsberg	Carlsberg	1298412463885	dk	lager,foreign
+chodovar	Chodovar	1298412463920	cz	lager
+chodovar_tamsus	Chodovar tamsus	1298412463876	cz	dark
+daujotu	Daujotų	1298412463895,1298572132634	lt	rural
+dundulio	Dundulio	1298412463895,1298412463927	lt	rural
+ekstra_tvirtoves	Ekstra Tvirtovės	1298412463911	lt	strong,rural
+erdinger	Erdinger Wiessier	1298412463920,1298412463922,1298412463913,1298412463924,1298412463904,1298412463909,1298412463875	de	white,foreign
+franziskaner	Franziskaner	1298412463925	de	white,foreign
+grimbergen	Grimbergen	1298412463883,1298412463906,1298412463874,1298412463884	be	strong,dark,foreign
+grimbergen_lager	Grimbergen šviesus	1298412463883,1298412463881,1298412463874,1298412463884	be	strong,foreign
+gubernijos_kvietinis	Gubernijos kvietinis	1298412463895	lt	white
+hbh	HBH Juozo alus	1298412463888	lt	dark,rural
+heineken	Heineken	1298412463872,1298412463924,1298412463901,1298412463878,1298412463929,1298412463925,1298412463876	nl	lager,foreign
+hoegaarden	Hoegaarden	1298412463883,1298412463920,1298412463924,1298412463900,1298412463929,1298572132631	be	white,foreign
+jovaru_snekutis	Jovarų šnekutis	1298412463927	lt	lager,rural
+kalnapilis_grand	Kalnapilis grand	1298412463882,1298412463920,1298412463872,1298412463921,1298412463911,1298412463904,1298412463889	lt	lager
+kanapinis	Kanapinis tamsus	1298412463882,1298412463920,1298412463876	lt	dark,rural
+katedros_medaus	Katedros Medaus	1298412463905,1298412463928	lt	lager,rural
+katedros_sviesusis	Katedros Šviesusis	1298412463905,1298412463928	lt	lager,rural
+katedros_tamsusis	Katedros Tamsusis	1298412463905,1298412463928,1298412463876	lt	dark,rural
+kozel	Kozel	1298412463920,1298412463872,1298412463894,1298412463929,1298412463889	cz	dark,rural
+kronenbourg_1664	Kronenbourg 1664	1298412463924	fr	lager,foreign
+krusovice	Krušovice	1298412463872,1298412463913,1298412463924,1298412463897	cz	dark,foreign,light
+kunigaiksciu	Kunigaikščių	1298412463930,1298412463921	lt	strong,rural
+memelis_sviesus	Memelio Šviesusis Gyvasis	1298412463892,1298412463886	lt	lager,rural
+memelis_karamelinis	Memelio Karamelinis Vyšnių	1298412463886	lt	rural
+memelis_juodas	Memelio Juodasis Degintas	1298412463886	lt	dark,rural
+memelis_kvietinis	Memelio Kvietinis Medaus	1298412463886	lt	white,rural
+murphys_stout	Murphy's stout	1298412463924,1298412463900	ie	dark,foreign
+new_castle_brown_ale	Newcastle Brown Ale	1298412463924	uk	dark,foreign
+pilies	Pilies	1298412463911	lt	lager
+pogo	PoGO šviesusis	1298412463901	lt	lager
+raudonuju_dobilu	Raudonųjų Dobilų	1298412463895,1298412463926	lt	dark,rural
+rinkuskiu_proginis	Rinkuškių proginis	1298412463872,1298412463895,1298412463927	lt	lager,rural
+samson	Samson	1298412463872,1298412463924,1298412463901,1298412463897,1298412463909,1298412463875	cz	dark,foreign
+sinkoriu	Šinkorių	1298412463877	lt	rural
+sinkoriu_tamsus	Šinkorių tamsusis	1298412463877	lt	dark,rural
+staropramen	Staropramen	1298412463920,1298412463899	cz	lager,foreign
+stella_artois	Stella Artois	1298412463924,1298412463900,1298572132631,1298564989990	be	lager,foreign
+svyturys_baltijos	Švyturys Baltijos	1298412463872,1298412463921,1298412463892,1298412463915,1298412463874	lt	strong,dark
+svyturys_ekstra	Švyturys Ekstra	1298412463921,1298412463911,1298412463881,1298412463892,1298412463877,1298412463906,1298412463915,1298412463896,1298412463889,1298412463916,1298412463919,1298412463874,1298412463884,1298412463885	lt	lager
+tauro_tradicinis	Tauro Tradicinis	1298412463921	lt	lager,strong
+tores	Tores gyvas nefiltruotas	1298412463917	lt	dark,rural
+tucher	Tucher	1298412463920,1298572132631,1298564989990	de	foreign
+tucher_weis	Tucher šviesus	1298412463872	de	white,foreign
+utenos	Utenos	1298412463872,1298412463911,1298412463896	lt	lager
+varniuku_alus	Varniukų tamsusis	1298412463912,1298412463895,1298412463914,1298412463901,1298572132634	lt	dark,rural
+veltins	Veltins	1298412463920,1298412463924,1298412463903	de	lager
+vilkmerges	Vilkmergės	1298412463882	lt	rural
+vilkmerges_tamsusis	Vilkmergės tamsusis	1298412463895,1298412463887	lt	dark,rural
+vilniaus_kvietinis	Vilniaus kvietinis	1298412463920,1298412463901,1298412463927,1298572132634	lt	white
+vilniaus_nefiltruotas	Vilniaus nefiltruotas	1298412463895,1298412463927	lt	lager
+volf_engelman	Volf Engelman	1298412463882,1298412463877,1298412463878,1298412463875,1298412463876	lt	lager
+warsteiner	Warsteiner	1298572132635,1298412463929,1298412463903,1298412463909	de	lager,foreign
+zubr	Zubr	1298412463925	pl	lager,foreign
+leffe	Leffe	1298412463920,1298412463900,1298572132631	be	strong,white,foreign
+avilio_sviesusis	Avilio šviesusis	1298412463870	lt	rural
+medaus_pussviesis	Medaus pusšviesis	1298412463870	lt	rural
+velvet	Velvet	1298412463925	cz	foreign
+murphys_red	Murphys red	1298412463924,1298412463900	ie	lager
+leffe_brune	Leffe Brune	1298572132631	be	strong,dark
+budweiser	Budweiser	1298412463924	cz	lager
+kalnapilis	Kalnapilis	1298572132634	lt	lager
+kupiskenu_sventinis	Kupiškėnų Šventinis	1298572132634	lt	rural
+salaus	Salaus	1298572132634	lt	rural
+budweiser_dark	Budweiser dark	1298412463924	cz	dark
+bernard	Bernard	1298412463924	cz	lager
+krusovice_cerne	Krusovice cerne	1298412463924	cz	dark
+erdinger_dunkel	Erdinger Dunkel	1298412463924	de	dark

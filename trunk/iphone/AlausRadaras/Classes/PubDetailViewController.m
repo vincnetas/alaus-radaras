@@ -50,7 +50,7 @@
 	 
 	 pubTitleShortLabel.text = currentPub.pubTitle;
 	 pubTitleLabel.text = currentPub.pubTitle;
- 	 pubAddressLabel.text = currentPub.pubAddress;
+ 	 pubAddressLabel.text = [NSString stringWithFormat:@"%@, %@", currentPub.pubAddress, currentPub.city];
 	 pubInternetAddessLabel.text = currentPub.webpage;
 	 pubCallLabel.text = currentPub.phone;
 	 pubLogoImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"pub_%@.png", currentPub.pubId]];

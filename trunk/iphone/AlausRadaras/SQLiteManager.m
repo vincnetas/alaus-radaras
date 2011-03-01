@@ -68,14 +68,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	[db setLogsErrors:TRUE];
 	[db setTraceExecution:FALSE];
     //[db setShouldCacheStatements:YES];	// kind of experimentalish.
-	
-//	int err = sqlite3_open([databasePath fileSystemRepresentation], db );
-//	if(err != SQLITE_OK) {
-//        NSLog(@"error opening!: %d", err);
-//		return;
-//	}
-//	NSLog(@"Database opened");
-	
+
     if (![db open]) {
         NSLog(@"Could not open db.");
 		return;
@@ -260,6 +253,46 @@ static SQLiteManager *sharedSQLiteManager = nil;
  * Scheme & data are created/inserted
  */
 - (void) createNewDatabase {
+	databaseName = @"beer-radar-schema.sqlite";
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
+	databasePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:databaseName];
+	
+	NSLog(@"Removing the OLD database");
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	[fileManager removeItemAtPath:databasePath error:nil];
+	
+	/* Copy database if needed */
+	NSError *error;
+	BOOL success = [fileManager fileExistsAtPath:databasePath]; 
+	
+	if(!success) {
+		NSLog(@"Copying the NEW database");
+		NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
+		success = [fileManager copyItemAtPath:defaultDBPath toPath:databasePath error:&error];
+		if (!success) 
+			NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+	} else {
+		NSLog(@"Database exists");	
+	}
+	
+
+	NSLog(@"Using Database at: %@",databasePath);
+	db = [FMDatabase databaseWithPath:databasePath];
+	
+	// Dont autorelease the database, retain it instead.
+	// Might cause memory problems - if so try refactoring
+	[db retain];
+	[db setLogsErrors:TRUE];
+	[db setTraceExecution:FALSE];
+	
+    if (![db open]) {
+        NSLog(@"Could not open db.");
+		return;
+    } else {
+		NSLog(@"Database opened");
+	}
+	
+	
 	/*
 	NSLog(@"Creating new database");
 	NSLog(@"Droping tables");
@@ -317,6 +350,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 										 "text			TEXT NOT NULL);"];
 	*/
 	NSLog(@"Tables created");
+	
 	NSLog(@"Inserting data");
 	[db beginTransaction];
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
@@ -325,6 +359,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting brand: %@", [values objectAtIndex:0]);
 			[db executeUpdate:@"insert into brands (brandId, label, icon) values (?, ?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1],
@@ -341,6 +376,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting pub: %@", [values objectAtIndex:0]);
+
 			[db executeUpdate:@"insert into pubs (pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1],
@@ -362,6 +399,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting tag: %@", [values objectAtIndex:0]);
+
 			[db executeUpdate:@"insert into tags (code, title) values (?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1]];
@@ -377,6 +416,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting country: %@", [values objectAtIndex:0]);
+
 			[db executeUpdate:@"insert into countries (code, name) values (?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1]];
@@ -392,6 +433,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting quote: %@", [values objectAtIndex:0]);
+
 			[db executeUpdate:@"insert into quotes (amount, text) values (?, ?)",
 			 [NSNumber numberWithInt:[[values objectAtIndex:0]intValue]],
 			 [values objectAtIndex:1]];

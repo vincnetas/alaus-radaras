@@ -28,6 +28,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+//	Creates database using scripts
+//	[[SQLiteManager sharedManager] createNewDatabase];
+	
 	[[SQLiteManager sharedManager] initializeDatabase];
 	
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
@@ -43,9 +46,6 @@
 //			Copies prefiled database
 //			Comment me
 			[[SQLiteManager sharedManager] recreateDatabase];
-		
-//			Creates database using scripts
-//			[[SQLiteManager sharedManager] createNewDatabase];
 		
 			[standardUserDefaults setDouble:appVersion forKey:@"DatabaseVersion"];
 			[standardUserDefaults synchronize];

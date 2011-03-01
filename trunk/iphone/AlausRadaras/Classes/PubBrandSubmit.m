@@ -76,14 +76,19 @@
 					 cancelButtonTitle:@"Esu blaivas!!"
 					 otherButtonTitles:@"Tiek to", nil];
 	[alertView show];
-	[alertView release];	
+	[alertView release];
 	
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == 0) {
+		// check if submited in 12 hours?
+		
+		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
+		NSLog(@"GUID: %@", uniqueIdentifier);
+		
 		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
-		[dataPublisher submitPubBrand:brand.brandId pub:pubId status:status message:@""];
+		[dataPublisher submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier];
 	}
 }
 
