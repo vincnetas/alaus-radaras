@@ -535,7 +535,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 
 	FMResultSet *rs = 
-	[db executeQuery:@"SELECT * FROM brands b INNER JOIN pubs_brands pb ON b.brandId = pb.brand_id AND pb.pub_id = ?", 
+	[db executeQuery:@"SELECT * FROM brands b INNER JOIN pubs_brands pb ON b.brandId = pb.brand_id AND pb.pub_id = ? ORDER BY b.label asc", 
 	 pubId];
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];

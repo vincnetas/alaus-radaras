@@ -14,13 +14,14 @@
 @implementation PubDetailViewController
 
 @synthesize directionsButton, pubLogoImage,pubInternetAddessLabel, pubTitleShortLabel, pubTitleLabel, pubAddressLabel, pubCallLabel;
-@synthesize brandList, brandsTable, currentPub;
+@synthesize brandList, currentPub;
+@synthesize brandsTable;
 @synthesize userCoordinates;
 @synthesize reportPubInfoView;
 
 - (void)dealloc {
 	[urlButton release];
-	[addBrandSubmit release];
+	[newBrandSubmit release];
 	[pubBrandSubmit release];
 	[directionsButton release];
 	[pubLogoImage release];
@@ -75,7 +76,8 @@
 	 
 	 self.reportPubInfoView.frame = CGRectMake(0.0, 700.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
 	 [self.view addSubview:self.reportPubInfoView];
- }
+}
+
 
 #pragma mark -
 #pragma mark Action methods
@@ -187,7 +189,7 @@
 			[hlcell.contentView addSubview:button];
 			[button release];
 			
-			UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake((80*j)-4, yy+44, 80, 12)] autorelease];
+			UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake((80*j-2), yy+42, 80, 12)] autorelease];
 			label.text = item.label;
 			label.textColor = [UIColor lightGrayColor];
 			label.backgroundColor = [UIColor clearColor];
@@ -236,8 +238,9 @@
 }
 
 - (IBAction) openAddBrandSubmit: (id)sender {
-	addBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;//UIModalTransitionStyleCoverVertical;	
-	[self presentModalViewController:addBrandSubmit animated:YES];	
+	newBrandSubmit.pubId = currentPub.pubId;
+	newBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;//UIModalTransitionStyleCoverVertical;	
+	[self presentModalViewController:newBrandSubmit animated:YES];	
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
