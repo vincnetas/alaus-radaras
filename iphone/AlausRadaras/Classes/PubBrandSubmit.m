@@ -11,7 +11,8 @@
 
 @implementation PubBrandSubmit
 
-@synthesize brand, pubId, pubBrandStatusControl, brandLabel, brandImage, sendBtn;
+@synthesize brand, pubId;
+@synthesize pubBrandStatusControl, brandLabel, brandImage, sendBtn;
 
 - (void)dealloc {
 	[status release];
@@ -49,48 +50,52 @@
 		case 0:
 			status = @"EXISTS";
 			sendBtn.enabled = YES;
+			[self sendPubBrandSubmit];
 			break;
 			
 		case 1:
 			status = @"DISCONTINUED";
 			sendBtn.enabled = YES;
+			[self sendPubBrandSubmit];
 			break;
 			
 		case 2:
 			status = @"TEMPORARY_SOLD_OUT";
 			sendBtn.enabled = YES;
+			[self sendPubBrandSubmit];
 			break;
 		
 		default:
 			break;
 	}
+	self.pubBrandStatusControl.selectedSegmentIndex = -1;
 }
 
-
-- (IBAction) sendPubBrandSubmit: (id)sender {
-	
+- (void) sendPubBrandSubmit {
 	UIAlertView* alertView = 
-	[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
+		[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
 							   message:nil 
 							  delegate:self 
 					 cancelButtonTitle:@"Esu blaivas!!"
 					 otherButtonTitles:@"Tiek to", nil];
 	[alertView show];
-	[alertView release];
-	
+	[alertView release];	
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == 0) {
-		// check if submited in 12 hours?
-		
+		// check if submited in 12 hours?		
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
 		NSLog(@"GUID: %@", uniqueIdentifier);
 		
 		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
 		[dataPublisher submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier];
+		
+		[self.parentViewController dismissModalViewControllerAnimated:YES];
 	}
 }
+
+
 
 - (void) viewDidDisappear:(BOOL)animated {
 	// Clear everything

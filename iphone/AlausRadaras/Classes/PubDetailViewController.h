@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Pub.h"
 #import "MapViewController.h"
-#import "PubBrandSubmit.h";
+#import "PubBrandSubmit.h"
+#import "NewPubBrandSubmit.h"
+
 @interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UILabel *pubTitleShortLabel;
 	UILabel *pubTitleLabel;
@@ -26,7 +28,7 @@
 	UITableView *brandsTable;
 		
 	IBOutlet PubBrandSubmit *pubBrandSubmit;
-	IBOutlet PubBrandSubmit *addBrandSubmit;
+	IBOutlet NewPubBrandSubmit *newBrandSubmit;
 
 }
 

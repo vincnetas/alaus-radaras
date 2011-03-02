@@ -50,7 +50,7 @@
 	
 	 if (locationBased) {
 		 double di = [[LocationManager sharedManager]getDistance];
-		 infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
+		 infoLabel.text = [NSString stringWithFormat:@"%@ • (~%.0f Km atstumu)", infoLabel.text, di] ;
 		 centerMap = [[LocationManager sharedManager]getLocationCoordinates];
 	 }
 

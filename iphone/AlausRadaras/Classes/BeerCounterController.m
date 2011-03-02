@@ -91,16 +91,17 @@
 		[standardUserDefaults synchronize];
 	}
 
-	if (currentBeerCount == 5) {
-		UIAlertView* alertView = 
-		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
-								   message:nil 
-								  delegate:self 
-						 cancelButtonTitle:@"Jau kviečiu"
-						 otherButtonTitles:@"Dar vieną!", nil];
-		[alertView show];
-		[alertView release];
-	}
+//  Removed until taxi support implemented
+//	if (currentBeerCount == 5) {
+//		UIAlertView* alertView = 
+//		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
+//								   message:nil 
+//								  delegate:self 
+//						 cancelButtonTitle:@"Jau kviečiu"
+//						 otherButtonTitles:@"Dar vieną!", nil];
+//		[alertView show];
+//		[alertView release];
+//	}
 	
 	if (currentBeerCount == 10) {
 		UIAlertView* alertView = 
