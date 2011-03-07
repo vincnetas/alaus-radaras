@@ -9,6 +9,7 @@
 #import "AlausRadarasAppDelegate.h"
 #import "SQLiteManager.h"
 #import "LocationManager.h"
+#import "DataPublisher.h"
 
 @implementation AlausRadarasAppDelegate
 
@@ -69,6 +70,7 @@
 //    [locationManager startUpdatingLocation];
 	
 	[[LocationManager sharedManager]initializeManager];
+	[[DataPublisher sharedManager]initializeManager];
 
     return YES;
 }

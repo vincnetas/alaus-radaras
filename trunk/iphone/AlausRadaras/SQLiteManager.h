@@ -37,6 +37,7 @@
 
 - (NSMutableArray *) getBrands;
 - (NSMutableArray *) getBrandsLocationBased;
+- (NSString *) getBrandsLabelById:(NSString *)brandId;
 
 - (NSMutableArray *) getBrandsByPubId:(NSString *)pubId;
 

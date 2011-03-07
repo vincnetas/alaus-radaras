@@ -50,7 +50,7 @@
 	
 	 if (locationBased) {
 		 double di = [[LocationManager sharedManager]getDistance];
-		 infoLabel.text = [NSString stringWithFormat:@"%@ • (~%.0f Km atstumu)", infoLabel.text, di] ;
+		 infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
 		 centerMap = [[LocationManager sharedManager]getLocationCoordinates];
 	 }
 
@@ -93,7 +93,7 @@
 		[pubAnnotation setTitle:pub.pubTitle];
 		
 		if (pub.distance != 0 && locationBased){
-			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (%.2f Km)",pub.pubAddress,pub.distance]];
+			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (~%.2f Km)",pub.pubAddress,pub.distance]];
 		} else {
 			[pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",pub.pubAddress]];			
 		}

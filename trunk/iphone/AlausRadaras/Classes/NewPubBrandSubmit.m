@@ -1,4 +1,4 @@
-    //
+//
 //  NewPubBrandSubmit.m
 //  AlausRadaras
 //
@@ -11,48 +11,40 @@
 
 @implementation NewPubBrandSubmit
 
-@synthesize msgTextView,submitControl,pubId;
+@synthesize msgTextView, submitBtn, pubId;
 
 - (void)dealloc {
 	[pubId release];
-	[submitControl release];
 	[msgTextView release];
-
+	[submitBtn release];
     [super dealloc];
 }
 
-
- - (void)viewDidLoad {
+- (void)viewDidLoad {
 	 /* Application setup */
 	 [super viewDidLoad];
-	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	 self.view.backgroundColor = background;
 	 [background release];
- }
- 
-- (void) viewDidAppear:(BOOL)animated {
+
+	 msgTextView.delegate = self;
+	 
+	 [submitBtn setEnabled:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 	[msgTextView becomeFirstResponder];
 }
 
-
-- (IBAction) actionSelected {
-	switch (self.submitControl.selectedSegmentIndex) {
-		case 0:
-			[self sendNewPubBrandSubmit];
-			self.submitControl.selectedSegmentIndex = -1;
-			break;
-			
-		case 1:
-			[self.parentViewController dismissModalViewControllerAnimated:YES];
-			break;
-
-		default:
-			break;
+- (void)textViewDidChange:(UITextView *)textView {
+	if (msgTextView.text.length > 0) {
+		[submitBtn setEnabled:YES];
+	} else {
+		[submitBtn setEnabled:NO];
 	}
 }
 
-
-- (void) sendNewPubBrandSubmit {
+- (IBAction) sendNewPubBrandSubmit {
 	UIAlertView* alertView = 
 	[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
 							   message:nil 
@@ -67,20 +59,32 @@
 	if(buttonIndex == 0) {
 		// check if submited in 12 hours?		
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
-		NSLog(@"GUID: %@", uniqueIdentifier);
 		
-		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
-		[dataPublisher submitPubBrand:@"" pub:pubId status:@"NEW_BRAND" message:msgTextView.text];
-		
+//		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
+		[[DataPublisher sharedManager] submitPubBrand:@"" 
+												  pub:pubId 
+											   status:@"NEW_BRAND" 
+											  message:[NSString stringWithFormat:@"GUID: %@ Message: %@", uniqueIdentifier, msgTextView.text]
+											 validate:NO];
+
+		msgTextView.text = @"";
+		[submitBtn setEnabled:NO];
 		[self.parentViewController dismissModalViewControllerAnimated:YES];
 	}
 }
 
 
 
-- (void) viewDidDisappear:(BOOL)animated {
-	self.submitControl.selectedSegmentIndex = -1;
-	msgTextView.text = @"";
+- (IBAction) gotoPreviousView {
+	[self.parentViewController dismissModalViewControllerAnimated:YES];	
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation {
+	if (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown) {
+		return YES;	
+	} else {
+		return NO;
+	}
 }
 
 
