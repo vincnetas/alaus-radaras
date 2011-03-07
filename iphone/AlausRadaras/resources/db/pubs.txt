@@ -64,3 +64,5 @@
 1298572132631	Pianoman	Islandijos g. 1	Vilnius	+37065096925	http://www.facebook.com/pages/Piano-Man-bar/165700010117626?v=info	54.6839635	25.2787747
 1298572132634	Gyvas	Muitinės g. 1/Rotušės 6a	Kaunas		http://www.facebook.com/pages/Gyvas-alaus-pubas-krautuv%C4%97l%C4%97/139925489401626?v=wall	54.8968721	23.8924264
 1298572132635	Terrazza	Konstitucijos pr. 26	Vilnius	+37068790719	http://www.terrazza.lt	54.6981917	25.2672398
+1299076781545	Grizzly Grill	Savanorių pr. 439/Šiaurės pr. 3A	Kaunas	+37037249337	http://grizzlygrill.lt	54.9279797	23.9710759
+1299399186159	Portobello	Aušros vartų g. 7	Vilnius	8 52 121646	http://www.facebook.com/pages/Portobello/128496187172890	54.6764408	25.2882045

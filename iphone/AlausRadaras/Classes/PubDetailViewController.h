@@ -11,8 +11,9 @@
 #import "MapViewController.h"
 #import "PubBrandSubmit.h"
 #import "NewPubBrandSubmit.h"
+#import "MBProgressHUD.h"
 
-@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate>{
 	UILabel *pubTitleShortLabel;
 	UILabel *pubTitleLabel;
 	UILabel *pubAddressLabel;
@@ -30,6 +31,7 @@
 	IBOutlet PubBrandSubmit *pubBrandSubmit;
 	IBOutlet NewPubBrandSubmit *newBrandSubmit;
 
+	IBOutlet UIView *thankView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -46,7 +48,8 @@
 @property (nonatomic, retain) Pub *currentPub;
 @property (nonatomic, retain) NSString *userCoordinates;
 
-@property (retain) IBOutlet UIView *reportPubInfoView;
+@property (nonatomic, retain) IBOutlet UIView *thankView;
+
 
 
 - (IBAction) gotoPreviousView:(id)sender;

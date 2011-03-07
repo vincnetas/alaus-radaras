@@ -531,6 +531,19 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	return result;
 }
 
+- (NSString *) getBrandsLabelById:(NSString *)brandId {	
+	FMResultSet *rs = 
+		[db executeQuery:@"SELECT * FROM brands b WHERE b.brandId = ?", brandId];
+	NSString *result;
+	while ([rs next]) {
+		result = [[rs stringForColumn:@"label"]copy];
+		break;
+	}
+	[rs close];
+	return result;
+}
+
+
 - (NSMutableArray *) getBrandsByPubId:(NSString *)pubId {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 

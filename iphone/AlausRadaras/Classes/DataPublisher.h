@@ -8,10 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataPublisher : NSObject {
-
+@interface DataPublisher : NSObject {	
+	NSMutableDictionary *submits;
+	
+	NSString *currentBrandId;
+	NSString *currentPubId;
 }
 
-- (void) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message;
++ (DataPublisher*) sharedManager;
++ (id)allocWithZone:(NSZone *)zone;
+
+- (void) initializeManager;
+
+- (void) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message validate:(BOOL) validate;
+- (void) addSubmittedBrand:  (NSString *) brandId forPub:(NSString *) pubId;
+- (void) postData:(NSString *) params;
 
 @end

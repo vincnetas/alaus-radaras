@@ -84,18 +84,27 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == 0) {
-		// check if submited in 12 hours?		
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
 		NSLog(@"GUID: %@", uniqueIdentifier);
 		
-		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
-		[dataPublisher submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier];
+		[[DataPublisher sharedManager] submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier validate:YES];
 		
-		[self.parentViewController dismissModalViewControllerAnimated:YES];
 	}
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
+
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.parentViewController.view];
+	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+	HUD.mode = MBProgressHUDModeCustomView;
+	[self.parentViewController.view addSubview:HUD];
+	HUD.delegate = self.parentViewController;
+	HUD.labelText = @"Tik alus išgelbės mus!";
+	[HUD showWhileExecuting:@selector(delay) onTarget:self withObject:nil animated:YES];
+	[HUD release];
 }
 
-
+- (void)delay {
+    sleep(2);
+}
 
 - (void) viewDidDisappear:(BOOL)animated {
 	// Clear everything

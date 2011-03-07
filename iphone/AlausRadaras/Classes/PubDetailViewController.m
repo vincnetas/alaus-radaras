@@ -10,6 +10,7 @@
 #import "Brand.h"
 #import "SQLiteManager.h"
 #import "LocationManager.h"
+#import "MBProgressHUD.h"
 
 @implementation PubDetailViewController
 
@@ -17,7 +18,7 @@
 @synthesize brandList, currentPub;
 @synthesize brandsTable;
 @synthesize userCoordinates;
-@synthesize reportPubInfoView;
+@synthesize thankView;
 
 - (void)dealloc {
 	[urlButton release];
@@ -34,6 +35,7 @@
 	[pubCallLabel release];
 	[brandsTable release];
 	[brandList release];
+	[thankView release];
     [super dealloc];
 }
 
@@ -74,8 +76,10 @@
 	 }
 	 NSLog(@"PubDetailViewController viewDidLoad");
 	 
-	 self.reportPubInfoView.frame = CGRectMake(0.0, 700.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
-	 [self.view addSubview:self.reportPubInfoView];
+	 self.thankView.frame = CGRectMake(0.0, 0.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
+	 [self.view addSubview:self.thankView];
+
+	 self.thankView.hidden = YES;
 }
 
 
@@ -119,12 +123,16 @@
 }
 
 - (IBAction) reportPubInfo:(id)sender {
-	[UIView beginAnimations: @"moveCNGCallout" context: nil];
-	[UIView setAnimationDelegate: self];
-	[UIView setAnimationDuration: 0.5];
-	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-	self.reportPubInfoView.frame = CGRectMake(0.0, 50.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
-	[UIView commitAnimations];	
+//	[UIView beginAnimations: @"moveCNGCallout" context: nil];
+//	[UIView setAnimationDelegate: self];
+//	[UIView setAnimationDuration: 2];
+//	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+//	self.thankView.frame = CGRectMake(0.0, 0.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
+//	[UIView commitAnimations];	
+
+//	self.thankView.hidden = NO;
+
+	NSLog(@"reportPubInfo");
 	//[self.view addSubview:self.reportPubInfoView];
 }
 
@@ -133,7 +141,7 @@
 	[UIView setAnimationDelegate: self];
 	[UIView setAnimationDuration: 0.5];
 	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-	self.reportPubInfoView.frame = CGRectMake(0.0, 700.0, self.reportPubInfoView.frame.size.width, self.reportPubInfoView.frame.size.height);
+	self.thankView.frame = CGRectMake(0.0, 700.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
 	[UIView commitAnimations];	
 	//[self.view addSubview:self.reportPubInfoView];
 }
@@ -237,9 +245,11 @@
 	[self presentModalViewController:pubBrandSubmit animated:YES];	
 }
 
+
+
 - (IBAction) openAddBrandSubmit: (id)sender {
 	newBrandSubmit.pubId = currentPub.pubId;
-	newBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;//UIModalTransitionStyleCoverVertical;	
+	newBrandSubmit.modalTransitionStyle = UIModalTransitionStyleCoverVertical;//UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:newBrandSubmit animated:YES];	
 }
 

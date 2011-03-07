@@ -9,20 +9,22 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NewPubBrandSubmit : UIViewController {
+@interface NewPubBrandSubmit : UIViewController <UITextViewDelegate> {
 	// Add UI
 	UITextView *msgTextView;
-	UISegmentedControl *submitControl;	
-
+	UIBarButtonItem *submitBtn;
+	
 	NSString *pubId;
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *msgTextView;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *submitControl;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *submitBtn;
 
 @property (nonatomic, retain) NSString *pubId;
 
 - (void) sendNewPubBrandSubmit;
-- (IBAction) actionSelected;
+- (IBAction) actionSelected;//Deprecated - remove
+- (IBAction) gotoPreviousView;
+- (IBAction) sendNewPubBrandSubmit;
 
 @end

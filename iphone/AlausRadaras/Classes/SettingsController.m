@@ -31,7 +31,6 @@
 	if (standardUserDefaults) {
 		BOOL visibilityControlled = [standardUserDefaults boolForKey:@"VisibilityControlled"];
 		visibilityDistance = [standardUserDefaults integerForKey:@"VisibilityDistance"];
-		
 		[[LocationManager sharedManager]setVisibilityControlled:visibilityControlled];
 		
 		if (visibilityControlled) {

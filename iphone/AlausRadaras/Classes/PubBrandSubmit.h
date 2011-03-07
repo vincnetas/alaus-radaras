@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Brand.h";
-
-@interface PubBrandSubmit : UIViewController {
+#import "MBProgressHUD.h";
+@interface PubBrandSubmit : UIViewController <MBProgressHUDDelegate> {
 	// UI
 	UILabel *brandLabel;
 	UIImageView *brandImage;

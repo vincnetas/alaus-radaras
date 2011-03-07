@@ -7,16 +7,106 @@
 //
 
 #import "DataPublisher.h"
+#import "SQLiteManager.h"
 
 @implementation DataPublisher
 
-- (void) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message {
+- (void)dealloc {
+	[submits release];
+	[currentBrandId release];
+	[currentPubId release];
+    [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Singleton stuff
+
+static DataPublisher *sharedManager = nil;
+
++ (DataPublisher*) sharedManager {
+    if (sharedManager == nil) {
+        sharedManager = [[super allocWithZone:NULL] init];
+    }
+    return sharedManager;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    return [[self sharedManager] retain];
+}
+
+- (void) initializeManager {
+	submits = [[NSMutableDictionary alloc]init];
+}
+
+#pragma mark -
+#pragma mark Methods
+
+
+- (void) submitPubBrand: (NSString *) brandId 
+					pub:(NSString *) pubId 
+				 status:(NSString *) status 
+				message:(NSString *) message 
+			   validate:(BOOL) validate {
 	NSString *post = 
 		[NSString stringWithFormat:
 			@"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@",
 				status, brandId, pubId, message];
+	
+	currentBrandId = brandId;
+	currentPubId = pubId;
+	
+	if (validate) {
+		NSMutableDictionary *pubBrands = [submits objectForKey:currentPubId];
+		
+		if (pubBrands != nil) {
+			NSDate *lastSubmitTime = [pubBrands objectForKey:currentBrandId];
+			
+			if (lastSubmitTime != nil) {
+				//pub already has this brand submited, checking time
+				NSDate *now = [[NSDate alloc]init];
+				double delta = [now timeIntervalSinceDate:lastSubmitTime];
+				
+				NSLog(@"Time since last submit: %g",delta);
+				
+				if (delta < 60) {
+					// Too soon
+					NSLog(@"Sorry, too soon");
+					
+					NSString *brandName = [[SQLiteManager sharedManager] getBrandsLabelById:currentBrandId];
+					
+					UIAlertView *alert = [[UIAlertView alloc] 
+							initWithTitle:[NSString stringWithFormat:@"Ar tikrai blaivas?\nApie %@ alų jau pranešei ☺", brandName] 
+							message: @""
+							delegate:self 
+							cancelButtonTitle:@"Oj.." 
+							otherButtonTitles:nil, nil];
+					[alert show];
+					[alert release];
+					[brandName release];
+					return;
+				}
+				[now release];
+			}
+			[lastSubmitTime release];
+		}
+		[pubBrands release];
+	}
 	[self postData:post];
 }
+
+
+- (void) addSubmittedBrand:  (NSString *) brandId forPub:(NSString *) pubId {
+	NSMutableDictionary *pubBrands = [submits objectForKey:pubId];
+	
+	if (pubBrands == nil) {
+		pubBrands = [[NSMutableDictionary alloc]init];
+	}
+	[pubBrands setObject:[[NSDate alloc]init] forKey:brandId];
+	[submits setObject:pubBrands forKey:pubId];
+	
+	[pubBrands release];
+}
+
 
 - (void) postData:(NSString *) params {
 	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -29,8 +119,56 @@
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 	[request setHTTPBody:postData];
 	
-	//	NSURLConnection *connection =
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+#pragma mark -
+#pragma mark NSURLConnection stuff
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // release the connection, and the data object
+    [connection release];
+    // receivedData is declared as a method instance elsewhere
+    
+	currentBrandId = @"";
+	currentPubId = @"";
+
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+	
+	//Connection error occured
+	UIAlertView* alertView = 
+		[[UIAlertView alloc] initWithTitle:@"Nepavyko nusiųsti... gal dar alaus?"
+							   message:nil 
+							  delegate:self 
+					 cancelButtonTitle:@"Meginsiu vėliau"
+					 otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Pub Brands successfully sent");
+	
+	//TODO thank user for sending data
+
+	NSMutableDictionary *pubBrands = [submits objectForKey:currentPubId];
+	NSLog(@"Submital records: %i", [submits count]);
+	 
+	if (pubBrands == nil) {
+		pubBrands = [[NSMutableDictionary alloc]init];
+	}
+	[pubBrands setObject:[[NSDate alloc]init] forKey:currentBrandId];
+	[submits setObject:pubBrands forKey:currentPubId];
+		
+	currentBrandId = @"";
+	currentPubId = @"";
+	 
+    // release the connection, and the data object
+	[pubBrands release];
+    [connection release];
 }
 
 @end
