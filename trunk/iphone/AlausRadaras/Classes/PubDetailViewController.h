@@ -30,8 +30,8 @@
 		
 	IBOutlet PubBrandSubmit *pubBrandSubmit;
 	IBOutlet NewPubBrandSubmit *newBrandSubmit;
-
-	IBOutlet UIView *thankView;
+	
+	NSString *thankYouMsg;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -48,17 +48,15 @@
 @property (nonatomic, retain) Pub *currentPub;
 @property (nonatomic, retain) NSString *userCoordinates;
 
-@property (nonatomic, retain) IBOutlet UIView *thankView;
-
-
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (IBAction) dialNumber:(id)sender;
 - (IBAction) navigateToPub:(id)sender;
 - (IBAction) openWebpage:(id)sender;
-- (IBAction) reportPubInfo:(id)sender;
-- (IBAction) closeReportPubInfo:(id)sender;
 - (IBAction) openPubBrandSubmit: (id)sender;
 - (IBAction) openAddBrandSubmit: (id)sender;
+
+- (void) postData:(NSString *) params msg:(NSString *)msg;
+
 
 @end
