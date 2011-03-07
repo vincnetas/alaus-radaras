@@ -87,24 +87,22 @@
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
 		NSLog(@"GUID: %@", uniqueIdentifier);
 		
-		[[DataPublisher sharedManager] submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier validate:YES];
-		
+		BOOL success = 
+			[[DataPublisher sharedManager] submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier validate:YES];
+		if (success) {
+			NSLog(@"Data can be published");
+			NSString *post = 
+			[NSString stringWithFormat:
+			 @"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@",
+				status, brand.brandId, pubId, uniqueIdentifier];
+			
+			[self.parentViewController postData:post msg:@"Tik alus išgelbės mus!"];
+
+		}
 	}
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
-
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.parentViewController.view];
-	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
-	HUD.mode = MBProgressHUDModeCustomView;
-	[self.parentViewController.view addSubview:HUD];
-	HUD.delegate = self.parentViewController;
-	HUD.labelText = @"Tik alus išgelbės mus!";
-	[HUD showWhileExecuting:@selector(delay) onTarget:self withObject:nil animated:YES];
-	[HUD release];
 }
 
-- (void)delay {
-    sleep(2);
-}
 
 - (void) viewDidDisappear:(BOOL)animated {
 	// Clear everything

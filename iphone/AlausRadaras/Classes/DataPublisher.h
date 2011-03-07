@@ -20,8 +20,8 @@
 
 - (void) initializeManager;
 
-- (void) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message validate:(BOOL) validate;
-- (void) addSubmittedBrand:  (NSString *) brandId forPub:(NSString *) pubId;
+- (BOOL) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message validate:(BOOL) validate;
+- (void) addSubmittedBrand;
 - (void) postData:(NSString *) params;
 
 @end

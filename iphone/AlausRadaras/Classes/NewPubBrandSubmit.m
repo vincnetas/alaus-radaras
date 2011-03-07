@@ -61,7 +61,7 @@
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
 		
 //		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
-		[[DataPublisher sharedManager] submitPubBrand:@"" 
+		BOOL success = [[DataPublisher sharedManager] submitPubBrand:@"" 
 												  pub:pubId 
 											   status:@"NEW_BRAND" 
 											  message:[NSString stringWithFormat:@"GUID: %@ Message: %@", uniqueIdentifier, msgTextView.text]
@@ -69,6 +69,16 @@
 
 		msgTextView.text = @"";
 		[submitBtn setEnabled:NO];
+
+		if (success) {
+			NSLog(@"Data can be published");
+			NSString *post = 
+				[NSString stringWithFormat:
+					@"type=pubBrandInfo&status=NEW_BRAND&brandId=NEW_BRAND&pubId=%@&message=%@",
+					pubId, [NSString stringWithFormat:@"GUID: %@ Message: %@", uniqueIdentifier, msgTextView.text]];
+			
+			[self.parentViewController postData:post msg:@"+500 taškų už pilietiškumą. Dėkui! :)"];
+		}
 		[self.parentViewController dismissModalViewControllerAnimated:YES];
 	}
 }

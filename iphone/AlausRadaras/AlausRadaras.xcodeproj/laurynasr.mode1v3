@@ -278,13 +278,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
-									<integer>11</integer>
+									<integer>23</integer>
+									<integer>21</integer>
+									<integer>19</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {260, 734}}</string>
+							<string>{{0, 210}, {260, 734}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -321,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DataPublisher.m</string>
+								<string>PubDetailViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DataPublisher.m</string>
+										<string>PubDetailViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C99A662613258D140036B4DF</string>
+										<string>C99A669B13259CD50036B4DF</string>
 										<key>history</key>
 										<array>
 											<string>C901C38E1309D3980012B641</string>
@@ -393,28 +394,28 @@
 											<string>C9A381EC1322CD6400790E5E</string>
 											<string>C9A3821B1322DC2F00790E5E</string>
 											<string>C9C1BDAF1323AA42008EDD80</string>
-											<string>C9C1BDB01323AA42008EDD80</string>
 											<string>C9C1BE531323D485008EDD80</string>
 											<string>C9B7CE91132408B8002B8A3B</string>
-											<string>C9B7CEA213240A4A002B8A3B</string>
 											<string>C9B7CED813243867002B8A3B</string>
 											<string>C9EDCA3213255085009BC38C</string>
 											<string>C9EDCA3313255085009BC38C</string>
 											<string>C9EDCA3513255085009BC38C</string>
-											<string>C9EDCA4213255148009BC38C</string>
 											<string>C9EDCA4313255148009BC38C</string>
 											<string>C99A64DA132569B40036B4DF</string>
 											<string>C99A65E4132575370036B4DF</string>
-											<string>C99A660513257CEB0036B4DF</string>
 											<string>C99A660B13257DFD0036B4DF</string>
-											<string>C99A6611132583440036B4DF</string>
-											<string>C99A6612132583440036B4DF</string>
-											<string>C99A6613132583440036B4DF</string>
-											<string>C99A661D132587380036B4DF</string>
 											<string>C99A662213258D140036B4DF</string>
-											<string>C99A662313258D140036B4DF</string>
-											<string>C99A662413258D140036B4DF</string>
-											<string>C99A662513258D140036B4DF</string>
+											<string>C99A66381325923A0036B4DF</string>
+											<string>C99A665F132597030036B4DF</string>
+											<string>C99A6660132597030036B4DF</string>
+											<string>C99A6662132597030036B4DF</string>
+											<string>C99A666C132597AF0036B4DF</string>
+											<string>C99A668313259C060036B4DF</string>
+											<string>C99A668413259C060036B4DF</string>
+											<string>C99A668613259C060036B4DF</string>
+											<string>C99A669713259CAD0036B4DF</string>
+											<string>C99A669813259CAD0036B4DF</string>
+											<string>C99A668513259C060036B4DF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -612,6 +613,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C99A668A13259C060036B4DF</string>
+		<string>C99A668B13259C060036B4DF</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>C9EA044F1301EC6900266EEA</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -639,7 +642,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PubBrandSubmit.m</string>
+								<string>PubDetailViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

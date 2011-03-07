@@ -11,6 +11,7 @@
 #import "SQLiteManager.h"
 #import "LocationManager.h"
 #import "MBProgressHUD.h"
+#import "DataPublisher.h";
 
 @implementation PubDetailViewController
 
@@ -18,7 +19,6 @@
 @synthesize brandList, currentPub;
 @synthesize brandsTable;
 @synthesize userCoordinates;
-@synthesize thankView;
 
 - (void)dealloc {
 	[urlButton release];
@@ -35,7 +35,6 @@
 	[pubCallLabel release];
 	[brandsTable release];
 	[brandList release];
-	[thankView release];
     [super dealloc];
 }
 
@@ -76,10 +75,6 @@
 	 }
 	 NSLog(@"PubDetailViewController viewDidLoad");
 	 
-	 self.thankView.frame = CGRectMake(0.0, 0.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
-	 [self.view addSubview:self.thankView];
-
-	 self.thankView.hidden = YES;
 }
 
 
@@ -120,30 +115,6 @@
 
 - (IBAction) openWebpage:(id)sender {	
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentPub.webpage]];
-}
-
-- (IBAction) reportPubInfo:(id)sender {
-//	[UIView beginAnimations: @"moveCNGCallout" context: nil];
-//	[UIView setAnimationDelegate: self];
-//	[UIView setAnimationDuration: 2];
-//	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//	self.thankView.frame = CGRectMake(0.0, 0.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
-//	[UIView commitAnimations];	
-
-//	self.thankView.hidden = NO;
-
-	NSLog(@"reportPubInfo");
-	//[self.view addSubview:self.reportPubInfoView];
-}
-
-- (IBAction) closeReportPubInfo:(id)sender {
-	[UIView beginAnimations: @"moveCNGCallout" context: nil];
-	[UIView setAnimationDelegate: self];
-	[UIView setAnimationDuration: 0.5];
-	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-	self.thankView.frame = CGRectMake(0.0, 700.0, self.thankView.frame.size.width, self.thankView.frame.size.height);
-	[UIView commitAnimations];	
-	//[self.view addSubview:self.reportPubInfoView];
 }
 
 - (IBAction) keyboardDoneAction: (id)sender {
@@ -267,6 +238,71 @@
 	NSLog(@"Rows %d",numRows);
 	return numRows * 80;//95.0;
 } 
+
+
+
+
+
+#pragma mark -
+#pragma mark NSURLConnection methods
+
+
+
+- (void) postData:(NSString *) params msg:(NSString *)msg {
+	thankYouMsg = msg;
+	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];
+	
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:@"http://alausradaras.lt/android/subtest.php"]];
+	[request setHTTPMethod:@"POST"];
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPBody:postData];
+	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // release the connection, and the data object
+    [connection release];
+
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+	
+	//Connection error occured
+	UIAlertView* alertView = 
+	[[UIAlertView alloc] initWithTitle:@"Nepavyko nusiųsti... gal dar alaus?"
+							   message:nil 
+							  delegate:self 
+					 cancelButtonTitle:@"Meginsiu vėliau"
+					 otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Pub Brands successfully sent");
+	
+	[[DataPublisher sharedManager]addSubmittedBrand];
+	
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+	HUD.mode = MBProgressHUDModeCustomView;
+	[self.view addSubview:HUD];
+	HUD.delegate = self;
+	HUD.labelText = thankYouMsg;//@"Tik alus išgelbės mus!";
+	[HUD showWhileExecuting:@selector(delay) onTarget:self withObject:nil animated:YES];
+	[HUD release];
+}
+
+- (void)delay {
+	sleep(2);
+}
+
+
 
 #pragma mark -
 #pragma mark Other methods
