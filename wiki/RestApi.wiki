@@ -1,7 +1,7 @@
 == rest/services/radar ==
 Input
 {{{
-    some sort of api_key/credentials?
+    /json?lastUpdate=2011-03-08
 }}}
 
 Output
@@ -72,10 +72,10 @@ Output
    }
 }
 }}}
+delete, update and child elements beers, brands, pubs will always be returned even if they have no content.
 
 === Response codes ===
 {{{
 HTTP Successful 200 - OK
-HTTP Error 304      - Not modified
 }}}
  
