@@ -68,7 +68,7 @@ static DataPublisher *sharedManager = nil;
 				
 				NSLog(@"Time since last submit: %g",delta);
 				
-				if (delta < 180) {
+				if (delta < 600) {
 					// Too soon
 					NSLog(@"Sorry, too soon");
 					
