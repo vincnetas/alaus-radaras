@@ -38,7 +38,7 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeArchitecturePreference = armv7;
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = C97BF09212EA0A83004519F0 /* AlausRadaras */;
 		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* AlausRadaras */;
@@ -1620,9 +1620,9 @@
 	};
 	C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 4524}}";
-			sepNavSelRange = "{8277, 0}";
-			sepNavVisRange = "{7821, 1500}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 4485}}";
+			sepNavSelRange = "{8757, 0}";
+			sepNavVisRange = "{7941, 1597}";
 			sepNavWindowFrame = "{{15, 55}, {1159, 942}}";
 		};
 	};
