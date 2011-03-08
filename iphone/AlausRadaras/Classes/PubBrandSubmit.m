@@ -8,6 +8,7 @@
 
 #import "PubBrandSubmit.h"
 #import "DataPublisher.h"
+#import "LocationManager.h";
 
 @implementation PubBrandSubmit
 
@@ -91,10 +92,11 @@
 			[[DataPublisher sharedManager] submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier validate:YES];
 		if (success) {
 			NSLog(@"Data can be published");
+			CLLocationCoordinate2D coords= [[LocationManager sharedManager]getLocationCoordinates];
 			NSString *post = 
 			[NSString stringWithFormat:
-			 @"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@",
-				status, brand.brandId, pubId, uniqueIdentifier];
+			 @"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
+			 status, brand.brandId, pubId, uniqueIdentifier, coords.latitude, coords.longitude];
 			
 			[self.parentViewController postData:post msg:@"Tik alus išgelbės mus!"];
 
