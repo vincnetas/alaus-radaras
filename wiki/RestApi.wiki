@@ -7,86 +7,69 @@ Input
 Output
 {{{
 {
-    "brands": {
-        "brand" : [
-            {
-                "id"            : "id",
-                "title"         : "title",
-                "icon"          : "icon",
-                "description"   : "description"
-            }   
-        ]
-    },
+   "delete":{
+      "beers":[
+         "1298412573792",
+         "1298412573792"
+      ],
+      "brands":[
+         "1298412573792",
+         "1298412573792"
+      ],
+      "pubs":[
+         "1298412573792",
+         "1298412573792"
+      ]
+   },
+   "update":{
+      "beers":[
+         {
+            "brandId":"1298412573792",
+            "description":"",
+            "icon":"svyturys_baltas",
+            "id":"1298412573793",
+            "tags":[
+               "white",
+               "strong"
+            ],
+            "title":"Švyturio baltas"
+         }
+      ],
+      "brands":[
+         {
+            "country":"LT",
+            "description":"",
+            "homePage":"http://www.svyturys.lt",
+            "hometown":"Klaipėda",
+            "icon":"svyturys",
+            "id":"1298412573792",
+            "tags":[
+               ""
+            ],
+            "title":"Švyturys"
+         }
+      ],
+      "pubs":[
+         {
+            "address":"Vilniaus g. 34",
+            "beerIds":[
+               "1298469264838",
+               "1298469264837"
+            ],
+            "city":"Kaunas",
+            "country":"",
+            "homepage":"http://www.avilys.lt",
+            "id":"1298412463870",
+            "latitude":54.896490100000001,
+            "longitude":23.893032999999999,
+            "phone":"8 699 66239",
+            "tags":[
 
-    "pubs": {
-        "pub" : [
-            {
-                "id"            : "id",
-                "title"         : "title"
-                "longitude"     : "longitude",
-                "latitude"      : "latitude",
-                "address"       : "address",
-                "notes"         : "notes",
-                "phone"         : "phone",
-                "url"           : "url",
-                "description"   : "description"
-            }   
-        ]
-    },
-
-    "brands<->pubs": {
-        "item" : [
-            {
-                "brand"         : "id",
-                "pub"           : "id"
-            }   
-        ]
-    },
-
-    "countries": {
-        "country" : [
-            {
-                "id"            : "id",
-                "name"          : "name"
-            }   
-        ]
-    },
-
-    "brands->countries": {
-        "item" : [
-            {
-                "brand"         : "id",
-                "country"       : "id"
-            }   
-        ]
-    },
-
-    "tags": {
-            "tag" : [
-            {
-                "id"            : "id",
-                "name"          : "name"
-            }   
-        ]
-    },
-
-    "brands->tags": {
-        "item" : [
-            {
-                "brand"         : "id",
-                "tag"           : "id"
-            }   
-        ]
-    },
-    
-    "quotes": {
-        "quote" : [
-            {
-                "index"         : "index",
-                "text"          : "text"
-            }   
-        ]
-    },
+            ],
+            "title":"Avilys"
+         }
+      ]
+   }
 }
 }}}
 
