@@ -6,6 +6,9 @@ Input
 
     If first update
     /json
+
+    With userId. Server would store last update date for each user.
+    /json?uid=1234
 }}}
 
 Output
