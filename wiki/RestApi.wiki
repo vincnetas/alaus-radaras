@@ -1,7 +1,11 @@
 == rest/services/radar ==
 Input
 {{{
+    If last update date is known
     /json?lastUpdate=2011-03-08
+
+    If first update
+    /json
 }}}
 
 Output
