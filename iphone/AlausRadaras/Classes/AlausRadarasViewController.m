@@ -34,6 +34,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
 	/* Get Total Beers from user defaults */
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	beerCount = 0;
@@ -43,6 +45,8 @@
 		beerCount += currentBeerCount;
 	}
 	pintCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];
+	
+    [self becomeFirstResponder];
 }
 
 -(IBAction) clickPint:(id) sender {
@@ -79,18 +83,33 @@
 }
 
 
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	if (event.type == UIEventSubtypeMotionShake) {
+		NSLog(@"Shake detected - opening taxi view");
+		TaxiViewController *taxiView = 
+			[[TaxiViewController alloc] initWithNibName:nil bundle:nil];
+		taxiView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
+		[self presentModalViewController:taxiView animated:YES];
+		[taxiView release];
+	}
+	if ([super respondsToSelector:@selector(motionEnded:withEvent:)]) {
+        [super motionEnded:motion withEvent:event];
+    }
+}
+
+
+
+
 - (void)didReceiveMemoryWarning {
 	NSLog(@"AlausRadarasViewController: Recieved a Memory Warning... Oooops..");
-	
-	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 

@@ -12,6 +12,7 @@
 #import "BeerCounterController.h"
 #import "LuckyController.h"
 #import "SettingsController.h"
+#import "TaxiViewController.h"
 
 @interface AlausRadarasViewController : UIViewController {
 	UILabel *pintCountLabel;
@@ -30,6 +31,8 @@
 -(IBAction) clickPlaces:(id) sender;
 -(IBAction) clickLucky:(id) sender;
 -(IBAction) clickSettings:(id) sender;
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;
 
 
 @end

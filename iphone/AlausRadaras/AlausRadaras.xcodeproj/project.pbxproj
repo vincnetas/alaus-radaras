@@ -109,6 +109,11 @@
 		C986D00D12F479E100865F6D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C986D00C12F479E000865F6D /* back.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
 		C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */; };
+		C98DA6BB132EACCD00A22EC0 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */; };
+		C98DA6BC132EACCD00A22EC0 /* TaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */; };
+		C98DA6E3132EB2A400A22EC0 /* Taxi.m in Sources */ = {isa = PBXBuildFile; fileRef = C98DA6E2132EB2A400A22EC0 /* Taxi.m */; };
+		C99020D4132EBCB500178109 /* taxi.png in Resources */ = {isa = PBXBuildFile; fileRef = C99020D3132EBCB500178109 /* taxi.png */; };
+		C9902113132EC8BE00178109 /* taxi2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9902112132EC8BE00178109 /* taxi2.png */; };
 		C994524B1312FD6B00732314 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C994524A1312FD6B00732314 /* SettingsController.m */; };
 		C994525A1313005500732314 /* black-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452581313005500732314 /* black-background.png */; };
 		C994525B1313005500732314 /* black-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452591313005500732314 /* black-background@2x.png */; };
@@ -277,6 +282,13 @@
 		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
 		C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
 		C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
+		C98DA6B8132EACCD00A22EC0 /* TaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiViewController.h; sourceTree = "<group>"; };
+		C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
+		C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TaxiView.xib; path = Classes/TaxiView.xib; sourceTree = "<group>"; };
+		C98DA6E1132EB2A400A22EC0 /* Taxi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Taxi.h; sourceTree = "<group>"; };
+		C98DA6E2132EB2A400A22EC0 /* Taxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Taxi.m; sourceTree = "<group>"; };
+		C99020D3132EBCB500178109 /* taxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = taxi.png; path = resources/images/taxi.png; sourceTree = "<group>"; };
+		C9902112132EC8BE00178109 /* taxi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = taxi2.png; path = resources/images/taxi2.png; sourceTree = "<group>"; };
 		C99452491312FD6B00732314 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		C994524A1312FD6B00732314 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		C99452581313005500732314 /* black-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-background.png"; path = "resources/images/black-background.png"; sourceTree = "<group>"; };
@@ -356,6 +368,7 @@
 				C93929BC131ED97600F2B40F /* FeelingLucky */,
 				C93929BB131ED96700F2B40F /* Brands */,
 				C93929BA131ED95E00F2B40F /* Map */,
+				C98DA6B7132EAC4F00A22EC0 /* Taxi */,
 				1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */,
 				1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* AlausRadarasViewController.h */,
@@ -419,6 +432,7 @@
 				C9948375131C51C400A52587 /* PubsViewController.xib */,
 				C9642B3812EE35940033F9B8 /* MapViewController.xib */,
 				C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */,
+				C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -524,6 +538,15 @@
 			name = pubs;
 			sourceTree = "<group>";
 		};
+		C98DA6B7132EAC4F00A22EC0 /* Taxi */ = {
+			isa = PBXGroup;
+			children = (
+				C98DA6B8132EACCD00A22EC0 /* TaxiViewController.h */,
+				C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */,
+			);
+			name = Taxi;
+			sourceTree = "<group>";
+		};
 		C98EDF7A12EB665B00D8B4A0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +558,8 @@
 				C976847812F22A2900D4E9F3 /* CodeValue.m */,
 				C96A85F512F7516F0021B30B /* FeelingLucky.h */,
 				C96A85F612F7516F0021B30B /* FeelingLucky.m */,
+				C98DA6E1132EB2A400A22EC0 /* Taxi.h */,
+				C98DA6E2132EB2A400A22EC0 /* Taxi.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -564,6 +589,8 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C99020D3132EBCB500178109 /* taxi.png */,
+				C9902112132EC8BE00178109 /* taxi2.png */,
 				C9B7CED213243635002B8A3B /* thank.PNG */,
 				C9C3FDAD131EB3F7002B4427 /* settings.png */,
 				C9C2C2CB131AF8890097092D /* new_brand.png */,
@@ -843,6 +870,9 @@
 				C9A382161322D82600790E5E /* pub_1298412463924.png in Resources */,
 				C9B7CED313243635002B8A3B /* thank.PNG in Resources */,
 				C93F285C132E879E00AB4FAD /* taxi.txt in Resources */,
+				C98DA6BC132EACCD00A22EC0 /* TaxiView.xib in Resources */,
+				C99020D4132EBCB500178109 /* taxi.png in Resources */,
+				C9902113132EC8BE00178109 /* taxi2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +909,8 @@
 				C9948376131C51C400A52587 /* PubsViewController.m in Sources */,
 				C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */,
 				C99A65CD132573D10036B4DF /* MBProgressHUD.m in Sources */,
+				C98DA6BB132EACCD00A22EC0 /* TaxiViewController.m in Sources */,
+				C98DA6E3132EB2A400A22EC0 /* Taxi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
