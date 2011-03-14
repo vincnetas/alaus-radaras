@@ -10,10 +10,11 @@
 
 @implementation BrandsTableCell
 
-@synthesize labelText, brandIcon;
+@synthesize labelText, label2Text, brandIcon;
 
 - (void)dealloc {
 	[labelText release];
+	[label2Text release];
 	[brandIcon release];
     [super dealloc];
 }

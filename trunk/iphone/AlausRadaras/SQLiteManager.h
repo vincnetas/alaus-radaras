@@ -13,6 +13,7 @@
 #import "CodeValue.h"
 #import "FeelingLucky.h"
 #import "Pub.h"
+#import "Taxi.h"
 
 @interface SQLiteManager : NSObject {
 	NSString *databaseName;
@@ -58,6 +59,8 @@
 - (FeelingLucky *) feelingLucky;
 
 - (NSString *) getQuote:(int) amount;
+
+- (NSMutableArray *) getTaxies;
 
  - (void) insertBrands;
  - (void) insertPubs;

@@ -487,12 +487,12 @@ static SQLiteManager *sharedSQLiteManager = nil;
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
 			NSLog(@"Inserting taxi: %@", [values objectAtIndex:0]);
 			
-			[db executeUpdate:@"insert into taxi (title, phone, city, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			[db executeUpdate:@"insert into taxi (title, phone, city, latitude, longitude) values (?, ?, ?, ?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1],
 			 [values objectAtIndex:2],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
+			 [NSNumber numberWithDouble:[[values objectAtIndex:3]doubleValue]],
+			 [NSNumber numberWithDouble:[[values objectAtIndex:4]doubleValue]]];
 		}
 	}
 	[db commit]; 
@@ -851,7 +851,29 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	return nil;
 }
 
+#pragma mark -
+#pragma mark Taxi
 
+- (NSMutableArray *) getTaxies {
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT title, phone, city, latitude, longitude, distance(latitude, longitude, %f,%f) as distance FROM taxi t",  coordinates.latitude, coordinates.longitude]];
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ WHERE distance < %i", query, 20];
+	}
+	FMResultSet *rs = [db executeQuery:query];
+	
+    while ([rs next]) {
+        Taxi* taxi = [[Taxi alloc] initWithTitle:[[rs stringForColumn:@"title"]copy]
+										City:[[rs stringForColumn:@"city"]copy] 
+										Phone:[[rs stringForColumn:@"phone"]copy]
+									   Lat:[rs doubleForColumn:@"latitude"]
+									  Long:[rs doubleForColumn:@"longitude"]];
+		[result addObject:taxi];
+		[taxi release];
+    }	
+	return result;
+}
 
 
 

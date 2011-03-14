@@ -11,10 +11,13 @@
 
 @interface BrandsTableCell : UITableViewCell {
 	UILabel *labelText;
+	UILabel *label2Text;
 	UIImageView *brandIcon;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *labelText;
+@property (nonatomic, retain) IBOutlet UILabel *label2Text;
+
 @property (nonatomic, retain) IBOutlet UIImageView *brandIcon;
 
 @end
