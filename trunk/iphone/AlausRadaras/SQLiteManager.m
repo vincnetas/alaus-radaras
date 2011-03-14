@@ -477,6 +477,26 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		}
 	}
 	[db commit];
+	
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"taxi" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting taxi: %@", [values objectAtIndex:0]);
+			
+			[db executeUpdate:@"insert into taxi (title, phone, city, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1],
+			 [values objectAtIndex:2],
+			 [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
+			 [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
+		}
+	}
+	[db commit]; 
+	
 	NSLog(@"Data inserted");
 }
 

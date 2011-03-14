@@ -27,6 +27,7 @@
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
 		C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */; };
+		C93F285C132E879E00AB4FAD /* taxi.txt in Resources */ = {isa = PBXBuildFile; fileRef = C93F285B132E879E00AB4FAD /* taxi.txt */; };
 		C953E80C12EF5B7B001BD656 /* PubAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E80B12EF5B7B001BD656 /* PubAnnotation.m */; };
 		C953E93A12EF718D001BD656 /* Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = C953E93912EF718D001BD656 /* Brand.m */; };
 		C960135E12F0C69200DB53C0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135012F0C69200DB53C0 /* background.png */; };
@@ -185,6 +186,7 @@
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
 		C93929B7131ED95400F2B40F /* NewPubBrandSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPubBrandSubmit.h; sourceTree = "<group>"; };
 		C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPubBrandSubmit.m; sourceTree = "<group>"; };
+		C93F285B132E879E00AB4FAD /* taxi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = taxi.txt; path = resources/db/taxi.txt; sourceTree = "<group>"; };
 		C953E80A12EF5B7B001BD656 /* PubAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubAnnotation.h; sourceTree = "<group>"; };
 		C953E80B12EF5B7B001BD656 /* PubAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubAnnotation.m; sourceTree = "<group>"; };
 		C953E93812EF718D001BD656 /* Brand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brand.h; path = Classes/Brand.h; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				C9D74DC712EF3B9F008DE8E8 /* pubs.txt */,
 				C9D74DC812EF3B9F008DE8E8 /* qoutes.txt */,
 				C9D74DC912EF3B9F008DE8E8 /* tags.txt */,
+				C93F285B132E879E00AB4FAD /* taxi.txt */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				C9A382151322D82600790E5E /* pub_1298412463920.png in Resources */,
 				C9A382161322D82600790E5E /* pub_1298412463924.png in Resources */,
 				C9B7CED313243635002B8A3B /* thank.PNG in Resources */,
+				C93F285C132E879E00AB4FAD /* taxi.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
