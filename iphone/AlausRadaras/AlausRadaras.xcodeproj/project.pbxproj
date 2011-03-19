@@ -108,6 +108,7 @@
 		C986CF6912F45B7100865F6D /* brand_zubr.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3312F45B7100865F6D /* brand_zubr.png */; };
 		C986D00D12F479E100865F6D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C986D00C12F479E000865F6D /* back.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
+		C988B7FA1331E93500C9170B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988B7F91331E93500C9170B /* AudioToolbox.framework */; };
 		C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */; };
 		C98DA6BB132EACCD00A22EC0 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */; };
 		C98DA6BC132EACCD00A22EC0 /* TaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */; };
@@ -120,6 +121,7 @@
 		C9948376131C51C400A52587 /* PubsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9948374131C51C400A52587 /* PubsViewController.m */; };
 		C9948377131C51C400A52587 /* PubsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9948375131C51C400A52587 /* PubsViewController.xib */; };
 		C99A65CD132573D10036B4DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C99A65CC132573D10036B4DF /* MBProgressHUD.m */; };
+		C9A1877B132FEFBD0000FA78 /* infoscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A1877A132FEFBD0000FA78 /* infoscreen.png */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
@@ -280,6 +282,7 @@
 		C986D00C12F479E000865F6D /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = resources/images/back.png; sourceTree = "<group>"; };
 		C986D03012F481A100865F6D /* LuckyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyController.h; sourceTree = "<group>"; };
 		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
+		C988B7F91331E93500C9170B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
 		C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
 		C98DA6B8132EACCD00A22EC0 /* TaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiViewController.h; sourceTree = "<group>"; };
@@ -298,6 +301,7 @@
 		C9948375131C51C400A52587 /* PubsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubsViewController.xib; path = Classes/PubsViewController.xib; sourceTree = "<group>"; };
 		C99A65CB132573D10036B4DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/HUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		C99A65CC132573D10036B4DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/HUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		C9A1877A132FEFBD0000FA78 /* infoscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = infoscreen.png; path = resources/images/infoscreen.png; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 				C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */,
 				C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */,
 				C9E8E26612F9FB0600E927C1 /* libsqlite3.0.dylib in Frameworks */,
+				C988B7FA1331E93500C9170B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +407,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				C9B7CF7D13243E6A002B8A3B /* QuartzCore.framework */,
+				C988B7F91331E93500C9170B /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 		C9A941DA12EA129B00992FAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C9A1877A132FEFBD0000FA78 /* infoscreen.png */,
 				C99020D3132EBCB500178109 /* taxi.png */,
 				C9902112132EC8BE00178109 /* taxi2.png */,
 				C9B7CED213243635002B8A3B /* thank.PNG */,
@@ -873,6 +880,7 @@
 				C98DA6BC132EACCD00A22EC0 /* TaxiView.xib in Resources */,
 				C99020D4132EBCB500178109 /* taxi.png in Resources */,
 				C9902113132EC8BE00178109 /* taxi2.png in Resources */,
+				C9A1877B132FEFBD0000FA78 /* infoscreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,12 +977,12 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "1B12A7E4-B1A6-4B7B-AAD4-423675177831";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1B12A7E4-B1A6-4B7B-AAD4-423675177831";
+				PROVISIONING_PROFILE = "99C19D4A-5057-4EBA-807C-57BE8C4E8B9A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99C19D4A-5057-4EBA-807C-57BE8C4E8B9A";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
