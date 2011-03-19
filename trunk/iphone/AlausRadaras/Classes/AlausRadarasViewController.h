@@ -22,15 +22,20 @@
 	IBOutlet LuckyController *luckyController;
 	IBOutlet SettingsController *settingsController;
 //	IBOutlet MapViewController *mapController;
+	
+	UIView *infoView;
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
+@property(nonatomic, retain) IBOutlet UIView *infoView;
 
 -(IBAction) clickPint:(id) sender;
 -(IBAction) clickBeers:(id) sender;
 -(IBAction) clickPlaces:(id) sender;
 -(IBAction) clickLucky:(id) sender;
 -(IBAction) clickSettings:(id) sender;
+-(IBAction) clickInfo:(id) sender;
+-(IBAction) removeInfo:(id) sender;
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;
 

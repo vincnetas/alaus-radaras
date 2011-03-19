@@ -10,13 +10,17 @@
 #import "Pub.h"
 #import "SQLiteManager.h";
 #import "LocationManager.h";
+//vibrate
+#import <AudioToolbox/AudioServices.h>
+
+
 
 @implementation AlausRadarasViewController
 
-@synthesize pintCountLabel;
+@synthesize pintCountLabel, infoView;
 
 - (void)dealloc {
-//	[mapController release];
+	[infoView release];
 	[settingsController release];
 	[luckyController release];
 	[beerCounterController release];
@@ -82,6 +86,12 @@
 	[self presentModalViewController:settingsController animated:YES];
 }
 
+-(IBAction) clickInfo:(id) sender {
+	[self.view addSubview:infoView];
+}
+-(IBAction) removeInfo:(id) sender {
+	[infoView removeFromSuperview];
+}
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;
@@ -90,6 +100,7 @@
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	if (event.type == UIEventSubtypeMotionShake) {
 		NSLog(@"Shake detected - opening taxi view");
+		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 		TaxiViewController *taxiView = 
 			[[TaxiViewController alloc] initWithNibName:nil bundle:nil];
 		taxiView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
