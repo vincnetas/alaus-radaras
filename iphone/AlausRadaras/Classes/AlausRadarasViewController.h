@@ -21,8 +21,8 @@
 	IBOutlet BeerCounterController *beerCounterController;
 	IBOutlet LuckyController *luckyController;
 	IBOutlet SettingsController *settingsController;
-//	IBOutlet MapViewController *mapController;
-	
+
+	BOOL enableAllFeatures;
 	UIView *infoView;
 }
 

@@ -23,11 +23,33 @@
 - (void)viewDidLoad {
 	/* Application setup */
     [super viewDidLoad];
-	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	BOOL enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+	UIColor *background;
+	/* iOS3.1 Support */
+	if (enableAllFeatures) {
+		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+	} else {
+		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background-small.png"]];
+		visibilityControl.segmentedControlStyle = UISegmentedControlStyleBar;	
+		
+		CGRect rect = CGRectMake(0, 0, 320, 260);
+		UIButton *button=[[UIButton alloc] initWithFrame:rect];
+		[button setFrame:rect];
+		[button setBackgroundColor:[UIColor clearColor]];
+		//	[button setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+		[button setContentMode:UIViewContentModeCenter];
+		[button addTarget:self action:@selector(hideSettings:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:button];
+		[button release];
+	}
 	self.view.backgroundColor = background;
 	[background release];
 	
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	//self.view.backgroundColor = [UIColor clearColor];
+	self.view.opaque = NO;
+	
 	if (standardUserDefaults) {
 		BOOL visibilityControlled = [standardUserDefaults boolForKey:@"VisibilityControlled"];
 		visibilityDistance = [standardUserDefaults integerForKey:@"VisibilityDistance"];
@@ -45,10 +67,31 @@
 	}
 	
 	[[LocationManager sharedManager]setDistance:visibilityDistance];
-
 	[self visibilityControlIndexChanged];
 }
 
+-(IBAction) hideSettings:(id) sender {
+	NSLog(@"hideSettings");
+	
+	//	CATransition *animation = [CATransition animation];
+	//	[animation setDelegate:self];
+	//	//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+	//	//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+	//	[animation setType:kCATransitionMoveIn];
+	//	[animation setSubtype:kCATransitionFade];
+	//	[animation setDuration:0.75];
+	//	[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+	//	[[settingsController.view layer] addAnimation:animation forKey:kCATransition];
+	
+	[self.view removeFromSuperview];
+	self.view.alpha = 0.0;
+	[self viewDidDisappear:NO];
+	/* Fade-out 
+	 [UIView animateWithDuration:0.2
+	 animations:^{settingsController.view.alpha = 0.0;}
+	 completion:^(BOOL finished){[settingsController.view removeFromSuperview];}];
+	 */
+}
 
 -(IBAction) visibilityControlIndexChanged {
 	switch (self.visibilityControl.selectedSegmentIndex) {
@@ -81,10 +124,12 @@
 }
 
 - (IBAction) gotoPreviousView {
+	NSLog(@"gotoPreviousView");
 	[self.parentViewController dismissModalViewControllerAnimated:YES];	
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
+	NSLog(@"SettingsController viewDidDisappear");
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	if (standardUserDefaults) {
 		[standardUserDefaults setBool:visibleDistanceSlider.enabled forKey:@"VisibilityControlled"];

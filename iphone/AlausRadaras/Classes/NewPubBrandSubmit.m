@@ -35,6 +35,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[msgTextView becomeFirstResponder];
+	[super viewDidAppear:animated];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {

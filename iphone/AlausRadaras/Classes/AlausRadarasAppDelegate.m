@@ -15,9 +15,11 @@
 
 @synthesize window;
 @synthesize viewController;
+//@synthesize navigationController;
 
 - (void)dealloc {
 	//[db release];
+//	[navigationController release];
     [viewController release];
     [window release];
     [super dealloc];
@@ -44,8 +46,6 @@
 		if (appVersion != dbVersion) {
 			NSLog(@"Updating Database");
 			
-//			Copies prefiled database
-//			Comment me
 			[[SQLiteManager sharedManager] recreateDatabase];
 		
 			[standardUserDefaults setDouble:appVersion forKey:@"DatabaseVersion"];
@@ -54,24 +54,34 @@
 		[[SQLiteManager sharedManager] copyDatabaseIfNotExists];
 	}
 
-	// Override point for customization after application launch.
-	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-
     [[SQLiteManager sharedManager]refresh];	
+	
 	// Add the view controller's view to the window and display.
     [self.window addSubview:viewController.view];
+	//[window addSubview:[navigationController view]];
     [self.window makeKeyAndVisible];
-
-	
-//	CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    locationManager.distanceFilter = 1000;  // 1 Km
-//    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-//    [locationManager startUpdatingLocation];
+	//[navigationController setNavigationBarHidden:YES];
 	
 	[[LocationManager sharedManager]initializeManager];
 	[[DataPublisher sharedManager]initializeManager];
-
+	 
+	 
+	 /* Determine if awesome features are enabled */
+	 NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+	 NSLog(@"iOS version: %@", currSysVer);
+	 NSString *reqSysVer = @"4.0";
+	 if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+		 NSLog(@"Version >= 4.0 - Enabling awesome features");
+		 [standardUserDefaults setBool:TRUE forKey:@"EnableAllFeatures"];
+		 [[LocationManager sharedManager]setEnableAllFeatures:TRUE];
+	 } else {
+		 NSLog(@"Version < 4.0 - Disabling awesome features");
+		 [standardUserDefaults setBool:FALSE forKey:@"EnableAllFeatures"];
+ 		 [[LocationManager sharedManager]setEnableAllFeatures:FALSE];
+	 }
+	 [standardUserDefaults synchronize];
+	 
+	 
     return YES;
 }
 

@@ -8,12 +8,16 @@
 
 #import "BeerCounterController.h"
 #import "SQLiteManager.h"
+#import <AudioToolbox/AudioServices.h>
+#import "TaxiViewController.h"
 
 @implementation BeerCounterController
 
-@synthesize talkLabel, beerCountLabel, beerButton;
+@synthesize touchTimer, talkLabel, beerCountLabel, beerButton;
 
 - (void)dealloc {
+	[touchTimer release];
+	
 	[beerButton release];
 	[beerCountLabel release];
 	[talkLabel release];
@@ -27,6 +31,7 @@
 	self.view.backgroundColor = background;
 	[background release];
 	
+	/*
 	UILongPressGestureRecognizer *longPressGR;	
 	UIGestureRecognizer *recognizer;
 	recognizer = [[ UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -36,7 +41,7 @@
 	longPressGR.minimumPressDuration = 1.0;
 	longPressGR.allowableMovement = 50.0;
 	[beerButton addGestureRecognizer:longPressGR];
-	
+	*/
 	currentBeerCount = 0;
 	
 	NSLog(@"BeerCounterController viewDidLoad");
@@ -62,9 +67,12 @@
 		}
 		beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
 	}
+	counterReset = FALSE;
 }
 
 - (IBAction) resetCount {
+	if ([touchTimer isValid]) [touchTimer invalidate];
+
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	if (standardUserDefaults) {
 		int beerCount = 0;
@@ -76,63 +84,99 @@
 	}
 	currentBeerCount = 0;
 	
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+	counterReset = TRUE;
 	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
 	talkLabel.text = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
 }
 
-- (IBAction) drinkABeer {	
-	currentBeerCount++;
-	
-	beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
+- (IBAction) drinkABeer {
+	if (!counterReset) {
+		[touchTimer invalidate];
 
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	if (standardUserDefaults) {
-		[standardUserDefaults setInteger:currentBeerCount forKey:@"CurrentBeers"];
-		[standardUserDefaults synchronize];
-	}
+		currentBeerCount++;
+		
+		beerCountLabel.text = [NSString stringWithFormat:@"%i", currentBeerCount];
 
-//  Removed until taxi support implemented
-//	if (currentBeerCount == 5) {
-//		UIAlertView* alertView = 
-//		[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
-//								   message:nil 
-//								  delegate:self 
-//						 cancelButtonTitle:@"Jau kviečiu"
-//						 otherButtonTitles:@"Dar vieną!", nil];
-//		[alertView show];
-//		[alertView release];
-//	}
-	
-	if (currentBeerCount == 10) {
-		UIAlertView* alertView = 
-		[[UIAlertView alloc] initWithTitle:@"Sveikiname!. Pasiekiete naują lygį - galite ropoti!"
-								   message:nil 
-								  delegate:self 
-						 cancelButtonTitle:@"Valio!"
-						 otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];	
+		NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+		if (standardUserDefaults) {
+			[standardUserDefaults setInteger:currentBeerCount forKey:@"CurrentBeers"];
+			[standardUserDefaults synchronize];
+		}
+
+		if (currentBeerCount == 5) {
+			UIAlertView* alertView = 
+			[[UIAlertView alloc] initWithTitle:@"Tai gal jau taksi? A?"
+									   message:nil 
+									  delegate:self 
+							 cancelButtonTitle:@"Dar vieną!"
+							 otherButtonTitles:@"Jau kviečiu", nil];
+			[alertView show];
+			[alertView release];
+		}
+		
+		if (currentBeerCount == 10) {
+			UIAlertView* alertView = 
+			[[UIAlertView alloc] initWithTitle:@"Sveikiname!. Pasiekiete naują lygį - galite ropoti!"
+									   message:nil 
+									  delegate:self 
+							 cancelButtonTitle:@"Valio!"
+							 otherButtonTitles:nil];
+			[alertView show];
+			[alertView release];	
+		}
+		if (currentBeerCount > 10) {
+			//talkLabel.text = @"Zzz.. zZz..";
+			return;
+		};
+		
+		NSString* quote = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
+		talkLabel.text = quote;
 	}
-	if (currentBeerCount > 10) {
-		//talkLabel.text = @"Zzz.. zZz..";
-		return;
-	};
-	
-	NSString* quote = [[SQLiteManager sharedManager]getQuote:currentBeerCount];
-	talkLabel.text = quote;
+	counterReset = FALSE;
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 0) {
+	if(buttonIndex == 1) {
 		// TODO show taxi list?
 		NSLog(@"Calling taxi");
-		//talkLabel.text = @"Prašyk aplinkinių taksi numerio!";
+		
+		TaxiViewController *taxiView = 
+			[[TaxiViewController alloc] initWithNibName:nil bundle:nil];
+		taxiView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
+		[self presentModalViewController:taxiView animated:YES];
+		[taxiView release];
 	}
 }
 
 - (IBAction) gotoPreviousView {
 	[self.parentViewController dismissModalViewControllerAnimated:YES];	
 }
+
+
+- (IBAction) pintTouchDown:(id) sender {
+	NSLog(@"touchDown");
+	[self startTouchTimer:1.00];
+}
+
+- (void)startTouchTimer:(float)delay {
+	if (!counterReset) {
+		touchTimer = [NSTimer scheduledTimerWithTimeInterval:delay target:self selector:@selector(resetCount) userInfo:nil repeats:NO];
+		[touchTimer retain];
+	}
+}
+
+- (void)touchHeld:(NSTimer*)timer {
+	NSLog(@"Touch Held");
+//	if ([touchTimer isValid]) [touchTimer invalidate];
+//	[self startTouchTimer:3.00];	
+	[self resetCount];
+}
+
+
+
+
+
 
 
 
