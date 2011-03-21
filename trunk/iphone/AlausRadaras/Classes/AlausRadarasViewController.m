@@ -12,6 +12,7 @@
 #import "LocationManager.h";
 //vibrate
 #import <AudioToolbox/AudioServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 
@@ -38,8 +39,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	
+	NSLog(@"AlausRadarasViewController viewDidAppear");
 	/* Get Total Beers from user defaults */
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	beerCount = 0;
@@ -49,8 +49,17 @@
 		beerCount += currentBeerCount;
 	}
 	pintCountLabel.text = [NSString stringWithFormat:@"%i", beerCount];
-	
-    [self becomeFirstResponder];
+		
+	enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+
+	[self becomeFirstResponder];
+	[super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self resignFirstResponder];
+	[infoView removeFromSuperview];
+    [super viewWillDisappear:animated];
 }
 
 -(IBAction) clickPint:(id) sender {
@@ -82,8 +91,27 @@
 
 
 -(IBAction) clickSettings:(id) sender {
-	settingsController.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
-	[self presentModalViewController:settingsController animated:YES];
+	NSLog(@"clickSettings");
+	
+	if (enableAllFeatures) {
+		settingsController.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
+		[self presentModalViewController:settingsController animated:YES];
+	} else {
+		//	UIViewController * myViewController = [[UIViewController alloc] initWithNibName:@"TestView" bundle:nil];
+		//	settingsController = [[SettingsController alloc] initWithNibName:nil bundle:nil];
+		settingsController.view.alpha = 1.0;
+		
+		[self.view addSubview: settingsController.view];
+		CATransition *animation = [CATransition animation];
+		[animation setDelegate:self];
+		//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+		//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+		[animation setType:kCATransitionMoveIn];
+		[animation setSubtype:kCATransitionFade];
+		[animation setDuration:0.75];
+		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		[[settingsController.view layer] addAnimation:animation forKey:kCATransition];				
+	}
 }
 
 -(IBAction) clickInfo:(id) sender {
@@ -107,9 +135,7 @@
 		[self presentModalViewController:taxiView animated:YES];
 		[taxiView release];
 	}
-	if ([super respondsToSelector:@selector(motionEnded:withEvent:)]) {
-        [super motionEnded:motion withEvent:event];
-    }
+	[super motionEnded: motion withEvent: event];
 }
 
 
@@ -118,9 +144,6 @@
 - (void)didReceiveMemoryWarning {
 	NSLog(@"AlausRadarasViewController: Recieved a Memory Warning... Oooops..");
     [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidUnload {
 }
 
 

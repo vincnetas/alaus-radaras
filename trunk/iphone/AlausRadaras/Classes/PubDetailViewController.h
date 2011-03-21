@@ -32,6 +32,8 @@
 	IBOutlet NewPubBrandSubmit *newBrandSubmit;
 	
 	NSString *thankYouMsg;
+	
+	BOOL enableAllFeatures;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;

@@ -40,7 +40,9 @@
 	/* Transparent Background */
 	brandsTable.backgroundColor = [UIColor clearColor];
 	brandsTable.opaque = NO;
-	brandsTable.backgroundView = nil; 
+	
+	/* iOS3.1 Support */
+	//brandsTable.backgroundView = nil; 
 	 
 	/* Separator color */ 
 	brandsTable.separatorColor = [UIColor grayColor];

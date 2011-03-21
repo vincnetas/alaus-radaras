@@ -12,6 +12,7 @@
 #import "LocationManager.h"
 #import "MBProgressHUD.h"
 #import "DataPublisher.h";
+#import <QuartzCore/QuartzCore.h>
 
 @implementation PubDetailViewController
 
@@ -48,7 +49,8 @@
 	 /* Transparent Background */
 	 brandsTable.backgroundColor = [UIColor clearColor];
 	 brandsTable.opaque = NO;
-	 brandsTable.backgroundView = nil; 
+	 /* iOS3.1 Support */	 
+	 //brandsTable.backgroundView = nil; 
 	 
 	 pubTitleShortLabel.text = currentPub.pubTitle;
 	 pubTitleLabel.text = currentPub.pubTitle;
@@ -73,6 +75,11 @@
 			 directionsButton.enabled = NO;	
 		 }
 	 }
+	 
+	 
+	 NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	 enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+	 
 	 NSLog(@"PubDetailViewController viewDidLoad");
 	 
 }
@@ -212,10 +219,27 @@
 	Brand *item = [brandList objectAtIndex:[sender tag]];
 	pubBrandSubmit.brand = item;
 	pubBrandSubmit.pubId = currentPub.pubId;
-	pubBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
-	[self presentModalViewController:pubBrandSubmit animated:YES];	
+	
+	if (enableAllFeatures) {
+		pubBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
+		[self presentModalViewController:pubBrandSubmit animated:YES];	
+	} else {
+		pubBrandSubmit.view.alpha = 1.0;
+		
+		[self.view addSubview: pubBrandSubmit.view];
+		
+		CATransition *animation = [CATransition animation];
+		[animation setDelegate:self];
+		//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+		//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+		[animation setType:kCATransitionMoveIn];
+		[animation setSubtype:kCATransitionFade];
+		[animation setDuration:0.75];
+		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		[[pubBrandSubmit.view layer] addAnimation:animation forKey:kCATransition];
+		[pubBrandSubmit viewDidAppear:YES];
+	}
 }
-
 
 
 - (IBAction) openAddBrandSubmit: (id)sender {
@@ -249,6 +273,7 @@
 
 
 - (void) postData:(NSString *) params msg:(NSString *)msg {
+	NSLog(@"PubDetailViewController postData");
 	thankYouMsg = msg;
 	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];

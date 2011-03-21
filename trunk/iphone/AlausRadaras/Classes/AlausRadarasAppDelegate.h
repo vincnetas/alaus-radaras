@@ -24,11 +24,14 @@
 	
 	NSString *databaseName;
 	NSString *databasePath;
-	//FMDatabase *db;
+
+//	IBOutlet UINavigationController *navigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet AlausRadarasViewController *viewController;
+
+//@property (nonatomic, retain) UINavigationController *navigationController;
 
 /*
 - (void) copyDatabaseIfNeeded;

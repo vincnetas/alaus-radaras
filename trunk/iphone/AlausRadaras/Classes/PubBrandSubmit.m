@@ -13,7 +13,7 @@
 @implementation PubBrandSubmit
 
 @synthesize brand, pubId;
-@synthesize pubBrandStatusControl, brandLabel, brandImage, sendBtn;
+@synthesize pubBrandStatusControl, brandLabel, brandImage;
 
 - (void)dealloc {
 	[status release];
@@ -23,53 +23,83 @@
 	[pubBrandStatusControl release];
 	[brandLabel release];
 	[brandImage release];
-	[sendBtn release];
 	
     [super dealloc];
 }
 
 - (void)viewDidLoad {
+	NSLog(@"PubBrandSubmit viewDidLoad");
+
 	/* Application setup */
     [super viewDidLoad];
-	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
-	self.view.backgroundColor = background;
-	[background release];
 	
-	sendBtn.enabled = NO;
+	/* iOS3.1 Support */
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+	UIColor *background;
+	if (enableAllFeatures) {
+		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+	} else {
+		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background-small.png"]];
+		pubBrandStatusControl.segmentedControlStyle = UISegmentedControlStyleBar;
+		
+		CGRect rect = CGRectMake(0, 0, 320, 260);
+		UIButton *button=[[UIButton alloc] initWithFrame:rect];
+		[button setFrame:rect];
+		[button setBackgroundColor:[UIColor clearColor]];
+		//	[button setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
+		[button setContentMode:UIViewContentModeCenter];
+		[button addTarget:self action:@selector(hidePubBrandSubmit:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:button];
+		[button release];
+	}
+	
+	self.view.backgroundColor = background;
+	self.view.opaque = NO;
+	[background release];
+
+}
+
+
+-(IBAction) hidePubBrandSubmit:(id) sender {
+	if (enableAllFeatures)
+	NSLog(@"hidePubBrandSubmit");
+	[self.view removeFromSuperview];
+	self.view.alpha = 0.0;
+	[self viewDidDisappear:NO];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+	NSLog(@"PubBrandSubmit viewDidAppear");
 	brandLabel.text = brand.label;
 	brandImage.image = [UIImage imageNamed:brand.icon];
 	if (brandImage.image == nil) {
 		brandImage.image = [UIImage imageNamed:@"brand_default.png"];		
 	}
+	[super viewDidAppear:animated];
 }
 
 - (IBAction) pubBrandStatusChanged {
 	switch (self.pubBrandStatusControl.selectedSegmentIndex) {
 		case 0:
 			status = @"EXISTS";
-			sendBtn.enabled = YES;
 			[self sendPubBrandSubmit];
 			break;
 			
 		case 1:
 			status = @"DISCONTINUED";
-			sendBtn.enabled = YES;
 			[self sendPubBrandSubmit];
 			break;
 			
 		case 2:
 			status = @"TEMPORARY_SOLD_OUT";
-			sendBtn.enabled = YES;
 			[self sendPubBrandSubmit];
 			break;
 		
 		default:
 			break;
 	}
-	self.pubBrandStatusControl.selectedSegmentIndex = -1;
+//	self.pubBrandStatusControl.selectedSegmentIndex = -1;
 }
 
 - (void) sendPubBrandSubmit {
@@ -86,7 +116,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == 0) {
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
-		NSLog(@"GUID: %@", uniqueIdentifier);
+		NSLog(@"GUID: %@\nPub: %@\nBrand: %@\nStatus: %@", uniqueIdentifier, pubId, brand.brandId, status);
 		
 		BOOL success = 
 			[[DataPublisher sharedManager] submitPubBrand:brand.brandId pub:pubId status:status message:uniqueIdentifier validate:YES];
@@ -94,15 +124,18 @@
 			NSLog(@"Data can be published");
 			CLLocationCoordinate2D coords= [[LocationManager sharedManager]getLocationCoordinates];
 			NSString *post = 
-			[NSString stringWithFormat:
-			 @"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
-			 status, brand.brandId, pubId, uniqueIdentifier, coords.latitude, coords.longitude];
+				[NSString stringWithFormat:
+					@"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
+					status, brand.brandId, pubId, uniqueIdentifier, coords.latitude, coords.longitude];
 			
 			[self.parentViewController postData:post msg:@"Tik alus išgelbės mus!"];
-
 		}
 	}
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
+	if (enableAllFeatures) {
+		[self.parentViewController dismissModalViewControllerAnimated:YES];
+	} else {
+		[self hidePubBrandSubmit:nil];
+	}
 }
 
 
@@ -111,7 +144,6 @@
 	brandLabel.text = @"";
 	brandImage.image = nil;
 	status = @"";
-	sendBtn.enabled = NO;
 	self.pubBrandStatusControl.selectedSegmentIndex = -1;
 }
 

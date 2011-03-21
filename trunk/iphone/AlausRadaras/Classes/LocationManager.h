@@ -14,6 +14,7 @@
     CLLocationManager *clLocationManager;
 	int distance;
 	BOOL visibilityControlled;
+	BOOL newAPI;
 }
 
 + (LocationManager*) sharedManager;
@@ -32,5 +33,6 @@
 - (void) setVisibilityControlled:(BOOL) value;
 - (BOOL) getVisibilityControlled;
 - (BOOL) isUserLocationKnown;
+- (BOOL) setEnableAllFeatures:(BOOL)value;
 
 @end

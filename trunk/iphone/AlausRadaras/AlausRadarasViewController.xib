@@ -12,9 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="50"/>
-			<integer value="209"/>
 			<integer value="6"/>
+			<integer value="83"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -62,7 +61,6 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Vietos</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="408591078">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -184,7 +182,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{39, 20}, {261, 206}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<int key="IBUIContentMode">1</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -295,7 +292,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
 			<object class="IBUIView" id="81143068">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -403,7 +400,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
-				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="1032496477">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -422,7 +418,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
 			<object class="IBUIView" id="857259892">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -470,7 +466,6 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="901795005"/>
-						<int key="IBUIButtonType">1</int>
 						<reference key="IBUIHighlightedTitleColor" ref="408591078"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -555,6 +550,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
+				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="689175034"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
@@ -692,7 +688,10 @@
 				<string key="NSFrameSize">{320, 460}</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC40MDgxNjMyNjUzIDAuNDA4MTYzMjY1MyAwLjQwODE2MzI2NTMAA</bytes>
+					<bytes key="NSRGB">MCAwIDAgMAA</bytes>
+				</object>
+				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
+					<int key="IBUIStatusBarStyle">2</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -799,7 +798,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="94962305">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -827,7 +826,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
-				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MSAwAA</bytes>
@@ -1120,6 +1118,15 @@
 					</object>
 					<int key="connectionID">216</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pintTouchDown:</string>
+						<reference key="source" ref="255450047"/>
+						<reference key="destination" ref="120889754"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">219</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1150,12 +1157,12 @@
 							<reference ref="616168505"/>
 							<reference ref="226727686"/>
 							<reference ref="956366600"/>
-							<reference ref="62459309"/>
 							<reference ref="940393533"/>
 							<reference ref="892473163"/>
-							<reference ref="634933865"/>
 							<reference ref="231790791"/>
 							<reference ref="776367689"/>
+							<reference ref="634933865"/>
+							<reference ref="62459309"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">MeniuView</string>
@@ -1541,7 +1548,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCAAAAw42AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCCAAAw42AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1566,7 +1573,7 @@
 					<string>SettingsController</string>
 					<string>{{351, 489}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{623, 155}, {320, 460}}</string>
+					<string>{{923, 130}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1662,7 +1669,7 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABB0AAAw5GAAA</bytes>
 					</object>
 					<string>LuckyController</string>
-					<string>{{427, 489}, {320, 480}}</string>
+					<string>{{500, 489}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{594, 128}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1709,7 +1716,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">216</int>
+			<int key="maxID">221</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1851,10 +1858,16 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>drinkABeer</string>
 							<string>gotoPreviousView</string>
+							<string>pintTouchDown:</string>
+							<string>pintTouchEnded:</string>
+							<string>pintTouchMoved:</string>
 							<string>resetCount</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1866,6 +1879,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>drinkABeer</string>
 							<string>gotoPreviousView</string>
+							<string>pintTouchDown:</string>
+							<string>pintTouchEnded:</string>
+							<string>pintTouchMoved:</string>
 							<string>resetCount</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1876,6 +1892,18 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">gotoPreviousView</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pintTouchDown:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pintTouchEnded:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">pintTouchMoved:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2387,14 +2415,14 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{264, 78}</string>
-				<string>{299, 300}</string>
-				<string>{372, 300}</string>
-				<string>{320, 300}</string>
-				<string>{80, 80}</string>
-				<string>{640, 920}</string>
-				<string>{305, 105}</string>
-				<string>{64, 64}</string>
+				<string>{261, 59}</string>
+				<string>{211, 206}</string>
+				<string>{261, 206}</string>
+				<string>{280, 244}</string>
+				<string>{32, 32}</string>
+				<string>{320, 460}</string>
+				<string>{280, 73}</string>
+				<string>{32, 32}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

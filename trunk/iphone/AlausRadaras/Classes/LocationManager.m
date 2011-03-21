@@ -37,7 +37,12 @@ static LocationManager *sharedLocationManager = nil;
 	clLocationManager.delegate = self;
 	clLocationManager.distanceFilter = 1000;  // 1 Km
 	clLocationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+	newAPI = TRUE;
 	[clLocationManager startUpdatingLocation];
+}
+
+- (BOOL) setEnableAllFeatures:(BOOL)value {
+	newAPI = value;
 }
 
 - (CLLocationCoordinate2D) getLocationCoordinates{
@@ -95,10 +100,19 @@ static LocationManager *sharedLocationManager = nil;
 	int lat = (int) clLocationManager.location.coordinate.latitude;
 	int lon = (int)clLocationManager.location.coordinate.longitude;
 	NSLog(@"isUserLocationKnown: Lat: %d, Long: %d",lat,lon);
-	if ((![CLLocationManager locationServicesEnabled]) ||
-		(lat == 0 && lon == 0)) {
+	if (newAPI) {
+		if ((![CLLocationManager locationServicesEnabled]) ||
+			(lat == 0 && lon == 0)) {
+				NSLog(@"getVisibilityControlled NO");
+				return NO;
+		}
+	} else {
+		NSLog(@"-------------------adsfasfsfd");
+		if ((!clLocationManager.locationServicesEnabled) ||
+			(lat == 0 && lon == 0)) {
 			NSLog(@"getVisibilityControlled NO");
 			return NO;
+		}	
 	}
 	return YES;
 }	
