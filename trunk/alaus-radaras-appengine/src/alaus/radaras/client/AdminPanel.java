@@ -84,7 +84,7 @@ public class AdminPanel extends Composite {
 						update.setIcon(brand.getIcon());
 						update.setHomePage(brand.getHomePage());
 						update.setCountry(brand.getCountry());
-						update.setHomeTown(brand.getHomeTown());
+						update.setHometown(brand.getHometown());
 						update.setDescription(brand.getDescription());
 						update.setTags(brand.getTags());
 						update.setParentId(brand.getId());

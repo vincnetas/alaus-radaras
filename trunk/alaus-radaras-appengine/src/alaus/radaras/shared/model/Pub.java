@@ -41,9 +41,6 @@ public class Pub extends Updatable {
 	private String hours;
 	
 	@Persistent
-	private Set<String> tags = new HashSet<String>();
-	
-	@Persistent
 	private Set<String> beerIds = new HashSet<String>();
 	
 	/**
@@ -176,20 +173,6 @@ public class Pub extends Updatable {
 	 */
 	public void setHours(String hours) {
 		this.hours = hours;
-	}
-
-	/**
-	 * @return the tags
-	 */
-	public Set<String> getTags() {
-		return tags;
-	}
-
-	/**
-	 * @param tags the tags to set
-	 */
-	public void setTags(Set<String> tags) {
-		this.tags = tags;
 	}
 
 	/**
