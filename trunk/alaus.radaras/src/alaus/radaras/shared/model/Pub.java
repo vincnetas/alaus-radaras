@@ -5,6 +5,11 @@ import java.util.Set;
 
 public class Pub extends Updatable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7356414026970385426L;
+
 	private String title;
 	
 	private Double longitude;

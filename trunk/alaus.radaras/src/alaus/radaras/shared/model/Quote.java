@@ -3,6 +3,11 @@ package alaus.radaras.shared.model;
 
 public class Quote extends Updatable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1802470546407631405L;
+
 	private int index;
 	
 	private String text;
