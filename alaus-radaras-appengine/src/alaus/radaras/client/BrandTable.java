@@ -69,7 +69,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 			
 			@Override
 			public String getValue(Brand arg0) {				
-				return arg0.getHomeTown();
+				return arg0.getHometown();
 			}
 			
 		}, "Hometown");

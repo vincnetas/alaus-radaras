@@ -5,6 +5,8 @@ package alaus.radaras.shared.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
@@ -28,6 +30,9 @@ public class Updatable implements Serializable {
 
 	@PrimaryKey
 	private String id;
+	
+	@Persistent
+	private Set<String> tags = new HashSet<String>();
 	
 	@Persistent
 	private Date lastUpdate;
@@ -140,6 +145,52 @@ public class Updatable implements Serializable {
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
 	}
+	
+	/**
+	 * @return the tags
+	 */
+	public Set<String> getTags() {
+		return tags;
+	}
+
+	/**
+	 * @param tags
+	 *            the tags to set
+	 */
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
+	}
+	
+	public void setTags(String tags) {
+		Set<String> result = new HashSet<String>();
+		
+		if (tags != null) {
+			String[] strings = tags.split(",");
+			for (String string : strings) {
+				result.add(string.trim().toLowerCase());
+			}
+		}
+		
+		setTags(result);
+	}
+	
+	public String getTagsAsString() {
+		StringBuilder builder = new StringBuilder();
+		
+		boolean first = true;
+		for (String tag : getTags()) {
+			if (!first) {
+				builder.append(", ");
+			} else {
+				first = false;
+			}
+			
+			builder.append(tag);
+		}
+		
+		return builder.toString();
+	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)

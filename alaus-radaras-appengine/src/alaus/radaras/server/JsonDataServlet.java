@@ -4,8 +4,8 @@
 package alaus.radaras.server;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
-import alaus.radaras.shared.model.Quote;
+import alaus.radaras.shared.Utils;
+import alaus.radaras.shared.model.Beer;
+import alaus.radaras.shared.model.Brand;
+import alaus.radaras.shared.model.Pub;
 
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -50,57 +49,50 @@ public class JsonDataServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Map<String, Object[]> data = new HashMap<String, Object[]>();
+		Update update = new Update();
 		
+		update.setDeletedBeers(getBeersToDelete());
+		update.setDeletedBrands(getBrandsToDelete());
+		update.setDeletedPubs(getPubsToDelete());
+		
+		update.setUpdatedBeers(getBeersToUpdate());
+		update.setUpdatedBrands(getBrandsToUpdate());
+		update.setUpdatedPubs(getPubsToUpdate());
+				
 		String fileName = "data.json";
-		String what = req.getParameter("what");
-		if (what == null) {
-			data.put("brands", getBrandDao().getAll().toArray());	
-			data.put("beers", getBeerDao().getAll().toArray());	
-			data.put("pubs", getPubDao().getAll().toArray());	
-		} else if (what.equalsIgnoreCase("brands")) {
-			data.put("brands", getBrandDao().getAll().toArray());	
-			fileName = "brands.json";
-		} else if (what.equalsIgnoreCase("beers")) {
-			data.put("beers", getBeerDao().getAll().toArray());
-			fileName = "beers.json";
-		} else if (what.equalsIgnoreCase("pubs")) {
-			data.put("pubs", getPubDao().getAll().toArray());
-			fileName = "pubs.json";
-		} else {
-			data.put("brands", getBrandDao().getAll().toArray());	
-			data.put("beers", getBeerDao().getAll().toArray());	
-			data.put("pubs", getPubDao().getAll().toArray());	
-		}
 		
 		resp.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().print(getGson().toJson(data));
+
+		resp.getWriter().print(Update.toJson(update));
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 	
-	private Gson getGson() {
-		return new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
-			
-			@Override
-			public boolean shouldSkipField(FieldAttributes f) {
-				if (f.getDeclaringClass() == Quote.class) {
-					if (f.getName().equals("id")) {
-						return true;
-					}					
-				}
-					
-				return f.getName().equals("jdoDetachedState");
-			}
-			
-			@Override
-			public boolean shouldSkipClass(Class<?> clazz) {
-				return false;
-			}
-		}).create();
+	private Set<Beer> getBeersToDelete() {
+		return Utils.set();
 	}
-
+	
+	private Set<Brand> getBrandsToDelete() {
+		return Utils.set();
+	}
+	
+	private Set<Pub> getPubsToDelete() {
+		return Utils.set();
+	}
+	
+	private Set<Beer> getBeersToUpdate() {
+		return new HashSet<Beer>(getBeerDao().getAll());
+	}
+	
+	private Set<Brand> getBrandsToUpdate() {
+		return new HashSet<Brand>(getBrandDao().getAll());
+	}
+	
+	private Set<Pub> getPubsToUpdate() {
+		return new HashSet<Pub>(getPubDao().getAll());
+	}
+	
 	/**
 	 * @return the pubDao
 	 */

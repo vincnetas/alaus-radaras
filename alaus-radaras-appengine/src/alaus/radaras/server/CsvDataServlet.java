@@ -4,7 +4,8 @@
 package alaus.radaras.server;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -61,9 +62,11 @@ public class CsvDataServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 
 		ZipOutputStream zos = new ZipOutputStream(resp.getOutputStream());
-		PrintWriter writer = new PrintWriter(zos);		
+		Writer writer = new OutputStreamWriter(zos, "UTF-8");
 		
-		zos.putNextEntry(new ZipEntry("pubs.txt"));
+		ZipEntry pubsEntry = new ZipEntry("pubs.txt");
+		
+		zos.putNextEntry(pubsEntry);
 		
 		Map<String, Set<String>> beerMap = new HashMap<String, Set<String>>();
 		
@@ -158,6 +161,4 @@ public class CsvDataServlet extends HttpServlet {
 	public void setBrandDao(BrandDao brandDao) {
 		this.brandDao = brandDao;
 	}
-	
-	
 }

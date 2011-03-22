@@ -1,8 +1,5 @@
 package alaus.radaras.shared.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -23,13 +20,10 @@ public class Brand extends Updatable {
 	private String country;
 
 	@Persistent
-	private String homeTown;
+	private String hometown;
 
 	@Persistent
 	private String description;
-
-	@Persistent
-	private Set<String> tags = new HashSet<String>();
 
 	/**
 	 * @return the title
@@ -92,18 +86,18 @@ public class Brand extends Updatable {
 	}
 
 	/**
-	 * @return the homeTown
+	 * @return the hometown
 	 */
-	public String getHomeTown() {
-		return homeTown;
+	public String getHometown() {
+		return hometown;
 	}
 
 	/**
-	 * @param homeTown
-	 *            the homeTown to set
+	 * @param hometown
+	 *            the hometown to set
 	 */
-	public void setHomeTown(String homeTown) {
-		this.homeTown = homeTown;
+	public void setHometown(String homeTown) {
+		this.hometown = homeTown;
 	}
 
 	/**
@@ -120,50 +114,4 @@ public class Brand extends Updatable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	/**
-	 * @return the tags
-	 */
-	public Set<String> getTags() {
-		return tags;
-	}
-
-	/**
-	 * @param tags
-	 *            the tags to set
-	 */
-	public void setTags(Set<String> tags) {
-		this.tags = tags;
-	}
-	
-	public void setTags(String tags) {
-		Set<String> result = new HashSet<String>();
-		
-		if (tags != null) {
-			String[] strings = tags.split(",");
-			for (String string : strings) {
-				result.add(string.trim().toLowerCase());
-			}
-		}
-		
-		setTags(result);
-	}
-	
-	public String getTagsAsString() {
-		StringBuilder builder = new StringBuilder();
-		
-		boolean first = true;
-		for (String tag : getTags()) {
-			if (!first) {
-				builder.append(", ");
-			} else {
-				first = false;
-			}
-			
-			builder.append(tag);
-		}
-		
-		return builder.toString();
-	}
-
 }

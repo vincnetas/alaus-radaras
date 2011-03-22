@@ -25,7 +25,7 @@ public class BrandServiceImpl extends BaseServiceImpl<Brand> implements BrandSer
 		brand.setIcon(defaultIfNull(update.getIcon(), brand.getIcon()));
 		brand.setHomePage(defaultIfNull(update.getHomePage(), brand.getHomePage()));
 		brand.setCountry(defaultIfNull(update.getCountry(), brand.getCountry()));
-		brand.setHomeTown(defaultIfNull(update.getHomeTown(), brand.getHomeTown()));
+		brand.setHometown(defaultIfNull(update.getHometown(), brand.getHometown()));
 		brand.setDescription(defaultIfNull(update.getDescription(), brand.getDescription()));
 		if (!update.getTags().isEmpty()) {
 			brand.setTags(update.getTags());
@@ -41,7 +41,7 @@ public class BrandServiceImpl extends BaseServiceImpl<Brand> implements BrandSer
     	update.setIcon(nullIfEqual(update.getIcon(), brand.getIcon()));
     	update.setHomePage(nullIfEqual(update.getHomePage(), brand.getHomePage()));
     	update.setCountry(nullIfEqual(update.getCountry(), brand.getCountry()));
-    	update.setHomeTown(nullIfEqual(update.getHomeTown(), brand.getHomeTown()));
+    	update.setHometown(nullIfEqual(update.getHometown(), brand.getHometown()));
     	update.setDescription(nullIfEqual(update.getDescription(), brand.getDescription()));
     	update.setTags(nullIfEqual(update.getTags(), brand.getTags()));
     }

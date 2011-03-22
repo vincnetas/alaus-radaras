@@ -55,7 +55,7 @@ public class EditBrandWidget extends Composite {
 		brand.setIcon(icon.getText());
 		brand.setHomePage(homepage.getText());
 		brand.setCountry(country.getText());
-		brand.setHomeTown(hometown.getText());
+		brand.setHometown(hometown.getText());
 		brand.setDescription(description.getText());
 		brand.setTags(tags.getText());
 		
@@ -70,7 +70,7 @@ public class EditBrandWidget extends Composite {
 		icon.setText(brand.getIcon());
 		homepage.setText(brand.getHomePage());
 		country.setText(brand.getCountry());
-		hometown.setText(brand.getHomeTown());
+		hometown.setText(brand.getHometown());
 		description.setText(brand.getDescription());
 		tags.setText(brand.getTagsAsString());
 		

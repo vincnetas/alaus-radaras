@@ -50,25 +50,26 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		
 		return result;
 	}
-
+	
 	@Override
 	public T addUpdate(T update) {
 		if (update.getParentId() == null) {
 			throw new Error("No parent id specified for update " + update);
 		}
+		
 		T parent = getParent(update);
 		parent.setModified(true);
+		getBaseDao().save(parent);
 		
 		prepareUpdate(update, parent);
 		
 		update.setApproved(null);
 		update.setModified(false);
 		update.setLastUpdate(new Date());		
-		update.setUpdatedBy(getUserEmail());
-
-		getBaseDao().save(parent);
+		update.setUpdatedBy(getUserEmail());		
 		
-		T result = getBaseDao().add(update);		
+		T result = getBaseDao().add(update);	
+		
 		if (canApplyUpdate(update)) {
 			result = applyUpdate(update.getId());
 		} 
