@@ -3,6 +3,11 @@ package alaus.radaras.shared.model;
 
 public class Brand extends Updatable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4399226850227665964L;
+
 	private String title;
 
 	private String icon;

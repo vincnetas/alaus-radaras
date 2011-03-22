@@ -9,6 +9,11 @@ package alaus.radaras.shared.model;
  */
 public class Beer extends Updatable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2288227811350719535L;
+
 	private String title;
 
 	private String brandId;

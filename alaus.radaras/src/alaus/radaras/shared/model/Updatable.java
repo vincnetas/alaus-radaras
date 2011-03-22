@@ -13,6 +13,11 @@ import java.util.Set;
  */
 public class Updatable implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4797269811377664009L;
+
 	private String id;
 	
 	private Set<String> tags = new HashSet<String>();
