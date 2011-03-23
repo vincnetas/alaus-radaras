@@ -1,6 +1,6 @@
 package alaus.radaras.service.model;
 
-public class Brand extends MultipleLocation {
+public class Brand {
 
 	private String id;
 	

@@ -4,6 +4,7 @@
 package alaus.radaras;
 
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -15,23 +16,23 @@ import android.widget.Toast;
  */
 public class BrandListActivity extends BaseBrandListActivity {
 
-
+	private BeerRadar beerRadar;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list);
+		beerRadar = new BeerRadarSqlite(this);
 		
-  
+		setContentView(R.layout.list);  
 	}
 
 	@Override
 	protected void locationUpdated(Location location) {
-		if(location != null) {
+		if (location != null) {
 			Toast.makeText(this, location.toString(), Toast.LENGTH_SHORT);
 		}
-		showBrands(BeerRadar.getInstance(this).getBrands(location), R.id.list);
 		
+		showBrands(beerRadar.getBrands(location), R.id.list);
 	}
 
 	

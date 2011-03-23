@@ -1,6 +1,7 @@
 package alaus.radaras;
 
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.FeelingLucky;
 import alaus.radaras.service.model.Pub;
@@ -14,10 +15,12 @@ import android.widget.TextView;
 
 public class LuckyActivity extends AbstractLocationActivity {
 	
+	private BeerRadar beerRadar;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lucky);
-       
+        beerRadar = new BeerRadarSqlite(this);
+        setContentView(R.layout.lucky);       
 	}
 
 	@Override
@@ -27,12 +30,12 @@ public class LuckyActivity extends AbstractLocationActivity {
         TextView brand = (TextView) findViewById(R.id.LuckyBrandTitle);
         TextView pubView = (TextView) findViewById(R.id.LuckyPubTitle);
         
-        FeelingLucky lucky = BeerRadar.getInstance(this).feelingLucky(location);
+        FeelingLucky lucky = beerRadar.feelingLucky(location);
         final Brand brData = lucky.getBrand();
         final Pub pb = lucky.getPub();
         pubView.setText(pb.getTitle());
         if(brData != null) {
-        	imgBrand.setImageDrawable(BeerRadar.getInstance(this).getImage(brData.getIcon()));
+        	imgBrand.setImageDrawable(beerRadar.getImage(brData.getIcon()));
         	brand.setText(brData.getTitle());
         }
         

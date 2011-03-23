@@ -4,6 +4,7 @@ import java.util.List;
 
 import alaus.radaras.adapters.CountryListAdapter;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.utils.Utils;
 import android.content.Intent;
@@ -15,13 +16,15 @@ import android.widget.ListView;
 
 public class CountryListActivity extends AbstractLocationActivity {
 
+	private BeerRadar beerRadar;
 	private List<Country> countries;
 	private ListView list;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		beerRadar = new BeerRadarSqlite(this);
+		
 		setContentView(R.layout.list);
 			list = (ListView)findViewById(R.id.list);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -39,7 +42,7 @@ public class CountryListActivity extends AbstractLocationActivity {
 
 	@Override
 	protected void locationUpdated(Location location) {
-		countries = BeerRadar.getInstance(this).getCountries(location);
+		countries = beerRadar.getCountries(location);
 		
 		if(countries.size() == 0) {
 			Utils.showNoBeerAlert(getApplicationContext());

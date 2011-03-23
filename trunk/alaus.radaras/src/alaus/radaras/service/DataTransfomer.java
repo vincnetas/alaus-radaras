@@ -1,10 +1,12 @@
 package alaus.radaras.service;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.Pub;
+import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import android.database.Cursor;
@@ -12,54 +14,6 @@ import android.location.Location;
 
 public class DataTransfomer {
 	
-
-	public static void addToBrands(Cursor cursor, Map<String,Brand> brandMap) {
-		String brandId = cursor.getString(0);
-		Brand brand;
-		if(!brandMap.containsKey(brandId)) {
-			brand = toBrand(cursor);
-			brandMap.put(brandId, brand);
-		} else {
-			brand = brandMap.get(brandId);
-		}
-		Location loc = new Location("");
-		loc.setLatitude(cursor.getDouble(4));
-		loc.setLongitude(cursor.getDouble(5));
-		brand.getLocations().add(loc);	
-	}
-	
-	public static void addToCountries(Cursor cursor, Map<String,Country> countryMap) {
-		String countryCode = cursor.getString(0);
-		Country country;
-		if(!countryMap.containsKey(countryCode)) {
-			country = toCountry(cursor);
-			countryMap.put(countryCode, country);
-		} else {
-			country = countryMap.get(countryCode);
-		}
-		Location loc = new Location("");
-		loc.setLatitude(cursor.getDouble(2));
-		loc.setLongitude(cursor.getDouble(3));
-		country.getLocations().add(loc);	
-	}
-	
-	public static void addToTags(Cursor cursor, Map<String,Tag> tagMap) {
-		String tagCode = cursor.getString(0);
-		Tag tag;
-		if(!tagMap.containsKey(tagCode)) {
-			tag = toTag(cursor);
-			tagMap.put(tagCode, tag);
-		} else {
-			tag = tagMap.get(tagCode);
-		}
-		Location loc = new Location("");
-		loc.setLatitude(cursor.getDouble(2));
-		loc.setLongitude(cursor.getDouble(3));
-		tag.getLocations().add(loc);	
-	}
-	
-	
-
 	public static Brand toBrand(Cursor cursor) {
 		Brand brand = new Brand();
 		brand.setId(cursor.getString(0));
@@ -67,6 +21,40 @@ public class DataTransfomer {
 		brand.setIcon(cursor.getString(2));
 		brand.setDescription(cursor.getString(3));
 		return brand;
+	}
+	
+	public static <T> T to(Cursor cursor, Do<T> doe) {
+		T result = null;
+		
+		try {
+			if (cursor.moveToFirst()) {
+				return doe.get(cursor);
+			}
+		} finally {
+			closeCursor(cursor);
+		}
+		
+		return result;
+	}
+	
+	private static void closeCursor(Cursor cursor) {
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
+		}
+	}
+	
+	public static <T> List<T> toList(Cursor cursor, Do<T> doe) {
+		List<T> result = new ArrayList<T>();
+
+		if (cursor.moveToFirst()) {
+			do {
+				result.add(doe.get(cursor));
+			} while (cursor.moveToNext());
+		}
+
+		closeCursor(cursor);
+
+		return result;
 	}
 	
 	public static Pub toPub(Cursor cursor) {
@@ -85,6 +73,14 @@ public class DataTransfomer {
 		pub.setLocation(location);
 		
 		return pub;
+	}
+	
+	public static Qoute toQoute(Cursor cursor) {
+		Qoute qoute = new Qoute();
+
+		qoute.setText(cursor.getString(0));
+		
+		return qoute;
 	}
 	
 	public static Tag toTag(Cursor cursor) {
@@ -113,5 +109,72 @@ public class DataTransfomer {
 		taxi.setLocation(location);
 		return taxi;
 	}
+	
+	interface Do<T> {		
+		T get(Cursor cursor);
+	}
+	
+	static class DoBrand implements Do<Brand> {
+		
+		public final static DoBrand instance = new DoBrand();
+		
+		@Override
+		public Brand get(Cursor cursor) {
+			return toBrand(cursor);
+		}
+		
+	}
+	
+	static class DoCountry implements Do<Country> {
 
+		public final static DoCountry instance = new DoCountry();
+		
+		@Override
+		public Country get(Cursor cursor) {
+			return toCountry(cursor);
+		}
+		
+	}
+	
+	static class DoPub implements Do<Pub> {
+
+		public final static DoPub instance = new DoPub();
+		
+		@Override
+		public Pub get(Cursor cursor) {
+			return toPub(cursor);
+		}
+		
+	}
+	
+	static class DoTag implements Do<Tag> {
+
+		public final static DoTag instance = new DoTag();
+		
+		@Override
+		public Tag get(Cursor cursor) {
+			return toTag(cursor);
+		}		
+	}
+	
+	static class DoTaxi implements Do<Taxi> {
+
+		public final static DoTaxi instance = new DoTaxi();
+		
+		@Override
+		public Taxi get(Cursor cursor) {
+			return toTaxi(cursor);
+		}		
+	}
+	
+	static class DoQoute implements Do<Qoute> {
+
+		public final static DoQoute instance = new DoQoute();
+		
+		@Override
+		public Qoute get(Cursor cursor) {
+			return toQoute(cursor);
+		}		
+	}
 }
+
