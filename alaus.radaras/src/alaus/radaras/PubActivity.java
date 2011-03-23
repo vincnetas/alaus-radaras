@@ -10,6 +10,7 @@ import alaus.radaras.dialogs.PubBrandInfoDialog.PubBrandInfoSubmited;
 import alaus.radaras.dialogs.PubCorrectionDialog;
 import alaus.radaras.dialogs.PubCorrectionDialog.PubErrorSubmited;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.submition.DataPublisher;
@@ -44,17 +45,19 @@ public class PubActivity extends Activity implements PubErrorSubmited {
 	private TextView phoneView;
 	private String pubId;
 	private PubCorrectionDialog pubError;
+	private BeerRadar beerRadar;
 	
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+	    beerRadar = new BeerRadarSqlite(this);
+	    
 	    setContentView(R.layout.pub);
 	    pubError =  new PubCorrectionDialog(this, pubId);
 	    pubError.setOnSubmitedListener(this);
-
-	    BeerRadar dao = BeerRadar.getInstance(this);
+	    
 	    pubId = getIntent().getExtras().get(PUB_ID_PARAM).toString();
-	    final Pub pub = dao.getPub(pubId);
-	    final List<Brand> brands = dao.getBrandsByPubId(pub.getId());
+	    final Pub pub = beerRadar.getPub(pubId);
+	    final List<Brand> brands = beerRadar.getBrandsByPubId(pub.getId());
 	    
     	GridView gridview = (GridView) findViewById(R.id.pubBrandList);
     	TextView noBeers = (TextView)findViewById(R.id.pubNoBeers);

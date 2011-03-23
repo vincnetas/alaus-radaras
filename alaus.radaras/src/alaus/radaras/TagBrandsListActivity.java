@@ -2,6 +2,7 @@ package alaus.radaras;
 
 
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Tag;
 import android.content.Intent;
 import android.location.Location;
@@ -17,37 +18,38 @@ public class TagBrandsListActivity extends BaseBrandListActivity {
 
 	private Tag tag;
 	
+	private BeerRadar beerRadar;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-			setContentView(R.layout.tag_brand_list);
+		beerRadar = new BeerRadarSqlite(this);
 		
-			final String tagId = getIntent().getExtras().getString(TAG);
-			tag = BeerRadar.getInstance(this).getTag(tagId);
+		setContentView(R.layout.tag_brand_list);
 	
-			TextView tagName = (TextView)findViewById(R.id.tagBrandHeader);
-			tagName.setText(tag.getTitle());
+		final String tagId = getIntent().getExtras().getString(TAG);
+		tag = beerRadar.getTag(tagId);
+
+		TextView tagName = (TextView)findViewById(R.id.tagBrandHeader);
+		tagName.setText(tag.getTitle());
+		
+		ImageView image = (ImageView)findViewById(R.id.tagBrandShowOnMap);
+		image.setOnClickListener(new OnClickListener() {
 			
-			ImageView image = (ImageView)findViewById(R.id.tagBrandShowOnMap);
-			image.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
 				
-				@Override
-				public void onClick(View v) {
-					
-					Intent inte = new Intent(TagBrandsListActivity.this, PubLocationActivity.class);
-	        		inte.putExtra(PubLocationActivity.TAG_ID, tagId);
-	        		startActivity(inte);
-					
-				}
-			});
-			
-        
+				Intent inte = new Intent(TagBrandsListActivity.this, PubLocationActivity.class);
+        		inte.putExtra(PubLocationActivity.TAG_ID, tagId);
+        		startActivity(inte);
+				
+			}
+		});        
 	}
 
 	@Override
 	protected void locationUpdated(Location location) {
-		showBrands( BeerRadar.getInstance(this).getBrandsByTag(tag.getCode(), location), R.id.tagBrandList);
-		
+		showBrands(beerRadar.getBrandsByTag(tag.getCode(), location), R.id.tagBrandList);		
 	}
 
 }

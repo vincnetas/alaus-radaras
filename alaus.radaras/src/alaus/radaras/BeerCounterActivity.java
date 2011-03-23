@@ -4,6 +4,7 @@ import alaus.radaras.alerts.BeerCountAlert;
 import alaus.radaras.alerts.CallTaxiAlert;
 import alaus.radaras.alerts.NewLevelAlert;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Qoute;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.utils.Utils;
@@ -25,9 +26,12 @@ public class BeerCounterActivity extends Activity {
 
 	private  SettingsManager settings;
 	
+	private BeerRadar beerRadar;
+	
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    settings = new SettingsManager(this);
+	    beerRadar = new BeerRadarSqlite(this);
 	    
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	    setContentView(R.layout.counter);
@@ -72,7 +76,7 @@ public class BeerCounterActivity extends Activity {
 	private void update(Integer currentCount, Integer totalCount) {
 		Qoute qoute;
 		if(currentCount <= 10) {
-		 qoute = BeerRadar.getInstance(this).getQoute(currentCount);
+		 qoute = beerRadar.getQoute(currentCount);
 		}
 		else {
 			qoute = new Qoute();

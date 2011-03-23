@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.submition.PubBrandInfo;
 import alaus.radaras.submition.PubBrandStatus;
 import android.view.View.OnClickListener;
@@ -29,26 +30,27 @@ public class PubBrandInfoDialog extends Dialog implements OnClickListener  {
 	private final RadioGroup statusView; 
 	private final String pubId;
 	private final String brandId;
+	private BeerRadar beerRadar;
 	public  PubBrandInfoDialog(Context context, String pubId, String brandId) {
 		super(context);
-
-			this.context = context;
-			this.pubId = pubId;
-			this.brandId = brandId;
-			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			layout = inflater.inflate(R.layout.dialog_report_pub_brand,null);
-			setContentView(layout);
-			statusView = (RadioGroup) layout.findViewById(R.id.rbgPubStatus);
-			
-			Button okButton = (Button)layout.findViewById(R.id.btnSubmitPubBrandInfo);
-			okButton.setOnClickListener(this);
-			Button cancelButton = (Button)layout.findViewById(R.id.btnCancelSubmitPubBrandInfo);
-			cancelButton.setOnClickListener(this);
-			
-			bindView();
-			this.setTitle(BeerRadar.getInstance(context).getBrand(brandId).getTitle());
-			 
-			
+		
+		this.beerRadar = new BeerRadarSqlite(context);
+		this.context = context;
+		this.pubId = pubId;
+		this.brandId = brandId;
+		
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.layout = inflater.inflate(R.layout.dialog_report_pub_brand,null);
+		setContentView(layout);
+		this.statusView = (RadioGroup) layout.findViewById(R.id.rbgPubStatus);
+		
+		Button okButton = (Button) layout.findViewById(R.id.btnSubmitPubBrandInfo);
+		okButton.setOnClickListener(this);
+		Button cancelButton = (Button) layout.findViewById(R.id.btnCancelSubmitPubBrandInfo);
+		cancelButton.setOnClickListener(this);
+		
+		bindView();
+		this.setTitle(beerRadar.getBrand(brandId).getTitle());			
 	}
 	
 	public void display() {

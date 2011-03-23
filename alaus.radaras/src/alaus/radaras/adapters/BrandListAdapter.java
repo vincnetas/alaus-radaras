@@ -4,6 +4,7 @@ import java.util.List;
 
 import alaus.radaras.R;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.viewholders.BrandViewHolder;
 import android.content.Context;
@@ -18,7 +19,9 @@ import android.widget.TextView;
 public class BrandListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<Brand> brands;
+    private BeerRadar beerRadar;
     public BrandListAdapter(Context context, List<Brand> brands) {
+    	beerRadar = new BeerRadarSqlite(context);
         // Cache the LayoutInflate to avoid asking for a new one each time.
         mInflater = LayoutInflater.from(context);
         this.brands = brands;
@@ -87,7 +90,7 @@ public class BrandListAdapter extends BaseAdapter {
         Brand brnd = brands.get(position);
         // Bind the data efficiently with the holder.
         holder.title.setText(brnd.getTitle());
-        holder.img.setImageDrawable((BeerRadar.getInstance(mInflater.getContext()).getImage(brnd.getIcon())));
+        holder.img.setImageDrawable(beerRadar.getImage(brnd.getIcon()));
         
         return convertView;
     }

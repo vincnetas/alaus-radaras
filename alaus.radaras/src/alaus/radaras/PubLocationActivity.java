@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-
 import alaus.radaras.map.overlay.PubOverlay;
 import alaus.radaras.map.overlay.PubOverlayItem;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.LocationProvider;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.utils.Utils;
@@ -40,10 +40,13 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 	private MyLocationOverlay locationOverlay;
 	
 	private PubOverlay pubOverlay;
+	
+	private BeerRadar beerRadar;
 
 	@Override
 	protected void onCreate(Bundle bunble) {
 		super.onCreate(bunble);
+		beerRadar = new BeerRadarSqlite(this);
 		getLocationProvider().subscribe(this);
 		setContentView(R.layout.map);
 		locationOverlay = new MyLocationOverlay(this, getMapView());
@@ -104,33 +107,30 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 	
 	private void setTitle() {
 		String caption = "";
-		BeerRadar dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
-			caption = dao.getBrand(getBrandId()).getTitle();
+			caption = beerRadar.getBrand(getBrandId()).getTitle();
 		} else if (getCountryId() != null) {
-			caption = dao.getCountry(getCountryId()).getName();
+			caption = beerRadar.getCountry(getCountryId()).getName();
 		} else if (getTagId() != null) {
-			caption = dao.getTag(getTagId()).getTitle();
+			caption = beerRadar.getTag(getTagId()).getTitle();
 		}
 
 		TextView mapCaption = (TextView) findViewById(R.id.mapCaption);
 		mapCaption.setText(caption);
 	}
 
-	private synchronized void populateMap(Location location) {
-			
+	private synchronized void populateMap(Location location) {			
 		List<Pub> pubs;
-		BeerRadar dao = getBeerRadarDao();
 		
 		if (getBrandId() != null) {
-			pubs = dao.getPubsByBrandId(getBrandId(), location);
+			pubs = beerRadar.getPubsByBrandId(getBrandId(), location);
 		} else if (getCountryId() != null) {
-			pubs = dao.getPubsByCountry(getCountryId(), location);
+			pubs = beerRadar.getPubsByCountry(getCountryId(), location);
 		} else if (getTagId() != null) {
-			pubs = dao.getPubsByTag(getTagId(), location);
+			pubs = beerRadar.getPubsByTag(getTagId(), location);
 		} else {
-			pubs = dao.getNearbyPubs(location);
+			pubs = beerRadar.getNearbyPubs(location);
 		}
 
 		if (pubs == null) {
@@ -147,13 +147,6 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 		
 
 		getMapView().getOverlays().add(pubOverlay);
-	}
-
-	/**
-	 * @return the beerRadarDao
-	 */
-	public BeerRadar getBeerRadarDao() {
-		return BeerRadar.getInstance(this);
 	}
 
 	/*

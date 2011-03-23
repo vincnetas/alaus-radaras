@@ -4,6 +4,7 @@ import java.util.List;
 
 import alaus.radaras.R;
 import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Brand;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,19 +17,18 @@ import android.widget.TextView;
 public class PubBrandListAdapter extends BaseAdapter {
 
 	private List<Brand> beers;
-	private Context context;
 	private LayoutInflater inflater;
+	private BeerRadar beerRadar;
 	
 	public PubBrandListAdapter(Context context, List<Brand> beers) {
-	        this.context = context;
-	        this.beers = beers;
-	        this.inflater = LayoutInflater.from(context);
+        this.beers = beers;
+        this.inflater = LayoutInflater.from(context);
+        beerRadar = new BeerRadarSqlite(context);
 	}
 
 	
 	@Override
 	public int getCount() {
-
 		return beers.size();
 	}
 
@@ -44,22 +44,20 @@ public class PubBrandListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
 		View v;
 		if(convertView==null){
-			 Brand brand = beers.get(position);
+			Brand brand = beers.get(position);
 			v = inflater.inflate(R.layout.pub_brand_list_item, null);
 			TextView tv = (TextView)v.findViewById(R.id.pubBrandGridText);
 			tv.setText(brand.getTitle());
 			
 			ImageView iv = (ImageView)v.findViewById(R.id.pubBrandGridIcon);
 			iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
-			iv.setImageDrawable(BeerRadar.getInstance(context).getImage(brand.getIcon()));
-		}
-		else
-		{
+			iv.setImageDrawable(beerRadar.getImage(brand.getIcon()));
+		} else {
 			v = convertView;
 		}
+		
 		return v;
 	}
 

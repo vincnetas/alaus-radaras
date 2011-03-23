@@ -4,27 +4,35 @@ import android.location.Location;
 
 public class DistanceCalculator {
 
-	public static double getGeographicalDisance(Location from, Location to) {
-		return getGeographicalDistance(from.getLatitude(), from.getLongitude(), to.getLatitude(), to.getLongitude());
-	}
-	
-	public static double getGeographicalDistance(double lat1, double lon1, double lat2, double lon2) {
-		double theta = lon1 - lon2;
-		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-		dist = Math.acos(dist);
-		dist = rad2deg(dist);
-		dist = dist * 60 * 1.1515;
-		dist = dist * 1.609344;
-
-		return (dist);
-	}
+	private static double m1 = 111132.92; // latitude calculation term 1
+	private static double m2 = -559.82; // latitude calculation term 2
+	private static double m3 = 1.175; // latitude calculation term 3
+	private static double m4 = -0.0023; // latitude calculation term 4
+	private static double p1 = 111412.84; // longitude calculation term 1
+	private static double p2 = -93.5; // longitude calculation term 2
+	private static double p3 = 0.118; // longitude calculation term 3
 
 	private static double deg2rad(double deg) {
-		return (deg * Math.PI / 180.0);
+		double conv_factor = (2.0 * Math.PI) / 360.0;
+		return (deg * conv_factor);
 	}
 
-	private static double rad2deg(double rad) {
-		return (rad * 180.0 / Math.PI);
-	}
+	public static Bounds getBounds(Location location, double maxDistance) {
+		double lat = deg2rad(location.getLatitude());
 
+		double latlen = m1 + (m2 * Math.cos(2 * lat)) + (m3 * Math.cos(4 * lat)) + (m4 * Math.cos(6 * lat));
+		double longlen = (p1 * Math.cos(lat)) + (p2 * Math.cos(3 * lat)) + (p3 * Math.cos(5 * lat));
+
+		double latDiff = maxDistance / latlen;
+		double longDiff = maxDistance / longlen;
+
+		Bounds result = new Bounds();
+
+		result.setMaxLatitude(location.getLatitude() + latDiff);
+		result.setMinLatitude(location.getLatitude() - latDiff);
+		result.setMaxLongitude(location.getLongitude() + longDiff);
+		result.setMinLongitude(location.getLongitude() - longDiff);
+
+		return result;
+	}
 }
