@@ -264,20 +264,17 @@ public class BeerRadarSqlite implements BeerRadar {
 	}	
 	
 	private Pub getRandomPub() {
-		Cursor cursor = db.rawQuery(
-				"SELECT id FROM pubs p " +
-				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
-				"ORDER BY RANDOM() LIMIT 1", null);
-
-		String pubId = null;
-		if (cursor.moveToFirst()) {
-			pubId = cursor.getString(0);
-		}
-		if (cursor != null && !cursor.isClosed()) {
-			cursor.close();
-		}
-		Pub pub = getPub(pubId);
-		return pub;
+		Cursor cursor = db.query(
+				"pubs", 
+				new String[] {"id", "title", "address", "notes", "phone", "url", "latitude", "longtitude", "city"},
+				null,
+				null, 
+				null, 
+				null, 
+				"RANDOM()",
+				"1");
+			
+		return DataTransfomer.to(cursor, DoPub.instance);
 	}
 	
 	@Override
