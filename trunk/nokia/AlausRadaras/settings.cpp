@@ -2,7 +2,8 @@
 #include "ui_settings.h"
 #include <QSettings>
 #include "viewutils.h"
-
+#include <QKeyEvent>
+#include "enums.h"
 
 Settings::Settings(QWidget *parent) :
     QDialog(parent),
@@ -10,9 +11,9 @@ Settings::Settings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->comboUpdateFrequency->addItem(QString::fromUtf8("Visada"),0);
-    ui->comboUpdateFrequency->addItem(QString::fromUtf8("Savaitinis"),1);
-    ui->comboUpdateFrequency->addItem(QString::fromUtf8("Niekada"),2);
+    ui->comboUpdateFrequency->addItem(tr("Visada"),0);
+    ui->comboUpdateFrequency->addItem(tr("Savaitinis"),1);
+    ui->comboUpdateFrequency->addItem(tr("Niekada"),2);
 
     QSettings settings;
     ui->cbEnableInternet->setChecked(settings.value("InternetEnabled",true).toBool());
@@ -29,6 +30,13 @@ void Settings::on_btnBack_clicked()
     settings.setValue("InternetEnabled",ui->cbEnableInternet->isChecked());
     settings.setValue("UpdateFrequency",ui->comboUpdateFrequency->currentIndex());
     emit accepted();
+}
+void Settings::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_btnBack_clicked();
+    }
+    QWidget::keyPressEvent(event);
 }
 
 Settings::~Settings()

@@ -15,6 +15,7 @@ class BeerCounter : public QWidget
 public:
     explicit BeerCounter(QWidget *parent = 0);
     ~BeerCounter();
+    void keyPressEvent(QKeyEvent* event);
 
 private slots:
     void on_btnBack_clicked();

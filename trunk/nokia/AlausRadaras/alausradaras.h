@@ -6,7 +6,6 @@
 #include <QProgressDialog>
 #include "brandtabs.h"
 #include "publist.h"
-#include "feelinglucky.h"
 #include "dbpopulator.h"
 #include "waitdialog.h"
 #include "beercounter.h"
@@ -24,6 +23,7 @@ public:
     explicit AlausRadaras(QWidget *parent = 0);
     ~AlausRadaras();
     void setUpdateVersion(QString version);
+    void keyPressEvent(QKeyEvent *);
 private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();

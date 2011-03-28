@@ -14,6 +14,7 @@ class Settings : public QDialog
 public:
     explicit Settings(QWidget *parent = 0);
     ~Settings();
+    void keyPressEvent(QKeyEvent* event);
 
 private:
     Ui::Settings *ui;

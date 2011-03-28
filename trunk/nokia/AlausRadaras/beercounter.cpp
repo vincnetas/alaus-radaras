@@ -1,6 +1,8 @@
 #include "beercounter.h"
 #include "ui_beercounter.h"
 #include "viewutils.h"
+#include <QKeyEvent>
+#include "enums.h"
 
 BeerCounter::BeerCounter(QWidget *parent) :
     QWidget(parent),
@@ -54,3 +56,14 @@ BeerCounter::~BeerCounter()
     delete dataProvider;
     delete ui;
 }
+
+void BeerCounter::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_btnBack_clicked();
+    } else if (event->nativeVirtualKey() == OkKey) {
+        on_btnClear_clicked();
+    }
+    QWidget::keyPressEvent(event);
+}
+

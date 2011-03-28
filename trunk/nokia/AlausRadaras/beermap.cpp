@@ -2,6 +2,8 @@
 #include "ui_beermap.h"
 #include "lightmaps.h"
 #include "viewutils.h"
+#include <QKeyEvent>
+#include "enums.h"
 
 BeerMap::BeerMap(QWidget *parent) :
     QWidget(parent),
@@ -40,6 +42,7 @@ void BeerMap::locationChanged(qreal lat, qreal lon)
     if(!locationAlreadyUpdated) {
         maps->setCenter(lat, lon);
     }
+    locationAlreadyUpdated = true;
 
 }
 
@@ -57,6 +60,14 @@ void BeerMap::showSinglePub(BeerPub* pub)
    maps->setPubs(list);
    maps->setCenter(pub->latitude(),pub->longitude());
 
+}
+
+void BeerMap::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_btnBack_clicked();
+    }
+    QWidget::keyPressEvent(event);
 }
 
 

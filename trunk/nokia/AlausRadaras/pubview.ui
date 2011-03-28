@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>240</width>
+    <height>240</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Baras</string>
@@ -17,12 +23,18 @@
    <iconset resource="Images.qrc">
     <normaloff>:/images/bok_title.png</normaloff>:/images/bok_title.png</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="leftMargin">
-    <number>9</number>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,8,1">
+   <property name="margin">
+    <number>0</number>
    </property>
    <item>
     <widget class="QLabel" name="pubNameLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="palette">
       <palette>
        <active>
@@ -60,13 +72,8 @@
        </disabled>
       </palette>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>neversti [Baro pavadinimas]</string>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -80,6 +87,12 @@
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="pubPhoneLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="palette">
         <palette>
          <active>
@@ -117,13 +130,8 @@
          </disabled>
         </palette>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>neversti [Tekstas]</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -142,37 +150,25 @@
      </property>
      <item>
       <widget class="QPushButton" name="mapButton">
-       <property name="minimumSize">
-        <size>
-         <width>48</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>48</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">#mapButton{
-border-image:url(:/images/map_01.png);
-
-}</string>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text">
         <string/>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="directionsButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -190,6 +186,12 @@ border-image:url(:/images/map_01.png);
      </item>
      <item>
       <widget class="QLabel" name="pubAddressLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="palette">
         <palette>
          <active>
@@ -227,13 +229,8 @@ border-image:url(:/images/map_01.png);
          </disabled>
         </palette>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
        <property name="text">
-        <string>sdfsdfsdfsdf</string>
+        <string>neversti [Adresas]</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -323,7 +320,7 @@ border-image:url(:/images/map_01.png);
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="8,4">
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -339,10 +336,15 @@ border-image:url(:/images/map_01.png);
      </item>
      <item>
       <widget class="QPushButton" name="closeButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>10</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
         <string notr="true">#closeButton {
 border-image:url(:/images/batonas.png);
-padding:10px 20px 10px 20px;
 }</string>
        </property>
        <property name="text">

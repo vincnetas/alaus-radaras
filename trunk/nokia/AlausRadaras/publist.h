@@ -29,6 +29,7 @@ public:
     void setHeader(QString text);
     void showPubList(PubListType type, QString id, QString header);
     void locationChanged(qreal latitude,qreal longitude);
+    void keyPressEvent(QKeyEvent* event);
 private slots:
     void pubList_itemClicked(const QModelIndex &current);
     void on_btnBack_clicked();

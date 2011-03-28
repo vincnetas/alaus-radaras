@@ -62,7 +62,7 @@ QString DataProvider::getQoute(int count)
        return query.value(0).toString();
     }
     query.clear();
-    return QString::fromUtf8("Dar po viena!");
+    return tr("Dar po viena!");
 }
 
 QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)

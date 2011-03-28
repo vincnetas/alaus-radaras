@@ -4,6 +4,8 @@
 #include "publist.h"
 #include "viewutils.h"
 #include "qtscroller.h"
+#include <QKeyEvent>
+#include "enums.h"
 BrandList::BrandList(QWidget *parent) :
     QWidget(parent),
     brandListModel(0),
@@ -11,7 +13,7 @@ BrandList::BrandList(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QListView::connect(ui->brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
+    QListView::connect(ui->brandListView, SIGNAL(activated(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
 
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
@@ -54,6 +56,14 @@ void BrandList::setHeader(QString text)
 void BrandList::on_btnBack_clicked()
 {
     emit Back();
+}
+
+void BrandList::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_btnBack_clicked();
+    }
+    QWidget::keyPressEvent(event);
 }
 
 BrandList::~BrandList()

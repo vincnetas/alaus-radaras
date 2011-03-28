@@ -15,9 +15,9 @@ BrandTabs::BrandTabs(QWidget *parent) :
 {
     ui->setupUi(this);
     //slots and events
-    QListView::connect(ui->countryListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(countryList_itemClicked(QModelIndex)));
-    QListView::connect(ui->tagListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(tagList_itemClicked(QModelIndex)));
-    QListView::connect(ui->brandListView, SIGNAL(pressed(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
+    QListView::connect(ui->countryListView, SIGNAL(activated(QModelIndex)) , this , SLOT(countryList_itemClicked(QModelIndex)));
+    QListView::connect(ui->tagListView, SIGNAL(activated(QModelIndex)) , this , SLOT(tagList_itemClicked(QModelIndex)));
+    QListView::connect(ui->brandListView, SIGNAL(activated(QModelIndex)) , this , SLOT(brandList_itemClicked(QModelIndex)));
 
     //kinetic scrolling
 
@@ -40,6 +40,18 @@ BrandTabs::BrandTabs(QWidget *parent) :
 
     //delay init
     connect(ui->tabWidget, SIGNAL(currentChanged(int)),SLOT(loadTabData(int)));
+
+    QIcon icon0;
+    icon0.addFile(":/images" + ViewUtils::IconRes+ "/tab_beer_02.png", QSize(), QIcon::Normal, QIcon::Off);
+    ui->tabWidget->setTabIcon(0,icon0);
+
+    QIcon icon1;
+    icon1.addFile(":/images" + ViewUtils::IconRes+ "/tab_map_02.png", QSize(), QIcon::Normal, QIcon::Off);
+    ui->tabWidget->setTabIcon(1,icon1);
+
+    QIcon icon2;
+    icon2.addFile(":/images" + ViewUtils::IconRes+ "/tab_tag_02.png", QSize(), QIcon::Normal, QIcon::Off);
+    ui->tabWidget->setTabIcon(2,icon2);
 }
 
 void BrandTabs::showEvent ( QShowEvent * event )
@@ -92,6 +104,14 @@ void BrandTabs::tagList_itemClicked(const QModelIndex &current)
 void BrandTabs::on_btnClose_clicked()
 {
     emit Back();
+}
+
+void BrandTabs::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_btnClose_clicked();
+    }
+    QWidget::keyPressEvent(event);
 }
 
 BrandTabs::~BrandTabs()

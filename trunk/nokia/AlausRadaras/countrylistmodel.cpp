@@ -2,6 +2,8 @@
 #include <QSqlQueryModel>
 #include <QPixmap>
 #include <QStringBuilder>
+#include <QStringBuilder>
+#include <viewutils.h>
 
 CountryListModel::CountryListModel(QObject *parent) :
     QSqlQueryModel(parent)
@@ -12,7 +14,7 @@ QVariant CountryListModel::data(const QModelIndex &index, int role) const
 {
 
     if (role == Qt::DecorationRole) {
-           return QVariant(QPixmap (":/images/map_01.png"));
+           return QVariant(QPixmap (":/images" %ViewUtils::IconRes %"/map_01.png"));
         } else if (role == Qt::DisplayRole) {
             QVariant displayValue = QSqlQueryModel::data(index, Qt::DisplayRole);
             return displayValue.toString();
