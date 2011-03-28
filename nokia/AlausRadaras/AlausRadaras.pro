@@ -24,7 +24,6 @@ SOURCES += main.cpp\
     slippymap.cpp \
     lightmaps.cpp \
     dataprovider.cpp \
-    feelinglucky.cpp \
     brandlist.cpp \
     feelingluckyinfo.cpp \
     beermap.cpp \
@@ -40,7 +39,8 @@ qtflickgesture.cpp \
            qtscrollerfilter.cpp \
            qtscrollerproperties.cpp \
            qtscrollevent.cpp \
-    settings.cpp
+    settings.cpp \
+    feelingthirsty.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -56,7 +56,6 @@ HEADERS  += alausradaras.h \
     slippymap.h \
     lightmaps.h \
     dataprovider.h \
-    feelinglucky.h \
     brandlist.h \
     feelingluckyinfo.h \
     beermap.h \
@@ -75,23 +74,29 @@ HEADERS  += alausradaras.h \
            qtscrollerproperties_p.h \
            qtscrollevent.h \
            qtscrollevent_p.h \
-    settings.h
+    settings.h \
+    feelingthirsty.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
     brandtabs.ui \
     pubview.ui \
     publist.ui \
-    feelinglucky.ui \
     brandlist.ui \
     beermap.ui \
     waitdialog.ui \
     beercounter.ui \
     maincontroller.ui \
-    settings.ui
+    settings.ui \
+    feelingthirsty.ui
 
 CONFIG += mobility
 MOBILITY += location
+
+TRANSLATIONS = alausradaras_lt.ts \
+    alausradaras_ru.ts \
+    alausradaras_en.ts
+
 
 #LIBS += -lsendas2 \
 #-lmsgs \
@@ -110,19 +115,19 @@ MOBILITY += location
 ICON = alus.svg
 #QTSCROLLER_OUT = $$OUT_PWD/kineticscroller
 #include(kineticscroller/qtscroller.pri)
-
-
+ VERSION = 1.0.1
+#old uid 0xece1c5e8
+#nokia uid 0x2003986A
 symbian {
-    TARGET.UID3 = 0x2003986A
+    TARGET.UID3 = 0xece1c5e8
     TARGET.CAPABILITY += NetworkServices Location
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
     ICON = alus.svg
+     VERSION = 1.0.1
 vendorinfo = \
 "%{\"X-Medikai\"}" \
 ":\"X-Medikai\""
-
-my_deployment.pkg_prerules = packageheader vendorinfo
 
 packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 0, 0, TYPE=SA"
 my_deployment.pkg_prerules = packageheader vendorinfo

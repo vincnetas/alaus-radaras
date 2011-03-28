@@ -20,6 +20,7 @@ public:
     void showPubs(QList<BeerPub*> &pubs);
     void showSinglePub(BeerPub *pub);
     void locationChanged(qreal lat, qreal lon);
+    void keyPressEvent(QKeyEvent* event);
     ~BeerMap();
 
 private:

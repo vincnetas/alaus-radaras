@@ -11,10 +11,12 @@ class ViewUtils : public QObject
 public:
     explicit ViewUtils(QObject *parent = 0);
     static QPalette GetBackground(const QPalette &);
+    static QString WrapText(QString text, int length);
+    static QString IconRes;
+    static bool HighRes;
 signals:
 
 public slots:
 
 };
-
 #endif // VIEWUTILS_H

@@ -15,6 +15,7 @@ public:
     explicit PubView(QWidget *parent = 0);
     ~PubView();
     void showPub(QString pubId);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
     Ui::PubView *ui;

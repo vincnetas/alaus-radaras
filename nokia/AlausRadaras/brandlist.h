@@ -18,6 +18,7 @@ public:
     ~BrandList();
     void setHeader(QString text);
     void showBrands(BrandListType type, QString id, QString header);
+    void keyPressEvent(QKeyEvent* event);
 
 private:
     Ui::BrandList *ui;

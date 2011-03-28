@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>262</width>
+    <height>266</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Alaus tipai</string>
@@ -25,11 +31,11 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1">
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>9</verstretch>
         </sizepolicy>
@@ -49,7 +55,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <property name="iconSize">
         <size>
@@ -64,10 +70,12 @@
         <bool>false</bool>
        </property>
        <widget class="QWidget" name="tabBrands">
-        <attribute name="icon">
-         <iconset resource="Images.qrc">
-          <normaloff>:/images/tab_beer_02.png</normaloff>:/images/tab_beer_02.png</iconset>
-        </attribute>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <attribute name="title">
          <string>Rūšys</string>
         </attribute>
@@ -155,10 +163,6 @@
         </layout>
        </widget>
        <widget class="QWidget" name="tabCountries">
-        <attribute name="icon">
-         <iconset resource="Images.qrc">
-          <normaloff>:/images/tab_map_02.png</normaloff>:/images/tab_map_02.png</iconset>
-        </attribute>
         <attribute name="title">
          <string>Šalys</string>
         </attribute>
@@ -252,10 +256,6 @@
         </layout>
        </widget>
        <widget class="QWidget" name="tabTags">
-        <attribute name="icon">
-         <iconset resource="Images.qrc">
-          <normaloff>:/images/tab_tag_02.png</normaloff>:/images/tab_tag_02.png</iconset>
-        </attribute>
         <attribute name="title">
          <string>Tipai</string>
         </attribute>
@@ -345,7 +345,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,4">
        <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
@@ -381,7 +381,6 @@
          <property name="styleSheet">
           <string notr="true">#btnClose {
 border-image:url(:/images/batonas.png);
-padding:10px 20px 10px 20px;
 }</string>
          </property>
          <property name="text">

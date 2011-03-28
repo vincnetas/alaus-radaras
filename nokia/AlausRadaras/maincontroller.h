@@ -8,6 +8,7 @@
 #include "publist.h"
 #include "brandlist.h"
 #include "beermap.h"
+#include "feelingthirsty.h"
 
 #include <qgeopositioninfosource.h>
 #include <qgeosatelliteinfosource.h>
@@ -40,7 +41,7 @@ private:
     BeerCounter *counter;
     PubList *pubList;
     PubView *pubView;
-    FeelingLucky *feelingLucky;
+    FeelingThirsty *feelingThirsty;
     BrandList *brandList;
     BeerMap *map;
     BeerMap *singleMap;
@@ -63,7 +64,7 @@ private slots:
     void showMap(QList<BeerPub*> pubs);
     void showPub(QString pubId);
     void showMain();
-    void showFeelingLucky();
+    void showFeelingThirsty();
     void goBack();
     void showPubMap(QString pubId);
     void positionUpdated(QGeoPositionInfo geoPositionInfo);

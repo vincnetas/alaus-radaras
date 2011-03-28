@@ -5,7 +5,9 @@
 #include <QDebug>
 #include <QSqlError>
 #include "viewutils.h"
+#include "enums.h"
 #include "qtscroller.h"
+#include <QKeyEvent>
 
 #include <QDesktopServices>
 #include <QUrl>
@@ -26,6 +28,18 @@ PubView::PubView(QWidget *parent) :
 
      //until we don't have GPS
      ui->directionsButton->setVisible(false);
+
+     ui->mapButton->setStyleSheet("#mapButton{ border-image:url(:/images" + ViewUtils::IconRes+ "/map_01.png); }");
+
+     QFont fontHeader;
+     fontHeader.setPointSize(ViewUtils::HighRes ? 15 : 10);
+     ui->pubNameLabel->setFont(fontHeader);
+
+     QFont fontLabel;
+     fontLabel.setPointSize(ViewUtils::HighRes ? 11 : 8);
+     ui->pubPhoneLabel->setFont(fontLabel);
+     ui->pubAddressLabel->setFont(fontLabel);
+
 }
 
 void PubView::showPub(QString pubId)
@@ -65,6 +79,14 @@ void PubView::on_mapButton_clicked()
 void PubView::on_closeButton_clicked()
 {
     emit Back();
+}
+
+void PubView::keyPressEvent(QKeyEvent* event)
+{
+    if(event->nativeVirtualKey() == CancelKey) {
+        on_closeButton_clicked();
+    }
+    QWidget::keyPressEvent(event);
 }
 
 PubView::~PubView()

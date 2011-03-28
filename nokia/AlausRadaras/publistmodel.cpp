@@ -1,6 +1,8 @@
 #include "publistmodel.h"
 #include <QAbstractListModel>
 #include <QPixmap>
+#include <QStringBuilder>
+#include <viewutils.h>
 PubListModel::PubListModel(QObject *parent, QList<BeerPub*> *pubs ) :
     QAbstractListModel(parent)
 {
@@ -25,7 +27,7 @@ QVariant PubListModel::data( const QModelIndex & index, int role /* = Qt::Displa
     {
         case Qt::DecorationRole:
         {
-            return QVariant(QPixmap (":/images/map_01.png"));
+            return QVariant(QPixmap (":/images" %ViewUtils::IconRes %"/map_01.png"));
         }
         case Qt::EditRole:
         {
@@ -38,14 +40,14 @@ QVariant PubListModel::data( const QModelIndex & index, int role /* = Qt::Displa
             data.append(pubs->at(index.row())->title());
             data.append("\n ");
             if(pubs->at(index.row())->distance() == -1) {
-                data.append("? m");
+                data.append(tr("? m"));
             }
             else if(pubs->at(index.row())->distance() > 1000)  {
                 data.append(distance.setNum(pubs->at(index.row())->distance() / 1000, 'g', 3));
-                data.append(" km");
+                data.append(tr(" km"));
             } else {
                 data.append(distance.setNum(pubs->at(index.row())->distance(), 'f', 0));
-                data.append(QString::fromUtf8(" metru"));
+                data.append(tr(" metru"));
             }
             data.append(" (");
             data.append(pubs->at(index.row())->city());
