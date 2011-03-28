@@ -47,7 +47,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		
 		public static String COUNTRIES = 
 	        "CREATE TABLE countries(" +
-	        	"code			TEXT NOT NULL," + 
+	        	"code			TEXT PRIMARY KEY," + 
 	        	"name			TEXT NOT NULL);";
 		
 		public static String BRANDS_COUNTRIES = 
@@ -57,7 +57,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		
 		public static String TAGS = 
 	        "CREATE TABLE tags(" +
-	        	"code			TEXT NOT NULL," +
+	        	"code			TEXT PRIMARY KEY," +
 	        	"title			TEXT NOT NULL);";
 		
 		public static String BRANDS_TAGS = 

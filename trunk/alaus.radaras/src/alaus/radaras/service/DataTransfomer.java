@@ -1,7 +1,9 @@
 package alaus.radaras.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
@@ -41,6 +43,20 @@ public class DataTransfomer {
 		if (cursor != null && !cursor.isClosed()) {
 			cursor.close();
 		}
+	}
+	
+	public static <T> Set<T> toSet(Cursor cursor, Do<T> doe) {
+		Set<T> result = new HashSet<T>();
+
+		if (cursor.moveToFirst()) {
+			do {
+				result.add(doe.get(cursor));
+			} while (cursor.moveToNext());
+		}
+
+		closeCursor(cursor);
+
+		return result;
 	}
 	
 	public static <T> List<T> toList(Cursor cursor, Do<T> doe) {
@@ -150,6 +166,8 @@ public class DataTransfomer {
 	static class DoTag implements Do<Tag> {
 
 		public final static DoTag instance = new DoTag();
+		
+		public static final String[] columns = new String[] {"code", "title"};
 		
 		@Override
 		public Tag get(Cursor cursor) {
