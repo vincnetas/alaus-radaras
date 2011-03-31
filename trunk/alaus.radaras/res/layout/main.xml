@@ -11,6 +11,13 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:layout_centerHorizontal="true"></ImageView>
+<ImageView 
+	android:id="@+id/update"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_alignParentRight="true"
+	android:layout_alignParentTop="true"	 
+	android:src="@drawable/update_recommended" android:layout_margin="10dp"></ImageView>	
 <TextView android:id="@+id/mainCounterCurrent"
   	android:textSize="60dp" 
   	android:layout_width="wrap_content" 

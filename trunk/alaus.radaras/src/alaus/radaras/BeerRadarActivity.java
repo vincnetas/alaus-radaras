@@ -3,16 +3,19 @@ package alaus.radaras;
 //import alaus.radaras.service.BeerRadarUpdate;
 import alaus.radaras.settings.SettingsManager;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BeerRadarActivity extends AbstractLocationActivity {
 	
@@ -34,6 +37,19 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(BeerRadarActivity.this, PubLocationActivity.class));
+			}
+		});
+		
+		getUpdateView().setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=alaus.radaras"));
+
+			    try {
+			        startActivity(marketIntent);
+			    } catch (ActivityNotFoundException o) {
+			        Toast.makeText(BeerRadarActivity.this, "Market not installed.", Toast.LENGTH_SHORT).show();
+			    }
 			}
 		});
 		
@@ -102,6 +118,10 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     private View getCounterView() {
     	return findViewById(R.id.counter);
     }    
+    
+    private View getUpdateView() {
+    	return findViewById(R.id.update);
+    }
     
     @Override
     public void onResume(){
