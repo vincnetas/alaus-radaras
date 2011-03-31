@@ -36,7 +36,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 
-public class BeerRadarSqlite implements BeerRadar {
+public class BeerRadarSqlite implements BeerRadar, UpdateService {
 	
 	private SQLiteDatabase db;
 	
@@ -505,12 +505,43 @@ public class BeerRadarSqlite implements BeerRadar {
 		db.delete("pubs_brands", "pub_id = ?", param);
 	}
 	
-	private void delete(Pub pub) {
+	private void delete(alaus.radaras.shared.model.Pub pub) {
 		deletePub(pub.getId());
 	}
 	
-	private void delete(Brand brand) {
+	private void delete(alaus.radaras.shared.model.Brand brand) {
 		// do nothing
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.service.UpdateService#applyUpdate(alaus.radaras.service.Update)
+	 */
+	@Override
+	public void applyUpdate(Update update) {
+		for (Beer beer : update.getUpdatedBeers()) {
+			update(beer);
+		}
+		
+		for (alaus.radaras.shared.model.Brand brand : update.getUpdatedBrands()) {
+			update(brand);
+		}
+		
+		for (alaus.radaras.shared.model.Pub pub : update.getUpdatedPubs()) {
+			update(pub);
+		}
+		
+		for (Beer beer : update.getDeletedBeers()) {
+			delete(beer);
+		}
+		
+		for (alaus.radaras.shared.model.Brand brand : update.getDeletedBrands()) {
+			delete(brand);
+		}
+		
+		for (alaus.radaras.shared.model.Pub pub : update.getDeletedPubs()) {
+			delete(pub);
+		}
+		
+		
+	}
 }
