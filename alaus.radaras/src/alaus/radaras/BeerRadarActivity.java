@@ -3,6 +3,7 @@ package alaus.radaras;
 //import alaus.radaras.service.BeerRadarUpdate;
 import alaus.radaras.settings.SettingsManager;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,7 +20,9 @@ import android.widget.Toast;
 
 public class BeerRadarActivity extends AbstractLocationActivity {
 	
-    /** Called when the activity is first created. */
+    protected static final int UPDATE_DIALOG = 123;
+
+	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +46,7 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		getUpdateView().setOnClickListener(new View.OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=alaus.radaras"));
-
-			    try {
-			        startActivity(marketIntent);
-			    } catch (ActivityNotFoundException o) {
-			        Toast.makeText(BeerRadarActivity.this, "Market not installed.", Toast.LENGTH_SHORT).show();
-			    }
+				showDialog(UPDATE_DIALOG);
 			}
 		});
 		
@@ -137,5 +134,33 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		//do nothing. we just need this to get location fix asap.
 		
 	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateDialog(int)
+	 */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Dialog result = null;
+		
+		if (id == UPDATE_DIALOG) {
+			result = new AlertDialog.Builder(this).setPositiveButton("Atnaujinti", 
+					new DialogInterface.OnClickListener() {
 	
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=alaus.radaras"));
+	
+						    try {
+						        startActivity(marketIntent);
+						    } catch (ActivityNotFoundException o) {
+						        Toast.makeText(BeerRadarActivity.this, "Market not installed.", Toast.LENGTH_SHORT).show();
+						    }						
+						}
+					}).setTitle("Atnaujinimas")
+					.setMessage("Jau yra programos atnaujinimas")
+					.create();
+		}
+			
+		return result;
+	}	
 }
