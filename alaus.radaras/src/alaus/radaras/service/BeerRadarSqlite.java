@@ -389,7 +389,7 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 		Cursor cursor = db.query(
 			"taxi", 
 			new String[] {"title", "phone", "city", "latitude", "longitude"},
-			"latitude < ? AND latitude > ? AND longtitude < ? AND longtitude > ?", 
+			"latitude < ? AND latitude > ? AND longitude < ? AND longitude > ?", 
 			new String[] {
 				Double.toString(bounds.getMaxLatitude()), 
 				Double.toString(bounds.getMinLatitude()), 
