@@ -26,7 +26,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
 
     //show me a better way
     QSizePolicy counterSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    QSize counterSize = (ViewUtils::HighRes) ? QSize(250,250) : QSize(36,36);
+    QSize counterSize = ViewUtils::GetMugSize();
     counterSizePolicy.setHorizontalStretch(4);
     counterSizePolicy.setVerticalStretch(4);
     counterSizePolicy.setHeightForWidth(true);
@@ -42,10 +42,12 @@ void AlausRadaras::on_btnSettings_clicked()
 {
     settingsView->setModal(true);
     settingsView->showFullScreen();
+
 }
 void AlausRadaras::settings_accepted()
 {
     settingsView->close();
+
 }
 
 void AlausRadaras::on_btnBrands_clicked()

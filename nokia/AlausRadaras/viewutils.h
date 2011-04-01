@@ -13,6 +13,7 @@ public:
     static QPalette GetBackground(const QPalette &);
     static QString WrapText(QString text, int length);
     static QString IconRes;
+    static QSize GetMugSize();
     static bool HighRes;
 signals:
 

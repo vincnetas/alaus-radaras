@@ -66,8 +66,18 @@ MainController::MainController(QWidget *parent) :
     showWidget(MainView);
 
     connect(&updater,SIGNAL(updateAvalable(QString)),SLOT(onUpdateAvailable(QString)));
-    QTimer::singleShot(500,&updater,SLOT(checkForUpdates()));
+    QTimer::singleShot(700,&updater,SLOT(checkForUpdates()));
 
+    populator = NULL;
+    progress = NULL;
+
+     QTimer::singleShot(500,this,SLOT(initDbUpdate()));
+
+
+}
+
+void MainController::initDbUpdate()
+{
     if(!dbManager->isDbLatest()) {
         progress = new WaitDialog(this);
         progress->setModal(true);
@@ -78,11 +88,8 @@ MainController::MainController(QWidget *parent) :
         connect(populator,SIGNAL(finished()),this,SLOT(dbInitFinished()));
         //safeguard. Let it crash. after one minute, if its not done.
         QTimer::singleShot(60000,this,SLOT(dbInitFinished()));
-
-    } else {
-        populator = NULL;
-        progress = NULL;
     }
+
 }
 
 void MainController::showFeelingThirsty()
@@ -147,7 +154,8 @@ void MainController::showPub(QString pubId)
 void MainController::dbInitFinished()
 {
     if(progress) {
-        progress->close();
+        progress->done(1);
+        ui->stackedWidget->currentWidget()->showFullScreen();
     }
 }
 

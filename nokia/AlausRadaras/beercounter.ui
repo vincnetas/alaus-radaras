@@ -28,7 +28,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="6,0,4,0,1">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="8,2,7,2,1">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,4,2">
        <item>
@@ -46,24 +46,6 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnCount">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="baseSize">
-          <size>
-           <width>100</width>
-           <height>100</height>
-          </size>
-         </property>
          <property name="font">
           <font>
            <pointsize>15</pointsize>
@@ -73,17 +55,12 @@
           <bool>false</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true">#btnCount{ border-image:url(:/images/bok_title.png); color:black; } 
-</string>
+          <string notr="true">#btnCount {color:black;
+border-image:url(:/images/bok_title.png); 
+}</string>
          </property>
          <property name="text">
           <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>120</width>
-           <height>120</height>
-          </size>
          </property>
         </widget>
        </item>

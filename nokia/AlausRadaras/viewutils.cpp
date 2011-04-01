@@ -18,6 +18,11 @@ QPalette ViewUtils::GetBackground(const QPalette &palette)
 
 }
 
+QSize ViewUtils::GetMugSize()
+{
+    return (ViewUtils::HighRes) ? QSize(178,178) : QSize(64,64);
+}
+
 QString ViewUtils::WrapText(QString text, int wrapLen)
 {
     if(text.length() > wrapLen)

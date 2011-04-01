@@ -71,6 +71,7 @@ private slots:
     void startLocationUpdates();
     void stopLocationUpdates();
     void onUpdateAvailable(QString version);
+    void initDbUpdate();
 
 };
 

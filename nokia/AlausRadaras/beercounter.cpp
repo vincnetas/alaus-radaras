@@ -17,6 +17,17 @@ BeerCounter::BeerCounter(QWidget *parent) :
 
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
+
+    QSizePolicy counterSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    QSize counterSize = ViewUtils::GetMugSize();
+    counterSizePolicy.setHorizontalStretch(4);
+    counterSizePolicy.setVerticalStretch(4);
+    counterSizePolicy.setHeightForWidth(true);
+    ui->btnCount->setSizePolicy(counterSizePolicy);
+    ui->btnCount->setMinimumSize(counterSize);
+    ui->btnCount->setMaximumSize(counterSize);
+    ui->btnCount->setSizeIncrement(QSize(1, 1));
+    ui->btnCount->setBaseSize(counterSize);
 }
 
 void BeerCounter::on_btnBack_clicked()
