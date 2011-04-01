@@ -36,7 +36,7 @@ public class SettingsActivity extends Activity implements OnSeekBarChangeListene
 		        seekBar.setEnabled(false);
 		        distanceEnabledCheckBox.setChecked(false);
 	        } else {
-		        seekBar.setProgress(settings.getMaxDistance() / SettingsManager.DISTANCE_STEP);
+		        seekBar.setProgress(Math.max(maxDistance / SettingsManager.DISTANCE_STEP - 1, 0));
 		        distanceEnabledCheckBox.setChecked(true);
 	        }
 	        
