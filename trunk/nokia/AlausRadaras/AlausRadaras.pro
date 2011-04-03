@@ -115,21 +115,24 @@ TRANSLATIONS = alausradaras_lt.ts \
 ICON = alus.svg
 #QTSCROLLER_OUT = $$OUT_PWD/kineticscroller
 #include(kineticscroller/qtscroller.pri)
- VERSION = 1.0.1
+ VERSION = 1.0.2
 #old uid 0xece1c5e8
 #nokia uid 0x2003986A
 symbian {
-    TARGET.UID3 = 0xece1c5e8
+    TARGET.UID3 = 0x2003986A
     TARGET.CAPABILITY += NetworkServices Location
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
     ICON = alus.svg
-     VERSION = 1.0.1
+     VERSION = 1.0.2
 vendorinfo = \
 "%{\"X-Medikai\"}" \
 ":\"X-Medikai\""
 
-packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 0, 0, TYPE=SA"
+translations.sources = *.qm
+DEPLOYMENT += translations
+
+packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 0, 2, TYPE=SA"
 my_deployment.pkg_prerules = packageheader vendorinfo
 DEPLOYMENT += my_deployment
 }

@@ -5,5 +5,11 @@
         <file>db/pubs.txt</file>
         <file>db/qoutes.txt</file>
         <file>db/tags.txt</file>
+        <file>alausradaras_en.qm</file>
+        <file>alausradaras_en.ts</file>
+        <file>alausradaras_lt.qm</file>
+        <file>alausradaras_lt.ts</file>
+        <file>alausradaras_ru.qm</file>
+        <file>alausradaras_ru.ts</file>
     </qresource>
 </RCC>

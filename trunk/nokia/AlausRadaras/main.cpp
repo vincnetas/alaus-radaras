@@ -13,6 +13,18 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("alausradaras.lt");
     QCoreApplication::setApplicationName("Alaus radaras");
 
+
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    a.installTranslator(&qtTranslator);
+
+    QTranslator myappTranslator; // QString("en_EN")
+    bool loaded = myappTranslator.load("alausradaras_" +QLocale::system().name(), ":/");
+    qDebug() << loaded;
+    qDebug() << QLocale::system().name();
+    a.installTranslator(&myappTranslator);
+
+
     QRect res = QApplication::desktop()->screenGeometry();
     if(res.width() < 360 && res.height() < 360 ) {
         ViewUtils::IconRes = "32";
