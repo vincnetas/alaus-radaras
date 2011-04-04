@@ -31,7 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-//	Creates database using scripts
+//	Creates database using scripts in beer-radar-schema.sqlite
 //	[[SQLiteManager sharedManager] createNewDatabase];
 	
 	[[SQLiteManager sharedManager] initializeDatabase];
@@ -62,7 +62,6 @@
     [self.window makeKeyAndVisible];
 	//[navigationController setNavigationBarHidden:YES];
 	
-	[[LocationManager sharedManager]initializeManager];
 	[[DataPublisher sharedManager]initializeManager];
 	 
 	 

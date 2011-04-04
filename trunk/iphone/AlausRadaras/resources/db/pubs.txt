@@ -37,7 +37,7 @@
 1298412463906	Jalta	Vykinto g. 17a	Vilnius	8 650 12114	http://www.facebook.com/group.php?gid=77247649677&ref=search	54.6892177	25.2516716
 1298412463907	Šnekutis (Old Town)	Šv. Stepono 8	Vilnius	8 650 57058	http://www.alutis.lt/snekutis/stepono.php	54.6750192	25.2824646
 1298412463908	Šnekutis (Užupis)	Polocko 7	Vilnius	8 650 49058	http://www.alutis.lt/snekutis/polocko.php	54.6812654	25.3012616
-1298412463909	Plieno paukštė	K. Kalinausko 11	Vilnius	8 52 312181		54.6826155	25.2724954
+1298412463909	Plieno paukštis	K. Kalinausko 11	Vilnius	8 52 312181		54.6826155	25.2724954
 1298412463910	Renė	Antokolskio g. 13	Vilnius	 8 52 126858	http://www.kwak.lt/	54.6792602	25.2855335
 1298412463911	Pilies menė	Pilies g. 8	Vilnius	8 52 612552	http://piliesmene.meniu.lt	54.6840313	25.2894708
 1298412463912	Cactus	Bokšto 7	Vilnius	8 601 12555	http://www.cactusbar.lt/	54.6805646	25.2903254
@@ -66,3 +66,8 @@
 1298572132635	Terrazza	Konstitucijos pr. 26	Vilnius	+37068790719	http://www.terrazza.lt	54.6981917	25.2672398
 1299076781545	Grizzly Grill	Savanorių pr. 439/Šiaurės pr. 3A	Kaunas	+37037249337	http://grizzlygrill.lt	54.9279797	23.9710759
 1299399186159	Portobello	Aušros vartų g. 7	Vilnius	8 52 121646	http://www.facebook.com/pages/Portobello/128496187172890	54.6764408	25.2882045
+1300352297382	Leika	Tomo g.7	Klaipėda			55.7079424	21.1341609
+1300352297383	La Dolce Vita	H. Manto gatvė 8	Klaipėda		http://ladolcevita.lt/	55.7135792	21.1304105
+1300352297384	Alynas	Taikos prospektas 141	Klaipėda		http://www.alynas.lt/	55.6623161	21.1766458
+1300353421053	Viskio baras "W 1640"	Kurpiu 29	Kaunas	+37065753440	http://www.viskiobaras.lt/	54.8958201	23.895761
+1300871783651	Entry	Kęstučio g. 71	Kaunas	+37068622112	http://www.entry.lt/	54.895815	23.909281

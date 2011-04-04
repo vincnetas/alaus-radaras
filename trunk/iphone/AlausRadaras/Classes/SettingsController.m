@@ -24,6 +24,10 @@
 	/* Application setup */
     [super viewDidLoad];
 
+	
+	[[LocationManager sharedManager]initializeManager];
+
+	
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	BOOL enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
 	UIColor *background;
@@ -68,6 +72,8 @@
 	
 	[[LocationManager sharedManager]setDistance:visibilityDistance];
 	[self visibilityControlIndexChanged];
+	
+	NSLog(@"SettingsController viewDidLoad");
 }
 
 -(IBAction) hideSettings:(id) sender {
@@ -130,6 +136,7 @@
 
 - (void) viewDidDisappear:(BOOL)animated {
 	NSLog(@"SettingsController viewDidDisappear");
+	
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	if (standardUserDefaults) {
 		[standardUserDefaults setBool:visibleDistanceSlider.enabled forKey:@"VisibilityControlled"];

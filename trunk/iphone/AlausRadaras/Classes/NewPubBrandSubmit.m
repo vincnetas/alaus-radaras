@@ -51,14 +51,14 @@
 	[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
 							   message:nil 
 							  delegate:self 
-					 cancelButtonTitle:@"Esu blaivas!!"
-					 otherButtonTitles:@"Tiek to", nil];
+					 cancelButtonTitle:@"Tiek to"
+					 otherButtonTitles:@"Esu blaivas!!", nil];
 	[alertView show];
 	[alertView release];	
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 0) {
+	if(buttonIndex == 1) {
 		// check if submited in 12 hours?		
 		NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
 		
@@ -68,7 +68,6 @@
 											   status:@"NEW_BRAND" 
 											  message:@""
 											 validate:NO];
-
 	
 		if (success) {
 			NSLog(@"Data can be published");
@@ -76,8 +75,7 @@
 			NSString *post = 
 				[NSString stringWithFormat:
 					@"type=pubBrandInfo&status=NEW_BRAND&brandId=NEW_BRAND&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
-					pubId, [NSString stringWithFormat:@"GUID: %@ Message: %@", 
-					uniqueIdentifier, msgTextView.text, coords.latitude, coords.longitude]];
+					pubId, [NSString stringWithFormat:@"UID: %@ Message: %@", uniqueIdentifier, msgTextView.text], coords.latitude, coords.longitude];
 			
 			[self.parentViewController postData:post msg:@"+500 taškų už pilietiškumą. Dėkui! :)"];
 		}

@@ -28,11 +28,14 @@
 - (void) initializeManager;
 
 - (CLLocationCoordinate2D) getLocationCoordinates;
+- (void) startUpdatingLocation;
+- (void) stopUpdatingLocation;
+
 - (void) setDistance:(int) km;
 - (int) getDistance;
 - (void) setVisibilityControlled:(BOOL) value;
 - (BOOL) getVisibilityControlled;
 - (BOOL) isUserLocationKnown;
-- (BOOL) setEnableAllFeatures:(BOOL)value;
+- (void) setEnableAllFeatures:(BOOL)value;
 
 @end
