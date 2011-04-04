@@ -467,8 +467,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 				 [country stringByReplacingOccurrencesOfString:@" " withString:@""]];                   
 			}
 			
-			NSLog(@"Inserting brand<->tag association: %@", [values objectAtIndex:0]);
-			NSArray *tags = [[values objectAtIndex:4] componentsSeparatedByString:@","];
+			NSString *allTags = [[values objectAtIndex:4] substringToIndex:[[values objectAtIndex:4] length] - 1];
+			NSArray *tags = [allTags componentsSeparatedByString:@","];
 			for (NSString *tag in tags) {
 				[db executeUpdate:@"insert into brands_tags (brand_id, tag) values (?, ?)",
 				 [values objectAtIndex:0],
@@ -606,13 +606,16 @@ static SQLiteManager *sharedSQLiteManager = nil;
 }
 
 - (NSMutableArray *) getBrandsByTag:(NSString *)tag {
+	NSLog(@"SQLiteManager - getBrandsByTag: %@", tag);
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 	
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	
 	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM brands b INNER JOIN brands_tags bt ON b.brandId = bt.brand_id AND bt.tag = '%@'", tag]];
-	
+		NSLog(@"%@", query);	
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+
+
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_brands AS pb ON pb.brand_id = b.brandId INNER JOIN pubs AS p ON p.pubId = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.brandId", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
 	
@@ -629,6 +632,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		[result addObject:brand];
 		[brand release];
 	}
+	NSLog(@"SQLiteManager - results: %i", [result count]);
+
 	[rs close];
 	return result;
 }

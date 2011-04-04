@@ -39,7 +39,7 @@
 	 //mapView.mapType=MKMapTypeHybrid;
 	 
 	 map.showsUserLocation = YES;
-	// CLLocationCoordinate2D userPosition = mapView.userLocation.location.coordinate;
+	 CLLocationCoordinate2D userPosition = map.userLocation.location.coordinate;
 	 CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
 	 CLLocationCoordinate2D centerMap = centerOfVilnius;
 
@@ -47,19 +47,28 @@
 	 pubsAlreadyOnMap = [[NSMutableArray alloc]init];
 	 
 	 [self loadPubAnnotations];
-	
+	 
+	 CLLocationCoordinate2D db = [[LocationManager sharedManager]getLocationCoordinates];
+	 NSLog(@"\nUI:%.8f, %.8f\nDB:%.8f, %.8f",userPosition.latitude, userPosition.longitude, db.latitude, db.longitude);
+	 
 	 if (locationBased) {
 		 double di = [[LocationManager sharedManager]getDistance];
 		 infoLabel.text = [NSString stringWithFormat:@"%@ • (%.0f Km atstumu)", infoLabel.text, di] ;
 		 centerMap = [[LocationManager sharedManager]getLocationCoordinates];
 	 }
-
+	
 	 MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.04, 0.05);
 	 MKCoordinateRegion region = MKCoordinateRegionMake(centerMap, coordSpan);
 	 map.region = region;
 	 
 	 NSLog(@"MapViewController viewDidLoad");
 }
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+	NSLog(@"didUpdateUserLocation");
+	
+}
+
 
 - (IBAction) gotoPreviousView:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];	
@@ -221,7 +230,6 @@
 	MKCoordinateRegion region = MKCoordinateRegionMake(regionCenter, span);
 	[map setRegion:region animated:YES];
 	[map regionThatFits:region];	
-	
 }
 
 

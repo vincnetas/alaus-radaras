@@ -20,8 +20,13 @@
 @synthesize brandList, currentPub;
 @synthesize brandsTable;
 @synthesize userCoordinates;
+@synthesize reportBrandId, reportStatus, brandReportView;
 
 - (void)dealloc {
+	[reportBrandId release];
+	[reportStatus release];
+	
+	[brandReportView release];
 	[urlButton release];
 	[newBrandSubmit release];
 	[pubBrandSubmit release];
@@ -80,8 +85,7 @@
 	 NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	 enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
 	 
-	 NSLog(@"PubDetailViewController viewDidLoad");
-	 
+	 NSLog(@"PubDetailViewController viewDidLoad");	 
 }
 
 
@@ -93,6 +97,7 @@
 }
 
 - (IBAction) dialNumber:(id)sender {
+	callAlertBox = TRUE;
 	UIAlertView* alertView = 
 	[[UIAlertView alloc] initWithTitle:@"Tai skambinam į barą?"
 							   message:nil 
@@ -103,14 +108,9 @@
 	[alertView release];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == 1) {
-		NSString *phonenumber = [NSString stringWithFormat:@"tel://%@", currentPub.phone];
-		phonenumber = [phonenumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-		NSLog(@"Calling pub: %@", phonenumber);
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
-	}
-}
+//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//
+//}
 
 - (IBAction) navigateToPub:(id)sender {	
 	NSLog(@"navigateToPub: from %@", userCoordinates);
@@ -216,30 +216,91 @@
 }
 
 - (IBAction) openPubBrandSubmit: (id)sender {
-	Brand *item = [brandList objectAtIndex:[sender tag]];
-	pubBrandSubmit.brand = item;
-	pubBrandSubmit.pubId = currentPub.pubId;
+	reportBrandId = [[[brandList objectAtIndex:[sender tag]] brandId ]copy];
 	
-	if (enableAllFeatures) {
-		pubBrandSubmit.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
-		[self presentModalViewController:pubBrandSubmit animated:YES];	
-	} else {
-		pubBrandSubmit.view.alpha = 1.0;
-		
-		[self.view addSubview: pubBrandSubmit.view];
-		
-		CATransition *animation = [CATransition animation];
-		[animation setDelegate:self];
-		//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-		//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-		[animation setType:kCATransitionMoveIn];
-		[animation setSubtype:kCATransitionFade];
-		[animation setDuration:0.75];
-		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-		[[pubBrandSubmit.view layer] addAnimation:animation forKey:kCATransition];
-		[pubBrandSubmit viewDidAppear:YES];
+	// open a dialog with two custom buttons
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"%@", [[brandList objectAtIndex:[sender tag]]label]]
+															 delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
+													otherButtonTitles:@"Vis dar yra", @"Dingo", @"Išgėrė", @"Tiek to", nil];
+	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	actionSheet.cancelButtonIndex = 3;
+	[actionSheet showInView:self.view]; 
+	[actionSheet release];
+}
+
+#pragma mark -
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			reportStatus = @"EXISTS";
+			[self sendPubBrandSubmit];
+			break;
+			
+		case 1:
+			reportStatus = @"DISCONTINUED";
+			[self sendPubBrandSubmit];
+			break;
+			
+		case 2:
+			reportStatus = @"TEMPORARY_SOLD_OUT";
+			[self sendPubBrandSubmit];
+			break;
+			
+		default:
+			break;
 	}
 }
+- (void) sendPubBrandSubmit {
+	UIAlertView* alertView = 
+	[[UIAlertView alloc] initWithTitle:@"Pranešk apie alų"
+							   message:nil 
+							  delegate:self 
+					 cancelButtonTitle:@"Tiek to"
+					 otherButtonTitles:@"Esu blaivas!!", nil];
+	[alertView show];
+	[alertView release];	
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
+	if(buttonIndex == 1){
+		if (callAlertBox) {
+			
+			// CALL ALERT BOX
+
+			NSString *phonenumber = [NSString stringWithFormat:@"tel://%@", currentPub.phone];
+			phonenumber = [phonenumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+			NSLog(@"Calling pub: %@", phonenumber);
+			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+		} else {
+			
+			// REPORT ALERT
+
+			NSString *uniqueIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
+			NSString *message = [NSString stringWithFormat:@"UID: %@ Pub: %@", uniqueIdentifier, currentPub.pubTitle];
+			NSLog(@"%@", message);
+			
+			BOOL success = 
+				[[DataPublisher sharedManager] submitPubBrand:reportBrandId pub:currentPub.pubId status:reportStatus message:uniqueIdentifier validate:YES];
+			if (success) {
+				NSLog(@"Data can be published");
+				CLLocationCoordinate2D coords= [[LocationManager sharedManager]getLocationCoordinates];
+				NSString *post = 
+				[NSString stringWithFormat:
+					@"type=pubBrandInfo&status=%@&brandId=%@&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
+				 reportStatus, reportBrandId, currentPub.pubId, message, coords.latitude, coords.longitude];
+				
+				[self postData:post msg:@"Tik alus išgelbės mus!"];
+			}
+			
+		}
+	}
+	callAlertBox = FALSE;
+}
+
+
 
 
 - (IBAction) openAddBrandSubmit: (id)sender {
@@ -299,11 +360,11 @@
 	
 	//Connection error occured
 	UIAlertView* alertView = 
-	[[UIAlertView alloc] initWithTitle:@"Nepavyko nusiųsti... gal dar alaus?"
-							   message:nil 
-							  delegate:self 
-					 cancelButtonTitle:@"Meginsiu vėliau"
-					 otherButtonTitles:nil];
+		[[UIAlertView alloc] initWithTitle:@"Nepavyko nusiųsti... gal dar alaus?"
+								   message:nil 
+								  delegate:self 
+						 cancelButtonTitle:@"Meginsiu vėliau"
+						 otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }

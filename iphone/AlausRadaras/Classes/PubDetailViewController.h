@@ -13,7 +13,7 @@
 #import "NewPubBrandSubmit.h"
 #import "MBProgressHUD.h"
 
-@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate>{
+@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate, UIActionSheetDelegate>{
 	UILabel *pubTitleShortLabel;
 	UILabel *pubTitleLabel;
 	UILabel *pubAddressLabel;
@@ -34,6 +34,14 @@
 	NSString *thankYouMsg;
 	
 	BOOL enableAllFeatures;
+	
+	// Brand Reporting
+	NSString *reportBrandId;
+	NSString *reportStatus;
+	
+	BOOL callAlertBox;
+	
+	UIView *brandReportView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -46,10 +54,14 @@
 @property (nonatomic, retain) IBOutlet 	UITableView *brandsTable;
 @property (nonatomic, retain) IBOutlet 	UIImageView *pubLogoImage;
 
-@property(nonatomic, retain) NSMutableArray *brandList;
+@property (nonatomic, retain) NSMutableArray *brandList;
 @property (nonatomic, retain) Pub *currentPub;
 @property (nonatomic, retain) NSString *userCoordinates;
 
+@property (nonatomic, retain) IBOutlet UIView *brandReportView;
+// Reporting
+@property (nonatomic, retain) NSString *reportBrandId;
+@property (nonatomic, retain) NSString *reportStatus;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (IBAction) dialNumber:(id)sender;

@@ -1179,6 +1179,14 @@
 					</object>
 					<int key="connectionID">277</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">brandReportView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="417897899"/>
+					</object>
+					<int key="connectionID">294</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1640,7 +1648,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>PubDetailViewController</string>
 					<string>UIResponder</string>
-					<string>{{386, 164}, {320, 480}}</string>
+					<string>{{988, 134}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+UAAA</bytes>
@@ -1831,7 +1839,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">293</int>
+			<int key="maxID">294</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1957,14 +1965,12 @@
 							<string>brandImage</string>
 							<string>brandLabel</string>
 							<string>pubBrandStatusControl</string>
-							<string>sendBtn</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UISegmentedControl</string>
-							<string>UIButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1974,7 +1980,6 @@
 							<string>brandImage</string>
 							<string>brandLabel</string>
 							<string>pubBrandStatusControl</string>
-							<string>sendBtn</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1989,10 +1994,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">pubBrandStatusControl</string>
 								<string key="candidateClassName">UISegmentedControl</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">sendBtn</string>
-								<string key="candidateClassName">UIButton</string>
 							</object>
 						</object>
 					</object>
@@ -2068,6 +2069,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>brandReportView</string>
 							<string>brandsTable</string>
 							<string>directionsButton</string>
 							<string>newBrandSubmit</string>
@@ -2082,6 +2084,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIView</string>
 							<string>UITableView</string>
 							<string>UIButton</string>
 							<string>NewPubBrandSubmit</string>
@@ -2099,6 +2102,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>brandReportView</string>
 							<string>brandsTable</string>
 							<string>directionsButton</string>
 							<string>newBrandSubmit</string>
@@ -2113,6 +2117,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">brandReportView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">brandsTable</string>
 								<string key="candidateClassName">UITableView</string>
@@ -2472,12 +2480,12 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{264, 78}</string>
-				<string>{64, 64}</string>
-				<string>{64, 64}</string>
-				<string>{64, 64}</string>
-				<string>{305, 105}</string>
-				<string>{64, 64}</string>
+				<string>{261, 59}</string>
+				<string>{37, 37}</string>
+				<string>{37, 37}</string>
+				<string>{37, 37}</string>
+				<string>{280, 73}</string>
+				<string>{32, 32}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

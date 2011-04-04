@@ -33,26 +33,41 @@ static LocationManager *sharedLocationManager = nil;
 }
 
 - (void) initializeManager {
+	NSLog(@"LocationManager - initializeManager");
 	clLocationManager = [[CLLocationManager alloc] init];
 	clLocationManager.delegate = self;
 	clLocationManager.distanceFilter = 1000;  // 1 Km
 	clLocationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
 	newAPI = TRUE;
-	[clLocationManager startUpdatingLocation];
+	[self startUpdatingLocation];
 }
 
-- (BOOL) setEnableAllFeatures:(BOOL)value {
+- (void) setEnableAllFeatures:(BOOL)value {
 	newAPI = value;
 }
 
-- (CLLocationCoordinate2D) getLocationCoordinates{
+- (CLLocationCoordinate2D) getLocationCoordinates {
 	return clLocationManager.location.coordinate;
 }
+//
+//- (CLLocationCoordinate2D) setLocationCoordinates:(CLLocationCoordinate2D)coords {
+//	clLocationManager.location.coordinate = coords;
+//}
 
 - (void)locationManager:(CLLocationManager *)manager 
 	didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	NSLog(@"didUpdateToLocation: Lat: %.6f, Long: %.6f",newLocation.coordinate.latitude,newLocation.coordinate.longitude);
 	NSLog(@"fromLocation: Lat: %.6f, Long: %.6f",oldLocation.coordinate.latitude,oldLocation.coordinate.longitude);
+//	[clLocationManager stopUpdatingLocation];	
+}
+
+- (void) startUpdatingLocation {
+	NSLog(@"LocationManager - startUpdatingLocation");
+	[clLocationManager startUpdatingLocation];	
+}
+
+- (void) stopUpdatingLocation {
+	NSLog(@"LocationManager - stopUpdatingLocation");
 	[clLocationManager stopUpdatingLocation];	
 }
 
@@ -87,6 +102,12 @@ static LocationManager *sharedLocationManager = nil;
 
 - (void) setVisibilityControlled:(BOOL) value {
 	visibilityControlled = value;
+	if (value) {
+		[self startUpdatingLocation];
+	} else {
+		[self stopUpdatingLocation];
+	}
+
 }
 
 - (BOOL) getVisibilityControlled {
