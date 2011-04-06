@@ -133,9 +133,31 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public List<T> getDeleted(Date since) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			Query query = pm.newQuery(getClazz());
-			query.declareParameters("since");
-			query.setFilter("lastUpdate >= since && parentId == null");
+			Query query = pm.newQuery(getClazz());			
+			query.setFilter("lastUpdate >= since && parentId == null && deleted == 1");
+			query.declareParameters("java.util.Date since");
+
+			try {
+				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
+			} finally {
+				query.closeAll();
+			}
+		} finally {
+			pm.close();
+		}
+	}	
+
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#getUpdated(java.util.Date)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> getUpdated(Date since) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Query query = pm.newQuery(getClazz());			
+			query.setFilter("lastUpdate >= since && parentId == null && deleted == NULL");
+			query.declareParameters("java.util.Date since");
 
 			try {
 				return (List<T>) pm.detachCopyAll((List<T>) query.execute(since));
