@@ -57,7 +57,7 @@ public class UpdateTest {
 		result.setDescription("description");
 		result.setIcon("icon");
 		result.setTags("tags");
-		result.setId("id");
+		result.setId("beerid");
 		result.setTitle("title");
 		
 		return result;
@@ -71,7 +71,7 @@ public class UpdateTest {
 		result.setHomePage("homePage");
 		result.setHometown("homeTown");
 		result.setIcon("icon");
-		result.setId("id");
+		result.setId("brandid");
 		result.setTags("tags");
 		result.setTitle("title");
 		
@@ -88,7 +88,7 @@ public class UpdateTest {
 		result.setDescription("description");
 		result.setHomepage("homepage");
 		result.setHours("hours");
-		result.setId("id");
+		result.setId("pubid");
 		result.setLatitude(0.0);
 		result.setLongitude(0.0);
 		result.setPhone("phone");

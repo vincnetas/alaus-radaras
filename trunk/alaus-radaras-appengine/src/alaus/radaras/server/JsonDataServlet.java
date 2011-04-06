@@ -4,6 +4,9 @@
 package alaus.radaras.server;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
-import alaus.radaras.shared.Utils;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Pub;
@@ -49,15 +51,17 @@ public class JsonDataServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Date lastUpdate = parseDate(req.getParameter("lastUpdate"));
+		
 		Update update = new Update();
 		
-		update.setDeletedBeers(getBeersToDelete());
-		update.setDeletedBrands(getBrandsToDelete());
-		update.setDeletedPubs(getPubsToDelete());
+		update.setDeletedBeers(getBeersToDelete(lastUpdate));
+		update.setDeletedBrands(getBrandsToDelete(lastUpdate));
+		update.setDeletedPubs(getPubsToDelete(lastUpdate));
 		
-		update.setUpdatedBeers(getBeersToUpdate());
-		update.setUpdatedBrands(getBrandsToUpdate());
-		update.setUpdatedPubs(getPubsToUpdate());
+		update.setUpdatedBeers(getBeersToUpdate(lastUpdate));
+		update.setUpdatedBrands(getBrandsToUpdate(lastUpdate));
+		update.setUpdatedPubs(getPubsToUpdate(lastUpdate));
 				
 		String fileName = "data.json";
 		
@@ -69,28 +73,42 @@ public class JsonDataServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 	
-	private Set<Beer> getBeersToDelete() {
-		return Utils.set();
+	private static Date parseDate(String dateText) {
+		Date result = new Date(0);
+		
+		if (dateText != null) {
+			try {
+				result = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
+			} catch (ParseException e) {
+				// Ignore and return default value
+			}
+		}
+		
+		return result;
 	}
 	
-	private Set<Brand> getBrandsToDelete() {
-		return Utils.set();
+	private Set<Beer> getBeersToDelete(Date lastUpdate) {
+		return new HashSet<Beer>(getBeerDao().getDeleted(lastUpdate));
 	}
 	
-	private Set<Pub> getPubsToDelete() {
-		return Utils.set();
+	private Set<Brand> getBrandsToDelete(Date lastUpdate) {
+		return new HashSet<Brand>(getBrandDao().getDeleted(lastUpdate));
 	}
 	
-	private Set<Beer> getBeersToUpdate() {
-		return new HashSet<Beer>(getBeerDao().getAll());
+	private Set<Pub> getPubsToDelete(Date lastUpdate) {
+		return new HashSet<Pub>(getPubDao().getDeleted(lastUpdate));
 	}
 	
-	private Set<Brand> getBrandsToUpdate() {
-		return new HashSet<Brand>(getBrandDao().getAll());
+	private Set<Beer> getBeersToUpdate(Date lastUpdate) {
+		return new HashSet<Beer>(getBeerDao().getUpdated(lastUpdate));
 	}
 	
-	private Set<Pub> getPubsToUpdate() {
-		return new HashSet<Pub>(getPubDao().getAll());
+	private Set<Brand> getBrandsToUpdate(Date lastUpdate) {
+		return new HashSet<Brand>(getBrandDao().getUpdated(lastUpdate));
+	}
+	
+	private Set<Pub> getPubsToUpdate(Date lastUpdate) {
+		return new HashSet<Pub>(getPubDao().getUpdated(lastUpdate));
 	}
 	
 	/**

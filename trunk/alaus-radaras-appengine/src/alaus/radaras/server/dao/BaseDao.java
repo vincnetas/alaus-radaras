@@ -20,6 +20,8 @@ public interface BaseDao<T extends Updatable> {
 	
 	List<T> getDeleted(Date since);
 	
+	List<T> getUpdated(Date since);
+	
 	/**
 	 * 
 	 * @param id

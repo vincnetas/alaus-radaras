@@ -41,7 +41,7 @@ public class Updatable implements Serializable {
 	 * Indicates if this object was moderated. True indicates that this change
 	 * was approved, false indicates that change was rejected and null indicates
 	 * that value is still pending for moderation. This also applies to base
-	 * objects.
+	 * objects and lastUpdate date indicates date of deletion.
 	 */
 	@Persistent
 	private Boolean approved;
@@ -54,10 +54,20 @@ public class Updatable implements Serializable {
 	
 	/**
 	 * Indicates that this object was modified. Applies only to base objects.
-	 * For updates this field should always be false
+	 * For updates this field should always be false.
 	 */
 	@Persistent
 	private Boolean modified;
+	
+	/**
+	 * If this field is not null this item is deleted. Applicable only for base objects.
+	 */
+	@Persistent
+	private Integer deleted;
+	
+	public Boolean isDeleted() {
+		return deleted != null;
+	}
 
 	/**
 	 * @return the modified
