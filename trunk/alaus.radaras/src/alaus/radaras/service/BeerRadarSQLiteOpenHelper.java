@@ -15,11 +15,13 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	private Context context;
 	
+	private boolean update = false;
+	
 	private static class Definition {
 		
 		public static String DB_NAME = "beer-radar";
 		
-		public static int DB_VERSION = 12;
+		public static int DB_VERSION = 13;
 		
 		public static String PUBS = 
 	        "CREATE TABLE pubs(" +
@@ -33,28 +35,29 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"phone	 	TEXT, " +
 	        	"url	 	TEXT);";
 		
+		public static String COMPANY =
+			"CREATE TABLE companies(" +
+				"id				TEXT PRIMARY key, " +
+				"title			TEXT NOT NULL, " + 
+				"icon			TEXT, " +
+				"homePage		TEXT, " +
+				"country		TEXT, " +
+				"hometown		TEXT, " +
+				"description	TEXT);";
+		
 		public static String BRANDS = 
 	        "CREATE TABLE brands(" +
 	        	"id 			TEXT PRIMARY KEY, " +
 	        	"title 			TEXT NOT NULL, " +
 	        	"icon			TEXT, " +
-	        	"description 	TEXT);";
-		
+	        	"description 	TEXT, " +
+	        	"companyId		TEXT NOT NULL);";
+				
 		public static String PUBS_BRANDS = 
 	        "CREATE TABLE pubs_brands(" +
 	        	"pub_id			TEXT NOT NULL, " +
 	        	"brand_id 		TEXT NOT NULL);";
-		
-		public static String COUNTRIES = 
-	        "CREATE TABLE countries(" +
-	        	"code			TEXT PRIMARY KEY," + 
-	        	"name			TEXT NOT NULL);";
-		
-		public static String BRANDS_COUNTRIES = 
-	        "CREATE TABLE brands_countries(" +
-	        	"brand_id			TEXT NOT NULL," +
-	        	"country			TEXT NOT NULL);";
-		
+				
 		public static String TAGS = 
 	        "CREATE TABLE tags(" +
 	        	"code			TEXT PRIMARY KEY," +
@@ -94,31 +97,41 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     {
     	Log.i(LOG_TAG, "Creating initial database");
     	try {
-	        db.execSQL(Definition.PUBS);
+    		db.execSQL(Definition.PUBS);
+    		db.execSQL(Definition.COMPANY);
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
-	        db.execSQL(Definition.COUNTRIES);
-	        db.execSQL(Definition.BRANDS_COUNTRIES);
-	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.BRANDS_TAGS);
+	        
+	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.QOUTES);
 	        db.execSQL(Definition.TAXI);
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
     	}
     	Log.i(LOG_TAG, "Finished creating database.");
-    	
-    	Log.i(LOG_TAG, "Inserting initial data");
-    	insertBrands(db);
-    	insertPubs(db);
-    	insertTags(db);
-    	insertCountries(db);
-    	insertQoutes(db);
-    	insertAssociations(db);
-    	insertTaxies(db);
-    	Log.i(LOG_TAG, "Finished inserting initial data");
-    	
+
+    	updateData(db);
     }
+    
+    private void updateData(SQLiteDatabase db) {
+    	Log.i(LOG_TAG, "Inserting initial data");
+    	
+    	update = true;
+    	
+    	insertTags(db);
+    	insertQoutes(db);
+    	insertTaxies(db);
+    	
+    	Log.i(LOG_TAG, "Finished inserting initial data");
+    } 
+    
+	/**
+	 * @return the update
+	 */
+	public boolean isUpdate() {
+		return update;
+	}
 
 	private void insertBrands(SQLiteDatabase db) {
     	try {
@@ -181,16 +194,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
         			values.put("pub_id", pubs[i].trim());
         			db.insert("pubs_brands", null, values);    				
     			}
-    			
-    			Log.i(LOG_TAG, "Inserting brand<->country association: " + columns[0]);
-    			String[] countries = columns[3].split(",");
-    			for (int i = 0; i < countries.length; i++) {
-        			ContentValues values = new ContentValues();
-        			values.put("brand_id", columns[0]);
-        			values.put("country", countries[i].trim());
-        			db.insert("brands_countries", null, values);    				
-    			}
-    			
+    			    			
     			Log.i(LOG_TAG, "Inserting brand<->tag association: " + columns[0]);
     			String[] tags = columns[4].split(",");
     			for (int i = 0; i < tags.length; i++) {
@@ -218,24 +222,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     			values.put("amount", columns[0]);
     			values.put("text", columns[1]);
     			db.insert("qoutes", null, values);
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}
-	}
-
-    private void insertCountries(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("countries.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			Log.i(LOG_TAG, "Inserting country: " + line);
-    			String[] columns = line.split("\t");
-    			ContentValues values = new ContentValues();
-    			values.put("code", columns[0]);
-    			values.put("name", columns[1]);
-    			db.insert("countries", null, values);
     		}
     	} catch (Exception e) {
     		Log.e(LOG_TAG, e.getMessage());
@@ -283,18 +269,17 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(LOG_TAG, "Upgrading database from version " 
-        		+ oldVersion  + " to " + newVersion + 
-        		", which will destroy all old data");
+        Log.w(LOG_TAG, "Upgrading database from version " + oldVersion  + " to " + newVersion + ", which will destroy all old data");
+
         db.execSQL("DROP TABLE IF EXISTS pubs_brands;");
-        db.execSQL("DROP TABLE IF EXISTS brands_countries;");
         db.execSQL("DROP TABLE IF EXISTS brands_tags;");
         db.execSQL("DROP TABLE IF EXISTS pubs;");
         db.execSQL("DROP TABLE IF EXISTS brands;");
+        db.execSQL("DROP TABLE IF EXISTS companies;");
         db.execSQL("DROP TABLE IF EXISTS tags;");
-        db.execSQL("DROP TABLE IF EXISTS countries;");
         db.execSQL("DROP TABLE IF EXISTS qoutes;");
         db.execSQL("DROP TABLE IF EXISTS taxi;");
+        
         onCreate(db);
 	}
 }
