@@ -28,10 +28,9 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 	
 		final String countryId = getIntent().getExtras().getString(COUNTRY);
 		country = beerRadar.getCountry(countryId);
-
 		
 		TextView countryName = (TextView)findViewById(R.id.countryBrandHeader);
-		countryName.setText(country.getName());
+		countryName.setText(country.getName(this));
 		
 		ImageView image = (ImageView)findViewById(R.id.countryBrandShowOnMap);
 		image.setOnClickListener(new OnClickListener() {

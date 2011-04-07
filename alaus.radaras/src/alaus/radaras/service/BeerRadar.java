@@ -1,6 +1,7 @@
 package alaus.radaras.service;
 
 import java.util.List;
+import java.util.Set;
 
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
@@ -20,6 +21,10 @@ import android.location.Location;
  */
 public interface BeerRadar {
 
+	Set<Tag> getBrandTags(String brandId);
+	
+	List<Brand> getBrandsByCompany(String companyId);
+	
 	List<Brand> getBrands(Location location);
 
 	List<Brand> getBrandsByPubId(String pubId);

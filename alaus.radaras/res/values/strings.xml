@@ -67,4 +67,17 @@
 <string name="pub_brand_submit_header">Pranešk apie alų</string>
 <string name="pub_brand_submit_write">Ar skanus alus?</string>
 <string name="pub_brand_submit_thanks">Tik alus išgelbės mus! :)</string>
+
+<string name="country_lt">Lietuviškas</string>
+<string name="country_cz">Čekiškas</string>
+<string name="country_de">Vokiškas</string>
+<string name="country_be">Belgiškas</string>
+<string name="country_nl">Olandiškas</string>
+<string name="country_ie">Airiškas</string>
+<string name="country_uk">Angliškas</string>
+<string name="country_dk">Daniškas</string>
+<string name="country_fr">Prancūziškas</string>
+<string name="country_pl">Lenkiškas</string>
+
+
 </resources>

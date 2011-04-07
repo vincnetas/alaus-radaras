@@ -18,10 +18,12 @@ public class CountryListAdapter extends BaseAdapter {
 
 	private List<Country> countries;
 	private LayoutInflater inflater;
+	private Context context;
 	
 	public CountryListAdapter(Context context, List<Country> countries) {
 		this.countries = countries;
 		this.inflater = LayoutInflater.from(context);
+		this.context = context;
 	}
 	
 	@Override
@@ -57,7 +59,7 @@ public class CountryListAdapter extends BaseAdapter {
         }
         Country country = countries.get(position);
         // Bind the data efficiently with the holder.
-        holder.title.setText(country.getName());
+        holder.title.setText(country.getName(context));
         holder.img.setImageResource(R.drawable.map_02);
         
         return convertView;

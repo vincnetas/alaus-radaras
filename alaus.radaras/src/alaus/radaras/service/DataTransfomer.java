@@ -106,10 +106,9 @@ public class DataTransfomer {
 		return tag;
 	}
 	
-	public static Country toCountry(Cursor cursor) {
+	private static Country toCountry(Cursor cursor) {
 		Country country = new Country();
 		country.setCode(cursor.getString(0));
-		country.setName(cursor.getString(1));
 		return country;
 	}
 
@@ -133,6 +132,8 @@ public class DataTransfomer {
 	static class DoBrand implements Do<Brand> {
 		
 		public final static DoBrand instance = new DoBrand();
+		
+		public static String[] columns = new String[] {"id", "title", "icon", "description"};
 		
 		@Override
 		public Brand get(Cursor cursor) {

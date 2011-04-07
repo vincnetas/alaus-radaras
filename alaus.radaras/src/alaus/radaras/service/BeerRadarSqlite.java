@@ -1,5 +1,6 @@
 package alaus.radaras.service;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -20,14 +21,12 @@ import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import alaus.radaras.settings.SettingsManager;
-import alaus.radaras.shared.model.Beer;
 import alaus.radaras.sorters.BrandNameSorter;
 import alaus.radaras.sorters.CountryNameSorter;
 import alaus.radaras.sorters.PubNameSorter;
 import alaus.radaras.sorters.TagNameSorter;
 import alaus.radaras.utils.Bounds;
 import alaus.radaras.utils.DistanceCalculator;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -36,7 +35,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 
-public class BeerRadarSqlite implements BeerRadar, UpdateService {
+public class BeerRadarSqlite implements BeerRadar {
 	
 	private SQLiteDatabase db;
 	
@@ -45,9 +44,18 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 	private SettingsManager settings;
 	
 	public BeerRadarSqlite(Context context) {
-		this.db = new BeerRadarSQLiteOpenHelper(context).getReadableDatabase();
+		BeerRadarSQLiteOpenHelper helper = new BeerRadarSQLiteOpenHelper(context);
+		this.db = helper.getReadableDatabase();
 		this.settings = new alaus.radaras.settings.SettingsManager(context);
 		this.context = context;
+		
+		if (helper.isUpdate()) {
+			try {
+				BeerRadarUpdate.applyUpdate(context.getAssets().open("data.json"), this, db);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@Override
@@ -88,7 +96,7 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 	public List<Brand> getBrandsByCountry(String country, Location location) {	
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
 		return getBrands("SELECT DISTINCT b.id, b.title, b.icon, b.description FROM brands b " +
-				"INNER JOIN brands_countries bc ON b.id = bc.brand_id AND bc.country = ? " +
+				"INNER JOIN companies c ON b.companyId = c.id AND c.country = ? " +
 				"INNER JOIN pubs_brands as pb on pb.brand_id = b.id " +
 				"INNER JOIN pubs as p on p.id=pb.pub_id " +
 				"WHERE p.latitude < ? AND p.latitude > ? AND p.longtitude < ? AND p.longtitude > ?",
@@ -175,7 +183,8 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude, city " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
-				"INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = ? " +
+				"INNER JOIN brands b ON b.id = pb.pub_id " +
+				"INNER JOIN companies c ON c.id = b.companyId AND c.country = ? " +
 				"WHERE latitude < ? AND latitude > ? AND longtitude < ? AND longtitude > ?",
 			new String[] { country,
 				Double.toString(bounds.getMaxLatitude()), 
@@ -310,10 +319,10 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 	@Override
 	public List<Country> getCountries(Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
-		Cursor cursor = db.rawQuery("SELECT DISTINCT c.code,c.name FROM  countries as c "+
-				"INNER JOIN brands_countries as bc on bc.country = c.code " +
-				"INNER JOIN pubs_brands as pb on pb.brand_id = bc.brand_id " +
-				"INNER JOIN pubs as p on p.id=pb.pub_id " +
+		Cursor cursor = db.rawQuery("SELECT DISTINCT c.country FROM companies as c " +
+				"INNER JOIN brands as b ON b.company = c.id " +
+				"INNER JOIN pubs_brands as pb ON pb.brand_id = b.id " +
+				"INNER JOIN pubs as p on p.id = pb.pub_id " +
 				"WHERE p.latitude < ? AND p.latitude > ? AND p.longtitude < ? AND p.longtitude > ?",
 				new String[] {
 					Double.toString(bounds.getMaxLatitude()), 
@@ -324,7 +333,7 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 
 		List<Country> values = DataTransfomer.toList(cursor, DoCountry.instance);
 		
-		Collections.sort(values, new CountryNameSorter());
+		Collections.sort(values, new CountryNameSorter(context));
 		
 		return values;
 	}
@@ -367,16 +376,7 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 
 	@Override
 	public Country getCountry(String code) {
-		Cursor cursor = db.query(
-				"countries", 
-				new String[] {"code", "name"},
-				"code = ?", 
-				new String[] { code }, 
-				null, 
-				null, 
-				null);
-		
-		return DataTransfomer.to(cursor, DoCountry.instance);
+		return new Country(code);
 	}
 
 	private double getMaxDistance() {
@@ -403,7 +403,8 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 		return DataTransfomer.toList(cursor, DoTaxi.instance);
 	}
 	
-	private Set<Tag> getBrandTags(String brandId) {		
+	@Override
+	public Set<Tag> getBrandTags(String brandId) {		
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 		
 		builder.setTables("tags INNER JOIN brands_tags bt ON (bt.tag = tags.code)");
@@ -411,137 +412,18 @@ public class BeerRadarSqlite implements BeerRadar, UpdateService {
 				
 		return DataTransfomer.toSet(cursor, DoTag.instance);		
 	}
-	
-	private void removeTag(String brandId, String tag) {
-		db.delete("brands_tags", "brand_id = ? AND tag = ?", new String[] {brandId, tag});
-	}
-	
-	private void addTag(String brandId, String tag) {
-		ContentValues tagValues = new ContentValues();
-		tagValues.put("brand_id", brandId);
-		tagValues.put("tag", tag);
-		db.insert("brand_tags", null, tagValues);
-	}
-	
-	private void update(Beer beer) {
-        ContentValues beerValues = new ContentValues();
-        beerValues.put("id", beer.getId());
-        beerValues.put("title", beer.getTitle());
-        beerValues.put("icon", beer.getIcon());
-        beerValues.put("description", beer.getDescription());
-        
-        //?? country
-        
-		db.replace("brands", null, beerValues );
-		
-		Set<Tag> brandTags = getBrandTags(beer.getId());
-		for (Tag tag : brandTags) {
-			if (!beer.getTags().remove(tag.getCode())) {
-				removeTag(beer.getId(), tag.getCode());
-			}
-		}
-		
-		for (String tag : beer.getTags()) {
-			addTag(beer.getId(), tag);
-		}
-	}
-	
-	private void removeBeer(String pubId, String brandId) {
-		db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", new String[] {pubId, brandId});
-	}
-	
-	private void addBrand(String pubId, String brandId) {
-		ContentValues brandValues = new ContentValues();
-		brandValues.put("brand_id", brandId);
-		brandValues.put("pub_id", pubId);
-		db.insert("pubs_brands", null, brandValues);
-	}
-	
-	private void update(alaus.radaras.shared.model.Pub pub) {
-		ContentValues pubValues = new ContentValues();
-		pubValues.put("id", pub.getId());
-		pubValues.put("title", pub.getTitle());
-		pubValues.put("longtitude", pub.getLongitude());
-		pubValues.put("latitude", pub.getLatitude());
-		pubValues.put("address", pub.getAddress());
-		pubValues.put("city", pub.getCity());
-		pubValues.put("notes", pub.getDescription());
-		pubValues.put("phone", pub.getPhone());
-		pubValues.put("url", pub.getHomepage());
-		
-		db.replace("pubs", null, pubValues);
-		
-		List<Brand> pubBrands = getBrandsByPubId(pub.getId());
-		for (Brand brand : pubBrands) {
-			if (!pub.getBeerIds().remove(brand.getId())) {
-				removeBeer(pub.getId(), brand.getId());
-			}
-		}
-		
-		for (String brandId : pub.getBeerIds()) {
-			addBrand(pub.getId(), brandId);
-		}		
-	}
-	
-	private void update(alaus.radaras.shared.model.Brand brand) {
-		// do something with countries
-	}
-	
-	private void deleteBrand(String brandId) {
-		String[] param = new String[] {brandId};
-		db.delete("brands", "id = ?", param);
-		db.delete("pubs_brands", "brand_id", param);
-		db.delete("brands_countries", "brand_id = ?", param);
-		db.delete("brands_tags", "brand_id = ?", param);
-	}
-	
-	private void delete(Beer beer) {
-		deleteBrand(beer.getId());
-	}
-	
-	private void deletePub(String pubId) {
-		String[] param = new String[] {pubId};
-		db.delete("pubs", "id = ?", param);
-		db.delete("pubs_brands", "pub_id = ?", param);
-	}
-	
-	private void delete(alaus.radaras.shared.model.Pub pub) {
-		deletePub(pub.getId());
-	}
-	
-	private void delete(alaus.radaras.shared.model.Brand brand) {
-		// do nothing
-	}
 
 	/* (non-Javadoc)
-	 * @see alaus.radaras.service.UpdateService#applyUpdate(alaus.radaras.service.Update)
+	 * @see alaus.radaras.service.BeerRadar#getBrandsByCompany(java.lang.String)
 	 */
 	@Override
-	public void applyUpdate(Update update) {
-		for (Beer beer : update.getUpdatedBeers()) {
-			update(beer);
-		}
+	public List<Brand> getBrandsByCompany(String companyId) {
+		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 		
-		for (alaus.radaras.shared.model.Brand brand : update.getUpdatedBrands()) {
-			update(brand);
-		}
-		
-		for (alaus.radaras.shared.model.Pub pub : update.getUpdatedPubs()) {
-			update(pub);
-		}
-		
-		for (Beer beer : update.getDeletedBeers()) {
-			delete(beer);
-		}
-		
-		for (alaus.radaras.shared.model.Brand brand : update.getDeletedBrands()) {
-			delete(brand);
-		}
-		
-		for (alaus.radaras.shared.model.Pub pub : update.getDeletedPubs()) {
-			delete(pub);
-		}
-		
-		
-	}
+		builder.setTables("brands");
+		Cursor cursor = builder.query(db, DoBrand.columns, "companyId = ?", new String[] {companyId}, null, null, null);	
+				
+		return DataTransfomer.toList(cursor, DoBrand.instance);	}
+	
+	
 }
