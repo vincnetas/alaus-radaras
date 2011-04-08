@@ -17,7 +17,6 @@ import org.apache.commons.io.IOUtils;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Pub;
-import alaus.radaras.shared.model.Quote;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
@@ -57,10 +56,6 @@ public class Update {
 	
 	private Set<String> deletedBrands;
 	
-	private Set<Quote> updatedQuotes;
-	
-	private Set<String> deteledQuotes;
-
 	public static Update parse(InputStream inputStream) throws IOException {
 		return parse(IOUtils.toString(inputStream));
 	}
@@ -72,7 +67,7 @@ public class Update {
 		
 		Update result = new Update();
 
-		String[] deletedBeers = getGson().fromJson(o.get(DELETE).get(BEERS).getElement(), new TypeToken<String>() {}.getType());
+		String[] deletedBeers = getGson().fromJson(o.get(DELETE).get(BEERS).getElement(), new TypeToken<String[]>() {}.getType());
 		String[] deletedBrands = getGson().fromJson(o.get(DELETE).get(BRANDS).getElement(), new TypeToken<String[]>() {}.getType());
 		String[] deletedPubs = getGson().fromJson(o.get(DELETE).get(PUBS).getElement(), new TypeToken<String[]>() {}.getType());
 
@@ -237,34 +232,6 @@ public class Update {
 	 */
 	public void setDeletedBrands(Set<String> deletedBrands) {
 		this.deletedBrands = deletedBrands;
-	}
-
-	/**
-	 * @return the updatedQuotes
-	 */
-	public Set<Quote> getUpdatedQuotes() {
-		return updatedQuotes;
-	}
-
-	/**
-	 * @param updatedQuotes the updatedQuotes to set
-	 */
-	public void setUpdatedQuotes(Set<Quote> updatedQuotes) {
-		this.updatedQuotes = updatedQuotes;
-	}
-
-	/**
-	 * @return the deteledQuotes
-	 */
-	public Set<String> getDeteledQuotes() {
-		return deteledQuotes;
-	}
-
-	/**
-	 * @param deteledQuotes the deteledQuotes to set
-	 */
-	public void setDeteledQuotes(Set<String> deteledQuotes) {
-		this.deteledQuotes = deteledQuotes;
 	}
 }
 

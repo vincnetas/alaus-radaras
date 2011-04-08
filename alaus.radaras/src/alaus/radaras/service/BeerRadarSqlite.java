@@ -180,7 +180,7 @@ public class BeerRadarSqlite implements BeerRadar {
 	public List<Pub> getPubsByCountry(String country, Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
 		Cursor cursor = db.rawQuery(
-			"SELECT DISTINCT id, title, address, notes, phone, url, latitude, longtitude, city " +
+			"SELECT DISTINCT p.id, p.title, p.address, p.notes, p.phone, p.url, p.latitude, p.longtitude, p.city " +
 			"FROM pubs p " +
 				"INNER JOIN pubs_brands pb ON p.id = pb.pub_id " +
 				"INNER JOIN brands b ON b.id = pb.pub_id " +
@@ -320,7 +320,7 @@ public class BeerRadarSqlite implements BeerRadar {
 	public List<Country> getCountries(Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
 		Cursor cursor = db.rawQuery("SELECT DISTINCT c.country FROM companies as c " +
-				"INNER JOIN brands as b ON b.company = c.id " +
+				"INNER JOIN brands as b ON b.companyId = c.id " +
 				"INNER JOIN pubs_brands as pb ON pb.brand_id = b.id " +
 				"INNER JOIN pubs as p on p.id = pb.pub_id " +
 				"WHERE p.latitude < ? AND p.latitude > ? AND p.longtitude < ? AND p.longtitude > ?",
@@ -408,7 +408,7 @@ public class BeerRadarSqlite implements BeerRadar {
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 		
 		builder.setTables("tags INNER JOIN brands_tags bt ON (bt.tag = tags.code)");
-		Cursor cursor = builder.query(db, DoTag.columns, "tb.brand_id = ?", new String[] {brandId}, null, null, null);	
+		Cursor cursor = builder.query(db, DoTag.columns, "bt.brand_id = ?", new String[] {brandId}, null, null, null);	
 				
 		return DataTransfomer.toSet(cursor, DoTag.instance);		
 	}
