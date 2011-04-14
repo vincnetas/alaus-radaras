@@ -335,10 +335,10 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	@Override
 	public List<Tag> getTags(Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
-		Cursor cursor = db.rawQuery("SELECT DISTINCT t.code,t.title FROM  tags as t "+
+		Cursor cursor = db.rawQuery("SELECT DISTINCT t.code, t.title FROM tags as t "+
 				"INNER JOIN brands_tags as bt on bt.tag = t.code " +
 				"INNER JOIN pubs_brands as pb on pb.brand_id = bt.brand_id " +
-				"INNER JOIN pubs as p on p.id=pb.pub_id " +
+				"INNER JOIN pubs as p on p.id = pb.pub_id " +
 				"WHERE p.latitude < ? AND p.latitude > ? AND p.longtitude < ? AND p.longtitude > ?",
 				new String[] {
 					Double.toString(bounds.getMaxLatitude()), 
@@ -346,7 +346,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 					Double.toString(bounds.getMaxLongitude()), 
 					Double.toString(bounds.getMinLongitude())
 				});
-
+		
 		List<Tag> values = DataTransfomer.toList(cursor, DoTag.instance);
 		
 		Collections.sort(values, new TagNameSorter());
