@@ -1,6 +1,5 @@
 package alaus.radaras.service;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -21,12 +20,14 @@ import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import alaus.radaras.settings.SettingsManager;
+import alaus.radaras.shared.model.Beer;
 import alaus.radaras.sorters.BrandNameSorter;
 import alaus.radaras.sorters.CountryNameSorter;
 import alaus.radaras.sorters.PubNameSorter;
 import alaus.radaras.sorters.TagNameSorter;
 import alaus.radaras.utils.Bounds;
 import alaus.radaras.utils.DistanceCalculator;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -35,7 +36,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 
-public class BeerRadarSqlite implements BeerRadar {
+public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	
 	private SQLiteDatabase db;
 	
@@ -48,14 +49,6 @@ public class BeerRadarSqlite implements BeerRadar {
 		this.db = helper.getReadableDatabase();
 		this.settings = new alaus.radaras.settings.SettingsManager(context);
 		this.context = context;
-		
-		if (helper.isUpdate()) {
-			try {
-				BeerRadarUpdate.applyUpdate(context.getAssets().open("data.json"), this, db);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	@Override
@@ -423,7 +416,160 @@ public class BeerRadarSqlite implements BeerRadar {
 		builder.setTables("brands");
 		Cursor cursor = builder.query(db, DoBrand.columns, "companyId = ?", new String[] {companyId}, null, null, null);	
 				
-		return DataTransfomer.toList(cursor, DoBrand.instance);	}
+		return DataTransfomer.toList(cursor, DoBrand.instance);	
+	}
 	
+	/*
+	 * Update part
+	 */
 	
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#updateBrand(alaus.radaras.shared.model.Beer)
+     */	
+    @Override
+    public void updateBrand(Beer beer) {
+        ContentValues beerValues = new ContentValues();
+        beerValues.put("id", beer.getId());
+        beerValues.put("title", beer.getTitle());
+        beerValues.put("icon", beer.getIcon());
+        beerValues.put("description", beer.getDescription());
+        beerValues.put("companyId", beer.getBrandId());
+        
+        db.beginTransaction();
+        try {
+            db.replace("brands", null, beerValues );
+            
+            Set<Tag> brandTags = getBrandTags(beer.getId());
+            for (Tag tag : brandTags) {
+                if (!beer.getTags().remove(tag.getCode())) {
+                    db.delete("brands_tags", "brand_id = ? AND tag = ?", new String[] {beer.getId(), tag.getCode()});
+                }
+            }
+            
+            for (String tag : beer.getTags()) {
+                ContentValues tagValues = new ContentValues();
+                tagValues.put("brand_id", beer.getId());
+                tagValues.put("tag", tag);
+                db.insert("brands_tags", null, tagValues);
+            }
+            
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#updatePub(alaus.radaras.shared.model.Pub)
+     */
+    @Override
+    public void updatePub(alaus.radaras.shared.model.Pub pub) {
+        ContentValues pubValues = new ContentValues();
+        pubValues.put("id", pub.getId());
+        pubValues.put("title", pub.getTitle());
+        pubValues.put("longtitude", pub.getLongitude());
+        pubValues.put("latitude", pub.getLatitude());
+        pubValues.put("address", pub.getAddress());
+        pubValues.put("city", pub.getCity());
+        pubValues.put("notes", pub.getDescription());
+        pubValues.put("phone", pub.getPhone());
+        pubValues.put("url", pub.getHomepage());
+        
+        db.beginTransaction();
+        try {
+            db.replace("pubs", null, pubValues);
+            
+            /*
+             * Delete removed brands from pub association
+             */
+            List<Brand> pubBrands = getBrandsByPubId(pub.getId());
+            for (Brand brand : pubBrands) {
+                if (!pub.getBeerIds().remove(brand.getId())) {
+                    db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", new String[] {pub.getId(), brand.getId()});
+                }
+            }
+            
+            /*
+             * Add new brands to pub association
+             */
+            for (String brandId : pub.getBeerIds()) {
+                ContentValues brandValues = new ContentValues();
+                brandValues.put("brand_id", brandId);
+                brandValues.put("pub_id", pub.getId());
+                db.insert("pubs_brands", null, brandValues);
+            }
+            
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#updateCompany(alaus.radaras.shared.model.Brand)
+     */
+    @Override
+    public void updateCompany(alaus.radaras.shared.model.Brand brand) {
+        ContentValues companyValues = new ContentValues();
+        companyValues.put("country", brand.getCountry());
+        companyValues.put("description", brand.getDescription());
+        companyValues.put("homePage", brand.getHomePage());
+        companyValues.put("hometown", brand.getHometown());
+        companyValues.put("icon", brand.getIcon());
+        companyValues.put("id", brand.getId());
+        companyValues.put("title", brand.getTitle());
+
+        db.replace("companies", null, companyValues);
+    }
+    
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#deleteBrand(java.lang.String)
+     */
+    @Override
+    public void deleteBrand(String brandId) {
+        String[] param = new String[] {brandId};
+        db.beginTransaction();
+        try {
+            db.delete("brands", "id = ?", param);
+            db.delete("pubs_brands", "brand_id", param);
+            db.delete("brands_tags", "brand_id = ?", param);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#deletePub(java.lang.String)
+     */
+    @Override
+    public void deletePub(String pubId) {
+        String[] param = new String[] {pubId};
+        db.beginTransaction();
+        try {
+            db.delete("pubs", "id = ?", param);
+            db.delete("pubs_brands", "pub_id = ?", param);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see alaus.radaras.service.Beer#deleteCompany(java.lang.String)
+     */
+    @Override
+    public void deleteCompany(String companyId) {
+        List<Brand> brands = getBrandsByCompany(companyId);
+        db.beginTransaction();
+        try {
+            for (Brand brand : brands) {
+                deleteBrand(brand.getId());
+            }
+            db.delete("companies", "id = ?", new String[] {companyId});         
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }	
 }

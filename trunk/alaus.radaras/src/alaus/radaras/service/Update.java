@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 
 import alaus.radaras.shared.model.Beer;
@@ -26,6 +27,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -60,10 +62,23 @@ public class Update {
 		return parse(IOUtils.toString(inputStream));
 	}
 	
-	public static Update parse(String json) {
-		System.out.println(json);
+	/**
+	 * 
+	 * @return Returns number of elements in update
+	 */
+	public int getUpdateSize() {
+	    return updatedBeers.size() + updatedBrands.size() + updatedPubs.size() + 
+	        deletedBeers.size() + deletedBrands.size() + deletedPubs.size();
+	}
+	
+	private static Update parse(String json) throws IOException {
 		Type type = new TypeToken<Map<String, Map<String, MyData>>>() {}.getType();
-		Map<String, Map<String, MyData>> o = getGson().fromJson(json, type);
+		Map<String, Map<String, MyData>> o;
+		try {
+		    o = getGson().fromJson(json, type);
+		} catch (JsonSyntaxException jsonSyntaxException) {
+		    throw new IOExceptionWithCause(jsonSyntaxException);
+		}
 		
 		Update result = new Update();
 
