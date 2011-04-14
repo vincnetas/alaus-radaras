@@ -12,6 +12,8 @@ public interface BaseDao<T extends Updatable> {
 	
 	T save(T object);
 	
+	void delete(String id);
+	
 	List<T> add(List<T> list);
 	
 	Set<T> load(Set<String> ids);

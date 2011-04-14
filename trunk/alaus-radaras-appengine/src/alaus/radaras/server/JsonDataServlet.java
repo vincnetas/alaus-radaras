@@ -8,7 +8,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +57,8 @@ public class JsonDataServlet extends HttpServlet {
 		
 		Update update = new Update();
 		
+		update.setLastUpdate(lastUpdate);
+		
 		update.setDeletedBeers(getBeersToDelete(lastUpdate));
 		update.setDeletedBrands(getBrandsToDelete(lastUpdate));
 		update.setDeletedPubs(getPubsToDelete(lastUpdate));
@@ -78,7 +82,9 @@ public class JsonDataServlet extends HttpServlet {
 		
 		if (dateText != null) {
 			try {
-				result = new SimpleDateFormat("yyyy-MM-dd").parse(dateText);
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+				dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+00"));
+				result = dateFormat.parse(dateText);
 			} catch (ParseException e) {
 				// Ignore and return default value
 			}
@@ -87,16 +93,37 @@ public class JsonDataServlet extends HttpServlet {
 		return result;
 	}
 	
-	private Set<Beer> getBeersToDelete(Date lastUpdate) {
-		return new HashSet<Beer>(getBeerDao().getDeleted(lastUpdate));
+	private Set<String> getBeersToDelete(Date lastUpdate) {
+		Set<String> result = new HashSet<String>();
+		
+		List<Beer> deleted = getBeerDao().getDeleted(lastUpdate);
+		for (Beer beer : deleted) {
+			result.add(beer.getId());
+		}
+		
+		return result;
 	}
 	
-	private Set<Brand> getBrandsToDelete(Date lastUpdate) {
-		return new HashSet<Brand>(getBrandDao().getDeleted(lastUpdate));
+	private Set<String> getBrandsToDelete(Date lastUpdate) {
+		Set<String> result = new HashSet<String>();
+		
+		List<Brand> deleted = getBrandDao().getDeleted(lastUpdate);
+		for (Brand brand : deleted) {
+			result.add(brand.getId());
+		}
+		
+		return result;
 	}
 	
-	private Set<Pub> getPubsToDelete(Date lastUpdate) {
-		return new HashSet<Pub>(getPubDao().getDeleted(lastUpdate));
+	private Set<String> getPubsToDelete(Date lastUpdate) {
+		Set<String> result = new HashSet<String>();
+		
+		List<Pub> deleted = getPubDao().getDeleted(lastUpdate);
+		for (Pub pub : deleted) {
+			result.add(pub.getId());
+		}
+		
+		return result;
 	}
 	
 	private Set<Beer> getBeersToUpdate(Date lastUpdate) {
