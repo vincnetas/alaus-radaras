@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class SettingsManager {
 	
 	
-	public static final int DISTANCE_STEP = 500;
+    public static final int DISTANCE_STEP = 500;
 	public static final int UNLIMITED_DISTANCE = 1000001;
 	
 	private SharedPreferences preferences;
@@ -43,8 +43,6 @@ public class SettingsManager {
 		editor.putString(name, value);
 		editor.commit();
 	}
-	
-	
 
 	private SharedPreferences getPreferences() {
 		if(preferences == null) {

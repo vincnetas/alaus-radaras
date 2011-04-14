@@ -1,6 +1,8 @@
 package alaus.radaras;
 
 //import alaus.radaras.service.BeerRadarUpdate;
+import alaus.radaras.service.BeerRadarSqlite;
+import alaus.radaras.service.UpdateTask;
 import alaus.radaras.settings.SettingsManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,8 +15,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +72,8 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		
 		   
 		checkIfLocationIsEnabled();
+		
+//		new UpdateTask(this, new BeerRadarSqlite(this), (ProgressBar) findViewById(R.id.updateProgressBar)).execute("data.json");
     }
     
     private void checkIfLocationIsEnabled() {
@@ -162,5 +170,32 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		}
 			
 		return result;
-	}	
+	}
+
+    /* (non-Javadoc)
+     * @see alaus.radaras.AbstractLocationActivity#onCreateOptionsMenu(android.view.Menu)
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    /* (non-Javadoc)
+     * @see alaus.radaras.AbstractLocationActivity#onOptionsItemSelected(android.view.MenuItem)
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.update:
+            new UpdateTask(this, new BeerRadarSqlite(this), (ProgressBar) findViewById(R.id.updateProgressBar)).execute("www.alausradaras.lt");
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }	
+	
+	
 }

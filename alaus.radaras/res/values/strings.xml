@@ -54,6 +54,7 @@
 <string name="menu_call_taxi">Vežk namo!</string>
 <string name="menu_clear_counter">Iš naujo!</string>
 <string name="menu_new_pub">Žinau girdyklą!</string>
+<string name="menu_update">Atnaujinti</string>
 <string name="submit_pub_near">Esu šioje girdykloje</string>
 <string name="submit_pub_header">Nauja girdykla</string>
 <string name="submit_pub_anotation">Brūkštelk kuom ypatinga</string>

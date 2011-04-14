@@ -3,6 +3,8 @@ package alaus.radaras;
 import java.util.Observable;
 import java.util.Observer;
 
+import alaus.radaras.service.BeerRadarSqlite;
+import alaus.radaras.service.UpdateTask;
 import alaus.radaras.service.LocationProvider.LocationPrecision;
 import alaus.radaras.utils.Utils;
 import android.app.Activity;
@@ -11,6 +13,7 @@ import android.location.Location;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 /**
  * Class for managing Activities that need location based info.
@@ -90,7 +93,7 @@ public abstract class AbstractLocationActivity  extends Activity  implements Obs
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main_menu, menu);
+	    inflater.inflate(R.menu.base_menu, menu);
 	    return true;
 	}
 	
@@ -104,10 +107,10 @@ public abstract class AbstractLocationActivity  extends Activity  implements Obs
 	    case R.id.callTaxi:
 	    	startActivity(new Intent(this, TaxiListActivity.class));
 	    	return true;
-	    case R.id.submitPub:
-	    	BeerRadarApp app = ((BeerRadarApp)getApplication());
-	    	Utils.showPubSubmitDialog(this, app.getLastKnownLocation());
-	    	return true;
+        case R.id.submitPub:
+            BeerRadarApp app = ((BeerRadarApp)getApplication());
+            Utils.showPubSubmitDialog(this, app.getLastKnownLocation());
+            return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
