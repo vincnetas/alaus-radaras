@@ -5,6 +5,8 @@ package alaus.radaras.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpHost;
@@ -83,12 +85,19 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
         return result;
     }
     
-    private static InputStream asURL(String url) {
+    private InputStream asURL(String url) {
+        String updateDate = "";        
+        Date lastUpdate = beerUpdate.getLastUpdate();
+        if (lastUpdate != null) {
+            updateDate = "?lastUpdate=" + new SimpleDateFormat("yyyy-MM-dd").format(lastUpdate);
+        }
+        
         InputStream result = null; 
  
         HttpClient client = new DefaultHttpClient();
         HttpHost target = new HttpHost(url);
-        HttpRequest request = new HttpGet("/json");
+        HttpRequest request = new HttpGet("/json" + updateDate);
+        
         try {
             HttpResponse response = client.execute(target, request);
             StatusLine statusLine = response.getStatusLine();
@@ -196,6 +205,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
         progressBar.setVisibility(View.INVISIBLE);
         
         if (result) {
+            beerUpdate.setLastUpdate(new Date());
             Toast.makeText(context, "Update complete", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Update failure", Toast.LENGTH_SHORT).show();

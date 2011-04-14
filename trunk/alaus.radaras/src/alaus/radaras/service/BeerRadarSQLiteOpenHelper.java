@@ -80,6 +80,10 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"city 		TEXT, " +
 	        	"longitude REAL NOT NULL, " +
 	        	"latitude 	REAL NOT NULL);";
+		
+		public static String UPDATES = 
+		    "CREATE TABLE updates(" +
+		        "date       INTEGER NOT NULL);";    
 	}
 	
     public BeerRadarSQLiteOpenHelper(Context context) 
@@ -102,6 +106,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
 	        db.execSQL(Definition.BRANDS_TAGS);
+	        db.execSQL(Definition.UPDATES);
 	        
 	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.QOUTES);
@@ -132,83 +137,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	public boolean isUpdate() {
 		return update;
 	}
-
-	private void insertBrands(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("brands.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split("\t");
-    			Log.i(LOG_TAG, "Inserting brand: " + columns[0]);
-    			ContentValues values = new ContentValues();
-    			values.put("id", columns[0]);
-    			values.put("title", columns[1]);
-    			values.put("icon", columns[0]);
-    			db.insert("brands", null, values);
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}
-    }
-    
-    private void insertPubs(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("pubs.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split("\t");
-    			Log.i(LOG_TAG, "Inserting pub: " + columns[0]);
-    			ContentValues values = new ContentValues();
-    			values.put("id", columns[0]);
-    			values.put("title", columns[1]);
-    			values.put("address", columns[2]);
-    			values.put("city", columns[3]);
-    			values.put("phone", columns[4]);
-    			values.put("url", columns[5]);
-    			values.put("latitude", columns[6]);
-    			values.put("longtitude", columns[7]);
-    			db.insert("pubs", null, values);
-    		}    		
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}
-    }
-    
-    private void insertAssociations(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("brands.txt")));
-    		String line = null;
-    		
-    		while ((line = reader.readLine()) != null) {
-    			
-    			String[] columns = line.split("\t");
-    			
-    			Log.i(LOG_TAG, "Inserting brand<->pub association: " + columns[0]);
-    			String[] pubs = columns[2].split(",");
-    			for (int i = 0; i < pubs.length; i++) {
-        			ContentValues values = new ContentValues();
-        			values.put("brand_id", columns[0]);
-        			values.put("pub_id", pubs[i].trim());
-        			db.insert("pubs_brands", null, values);    				
-    			}
-    			    			
-    			Log.i(LOG_TAG, "Inserting brand<->tag association: " + columns[0]);
-    			String[] tags = columns[4].split(",");
-    			for (int i = 0; i < tags.length; i++) {
-        			ContentValues values = new ContentValues();
-        			values.put("brand_id", columns[0]);
-        			values.put("tag", tags[i].trim());
-        			db.insert("brands_tags", null, values);    				
-    			}
-    			
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}
-    }
 
 	private void insertQoutes(SQLiteDatabase db) {
     	try {
@@ -279,6 +207,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS tags;");
         db.execSQL("DROP TABLE IF EXISTS qoutes;");
         db.execSQL("DROP TABLE IF EXISTS taxi;");
+        db.execSQL("DROP TABLE IF EXISTS updates;");
         
         onCreate(db);
 	}

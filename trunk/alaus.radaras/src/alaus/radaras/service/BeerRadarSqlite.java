@@ -1,6 +1,7 @@
 package alaus.radaras.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -571,5 +572,25 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
         } finally {
             db.endTransaction();
         }
+    }
+
+    @Override
+    public Date getLastUpdate() {
+        Date result = null;
+        
+        Cursor cursor = db.query("updates", new String[] {"date"}, null, null, null, null, "date DESC", "1");
+
+        if (cursor.moveToFirst()) {
+            result = new Date(cursor.getLong(0));
+        }
+
+        return result;
+    }
+
+    @Override
+    public void setLastUpdate(Date date) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("date", date.getTime());
+        db.insert("updates", null, contentValues);
     }	
 }

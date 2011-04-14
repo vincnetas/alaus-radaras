@@ -1,5 +1,7 @@
 package alaus.radaras.service;
 
+import java.util.Date;
+
 import alaus.radaras.shared.model.Beer;
 
 
@@ -11,14 +13,14 @@ public interface BeerUpdate {
      * @param beer
      *            Brand to update
      */
-    public abstract void updateBrand(Beer beer);
+    void updateBrand(Beer beer);
 
     /**
      * Updates pub in DB.
      * 
      * @param pub Pub to update
      */
-    public abstract void updatePub(alaus.radaras.shared.model.Pub pub);
+    void updatePub(alaus.radaras.shared.model.Pub pub);
 
     /**
      * Updates company information in DB.
@@ -26,7 +28,7 @@ public interface BeerUpdate {
      * @param brand
      *            Company data
      */
-    public abstract void updateCompany(alaus.radaras.shared.model.Brand brand);
+    void updateCompany(alaus.radaras.shared.model.Brand brand);
 
     /**
      * Deletes brand, association with pubs and tags.
@@ -34,7 +36,7 @@ public interface BeerUpdate {
      * @param brandId
      *            Id of brand to delete
      */
-    public abstract void deleteBrand(String brandId);
+    void deleteBrand(String brandId);
 
     /**
      * Deletes pub and associations with beers from DB.
@@ -42,7 +44,7 @@ public interface BeerUpdate {
      * @param pubId
      *            Id of pub to delete
      */
-    public abstract void deletePub(String pubId);
+    void deletePub(String pubId);
 
     /**
      * Deletes company, associated brands (see deleteBrand).
@@ -50,6 +52,20 @@ public interface BeerUpdate {
      * @param companyId
      *            Id of company to delete
      */
-    public abstract void deleteCompany(String companyId);
+    void deleteCompany(String companyId);
+    
+    /**
+     * Returns date when last update was performed (successful finished).
+     * 
+     * @return Returns last update date or null if update was never performed.
+     */
+    Date getLastUpdate();
+    
+    /**
+     * Sets date of last successful update.
+     * 
+     * @param date Date when update finished
+     */
+    void setLastUpdate(Date date);
 
 }
