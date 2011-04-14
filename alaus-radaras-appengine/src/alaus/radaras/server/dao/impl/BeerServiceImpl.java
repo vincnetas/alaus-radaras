@@ -59,5 +59,5 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements BeerServic
 	@Override
 	public BaseDao<Beer> getBaseDao() {
 		return getBeerDao();
-	}
+	}	
 }

@@ -19,18 +19,19 @@ public class UpdateTest {
 	public void testToJson() {
 		Update update = new Update();
 		
-		update.setDeletedBeers(asSet(getBeer()));
-		update.setDeletedBrands(asSet(getBrand()));
-		update.setDeletedPubs(asSet(getPub()));
+		update.setDeletedBeers(asSet(getBeer().getId(), getBeerWithNoTags().getId()));
+		update.setDeletedBrands(asSet(getBrand().getId(), getBrandWithNoTags().getId()));
+		update.setDeletedPubs(asSet(getPub().getId(), getPubWithNoTags().getId()));
 		update.setDeteledQuotes(asSet(getQuote()));
 
-		update.setUpdatedBeers(asSet(getBeer()));
-		update.setUpdatedBrands(asSet(getBrand()));
-		update.setUpdatedPubs(asSet(getPub()));
+		update.setUpdatedBeers(asSet(getBeer(), getBeerWithNoTags()));
+		update.setUpdatedBrands(asSet(getBrand(), getBrandWithNoTags()));
+		update.setUpdatedPubs(asSet(getPub(), getPubWithNoTags()));
 		update.setUpdatedQuotes(asSet(getQuote()));
 		
 		String json = Update.toJson(update);
 		
+		System.out.println(json);
 		Update parse = Update.parse(json);
 		assertTrue(equals(update, parse));
 	}
@@ -50,6 +51,12 @@ public class UpdateTest {
 		return new HashSet<T>(Arrays.asList(values));
 	}
 	
+	private Beer getBeerWithNoTags() {
+		Beer result = getBeer();
+		result.setTags(new HashSet<String>());
+		return result;
+	}
+	
 	private Beer getBeer() {
 		Beer result = new Beer();
 		
@@ -57,9 +64,15 @@ public class UpdateTest {
 		result.setDescription("description");
 		result.setIcon("icon");
 		result.setTags("tags");
-		result.setId("beerid");
+		result.setId("beerid" + Math.random());
 		result.setTitle("title");
 		
+		return result;
+	}
+	
+	private Brand getBrandWithNoTags() {
+		Brand result = getBrand();
+		result.setTags(new HashSet<String>());
 		return result;
 	}
 	
@@ -71,10 +84,16 @@ public class UpdateTest {
 		result.setHomePage("homePage");
 		result.setHometown("homeTown");
 		result.setIcon("icon");
-		result.setId("brandid");
+		result.setId("brandid" + Math.random());
 		result.setTags("tags");
 		result.setTitle("title");
 		
+		return result;
+	}
+	
+	private Pub getPubWithNoTags() {
+		Pub result = getPub();
+		result.setTags(new HashSet<String>());
 		return result;
 	}
 	
@@ -88,7 +107,7 @@ public class UpdateTest {
 		result.setDescription("description");
 		result.setHomepage("homepage");
 		result.setHours("hours");
-		result.setId("pubid");
+		result.setId("pubid" + Math.random());
 		result.setLatitude(0.0);
 		result.setLongitude(0.0);
 		result.setPhone("phone");

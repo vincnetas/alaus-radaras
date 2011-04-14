@@ -63,10 +63,10 @@ public class Updatable implements Serializable {
 	 * If this field is not null this item is deleted. Applicable only for base objects.
 	 */
 	@Persistent
-	private Integer deleted;
+	private Date deleted;
 	
-	public Boolean isDeleted() {
-		return deleted != null;
+	public Date getDeleted() {
+		return deleted;
 	}
 
 	/**

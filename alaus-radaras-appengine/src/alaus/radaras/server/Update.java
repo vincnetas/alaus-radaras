@@ -5,6 +5,7 @@ package alaus.radaras.server;
 
 import java.lang.reflect.Type;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -43,19 +44,35 @@ public class Update {
 
 	private Set<Pub> updatedPubs;
 	
-	private Set<Pub> deletedPubs;
+	private Set<String> deletedPubs;
 	
 	private Set<Beer> updatedBeers;
 	
-	private Set<Beer> deletedBeers;
+	private Set<String> deletedBeers;
 	
 	private Set<Brand> updatedBrands;
 	
-	private Set<Brand> deletedBrands;
+	private Set<String> deletedBrands;
 	
 	private Set<Quote> updatedQuotes;
 	
 	private Set<Quote> deteledQuotes;
+	
+	private Date lastUpdate;
+	
+	/**
+	 * @return the lastUpdate
+	 */
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+
+	/**
+	 * @param lastUpdate the lastUpdate to set
+	 */
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
 
 	public static Update parse(String json) {
 		System.out.println(json);
@@ -64,9 +81,9 @@ public class Update {
 		
 		Update result = new Update();
 
-		Beer[] deletedBeers = getGson().fromJson(o.get(DELETE).get(BEERS).getElement(), new TypeToken<Beer[]>() {}.getType());
-		Brand[] deletedBrands = getGson().fromJson(o.get(DELETE).get(BRANDS).getElement(), new TypeToken<Brand[]>() {}.getType());
-		Pub[] deletedPubs = getGson().fromJson(o.get(DELETE).get(PUBS).getElement(), new TypeToken<Pub[]>() {}.getType());
+		String[] deletedBeers = getGson().fromJson(o.get(DELETE).get(BEERS).getElement(), new TypeToken<String[]>() {}.getType());
+		String[] deletedBrands = getGson().fromJson(o.get(DELETE).get(BRANDS).getElement(), new TypeToken<String[]>() {}.getType());
+		String[] deletedPubs = getGson().fromJson(o.get(DELETE).get(PUBS).getElement(), new TypeToken<String[]>() {}.getType());
 
 		Beer[] updatedBeers = getGson().fromJson(o.get(UPDATE).get(BEERS).getElement(), new TypeToken<Beer[]>() {}.getType());
 		Brand[] updatedBrands = getGson().fromJson(o.get(UPDATE).get(BRANDS).getElement(), new TypeToken<Brand[]>() {}.getType());
@@ -164,14 +181,14 @@ public class Update {
 	/**
 	 * @return the deletedPubs
 	 */
-	public Set<Pub> getDeletedPubs() {
+	public Set<String> getDeletedPubs() {
 		return deletedPubs;
 	}
 
 	/**
 	 * @param deletedPubs the deletedPubs to set
 	 */
-	public void setDeletedPubs(Set<Pub> deletedPubs) {
+	public void setDeletedPubs(Set<String> deletedPubs) {
 		this.deletedPubs = deletedPubs;
 	}
 
@@ -192,14 +209,14 @@ public class Update {
 	/**
 	 * @return the deletedBeers
 	 */
-	public Set<Beer> getDeletedBeers() {
+	public Set<String> getDeletedBeers() {
 		return deletedBeers;
 	}
 
 	/**
 	 * @param deletedBeers the deletedBeers to set
 	 */
-	public void setDeletedBeers(Set<Beer> deletedBeers) {
+	public void setDeletedBeers(Set<String> deletedBeers) {
 		this.deletedBeers = deletedBeers;
 	}
 
@@ -220,14 +237,14 @@ public class Update {
 	/**
 	 * @return the deletedBrands
 	 */
-	public Set<Brand> getDeletedBrands() {
+	public Set<String> getDeletedBrands() {
 		return deletedBrands;
 	}
 
 	/**
 	 * @param deletedBrands the deletedBrands to set
 	 */
-	public void setDeletedBrands(Set<Brand> deletedBrands) {
+	public void setDeletedBrands(Set<String> deletedBrands) {
 		this.deletedBrands = deletedBrands;
 	}
 
@@ -286,4 +303,6 @@ class MyData implements JsonDeserializer<MyData> {
 	public void setElement(JsonElement element) {
 		this.element = element;
 	}	
+	
+	
 }

@@ -146,6 +146,19 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 			pm.close();
 		}
 	}	
+	
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.dao.BaseDao#delete(java.lang.String)
+	 */
+	@Override
+	public void delete(String id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.deletePersistent(get(id));
+		} finally {
+			pm.close();
+		}
+	}
 
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#getUpdated(java.util.Date)
