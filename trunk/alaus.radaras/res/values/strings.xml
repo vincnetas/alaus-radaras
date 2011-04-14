@@ -68,6 +68,10 @@
 <string name="pub_brand_submit_header">Pranešk apie alų</string>
 <string name="pub_brand_submit_write">Ar skanus alus?</string>
 <string name="pub_brand_submit_thanks">Tik alus išgelbės mus! :)</string>
+<string name="update_complete">Atnaujinta (%1$d)</string>
+<string name="update_failed">Napavyksta gauti atnaujinimų</string>
+<string name="update_importing_data">Atnaujinami duomenys %1$d / %2$d</string>
+<string name="update_loading_data">Parsiunčiami atnaujinimai</string>
 
 <string name="country_lt">Lietuviškas</string>
 <string name="country_cz">Čekiškas</string>
