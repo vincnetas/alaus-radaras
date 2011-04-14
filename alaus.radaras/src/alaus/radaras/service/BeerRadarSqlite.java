@@ -45,6 +45,8 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	
 	private SettingsManager settings;
 	
+	private final static Object WRITE_LOCK = new Object();
+	
 	public BeerRadarSqlite(Context context) {
 		BeerRadarSQLiteOpenHelper helper = new BeerRadarSQLiteOpenHelper(context);
 		this.db = helper.getReadableDatabase();
@@ -429,35 +431,37 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */	
     @Override
     public void updateBrand(Beer beer) {
-        ContentValues beerValues = new ContentValues();
-        beerValues.put("id", beer.getId());
-        beerValues.put("title", beer.getTitle());
-        beerValues.put("icon", beer.getIcon());
-        beerValues.put("description", beer.getDescription());
-        beerValues.put("companyId", beer.getBrandId());
-        
-        db.beginTransaction();
-        try {
-            db.replace("brands", null, beerValues );
-            
-            Set<Tag> brandTags = getBrandTags(beer.getId());
-            for (Tag tag : brandTags) {
-                if (!beer.getTags().remove(tag.getCode())) {
-                    db.delete("brands_tags", "brand_id = ? AND tag = ?", new String[] {beer.getId(), tag.getCode()});
-                }
-            }
-            
-            for (String tag : beer.getTags()) {
-                ContentValues tagValues = new ContentValues();
-                tagValues.put("brand_id", beer.getId());
-                tagValues.put("tag", tag);
-                db.insert("brands_tags", null, tagValues);
-            }
-            
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+    	synchronized (WRITE_LOCK) {
+	    	ContentValues beerValues = new ContentValues();
+	        beerValues.put("id", beer.getId());
+	        beerValues.put("title", beer.getTitle());
+	        beerValues.put("icon", beer.getIcon());
+	        beerValues.put("description", beer.getDescription());
+	        beerValues.put("companyId", beer.getBrandId());
+	        
+	        db.beginTransaction();
+	        try {
+	            db.replace("brands", null, beerValues );
+	            
+	            Set<Tag> brandTags = getBrandTags(beer.getId());
+	            for (Tag tag : brandTags) {
+	                if (!beer.getTags().remove(tag.getCode())) {
+	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", new String[] {beer.getId(), tag.getCode()});
+	                }
+	            }
+	            
+	            for (String tag : beer.getTags()) {
+	                ContentValues tagValues = new ContentValues();
+	                tagValues.put("brand_id", beer.getId());
+	                tagValues.put("tag", tag);
+	                db.insert("brands_tags", null, tagValues);
+	            }
+	            
+	            db.setTransactionSuccessful();
+	        } finally {
+	            db.endTransaction();
+	        }
+    	}
     }
 
     /* (non-Javadoc)
@@ -465,45 +469,47 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */
     @Override
     public void updatePub(alaus.radaras.shared.model.Pub pub) {
-        ContentValues pubValues = new ContentValues();
-        pubValues.put("id", pub.getId());
-        pubValues.put("title", pub.getTitle());
-        pubValues.put("longtitude", pub.getLongitude());
-        pubValues.put("latitude", pub.getLatitude());
-        pubValues.put("address", pub.getAddress());
-        pubValues.put("city", pub.getCity());
-        pubValues.put("notes", pub.getDescription());
-        pubValues.put("phone", pub.getPhone());
-        pubValues.put("url", pub.getHomepage());
-        
-        db.beginTransaction();
-        try {
-            db.replace("pubs", null, pubValues);
-            
-            /*
-             * Delete removed brands from pub association
-             */
-            List<Brand> pubBrands = getBrandsByPubId(pub.getId());
-            for (Brand brand : pubBrands) {
-                if (!pub.getBeerIds().remove(brand.getId())) {
-                    db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", new String[] {pub.getId(), brand.getId()});
-                }
-            }
-            
-            /*
-             * Add new brands to pub association
-             */
-            for (String brandId : pub.getBeerIds()) {
-                ContentValues brandValues = new ContentValues();
-                brandValues.put("brand_id", brandId);
-                brandValues.put("pub_id", pub.getId());
-                db.insert("pubs_brands", null, brandValues);
-            }
-            
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+    	synchronized (WRITE_LOCK) {
+	    	ContentValues pubValues = new ContentValues();
+	        pubValues.put("id", pub.getId());
+	        pubValues.put("title", pub.getTitle());
+	        pubValues.put("longtitude", pub.getLongitude());
+	        pubValues.put("latitude", pub.getLatitude());
+	        pubValues.put("address", pub.getAddress());
+	        pubValues.put("city", pub.getCity());
+	        pubValues.put("notes", pub.getDescription());
+	        pubValues.put("phone", pub.getPhone());
+	        pubValues.put("url", pub.getHomepage());
+	        
+	        db.beginTransaction();
+	        try {
+	            db.replace("pubs", null, pubValues);
+	            
+	            /*
+	             * Delete removed brands from pub association
+	             */
+	            List<Brand> pubBrands = getBrandsByPubId(pub.getId());
+	            for (Brand brand : pubBrands) {
+	                if (!pub.getBeerIds().remove(brand.getId())) {
+	                    db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", new String[] {pub.getId(), brand.getId()});
+	                }
+	            }
+	            
+	            /*
+	             * Add new brands to pub association
+	             */
+	            for (String brandId : pub.getBeerIds()) {
+	                ContentValues brandValues = new ContentValues();
+	                brandValues.put("brand_id", brandId);
+	                brandValues.put("pub_id", pub.getId());
+	                db.insert("pubs_brands", null, brandValues);
+	            }
+	            
+	            db.setTransactionSuccessful();
+	        } finally {
+	            db.endTransaction();
+	        }
+    	}
     }
     
     /* (non-Javadoc)
@@ -511,16 +517,18 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */
     @Override
     public void updateCompany(alaus.radaras.shared.model.Brand brand) {
-        ContentValues companyValues = new ContentValues();
-        companyValues.put("country", brand.getCountry());
-        companyValues.put("description", brand.getDescription());
-        companyValues.put("homePage", brand.getHomePage());
-        companyValues.put("hometown", brand.getHometown());
-        companyValues.put("icon", brand.getIcon());
-        companyValues.put("id", brand.getId());
-        companyValues.put("title", brand.getTitle());
-
-        db.replace("companies", null, companyValues);
+    	synchronized (WRITE_LOCK) {
+	    	ContentValues companyValues = new ContentValues();
+	        companyValues.put("country", brand.getCountry());
+	        companyValues.put("description", brand.getDescription());
+	        companyValues.put("homePage", brand.getHomePage());
+	        companyValues.put("hometown", brand.getHometown());
+	        companyValues.put("icon", brand.getIcon());
+	        companyValues.put("id", brand.getId());
+	        companyValues.put("title", brand.getTitle());
+	
+	        db.replace("companies", null, companyValues);
+    	}
     }
     
     /* (non-Javadoc)
@@ -528,16 +536,18 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */
     @Override
     public void deleteBrand(String brandId) {
-        String[] param = new String[] {brandId};
-        db.beginTransaction();
-        try {
-            db.delete("brands", "id = ?", param);
-            db.delete("pubs_brands", "brand_id", param);
-            db.delete("brands_tags", "brand_id = ?", param);
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+    	synchronized (WRITE_LOCK) {
+	    	String[] param = new String[] {brandId};
+	        db.beginTransaction();
+	        try {
+	            db.delete("brands", "id = ?", param);
+	            db.delete("pubs_brands", "brand_id", param);
+	            db.delete("brands_tags", "brand_id = ?", param);
+	            db.setTransactionSuccessful();
+	        } finally {
+	            db.endTransaction();
+	        }
+    	}
     }
     
     /* (non-Javadoc)
@@ -545,15 +555,17 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */
     @Override
     public void deletePub(String pubId) {
-        String[] param = new String[] {pubId};
-        db.beginTransaction();
-        try {
-            db.delete("pubs", "id = ?", param);
-            db.delete("pubs_brands", "pub_id = ?", param);
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+    	synchronized (WRITE_LOCK) {
+	        String[] param = new String[] {pubId};
+	        db.beginTransaction();
+	        try {
+	            db.delete("pubs", "id = ?", param);
+	            db.delete("pubs_brands", "pub_id = ?", param);
+	            db.setTransactionSuccessful();
+	        } finally {
+	            db.endTransaction();
+	        }
+    	}
     }
     
     /* (non-Javadoc)
@@ -561,17 +573,19 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
      */
     @Override
     public void deleteCompany(String companyId) {
-        List<Brand> brands = getBrandsByCompany(companyId);
-        db.beginTransaction();
-        try {
-            for (Brand brand : brands) {
-                deleteBrand(brand.getId());
-            }
-            db.delete("companies", "id = ?", new String[] {companyId});         
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
+    	synchronized (WRITE_LOCK) {
+	        List<Brand> brands = getBrandsByCompany(companyId);
+	        db.beginTransaction();
+	        try {
+	            for (Brand brand : brands) {
+	                deleteBrand(brand.getId());
+	            }
+	            db.delete("companies", "id = ?", new String[] {companyId});         
+	            db.setTransactionSuccessful();
+	        } finally {
+	            db.endTransaction();
+	        }
+    	}
     }
 
     @Override
@@ -589,8 +603,10 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 
     @Override
     public void setLastUpdate(Date date) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("date", date.getTime());
-        db.insert("updates", null, contentValues);
+    	synchronized (WRITE_LOCK) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("date", date.getTime());
+            db.insert("updates", null, contentValues);
+		}
     }	
 }

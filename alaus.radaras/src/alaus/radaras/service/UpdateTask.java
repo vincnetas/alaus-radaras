@@ -5,8 +5,10 @@ package alaus.radaras.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpHost;
@@ -19,18 +21,20 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import alaus.radaras.R;
 import alaus.radaras.shared.model.Beer;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
  * @author vienozin
  *
  */
-public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
+public class UpdateTask extends AsyncTask<String, Integer, Integer> {
 
     private final Context context;
     
@@ -38,17 +42,22 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
     
     private InputStream inputStream;
     
-    private ProgressBar progressBar;
+    private final ProgressBar progressBar;
     
-    public UpdateTask(Context context, BeerUpdate beerUpdate, ProgressBar progressBar) {
+    private final TextView progressStatus;
+    
+    private Date lastUpdate;
+    
+    public UpdateTask(Context context, BeerUpdate beerUpdate, ProgressBar progressBar, TextView progressStatus) {
         this.context = context;
         this.beerUpdate = beerUpdate;
         this.progressBar = progressBar;
+        this.progressStatus = progressStatus;
     }
     
     @Override
-    protected Boolean doInBackground(String... arg0) {
-        boolean result = false;
+    protected Integer doInBackground(String... arg0) {
+    	Integer result = null;
         
         if (arg0.length == 1) {
             String source = arg0[0];
@@ -73,14 +82,19 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
     
     private InputStream asAsset(String asset) {
         InputStream result = null;
-        
+                
         try {
             result = context.getAssets().open(asset);
+            lastUpdate = new SimpleDateFormat("yyyy-MM-dd").parse("2011-03-01");
         } catch (IOException e) {
             /*
              * Ignore
              */
-        }
+        } catch (ParseException e) {
+            /*
+             * Ignore
+             */
+		}
         
         return result;
     }
@@ -89,7 +103,9 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
         String updateDate = "";        
         Date lastUpdate = beerUpdate.getLastUpdate();
         if (lastUpdate != null) {
-            updateDate = "?lastUpdate=" + new SimpleDateFormat("yyyy-MM-dd").format(lastUpdate);
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+			dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+00"));
+            updateDate = "?lastUpdate=" + dateFormat.format(lastUpdate);
         }
         
         InputStream result = null; 
@@ -115,14 +131,16 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
     
 
     
-    /**
-     * This method applies update from input stream to data base.
-     * 
-     * @param data
-     *            Input stream containing update information in JSON format
-     * @throws IOException 
-     */
-    private boolean applyUpdate(InputStream data) throws IOException {
+	/**
+	 * This method applies update from input stream to data base.
+	 * 
+	 * @param data
+	 *            Input stream containing update information in JSON format
+	 * @return Returns number of updated/deleted elements
+	 * @throws IOException
+	 * 
+	 */
+    private int applyUpdate(InputStream data) throws IOException {
         Update update = Update.parse(data);
         int updateSize = update.getUpdateSize();        
         int processedItems = 0;
@@ -132,7 +150,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
@@ -141,7 +159,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
@@ -150,7 +168,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
@@ -159,7 +177,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
@@ -168,7 +186,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
@@ -177,11 +195,11 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
             processedItems++;
             publishProgress(processedItems, updateSize);
             if (isCancelled()) {
-                return false;
+            	throw new IOException("Task canceled");
             }
         }
         
-        return true;
+        return updateSize;
     }
 
     /* (non-Javadoc)
@@ -198,17 +216,19 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
      * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
      */
     @Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(Integer result) {
         super.onPostExecute(result);
         
         IOUtils.closeQuietly(inputStream);
+        
+        progressStatus.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
         
-        if (result) {
-            beerUpdate.setLastUpdate(new Date());
-            Toast.makeText(context, "Update complete", Toast.LENGTH_SHORT).show();
+        if (result != null) {
+            beerUpdate.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
+            Toast.makeText(context, context.getResources().getString(R.string.update_complete, result), Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(context, "Update failure", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -219,6 +239,9 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
         
+        progressStatus.setVisibility(View.VISIBLE);
+        progressStatus.setText(context.getResources().getString(R.string.update_importing_data, values[0], values[1]));
+        progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress(values[0]);
         progressBar.setMax(values[1]);        
     }
@@ -230,8 +253,8 @@ public class UpdateTask extends AsyncTask<String, Integer, Boolean> {
     protected void onPreExecute() {
         super.onPreExecute();
         
-        Toast.makeText(context, "Loading data", Toast.LENGTH_SHORT).show();
-        
+        progressStatus.setVisibility(View.VISIBLE);
+        progressStatus.setText(context.getResources().getString(R.string.update_loading_data));
         progressBar.setProgress(0);
         progressBar.setVisibility(View.VISIBLE);
     }

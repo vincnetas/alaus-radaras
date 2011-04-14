@@ -1,7 +1,10 @@
 package alaus.radaras;
 
 //import alaus.radaras.service.BeerRadarUpdate;
+import java.util.Date;
+
 import alaus.radaras.service.BeerRadarSqlite;
+import alaus.radaras.service.BeerUpdate;
 import alaus.radaras.service.UpdateTask;
 import alaus.radaras.settings.SettingsManager;
 import android.app.AlertDialog;
@@ -73,7 +76,17 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		   
 		checkIfLocationIsEnabled();
 		
-//		new UpdateTask(this, new BeerRadarSqlite(this), (ProgressBar) findViewById(R.id.updateProgressBar)).execute("data.json");
+		BeerUpdate beerUpdate = new BeerRadarSqlite(this);
+		Date lastUpdate = beerUpdate.getLastUpdate();
+		if (lastUpdate == null) {
+			new UpdateTask(
+					this, 
+					new BeerRadarSqlite(this), 
+					(ProgressBar) findViewById(R.id.updateProgressBar),
+					(TextView) findViewById(R.id.updateStatus)).
+				execute("data.json");
+		}
+		
     }
     
     private void checkIfLocationIsEnabled() {
@@ -190,7 +203,12 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.update:
-            new UpdateTask(this, new BeerRadarSqlite(this), (ProgressBar) findViewById(R.id.updateProgressBar)).execute("www.alausradaras.lt");
+            new UpdateTask(
+            		this, 
+            		new BeerRadarSqlite(this), 
+            		(ProgressBar) findViewById(R.id.updateProgressBar),
+            		(TextView) findViewById(R.id.updateStatus)).
+            	execute("www.alausradaras.lt");
             return true;
         default:
             return super.onOptionsItemSelected(item);
