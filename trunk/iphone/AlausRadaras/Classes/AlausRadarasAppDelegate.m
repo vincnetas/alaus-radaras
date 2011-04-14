@@ -64,23 +64,6 @@
 	
 	[[DataPublisher sharedManager]initializeManager];
 	 
-	 
-	 /* Determine if awesome features are enabled */
-	 NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-	 NSLog(@"iOS version: %@", currSysVer);
-	 NSString *reqSysVer = @"4.0";
-	 if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
-		 NSLog(@"Version >= 4.0 - Enabling awesome features");
-		 [standardUserDefaults setBool:TRUE forKey:@"EnableAllFeatures"];
-		 [[LocationManager sharedManager]setEnableAllFeatures:TRUE];
-	 } else {
-		 NSLog(@"Version < 4.0 - Disabling awesome features");
-		 [standardUserDefaults setBool:FALSE forKey:@"EnableAllFeatures"];
- 		 [[LocationManager sharedManager]setEnableAllFeatures:FALSE];
-	 }
-	 [standardUserDefaults synchronize];
-	 
-	 
     return YES;
 }
 

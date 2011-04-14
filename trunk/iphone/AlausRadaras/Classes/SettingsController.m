@@ -26,14 +26,29 @@
 
 	
 	[[LocationManager sharedManager]initializeManager];
-
-	
+	BOOL enableAllFeatures = TRUE;
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	BOOL enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+	
+	/* Determine if awesome features are enabled */
+	NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+	NSLog(@"iOS version: %@", currSysVer);
+	NSString *reqSysVer = @"4.0";
+	if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+		NSLog(@"Version >= 4.0 - Enabling awesome features");
+		enableAllFeatures = TRUE;
+	} else {
+		NSLog(@"Version < 4.0 - Disabling awesome features");
+		enableAllFeatures = FALSE;
+	}	
+	[standardUserDefaults setBool:enableAllFeatures forKey:@"EnableAllFeatures"];
+	[[LocationManager sharedManager]setEnableAllFeatures:enableAllFeatures];
+
+	[standardUserDefaults synchronize];
+	
 	UIColor *background;
 	/* iOS3.1 Support */
 	if (enableAllFeatures) {
-		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];	
 	} else {
 		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background-small.png"]];
 		visibilityControl.segmentedControlStyle = UISegmentedControlStyleBar;	
@@ -48,6 +63,7 @@
 		[self.view addSubview:button];
 		[button release];
 	}
+	
 	self.view.backgroundColor = background;
 	[background release];
 	
