@@ -45,7 +45,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	
 	private SettingsManager settings;
 	
-	private final static Object WRITE_LOCK = new Object();
+	private final static ContentValues WRITE_LOCK = new ContentValues();
 	
 	public BeerRadarSqlite(Context context) {
 		BeerRadarSQLiteOpenHelper helper = new BeerRadarSQLiteOpenHelper(context);
@@ -426,13 +426,35 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	 * Update part
 	 */
 	
+	private ContentValues getContentValues() {
+		synchronized (WRITE_LOCK) {
+			WRITE_LOCK.clear();
+			return WRITE_LOCK;
+		}
+	}
+	
+	private static String[] STRING_ARRAY = new String[1];
+	
+	private static String[] getStringArray(String value) {
+		STRING_ARRAY[0] = value;
+		return STRING_ARRAY;
+	}
+
+	private static String[] STRING_ARRAYS = new String[2];
+	
+	private static String[] getStringArray(String value1, String value2) {
+		STRING_ARRAYS[0] = value1;
+		STRING_ARRAYS[1] = value2;
+		return STRING_ARRAYS;
+	}
+	
     /* (non-Javadoc)
      * @see alaus.radaras.service.Beer#updateBrand(alaus.radaras.shared.model.Beer)
      */	
     @Override
     public void updateBrand(Beer beer) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues beerValues = new ContentValues();
+	    	ContentValues beerValues = getContentValues();
 	        beerValues.put("id", beer.getId());
 	        beerValues.put("title", beer.getTitle());
 	        beerValues.put("icon", beer.getIcon());
@@ -446,12 +468,12 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	            Set<Tag> brandTags = getBrandTags(beer.getId());
 	            for (Tag tag : brandTags) {
 	                if (!beer.getTags().remove(tag.getCode())) {
-	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", new String[] {beer.getId(), tag.getCode()});
+	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", getStringArray(beer.getId(), tag.getCode()));
 	                }
 	            }
 	            
 	            for (String tag : beer.getTags()) {
-	                ContentValues tagValues = new ContentValues();
+	                ContentValues tagValues = getContentValues();
 	                tagValues.put("brand_id", beer.getId());
 	                tagValues.put("tag", tag);
 	                db.insert("brands_tags", null, tagValues);
@@ -470,7 +492,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void updatePub(alaus.radaras.shared.model.Pub pub) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues pubValues = new ContentValues();
+	    	ContentValues pubValues = getContentValues();
 	        pubValues.put("id", pub.getId());
 	        pubValues.put("title", pub.getTitle());
 	        pubValues.put("longtitude", pub.getLongitude());
@@ -491,7 +513,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	            List<Brand> pubBrands = getBrandsByPubId(pub.getId());
 	            for (Brand brand : pubBrands) {
 	                if (!pub.getBeerIds().remove(brand.getId())) {
-	                    db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", new String[] {pub.getId(), brand.getId()});
+	                    db.delete("pubs_brands", "pub_id = ? AND brand_id = ?", getStringArray(pub.getId(), brand.getId()));
 	                }
 	            }
 	            
@@ -499,7 +521,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	             * Add new brands to pub association
 	             */
 	            for (String brandId : pub.getBeerIds()) {
-	                ContentValues brandValues = new ContentValues();
+	                ContentValues brandValues = getContentValues();
 	                brandValues.put("brand_id", brandId);
 	                brandValues.put("pub_id", pub.getId());
 	                db.insert("pubs_brands", null, brandValues);
@@ -518,7 +540,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void updateCompany(alaus.radaras.shared.model.Brand brand) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues companyValues = new ContentValues();
+	    	ContentValues companyValues = getContentValues();
 	        companyValues.put("country", brand.getCountry());
 	        companyValues.put("description", brand.getDescription());
 	        companyValues.put("homePage", brand.getHomePage());
@@ -537,7 +559,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void deleteBrand(String brandId) {
     	synchronized (WRITE_LOCK) {
-	    	String[] param = new String[] {brandId};
+	    	String[] param = getStringArray(brandId);
 	        db.beginTransaction();
 	        try {
 	            db.delete("brands", "id = ?", param);
@@ -556,7 +578,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void deletePub(String pubId) {
     	synchronized (WRITE_LOCK) {
-	        String[] param = new String[] {pubId};
+	        String[] param = getStringArray(pubId);
 	        db.beginTransaction();
 	        try {
 	            db.delete("pubs", "id = ?", param);
@@ -580,7 +602,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	            for (Brand brand : brands) {
 	                deleteBrand(brand.getId());
 	            }
-	            db.delete("companies", "id = ?", new String[] {companyId});         
+	            db.delete("companies", "id = ?", getStringArray(companyId));         
 	            db.setTransactionSuccessful();
 	        } finally {
 	            db.endTransaction();
@@ -592,7 +614,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     public Date getLastUpdate() {
         Date result = null;
         
-        Cursor cursor = db.query("updates", new String[] {"date"}, null, null, null, null, "date DESC", "1");
+        Cursor cursor = db.query("updates", getStringArray("date"), null, null, null, null, "date DESC", "1");
 
         if (cursor.moveToFirst()) {
             result = new Date(cursor.getLong(0));
@@ -604,7 +626,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void setLastUpdate(Date date) {
     	synchronized (WRITE_LOCK) {
-            ContentValues contentValues = new ContentValues();
+            ContentValues contentValues = getContentValues();
             contentValues.put("date", date.getTime());
             db.insert("updates", null, contentValues);
 		}
