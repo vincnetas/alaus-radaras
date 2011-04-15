@@ -226,7 +226,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         
         if (result != null) {
             beerUpdate.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
-            Toast.makeText(context, context.getResources().getString(R.string.update_complete, result), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.update_complete, System.currentTimeMillis() - startDate), Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
         }
@@ -246,12 +246,16 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         progressBar.setMax(values[1]);        
     }
 
+    private long startDate;
+    
     /* (non-Javadoc)
      * @see android.os.AsyncTask#onPreExecute()
      */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+    
+        startDate = System.currentTimeMillis();
         
         progressStatus.setVisibility(View.VISIBLE);
         progressStatus.setText(context.getResources().getString(R.string.update_loading_data));
