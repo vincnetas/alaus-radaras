@@ -14,6 +14,7 @@
 #import <AudioToolbox/AudioServices.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "JSON/JSON.h"
 
 
 @implementation AlausRadarasViewController
@@ -36,7 +37,68 @@
 	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	self.view.backgroundColor = background;
 	[background release];
+	
+	
+//	NSString *params = 
+//		[NSString stringWithFormat:
+//		 @"lastUpdate=2011-04-01"];
+//	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];
+//	
+
+	responseData = [[NSMutableData data] retain];
+
+	
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-04-01"]];
+	[request setHTTPMethod:@"GET"];
+//	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//	[request setHTTPBody:postData];
+	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	
 }
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // release the connection, and the data object
+    [connection release];
+	
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"JSON connectionDidFinishLoading");
+	[connection release];
+	
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//	[responseData release];
+	
+	NSDictionary *results = [responseString JSONValue];
+	NSArray *brands = [[results objectForKey:@"update"] objectForKey:@"brands"];
+
+	NSLog(@"VISO: %i", [brands count]);
+	
+	for (NSDictionary *brand in brands){		
+		NSLog(@"%@\n", [brand objectForKey:@"title"]);
+	}
+	
+	//NSLog(@"%@",responseString);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+   NSLog(@"JSON didReceiveData: %i", 	[data length]);	
+	[responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	NSLog(@"JSON didReceiveResponse");	
+	[responseData setLength:0];
+
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
 	NSLog(@"AlausRadarasViewController viewDidAppear");

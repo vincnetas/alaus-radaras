@@ -26,6 +26,10 @@
 	/* City Segment */
 	UISegmentedControl *citySegmentControl;
 	BOOL locationBased;
+
+	// pub list
+	UITableView *pubTable;
+
 }
 
 @property(nonatomic, retain) IBOutlet MKMapView *map;
@@ -35,6 +39,8 @@
 @property(nonatomic, retain) IBOutlet UILabel *infoLabel;
 
 @property (nonatomic,retain) IBOutlet UISegmentedControl *citySegmentControl;
+
+@property (nonatomic, retain) IBOutlet 	UITableView *pubTable;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (void)loadPubAnnotations;
