@@ -13,14 +13,17 @@
 #import "SQLiteManager.h"
 #import "LocationManager.h"
 #import "PubsViewController.h"
+#import "BrandsTableCell.h"
 
 @implementation MapViewController
 
 @synthesize map,pubsOnMap, pubsAlreadyOnMap;
 @synthesize infoLabel;
 @synthesize citySegmentControl;
+@synthesize pubTable;
 
 - (void)dealloc {
+	[pubTable release];
 	[citySegmentControl release];
 	[infoLabel release];
 	[pubsAlreadyOnMap release];
@@ -61,6 +64,17 @@
 	 MKCoordinateRegion region = MKCoordinateRegionMake(centerMap, coordSpan);
 	 map.region = region;
 	 
+	[pubTable setHidden:YES];
+	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+	 self.view.backgroundColor = background;
+	 [background release];
+	 
+	 /* Transparent Background */
+	 pubTable.backgroundColor = [UIColor clearColor];
+	 pubTable.opaque = NO;
+	 
+	 /* Separator color */ 
+	 pubTable.separatorColor = [UIColor grayColor];
 	 NSLog(@"MapViewController viewDidLoad");
 }
 
@@ -210,13 +224,18 @@
 -(IBAction) cityIndexChanged {
 	switch (self.citySegmentControl.selectedSegmentIndex) {
 		case 0:
-			[self showRegionWithLatitude:54.689313 Longitude:25.282631];
+			[pubTable setHidden:YES];
+			[map setHidden:NO];
+			//[self showRegionWithLatitude:54.689313 Longitude:25.282631];
 			break;
 		case 1:
-			[self showRegionWithLatitude:54.896872 Longitude:23.892426];
+			[map setHidden:YES];
+			[pubTable setHidden:NO];
+			//[self.view addSubview:pubTable];
+//			[self showRegionWithLatitude:54.896872 Longitude:23.892426];
 			break;
 		case 2:
-			[self showRegionWithLatitude:55.698541 Longitude:21.147317];
+//			[self showRegionWithLatitude:55.698541 Longitude:21.147317];
 			break;
 			
 		default:
@@ -233,6 +252,67 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark -
+#pragma mark Table view methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [pubsOnMap count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
+	static NSString *CellIdentifier = @"PubCell";
+	
+/*	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+	cell.textColor = [UIColor whiteColor];
+	cell.textLabel.text = [[pubsOnMap objectAtIndex:indexPath.row] pubTitle];
+	*/
+	BrandsTableCell *cell = (BrandsTableCell *)[pubTable dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil) {
+//		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
+		cell = [[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];		
+	}
+	Pub *pub = [pubsOnMap objectAtIndex:indexPath.row];
+	cell.labelText.text = [pub pubTitle];
+	cell.label2Text.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];
+	//[taxi release];
+	cell.brandIcon.image = [UIImage imageNamed:@"taxi2.png"];
+	
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
 
 
 
