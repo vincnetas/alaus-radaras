@@ -648,7 +648,9 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	NSString *query = [[NSString alloc] initWithString: [NSString stringWithFormat:@"SELECT pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude , distance(latitude, longitude, %f,%f) as distance FROM pubs", coordinates.latitude, coordinates.longitude]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
-		query = [NSString stringWithFormat:@"%@ WHERE distance < %i", query, [[LocationManager sharedManager]getDistance]];
+		query = [NSString stringWithFormat:@"%@ WHERE distance < %i ORDER BY distance asc", query, [[LocationManager sharedManager]getDistance]];
+	} else {
+		query = [NSString stringWithFormat:@"%@ ORDER BY pubTitle asc", query];
 	}
 	FMResultSet *rs = [db executeQuery:query];
 

@@ -65,7 +65,7 @@
 	 map.region = region;
 	 
 	[pubTable setHidden:YES];
-	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];
+	 UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	 self.view.backgroundColor = background;
 	 [background release];
 	 
@@ -281,33 +281,44 @@
 	return [pubsOnMap count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
-	static NSString *CellIdentifier = @"PubCell";
-	
-/*	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// Dequeue or if necessary create a RecipeTableViewCell, then set its recipe to the recipe for the current row.
+    static NSString *cellIdentifier = @"PubCell";
+    
+    BrandsTableCell *cell = (BrandsTableCell *)[pubTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
+        cell = brandCell;//[[[BrandsTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+	//	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-	cell.textColor = [UIColor whiteColor];
-	cell.textLabel.text = [[pubsOnMap objectAtIndex:indexPath.row] pubTitle];
-	*/
-	BrandsTableCell *cell = (BrandsTableCell *)[pubTable dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-	if (cell == nil) {
-//		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
-		cell = [[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];		
-	}
+    
 	Pub *pub = [pubsOnMap objectAtIndex:indexPath.row];
 	cell.labelText.text = [pub pubTitle];
-	cell.label2Text.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];
+	if (pub.distance != 0 && locationBased){
+		cell.label2Text.text = [NSString stringWithFormat:@"%@, %@ • (~%.2f Km)",[pub pubAddress],[pub city], [pub distance]];
+	} else {
+		cell.label2Text.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];	
+	}
 	//[taxi release];
-	cell.brandIcon.image = [UIImage imageNamed:@"taxi2.png"];
-	
+	cell.brandIcon.image = [UIImage imageNamed:@"beer_01.png"];    
+	//cell.iconSmall.image = [UIImage imageNamed:@"internet.png"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
+	
+	PubDetailViewController *pubDetailView = 
+		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
+	
+	pubDetailView.currentPub = [pubsOnMap objectAtIndex:indexPath.row];
+	
+    CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
+	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];
+	pubDetailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;	
+	[self presentModalViewController:pubDetailView animated:YES];
+	
+	[pubDetailView release];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
