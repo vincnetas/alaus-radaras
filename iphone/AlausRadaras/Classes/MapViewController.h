@@ -11,6 +11,7 @@
 #import "PubAnnotation.h"
 #import "PubAnnotationView.h"
 #import "PubDetailViewController.h"
+#import "BrandsTableCell.h"
 
 @interface MapViewController : UIViewController<MKMapViewDelegate> {
 	IBOutlet MKMapView *map;
@@ -29,6 +30,7 @@
 
 	// pub list
 	UITableView *pubTable;
+	BrandsTableCell *brandCell;
 
 }
 
@@ -41,6 +43,7 @@
 @property (nonatomic,retain) IBOutlet UISegmentedControl *citySegmentControl;
 
 @property (nonatomic, retain) IBOutlet 	UITableView *pubTable;
+@property (nonatomic, retain) BrandsTableCell *brandCell;
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (void)loadPubAnnotations;

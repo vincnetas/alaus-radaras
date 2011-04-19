@@ -141,6 +141,8 @@
 		C9948376131C51C400A52587 /* PubsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9948374131C51C400A52587 /* PubsViewController.m */; };
 		C9948377131C51C400A52587 /* PubsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9948375131C51C400A52587 /* PubsViewController.xib */; };
 		C99A65CD132573D10036B4DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C99A65CC132573D10036B4DF /* MBProgressHUD.m */; };
+		C9A171A5135E236900AC976E /* beer_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A171A4135E236900AC976E /* beer_01@2x.png */; };
+		C9A171A7135E237400AC976E /* beer_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A171A6135E237400AC976E /* beer_01.png */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
 		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
@@ -341,6 +343,8 @@
 		C9948375131C51C400A52587 /* PubsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubsViewController.xib; path = Classes/PubsViewController.xib; sourceTree = "<group>"; };
 		C99A65CB132573D10036B4DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/HUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		C99A65CC132573D10036B4DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/HUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		C9A171A4135E236900AC976E /* beer_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_01@2x.png"; path = "resources/images/640x960/beer_01@2x.png"; sourceTree = "<group>"; };
+		C9A171A6135E237400AC976E /* beer_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_01.png; path = resources/images/320x480/beer_01.png; sourceTree = "<group>"; };
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 		C90F10651334F6F000239BDE /* 320x480 */ = {
 			isa = PBXGroup;
 			children = (
+				C9A171A6135E237400AC976E /* beer_01.png */,
 				C94C8F201336620A006F0166 /* lucky.png */,
 				C90F111213351A3F00239BDE /* map_01.png */,
 				C90F11051335196B00239BDE /* pin.png */,
@@ -516,6 +521,7 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
+				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
 				C90F11031335196300239BDE /* pin@2x.png */,
 				C90F10F31335134F00239BDE /* directions@2x.png */,
@@ -970,6 +976,8 @@
 				C94C8E1813362A90006F0166 /* black-background-small.png in Resources */,
 				C94C8F211336620A006F0166 /* lucky.png in Resources */,
 				C94C8F2313366216006F0166 /* lucky@2x.png in Resources */,
+				C9A171A5135E236900AC976E /* beer_01@2x.png in Resources */,
+				C9A171A7135E237400AC976E /* beer_01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
