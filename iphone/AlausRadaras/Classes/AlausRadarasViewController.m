@@ -46,6 +46,36 @@
 //	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];
 //	
 
+	UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 30.0f, 20.0f)];
+	[statusView setBackgroundColor:[UIColor redColor]];
+	UIImage *image  = [UIImage imageNamed:@"atnaujinimasStatus.png"];
+	UIImageView *statusImg = [[UIImageView alloc] initWithImage:image];
+
+	UIView *statusView2 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
+	[statusView2 setBackgroundColor:[UIColor redColor]];
+	UIImage *image2  = [UIImage imageNamed:@"atnaujinimas.png"];
+	UIImageView *statusImg2 = [[UIImageView alloc] initWithImage:image2];
+	
+	UILabel *statusLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)] autorelease];
+	statusLabel.text = @"Atnaujinami svarbūs duomenys!";
+	statusLabel.textColor = [UIColor whiteColor];
+	statusLabel.backgroundColor = [UIColor clearColor];
+	statusLabel.textAlignment = UITextAlignmentCenter;
+	statusLabel.font = [UIFont fontWithName:@"ArialMT" size:14]; 
+	
+	[statusView2 addSubview:statusImg2];	
+	[statusView addSubview:statusImg];	
+
+	topWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
+	[topWindow setBackgroundColor:[UIColor blackColor]];
+	[topWindow setAlpha:1.0f];
+	[topWindow setWindowLevel:10000.0f];
+	[topWindow setHidden:NO];
+
+//	[topWindow addSubview:statusLabel];
+	[topWindow addSubview:statusView];
+	[topWindow addSubview:statusView2];
+
 	responseData = [[NSMutableData data] retain];
 
 	
@@ -57,7 +87,6 @@
 //	[request setHTTPBody:postData];
 	
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -85,6 +114,8 @@
 		NSLog(@"%@\n", [brand objectForKey:@"title"]);
 	}
 	
+	[topWindow setHidden:YES];
+
 	//NSLog(@"%@",responseString);
 }
 
