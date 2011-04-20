@@ -27,7 +27,7 @@
 
 	
 	NSMutableData *responseData;
-
+	UIWindow *topWindow;
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
