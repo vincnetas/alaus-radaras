@@ -31,6 +31,11 @@
 		<activity android:name=".CountryBrandsListActivity" android:label="@string/activity_country_brands_header"></activity>
 		<activity android:name=".SettingsActivity" android:label="@string/activity_settings_header"></activity>
 		<activity android:name=".TaxiListActivity" android:label="@string/activity_taxi_header"></activity>
+		<receiver android:permission="android.permission.ACCESS_NETWORK_STATE" android:enabled="true" android:exported="false" android:name="Receiver" android:label="RLabel">
+			<intent-filter>
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			</intent-filter>
+		</receiver>
 </application>
 
 
