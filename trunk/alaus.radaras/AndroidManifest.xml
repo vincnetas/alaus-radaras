@@ -31,9 +31,15 @@
 		<activity android:name=".CountryBrandsListActivity" android:label="@string/activity_country_brands_header"></activity>
 		<activity android:name=".SettingsActivity" android:label="@string/activity_settings_header"></activity>
 		<activity android:name=".TaxiListActivity" android:label="@string/activity_taxi_header"></activity>
-		<receiver android:permission="android.permission.ACCESS_NETWORK_STATE" android:enabled="true" android:exported="false" android:name="Receiver" android:label="RLabel">
+		
+		<receiver 
+			android:permission="android.permission.RECEIVE_BOOT_COMPLETED" 
+			android:enabled="true" 
+			android:exported="false" 
+			android:name="SyncSchedulingReceiver">
 			<intent-filter>
-				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
 			</intent-filter>
 		</receiver>
 </application>

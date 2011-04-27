@@ -7,14 +7,15 @@ import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.BeerUpdate;
 import alaus.radaras.service.UpdateTask;
 import alaus.radaras.settings.SettingsManager;
+import alaus.radaras.utils.Utils;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
-import android.net.Uri;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
@@ -23,169 +24,168 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class BeerRadarActivity extends AbstractLocationActivity {
-	
+
     protected static final int UPDATE_DIALOG = 123;
 
-	/** Called when the activity is first created. */
+    protected static final int LOCATION_DIALOG = 124;
+
+    private final SettingsManager settings = new SettingsManager(getApplicationContext());
+
+    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
-        
-		getCounterView().setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(BeerRadarActivity.this, BeerCounterActivity.class));
-			}
-		});
 
-		getAroundView().setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(BeerRadarActivity.this, PubLocationActivity.class));
-			}
-		});
-		
-		getUpdateView().setOnClickListener(new View.OnClickListener() {			
-			@Override
-			public void onClick(View v) {
-				showDialog(UPDATE_DIALOG);
-			}
-		});
-		
-		getSearchView().setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+        getCounterView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BeerRadarActivity.this, BeerCounterActivity.class));
+            }
+        });
+
+        getAroundView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BeerRadarActivity.this, PubLocationActivity.class));
+            }
+        });
+
+        getSearchView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(BeerRadarActivity.this, BrandTabWidget.class));
-			}
-		});
+            }
+        });
 
-		getLuckyView().setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+        getLuckyView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(BeerRadarActivity.this, LuckyActivity.class));
-			}
-		});
-		
-		   
-		checkIfLocationIsEnabled();
-		
-		BeerUpdate beerUpdate = new BeerRadarSqlite(this);
-		Date lastUpdate = beerUpdate.getLastUpdate();
-		if (lastUpdate == null) {
-			new UpdateTask(
-					this, 
-					new BeerRadarSqlite(this), 
-					(ProgressBar) findViewById(R.id.updateProgressBar),
-					(TextView) findViewById(R.id.updateStatus)).
-				execute("data.json");
-		}
-		
+            }
+        });
+
+        checkIfLocationIsEnabled();
+        checkIfBackgroundDataIsEnabled();
+
+        BeerUpdate beerUpdate = new BeerRadarSqlite(this);
+        Date lastUpdate = beerUpdate.getLastUpdate();
+        if (lastUpdate == null) {
+            new UpdateTask(this, new BeerRadarSqlite(this)).execute("data.json");
+        }
+
     }
-    
+
+    private void checkIfBackgroundDataIsEnabled() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (settings.askEnableSynchronization() && !connectivityManager.getBackgroundDataSetting()) {
+            showDialog(UPDATE_DIALOG);
+        }
+    }
+
     private void checkIfLocationIsEnabled() {
-    	
-    	final SettingsManager settings = new SettingsManager(getApplicationContext());
-    	   if(settings.askOnNoLocation() && 
-    			   ((BeerRadarApp)getApplication()).getLocationProvider().getAvailableProvidersCount() == 0) {
-    		   
-    		   LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-    		   final View layout = inflater.inflate(R.layout.dialog_location_enable_request,null);
-
-    		 
-    		   new AlertDialog.Builder(this)
-    		   .setView(layout)
-    		   .setTitle(getString(R.string.location_disabled_header))
-			   .setPositiveButton(getString(R.string.location_disabled_yes), new DialogInterface.OnClickListener() {
-				      public void onClick(DialogInterface dialog, int which) {
-				    	  boolean stopAsking = ((CheckBox)layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
-				    	  settings.setAskOnNoLocation(!stopAsking);
-				    	  Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS );
-				    	    startActivity(myIntent);
-				 
-				    } })
-			   .setNegativeButton(getString(R.string.location_disabled_no), new DialogInterface.OnClickListener() {
-				      public void onClick(DialogInterface dialog, int which) {
-				    	  boolean stopAsking = ((CheckBox)layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
-				    	  settings.setAskOnNoLocation(!stopAsking);
-				    	  dialog.dismiss();
-				    } })
-				 .show();
-		   }
-
-	}
-
-	private View getAroundView() {
-    	return findViewById(R.id.around);
+        if (settings.askEnableLocationProvider() && ((BeerRadarApp) getApplication()).getLocationProvider().getAvailableProvidersCount() == 0) {
+            showDialog(LOCATION_DIALOG);
+        }
     }
-    
+
+    private View getAroundView() {
+        return findViewById(R.id.around);
+    }
+
     private View getSearchView() {
-    	return findViewById(R.id.search);
+        return findViewById(R.id.search);
     }
-    
+
     private View getLuckyView() {
-    	return findViewById(R.id.lucky);
+        return findViewById(R.id.lucky);
     }
-    
+
     private View getCounterView() {
-    	return findViewById(R.id.counter);
-    }    
-    
-    private View getUpdateView() {
-    	return findViewById(R.id.update);
+        return findViewById(R.id.counter);
     }
-    
+
     @Override
-    public void onResume(){
-    	final SettingsManager settings = new SettingsManager(this);
+    public void onResume() {
+        final SettingsManager settings = new SettingsManager(this);
         TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
         counter.setText(settings.getTotalCount().toString());
-        
+
         super.onResume();
     }
 
-	@Override
-	protected void locationUpdated(Location location) {
-		//do nothing. we just need this to get location fix asap.
-		
-	}
+    @Override
+    protected void locationUpdated(Location location) {
+        // do nothing. we just need this to get location fix asap.
+    }
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreateDialog(int)
-	 */
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		Dialog result = null;
-		
-		if (id == UPDATE_DIALOG) {
-			result = new AlertDialog.Builder(this).setPositiveButton("Atnaujinti", 
-					new DialogInterface.OnClickListener() {
-	
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=alaus.radaras"));
-	
-						    try {
-						        startActivity(marketIntent);
-						    } catch (ActivityNotFoundException o) {
-						        Toast.makeText(BeerRadarActivity.this, "Market not installed.", Toast.LENGTH_SHORT).show();
-						    }						
-						}
-					}).setTitle("Atnaujinimas")
-					.setMessage("Jau yra programos atnaujinimas")
-					.create();
-		}
-			
-		return result;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see android.app.Activity#onCreateDialog(int)
+     */
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog result = null;
 
-    /* (non-Javadoc)
+        if (id == UPDATE_DIALOG) {
+            result = new AlertDialog.Builder(this).
+            setPositiveButton("Įjungti", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Utils.startActivity(BeerRadarActivity.this, 
+                            new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 
+                            new Intent(Settings.ACTION_SETTINGS));
+                }
+            }).
+            setNegativeButton("Vėliau", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+                
+            }).
+            setTitle("Sinchronizavimas").
+            setMessage("Jei nori turėti naujausią info apie barus, turėtum įjungti sinchronizavimą").
+            create();
+        } else if (id == LOCATION_DIALOG) {
+            LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+            final View layout = inflater.inflate(R.layout.dialog_location_enable_request, null);
+
+            result = new AlertDialog.Builder(this).
+                setPositiveButton(getString(R.string.location_disabled_yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean stopAsking = ((CheckBox) layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
+                        settings.setAskOnNoLocation(!stopAsking);
+                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(myIntent);
+
+                    }
+                }).
+                setNegativeButton(getString(R.string.location_disabled_no), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean stopAsking = ((CheckBox) layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
+                        settings.setAskOnNoLocation(!stopAsking);
+                        dialog.dismiss();
+                    }
+                }).
+                setView(layout).
+                setTitle(getString(R.string.location_disabled_header)).
+                create();
+        }
+
+        return result;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see alaus.radaras.AbstractLocationActivity#onCreateOptionsMenu(android.view.Menu)
      */
     @Override
@@ -195,7 +195,9 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         return true;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see alaus.radaras.AbstractLocationActivity#onOptionsItemSelected(android.view.MenuItem)
      */
     @Override
@@ -203,17 +205,10 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.update:
-            new UpdateTask(
-            		this, 
-            		new BeerRadarSqlite(this), 
-            		(ProgressBar) findViewById(R.id.updateProgressBar),
-            		(TextView) findViewById(R.id.updateStatus)).
-            	execute("www.alausradaras.lt");
+            new UpdateTask(this, new BeerRadarSqlite(this)).execute("www.alausradaras.lt");
             return true;
         default:
             return super.onOptionsItemSelected(item);
         }
-    }	
-	
-	
+    }
 }

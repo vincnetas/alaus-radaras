@@ -22,7 +22,8 @@ public class SettingsManager {
 		public static final String SETTING_TOTAL_COUNT = "totalCount";
 		public static final String SETTING_CURRENT_COUNT = "currentCount";
 		public static final String SETTING_MAX_DISTANCE = "maxDistance";
-		public static final String SETINGS_ASK_ON_LOCATION_DISABLED = "askLocationDisabled";
+		public static final String SETTINGS_ASK_ENABLE_LOCATION_PROVIDER = "askEnableLocationProvider";
+        public static final String SETTINGS_ASK_ENABLE_SYNCHRONIZATION = "askEnableSynchronization";
 	}
 	
 	private void storeBool(String name, Boolean value) {
@@ -102,12 +103,16 @@ public class SettingsManager {
 	}
 	
 	
-	public boolean askOnNoLocation() {
-		return getPreferences().getBoolean(Settings.SETINGS_ASK_ON_LOCATION_DISABLED, true);
+	public boolean askEnableLocationProvider() {
+		return getPreferences().getBoolean(Settings.SETTINGS_ASK_ENABLE_LOCATION_PROVIDER, true);
+	}
+	
+	public boolean askEnableSynchronization() {
+	    return getPreferences().getBoolean(Settings.SETTINGS_ASK_ENABLE_SYNCHRONIZATION, true);
 	}
 	
 	public void setAskOnNoLocation(boolean doAsk) {
-		storeBool(Settings.SETINGS_ASK_ON_LOCATION_DISABLED, doAsk);
+		storeBool(Settings.SETTINGS_ASK_ENABLE_LOCATION_PROVIDER, doAsk);
 	}
 
 

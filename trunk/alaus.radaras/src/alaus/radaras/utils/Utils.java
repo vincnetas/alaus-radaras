@@ -8,7 +8,9 @@ import java.util.Locale;
 
 import alaus.radaras.R;
 import alaus.radaras.dialogs.NewPubReportDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.widget.Toast;
 
@@ -34,7 +36,19 @@ public class Utils {
 	public static void showPubSubmitDialog(Context context,
 			Location location) {
 		NewPubReportDialog dialog = new NewPubReportDialog(context);
-		dialog.display(location);
-		
+		dialog.display(location);		
+	}
+	
+	public static void startActivity(Context context, Intent... intents) {
+	    for (Intent intent : intents) {
+            try {
+                context.startActivity(intent);
+                break;
+            } catch (ActivityNotFoundException activityNotFoundException) {
+                /*
+                 * Ignore and try next activity
+                 */
+            }
+        }
 	}
 }
