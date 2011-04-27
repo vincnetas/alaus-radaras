@@ -15,6 +15,7 @@ public class BeerRadarApp extends Application {
 	
 	   @Override
 	    public void onCreate() {
+		   super.onCreate();
 		   
 		   if(provider == null) {
 				provider = new LocationProvider(getBaseContext());

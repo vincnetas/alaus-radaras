@@ -15,8 +15,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	private Context context;
 	
-	private boolean update = false;
-	
 	private static class Definition {
 		
 		public static String DB_NAME = "beer-radar";
@@ -122,21 +120,12 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     private void updateData(SQLiteDatabase db) {
     	Log.i(LOG_TAG, "Inserting initial data");
     	
-    	update = true;
-    	
     	insertTags(db);
     	insertQoutes(db);
     	insertTaxies(db);
     	
     	Log.i(LOG_TAG, "Finished inserting initial data");
     } 
-    
-	/**
-	 * @return the update
-	 */
-	public boolean isUpdate() {
-		return update;
-	}
 
 	private void insertQoutes(SQLiteDatabase db) {
     	try {

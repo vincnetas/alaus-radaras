@@ -9,9 +9,11 @@
 <string name="counter_max_level_qoute">земля в илюминаторе.... земля в илюминаторе....</string>
 <string name="location_disabled_header">Vietos nustatymas</string>
 <string name="location_disabled_message">Nei vienas iš vietos nustatymo būdų nėra įjungtas, ar norite įjungti?</string>
-<string name="location_disabled_yes">Įjungiam</string>
-<string name="location_disabled_no">Gerai ir taip!</string>
-<string name="location_stop_asking">Užteks klausinėt</string>
+<string name="sync_disabled_header">Sinchronizavimas</string>
+<string name="sync_disabled_message">Jei nori turėti naujausią info apie barus, turėtum leisti naudoti foninius duomenis</string>
+<string name="generic_enable_yes">Įjungti</string>
+<string name="generic_enable_no">Vėliau</string>
+<string name="generic_stop_asking">Nebeklausti</string>
 <string name="tabs_title_brands">Alūs</string>
 <string name="tabs_title_countries">Šalys</string>
 <string name="tabs_title_tags">Tipai</string>

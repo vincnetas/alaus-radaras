@@ -20,8 +20,13 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.svenson.tokenize.InputStreamSource;
+import org.svenson.tokenize.JSONCharacterSource;
+import org.svenson.tokenize.JSONTokenizer;
 
 import alaus.radaras.R;
+import alaus.radaras.parser.state.StartState;
+import alaus.radaras.parser.state.State;
 import alaus.radaras.shared.model.Beer;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -139,6 +144,19 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
 	 * 
 	 */
     private int applyUpdate(InputStream data) throws IOException {
+        long start = System.currentTimeMillis();
+
+        JSONCharacterSource source = new InputStreamSource(data, true);
+		JSONTokenizer tokenizer = new JSONTokenizer(source, true);
+
+		State state = new StartState();
+		while (state != null && !isCancelled()) {
+			state = state.handle(tokenizer.next());
+		}
+
+        System.out.println("Done in " + (System.currentTimeMillis() - start));
+        
+        
         Update update = Update.parse(data);
         int updateSize = update.getUpdateSize();        
         int processedItems = 0;
