@@ -24,7 +24,7 @@ public class SyncSchedulingReceiver extends BroadcastReceiver {
 	 */
 	@Override
 	public void onReceive(Context context, Intent intent) {
-	    if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) && 
+	    if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED) || 
 	            intent.getAction().equals(ConnectivityManager.ACTION_BACKGROUND_DATA_SETTING_CHANGED)) {
 
             PendingIntent pendingIntent = PendingIntent.getService(

@@ -45,7 +45,7 @@ public class SettingsManager {
 		editor.commit();
 	}
 
-	private SharedPreferences getPreferences() {
+	public SharedPreferences getPreferences() {
 		if(preferences == null) {
 			preferences = context.getSharedPreferences(PREFS_NAME, 0);
 		}

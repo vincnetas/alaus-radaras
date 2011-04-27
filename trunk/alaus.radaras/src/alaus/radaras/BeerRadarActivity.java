@@ -1,10 +1,18 @@
 package alaus.radaras;
 
 //import alaus.radaras.service.BeerRadarUpdate;
+import java.io.IOException;
 import java.util.Date;
 
+import org.svenson.tokenize.InputStreamSource;
+import org.svenson.tokenize.JSONCharacterSource;
+import org.svenson.tokenize.JSONTokenizer;
+
+import alaus.radaras.parser.state.StartState;
+import alaus.radaras.parser.state.State;
 import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.BeerUpdate;
+import alaus.radaras.service.UpdateService;
 import alaus.radaras.service.UpdateTask;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.utils.Utils;
@@ -13,6 +21,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -24,6 +33,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 public class BeerRadarActivity extends AbstractLocationActivity {
@@ -32,12 +42,15 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 
     protected static final int LOCATION_DIALOG = 124;
 
-    private final SettingsManager settings = new SettingsManager(getApplicationContext());
+    private SettingsManager settings;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+                
+        settings = new SettingsManager(getApplicationContext());
+        
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
 
@@ -72,11 +85,11 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         checkIfLocationIsEnabled();
         checkIfBackgroundDataIsEnabled();
 
-        BeerUpdate beerUpdate = new BeerRadarSqlite(this);
-        Date lastUpdate = beerUpdate.getLastUpdate();
-        if (lastUpdate == null) {
+//        BeerUpdate beerUpdate = new BeerRadarSqlite(this);
+//        Date lastUpdate = beerUpdate.getLastUpdate();
+//        if (lastUpdate == null) {
             new UpdateTask(this, new BeerRadarSqlite(this)).execute("data.json");
-        }
+//        }
 
     }
 
@@ -133,54 +146,54 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         Dialog result = null;
 
         if (id == UPDATE_DIALOG) {
-            result = new AlertDialog.Builder(this).
-            setPositiveButton("Įjungti", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Utils.startActivity(BeerRadarActivity.this, 
-                            new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 
-                            new Intent(Settings.ACTION_SETTINGS));
-                }
-            }).
-            setNegativeButton("Vėliau", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-                
-            }).
-            setTitle("Sinchronizavimas").
-            setMessage("Jei nori turėti naujausią info apie barus, turėtum įjungti sinchronizavimą").
-            create();
+        	result = genericEnableDialog(
+        			SettingsManager.Settings.SETTINGS_ASK_ENABLE_SYNCHRONIZATION, 
+        			R.string.sync_disabled_message, 
+        			R.string.sync_disabled_header,
+        			new Intent(Settings.ACTION_SYNC_SETTINGS), new Intent(Settings.ACTION_SETTINGS));
         } else if (id == LOCATION_DIALOG) {
-            LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-            final View layout = inflater.inflate(R.layout.dialog_location_enable_request, null);
-
-            result = new AlertDialog.Builder(this).
-                setPositiveButton(getString(R.string.location_disabled_yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        boolean stopAsking = ((CheckBox) layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
-                        settings.setAskOnNoLocation(!stopAsking);
-                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(myIntent);
-
-                    }
-                }).
-                setNegativeButton(getString(R.string.location_disabled_no), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        boolean stopAsking = ((CheckBox) layout.findViewById(R.id.cbSkipAskingForLocation)).isChecked();
-                        settings.setAskOnNoLocation(!stopAsking);
-                        dialog.dismiss();
-                    }
-                }).
-                setView(layout).
-                setTitle(getString(R.string.location_disabled_header)).
-                create();
+        	result = genericEnableDialog(
+        			SettingsManager.Settings.SETTINGS_ASK_ENABLE_LOCATION_PROVIDER, 
+        			R.string.location_disabled_message, 
+        			R.string.location_disabled_header,
+        			new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
         return result;
+    }
+    
+    private Dialog genericEnableDialog(final String keepAsking, int messageId, int titleId, final Intent... intents) {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        final View layout = inflater.inflate(R.layout.generic_enable_request, null);
+
+        final TextView textView = (TextView) layout.findViewById(R.id.tvGenericEnableMesage);       
+        textView.setText(messageId);
+        
+        final CheckBox checkBox = (CheckBox) layout.findViewById(R.id.cbGenericStopAsking);
+        checkBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				Editor editor = settings.getPreferences().edit();
+				editor.putBoolean(keepAsking, !isChecked);
+				editor.commit();
+			}
+		});
+        
+        return new AlertDialog.Builder(this).
+            setPositiveButton(R.string.generic_enable_yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Utils.startActivity(BeerRadarActivity.this, intents); 
+                }
+            }).
+            setNegativeButton(R.string.generic_enable_no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            }).
+            setView(layout).
+            setTitle(titleId).
+            create();            
     }
 
     /*
@@ -205,7 +218,7 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         // Handle item selection
         switch (item.getItemId()) {
         case R.id.update:
-            new UpdateTask(this, new BeerRadarSqlite(this)).execute("www.alausradaras.lt");
+        	startService(new Intent(this, UpdateService.class));
             return true;
         default:
             return super.onOptionsItemSelected(item);
