@@ -25,9 +25,6 @@ import alaus.radaras.R;
 import alaus.radaras.shared.model.Beer;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -42,17 +39,18 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
     
     private InputStream inputStream;
     
-    private final ProgressBar progressBar;
-    
-    private final TextView progressStatus;
+    private final ProgressHandler progressHandler;
     
     private Date lastUpdate;
     
-    public UpdateTask(Context context, BeerUpdate beerUpdate, ProgressBar progressBar, TextView progressStatus) {
+    public UpdateTask(Context context, BeerUpdate beerUpdate) {
+        this(context, beerUpdate, null);
+    }
+    
+    public UpdateTask(Context context, BeerUpdate beerUpdate, ProgressHandler progressHandler) {
         this.context = context;
         this.beerUpdate = beerUpdate;
-        this.progressBar = progressBar;
-        this.progressStatus = progressStatus;
+        this.progressHandler = progressHandler;
     }
     
     @Override
@@ -221,12 +219,9 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         
         IOUtils.closeQuietly(inputStream);
         
-        progressStatus.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.INVISIBLE);
-        
         if (result != null) {
             beerUpdate.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
-            Toast.makeText(context, context.getResources().getString(R.string.update_complete, System.currentTimeMillis() - startDate), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.update_complete, result), Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
         }
@@ -239,31 +234,9 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
         
-        progressStatus.setVisibility(View.VISIBLE);
-        progressStatus.setText(context.getResources().getString(R.string.update_importing_data, values[0], values[1]));
-        progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(values[0]);
-        progressBar.setMax(values[1]);        
+        if (progressHandler != null) {
+            progressHandler.progress(values[0], values[1], context.getResources().getString(R.string.update_importing_data, values[0], values[1]));
+        }
     }
-
-    private long startDate;
-    
-    /* (non-Javadoc)
-     * @see android.os.AsyncTask#onPreExecute()
-     */
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    
-        startDate = System.currentTimeMillis();
-        
-        progressStatus.setVisibility(View.VISIBLE);
-        progressStatus.setText(context.getResources().getString(R.string.update_loading_data));
-        progressBar.setProgress(0);
-        progressBar.setVisibility(View.VISIBLE);
-    }
-    
-    
-
 }
 

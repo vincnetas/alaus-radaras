@@ -43,7 +43,7 @@ public class SettingsActivity extends Activity implements OnSeekBarChangeListene
 	        setDistanceText(maxDistance);
 	        
 	        CheckBox cbAskForLocation = (CheckBox)findViewById(R.id.cbAskForLocations);
-	        cbAskForLocation.setChecked(settings.askOnNoLocation());
+	        cbAskForLocation.setChecked(settings.askEnableLocationProvider());
 	        cbAskForLocation.setOnCheckedChangeListener(this);
 	        distanceEnabledCheckBox.setOnCheckedChangeListener(this);
 	        
