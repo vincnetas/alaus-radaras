@@ -3,62 +3,60 @@
  */
 package alaus.radaras.parser.state;
 
-import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import alaus.radaras.service.BeerUpdate;
+import alaus.radaras.shared.model.Pub;
 
 /**
  * @author Vincentas
  *
  */
-public class UpdatePubState implements State, UpdateValueState {
+public class UpdatePubState extends UpdateValueState<Pub> implements State {
 
-	private State parent;
+    private static Map<String, Method> methods = new HashMap<String, Method>();
+    static {
+        try {
+            methods.put("title", Pub.class.getMethod("setTitle", String.class));
+            methods.put("longitude", Pub.class.getMethod("setLongitude", Double.class));
+            methods.put("latitude", Pub.class.getMethod("setLatitude", Double.class));
+            methods.put("country", Pub.class.getMethod("setCountry", String.class));
+            methods.put("city", Pub.class.getMethod("setCity", String.class));
+            methods.put("address", Pub.class.getMethod("setAddress", String.class));
+            methods.put("phone", Pub.class.getMethod("setPhone", String.class));
+            methods.put("homepage", Pub.class.getMethod("setHomepage", String.class));
+            methods.put("id", Pub.class.getMethod("setId", String.class));          
+            methods.put("beerIds", Pub.class.getMethod("setBeerIds", Set.class));
+            methods.put("tags", Pub.class.getMethod("setTags", Set.class));         
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 	
-	private String key;
-	
-	private Object value;
-	
-	private UpdatePubState(State parent) {
-		this.parent = parent;
+	public UpdatePubState(State parent, BeerUpdate beerUpdate) {
+	    super(parent, beerUpdate, new Pub());
 	}
 
-	/* (non-Javadoc)
-	 * @see alaus.radaras.parser.state.State#handle(org.svenson.tokenize.Token)
-	 */
-	@Override
-	public State handle(Token token) {
-		State result = this;
-		
-		if (token.isType(TokenType.STRING)) {
-			key = token.value().toString();
-		} else if (token.isType(TokenType.COLON)) {
-			result = ReadValueState.getInstance(this);
-		} else if (token.isType(TokenType.COMMA)) {
+    /* (non-Javadoc)
+     * @see alaus.radaras.parser.state.UpdateValueState#objectReady(java.lang.Object)
+     */
+    @Override
+    protected void objectReady(Pub pub) {
+        beerUpdate.updatePub(pub);        
+    }
 
-		} else if (token.isType(TokenType.BRACE_CLOSE)) {
-			result = parent;
-		} else {
-			throw new UnsupportedTokenForState(this, token);
-		}
-		
-		return result;
-	}
-
-	/**
-	 * @param value the value to set
-	 */
-	public void setValue(Object value) {
-		this.value = value;
-	}
-	
-	private static UpdatePubState instance = null;
-
-	public static UpdatePubState getInstance(State parent) {
-		if (instance == null) {
-			instance = new UpdatePubState(parent);
-		}
-		
-		instance.parent = parent;
-		return instance;
-	}
+    /* (non-Javadoc)
+     * @see alaus.radaras.parser.state.UpdateValueState#getMethod(java.lang.String)
+     */
+    @Override
+    protected Method getMethod(String key) {
+        return methods.get(key);
+    }
 }

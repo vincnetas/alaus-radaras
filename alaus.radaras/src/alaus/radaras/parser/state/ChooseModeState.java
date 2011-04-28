@@ -4,7 +4,8 @@
 package alaus.radaras.parser.state;
 
 import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+
+import alaus.radaras.service.BeerUpdate;
 
 /**
  * @author Vincentas
@@ -16,8 +17,15 @@ public class ChooseModeState implements State {
 	
 	private State parent;
 	
-	public ChooseModeState(State parent) {
+	private State deleteState;
+	
+	private State updateState;
+	
+	public ChooseModeState(State parent, BeerUpdate beerUpdate) {
 		this.parent = parent;
+		
+		updateState = new UpdateState(this, beerUpdate);
+		deleteState = new DeleteState(this, beerUpdate);
 	}
 	
 	/* (non-Javadoc)
@@ -27,30 +35,33 @@ public class ChooseModeState implements State {
 	public State handle(Token token) {
 		State result = this;
 		
-		if (token.isType(TokenType.STRING)) {
-			if (token.value().equals("update")) {
-				state = new UpdateState(this);
-			} else if (token.value().equals("delete")) {
-				state = new DeleteState(this);
-			} else {
-				throw new UnsupportedTokenForState(this, token);
-			}
-		} else if (token.isType(TokenType.COLON)) {
-			/*
-			 * Skip
-			 */
-		} else if (token.isType(TokenType.BRACE_OPEN)) {
-			 result = state;
-		} else if (token.isType(TokenType.COMMA)) {
-			/*
-			 * Skip
-			 */
-		} else if (token.isType(TokenType.BRACE_CLOSE)) {
-			result = null;
-		} else {
-			throw new UnsupportedTokenForState(this, token);
-		}
-		
+        switch (token.type()) {
+        case STRING: {
+            if (token.value().equals("update")) {
+                state = updateState;
+            } else if (token.value().equals("delete")) {
+                state = deleteState;
+            } else {
+                throw new UnsupportedTokenForState(this, token);
+            }
+            break;
+        }
+        case COLON:
+        case COMMA: {
+            break;
+        }
+        case BRACE_OPEN: {
+            result = state;
+            break;
+        }
+        case BRACE_CLOSE: {
+            result = null;
+            break;
+        }
+        default:
+            throw new UnsupportedTokenForState(this, token);
+        }
+
 		return result;
 	}
 

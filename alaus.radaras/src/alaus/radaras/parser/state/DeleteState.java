@@ -3,14 +3,17 @@
  */
 package alaus.radaras.parser.state;
 
+import java.util.Collection;
+
 import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+
+import alaus.radaras.service.BeerUpdate;
 
 /**
  * @author Vincentas
  *
  */
-public class DeleteState implements State, UpdateValueState {
+public class DeleteState implements State, UpdatableValueState {
 
 	private State parent;
 	
@@ -18,8 +21,15 @@ public class DeleteState implements State, UpdateValueState {
 	
 	private Object value;
 	
-	public DeleteState(State parent) {
+	private ReadValueState readValueState;
+	
+	private BeerUpdate beerUpdate;	
+	
+	public DeleteState(State parent, BeerUpdate beerUpdate) {
 		this.parent = parent;
+		this.beerUpdate = beerUpdate;
+		
+		readValueState = new ReadValueState(this);
 	}
 
 	/* (non-Javadoc)
@@ -29,19 +39,48 @@ public class DeleteState implements State, UpdateValueState {
 	public State handle(Token token) {
 		State result = this;
 		
-		if (token.isType(TokenType.STRING)) {
-			key = token.value().toString();
-		} else if (token.isType(TokenType.COLON)) {
-			result = ReadValueState.getInstance(this);
-		} else if (token.isType(TokenType.COMMA)) {
-
-		} else if (token.isType(TokenType.BRACE_CLOSE)) {
-			result = parent;
-		} else {
-			throw new UnsupportedTokenForState(this, token);
-		}
+        switch (token.type()) {
+        case STRING: {
+            key = token.value().toString();
+            break;
+        }
+        case COLON: {
+            readValueState.resetArray();
+            result = readValueState;
+            break;
+        }
+        case COMMA: {
+            break;
+        }
+        case BRACE_CLOSE: {
+            performDelete(key, value);
+            result = parent;
+            break;
+        }
+        default:
+            throw new UnsupportedTokenForState(this, token);
+        }
 		
 		return result;
+	}
+	
+	private void performDelete(String key, Object value) {
+	    @SuppressWarnings("unchecked")
+        Collection<String> ids = (Collection<String>) value;
+	    
+	    if (key.equals("pubs")) {
+            for (String id : ids) {
+                beerUpdate.deletePub(id);
+            }
+	    } else if (key.equals("brands")) {
+            for (String id : ids) {
+                beerUpdate.deleteCompany(id);
+            }
+	    } else if (key.equals("beers")) {
+           for (String id : ids) {
+                beerUpdate.deleteBrand(id);
+            }
+	    }
 	}
 
 	/**

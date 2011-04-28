@@ -11,7 +11,9 @@ import org.svenson.tokenize.Token;
  */
 public class UnsupportedTokenForState extends RuntimeException {
 
-	private State state;
+    private static final long serialVersionUID = -4208495319694197741L;
+
+    private State state;
 	
 	private Token token;
 	
@@ -19,4 +21,14 @@ public class UnsupportedTokenForState extends RuntimeException {
 		this.state = state;
 		this.token = token;
 	}
+
+    /* (non-Javadoc)
+     * @see java.lang.Throwable#toString()
+     */
+    @Override
+    public String toString() {    
+        return "State : " + state + ", token : " + token;
+    }
+	
+	
 }

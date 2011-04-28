@@ -3,62 +3,57 @@
  */
 package alaus.radaras.parser.state;
 
-import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import alaus.radaras.service.BeerUpdate;
+import alaus.radaras.shared.model.Brand;
 
 /**
  * @author Vincentas
  *
  */
-public class UpdateBrandState implements State, UpdateValueState {
+public class UpdateBrandState extends UpdateValueState<Brand> implements State {
 
-	private State parent;
-	
-	private String key;
-	
-	private Object value;
-	
-	private UpdateBrandState(State parent) {
-		this.parent = parent;
+    private static Map<String, Method> methods = new HashMap<String, Method>();
+    static {
+        try {
+            methods.put("title", Brand.class.getMethod("setTitle", String.class));
+            methods.put("icon", Brand.class.getMethod("setIcon", String.class));
+            methods.put("homePage", Brand.class.getMethod("setHomePage", String.class));
+            methods.put("hometown", Brand.class.getMethod("setHometown", String.class));            
+            methods.put("country", Brand.class.getMethod("setCountry", String.class));
+            methods.put("description", Brand.class.getMethod("setDescription", String.class));
+            methods.put("id", Brand.class.getMethod("setId", String.class));          
+            methods.put("tags", Brand.class.getMethod("setTags", Set.class));         
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+	public UpdateBrandState(State parent, BeerUpdate beerUpdate) {
+	    super(parent, beerUpdate, new Brand());
 	}
 
-	/* (non-Javadoc)
-	 * @see alaus.radaras.parser.state.State#handle(org.svenson.tokenize.Token)
-	 */
-	@Override
-	public State handle(Token token) {
-		State result = this;
-		
-		if (token.isType(TokenType.STRING)) {
-			key = token.value().toString();
-		} else if (token.isType(TokenType.COLON)) {
-			result = ReadValueState.getInstance(this);
-		} else if (token.isType(TokenType.COMMA)) {
+    /* (non-Javadoc)
+     * @see alaus.radaras.parser.state.UpdateValueState#objectReady(java.lang.Object)
+     */
+    @Override
+    protected void objectReady(Brand brand) {
+        beerUpdate.updateCompany(brand);        
+    }
 
-		} else if (token.isType(TokenType.BRACE_CLOSE)) {
-			result = parent;
-		} else {
-			throw new UnsupportedTokenForState(this, token);
-		}
-		
-		return result;
-	}
-
-	/**
-	 * @param value the value to set
-	 */
-	public void setValue(Object value) {
-		this.value = value;
-	}
-
-	private static UpdateBrandState instance = null;
-	
-	public static UpdateBrandState getInstance(State parent) {
-		if (instance == null) {
-			instance = new UpdateBrandState(parent);
-		}
-		
-		instance.parent = parent;
-		return instance;
-	}
+    /* (non-Javadoc)
+     * @see alaus.radaras.parser.state.UpdateValueState#getMethod(java.lang.String)
+     */
+    @Override
+    protected Method getMethod(String key) {
+        return methods.get(key);
+    }
 }

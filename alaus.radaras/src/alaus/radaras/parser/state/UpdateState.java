@@ -4,7 +4,8 @@
 package alaus.radaras.parser.state;
 
 import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+
+import alaus.radaras.service.BeerUpdate;
 
 /**
  * @author Vincentas
@@ -16,8 +17,18 @@ public class UpdateState implements State {
 	
 	private State parent;
 	
-	public UpdateState(State parent) {
+	private UpdateBrandState updateBrandState;
+	
+	private UpdatePubState updatePubState;
+	
+	private UpdateBeerState updateBeerState;
+	
+	public UpdateState(State parent, BeerUpdate beerUpdate) {
 		this.parent = parent;
+		
+		updateBeerState = new UpdateBeerState(this, beerUpdate);
+		updateBrandState = new UpdateBrandState(this, beerUpdate);
+		updatePubState = new UpdatePubState(this, beerUpdate);
 	}
 	
 	/* (non-Javadoc)
@@ -27,31 +38,35 @@ public class UpdateState implements State {
 	public State handle(Token token) {
 		State result = this;
 		
-		if (token.isType(TokenType.STRING)) {
-			if (token.value().equals("brands")) {
-				state = UpdateBrandState.getInstance(this);
-			} else if (token.value().equals("pubs")) {
-				state = UpdatePubState.getInstance(this);
-			} else if (token.value().equals("beers")) {
-				state = UpdateBeerState.getInstance(this);
-			} else {
-				throw new UnsupportedTokenForState(this, token);
-			}
-		} else if (token.isType(TokenType.COLON)) {
-			
-		} else if (token.isType(TokenType.COMMA)) {
-			
-		} else if (token.isType(TokenType.BRACKET_OPEN)) {
-			
-		} else if (token.isType(TokenType.BRACKET_CLOSE)) {
-			
-		} else if (token.isType(TokenType.BRACE_CLOSE)) {
-			result = parent;
-		} else if (token.isType(TokenType.BRACE_OPEN)) {
-			result = state;
-		} else {
-			throw new UnsupportedTokenForState(this, token);
-		}
+        switch (token.type()) {
+        case STRING: {
+            if (token.value().equals("brands")) {
+                state = updateBrandState;
+            } else if (token.value().equals("pubs")) {
+                state = updatePubState;
+            } else if (token.value().equals("beers")) {
+                state = updateBeerState;
+            } else {
+                throw new UnsupportedTokenForState(this, token);
+            }
+            break;
+        }
+        case BRACE_OPEN: {
+            result = state;
+            break;
+        }
+        case BRACE_CLOSE: {
+            result = parent;
+            break;
+        }
+        case COLON:
+        case COMMA:
+        case BRACKET_OPEN:
+        case BRACKET_CLOSE:
+            break;
+        default:
+            throw new UnsupportedTokenForState(this, token);
+        }
 		
 		return result;
 	}
