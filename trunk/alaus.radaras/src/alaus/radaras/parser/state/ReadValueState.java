@@ -3,11 +3,11 @@
  */
 package alaus.radaras.parser.state;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
 
 /**
  * @author Vincentas
@@ -15,24 +15,13 @@ import org.svenson.tokenize.TokenType;
  */
 public class ReadValueState implements State {
 
-	private List<Object> array = null;
+    private boolean isArray = false;
+    
+	private Set<Object> array = new HashSet<Object>();
 	
-	private UpdateValueState parent;
+	private UpdatableValueState parent;
 	
-	private static ReadValueState instance  = null;
-	
-	public static ReadValueState getInstance(UpdateValueState parent) {
-		if (instance == null) {
-			instance = new ReadValueState(parent);
-		}
-		
-		instance.parent = parent;
-		instance.array = null;
-		
-		return instance;
-	}
-	
-	private ReadValueState(UpdateValueState parent) {
+	public ReadValueState(UpdatableValueState parent) {
 		this.parent = parent;
 	}
 
@@ -43,35 +32,56 @@ public class ReadValueState implements State {
 	public State handle(Token token) {
 		State result;
 
-		if (array != null) {
+		if (isArray) {
 			result = this;
-			if (token.isType(TokenType.STRING)) {
-				array.add(token.value());
-			} else if (token.isType(TokenType.COMMA)) {
 			
-			} else if (token.isType(TokenType.BRACKET_CLOSE)) {
-				parent.setValue(array);
-				result = parent;
-			} else {
-				throw new UnsupportedTokenForState(this, token);
-			}
+            switch (token.type()) {
+            case STRING: {
+                array.add(token.value());
+                break;
+            }
+            case COMMA:
+                break;
+            case BRACKET_CLOSE: {
+                parent.setValue(array);
+                result = parent;
+                break;
+            }
+            default:
+                throw new UnsupportedTokenForState(this, token);
+            }
 		} else {
 			result = parent;
-			if (token.isType(TokenType.STRING)) {
-				parent.setValue(token.value());
-			} else if (token.isType(TokenType.DECIMAL)) {
-				parent.setValue(token.value());
-			} else if (token.isType(TokenType.INTEGER)) {
-				parent.setValue(token.value());
-			} else if (token.isType(TokenType.BRACKET_OPEN)) {
-				array = new ArrayList<Object>();
-				result = this;
-			} else {
-				throw new UnsupportedTokenForState(this, token);
-			}
+			
+            switch (token.type()) {
+            case STRING: {
+                parent.setValue(token.value());
+                break;
+            }
+            case DECIMAL: {
+                parent.setValue(((BigDecimal) token.value()).doubleValue());
+                break;
+            }
+            case INTEGER: {
+                parent.setValue(token.value());
+                break;
+            }
+            case BRACKET_OPEN: {
+                isArray = true;
+                result = this;
+                break;
+            }
+            default:
+                throw new UnsupportedTokenForState(this, token);
+            }
 		}
 			
 		return result;
+	}
+	
+	public void resetArray() {
+	    array.clear();
+	    isArray = false;
 	}
 
 }

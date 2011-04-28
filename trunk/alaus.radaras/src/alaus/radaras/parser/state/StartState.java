@@ -1,21 +1,33 @@
 package alaus.radaras.parser.state;
 
 import org.svenson.tokenize.Token;
-import org.svenson.tokenize.TokenType;
+
+import alaus.radaras.service.BeerUpdate;
 
 public class StartState implements State {
 
+    private ChooseModeState chooseModeState;
+    
+    public StartState(BeerUpdate beerUpdate) {
+        chooseModeState = new ChooseModeState(this, beerUpdate);
+    }
+    
 	@Override
 	public State handle(Token token) {
 		State result;
 		
-		if (token.isType(TokenType.BRACE_OPEN)) {
-			result = new ChooseModeState(this);
-		} else if (token.isType(TokenType.END)) {
-			return null;
-		} else {
-			throw new UnsupportedTokenForState(this, token);	
-		}
+        switch (token.type()) {
+        case BRACE_OPEN: {
+            result = chooseModeState;
+            break;
+        }
+        case END: {
+            result = null;
+            break;
+        }
+        default:
+            throw new UnsupportedTokenForState(this, token);
+        }
 		
 		return result;
 	}

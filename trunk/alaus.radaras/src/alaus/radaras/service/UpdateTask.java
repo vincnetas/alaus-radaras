@@ -27,7 +27,6 @@ import org.svenson.tokenize.JSONTokenizer;
 import alaus.radaras.R;
 import alaus.radaras.parser.state.StartState;
 import alaus.radaras.parser.state.State;
-import alaus.radaras.shared.model.Beer;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -149,73 +148,16 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         JSONCharacterSource source = new InputStreamSource(data, true);
 		JSONTokenizer tokenizer = new JSONTokenizer(source, true);
 
-		State state = new StartState();
+		State state = new StartState(beerUpdate);
 		while (state != null && !isCancelled()) {
 			state = state.handle(tokenizer.next());
 		}
-
-        System.out.println("Done in " + (System.currentTimeMillis() - start));
+		
+		int updateSize = (int) (System.currentTimeMillis() - start);
+        System.out.println("Done in " + (updateSize));
         
         
-        Update update = Update.parse(data);
-        int updateSize = update.getUpdateSize();        
-        int processedItems = 0;
-        
-        for (Beer beer : update.getUpdatedBeers()) {
-            beerUpdate.updateBrand(beer);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        for (alaus.radaras.shared.model.Brand brand : update.getUpdatedBrands()) {
-            beerUpdate.updateCompany(brand);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        for (alaus.radaras.shared.model.Pub pub : update.getUpdatedPubs()) {
-            beerUpdate.updatePub(pub);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        for (String beerId : update.getDeletedBeers()) {
-            beerUpdate.deleteBrand(beerId);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        for (String brandId : update.getDeletedBrands()) {
-            beerUpdate.deleteCompany(brandId);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        for (String pubId : update.getDeletedPubs()) {
-            beerUpdate.deletePub(pubId);
-            processedItems++;
-            publishProgress(processedItems, updateSize);
-            if (isCancelled()) {
-            	throw new IOException("Task canceled");
-            }
-        }
-        
-        return updateSize;
+        return updateSize ;
     }
 
     /* (non-Javadoc)
