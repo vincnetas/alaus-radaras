@@ -92,6 +92,8 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 //        }
 
     }
+    
+    
 
     private void checkIfBackgroundDataIsEnabled() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
