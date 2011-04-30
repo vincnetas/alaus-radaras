@@ -22,7 +22,7 @@ class AlausRadaras : public QWidget
 public:
     explicit AlausRadaras(QWidget *parent = 0);
     ~AlausRadaras();
-    void setUpdateVersion(QString version);
+    void setUpdateVersion(const QString &version);
     void keyPressEvent(QKeyEvent *);
     void changeEvent(QEvent* event);
 private slots:

@@ -14,7 +14,8 @@
 #include <qgeosatelliteinfosource.h>
 #include <qgeopositioninfo.h>
 #include <qgeosatelliteinfo.h>
-#include "updatechecker.h"
+#include "appupdatechecker.h"
+#include "dbupdatedownloader.h"
 QTM_USE_NAMESPACE
 
 namespace Ui {
@@ -46,7 +47,8 @@ private:
     BrandList *brandList;
     BeerMap *map;
     BeerMap *singleMap;
-    UpdateChecker updater;
+    AppUpdateChecker updater;
+    DbUpdateDownloader downloader;
 
     QStack<int> history;
     void clearHistory();
@@ -71,7 +73,7 @@ private slots:
     void positionUpdated(QGeoPositionInfo geoPositionInfo);
     void startLocationUpdates();
     void stopLocationUpdates();
-    void onUpdateAvailable(QString version);
+    void onUpdateAvailable(const QString &version);
     void initDbUpdate();
 
 };

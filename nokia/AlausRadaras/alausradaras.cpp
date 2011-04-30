@@ -80,7 +80,7 @@ void AlausRadaras::on_btnExit_clicked()
     emit ExitApp();
 }
 
-void AlausRadaras::setUpdateVersion(QString text)
+void AlausRadaras::setUpdateVersion(const QString &text)
 {
     if(!text.isNull() & !text.isEmpty()) {
         ui->txtUpdate->setText(text);
@@ -97,12 +97,9 @@ void AlausRadaras::changeLanguage(QLocale::Language language)
 {
     QString shortLang = ViewUtils::GetStringFromLanguage(language);
     bool loaded = qtTranslator->load("qt_" + shortLang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    qDebug() << shortLang;
-    qDebug() << loaded;
     qApp->installTranslator(qtTranslator);
 
     loaded = myappTranslator->load("alausradaras_" +shortLang, ":/");
-    qDebug() << loaded;
     qApp->installTranslator(myappTranslator);
 }
 
@@ -125,7 +122,6 @@ void AlausRadaras::changeEvent(QEvent* event)
 {
     if (event->type() == QEvent::LanguageChange)
     {
-        qDebug() << "event Type Is Language change";
         ui->retranslateUi(this);
         retranslateUi();
     }
