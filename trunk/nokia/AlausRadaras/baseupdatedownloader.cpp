@@ -1,39 +1,39 @@
-#include "updatechecker.h"
+#include "baseupdatedownloader.h"
 #include <QNetworkAccessManager>
 #include <QUuid>
 #include <QSettings>
 #include <QDebug>
 #include <QDateTime>
 
-const QString UpdateChecker::VERSION = QString("1.0");
+const QString BaseUpdateDownloader::VERSION = QString("1.0");
 
-UpdateChecker::UpdateChecker(QObject *parent) :
+BaseUpdateDownloader::BaseUpdateDownloader(QObject *parent) :
     QObject(parent)
 {
 
 
 }
 
-void UpdateChecker::checkForUpdates()
+void BaseUpdateDownloader::checkForUpdates()
 {
     if(needToCheckForUpdates()) {
+        qDebug() << "checking for updates";
         QNetworkAccessManager *manager = new QNetworkAccessManager(this);
         connect(manager, SIGNAL(finished(QNetworkReply*)),
                 this, SLOT(replyFinished(QNetworkReply*)));
-
-        QString url = QString("http://alausradaras.lt/nokia/update.php?ver=%1&id=%2").arg(VERSION,getUniqueDeviceId());
+        QString url = getUrl();
+        qDebug() << url;
         manager->get(QNetworkRequest(QUrl(url)));
     }
 }
 
-bool UpdateChecker::needToCheckForUpdates()
+bool BaseUpdateDownloader::needToCheckForUpdates()
 {
-    QSettings settings;
     if(settings.value("UpdatesEnabled",true).toBool() && settings.value("InternetEnabled",true).toBool()) {
         if(settings.value("UpdateFrequency",0).toInt() == 0) {
             return true;
         } else {
-            int date = settings.value("LastUpdateCheck",0).toInt();
+            int date = settings.value(getUpdateType(),0).toInt();
             QDateTime dateTime = QDateTime::fromTime_t(date).addDays(7);
             if(dateTime < QDateTime::currentDateTime()) {
                 return true;
@@ -41,27 +41,29 @@ bool UpdateChecker::needToCheckForUpdates()
         }
     }
     return false;
-
 }
 
-void UpdateChecker::replyFinished(QNetworkReply* reply)
-{
-    //qDebug() << "reply";
-    QUrl url = reply->url();
+void BaseUpdateDownloader::replyFinished(QNetworkReply* reply)
+{   qDebug() << "replyFinished";
     if(!reply->error()) {
-
+        qDebug() << "no error";
         QString replyText(reply->readAll());
-        if(!replyText.isEmpty()) {
-            emit updateAvalable(replyText);
-        }
-        QSettings settings;
-        settings.setValue("LastUpdateCheck",QDateTime::currentDateTime().toTime_t());
-
+        emit updateCheckFinished(replyText);
     }
     reply->deleteLater();
-
 }
-QString UpdateChecker::getUniqueDeviceId()
+
+QString BaseUpdateDownloader::getUpdateType()
+{
+    return "";
+}
+
+QString BaseUpdateDownloader::getUrl()
+{
+   return "";
+}
+
+QString BaseUpdateDownloader::getUniqueDeviceId()
 {
     QSettings settings(this);
     QVariant uniqueId = settings.value("UNIQUE_ID");
@@ -72,5 +74,4 @@ QString UpdateChecker::getUniqueDeviceId()
     } else {
         return uniqueId.toString();
     }
-
 }

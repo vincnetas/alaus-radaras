@@ -2,6 +2,8 @@
 #include "ui_maincontroller.h"
 #include <QDebug>
 #include <QGeoPositionInfoSource>
+#include "dbupdatedownloader.h"
+
 enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingThirstyView, BrandListView, BeerMapView, SinglePubMapView };
 
 MainController::MainController(QWidget *parent) :
@@ -65,15 +67,15 @@ MainController::MainController(QWidget *parent) :
     connect(singleMap,SIGNAL(Back()),this,SLOT(goBack()));
     showWidget(MainView);
 
-    connect(&updater,SIGNAL(updateAvalable(QString)),SLOT(onUpdateAvailable(QString)));
-    QTimer::singleShot(700,&updater,SLOT(checkForUpdates()));
+    connect(&updater,SIGNAL(updateCheckFinished(QString)),SLOT(onUpdateAvailable(QString)));
+   // QTimer::singleShot(700,&updater,SLOT(checkForUpdates()));
 
     populator = NULL;
     progress = NULL;
 
-     QTimer::singleShot(500,this,SLOT(initDbUpdate()));
+    QTimer::singleShot(500,this,SLOT(initDbUpdate()));
 
-
+    downloader.checkForUpdates();
 }
 
 void MainController::initDbUpdate()
@@ -241,9 +243,11 @@ void MainController::startLocationUpdates()
     locationDataSource->startUpdates();
 }
 
-void MainController::onUpdateAvailable(QString version)
+void MainController::onUpdateAvailable(const QString &version)
 {
-    mainWidget->setUpdateVersion(version);
+    if(!version.isEmpty()) {
+        mainWidget->setUpdateVersion(version);
+    }
 }
 
 void MainController::changeEvent(QEvent* event)

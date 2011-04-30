@@ -33,14 +33,17 @@ SOURCES += main.cpp\
     viewutils.cpp \
     maincontroller.cpp \
     makecall.cpp \
-    updatechecker.cpp \
+    baseupdatedownloader.cpp \
 qtflickgesture.cpp \
            qtscroller.cpp \
            qtscrollerfilter.cpp \
            qtscrollerproperties.cpp \
            qtscrollevent.cpp \
     settings.cpp \
-    feelingthirsty.cpp
+    feelingthirsty.cpp \
+    appupdatechecker.cpp \
+    dbupdatedownloader.cpp \
+    json.cpp
 
 HEADERS  += alausradaras.h \
     dbmanager.h \
@@ -65,7 +68,7 @@ HEADERS  += alausradaras.h \
     viewutils.h \
     maincontroller.h \
     makecall.h \
-    updatechecker.h \
+    baseupdatedownloader.h \
     qtflickgesture_p.h \
            qtscroller.h \
            qtscroller_p.h \
@@ -75,7 +78,10 @@ HEADERS  += alausradaras.h \
            qtscrollevent.h \
            qtscrollevent_p.h \
     settings.h \
-    feelingthirsty.h
+    feelingthirsty.h \
+    appupdatechecker.h \
+    dbupdatedownloader.h \
+    json.h
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
