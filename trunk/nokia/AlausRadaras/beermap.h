@@ -21,6 +21,7 @@ public:
     void showSinglePub(BeerPub *pub);
     void locationChanged(qreal lat, qreal lon);
     void keyPressEvent(QKeyEvent* event);
+    void changeEvent(QEvent* event);
     ~BeerMap();
 
 private:

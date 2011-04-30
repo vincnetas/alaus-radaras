@@ -6,42 +6,42 @@
     <message>
         <location filename="alausradaras.ui" line="20"/>
         <source>Alaus radaras</source>
+        <translation>Alaus radaras</translation>
+    </message>
+    <message>
+        <location filename="alausradaras.ui" line="69"/>
+        <source>neverstii</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="74"/>
-        <source>neversti</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="alausradaras.ui" line="163"/>
+        <location filename="alausradaras.ui" line="158"/>
         <source>Vietos</source>
-        <translation></translation>
+        <translation>Vietos</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="243"/>
+        <location filename="alausradaras.ui" line="238"/>
         <source>Rūšys</source>
-        <translation></translation>
+        <translation>Rūšys</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="323"/>
+        <location filename="alausradaras.ui" line="318"/>
         <source>Ištroškau</source>
-        <translation></translation>
+        <translation>Ištroškau</translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="373"/>
+        <location filename="alausradaras.ui" line="368"/>
         <source>Nustatymai</source>
-        <translation></translation>
+        <translation>Nustatymai</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="410"/>
+        <location filename="alausradaras.ui" line="418"/>
         <source>Išeiti</source>
-        <translation></translation>
+        <translation>Išeiti</translation>
     </message>
     <message>
-        <location filename="alausradaras.cpp" line="45"/>
+        <location filename="alausradaras.cpp" line="65"/>
         <source>Visi barai</source>
-        <translation></translation>
+        <translation>Visi barai</translation>
     </message>
 </context>
 <context>
@@ -49,35 +49,35 @@
     <message utf8="true">
         <location filename="beercounter.ui" line="20"/>
         <source>Skaičiuoklė</source>
-        <translation></translation>
+        <translation>Skaičiuoklė</translation>
     </message>
     <message>
-        <location filename="beercounter.ui" line="143"/>
+        <location filename="beercounter.ui" line="123"/>
         <source>neversti</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="beercounter.ui" line="182"/>
+        <location filename="beercounter.ui" line="167"/>
         <source>Išvalyti</source>
-        <translation></translation>
+        <translation>Išvalyti</translation>
     </message>
     <message>
-        <location filename="beercounter.ui" line="208"/>
+        <location filename="beercounter.ui" line="198"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
     <name>BeerMap</name>
     <message utf8="true">
-        <location filename="beermap.ui" line="14"/>
+        <location filename="beermap.ui" line="20"/>
         <source>Alaus žemėlapis</source>
-        <translation></translation>
+        <translation>Alaus žemėlapis</translation>
     </message>
     <message>
-        <location filename="beermap.ui" line="62"/>
+        <location filename="beermap.ui" line="73"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
@@ -85,7 +85,7 @@
     <message utf8="true">
         <location filename="brandlist.ui" line="20"/>
         <source>Alaus rūšys</source>
-        <translation></translation>
+        <translation>Alaus rūšys</translation>
     </message>
     <message>
         <location filename="brandlist.ui" line="45"/>
@@ -93,37 +93,37 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="brandlist.ui" line="153"/>
+        <location filename="brandlist.ui" line="152"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
     <name>BrandTabs</name>
     <message>
-        <location filename="brandtabs.ui" line="14"/>
+        <location filename="brandtabs.ui" line="20"/>
         <source>Alaus tipai</source>
-        <translation></translation>
+        <translation>Alaus tipai</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="72"/>
+        <location filename="brandtabs.ui" line="80"/>
         <source>Rūšys</source>
-        <translation></translation>
+        <translation>Rūšys</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="163"/>
+        <location filename="brandtabs.ui" line="167"/>
         <source>Šalys</source>
-        <translation></translation>
+        <translation>Šalys</translation>
     </message>
     <message>
         <location filename="brandtabs.ui" line="260"/>
         <source>Tipai</source>
-        <translation></translation>
+        <translation>Tipai</translation>
     </message>
     <message>
-        <location filename="brandtabs.ui" line="388"/>
+        <location filename="brandtabs.ui" line="387"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
@@ -131,30 +131,30 @@
     <message>
         <location filename="dataprovider.cpp" line="65"/>
         <source>Dar po viena!</source>
-        <translation></translation>
+        <translation>Dar po viena!</translation>
     </message>
 </context>
 <context>
     <name>FeelingThirsty</name>
     <message utf8="true">
-        <location filename="feelingthirsty.ui" line="14"/>
+        <location filename="feelingthirsty.ui" line="20"/>
         <source>Ištroškau</source>
-        <translation></translation>
+        <translation>Ištroškau</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="56"/>
+        <location filename="feelingthirsty.ui" line="65"/>
         <source>Alus</source>
-        <translation></translation>
+        <translation>Alus</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="103"/>
+        <location filename="feelingthirsty.ui" line="112"/>
         <source>Baras</source>
-        <translation></translation>
+        <translation>Baras</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="145"/>
+        <location filename="feelingthirsty.ui" line="159"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
@@ -162,30 +162,30 @@
     <message>
         <location filename="maincontroller.ui" line="20"/>
         <source>Alaus radaras</source>
-        <translation></translation>
+        <translation>Alaus radaras</translation>
     </message>
 </context>
 <context>
     <name>PubList</name>
     <message>
-        <location filename="publist.ui" line="14"/>
+        <location filename="publist.ui" line="20"/>
         <source>Barai</source>
-        <translation></translation>
+        <translation>Barai</translation>
     </message>
     <message>
-        <location filename="publist.ui" line="42"/>
+        <location filename="publist.ui" line="46"/>
         <source>neversti</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="publist.ui" line="143"/>
+        <location filename="publist.ui" line="146"/>
         <source>Žemėlapis</source>
-        <translation></translation>
+        <translation>Žemėlapis</translation>
     </message>
     <message>
-        <location filename="publist.ui" line="185"/>
+        <location filename="publist.ui" line="181"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
@@ -193,104 +193,127 @@
     <message>
         <location filename="publistmodel.cpp" line="43"/>
         <source>? m</source>
-        <translation></translation>
+        <translation>? m</translation>
     </message>
     <message>
         <location filename="publistmodel.cpp" line="47"/>
         <source> km</source>
-        <translation></translation>
+        <translation> km</translation>
     </message>
     <message>
         <location filename="publistmodel.cpp" line="50"/>
         <source> metru</source>
-        <translation></translation>
+        <translation> metrų</translation>
     </message>
 </context>
 <context>
     <name>PubView</name>
     <message>
-        <location filename="pubview.ui" line="14"/>
+        <location filename="pubview.ui" line="20"/>
         <source>Baras</source>
-        <translation></translation>
+        <translation>Baras</translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="69"/>
+        <location filename="pubview.ui" line="76"/>
         <source>neversti [Baro pavadinimas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="126"/>
+        <location filename="pubview.ui" line="134"/>
         <source>neversti [Tekstas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="236"/>
+        <location filename="pubview.ui" line="233"/>
         <source>neversti [Adresas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="349"/>
+        <location filename="pubview.ui" line="351"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="settings.ui" line="17"/>
+        <location filename="settings.ui" line="23"/>
         <source>Nustatymai</source>
-        <translation></translation>
+        <translation>Nustatymai</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="75"/>
+        <location filename="settings.ui" line="81"/>
         <source>Programos nustatymai</source>
-        <translation></translation>
+        <translation>Programos nustatymai</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="121"/>
+        <location filename="settings.ui" line="127"/>
         <source>Atnaujinti</source>
-        <translation></translation>
+        <translation>Atnaujinti</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="250"/>
+        <location filename="settings.ui" line="256"/>
         <source>Jungtis prie interneto</source>
-        <translation></translation>
+        <translation>Jungtis prie interneto</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="291"/>
+        <location filename="settings.ui" line="278"/>
+        <source>Language</source>
+        <translation>Kalba</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="342"/>
         <source>Atgal</source>
-        <translation></translation>
+        <translation>Atgal</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="13"/>
+        <location filename="settings.cpp" line="16"/>
+        <source>Lietuviu</source>
+        <translation>Lietuvių</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="17"/>
+        <source>English</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="18"/>
+        <source>P??????</source>
+        <translation>Pусский</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="67"/>
         <source>Visada</source>
-        <translation></translation>
+        <translation>Visada</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="14"/>
+        <location filename="settings.cpp" line="68"/>
         <source>Savaitinis</source>
-        <translation></translation>
+        <translation>Savaitinis</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="15"/>
+        <location filename="settings.cpp" line="69"/>
         <source>Niekada</source>
-        <translation></translation>
+        <translation>Niekada</translation>
     </message>
 </context>
 <context>
     <name>WaitDialog</name>
     <message>
-        <location filename="waitdialog.ui" line="17"/>
+        <location filename="waitdialog.ui" line="23"/>
         <source>Palaukite....</source>
-        <translation></translation>
+        <translation>Palaukite....</translation>
     </message>
     <message utf8="true">
-        <location filename="waitdialog.ui" line="101"/>
+        <location filename="waitdialog.ui" line="161"/>
         <source>Palaukite, siurbiu alų ....
 
 P.S. programa atnaujinima, 
 užtruks tik pirmą kartą ;-)</source>
-        <translation></translation>
+        <translation>Palaukite, siurbiu alų ....
+
+P.S. programa atnaujinima, 
+užtruks tik pirmą kartą ;-)</translation>
     </message>
 </context>
 </TS>

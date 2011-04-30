@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QPixmap>
 #include <QPalette>
+#include <QLocale>
 
 class ViewUtils : public QObject
 {
@@ -15,6 +16,11 @@ public:
     static QString IconRes;
     static QSize GetMugSize();
     static bool HighRes;
+    static QLocale::Language ActiveLanguage;
+    static QString GetStringFromLanguage(QLocale::Language lang);
+    static QLocale::Language GetLanguageFromString(QString lang);
+    static QLocale::Language GetLanguage(int index);
+    static int GetLanguageIndex (QLocale::Language language);
 signals:
 
 public slots:

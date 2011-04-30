@@ -19,6 +19,7 @@ class BrandTabs : public QWidget
 public:
     explicit BrandTabs(QWidget *parent = 0);
     void keyPressEvent(QKeyEvent* event);
+    void changeEvent(QEvent* event);
     ~BrandTabs();
 private slots:
     void brandList_itemClicked(const QModelIndex &current);

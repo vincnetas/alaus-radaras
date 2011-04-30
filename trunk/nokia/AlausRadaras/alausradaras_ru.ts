@@ -9,37 +9,37 @@
         <translation>Пивной радар</translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="74"/>
-        <source>neversti</source>
+        <location filename="alausradaras.ui" line="69"/>
+        <source>neverstii</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="163"/>
+        <location filename="alausradaras.ui" line="158"/>
         <source>Vietos</source>
         <translation>Места</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="243"/>
+        <location filename="alausradaras.ui" line="238"/>
         <source>Rūšys</source>
         <translation>Сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="323"/>
+        <location filename="alausradaras.ui" line="318"/>
         <source>Ištroškau</source>
         <translation>Просохло горло</translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="373"/>
+        <location filename="alausradaras.ui" line="368"/>
         <source>Nustatymai</source>
         <translation>Установки</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="410"/>
+        <location filename="alausradaras.ui" line="418"/>
         <source>Išeiti</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="alausradaras.cpp" line="45"/>
+        <location filename="alausradaras.cpp" line="65"/>
         <source>Visi barai</source>
         <translation>Все бары</translation>
     </message>
@@ -52,17 +52,17 @@
         <translation>Счётчик</translation>
     </message>
     <message>
-        <location filename="beercounter.ui" line="143"/>
+        <location filename="beercounter.ui" line="123"/>
         <source>neversti</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="beercounter.ui" line="182"/>
+        <location filename="beercounter.ui" line="167"/>
         <source>Išvalyti</source>
         <translation>Обнулить</translation>
     </message>
     <message>
-        <location filename="beercounter.ui" line="208"/>
+        <location filename="beercounter.ui" line="198"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -70,12 +70,12 @@
 <context>
     <name>BeerMap</name>
     <message utf8="true">
-        <location filename="beermap.ui" line="14"/>
+        <location filename="beermap.ui" line="20"/>
         <source>Alaus žemėlapis</source>
         <translation>Карта пива</translation>
     </message>
     <message>
-        <location filename="beermap.ui" line="62"/>
+        <location filename="beermap.ui" line="73"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -93,7 +93,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="brandlist.ui" line="153"/>
+        <location filename="brandlist.ui" line="152"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -101,17 +101,17 @@
 <context>
     <name>BrandTabs</name>
     <message>
-        <location filename="brandtabs.ui" line="14"/>
+        <location filename="brandtabs.ui" line="20"/>
         <source>Alaus tipai</source>
         <translation>Пивные сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="72"/>
+        <location filename="brandtabs.ui" line="80"/>
         <source>Rūšys</source>
         <translation>Сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="163"/>
+        <location filename="brandtabs.ui" line="167"/>
         <source>Šalys</source>
         <translation>Страны</translation>
     </message>
@@ -121,7 +121,7 @@
         <translation>Типы</translation>
     </message>
     <message>
-        <location filename="brandtabs.ui" line="388"/>
+        <location filename="brandtabs.ui" line="387"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -137,22 +137,22 @@
 <context>
     <name>FeelingThirsty</name>
     <message utf8="true">
-        <location filename="feelingthirsty.ui" line="14"/>
+        <location filename="feelingthirsty.ui" line="20"/>
         <source>Ištroškau</source>
         <translation>Просохло горло</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="56"/>
+        <location filename="feelingthirsty.ui" line="65"/>
         <source>Alus</source>
         <translation>Пиво</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="103"/>
+        <location filename="feelingthirsty.ui" line="112"/>
         <source>Baras</source>
         <translation>Пивная</translation>
     </message>
     <message>
-        <location filename="feelingthirsty.ui" line="145"/>
+        <location filename="feelingthirsty.ui" line="159"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -168,22 +168,22 @@
 <context>
     <name>PubList</name>
     <message>
-        <location filename="publist.ui" line="14"/>
+        <location filename="publist.ui" line="20"/>
         <source>Barai</source>
         <translation>Пивные</translation>
     </message>
     <message>
-        <location filename="publist.ui" line="42"/>
+        <location filename="publist.ui" line="46"/>
         <source>neversti</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="publist.ui" line="143"/>
+        <location filename="publist.ui" line="146"/>
         <source>Žemėlapis</source>
         <translation>Карта</translation>
     </message>
     <message>
-        <location filename="publist.ui" line="185"/>
+        <location filename="publist.ui" line="181"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -209,27 +209,27 @@
 <context>
     <name>PubView</name>
     <message>
-        <location filename="pubview.ui" line="14"/>
+        <location filename="pubview.ui" line="20"/>
         <source>Baras</source>
         <translation>Пивная</translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="69"/>
+        <location filename="pubview.ui" line="76"/>
         <source>neversti [Baro pavadinimas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="126"/>
+        <location filename="pubview.ui" line="134"/>
         <source>neversti [Tekstas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="236"/>
+        <location filename="pubview.ui" line="233"/>
         <source>neversti [Adresas]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pubview.ui" line="349"/>
+        <location filename="pubview.ui" line="351"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
@@ -237,42 +237,62 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="settings.ui" line="17"/>
+        <location filename="settings.ui" line="23"/>
         <source>Nustatymai</source>
         <translation>Установки</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="75"/>
+        <location filename="settings.ui" line="81"/>
         <source>Programos nustatymai</source>
         <translation>Установки программы</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="121"/>
+        <location filename="settings.ui" line="127"/>
         <source>Atnaujinti</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="250"/>
+        <location filename="settings.ui" line="256"/>
         <source>Jungtis prie interneto</source>
         <translation>Подключится к интернету</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="291"/>
+        <location filename="settings.ui" line="278"/>
+        <source>Language</source>
+        <translation>язык</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="342"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="13"/>
+        <location filename="settings.cpp" line="16"/>
+        <source>Lietuviu</source>
+        <translation>Lietuvių</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="17"/>
+        <source>English</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="18"/>
+        <source>P??????</source>
+        <translation>Pусский</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="67"/>
         <source>Visada</source>
         <translation>Всегда</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="14"/>
+        <location filename="settings.cpp" line="68"/>
         <source>Savaitinis</source>
         <translation>Еженедельно</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="15"/>
+        <location filename="settings.cpp" line="69"/>
         <source>Niekada</source>
         <translation>Никогда</translation>
     </message>
@@ -280,12 +300,12 @@
 <context>
     <name>WaitDialog</name>
     <message>
-        <location filename="waitdialog.ui" line="17"/>
+        <location filename="waitdialog.ui" line="23"/>
         <source>Palaukite....</source>
         <translation>Подождите...</translation>
     </message>
     <message utf8="true">
-        <location filename="waitdialog.ui" line="101"/>
+        <location filename="waitdialog.ui" line="161"/>
         <source>Palaukite, siurbiu alų ....
 
 P.S. programa atnaujinima, 

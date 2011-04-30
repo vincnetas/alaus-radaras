@@ -132,7 +132,14 @@ void PubList::keyPressEvent(QKeyEvent* event)
     QWidget::keyPressEvent(event);
 }
 
-
+void PubList::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QWidget::changeEvent(event);
+}
 
 PubList::~PubList()
 {

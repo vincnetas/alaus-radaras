@@ -8,21 +8,23 @@
 #include "viewutils.h"
 #include <QDesktopServices>
 #include <QKeyEvent>
+
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AlausRadaras)
 {
     ui->setupUi(this);
 
-    QSettings settings;
-    ui->btnCounter->setText(settings.value("TotalCount",0).toString());
+    qtTranslator = new QTranslator(this);
+    myappTranslator = new QTranslator(this);
+
     ui->txtUpdate->setVisible(false);
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
     connect(ui->txtUpdate,SIGNAL(linkActivated(QString)),this,SLOT(loadUpdate(QString)));
 
     settingsView = new Settings(this);
-    connect(settingsView,SIGNAL(accepted()),this,SLOT(settings_accepted()));
+    connect(settingsView,SIGNAL(accepted()),this,SLOT(settingsAccepted()));
 
     //show me a better way
     QSizePolicy counterSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -36,6 +38,9 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     ui->btnCounter->setSizeIncrement(QSize(1, 1));
     ui->btnCounter->setBaseSize(counterSize);
 
+    connect(settingsView,SIGNAL(LanguageChanged(QLocale::Language)), this, SLOT(changeLanguage(QLocale::Language)));
+
+    retranslateUi();
 }
 
 void AlausRadaras::on_btnSettings_clicked()
@@ -44,7 +49,7 @@ void AlausRadaras::on_btnSettings_clicked()
     settingsView->showFullScreen();
 
 }
-void AlausRadaras::settings_accepted()
+void AlausRadaras::settingsAccepted()
 {
     settingsView->close();
 
@@ -88,6 +93,18 @@ void AlausRadaras::loadUpdate(QString string)
     QDesktopServices::openUrl(QUrl(string));
 }
 
+void AlausRadaras::changeLanguage(QLocale::Language language)
+{
+    QString shortLang = ViewUtils::GetStringFromLanguage(language);
+    bool loaded = qtTranslator->load("qt_" + shortLang, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    qDebug() << shortLang;
+    qDebug() << loaded;
+    qApp->installTranslator(qtTranslator);
+
+    loaded = myappTranslator->load("alausradaras_" +shortLang, ":/");
+    qDebug() << loaded;
+    qApp->installTranslator(myappTranslator);
+}
 
 AlausRadaras::~AlausRadaras()
 {
@@ -104,3 +121,19 @@ void AlausRadaras::keyPressEvent(QKeyEvent* event)
     QWidget::keyPressEvent(event);
 }
 
+void AlausRadaras::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        qDebug() << "event Type Is Language change";
+        ui->retranslateUi(this);
+        retranslateUi();
+    }
+    QWidget::changeEvent(event);
+}
+
+void AlausRadaras::retranslateUi()
+{
+    QSettings settings;
+    ui->btnCounter->setText(settings.value("TotalCount",0).toString());
+}

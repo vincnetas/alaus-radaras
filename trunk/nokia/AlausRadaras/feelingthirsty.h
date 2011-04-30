@@ -21,6 +21,7 @@ public:
     ~FeelingThirsty();
     void chooseNext();
     void keyPressEvent(QKeyEvent* event);
+    void changeEvent(QEvent* event);
 private slots:
     void on_btnBeer_clicked();
     void on_btnPub_clicked();

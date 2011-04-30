@@ -16,6 +16,7 @@ public:
     ~PubView();
     void showPub(QString pubId);
     void keyPressEvent(QKeyEvent* event);
+    void changeEvent(QEvent* event);
 
 private:
     Ui::PubView *ui;
@@ -30,6 +31,7 @@ private slots:
 signals:
     void Back();
     void PubMapSelected(QString pubId);
+    void ChangeLanguage(QString language);
 };
 
 #endif // PUBVIEW_H

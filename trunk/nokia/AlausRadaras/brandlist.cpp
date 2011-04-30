@@ -66,6 +66,15 @@ void BrandList::keyPressEvent(QKeyEvent* event)
     QWidget::keyPressEvent(event);
 }
 
+void BrandList::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QWidget::changeEvent(event);
+}
+
 BrandList::~BrandList()
 {
     delete ui;

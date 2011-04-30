@@ -41,6 +41,15 @@ void FeelingThirsty::on_btnPub_clicked()
     emit PubSelected(luckyInfo.pubId);
 }
 
+void FeelingThirsty::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QWidget::changeEvent(event);
+}
+
 void FeelingThirsty::keyPressEvent(QKeyEvent* event)
 {
     if(event->nativeVirtualKey() == CancelKey) {
