@@ -26,6 +26,15 @@ void WaitDialog::updateProgress()
         ui->progressBar->setValue(1);
 }
 
+void WaitDialog::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QWidget::changeEvent(event);
+}
+
 WaitDialog::~WaitDialog()
 {
     timer->stop();

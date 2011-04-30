@@ -24,6 +24,7 @@ public:
     ~AlausRadaras();
     void setUpdateVersion(QString version);
     void keyPressEvent(QKeyEvent *);
+    void changeEvent(QEvent* event);
 private slots:
     void on_btnBrands_clicked();
     void on_btnNear_clicked();
@@ -32,17 +33,20 @@ private slots:
     void on_btnCounter_clicked();
     void loadUpdate(QString string);
     void on_btnSettings_clicked();
-    void settings_accepted();
+    void settingsAccepted();
+    void changeLanguage(QLocale::Language language);
 private:
     Ui::AlausRadaras *ui;
     Settings *settingsView;
+    QTranslator *qtTranslator;
+    QTranslator *myappTranslator;
+    void retranslateUi();
 signals:
     void BrandsSelected();
     void PubListSelected(PubListType type, QString id, QString header);
     void LetsCount();
     void ExitApp();
     void FeelingLucky();
-
 };
 
 #endif // ALAUSRADARAS_H

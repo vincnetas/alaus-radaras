@@ -27,6 +27,7 @@ class MainController : public QMainWindow
 
 public:
     explicit MainController(QWidget *parent = 0);
+    void changeEvent(QEvent* event);
     ~MainController();
 
 private:

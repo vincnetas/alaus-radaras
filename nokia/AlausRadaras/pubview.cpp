@@ -89,6 +89,15 @@ void PubView::keyPressEvent(QKeyEvent* event)
     QWidget::keyPressEvent(event);
 }
 
+void PubView::changeEvent(QEvent* event)
+{
+    if (event->type() == QEvent::LanguageChange)
+    {
+        ui->retranslateUi(this);
+    }
+    QWidget::changeEvent(event);
+}
+
 PubView::~PubView()
 {
     //qDebug() << "pubview destructor called";

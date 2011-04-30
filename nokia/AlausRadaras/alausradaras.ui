@@ -349,7 +349,7 @@ border-image:url(:/images/bok_title.png);
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,3,3,3">
      <item>
       <widget class="QPushButton" name="btnSettings">
        <property name="sizePolicy">
@@ -377,6 +377,19 @@ border-image:url(:/images/batonas.png);
      </item>
      <item>
       <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

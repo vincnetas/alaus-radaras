@@ -16,6 +16,7 @@ public:
     explicit BeerCounter(QWidget *parent = 0);
     ~BeerCounter();
     void keyPressEvent(QKeyEvent* event);
+    void changeEvent(QEvent* event);
 
 private slots:
     void on_btnBack_clicked();
@@ -26,6 +27,7 @@ private:
     QSettings settings;
     DataProvider *dataProvider;
     void showQoute(int count);
+    void retranslateUi();
 signals:
     void Back();
 };

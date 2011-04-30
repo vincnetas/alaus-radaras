@@ -13,17 +13,27 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("alausradaras.lt");
     QCoreApplication::setApplicationName("Alaus radaras");
 
-
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     a.installTranslator(&qtTranslator);
 
-    QTranslator myappTranslator; // QString("en_EN")
-    bool loaded = myappTranslator.load("alausradaras_" +QLocale::system().name(), ":/");
-    qDebug() << loaded;
-    qDebug() << QLocale::system().name();
-    a.installTranslator(&myappTranslator);
+    QTranslator myappTranslator;
+    QSettings settings;
 
+    int languageIndex = settings.value("Language", -1).toInt();
+
+    if(languageIndex != -1) {
+        QString lang = ViewUtils::GetStringFromLanguage(ViewUtils::GetLanguage(languageIndex));
+        myappTranslator.load("alausradaras_" +lang, ":/");
+    } else {
+        if(!myappTranslator.load("alausradaras_" +QLocale::system().name(), ":/")) {
+            myappTranslator.load("alausradaras_en", ":/");
+            ViewUtils::ActiveLanguage = QLocale::English;
+        } else {
+             ViewUtils::ActiveLanguage = QLocale::system().language();
+        }
+    }
+    a.installTranslator(&myappTranslator);
 
     QRect res = QApplication::desktop()->screenGeometry();
     if(res.width() < 360 && res.height() < 360 ) {
@@ -47,3 +57,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+

@@ -14,6 +14,7 @@ class WaitDialog : public QDialog
 
 public:
     explicit WaitDialog(QWidget *parent = 0);
+    void changeEvent(QEvent* event);
     ~WaitDialog();
 
 private:
