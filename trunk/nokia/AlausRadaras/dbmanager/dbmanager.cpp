@@ -14,6 +14,9 @@ QString DbManager::QUERY_INSERT_TAGS = "INSERT OR REPLACE INTO tags  VALUES (:co
 QString DbManager::QUERY_INSERT_PUBS = "INSERT OR REPLACE INTO pubs VALUES (:id, :title, :city, :longitude, :latitude,  :address, :notes, :phone, :url, :tile_x, :tile_y,:tile_pixel_x, :tile_pixel_y )";
 QString DbManager::QUERY_INSERT_COUNTRIES = "INSERT OR REPLACE INTO countries VALUES (:code, :name)";
 QString DbManager::QUERY_INSERT_QUOTES = "INSERT OR REPLACE INTO countries VALUES (:code, :name)";
+QString DbManager::QUERY_INSERT_BRAND_TAGS = "INSERT OR REPLACE INTO brands_tags VALUES (:brand_id, :country)";
+QString DbManager::QUERY_INSERT_PUB_BRANDS = "INSERT OR REPLACE INTO pubs_brands VALUES (:pub_id,:brand_id)";
+QString DbManager::QUERY_INSERT_BRAND_COUNTRIES = "INSERT OR REPLACE INTO brands_countries VALUES (:brand_id, :country)";
 DbManager::DbManager(QObject *parent) : QObject(parent)
 {
 }
@@ -88,14 +91,6 @@ bool DbManager::createDb()
                 "amount			INTEGER NOT NULL,"
                 "text			TEXT NOT NULL);");
 
-    //cowboy coding. But i hate c++ delegates with pointers
-   // insertBrands(query);
-   // insertPubs(query);
-   // insertTags(query);
-    //insertCountries(query);
-   // insertQoutes(query);
-    insertAssociations(query);
-    query.exec(QString("PRAGMA user_version=%1;").arg(DB_VERSION));
     query.clear();
     return true;
 
@@ -199,61 +194,57 @@ void DbManager::populateQuotes(const QVector<Quote> &quotes)
     query.clear();
 }
 
-
-void DbManager::insertAssociations(QSqlQuery &query)
+void DbManager::populateBrandTags(const QVector<BrandTag> &brandTags)
 {
+    qDebug() << "begin inserting brands tags relationship";
+    QSqlQuery query;
+    query.prepare(QUERY_INSERT_BRAND_TAGS);
 
-     //qDebug() << "begin inserting associations";
-
-
-     QFile file(":/db/brands.txt");
-     file.open(QFile::ReadOnly | QFile::Text);
-     QTextStream in(&file);
-     in.setCodec(QTextCodec::codecForName("UTF-8"));
-     QString line = NULL;
-     while (!in.atEnd()) {
-        line = in.readLine();
-
-        QStringList columns = line.split("\t");
-
-       // qDebug() << "Inserting brand<->pub association: ";
-        QStringList pubs = columns.at(2).split(",");
-        query.prepare("INSERT OR REPLACE INTO pubs_brands VALUES (:pub_id,:brand_id)");
-        for (int i = 0; i < pubs.length(); i++) {
-            query.bindValue(":brand_id", columns.at(0));
-            query.bindValue(":pub_id", pubs.at(i).trimmed());
-            query.exec();
-//            if(query.lastError().isValid())
-//                qDebug() << query.lastError();
-        }
-
-        //qDebug() << "Inserting brand<->country association: ";
-        QStringList countries = columns.at(3).split(",");
-        query.prepare("INSERT OR REPLACE INTO brands_countries VALUES (:brand_id, :country)");
-        for (int i = 0; i < countries.length(); i++) {
-            query.bindValue(":brand_id", columns.at(0));
-            query.bindValue(":country", countries.at(i).trimmed());
-            query.exec();
-//            if(query.lastError().isValid())
-//                qDebug() << query.lastError();
-        }
-
-       // qDebug() << "Inserting brand<->tag association: ";
-        QStringList tags = columns.at(4).split(",");
-        query.prepare("INSERT OR REPLACE INTO brands_tags VALUES (:brand_id, :country)");
-        for (int i = 0; i < tags.length(); i++) {
-            query.bindValue(":brand_id", columns.at(0));
-            query.bindValue(":tag", tags.at(i).trimmed());
-            query.exec();
-            if(query.lastError().isValid())
-                qDebug() << query.lastError();
-        }
-     }
-     file.close();
-     query.clear();
-     //qDebug() << "end inserting associations";
-
+    for (int i = 0; i < brandTags.size(); ++i) {
+        BrandTag brandTag = brandTags.at(i);
+        query.bindValue(":brand_id", brandTag.brandId);
+        query.bindValue(":tag", brandTag.tag);
+        query.exec();
+        if(query.lastError().isValid())
+           qDebug() << query.lastError();
+    }
+    query.clear();
 }
+
+void DbManager::populatePubBrands(const QVector<PubBrand> &pubBrands)
+{
+    qDebug() << "begin inserting pub brands relationship";
+    QSqlQuery query;
+    query.prepare(QUERY_INSERT_PUB_BRANDS);
+
+    for (int i = 0; i < pubBrands.size(); ++i) {
+        PubBrand pubBrand = pubBrands.at(i);
+        query.bindValue(":pub_id", pubBrand.pubId);
+        query.bindValue(":brand_id", pubBrand.brandId);
+        query.exec();
+        if(query.lastError().isValid())
+           qDebug() << query.lastError();
+    }
+    query.clear();
+}
+
+void DbManager::populateBrandCountries(const QVector<BrandCountry> &brandCountries)
+{
+    qDebug() << "begin inserting brands countries relationship";
+    QSqlQuery query;
+    query.prepare(QUERY_INSERT_BRAND_COUNTRIES);
+
+    for (int i = 0; i < brandCountries.size(); ++i) {
+        BrandCountry brandCountry = brandCountries.at(i);
+        query.bindValue(":brand_id", brandCountry.brandId);
+        query.bindValue(":country", brandCountry.country);
+        query.exec();
+        if(query.lastError().isValid())
+           qDebug() << query.lastError();
+    }
+    query.clear();
+}
+
 Location DbManager::getLocation(qreal latitude, qreal longitude)
 {
     QPointF tileFullPoint = CalculationHelper::tileForCoordinate(latitude, longitude);
@@ -262,6 +253,14 @@ Location DbManager::getLocation(qreal latitude, qreal longitude)
     loc.tilePixel = CalculationHelper::tilePixelForTile(tileFullPoint);
     return loc;
 }
+
+void DbManager::setLatest()
+{
+    QSqlQuery query;
+    query.exec(QString("PRAGMA user_version=%1;").arg(DbManager::DB_VERSION));
+    query.clear();
+}
+
 void DbManager::dropTables()
 {
     qDebug() << "Deleting tables and setting user version to initial value";
@@ -273,7 +272,7 @@ void DbManager::dropTables()
     query.exec("drop table if exists countries");
     query.exec("drop table if exists brands_countries");
     query.exec("drop table if exists brands_tags");
-    query.exec("drop table if exists qoutes");
+    query.exec("drop table if exists quotes");
     query.exec("PRAGMA user_version=1;");
     query.clear();
 }
