@@ -257,7 +257,7 @@ Location DbManager::getLocation(qreal latitude, qreal longitude)
 void DbManager::setLatest()
 {
     QSqlQuery query;
-    query.exec(QString("PRAGMA user_version=%1;").arg(DbManager::DB_VERSION));
+    query.exec(QString("PRAGMA user_version=%1;").arg(DB_VERSION));
     query.clear();
 }
 

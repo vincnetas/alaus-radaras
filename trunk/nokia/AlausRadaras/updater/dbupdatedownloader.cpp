@@ -4,6 +4,7 @@
 #include "QTextStream"
 #include "json.h"
 #include "qdebug.h"
+#include "dbupdater.h"
 
 DbUpdateDownloader::DbUpdateDownloader(QObject *parent) :
     BaseUpdateDownloader(parent)
@@ -26,18 +27,12 @@ void DbUpdateDownloader::saveUpdate(const QString &text)
 {
     bool ok;
     QVariantMap result = Json::parse(text, ok).toMap();
-    QVariantMap update = result["update"].toMap();
-            foreach(QVariant pub, update["pubs"].toList()) {
-                qDebug() << "\t-" << pub.toMap()["title"];
-            }
 
-
-    if(!text.isEmpty()) {
-        QFile file("update.json");
-        if (file.open(QIODevice::WriteOnly)) {
-            QTextStream  out(&file);
-            out<<text;
-            file.close();
+    if(ok) {
+        DbUpdater updater;
+        ok = updater.updateDb(result);
+        if(ok) {
+            //TODO: set last update;
         }
     }
 }
