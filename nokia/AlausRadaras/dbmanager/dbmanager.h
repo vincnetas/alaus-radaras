@@ -10,6 +10,9 @@
 #include <pub.h>
 #include <country.h>
 #include <quote.h>
+#include <brandtag.h>
+#include <pubbrand.h>
+#include <brandcountry.h>
 
 struct Location {
     QPoint tile;
@@ -27,11 +30,15 @@ public:
      bool init();
     bool createDb();
     bool isDbLatest();
+    void setLatest();
     void populateBrands(const QVector<Brand> &brands);
     void populateTags(const QVector<Tag> &tags);
     void populatePubs(const QVector<Pub> &pubs);
     void populateCountries(const QVector<Country> &countries);
     void populateQuotes(const QVector<Quote> &quotes);
+    void populateBrandTags(const QVector<BrandTag> &brandTags);
+    void populatePubBrands(const QVector<PubBrand> &pubBrands);
+    void populateBrandCountries(const QVector<BrandCountry> &brandCountries);
 public slots:
 
 private:
@@ -42,11 +49,12 @@ private:
     static QString QUERY_INSERT_PUBS;
     static QString QUERY_INSERT_COUNTRIES;
     static QString QUERY_INSERT_QUOTES;
+    static QString QUERY_INSERT_BRAND_TAGS;
+    static QString QUERY_INSERT_PUB_BRANDS;
+    static QString QUERY_INSERT_BRAND_COUNTRIES;
 
     void dropTables();
-    void insertAssociations(QSqlQuery &query);
     Location getLocation(qreal latitude, qreal longitude);
-
 };
 
 #endif // DBMANAGER_H

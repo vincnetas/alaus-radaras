@@ -6,6 +6,7 @@
 #include <tag.h>
 #include <pub.h>
 #include <country.h>
+#include <qdebug.h>
 
 TxtDbLoader::TxtDbLoader(QObject *parent, DbManager *dbManager) :
     QObject(parent)
@@ -24,13 +25,22 @@ bool TxtDbLoader::populateIfNotLatest()
         {
             return false;
         }
+
+        //cowboy coding. But i hate c++ delegates with pointers
+        insertBrands();
+        insertPubs();
+        insertTags();
+        insertCountries();
+        insertQuotes();
+        insertAssociations();
+        dbManager->setLatest();
     }
     return true;
 }
 
 void TxtDbLoader::insertBrands()
 {
-    QVector<Brand> brands(100);
+    QVector<Brand> brands;
     QFile file(":/db/brands.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
@@ -52,7 +62,7 @@ void TxtDbLoader::insertBrands()
 
 void TxtDbLoader::insertTags()
 {
-    QVector<Tag> tags(200);
+    QVector<Tag> tags;
     QFile file(":/db/tags.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
@@ -73,7 +83,7 @@ void TxtDbLoader::insertTags()
 
 void TxtDbLoader::insertPubs()
 {
-    QVector<Pub> pubs(200);
+    QVector<Pub> pubs;
     QFile file(":/db/pubs.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
@@ -100,7 +110,7 @@ void TxtDbLoader::insertPubs()
 
 void TxtDbLoader::insertCountries()
 {
-    QVector<Country> countries(50);
+    QVector<Country> countries;
     QFile file(":/db/countries.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
@@ -121,7 +131,7 @@ void TxtDbLoader::insertCountries()
 
 void TxtDbLoader::insertQuotes()
 {
-    QVector<Quote> quotes(50);
+    QVector<Quote> quotes;
     QFile file(":/db/quotes.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
@@ -138,4 +148,50 @@ void TxtDbLoader::insertQuotes()
     }
     file.close();
     dbManager->populateQuotes(quotes);
+}
+
+void TxtDbLoader::insertAssociations()
+{
+     QVector<BrandCountry> brandCountries;
+     QVector<BrandTag> brandTags;
+     QVector<PubBrand> pubBrands;
+
+     QFile file(":/db/brands.txt");
+     file.open(QFile::ReadOnly | QFile::Text);
+     QTextStream in(&file);
+     in.setCodec(QTextCodec::codecForName("UTF-8"));
+     QString line = NULL;
+     while (!in.atEnd()) {
+        line = in.readLine();
+
+        QStringList columns = line.split("\t");
+
+        QStringList pubs = columns.at(2).split(",");
+        for (int i = 0; i < pubs.length(); i++) {
+            PubBrand pubBrand;
+            pubBrand.brandId = columns.at(0);
+            pubBrand.pubId = pubs.at(i).trimmed();
+            pubBrands.append(pubBrand);
+        }
+
+        QStringList countries = columns.at(3).split(",");
+        for (int i = 0; i < countries.length(); i++) {
+            BrandCountry brandCountry;
+            brandCountry.brandId = columns.at(0);
+            brandCountry.country = countries.at(i).trimmed();
+            brandCountries.append(brandCountry);
+        }
+
+        QStringList tags = columns.at(4).split(",");
+        for (int i = 0; i < tags.length(); i++) {
+            BrandTag brandTag;
+            brandTag.brandId = columns.at(0);
+            brandTag.tag = tags.at(i).trimmed();
+            brandTags.append(brandTag);
+        }
+     }
+     file.close();
+     dbManager->populateBrandCountries(brandCountries);
+     dbManager->populateBrandTags(brandTags);
+     dbManager->populatePubBrands(pubBrands);
 }

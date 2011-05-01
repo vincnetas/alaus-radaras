@@ -17,6 +17,7 @@ private:
     void insertPubs();
     void insertCountries();
     void insertQuotes();
+    void insertAssociations();
     DbManager *dbManager;
 
 public slots:
