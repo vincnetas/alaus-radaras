@@ -18,7 +18,7 @@ public:
     QList<BeerPub*> getPubsByTag(QString tagCode);
     BeerPub* getPub(QString pubId);
     FeelingLuckyInfo feelingLucky();
-    QString getQoute(int count);
+    QString getQuote(int count);
     signals:
 
 public slots:

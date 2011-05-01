@@ -22,7 +22,7 @@ void BaseUpdateDownloader::checkForUpdates()
         connect(manager, SIGNAL(finished(QNetworkReply*)),
                 this, SLOT(replyFinished(QNetworkReply*)));
         QString url = getUrl();
-        qDebug() << url;
+          qDebug() << url;
         manager->get(QNetworkRequest(QUrl(url)));
     }
 }

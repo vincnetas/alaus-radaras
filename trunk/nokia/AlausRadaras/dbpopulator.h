@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "dbmanager.h"
+#include <dbmanager/txtdbloader.h>
 class DbPopulator : public QThread
 {
     Q_OBJECT
@@ -15,6 +16,7 @@ public slots:
 
 private:
     DbManager *db;
+    TxtDbLoader dbLoader;
 
 };
 

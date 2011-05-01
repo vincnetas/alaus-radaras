@@ -44,7 +44,7 @@ void BeerCounter::on_btnCount_clicked()
 
     ui->btnCount->setText(QString::number(currentCount));
 
-    this->showQoute(currentCount);
+    this->showQuote(currentCount);
 
 }
 
@@ -52,12 +52,12 @@ void BeerCounter::on_btnClear_clicked()
 {
     settings.setValue("CurrentCount",0);
     ui->btnCount->setText("0");
-    this->showQoute(0);
+    this->showQuote(0);
 }
 
-void BeerCounter::showQoute(int count)
+void BeerCounter::showQuote(int count)
 {
-    this->ui->qouteLabel->setText(dataProvider->getQoute(count));
+    this->ui->qouteLabel->setText(dataProvider->getQuote(count));
 }
 
 BeerCounter::~BeerCounter()
@@ -90,6 +90,6 @@ void BeerCounter::retranslateUi()
 {
     int currentCount = settings.value("CurrentCount", 0).toInt();
     ui->btnCount->setText(QString::number(currentCount));
-    this->showQoute(currentCount);
+    this->showQuote(currentCount);
 }
 

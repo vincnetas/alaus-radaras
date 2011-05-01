@@ -2,13 +2,12 @@
 
 DbPopulator::DbPopulator(QObject *parent, DbManager *manager) :
     QThread(parent),
-    db(manager)
+    db(manager),
+    dbLoader(parent,db)
 {
-
 }
-
 
 void DbPopulator::run()
 {
-    db->populateIfNotLatest();
+    dbLoader.populateIfNotLatest();
 }
