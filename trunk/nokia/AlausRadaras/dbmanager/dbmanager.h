@@ -39,6 +39,9 @@ public:
     void populateBrandTags(const QVector<BrandTag> &brandTags);
     void populatePubBrands(const QVector<PubBrand> &pubBrands);
     void populateBrandCountries(const QVector<BrandCountry> &brandCountries);
+
+    void deletePubBrands(const QString pubId);
+    void deleteBrandTags(const QString brandId);
 public slots:
 
 private:

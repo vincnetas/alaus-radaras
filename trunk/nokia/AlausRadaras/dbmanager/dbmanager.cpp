@@ -261,6 +261,21 @@ void DbManager::setLatest()
     query.clear();
 }
 
+void DbManager::deletePubBrands(const QString pubId)
+{
+    QSqlQuery query;
+    query.exec(QString("DELETE FROM pubs_brands where pub_id=%1;").arg(pubId));
+    query.clear();
+}
+
+void DbManager::deleteBrandTags(const QString brandId)
+{
+    //FIXME: this is wrong, brandid might come ind db id, not in teh one we have in db
+    QSqlQuery query;
+    query.exec(QString("DELETE FROM brands_tags where brand_id=%1;").arg(brandId));
+    query.clear();
+}
+
 void DbManager::dropTables()
 {
     qDebug() << "Deleting tables and setting user version to initial value";
