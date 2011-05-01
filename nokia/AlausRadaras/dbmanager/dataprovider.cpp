@@ -53,11 +53,11 @@ FeelingLuckyInfo DataProvider::feelingLucky()
 }
 
 
-QString DataProvider::getQoute(int count)
+QString DataProvider::getQuote(int count)
 {
 
 
-    QSqlQuery query(QString("SELECT text FROM qoutes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1").arg(count));
+    QSqlQuery query(QString("SELECT text FROM quotes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1").arg(count));
     while(query.next()) {
        return query.value(0).toString();
     }

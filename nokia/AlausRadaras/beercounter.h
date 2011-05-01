@@ -26,7 +26,7 @@ private:
     Ui::BeerCounter *ui;
     QSettings settings;
     DataProvider *dataProvider;
-    void showQoute(int count);
+    void showQuote(int count);
     void retranslateUi();
 signals:
     void Back();

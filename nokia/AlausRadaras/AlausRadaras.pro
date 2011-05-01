@@ -7,11 +7,14 @@
 QT       += core gui sql network
 TARGET = AlausRadaras
 TEMPLATE = app
+DEPENDPATH += . DbManager QtScroller
+INCLUDEPATH += . DbManager QtScroller
 
+include(DbManager/DbManager.pri)
+include(QtScroller/QtScroller.pri)
 
 SOURCES += main.cpp\
         alausradaras.cpp \
-    dbmanager.cpp \
     brandlistmodel.cpp \
     countrylistmodel.cpp \
     brandtabs.cpp \
@@ -23,7 +26,6 @@ SOURCES += main.cpp\
     calculationhelper.cpp \
     slippymap.cpp \
     lightmaps.cpp \
-    dataprovider.cpp \
     brandlist.cpp \
     feelingluckyinfo.cpp \
     beermap.cpp \
@@ -34,11 +36,6 @@ SOURCES += main.cpp\
     maincontroller.cpp \
     makecall.cpp \
     baseupdatedownloader.cpp \
-qtflickgesture.cpp \
-           qtscroller.cpp \
-           qtscrollerfilter.cpp \
-           qtscrollerproperties.cpp \
-           qtscrollevent.cpp \
     settings.cpp \
     feelingthirsty.cpp \
     appupdatechecker.cpp \
@@ -46,7 +43,6 @@ qtflickgesture.cpp \
     json.cpp
 
 HEADERS  += alausradaras.h \
-    dbmanager.h \
     brandlistmodel.h \
     countrylistmodel.h \
     brandtabs.h \
@@ -58,7 +54,6 @@ HEADERS  += alausradaras.h \
     calculationhelper.h \
     slippymap.h \
     lightmaps.h \
-    dataprovider.h \
     brandlist.h \
     feelingluckyinfo.h \
     beermap.h \
@@ -69,19 +64,11 @@ HEADERS  += alausradaras.h \
     maincontroller.h \
     makecall.h \
     baseupdatedownloader.h \
-    qtflickgesture_p.h \
-           qtscroller.h \
-           qtscroller_p.h \
-           qtscrollerfilter_p.h \
-           qtscrollerproperties.h \
-           qtscrollerproperties_p.h \
-           qtscrollevent.h \
-           qtscrollevent_p.h \
     settings.h \
     feelingthirsty.h \
     appupdatechecker.h \
     dbupdatedownloader.h \
-    json.h
+    json.h 
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
@@ -103,24 +90,7 @@ TRANSLATIONS = alausradaras_lt.ts \
     alausradaras_ru.ts \
     alausradaras_en.ts
 
-
-#LIBS += -lsendas2 \
-#-lmsgs \
-#-letext \
-#-lefsrv \
-#-lcharconv \
-#-lgsmu\
-#-etel3rdparty.lib\
-#-e32base.lib\
-#-euser.lib
-
-#MMP_RULES += "LIBRARY etel3rdparty.lib"
-
-
-#INCLUDEPATH += "C:/projects/alausradaras/nokia/AlausRadaras/kineticscroller"
 ICON = alus.svg
-#QTSCROLLER_OUT = $$OUT_PWD/kineticscroller
-#include(kineticscroller/qtscroller.pri)
  VERSION = 1.0.2
 #old uid 0xece1c5e8
 #nokia uid 0x2003986A
@@ -147,3 +117,10 @@ RESOURCES += \
     Assets.qrc \
     Brands.qrc \
     Images.qrc
+
+debug {
+    DEFINES += DEBUG
+}
+else {
+    DEFINES += NDEBUG QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT
+}
