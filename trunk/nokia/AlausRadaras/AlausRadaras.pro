@@ -7,11 +7,12 @@
 QT       += core gui sql network
 TARGET = AlausRadaras
 TEMPLATE = app
-DEPENDPATH += . DbManager QtScroller
-INCLUDEPATH += . DbManager QtScroller
+DEPENDPATH += . DbManager QtScroller Updater
+INCLUDEPATH += . DbManager QtScroller Updater
 
 include(DbManager/DbManager.pri)
 include(QtScroller/QtScroller.pri)
+include(Updater/Updater.pri)
 
 SOURCES += main.cpp\
         alausradaras.cpp \
@@ -29,18 +30,13 @@ SOURCES += main.cpp\
     brandlist.cpp \
     feelingluckyinfo.cpp \
     beermap.cpp \
-    dbpopulator.cpp \
     waitdialog.cpp \
     beercounter.cpp \
     viewutils.cpp \
     maincontroller.cpp \
     makecall.cpp \
-    baseupdatedownloader.cpp \
     settings.cpp \
-    feelingthirsty.cpp \
-    appupdatechecker.cpp \
-    dbupdatedownloader.cpp \
-    json.cpp
+    feelingthirsty.cpp
 
 HEADERS  += alausradaras.h \
     brandlistmodel.h \
@@ -57,18 +53,13 @@ HEADERS  += alausradaras.h \
     brandlist.h \
     feelingluckyinfo.h \
     beermap.h \
-    dbpopulator.h \
     waitdialog.h \
     beercounter.h \
     viewutils.h \
     maincontroller.h \
     makecall.h \
-    baseupdatedownloader.h \
     settings.h \
-    feelingthirsty.h \
-    appupdatechecker.h \
-    dbupdatedownloader.h \
-    json.h 
+    feelingthirsty.h 
 
 FORMS    += alausradaras.ui \
     brandtabs.ui \
