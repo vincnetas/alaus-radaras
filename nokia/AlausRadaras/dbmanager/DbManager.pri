@@ -2,7 +2,8 @@
 
 SOURCES += dbmanager.cpp \
     txtdbloader.cpp \
-    dataprovider.cpp
+    dataprovider.cpp \
+    dbpopulatorrunner.cpp
     
 
 HEADERS  +=   dbmanager.h \
@@ -15,4 +16,5 @@ HEADERS  +=   dbmanager.h \
     brandtag.h \
     quote.h \
     txtdbloader.h \
-    dataprovider.h
+    dataprovider.h \
+    dbpopulatorrunner.h

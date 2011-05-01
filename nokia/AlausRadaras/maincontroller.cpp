@@ -85,7 +85,7 @@ void MainController::initDbUpdate()
         progress->setModal(true);
         progress->showFullScreen();
 
-        populator = new DbPopulator(this,dbManager);
+        populator = new DbPopulatorRunner(this,dbManager);
         populator->start();
         connect(populator,SIGNAL(finished()),this,SLOT(dbInitFinished()));
         //safeguard. Let it crash. after one minute, if its not done.

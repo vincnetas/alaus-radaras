@@ -6,7 +6,6 @@
 #include <QProgressDialog>
 #include "brandtabs.h"
 #include "publist.h"
-#include "dbpopulator.h"
 #include "waitdialog.h"
 #include "beercounter.h"
 #include "enums.h"

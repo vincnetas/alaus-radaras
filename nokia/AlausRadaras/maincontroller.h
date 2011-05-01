@@ -16,6 +16,7 @@
 #include <qgeosatelliteinfo.h>
 #include "appupdatechecker.h"
 #include "dbupdatedownloader.h"
+#include "dbmanager/dbpopulatorrunner.h"
 QTM_USE_NAMESPACE
 
 namespace Ui {
@@ -39,7 +40,7 @@ private:
 
     WaitDialog *progress;
     DbManager *dbManager;
-    DbPopulator *populator;
+    DbPopulatorRunner *populator;
     BeerCounter *counter;
     PubList *pubList;
     PubView *pubView;
