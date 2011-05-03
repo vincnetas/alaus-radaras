@@ -112,13 +112,13 @@ static SyncManager *sharedManager = nil;
     
 	NSLog(@"VISO: %i", [brands count]);
 	
-	for (NSDictionary *brand in brands){		
-		NSLog(@"%@\n", [brand objectForKey:@"title"]);
+	for (NSDictionary *brand in brands){
+	//	NSLog(@"%@\n", [brand objectForKey:@"title"]);
 	}
 	
-//	[topWindow setHidden:YES];
+	[topWindow setHidden:YES];
     
-	//NSLog(@"%@",responseString);
+	NSLog(@"%@",responseString);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
