@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>C9A171D2135E256C00AC976E</string>
+						<string>C9153628136731CC00C00629</string>
 						<key>history</key>
 						<array>
-							<string>C9D1D891135E1FD900BD5468</string>
+							<string>C90AF9D8136731A900963641</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -315,7 +315,6 @@
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>C9A941DA12EA129B00992FAD</string>
 								<string>C90F106B1334F71600239BDE</string>
-								<string>C90F10651334F6F000239BDE</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -323,13 +322,18 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>97</integer>
-									<integer>48</integer>
+									<integer>41</integer>
+									<integer>12</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>42</integer>
+									<integer>12</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 974}, {260, 911}}</string>
+							<string>{{0, 172}, {260, 911}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -366,7 +370,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MapViewController.m</string>
+								<string>AlausRadarasViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -374,11 +378,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MapViewController.m</string>
+										<string>AlausRadarasViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C9A171D1135E256C00AC976E</string>
+										<string>C9153627136731CC00C00629</string>
 										<key>history</key>
 										<array>
 											<string>C901C38E1309D3980012B641</string>
@@ -453,19 +457,13 @@
 											<string>C9A229F2133F780A0061243B</string>
 											<string>C9A229FB133F7A060061243B</string>
 											<string>C9A229FD133F7A060061243B</string>
-											<string>C9A22A53133FA98A0061243B</string>
 											<string>C9A22A58133FA9CF0061243B</string>
 											<string>C93DF752134B9EA600697372</string>
 											<string>C991A80C134E4722006188EF</string>
 											<string>C991A80D134E4722006188EF</string>
 											<string>C991A80E134E4722006188EF</string>
-											<string>C9CD57981354F4C50067361B</string>
-											<string>C9B008C01356CCAC00B49362</string>
-											<string>C9B008C31356CCAC00B49362</string>
-											<string>C98531D8135CC97A008989B1</string>
 											<string>C9A17183135E209C00AC976E</string>
 											<string>C9A1718F135E225600AC976E</string>
-											<string>C9A17190135E225600AC976E</string>
 											<string>C9A17191135E225600AC976E</string>
 											<string>C9A171AA135E238600AC976E</string>
 											<string>C9A171AB135E238600AC976E</string>
@@ -478,7 +476,14 @@
 											<string>C9A171BE135E244C00AC976E</string>
 											<string>C9A171BF135E244C00AC976E</string>
 											<string>C9A171C0135E244C00AC976E</string>
-											<string>C9A171D0135E256C00AC976E</string>
+											<string>C9A171E4135E2AE700AC976E</string>
+											<string>C9A171E5135E2AE700AC976E</string>
+											<string>C986B569135F6EC200EC3E53</string>
+											<string>C986B5CB135F74D100EC3E53</string>
+											<string>C986B5E4135F772400EC3E53</string>
+											<string>C986B62E135F82A800EC3E53</string>
+											<string>C986B644135F865500EC3E53</string>
+											<string>C90AF9D7136731A900963641</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -490,14 +495,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1638, 633}}</string>
+								<string>{{0, 0}, {1638, 612}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 88 1920 970 0 0 1920 1058 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>633pt</string>
+							<string>612pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -510,14 +515,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 638}, {1638, 291}}</string>
+								<string>{{0, 617}, {1638, 312}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 88 1920 970 0 0 1920 1058 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>291pt</string>
+							<string>312pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -536,9 +541,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>C9A1717C135E203600AC976E</string>
+				<string>C9153623136731CB00C00629</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>C9A1717D135E203600AC976E</string>
+				<string>C9153624136731CB00C00629</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -676,11 +681,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C9A171D3135E256C00AC976E</string>
-		<string>C9A171D4135E256C00AC976E</string>
-		<string>C9A171D5135E256C00AC976E</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>C9EA044F1301EC6900266EEA</string>
 		<string>C99188CD135826FF0003C528</string>
 		<string>/Users/laurynasr/Documents/xCodeProjects/AlausRadaras-3.1/AlausRadaras.xcodeproj</string>
@@ -763,7 +763,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>C9EA044F1301EC6900266EEA</string>
-				<string>C9A1717F135E203600AC976E</string>
+				<string>C9153626136731CB00C00629</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -885,13 +885,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>C9A17195135E225600AC976E</string>
+				<string>C986B56D135F6EC200EC3E53</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>C9A17196135E225600AC976E</string>
-				<string>C9A17197135E225600AC976E</string>
-				<string>C9A17198135E225600AC976E</string>
-				<string>C9A17199135E225600AC976E</string>
-				<string>C9A1719A135E225600AC976E</string>
+				<string>C986B56E135F6EC200EC3E53</string>
+				<string>C986B56F135F6EC200EC3E53</string>
+				<string>C986B570135F6EC200EC3E53</string>
+				<string>C986B571135F6EC200EC3E53</string>
+				<string>C986B572135F6EC200EC3E53</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1018,6 +1018,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1053,7 +1055,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>C9A1719B135E225600AC976E</string>
+				<string>C986B573135F6EC200EC3E53</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1063,7 +1065,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
