@@ -12,7 +12,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		2899E5220DE3E06400AC0155 /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* AlausRadarasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */; };
 		C9071A7712FED00E00BDA053 /* beer-radar-schema.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9071A7612FED00E00BDA053 /* beer-radar-schema.sqlite */; };
@@ -55,6 +54,14 @@
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
 		C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8CB1370746D00CE7A8E /* SyncManager.m */; };
+		C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */ = {isa = PBXBuildFile; fileRef = C938B8CD1370793500CE7A8E /* SyncResponseSample.json */; };
+		C938B8D813707DD000CE7A8E /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8D713707DD000CE7A8E /* Pub.m */; };
+		C938B8DB13707DE400CE7A8E /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DA13707DE400CE7A8E /* CodeValue.m */; };
+		C938B8DE13707DEF00CE7A8E /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DD13707DEF00CE7A8E /* FeelingLucky.m */; };
+		C938B8E113707DFB00CE7A8E /* Taxi.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E013707DFB00CE7A8E /* Taxi.m */; };
+		C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */; };
+		C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E513707E4C00CE7A8E /* SQLiteManager.m */; };
+		C938B8E913707EA200CE7A8E /* Beer.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E813707EA200CE7A8E /* Beer.m */; };
 		C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */; };
 		C93F285C132E879E00AB4FAD /* taxi.txt in Resources */ = {isa = PBXBuildFile; fileRef = C93F285B132E879E00AB4FAD /* taxi.txt */; };
 		C94C8E1813362A90006F0166 /* black-background-small.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C8E1713362A90006F0166 /* black-background-small.png */; };
@@ -69,9 +76,7 @@
 		C960136B12F0C69200DB53C0 /* tag_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C960135D12F0C69200DB53C0 /* tag_02.png */; };
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
-		C96A85F712F7516F0021B30B /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C96A85F612F7516F0021B30B /* FeelingLucky.m */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
-		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
 		C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */; };
 		C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */; };
@@ -132,10 +137,8 @@
 		C986CF6912F45B7100865F6D /* brand_zubr.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CF3312F45B7100865F6D /* brand_zubr.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
 		C988B7FA1331E93500C9170B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988B7F91331E93500C9170B /* AudioToolbox.framework */; };
-		C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A411512FE9582001E04A2 /* SQLiteManager.m */; };
 		C98DA6BB132EACCD00A22EC0 /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */; };
 		C98DA6BC132EACCD00A22EC0 /* TaxiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */; };
-		C98DA6E3132EB2A400A22EC0 /* Taxi.m in Sources */ = {isa = PBXBuildFile; fileRef = C98DA6E2132EB2A400A22EC0 /* Taxi.m */; };
 		C99020D4132EBCB500178109 /* taxi.png in Resources */ = {isa = PBXBuildFile; fileRef = C99020D3132EBCB500178109 /* taxi.png */; };
 		C9902113132EC8BE00178109 /* taxi2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9902112132EC8BE00178109 /* taxi2.png */; };
 		C994524B1312FD6B00732314 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C994524A1312FD6B00732314 /* SettingsController.m */; };
@@ -148,7 +151,6 @@
 		C9A171A7135E237400AC976E /* beer_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A171A6135E237400AC976E /* beer_01.png */; };
 		C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A3137C12F08E880005ED6C /* PubDetailViewController.m */; };
 		C9A3137F12F08E880005ED6C /* PubDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */; };
-		C9A313F912F097990005ED6C /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A313F812F097990005ED6C /* Pub.m */; };
 		C9A3820A1322D82600790E5E /* pub_1298412463870.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A381FD1322D82600790E5E /* pub_1298412463870.png */; };
 		C9A3820B1322D82600790E5E /* pub_1298412463871.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A381FE1322D82600790E5E /* pub_1298412463871.png */; };
 		C9A3820C1322D82600790E5E /* pub_1298412463876.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A381FF1322D82600790E5E /* pub_1298412463876.png */; };
@@ -188,7 +190,6 @@
 		1D6058910D05DD3D006BFB54 /* AlausRadaras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlausRadaras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlausRadarasViewController.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28D7ACF60DDB3853001CB0EB /* AlausRadarasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlausRadarasViewController.h; sourceTree = "<group>"; };
 		28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlausRadarasViewController.m; sourceTree = "<group>"; };
@@ -247,6 +248,20 @@
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
 		C938B8CA1370746D00CE7A8E /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncManager.h; path = Classes/SyncManager.h; sourceTree = "<group>"; };
 		C938B8CB1370746D00CE7A8E /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncManager.m; path = Classes/SyncManager.m; sourceTree = "<group>"; };
+		C938B8CD1370793500CE7A8E /* SyncResponseSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SyncResponseSample.json; sourceTree = "<group>"; };
+		C938B8D613707DD000CE7A8E /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pub.h; path = Classes/Pub.h; sourceTree = "<group>"; };
+		C938B8D713707DD000CE7A8E /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pub.m; path = Classes/Pub.m; sourceTree = "<group>"; };
+		C938B8D913707DE400CE7A8E /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeValue.h; path = Classes/CodeValue.h; sourceTree = "<group>"; };
+		C938B8DA13707DE400CE7A8E /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CodeValue.m; path = Classes/CodeValue.m; sourceTree = "<group>"; };
+		C938B8DC13707DEF00CE7A8E /* FeelingLucky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeelingLucky.h; path = Classes/FeelingLucky.h; sourceTree = "<group>"; };
+		C938B8DD13707DEF00CE7A8E /* FeelingLucky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeelingLucky.m; path = Classes/FeelingLucky.m; sourceTree = "<group>"; };
+		C938B8DF13707DFB00CE7A8E /* Taxi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Taxi.h; path = Classes/Taxi.h; sourceTree = "<group>"; };
+		C938B8E013707DFB00CE7A8E /* Taxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Taxi.m; path = Classes/Taxi.m; sourceTree = "<group>"; };
+		C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlausRadarasViewController.xib; path = Classes/AlausRadarasViewController.xib; sourceTree = "<group>"; };
+		C938B8E413707E4C00CE7A8E /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteManager.h; path = Classes/SQLiteManager.h; sourceTree = "<group>"; };
+		C938B8E513707E4C00CE7A8E /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = Classes/SQLiteManager.m; sourceTree = "<group>"; };
+		C938B8E713707EA200CE7A8E /* Beer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beer.h; path = Classes/Beer.h; sourceTree = "<group>"; };
+		C938B8E813707EA200CE7A8E /* Beer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beer.m; path = Classes/Beer.m; sourceTree = "<group>"; };
 		C93929B7131ED95400F2B40F /* NewPubBrandSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPubBrandSubmit.h; sourceTree = "<group>"; };
 		C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPubBrandSubmit.m; sourceTree = "<group>"; };
 		C93F285B132E879E00AB4FAD /* taxi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = taxi.txt; path = resources/db/taxi.txt; sourceTree = "<group>"; };
@@ -264,12 +279,8 @@
 		C9642B3612EE35940033F9B8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		C9642B3712EE35940033F9B8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
-		C96A85F512F7516F0021B30B /* FeelingLucky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingLucky.h; sourceTree = "<group>"; };
-		C96A85F612F7516F0021B30B /* FeelingLucky.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingLucky.m; sourceTree = "<group>"; };
 		C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsDetailViewController.h; sourceTree = "<group>"; };
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
-		C976847712F22A2900D4E9F3 /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeValue.h; sourceTree = "<group>"; };
-		C976847812F22A2900D4E9F3 /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeValue.m; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
 		C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "atnaujinimasStatus@2x.png"; path = "resources/images/640x960/atnaujinimasStatus@2x.png"; sourceTree = "<group>"; };
@@ -332,13 +343,9 @@
 		C986D03012F481A100865F6D /* LuckyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyController.h; sourceTree = "<group>"; };
 		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
 		C988B7F91331E93500C9170B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C98A411412FE9582001E04A2 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
-		C98A411512FE9582001E04A2 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
 		C98DA6B8132EACCD00A22EC0 /* TaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiViewController.h; sourceTree = "<group>"; };
 		C98DA6B9132EACCD00A22EC0 /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
 		C98DA6BA132EACCD00A22EC0 /* TaxiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TaxiView.xib; path = Classes/TaxiView.xib; sourceTree = "<group>"; };
-		C98DA6E1132EB2A400A22EC0 /* Taxi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Taxi.h; sourceTree = "<group>"; };
-		C98DA6E2132EB2A400A22EC0 /* Taxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Taxi.m; sourceTree = "<group>"; };
 		C99020D3132EBCB500178109 /* taxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = taxi.png; path = resources/images/taxi.png; sourceTree = "<group>"; };
 		C9902112132EC8BE00178109 /* taxi2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = taxi2.png; path = resources/images/taxi2.png; sourceTree = "<group>"; };
 		C99452491312FD6B00732314 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
@@ -355,8 +362,6 @@
 		C9A3137B12F08E880005ED6C /* PubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubDetailViewController.h; sourceTree = "<group>"; };
 		C9A3137C12F08E880005ED6C /* PubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubDetailViewController.m; sourceTree = "<group>"; };
 		C9A3137D12F08E880005ED6C /* PubDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubDetailViewController.xib; path = Classes/PubDetailViewController.xib; sourceTree = "<group>"; };
-		C9A313F712F097990005ED6C /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pub.h; sourceTree = "<group>"; };
-		C9A313F812F097990005ED6C /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pub.m; sourceTree = "<group>"; };
 		C9A381FD1322D82600790E5E /* pub_1298412463870.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463870.png; path = resources/pubs/pub_1298412463870.png; sourceTree = "<group>"; };
 		C9A381FE1322D82600790E5E /* pub_1298412463871.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463871.png; path = resources/pubs/pub_1298412463871.png; sourceTree = "<group>"; };
 		C9A381FF1322D82600790E5E /* pub_1298412463876.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463876.png; path = resources/pubs/pub_1298412463876.png; sourceTree = "<group>"; };
@@ -478,7 +483,7 @@
 				8D1107310486CEB800E47090 /* AlausRadaras-Info.plist */,
 				C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				2899E5210DE3E06400AC0155 /* AlausRadarasViewController.xib */,
+				C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */,
 				C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */,
 				C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */,
 				C9948375131C51C400A52587 /* PubsViewController.xib */,
@@ -666,16 +671,18 @@
 		C98EDF7A12EB665B00D8B4A0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				C938B8E713707EA200CE7A8E /* Beer.h */,
+				C938B8E813707EA200CE7A8E /* Beer.m */,
+				C938B8D613707DD000CE7A8E /* Pub.h */,
+				C938B8D713707DD000CE7A8E /* Pub.m */,
 				C953E93812EF718D001BD656 /* Brand.h */,
 				C953E93912EF718D001BD656 /* Brand.m */,
-				C9A313F712F097990005ED6C /* Pub.h */,
-				C9A313F812F097990005ED6C /* Pub.m */,
-				C976847712F22A2900D4E9F3 /* CodeValue.h */,
-				C976847812F22A2900D4E9F3 /* CodeValue.m */,
-				C96A85F512F7516F0021B30B /* FeelingLucky.h */,
-				C96A85F612F7516F0021B30B /* FeelingLucky.m */,
-				C98DA6E1132EB2A400A22EC0 /* Taxi.h */,
-				C98DA6E2132EB2A400A22EC0 /* Taxi.m */,
+				C938B8DF13707DFB00CE7A8E /* Taxi.h */,
+				C938B8E013707DFB00CE7A8E /* Taxi.m */,
+				C938B8DC13707DEF00CE7A8E /* FeelingLucky.h */,
+				C938B8DD13707DEF00CE7A8E /* FeelingLucky.m */,
+				C938B8D913707DE400CE7A8E /* CodeValue.h */,
+				C938B8DA13707DE400CE7A8E /* CodeValue.m */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -683,14 +690,15 @@
 		C9911F4112F1F7BE00AF4ECE /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C98A411412FE9582001E04A2 /* SQLiteManager.h */,
-				C98A411512FE9582001E04A2 /* SQLiteManager.m */,
+				C938B8E413707E4C00CE7A8E /* SQLiteManager.h */,
+				C938B8E513707E4C00CE7A8E /* SQLiteManager.m */,
 				C97E184C131468B5004756A0 /* LocationManager.h */,
 				C97E184D131468B5004756A0 /* LocationManager.m */,
 				C9C2C309131B09340097092D /* DataPublisher.h */,
 				C9C2C30A131B09340097092D /* DataPublisher.m */,
 				C938B8CA1370746D00CE7A8E /* SyncManager.h */,
 				C938B8CB1370746D00CE7A8E /* SyncManager.m */,
+				C938B8CD1370793500CE7A8E /* SyncResponseSample.json */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -862,7 +870,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* AlausRadarasViewController.xib in Resources */,
 				C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */,
 				C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */,
 				C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */,
@@ -991,6 +998,8 @@
 				C9A171A7135E237400AC976E /* beer_01.png in Resources */,
 				C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */,
 				C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */,
+				C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */,
+				C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,16 +1019,12 @@
 				C953E80C12EF5B7B001BD656 /* PubAnnotation.m in Sources */,
 				C953E93A12EF718D001BD656 /* Brand.m in Sources */,
 				C9A3137E12F08E880005ED6C /* PubDetailViewController.m in Sources */,
-				C9A313F912F097990005ED6C /* Pub.m in Sources */,
 				C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */,
-				C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */,
 				C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */,
 				C986D03212F481A100865F6D /* LuckyController.m in Sources */,
-				C96A85F712F7516F0021B30B /* FeelingLucky.m in Sources */,
 				C916C32D12FC7B9300AF396A /* FMResultSet.m in Sources */,
 				C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */,
 				C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */,
-				C98A411612FE9582001E04A2 /* SQLiteManager.m in Sources */,
 				C994524B1312FD6B00732314 /* SettingsController.m in Sources */,
 				C97E184E131468B5004756A0 /* LocationManager.m in Sources */,
 				C9C2C227131ADE170097092D /* PubBrandSubmit.m in Sources */,
@@ -1028,13 +1033,18 @@
 				C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */,
 				C99A65CD132573D10036B4DF /* MBProgressHUD.m in Sources */,
 				C98DA6BB132EACCD00A22EC0 /* TaxiViewController.m in Sources */,
-				C98DA6E3132EB2A400A22EC0 /* Taxi.m in Sources */,
 				C915D346134CE08600553FE8 /* SBJsonWriter.m in Sources */,
 				C915D347134CE08600553FE8 /* SBJsonParser.m in Sources */,
 				C915D348134CE08600553FE8 /* SBJsonBase.m in Sources */,
 				C915D349134CE08600553FE8 /* NSString+SBJSON.m in Sources */,
 				C915D34A134CE08600553FE8 /* NSObject+SBJSON.m in Sources */,
 				C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */,
+				C938B8D813707DD000CE7A8E /* Pub.m in Sources */,
+				C938B8DB13707DE400CE7A8E /* CodeValue.m in Sources */,
+				C938B8DE13707DEF00CE7A8E /* FeelingLucky.m in Sources */,
+				C938B8E113707DFB00CE7A8E /* Taxi.m in Sources */,
+				C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */,
+				C938B8E913707EA200CE7A8E /* Beer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
