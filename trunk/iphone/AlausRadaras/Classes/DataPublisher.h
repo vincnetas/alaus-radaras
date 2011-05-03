@@ -14,12 +14,12 @@
 	NSString *currentBrandId;
 	NSString *currentPubId;
 }
-
+// Common for singletons
 + (DataPublisher*) sharedManager;
 + (id)allocWithZone:(NSZone *)zone;
-
 - (void) initializeManager;
 
+// Custom methods
 - (BOOL) submitPubBrand: (NSString *) brandId pub:(NSString *) pubId status:(NSString *) status message:(NSString *) message validate:(BOOL) validate;
 - (void) addSubmittedBrand;
 - (void) postData:(NSString *) params;

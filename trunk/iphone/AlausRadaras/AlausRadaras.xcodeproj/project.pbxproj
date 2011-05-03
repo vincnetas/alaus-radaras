@@ -54,6 +54,7 @@
 		C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
+		C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8CB1370746D00CE7A8E /* SyncManager.m */; };
 		C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */; };
 		C93F285C132E879E00AB4FAD /* taxi.txt in Resources */ = {isa = PBXBuildFile; fileRef = C93F285B132E879E00AB4FAD /* taxi.txt */; };
 		C94C8E1813362A90006F0166 /* black-background-small.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C8E1713362A90006F0166 /* black-background-small.png */; };
@@ -72,6 +73,8 @@
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
 		C976847912F22A2900D4E9F3 /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C976847812F22A2900D4E9F3 /* CodeValue.m */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
+		C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */; };
+		C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986CF3412F45B7100865F6D /* brand_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */; };
 		C986CF3512F45B7100865F6D /* brand_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */; };
@@ -242,6 +245,8 @@
 		C92E59A912EE146E00412BFA /* BrandsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsTableCell.m; sourceTree = "<group>"; };
 		C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsTableCell.xib; path = Classes/BrandsTableCell.xib; sourceTree = "<group>"; };
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
+		C938B8CA1370746D00CE7A8E /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncManager.h; path = Classes/SyncManager.h; sourceTree = "<group>"; };
+		C938B8CB1370746D00CE7A8E /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncManager.m; path = Classes/SyncManager.m; sourceTree = "<group>"; };
 		C93929B7131ED95400F2B40F /* NewPubBrandSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPubBrandSubmit.h; sourceTree = "<group>"; };
 		C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPubBrandSubmit.m; sourceTree = "<group>"; };
 		C93F285B132E879E00AB4FAD /* taxi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = taxi.txt; path = resources/db/taxi.txt; sourceTree = "<group>"; };
@@ -267,6 +272,8 @@
 		C976847812F22A2900D4E9F3 /* CodeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeValue.m; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
+		C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "atnaujinimasStatus@2x.png"; path = "resources/images/640x960/atnaujinimasStatus@2x.png"; sourceTree = "<group>"; };
+		C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "atnaujinimas@2x.png"; path = "resources/images/640x960/atnaujinimas@2x.png"; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
 		C986CEFE12F45B7100865F6D /* brand_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_backoriu_tamsusis.png; path = resources/brands/brand_backoriu_tamsusis.png; sourceTree = "<group>"; };
 		C986CEFF12F45B7100865F6D /* brand_belmonto_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brand_belmonto_sviesusis.png; path = resources/brands/brand_belmonto_sviesusis.png; sourceTree = "<group>"; };
@@ -521,6 +528,8 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
+				C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */,
+				C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */,
 				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
 				C90F11031335196300239BDE /* pin@2x.png */,
@@ -680,6 +689,8 @@
 				C97E184D131468B5004756A0 /* LocationManager.m */,
 				C9C2C309131B09340097092D /* DataPublisher.h */,
 				C9C2C30A131B09340097092D /* DataPublisher.m */,
+				C938B8CA1370746D00CE7A8E /* SyncManager.h */,
+				C938B8CB1370746D00CE7A8E /* SyncManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -978,6 +989,8 @@
 				C94C8F2313366216006F0166 /* lucky@2x.png in Resources */,
 				C9A171A5135E236900AC976E /* beer_01@2x.png in Resources */,
 				C9A171A7135E237400AC976E /* beer_01.png in Resources */,
+				C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */,
+				C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,6 +1034,7 @@
 				C915D348134CE08600553FE8 /* SBJsonBase.m in Sources */,
 				C915D349134CE08600553FE8 /* NSString+SBJSON.m in Sources */,
 				C915D34A134CE08600553FE8 /* NSObject+SBJSON.m in Sources */,
+				C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,9 +1077,9 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos4.3;
 				SYMROOT = /Users/laurynasr/Documents/xCodeProjects/AlausRadaras/build;
 			};
 			name = Debug;
@@ -1085,7 +1099,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "6F628CAB-030F-4B00-AB2C-32FD75282345";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6F628CAB-030F-4B00-AB2C-32FD75282345";
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1106,7 +1120,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos4.3;
 			};
 			name = Distribution;
 		};
