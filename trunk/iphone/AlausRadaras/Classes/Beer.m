@@ -11,6 +11,6 @@
 
 @implementation Beer
 
-@synthesize brandId, icon, label, pubsString;
+@synthesize id, icon, label;
 
 @end 

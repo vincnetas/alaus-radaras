@@ -352,10 +352,27 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	NSLog(@"Tables created");
 	
 	NSLog(@"Inserting data");
-	[db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+    
+    [db beginTransaction];
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"beers" ofType:@"txt"];
 	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
 	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
+	for (NSString *line in lines) {
+		if (![line isEqualToString:@""]) {
+			NSArray *values = [line componentsSeparatedByString:@"\t"];
+			NSLog(@"Inserting beer: %@", [values objectAtIndex:0]);
+			[db executeUpdate:@"insert into beers (id, label, icon) values (?, ?, ?)",
+			 [values objectAtIndex:0],
+			 [values objectAtIndex:1],
+			 [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
+		}
+	}
+	[db commit];
+    
+	[db beginTransaction];
+	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+	lines = [fileContents componentsSeparatedByString:@"\n"];
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
