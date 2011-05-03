@@ -7,6 +7,7 @@
 //
 
 #import "SyncManager.h"
+#import "JSONParser.h"
 
 @implementation SyncManager
 
@@ -35,7 +36,6 @@ static SyncManager *sharedManager = nil;
 }
 
 - (void) doSync {
-    
     //	NSString *params = 
     //		[NSString stringWithFormat:
     //		 @"lastUpdate=2011-04-01"];
@@ -78,13 +78,17 @@ static SyncManager *sharedManager = nil;
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
 	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-04-01"]];
 	[request setHTTPMethod:@"GET"];
-    //	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    //	[request setHTTPBody:postData];
-	
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+- (void) doFullUpdate {
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json"]];
+	[request setHTTPMethod:@"GET"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
 
 
 #pragma mark -
@@ -106,19 +110,9 @@ static SyncManager *sharedManager = nil;
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     //	[responseData release];
-	
-	NSDictionary *results = [responseString JSONValue];
-	NSArray *brands = [[results objectForKey:@"update"] objectForKey:@"brands"];
-    
-	NSLog(@"VISO: %i", [brands count]);
-	
-	for (NSDictionary *brand in brands){
-	//	NSLog(@"%@\n", [brand objectForKey:@"title"]);
-	}
+	[JSONParser parse:responseString];
 	
 	[topWindow setHidden:YES];
-    
-	NSLog(@"%@",responseString);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

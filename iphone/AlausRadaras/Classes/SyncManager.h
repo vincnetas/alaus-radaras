@@ -20,5 +20,6 @@
 
 // Custom methods
 - (void) doSync;
+- (void) doFullUpdate;
 
 @end

@@ -62,6 +62,9 @@
 		C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */; };
 		C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E513707E4C00CE7A8E /* SQLiteManager.m */; };
 		C938B8E913707EA200CE7A8E /* Beer.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E813707EA200CE7A8E /* Beer.m */; };
+		C938B8EB137081E900CE7A8E /* beers.txt in Resources */ = {isa = PBXBuildFile; fileRef = C938B8EA137081E900CE7A8E /* beers.txt */; };
+		C938B8ED137081FD00CE7A8E /* brands.txt.old.txt in Resources */ = {isa = PBXBuildFile; fileRef = C938B8EC137081FD00CE7A8E /* brands.txt.old.txt */; };
+		C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8F21370934C00CE7A8E /* JSONParser.m */; };
 		C93929B9131ED95400F2B40F /* NewPubBrandSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */; };
 		C93F285C132E879E00AB4FAD /* taxi.txt in Resources */ = {isa = PBXBuildFile; fileRef = C93F285B132E879E00AB4FAD /* taxi.txt */; };
 		C94C8E1813362A90006F0166 /* black-background-small.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C8E1713362A90006F0166 /* black-background-small.png */; };
@@ -262,6 +265,10 @@
 		C938B8E513707E4C00CE7A8E /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = Classes/SQLiteManager.m; sourceTree = "<group>"; };
 		C938B8E713707EA200CE7A8E /* Beer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beer.h; path = Classes/Beer.h; sourceTree = "<group>"; };
 		C938B8E813707EA200CE7A8E /* Beer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beer.m; path = Classes/Beer.m; sourceTree = "<group>"; };
+		C938B8EA137081E900CE7A8E /* beers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beers.txt; path = resources/db/beers.txt; sourceTree = "<group>"; };
+		C938B8EC137081FD00CE7A8E /* brands.txt.old.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = brands.txt.old.txt; path = resources/db/brands.txt.old.txt; sourceTree = "<group>"; };
+		C938B8F11370934C00CE7A8E /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParser.h; path = Classes/JSONParser.h; sourceTree = "<group>"; };
+		C938B8F21370934C00CE7A8E /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParser.m; path = Classes/JSONParser.m; sourceTree = "<group>"; };
 		C93929B7131ED95400F2B40F /* NewPubBrandSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPubBrandSubmit.h; sourceTree = "<group>"; };
 		C93929B8131ED95400F2B40F /* NewPubBrandSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPubBrandSubmit.m; sourceTree = "<group>"; };
 		C93F285B132E879E00AB4FAD /* taxi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = taxi.txt; path = resources/db/taxi.txt; sourceTree = "<group>"; };
@@ -699,6 +706,8 @@
 				C938B8CA1370746D00CE7A8E /* SyncManager.h */,
 				C938B8CB1370746D00CE7A8E /* SyncManager.m */,
 				C938B8CD1370793500CE7A8E /* SyncResponseSample.json */,
+				C938B8F11370934C00CE7A8E /* JSONParser.h */,
+				C938B8F21370934C00CE7A8E /* JSONParser.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -749,6 +758,8 @@
 		C9D74DC212EF3B4F008DE8E8 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				C938B8EA137081E900CE7A8E /* beers.txt */,
+				C938B8EC137081FD00CE7A8E /* brands.txt.old.txt */,
 				C9D74DC512EF3B9F008DE8E8 /* brands.txt */,
 				C9D74DC612EF3B9F008DE8E8 /* countries.txt */,
 				C9D74DC712EF3B9F008DE8E8 /* pubs.txt */,
@@ -1000,6 +1011,8 @@
 				C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */,
 				C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */,
 				C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */,
+				C938B8EB137081E900CE7A8E /* beers.txt in Resources */,
+				C938B8ED137081FD00CE7A8E /* brands.txt.old.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,6 +1058,7 @@
 				C938B8E113707DFB00CE7A8E /* Taxi.m in Sources */,
 				C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */,
 				C938B8E913707EA200CE7A8E /* Beer.m in Sources */,
+				C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
