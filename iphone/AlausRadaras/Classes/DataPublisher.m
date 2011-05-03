@@ -13,8 +13,6 @@
 
 - (void)dealloc {
 	[submits release];
-//	[currentBrandId release];
-//	[currentPubId release];
     [super dealloc];
 }
 

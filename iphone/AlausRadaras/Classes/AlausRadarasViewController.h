@@ -24,10 +24,6 @@
 
 	BOOL enableAllFeatures;
 	UIView *infoView;
-
-	
-	NSMutableData *responseData;
-	UIWindow *topWindow;
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *pintCountLabel;
