@@ -69,5 +69,8 @@
  - (void) insertQuotes;
  - (void) insertAssociations;
  
+- (void) updateBeer: (NSDictionary *) beer;
+- (void) updateBrand: (NSDictionary *) brand;
+- (void) updatePub: (NSDictionary *) pub;
 
 @end

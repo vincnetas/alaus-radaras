@@ -26,8 +26,7 @@
     NSLog(@"UPDATE: Sync Brands: %i", [brands count]);
     
     for (NSDictionary *brand in brands){
-       // [[SQLiteManager sharedManager] getBrandsLocationBased];
-        NSLog(@"%@\n", [brand objectForKey:@"title"]);
+        [[SQLiteManager sharedManager] updateBrand:brand];
 	}
     
     //2.2. Beers
@@ -35,7 +34,7 @@
     NSLog(@"UPDATE: Sync Beers: %i", [beers count]);
 
     for (NSDictionary *beer in beers){
-        //	NSLog(@"%@\n", [brand objectForKey:@"title"]);
+        [[SQLiteManager sharedManager] updateBeer:beer];
 	}
     
     
@@ -44,12 +43,9 @@
     NSLog(@"UPDATE: Sync Pubs: %i", [pubs count]);
     
     for (NSDictionary *pub in pubs){
-        //	NSLog(@"%@\n", [brand objectForKey:@"title"]);
-	}
+        [[SQLiteManager sharedManager] updatePub:pub];
+    }
     
-    
-
-
     
 }
 

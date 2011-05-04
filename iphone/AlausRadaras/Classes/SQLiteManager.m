@@ -352,27 +352,16 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	NSLog(@"Tables created");
 	
 	NSLog(@"Inserting data");
+    NSString* path;
+    NSString* fileContents;
+    NSArray *lines;
     
+    /*
     [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"beers" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			NSLog(@"Inserting beer: %@", [values objectAtIndex:0]);
-			[db executeUpdate:@"insert into beers (id, label, icon) values (?, ?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1],
-			 [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
-		}
-	}
-	[db commit];
-    
-	[db beginTransaction];
 	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
 	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
 	lines = [fileContents componentsSeparatedByString:@"\n"];
+
 	for (NSString *line in lines) {
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
@@ -407,7 +396,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		}
 	}
 	[db commit];    
-	
+	*/
 	
 	[db beginTransaction];
 	path = [[NSBundle mainBundle] pathForResource:@"tags" ofType:@"txt"];
@@ -459,7 +448,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	}
 	[db commit];
 	
-	
+	/*
 	[db beginTransaction];
 	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
 	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
@@ -494,6 +483,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		}
 	}
 	[db commit];
+     */
 	
 	[db beginTransaction];
 	path = [[NSBundle mainBundle] pathForResource:@"taxi" ofType:@"txt"];
@@ -902,134 +892,133 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 
 #pragma mark -
-#pragma mark Initial data inserts
+#pragma mark Update data
 
-- (void) insertBrands {
-    [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			[db executeUpdate:@"insert into brands (brandId, label, icon) values (?, ?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1],
-			 [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
-		}
-	}
-    [db commit];
+
+// UPDATE services used for SYNC
+// 1. Check if exist in DB
+// 2.1. If yes -> Update data
+// 2.2. If not -> Save data
+
+- (void) updateBrand: (NSDictionary *) brand {
+    FMResultSet *rs = 
+        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [brand objectForKey:@"id"]]];
+    
+	if ([rs next]) {
+        NSLog(@"update brand");
+        [db executeUpdate:@"UPDATE brands SET title = ?, icon = ?, homePage = ?, country = ?, hometown = ?, description = ? WHERE id = ?",
+         [brand objectForKey:@"title"],
+         [brand objectForKey:@"icon"],
+         [brand objectForKey:@"homePage"],
+         [brand objectForKey:@"country"],
+         [brand objectForKey:@"hometown"],
+         [brand objectForKey:@"description"],
+         [brand objectForKey:@"id"]];
+	} else {
+        NSLog(@"insert brand");
+        [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
+             [brand objectForKey:@"id"],
+             [brand objectForKey:@"title"],
+             [brand objectForKey:@"icon"],
+             [brand objectForKey:@"homePage"],
+             [brand objectForKey:@"country"],
+             [brand objectForKey:@"hometown"],
+             [brand objectForKey:@"description"]];
+    }
+    
+    [rs close];
 }
 
-- (void) insertPubs {
-    [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			[db executeUpdate:@"insert into pubs (pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1],
-			 [values objectAtIndex:2],
-			 [values objectAtIndex:3],
-			 [values objectAtIndex:4],
-			 [values objectAtIndex:5],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
-		}
-	}
-    [db commit];	
+- (void) updateBeer: (NSDictionary *) beer {
+    FMResultSet *rs = 
+        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", [beer objectForKey:@"id"]]];
+    
+    // UPDATE/INSERT BEER
+	if ([rs next]) {
+        NSLog(@"update beer");
+        [db executeUpdate:@"UPDATE beers SET title = ?, icon = ? WHERE id = ?",
+         [beer objectForKey:@"title"],
+         [beer objectForKey:@"icon"],
+         [beer objectForKey:@"id"]];
+	} else {
+        NSLog(@"insert beer");
+        [db executeUpdate:@"INSERT INTO beers (id, title, icon) values (?, ?, ?)",
+         [beer objectForKey:@"id"],
+         [beer objectForKey:@"title"],
+         [beer objectForKey:@"icon"]];
+    }
+    
+    // UPDATE BEER-BRAND RELATIONSHIP
+    FMResultSet *rs_brand = 
+        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [beer objectForKey:@"brandId"]]];
+    if ([rs_brand next]) {
+        NSLog(@"update beer.brand_id");
+        [db executeUpdate:@"UPDATE beers SET brand_id = ? WHERE id = ?",
+         [beer objectForKey:@"brandId"],
+         [beer objectForKey:@"id"]];
+    }
+    
+    //UPDATE BEER-TAG RELATIONSHIP
+    NSArray *beerTags = [beer objectForKey:@"tags"];
+    FMResultSet *rs_tag;
+    for (NSString *tag in beerTags) {
+        // Check if tag exists
+        rs_tag = 
+            [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM tags t WHERE t.code = '%@'",tag]];
+        if ([rs_tag next]) {
+            // if tag exists - proceed
+            // check if beer-tag relationship exists
+            rs_tag = 
+                [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers_tags bt WHERE bt.beer_id = '%@' AND bt.tag = '%@'", [beer objectForKey:@"id"],tag]];
+            
+            if ([rs_tag next]) {
+                // Relationship exists - ignore
+            } else {
+                NSLog(@"insert beers_tags");
+                [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
+                 [beer objectForKey:@"id"],
+                 tag];
+            }  
+        } else {
+            // Tag does not exist - ignore
+            [db executeUpdate:@"INSERT INTO tags (code, title) values (?, ?)",
+             [beer objectForKey:@"id"],
+             [beer objectForKey:@"title"],
+             [beer objectForKey:@"icon"]];
+        }
+     }
+    [rs close];
+    [rs_brand close];
+    [rs_tag close];
+
 }
 
-- (void) insertTags {
-    [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"tags" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			[db executeUpdate:@"insert into tags (code, title) values (?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1]];
-		}
-	}
-    [db commit];
+- (void) updatePub: (NSDictionary *) pub {
+    FMResultSet *rs = 
+        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs p WHERE p.id = '%@'", [pub objectForKey:@"id"]]];
+    /*
+	if ([rs next]) {
+        NSLog(@"update pub");
+        [db executeUpdate:@"UPDATE brands SET title = ?, icon = ?, homePage = ?, country = ?, hometown = ?, description = ? WHERE id = ?",
+         [brand objectForKey:@"title"],
+         [brand objectForKey:@"icon"],
+         [brand objectForKey:@"homePage"],
+         [brand objectForKey:@"country"],
+         [brand objectForKey:@"hometown"],
+         [brand objectForKey:@"description"],
+         [brand objectForKey:@"id"]];
+	} else {
+        NSLog(@"insert pub");
+        [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
+         [brand objectForKey:@"id"],
+         [brand objectForKey:@"title"],
+         [brand objectForKey:@"icon"],
+         [brand objectForKey:@"homePage"],
+         [brand objectForKey:@"country"],
+         [brand objectForKey:@"hometown"],
+         [brand objectForKey:@"description"]];
+    }*/
 }
-
-- (void) insertCountries {
-    [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			[db executeUpdate:@"insert into countries (code, name) values (?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1]];
-		}
-	}
-    [db commit];
-}
-
-- (void) insertQuotes {
-    [db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"qoutes" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			[db executeUpdate:@"insert into quotes (amount, text) values (?, ?)",
-			 [NSNumber numberWithInt:[[values objectAtIndex:0]intValue]],
-			 [values objectAtIndex:1]];
-		}
-	}
-    [db commit];
-}
-
-- (void) insertAssociations {
-	[db beginTransaction];
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	NSString* fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	NSArray *lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			
-			NSLog(@"Inserting brand<->pub association: %@", [values objectAtIndex:0]);
-			NSArray *pubIds = [[values objectAtIndex:2] componentsSeparatedByString:@","];
-			for (NSString *pubId in pubIds) {
-				[db executeUpdate:@"insert into pubs_brands (brand_id, pub_id) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [pubId stringByReplacingOccurrencesOfString:@" " withString:@""]];			
-			}
-			
-			NSLog(@"Inserting brand<->country association: %@", [values objectAtIndex:0]);
-			NSArray *countries = [[values objectAtIndex:3] componentsSeparatedByString:@","];
-			for (NSString *country in countries) {
-				[db executeUpdate:@"insert into brands_countries (brand_id, country) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [country stringByReplacingOccurrencesOfString:@" " withString:@""]];			
-			}
-			
-			NSLog(@"Inserting brand<->tag association: %@", [values objectAtIndex:0]);
-			NSArray *tags = [[values objectAtIndex:4] componentsSeparatedByString:@","];
-			for (NSString *tag in tags) {
-				[db executeUpdate:@"insert into brands_tags (brand_id, tag) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [tag stringByReplacingOccurrencesOfString:@" " withString:@""]];			
-			}
-		}
-	}
-    [db commit];
-}
-
-
-
 
 
 

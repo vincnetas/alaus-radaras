@@ -116,12 +116,12 @@ static SyncManager *sharedManager = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"JSON didReceiveData: %i", 	[data length]);	
+ //   NSLog(@"JSON didReceiveData: %i", 	[data length]);	
 	[responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"JSON didReceiveResponse");	
+//	NSLog(@"JSON didReceiveResponse");	
 	[responseData setLength:0];
     
 }

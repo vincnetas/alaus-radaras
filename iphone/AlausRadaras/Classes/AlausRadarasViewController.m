@@ -39,7 +39,7 @@
 	self.view.backgroundColor = background;
 	[background release];
     
-    [[SyncManager sharedManager] doSync];
+   [[SyncManager sharedManager] doSync];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
