@@ -9,7 +9,6 @@ import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
-import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import android.database.Cursor;
 import android.location.Location;
@@ -92,6 +91,19 @@ public class DataTransfomer {
 		
 	}
 	
+	static class DoString implements Do<String> {
+		
+		public final static DoString instance = new DoString();
+		
+		public static String[] columns = new String[] {"id", "title", "icon", "description"};
+		
+		@Override
+		public String get(Cursor cursor) {
+			return cursor.getString(0);
+		}
+		
+	}
+	
 	static class DoCountry implements Do<Country> {
 
 		public final static DoCountry instance = new DoCountry();
@@ -127,21 +139,6 @@ public class DataTransfomer {
 			pub.setLocation(location);
 			
 			return pub;
-		}		
-	}
-	
-	static class DoTag implements Do<Tag> {
-
-		public final static DoTag instance = new DoTag();
-		
-		public static final String[] columns = new String[] {"code", "title"};
-		
-		@Override
-		public Tag get(Cursor cursor) {
-			Tag tag = new Tag();
-			tag.setCode(cursor.getString(0));
-			tag.setTitle(cursor.getString(1));
-			return tag;
 		}		
 	}
 	

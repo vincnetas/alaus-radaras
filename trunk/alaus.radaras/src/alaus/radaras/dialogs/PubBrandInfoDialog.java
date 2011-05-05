@@ -1,21 +1,21 @@
 package alaus.radaras.dialogs;
 
 import alaus.radaras.R;
+import alaus.radaras.service.BeerRadar;
+import alaus.radaras.service.BeerRadarSqlite;
+import alaus.radaras.submition.PubBrandInfo;
+import alaus.radaras.submition.PubBrandStatus;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import alaus.radaras.service.BeerRadar;
-import alaus.radaras.service.BeerRadarSqlite;
-import alaus.radaras.submition.PubBrandInfo;
-import alaus.radaras.submition.PubBrandStatus;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 
 public class PubBrandInfoDialog extends Dialog implements OnClickListener  {
 

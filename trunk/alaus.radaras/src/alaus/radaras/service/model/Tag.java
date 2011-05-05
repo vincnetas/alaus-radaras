@@ -4,8 +4,12 @@ public class Tag extends MultipleLocation {
 	
 	private String code;
 	
-	private String title;
+//	private String title;
 
+	public Tag() {
+		
+	}
+	
 	public String getCode() {
 		return code;
 	}
@@ -14,13 +18,13 @@ public class Tag extends MultipleLocation {
 		this.code = code;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
+//	public String getTitle() {
+//		return title;
+//	}
+//
+//	public void setTitle(String title) {
+//		this.title = title;
+//	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)

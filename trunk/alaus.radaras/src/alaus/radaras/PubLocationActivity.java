@@ -102,8 +102,6 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 	private String getCountryId() {
 		return getString(COUNTRY_ID);
 	}
-
-
 	
 	private void setTitle() {
 		String caption = "";
@@ -113,7 +111,7 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 		} else if (getCountryId() != null) {
 			caption = beerRadar.getCountry(getCountryId()).getName(this);
 		} else if (getTagId() != null) {
-			caption = beerRadar.getTag(getTagId()).getTitle();
+			caption = Utils.translateTag(this, getTagId());
 		}
 
 		TextView mapCaption = (TextView) findViewById(R.id.mapCaption);

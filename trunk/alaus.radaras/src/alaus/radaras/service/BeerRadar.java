@@ -1,14 +1,12 @@
 package alaus.radaras.service;
 
 import java.util.List;
-import java.util.Set;
 
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
-import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -21,8 +19,6 @@ import android.location.Location;
  */
 public interface BeerRadar {
 
-	Set<Tag> getBrandTags(String brandId);
-	
 	List<Brand> getBrandsByCompany(String companyId);
 	
 	List<Brand> getBrands(Location location);
@@ -53,9 +49,7 @@ public interface BeerRadar {
 
 	List<Country> getCountries(Location location);
 
-	List<Tag> getTags(Location location);
-
-	Tag getTag(String code);
+	List<String> getTags(Location location);
 
 	Country getCountry(String code);
 

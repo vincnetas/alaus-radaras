@@ -3,8 +3,6 @@ package alaus.radaras;
 import java.util.Observable;
 import java.util.Observer;
 
-import alaus.radaras.service.BeerRadarSqlite;
-import alaus.radaras.service.UpdateTask;
 import alaus.radaras.service.LocationProvider.LocationPrecision;
 import alaus.radaras.utils.Utils;
 import android.app.Activity;
@@ -13,7 +11,6 @@ import android.location.Location;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 
 /**
  * Class for managing Activities that need location based info.

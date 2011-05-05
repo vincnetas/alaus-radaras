@@ -10,21 +10,19 @@ import alaus.radaras.service.DataTransfomer.DoBrand;
 import alaus.radaras.service.DataTransfomer.DoCountry;
 import alaus.radaras.service.DataTransfomer.DoPub;
 import alaus.radaras.service.DataTransfomer.DoQoute;
-import alaus.radaras.service.DataTransfomer.DoTag;
+import alaus.radaras.service.DataTransfomer.DoString;
 import alaus.radaras.service.DataTransfomer.DoTaxi;
 import alaus.radaras.service.model.Brand;
 import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
-import alaus.radaras.service.model.Tag;
 import alaus.radaras.service.model.Taxi;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.sorters.BrandNameSorter;
 import alaus.radaras.sorters.CountryNameSorter;
 import alaus.radaras.sorters.PubNameSorter;
-import alaus.radaras.sorters.TagNameSorter;
 import alaus.radaras.utils.Bounds;
 import alaus.radaras.utils.DistanceCalculator;
 import android.content.ContentValues;
@@ -66,11 +64,11 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 		this.settings = new alaus.radaras.settings.SettingsManager(context);
 		this.context = context;
 		
-		brandTagInsert = new DatabaseUtils.InsertHelper(db, "brands_tags");
-		brandsInsert = new DatabaseUtils.InsertHelper(db, "brands");
-		pubsInsert = new DatabaseUtils.InsertHelper(db, "pubs");
-		pubBrandsInsert = new DatabaseUtils.InsertHelper(db, "pubs_brands");
-		companiesInsert = new DatabaseUtils.InsertHelper(db, "companies");
+		brandTagInsert = new DatabaseUtils.InsertHelper(db, BeerRadarSQLiteOpenHelper.BRANDS_TAGS);
+		brandsInsert = new DatabaseUtils.InsertHelper(db, BeerRadarSQLiteOpenHelper.BRANDS);
+		pubsInsert = new DatabaseUtils.InsertHelper(db, BeerRadarSQLiteOpenHelper.PUBS);
+		pubBrandsInsert = new DatabaseUtils.InsertHelper(db, BeerRadarSQLiteOpenHelper.PUBS_BRANDS);
+		companiesInsert = new DatabaseUtils.InsertHelper(db, BeerRadarSQLiteOpenHelper.COMPANIES);
 	}
 	
 	@Override
@@ -354,10 +352,9 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	}
 
 	@Override
-	public List<Tag> getTags(Location location) {
+	public List<String> getTags(Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
-		Cursor cursor = db.rawQuery("SELECT DISTINCT t.code, t.title FROM tags as t "+
-				"INNER JOIN brands_tags as bt on bt.tag = t.code " +
+		Cursor cursor = db.rawQuery("SELECT DISTINCT bt.tag FROM brands_tags as bt "+
 				"INNER JOIN pubs_brands as pb on pb.brand_id = bt.brand_id " +
 				"INNER JOIN pubs as p on p.id = pb.pub_id " +
 				"WHERE p.latitude < ? AND p.latitude > ? AND p.longtitude < ? AND p.longtitude > ?",
@@ -368,27 +365,9 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 					Double.toString(bounds.getMinLongitude())
 				});
 		
-		List<Tag> values = DataTransfomer.toList(cursor, DoTag.instance);
-		
-		Collections.sort(values, new TagNameSorter());
-		
-		return values;
+		return DataTransfomer.toList(cursor, DoString.instance);
 	}
 	
-	@Override
-	public Tag getTag(String code) {
-		Cursor cursor = db.query(
-				"tags", 
-				DoTag.columns,
-				"code = ?", 
-				new String[] { code }, 
-				null, 
-				null, 
-				null);
-		
-		return DataTransfomer.to(cursor, DoTag.instance);
-	}
-
 	@Override
 	public Country getCountry(String code) {
 		return new Country(code);
@@ -418,14 +397,13 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 		return DataTransfomer.toList(cursor, DoTaxi.instance);
 	}
 	
-	@Override
-	public Set<Tag> getBrandTags(String brandId) {		
+	private Set<String> getBrandTags(String brandId) {		
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 		
-		builder.setTables("tags INNER JOIN brands_tags bt ON (bt.tag = tags.code)");
-		Cursor cursor = builder.query(db, DoTag.columns, "bt.brand_id = ?", new String[] {brandId}, null, null, null);	
+		builder.setTables(BeerRadarSQLiteOpenHelper.BRANDS_TAGS);
+		Cursor cursor = builder.query(db, new String[]{"tag"}, "brand_id = ?", new String[] {brandId}, null, null, null);	
 				
-		return DataTransfomer.toSet(cursor, DoTag.instance);		
+		return DataTransfomer.toSet(cursor, DoString.instance);		
 	}
 
 	/* (non-Javadoc)
@@ -473,10 +451,10 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	        try {	            
 	            brandsInsert.replace(CONTENT_VALUES);
 	            
-	            Set<Tag> brandTags = getBrandTags(beer.getId());
-	            for (Tag tag : brandTags) {
-	                if (!beer.getTags().remove(tag.getCode())) {
-	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", getStringArray(beer.getId(), tag.getCode()));
+	            Set<String> brandTags = getBrandTags(beer.getId());
+	            for (String tag : brandTags) {
+	                if (!beer.getTags().remove(tag)) {
+	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", getStringArray(beer.getId(), tag));
 	                }
 	            }	            
 	            

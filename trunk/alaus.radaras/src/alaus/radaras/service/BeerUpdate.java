@@ -1,7 +1,5 @@
 package alaus.radaras.service;
 
-import java.util.Date;
-
 import alaus.radaras.shared.model.Beer;
 
 
