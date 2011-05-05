@@ -1,10 +1,6 @@
 package alaus.radaras;
 
 //import alaus.radaras.service.BeerRadarUpdate;
-import java.util.Date;
-
-import alaus.radaras.service.BeerRadarSqlite;
-import alaus.radaras.service.BeerUpdate;
 import alaus.radaras.service.UpdateService;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.utils.Utils;
@@ -40,18 +36,15 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 	protected static final int UPDATE_IN_PROGRESS = 0;
 
     private SettingsManager settings;
-    
-    private BeerUpdate beerUpdate;
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 		
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			ProgressBar updateProgress = (ProgressBar) findViewById(R.id.updateProgress);
 			if (intent.getExtras().getBoolean(UpdateService.UPDATE_STATUS)) {
-				updateProgress.setVisibility(View.VISIBLE);
+			    getProgressView().setVisibility(View.VISIBLE);
 			} else {
-				updateProgress.setVisibility(View.INVISIBLE);
+			    getProgressView().setVisibility(View.INVISIBLE);
 			}
 		}
 		
@@ -61,8 +54,7 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-                
-        beerUpdate = new BeerRadarSqlite(this);
+        
         settings = new SettingsManager(getApplicationContext());
         
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -138,8 +130,8 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         return findViewById(R.id.counter);
     }
     
-    private View getProgressView() {
-        return findViewById(R.id.updateProgress);
+    private ProgressBar getProgressView() {
+        return (ProgressBar) findViewById(R.id.updateProgress);
     }
 
     @Override
@@ -148,14 +140,6 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     	
     	registerReceiver(broadcastReceiver, new IntentFilter(UpdateService.UPDATE_STATUS));
     	
-        Date lastUpdate = beerUpdate.getLastUpdate();
-        if (lastUpdate == null) {
-            Intent intent = new Intent(this, UpdateService.class);
-            intent.putExtra(UpdateService.UPDATE_SOURCE, "data.json");
-
-        	startService(intent);
-        }
-
         final SettingsManager settings = new SettingsManager(this);
         TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
         counter.setText(settings.getTotalCount().toString());

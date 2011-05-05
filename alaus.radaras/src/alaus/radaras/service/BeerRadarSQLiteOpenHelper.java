@@ -1,9 +1,5 @@
 package alaus.radaras.service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -84,13 +80,8 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		        "date       INTEGER NOT NULL);";    
 	}
 	
-    public BeerRadarSQLiteOpenHelper(Context context) 
-    {
-        super(
-    		context, 
-    		Definition.DB_NAME, 
-    		null, 
-    		Definition.DB_VERSION);
+    public BeerRadarSQLiteOpenHelper(Context context) {
+        super(context, Definition.DB_NAME, null, Definition.DB_VERSION);
         this.context = context;
     }
 
@@ -104,8 +95,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
 	        db.execSQL(Definition.BRANDS_TAGS);
-	        db.execSQL(Definition.UPDATES);
-	        
+	        db.execSQL(Definition.UPDATES);	        
 	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.QOUTES);
 	        db.execSQL(Definition.TAXI);
@@ -114,76 +104,11 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
     	}
     	Log.i(LOG_TAG, "Finished creating database.");
 
-    	updateData(db);
+        Log.i(LOG_TAG, "Inserting initial data");
+        InitialData.importInitialData(db, context);     
+        Log.i(LOG_TAG, "Finished inserting initial data");
     }
     
-    private void updateData(SQLiteDatabase db) {
-    	Log.i(LOG_TAG, "Inserting initial data");
-    	
-    	insertTags(db);
-    	insertQoutes(db);
-    	insertTaxies(db);
-    	
-    	Log.i(LOG_TAG, "Finished inserting initial data");
-    } 
-
-	private void insertQoutes(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("qoutes.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			String[] columns = line.split("\t");
-    			Log.i(LOG_TAG, "Inserting qoute: " + columns[0]);
-    			ContentValues values = new ContentValues();
-    			values.put("amount", columns[0]);
-    			values.put("text", columns[1]);
-    			db.insert("qoutes", null, values);
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}
-	}
-
-	private void insertTags(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("tags.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			Log.i(LOG_TAG, "Inserting tags: " + line);
-    			String[] columns = line.split("\t");
-    			ContentValues values = new ContentValues();
-    			values.put("code", columns[0]);
-    			values.put("title", columns[1]);
-    			db.insert("tags", null, values);
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}		
-	}
-	
-	private void insertTaxies(SQLiteDatabase db) {
-    	try {
-    		BufferedReader reader = new BufferedReader(
-    				new InputStreamReader(context.getAssets().open("taxi.txt")));
-    		String line = null;
-    		while ((line = reader.readLine()) != null) {
-    			Log.i(LOG_TAG, "Inserting taxies: " + line);
-    			String[] columns = line.split("\t");
-    			ContentValues values = new ContentValues();
-    			values.put("title", columns[0]);
-    			values.put("phone", columns[1]);
-    			values.put("city", columns[2]);
-    			values.put("latitude", columns[3]);
-    			values.put("longitude", columns[4]);
-    			db.insert("taxi", null, values);
-    		}
-    	} catch (Exception e) {
-    		Log.e(LOG_TAG, e.getMessage());
-    	}		
-	}
-
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(LOG_TAG, "Upgrading database from version " + oldVersion  + " to " + newVersion + ", which will destroy all old data");

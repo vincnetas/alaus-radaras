@@ -59,5 +59,6 @@
 	android:layout_height="40dp" 
 	android:textSize="30dp" 
 	android:background="@color/home_button"></Button>
-<ProgressBar android:layout_width="wrap_content" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:visibility="invisible" android:id="@+id/updateProgress" android:layout_margin="30dp"></ProgressBar>
+<ProgressBar 
+	android:layout_width="wrap_content" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:visibility="invisible" android:id="@+id/updateProgress" android:layout_margin="30dp"></ProgressBar>
 </RelativeLayout >
