@@ -7,13 +7,11 @@ import java.util.Set;
 
 import alaus.radaras.R;
 import alaus.radaras.service.DataTransfomer.DoBrand;
-import alaus.radaras.service.DataTransfomer.DoCountry;
 import alaus.radaras.service.DataTransfomer.DoPub;
 import alaus.radaras.service.DataTransfomer.DoQoute;
 import alaus.radaras.service.DataTransfomer.DoString;
 import alaus.radaras.service.DataTransfomer.DoTaxi;
 import alaus.radaras.service.model.Brand;
-import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
@@ -21,7 +19,6 @@ import alaus.radaras.service.model.Taxi;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.shared.model.Beer;
 import alaus.radaras.sorters.BrandNameSorter;
-import alaus.radaras.sorters.CountryNameSorter;
 import alaus.radaras.sorters.PubNameSorter;
 import alaus.radaras.utils.Bounds;
 import alaus.radaras.utils.DistanceCalculator;
@@ -330,7 +327,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	}
 	
 	@Override
-	public List<Country> getCountries(Location location) {
+	public List<String> getCountries(Location location) {
 		Bounds bounds = DistanceCalculator.getBounds(location, getMaxDistance());
 		Cursor cursor = db.rawQuery("SELECT DISTINCT c.country FROM companies as c " +
 				"INNER JOIN brands as b ON b.companyId = c.id " +
@@ -344,11 +341,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 					Double.toString(bounds.getMinLongitude())				
 				});
 
-		List<Country> values = DataTransfomer.toList(cursor, DoCountry.instance);
-		
-		Collections.sort(values, new CountryNameSorter(context));
-		
-		return values;
+		return DataTransfomer.toList(cursor, DoString.instance);
 	}
 
 	@Override
@@ -366,11 +359,6 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 				});
 		
 		return DataTransfomer.toList(cursor, DoString.instance);
-	}
-	
-	@Override
-	public Country getCountry(String code) {
-		return new Country(code);
 	}
 
 	private double getMaxDistance() {

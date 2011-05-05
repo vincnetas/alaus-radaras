@@ -40,7 +40,7 @@ public class TagListActivity extends AbstractLocationActivity {
 
 	@Override
 	protected void locationUpdated(Location location) {
-		tags = Utils.translateAndSortTags(this, beerRadar.getTags(location)); 
+		tags = Utils.translateAndSort(this, beerRadar.getTags(location), "tag"); 
 			
 		
 		if(tags.size() == 0) {

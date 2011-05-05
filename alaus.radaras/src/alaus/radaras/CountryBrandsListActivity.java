@@ -2,7 +2,7 @@ package alaus.radaras;
 
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.BeerRadarSqlite;
-import alaus.radaras.service.model.Country;
+import alaus.radaras.utils.Utils;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 
 	private BeerRadar beerRadar;
 	
-	private Country country;
+	private String country;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,9 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 		setContentView(R.layout.country_brand_list);
 	
 		final String countryId = getIntent().getExtras().getString(COUNTRY);
-		country = beerRadar.getCountry(countryId);
 		
 		TextView countryName = (TextView)findViewById(R.id.countryBrandHeader);
-		countryName.setText(country.getName(this));
+		countryName.setText(Utils.translate(this, countryId, "country"));
 		
 		ImageView image = (ImageView)findViewById(R.id.countryBrandShowOnMap);
 		image.setOnClickListener(new OnClickListener() {
@@ -49,7 +48,7 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 
 	@Override
 	protected void locationUpdated(Location location) {
-		showBrands(beerRadar.getBrandsByCountry(country.getCode(), location), R.id.countryBrandList);
+		showBrands(beerRadar.getBrandsByCountry(country, location), R.id.countryBrandList);
 	}
 	
 }
