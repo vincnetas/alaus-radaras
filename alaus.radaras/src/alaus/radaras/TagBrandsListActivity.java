@@ -4,6 +4,7 @@ package alaus.radaras;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.BeerRadarSqlite;
 import alaus.radaras.service.model.Tag;
+import alaus.radaras.utils.Utils;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -27,11 +28,10 @@ public class TagBrandsListActivity extends BaseBrandListActivity {
 		
 		setContentView(R.layout.tag_brand_list);
 	
-		final String tagId = getIntent().getExtras().getString(TAG);
-		tag = beerRadar.getTag(tagId);
+		final String tag = getIntent().getExtras().getString(TAG);
 
 		TextView tagName = (TextView)findViewById(R.id.tagBrandHeader);
-		tagName.setText(tag.getTitle());
+		tagName.setText(Utils.translateTag(this, tag));
 		
 		ImageView image = (ImageView)findViewById(R.id.tagBrandShowOnMap);
 		image.setOnClickListener(new OnClickListener() {
@@ -40,7 +40,7 @@ public class TagBrandsListActivity extends BaseBrandListActivity {
 			public void onClick(View v) {
 				
 				Intent inte = new Intent(TagBrandsListActivity.this, PubLocationActivity.class);
-        		inte.putExtra(PubLocationActivity.TAG_ID, tagId);
+        		inte.putExtra(PubLocationActivity.TAG_ID, tag);
         		startActivity(inte);
 				
 			}

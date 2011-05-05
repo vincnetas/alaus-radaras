@@ -29,7 +29,6 @@ public class InitialData {
             insertBrands(db, new BufferedReader(new InputStreamReader(context.getAssets().open("brands.txt"))));
             insertPubs(db, new BufferedReader(new InputStreamReader(context.getAssets().open("pubs.txt"))));
             insertBeers(db, new BufferedReader(new InputStreamReader(context.getAssets().open("beers.txt"))));
-            insertTags(db, new BufferedReader(new InputStreamReader(context.getAssets().open("tags.txt"))));
             insertQoutes(db, new BufferedReader(new InputStreamReader(context.getAssets().open("qoutes.txt"))));
             insertTaxies(db, new BufferedReader(new InputStreamReader(context.getAssets().open("taxi.txt"))));
         } catch (IOException e) {
@@ -38,7 +37,7 @@ public class InitialData {
     }
     
     private static void insertBrands(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper companies = new InsertHelper(db, "companies");
+        DatabaseUtils.InsertHelper companies = new InsertHelper(db, BeerRadarSQLiteOpenHelper.COMPANIES);
         
         try {
             String line = null;
@@ -64,9 +63,9 @@ public class InitialData {
     }
     
     private static void insertBeers(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper brands = new InsertHelper(db, "brands");
-        DatabaseUtils.InsertHelper pubs_brands = new InsertHelper(db, "pubs_brands");
-        DatabaseUtils.InsertHelper brands_tags = new InsertHelper(db, "brands_tags");
+        DatabaseUtils.InsertHelper brands = new InsertHelper(db, BeerRadarSQLiteOpenHelper.BRANDS);
+        DatabaseUtils.InsertHelper pubs_brands = new InsertHelper(db, BeerRadarSQLiteOpenHelper.PUBS_BRANDS);
+        DatabaseUtils.InsertHelper brands_tags = new InsertHelper(db, BeerRadarSQLiteOpenHelper.BRANDS_TAGS);
         
         try {
             String line = null;
@@ -79,7 +78,7 @@ public class InitialData {
                 values.put("id", columns[0]);
                 values.put("title", columns[2]);
                 values.put("icon", columns[1]);                
-                values.put("companyId", columns[6]);
+                values.put("companyId", columns[5]);
                 brands.insert(values);
                 
                 String[] pubs = columns[3].split(",");
@@ -90,7 +89,7 @@ public class InitialData {
                     pubs_brands.insert(values);                 
                 }
                 
-                String[] tags = columns[5].split(",");
+                String[] tags = columns[4].split(",");
                 for (int i = 0; i < tags.length; i++) {
                     values.clear();
                     values.put("brand_id", columns[0]);
@@ -110,7 +109,7 @@ public class InitialData {
     }
     
     private static void insertPubs(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper pubs = new InsertHelper(db, "pubs");
+        DatabaseUtils.InsertHelper pubs = new InsertHelper(db, BeerRadarSQLiteOpenHelper.PUBS);
         
         try {
             String line = null;
@@ -140,7 +139,7 @@ public class InitialData {
     }
 
     private static void insertQoutes(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper qoutes = new InsertHelper(db, "qoutes");
+        DatabaseUtils.InsertHelper qoutes = new InsertHelper(db, BeerRadarSQLiteOpenHelper.QOUTES);
         
         try {   
             ContentValues values = new ContentValues();
@@ -161,33 +160,9 @@ public class InitialData {
             qoutes.close();
         }
     }
-
-    private static void insertTags(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper tags = new InsertHelper(db, "tags");
-        
-        try { 
-            String line = null;
-            ContentValues values = new ContentValues();
-            
-            while ((line = reader.readLine()) != null) {                
-                String[] columns = line.split("\t");
-            
-                values.clear();
-                values.put("code", columns[0]);
-                values.put("title", columns[1]);                
-                tags.insert(values);
-            }
-        } catch (Exception e) {
-            Log.e(LOG_TAG, e.getMessage(), e);
-        } finally {
-            IOUtils.closeQuietly(reader);
-            
-            tags.close();
-        }
-    }
     
     private static void insertTaxies(SQLiteDatabase db, BufferedReader reader) {
-        DatabaseUtils.InsertHelper taxi = new InsertHelper(db, "taxi");
+        DatabaseUtils.InsertHelper taxi = new InsertHelper(db, BeerRadarSQLiteOpenHelper.TAXI);
         
         try {            
             String line = null;

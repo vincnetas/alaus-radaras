@@ -4,6 +4,7 @@
 package alaus.radaras;
 
 import java.util.List;
+
 import alaus.radaras.adapters.PubBrandListAdapter;
 import alaus.radaras.dialogs.PubBrandInfoDialog;
 import alaus.radaras.dialogs.PubBrandInfoDialog.PubBrandInfoSubmited;

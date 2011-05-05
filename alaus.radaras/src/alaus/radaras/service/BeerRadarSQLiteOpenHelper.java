@@ -19,8 +19,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	public static final String PUBS_BRANDS = "pubs_brands";
 	
-	public static final String TAGS = "tags";
-	
 	public static final String BRANDS_TAGS = "brands_tags";
 	
 	public static final String QOUTES = "qoutes";
@@ -68,11 +66,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"pub_id			TEXT NOT NULL, " +
 	        	"brand_id 		TEXT NOT NULL);";
 				
-		public static String TAGS = 
-	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.TAGS + "(" +
-	        	"code			TEXT PRIMARY KEY," +
-	        	"title			TEXT NOT NULL);";
-		
 		public static String BRANDS_TAGS = 
 	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.BRANDS_TAGS + "(" +
 	        	"brand_id			TEXT NOT NULL," +
@@ -107,7 +100,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
 	        db.execSQL(Definition.BRANDS_TAGS);
-	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.QOUTES);
 	        db.execSQL(Definition.TAXI);
     	} catch (Exception e) {
@@ -129,7 +121,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS pubs;");
         db.execSQL("DROP TABLE IF EXISTS brands;");
         db.execSQL("DROP TABLE IF EXISTS companies;");
-        db.execSQL("DROP TABLE IF EXISTS tags;");
         db.execSQL("DROP TABLE IF EXISTS qoutes;");
         db.execSQL("DROP TABLE IF EXISTS taxi;");
         

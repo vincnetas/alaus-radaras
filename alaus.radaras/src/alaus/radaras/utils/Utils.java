@@ -4,6 +4,10 @@
 package alaus.radaras.utils;
 
 import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Locale;
 
 import alaus.radaras.R;
@@ -50,5 +54,34 @@ public class Utils {
                  */
             }
         }
+	}
+	
+	public static String translateTag(Context context, String tag) {
+		String result = tag;
+		
+		int identifier = context.getResources().getIdentifier("@string/tag_" + tag.toLowerCase(), "string", context.getPackageName());
+		if (identifier != 0) {
+			result = context.getResources().getString(identifier);
+		}
+		
+		return result;
+	}
+
+	public static List<String> translateAndSortTags(Context context, List<String> tags) {
+		List<String> result = new ArrayList<String>();
+		
+		for (String tag : tags) {
+			result.add(translateTag(context, tag));
+		}
+		
+		Collections.sort(result, new Comparator<String>() {
+
+			@Override
+			public int compare(String object1, String object2) {
+				return COLLARATOR.compare(object1, object2);
+			}
+		});
+		
+		return result;
 	}
 }

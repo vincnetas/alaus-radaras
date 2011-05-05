@@ -90,5 +90,12 @@
 <string name="country_fr">Prancūziškas</string>
 <string name="country_pl">Lenkiškas</string>
 
+<string name="tag_dark">Tamsus</string>
+<string name="tag_lager">Šviesus</string>
+<string name="tag_white">Kvietinis</string>
+<string name="tag_rural">Kaimiškas</string>
+<string name="tag_foreign">Užsienietiškas</string>
+<string name="tag_strong">Stiprus</string>
+<string name="tag_light">Lengvas</string>
 
 </resources>

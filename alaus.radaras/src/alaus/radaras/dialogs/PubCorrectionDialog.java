@@ -1,19 +1,19 @@
 package alaus.radaras.dialogs;
 
 import alaus.radaras.R;
+import alaus.radaras.submition.PubCorrection;
+import alaus.radaras.submition.PubCorrectionReason;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import alaus.radaras.submition.PubCorrection;
-import alaus.radaras.submition.PubCorrectionReason;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 
 public class PubCorrectionDialog extends Dialog implements OnClickListener  {
 

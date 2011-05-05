@@ -4,7 +4,6 @@
 package alaus.radaras.service;
 
 import alaus.radaras.shared.model.Beer;
-import alaus.radaras.shared.model.Beer;
 import alaus.radaras.shared.model.Pub;
 
 /**
