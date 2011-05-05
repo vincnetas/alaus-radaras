@@ -3,7 +3,6 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
-import alaus.radaras.service.model.Country;
 import alaus.radaras.viewholders.CountryViewHolder;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,14 +15,12 @@ import android.widget.TextView;
 public class CountryListAdapter extends BaseAdapter {
 
 
-	private List<Country> countries;
+	private List<String> countries;
 	private LayoutInflater inflater;
-	private Context context;
 	
-	public CountryListAdapter(Context context, List<Country> countries) {
+	public CountryListAdapter(Context context, List<String> countries) {
 		this.countries = countries;
 		this.inflater = LayoutInflater.from(context);
-		this.context = context;
 	}
 	
 	@Override
@@ -43,9 +40,7 @@ public class CountryListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
 		CountryViewHolder holder;
-
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.country_list_item, null);
@@ -57,9 +52,9 @@ public class CountryListAdapter extends BaseAdapter {
         } else {
             holder = (CountryViewHolder) convertView.getTag();
         }
-        Country country = countries.get(position);
+        String country = countries.get(position);
         // Bind the data efficiently with the holder.
-        holder.title.setText(country.getName(context));
+        holder.title.setText(country);
         holder.img.setImageResource(R.drawable.map_02);
         
         return convertView;

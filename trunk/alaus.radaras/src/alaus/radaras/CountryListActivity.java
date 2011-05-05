@@ -5,7 +5,6 @@ import java.util.List;
 import alaus.radaras.adapters.CountryListAdapter;
 import alaus.radaras.service.BeerRadar;
 import alaus.radaras.service.BeerRadarSqlite;
-import alaus.radaras.service.model.Country;
 import alaus.radaras.utils.Utils;
 import android.content.Intent;
 import android.location.Location;
@@ -17,7 +16,7 @@ import android.widget.ListView;
 public class CountryListActivity extends AbstractLocationActivity {
 
 	private BeerRadar beerRadar;
-	private List<Country> countries;
+	private List<String> countries;
 	private ListView list;
 
 	@Override
@@ -31,9 +30,9 @@ public class CountryListActivity extends AbstractLocationActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				Country country = countries.get(position);
+				String country = countries.get(position);
 				Intent intent = new Intent(CountryListActivity.this, CountryBrandsListActivity.class);
-				intent.putExtra(CountryBrandsListActivity.COUNTRY, country.getCode());
+				intent.putExtra(CountryBrandsListActivity.COUNTRY, country);
 				startActivity(intent);
 			}
 		});
@@ -42,7 +41,7 @@ public class CountryListActivity extends AbstractLocationActivity {
 
 	@Override
 	protected void locationUpdated(Location location) {
-		countries = beerRadar.getCountries(location);
+		countries = Utils.translateAndSort(this, beerRadar.getCountries(location), "country");
 		
 		if(countries.size() == 0) {
 			Utils.showNoBeerAlert(getApplicationContext());

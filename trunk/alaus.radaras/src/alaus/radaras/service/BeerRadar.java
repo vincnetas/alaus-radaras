@@ -3,7 +3,6 @@ package alaus.radaras.service;
 import java.util.List;
 
 import alaus.radaras.service.model.Brand;
-import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.FeelingLucky;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
@@ -47,11 +46,9 @@ public interface BeerRadar {
 
 	Qoute getQoute(int amount);
 
-	List<Country> getCountries(Location location);
+	List<String> getCountries(Location location);
 
 	List<String> getTags(Location location);
-
-	Country getCountry(String code);
 
 	List<Taxi> getTaxies(Location location);
 }

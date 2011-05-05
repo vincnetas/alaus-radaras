@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import alaus.radaras.service.model.Brand;
-import alaus.radaras.service.model.Country;
 import alaus.radaras.service.model.Pub;
 import alaus.radaras.service.model.Qoute;
 import alaus.radaras.service.model.Taxi;
@@ -100,19 +99,6 @@ public class DataTransfomer {
 		@Override
 		public String get(Cursor cursor) {
 			return cursor.getString(0);
-		}
-		
-	}
-	
-	static class DoCountry implements Do<Country> {
-
-		public final static DoCountry instance = new DoCountry();
-		
-		@Override
-		public Country get(Cursor cursor) {
-			Country country = new Country();
-			country.setCode(cursor.getString(0));
-			return country;
 		}
 		
 	}

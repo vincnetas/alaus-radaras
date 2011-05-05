@@ -56,22 +56,22 @@ public class Utils {
         }
 	}
 	
-	public static String translateTag(Context context, String tag) {
-		String result = tag;
+	public static String translate(Context context, String value, String prefix) {
+		String result = value;
 		
-		int identifier = context.getResources().getIdentifier("@string/tag_" + tag.toLowerCase(), "string", context.getPackageName());
+		int identifier = context.getResources().getIdentifier("@string/" + prefix + "_" + value.toLowerCase(), "string", context.getPackageName());
 		if (identifier != 0) {
 			result = context.getResources().getString(identifier);
 		}
-		
+
 		return result;
 	}
 
-	public static List<String> translateAndSortTags(Context context, List<String> tags) {
+	public static List<String> translateAndSort(Context context, List<String> tags, String prefix) {
 		List<String> result = new ArrayList<String>();
 		
 		for (String tag : tags) {
-			result.add(translateTag(context, tag));
+			result.add(translate(context, tag, prefix));
 		}
 		
 		Collections.sort(result, new Comparator<String>() {
@@ -81,7 +81,7 @@ public class Utils {
 				return COLLARATOR.compare(object1, object2);
 			}
 		});
-		
+
 		return result;
 	}
 }
