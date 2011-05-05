@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:minSdkVersion="4"
-	package="alaus.radaras" android:installLocation="auto" android:versionCode="11" android:versionName="1.4.11">
+	package="alaus.radaras" android:versionCode="11" android:versionName="1.4.11">
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.CALL_PHONE"/>
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -42,7 +42,10 @@
 				<action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED" />
 			</intent-filter>
 		</receiver>
-		<service android:label="UpdateService" android:exported="false" android:name="service.UpdateService"></service>
+		<service
+			android:label="UpdateService" 
+			android:name=".service.UpdateService">
+		</service>
 	</application>
 
 

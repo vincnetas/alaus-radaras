@@ -36,7 +36,7 @@ public class UpdateBeerState extends UpdateValueState<Beer> implements State {
     }
     
     public UpdateBeerState(State parent, BeerUpdate beerUpdate) {
-        super(parent, beerUpdate, new Beer());
+        super(parent, beerUpdate, new Beer(), methods);
     }
     
     /* (non-Javadoc)
@@ -45,13 +45,5 @@ public class UpdateBeerState extends UpdateValueState<Beer> implements State {
     @Override
     protected void objectReady(Beer beer) {
         beerUpdate.updateBrand(beer);        
-    }
-
-    /* (non-Javadoc)
-     * @see alaus.radaras.parser.state.UpdateValueState#getMethog(java.lang.String)
-     */
-    @Override
-    protected Method getMethod(String key) {    
-        return methods.get(key);
     }
 }

@@ -46,7 +46,9 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	
 	private SettingsManager settings;
 	
-	private final static ContentValues WRITE_LOCK = new ContentValues();
+	private final static Object WRITE_LOCK = new Object();
+	
+	private final static ContentValues CONTENT_VALUES = new ContentValues();
 	
 	private final DatabaseUtils.InsertHelper brandTagInsert;
 	
@@ -262,7 +264,7 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 				null, 
 				"title asc");
 		
-		return (cursor.moveToFirst()) ? DataTransfomer.toBrand(cursor) : null;
+		return DataTransfomer.to(cursor, DoBrand.instance);
 	}
 	
 	@Override
@@ -439,17 +441,6 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 		return DataTransfomer.toList(cursor, DoBrand.instance);	
 	}
 	
-	/*
-	 * Update part
-	 */
-	
-	private ContentValues getContentValues() {
-		synchronized (WRITE_LOCK) {
-			WRITE_LOCK.clear();
-			return WRITE_LOCK;
-		}
-	}
-	
 	private static String[] STRING_ARRAY = new String[1];
 	
 	private static String[] getStringArray(String value) {
@@ -471,30 +462,29 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void updateBrand(Beer beer) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues beerValues = getContentValues();
-	        beerValues.put("id", beer.getId());
-	        beerValues.put("title", beer.getTitle());
-	        beerValues.put("icon", beer.getIcon());
-	        beerValues.put("description", beer.getDescription());
-	        beerValues.put("companyId", beer.getBrandId());
+	    	CONTENT_VALUES.clear();
+	    	CONTENT_VALUES.put("id", beer.getId());
+	    	CONTENT_VALUES.put("title", beer.getTitle());
+	    	CONTENT_VALUES.put("icon", beer.getIcon());
+	    	CONTENT_VALUES.put("description", beer.getDescription());
+	    	CONTENT_VALUES.put("companyId", beer.getBrandId());
 	        
 	        db.beginTransaction();
 	        try {	            
-	            brandsInsert.replace(beerValues);
+	            brandsInsert.replace(CONTENT_VALUES);
 	            
 	            Set<Tag> brandTags = getBrandTags(beer.getId());
 	            for (Tag tag : brandTags) {
 	                if (!beer.getTags().remove(tag.getCode())) {
 	                    db.delete("brands_tags", "brand_id = ? AND tag = ?", getStringArray(beer.getId(), tag.getCode()));
 	                }
-	            }
-	            
+	            }	            
 	            
 	            for (String tag : beer.getTags()) {
-	                ContentValues tagValues = getContentValues();
-	                tagValues.put("brand_id", beer.getId());
-	                tagValues.put("tag", tag);
-	                brandTagInsert.insert(tagValues);	                
+	            	CONTENT_VALUES.clear();
+	                CONTENT_VALUES.put("brand_id", beer.getId());
+	                CONTENT_VALUES.put("tag", tag);
+	                brandTagInsert.insert(CONTENT_VALUES);	                
 	            }
 	            
 	            db.setTransactionSuccessful();
@@ -510,20 +500,20 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void updatePub(alaus.radaras.shared.model.Pub pub) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues pubValues = getContentValues();
-	        pubValues.put("id", pub.getId());
-	        pubValues.put("title", pub.getTitle());
-	        pubValues.put("longtitude", pub.getLongitude());
-	        pubValues.put("latitude", pub.getLatitude());
-	        pubValues.put("address", pub.getAddress());
-	        pubValues.put("city", pub.getCity());
-	        pubValues.put("notes", pub.getDescription());
-	        pubValues.put("phone", pub.getPhone());
-	        pubValues.put("url", pub.getHomepage());
+	    	CONTENT_VALUES.clear();
+	    	CONTENT_VALUES.put("id", pub.getId());
+	    	CONTENT_VALUES.put("title", pub.getTitle());
+	    	CONTENT_VALUES.put("longtitude", pub.getLongitude());
+	    	CONTENT_VALUES.put("latitude", pub.getLatitude());
+	    	CONTENT_VALUES.put("address", pub.getAddress());
+	    	CONTENT_VALUES.put("city", pub.getCity());
+	    	CONTENT_VALUES.put("notes", pub.getDescription());
+	    	CONTENT_VALUES.put("phone", pub.getPhone());
+	        CONTENT_VALUES.put("url", pub.getHomepage());
 	        
 	        db.beginTransaction();
 	        try {	            
-	            pubsInsert.replace(pubValues);
+	            pubsInsert.replace(CONTENT_VALUES);
 	            
 	            /*
 	             * Delete removed brands from pub association
@@ -539,10 +529,10 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
 	             * Add new brands to pub association
 	             */
 	            for (String brandId : pub.getBeerIds()) {
-	                ContentValues brandValues = getContentValues();
-	                brandValues.put("brand_id", brandId);
-	                brandValues.put("pub_id", pub.getId());	                
-	                pubBrandsInsert.insert(brandValues);
+	            	CONTENT_VALUES.clear();
+	            	CONTENT_VALUES.put("brand_id", brandId);
+	            	CONTENT_VALUES.put("pub_id", pub.getId());	                
+	                pubBrandsInsert.insert(CONTENT_VALUES);
 	            }
 	            
 	            db.setTransactionSuccessful();
@@ -558,16 +548,16 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void updateCompany(alaus.radaras.shared.model.Brand brand) {
     	synchronized (WRITE_LOCK) {
-	    	ContentValues companyValues = getContentValues();
-	        companyValues.put("country", brand.getCountry());
-	        companyValues.put("description", brand.getDescription());
-	        companyValues.put("homePage", brand.getHomePage());
-	        companyValues.put("hometown", brand.getHometown());
-	        companyValues.put("icon", brand.getIcon());
-	        companyValues.put("id", brand.getId());
-	        companyValues.put("title", brand.getTitle());
+    		CONTENT_VALUES.clear();
+    		CONTENT_VALUES.put("country", brand.getCountry());
+    		CONTENT_VALUES.put("description", brand.getDescription());
+    		CONTENT_VALUES.put("homePage", brand.getHomePage());
+    		CONTENT_VALUES.put("hometown", brand.getHometown());
+    		CONTENT_VALUES.put("icon", brand.getIcon());
+    		CONTENT_VALUES.put("id", brand.getId());
+    		CONTENT_VALUES.put("title", brand.getTitle());
 	        
-	        companiesInsert.replace(companyValues);
+	        companiesInsert.replace(CONTENT_VALUES);
     	}
     }
     
@@ -634,8 +624,12 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
         
         Cursor cursor = db.query("updates", getStringArray("date"), null, null, null, null, "date DESC", "1");
 
-        if (cursor.moveToFirst()) {
-            result = new Date(cursor.getLong(0));
+        try {
+	        if (cursor.moveToFirst()) {
+	            result = new Date(cursor.getLong(0));
+	        }
+        } finally {
+        	cursor.close();
         }
 
         return result;
@@ -644,9 +638,9 @@ public class BeerRadarSqlite implements BeerRadar, BeerUpdate {
     @Override
     public void setLastUpdate(Date date) {
     	synchronized (WRITE_LOCK) {
-            ContentValues contentValues = getContentValues();
-            contentValues.put("date", date.getTime());
-            db.insert("updates", null, contentValues);
+    		CONTENT_VALUES.clear();
+    		CONTENT_VALUES.put("date", date.getTime());
+            db.insert("updates", null, CONTENT_VALUES);
 		}
     }	
 }

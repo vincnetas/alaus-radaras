@@ -5,6 +5,7 @@ package alaus.radaras.parser.state;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import org.svenson.tokenize.Token;
 
@@ -28,10 +29,13 @@ public abstract class UpdateValueState<T> implements UpdatableValueState {
     
     protected BeerUpdate beerUpdate;
     
-    public UpdateValueState(State parent, BeerUpdate beerUpdate, T object) {
+    private final Map<String, Method> methods;
+    
+    public UpdateValueState(State parent, BeerUpdate beerUpdate, T object, Map<String, Method> methods) {
         this.parent = parent;
         this.beerUpdate = beerUpdate;
         this.object = object;
+        this.methods = methods;
         
         readValueState = new ReadValueState(this);
     }
@@ -72,10 +76,8 @@ public abstract class UpdateValueState<T> implements UpdatableValueState {
     
     protected abstract void objectReady(T object);
     
-    protected abstract Method getMethod(String key);
-    
     private void setProperty(String key, Object value) {        
-        Method method = getMethod(key);
+        Method method = methods.get(key);
         if (method != null) {
             try {
                 method.invoke(object, value);

@@ -16,27 +16,18 @@ import android.location.Location;
 
 public class DataTransfomer {
 	
-	public static Brand toBrand(Cursor cursor) {
-		Brand brand = new Brand();
-		brand.setId(cursor.getString(0));
-		brand.setTitle(cursor.getString(1));
-		brand.setIcon(cursor.getString(2));
-		brand.setDescription(cursor.getString(3));
-		return brand;
-	}
-	
 	public static <T> T to(Cursor cursor, Do<T> doe) {
-		T result = null;
-		
 		try {
+			T result = null;
+			
 			if (cursor.moveToFirst()) {
-				return doe.get(cursor);
+				result = doe.get(cursor);
 			}
+			
+			return result;
 		} finally {
 			closeCursor(cursor);
-		}
-		
-		return result;
+		}		
 	}
 	
 	private static void closeCursor(Cursor cursor) {
@@ -46,83 +37,35 @@ public class DataTransfomer {
 	}
 	
 	public static <T> Set<T> toSet(Cursor cursor, Do<T> doe) {
-		Set<T> result = new HashSet<T>();
-
-		if (cursor.moveToFirst()) {
-			do {
-				result.add(doe.get(cursor));
-			} while (cursor.moveToNext());
+		try {
+			Set<T> result = new HashSet<T>();
+	
+			if (cursor.moveToFirst()) {
+				do {
+					result.add(doe.get(cursor));
+				} while (cursor.moveToNext());
+			}
+	
+			return result;
+		} finally {
+			closeCursor(cursor);
 		}
-
-		closeCursor(cursor);
-
-		return result;
 	}
 	
 	public static <T> List<T> toList(Cursor cursor, Do<T> doe) {
-		List<T> result = new ArrayList<T>();
-
-		if (cursor.moveToFirst()) {
-			do {
-				result.add(doe.get(cursor));
-			} while (cursor.moveToNext());
-		}
-
-		closeCursor(cursor);
-
-		return result;
-	}
+		try {
+			List<T> result = new ArrayList<T>();
 	
-	public static Pub toPub(Cursor cursor) {
-		Pub pub = new Pub();
-		pub.setId(cursor.getString(0));
-		pub.setTitle(cursor.getString(1));
-		pub.setAddress(cursor.getString(2));
-		pub.setNotes(cursor.getString(3));
-		pub.setPhone(cursor.getString(4));
-		pub.setUrl(cursor.getString(5));
-		pub.setCity(cursor.getString(8));
-		
-		Location location = new Location("network");
-		location.setLatitude(cursor.getDouble(6));
-		location.setLongitude(cursor.getDouble(7));
-		pub.setLocation(location);
-		
-		return pub;
-	}
-	
-	public static Qoute toQoute(Cursor cursor) {
-		Qoute qoute = new Qoute();
-
-		qoute.setText(cursor.getString(0));
-		
-		return qoute;
-	}
-	
-	public static Tag toTag(Cursor cursor) {
-		Tag tag = new Tag();
-		tag.setCode(cursor.getString(0));
-		tag.setTitle(cursor.getString(1));
-		return tag;
-	}
-	
-	private static Country toCountry(Cursor cursor) {
-		Country country = new Country();
-		country.setCode(cursor.getString(0));
-		return country;
-	}
-
-	public static Taxi toTaxi(Cursor cursor) {
-		Taxi taxi = new Taxi();
-		taxi.setTitle(cursor.getString(0));
-		taxi.setPhone(cursor.getString(1));
-		taxi.setCity(cursor.getString(2));
-		
-		Location location = new Location("network");
-		location.setLatitude(cursor.getDouble(3));
-		location.setLongitude(cursor.getDouble(4));
-		taxi.setLocation(location);
-		return taxi;
+			if (cursor.moveToFirst()) {
+				do {
+					result.add(doe.get(cursor));
+				} while (cursor.moveToNext());
+			}
+			
+			return result;
+		} finally {
+			closeCursor(cursor);
+		}		
 	}
 	
 	interface Do<T> {		
@@ -137,7 +80,14 @@ public class DataTransfomer {
 		
 		@Override
 		public Brand get(Cursor cursor) {
-			return toBrand(cursor);
+			Brand brand = new Brand();
+
+			brand.setId(cursor.getString(0));
+			brand.setTitle(cursor.getString(1));
+			brand.setIcon(cursor.getString(2));
+			brand.setDescription(cursor.getString(3));
+			
+			return brand;
 		}
 		
 	}
@@ -148,7 +98,9 @@ public class DataTransfomer {
 		
 		@Override
 		public Country get(Cursor cursor) {
-			return toCountry(cursor);
+			Country country = new Country();
+			country.setCode(cursor.getString(0));
+			return country;
 		}
 		
 	}
@@ -159,9 +111,23 @@ public class DataTransfomer {
 		
 		@Override
 		public Pub get(Cursor cursor) {
-			return toPub(cursor);
-		}
-		
+			Pub pub = new Pub();
+			
+			pub.setId(cursor.getString(0));
+			pub.setTitle(cursor.getString(1));
+			pub.setAddress(cursor.getString(2));
+			pub.setNotes(cursor.getString(3));
+			pub.setPhone(cursor.getString(4));
+			pub.setUrl(cursor.getString(5));
+			pub.setCity(cursor.getString(8));
+			
+			Location location = new Location("network");
+			location.setLatitude(cursor.getDouble(6));
+			location.setLongitude(cursor.getDouble(7));
+			pub.setLocation(location);
+			
+			return pub;
+		}		
 	}
 	
 	static class DoTag implements Do<Tag> {
@@ -172,7 +138,10 @@ public class DataTransfomer {
 		
 		@Override
 		public Tag get(Cursor cursor) {
-			return toTag(cursor);
+			Tag tag = new Tag();
+			tag.setCode(cursor.getString(0));
+			tag.setTitle(cursor.getString(1));
+			return tag;
 		}		
 	}
 	
@@ -182,7 +151,16 @@ public class DataTransfomer {
 		
 		@Override
 		public Taxi get(Cursor cursor) {
-			return toTaxi(cursor);
+			Taxi taxi = new Taxi();
+			taxi.setTitle(cursor.getString(0));
+			taxi.setPhone(cursor.getString(1));
+			taxi.setCity(cursor.getString(2));
+			
+			Location location = new Location("network");
+			location.setLatitude(cursor.getDouble(3));
+			location.setLongitude(cursor.getDouble(4));
+			taxi.setLocation(location);
+			return taxi;
 		}		
 	}
 	
@@ -192,7 +170,11 @@ public class DataTransfomer {
 		
 		@Override
 		public Qoute get(Cursor cursor) {
-			return toQoute(cursor);
+			Qoute qoute = new Qoute();
+
+			qoute.setText(cursor.getString(0));
+			
+			return qoute;
 		}		
 	}
 }
