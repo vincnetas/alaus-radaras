@@ -176,7 +176,7 @@ border-image:url(:/images/bok_title.png);
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="btnBrands">
+    <widget class="QPushButton" name="btnBeers">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>

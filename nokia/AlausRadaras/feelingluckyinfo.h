@@ -9,8 +9,8 @@ public:
     FeelingLuckyInfo();
         QString pubId;
         QString pubName;
-        QString brandId;
-        QString brandName;
+        QString beerId;
+        QString beerName;
 };
 
 #endif // FEELINGLUCKYINFO_H

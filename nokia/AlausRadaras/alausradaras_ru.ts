@@ -81,47 +81,47 @@
     </message>
 </context>
 <context>
-    <name>BrandList</name>
+    <name>BeerList</name>
     <message utf8="true">
-        <location filename="brandlist.ui" line="20"/>
+        <location filename="beerlist.ui" line="20"/>
         <source>Alaus rūšys</source>
         <translation>Пивные сорта </translation>
     </message>
     <message>
-        <location filename="brandlist.ui" line="45"/>
+        <location filename="beerlist.ui" line="45"/>
         <source>neversti [Rusys]</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="brandlist.ui" line="152"/>
+        <location filename="beerlist.ui" line="152"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>
 </context>
 <context>
-    <name>BrandTabs</name>
+    <name>BeerTabs</name>
     <message>
-        <location filename="brandtabs.ui" line="20"/>
+        <location filename="BeerTabs.ui" line="20"/>
         <source>Alaus tipai</source>
         <translation>Пивные сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="80"/>
+        <location filename="BeerTabs.ui" line="80"/>
         <source>Rūšys</source>
         <translation>Сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="brandtabs.ui" line="167"/>
+        <location filename="BeerTabs.ui" line="167"/>
         <source>Šalys</source>
         <translation>Страны</translation>
     </message>
     <message>
-        <location filename="brandtabs.ui" line="260"/>
+        <location filename="BeerTabs.ui" line="260"/>
         <source>Tipai</source>
         <translation>Типы</translation>
     </message>
     <message>
-        <location filename="brandtabs.ui" line="387"/>
+        <location filename="BeerTabs.ui" line="387"/>
         <source>Atgal</source>
         <translation>Назад</translation>
     </message>

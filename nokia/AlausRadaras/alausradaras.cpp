@@ -55,9 +55,9 @@ void AlausRadaras::settingsAccepted()
 
 }
 
-void AlausRadaras::on_btnBrands_clicked()
+void AlausRadaras::on_btnBeers_clicked()
 {
-   emit BrandsSelected();
+   emit BeersSelected();
 }
 
 void AlausRadaras::on_btnNear_clicked()

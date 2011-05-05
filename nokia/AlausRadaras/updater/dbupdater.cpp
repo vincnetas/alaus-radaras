@@ -1,7 +1,7 @@
 #include "dbupdater.h"
 #include "qdebug.h"
 #include "dbmanager.h"
-#include "brandtag.h"
+#include "beertag.h"
 
 DbUpdater::DbUpdater(QObject *parent) :
     QObject(parent)
@@ -15,49 +15,64 @@ bool DbUpdater::updateDb(const QVariantMap &data)
     DbManager dbManager;
     QVariantMap update = data["update"].toMap();
     QVector<Pub> pubs;
-    QVector<PubBrand> pubBrands;
+    QVector<PubBeer> pubBeers;
     foreach(QVariant rawPub, update["pubs"].toList()) {
         QVariantMap pubData = rawPub.toMap();
         Pub pub = populatePub(pubData);
         pubs.append(pub);
 
-        foreach(PubBrand pubBrand, popuplatePubBrands(pub.id, pubData["beerIds"].toList())) {
-            pubBrands.append(pubBrand);
+        foreach(PubBeer pubBeer, popuplatePubBeers(pub.id, pubData["beerIds"].toList())) {
+            pubBeers.append(pubBeer);
         }
-        //FIXME : we don't have pubBrands ready, so no delete
-        dbManager.deletePubBrands(pub.id);
+        dbManager.deletePubBeers(pub.id);
     }
     dbManager.populatePubs(pubs);
-    //FIXME : structure is with id, which we don't have
-    dbManager.populatePubBrands(pubBrands);
+    dbManager.populatePubBeers(pubBeers);
+
+    QVector<Beer> beers;
+    QVector<BeerTag> beerTags;
+    foreach(QVariant rawPub, update["beers"].toList()) {
+        QVariantMap beerData = rawPub.toMap();
+        Beer beer = populateBeer(beerData);
+        beers.append(beer);
+
+        foreach(BeerTag beerTag, popuplateBeerTags(beer.id, beerData["tags"].toList())) {
+            beerTags.append(beerTag);
+        }
+        dbManager.deleteBeerTags(beer.id);
+    }
+    dbManager.populateBeers(beers);
+    dbManager.populateBeerTags(beerTags);
 
     QVector<Brand> brands;
-    QVector<BrandTag> brandTags;
-    foreach(QVariant rawPub, update["beers"].toList()) {
+    foreach(QVariant rawPub, update["brands"].toList()) {
         QVariantMap brandData = rawPub.toMap();
         Brand brand = populateBrand(brandData);
         brands.append(brand);
-
-        foreach(BrandTag brandTag, popuplateBrandTags(brand.id, brandData["tags"].toList())) {
-            brandTags.append(brandTag);
-        }
-        //FIXME: ids are wrong
-        dbManager.deleteBrandTags(brand.id);
     }
-    //FIXME: ids are wrong
     dbManager.populateBrands(brands);
-    dbManager.populateBrandTags(brandTags);
 
     return true;
 }
+
 const Brand& DbUpdater::populateBrand(const QVariantMap &brandData)
 {
     Brand brand;
+    brand.id = brandData["id"].toString();
     brand.title = brandData["title"].toString();
-    brand.icon = brandData["icon"].toString();
-    brand.description = brandData["description"].toString();
-    brand.id = brandData["id"].toString(); //FIXME : this is incorrect id
+    brand.country = brandData["country"].toString();
     return brand;
+}
+
+const Beer& DbUpdater::populateBeer(const QVariantMap &beerData)
+{
+    Beer beer;
+    beer.title = beerData["title"].toString();
+    beer.brandId = beerData["brandId"].toString();
+    beer.icon = beerData["icon"].toString();
+    beer.description = beerData["description"].toString();
+    beer.id = beerData["id"].toString();
+    return beer;
 }
 
 
@@ -76,26 +91,26 @@ const Pub& DbUpdater::populatePub(const QVariantMap &pubData)
         return pub;
 }
 
-const QVector<PubBrand>& DbUpdater::popuplatePubBrands(const QString pubId, const QList<QVariant> &brandIds)
+const QVector<PubBeer>& DbUpdater::popuplatePubBeers(const QString pubId, const QVariantList &beerIds)
 {
-    QVector<PubBrand> pubBrands;
-    foreach(QVariant brandId, brandIds) {
-       PubBrand pubBrand;
-       pubBrand.brandId = brandId.toString();
-       pubBrand.pubId = pubId;
-       pubBrands.append(pubBrand);
+    QVector<PubBeer> pubBeers;
+    foreach(QVariant beerId, beerIds) {
+       PubBeer pubBeer;
+       pubBeer.beerId = beerId.toString();
+       pubBeer.pubId = pubId;
+       pubBeers.append(pubBeer);
     }
-    return pubBrands;
+    return pubBeers;
 }
 
-const QVector<BrandTag>& DbUpdater::popuplateBrandTags(const QString brandId, const QList<QVariant> &tags)
+const QVector<BeerTag>& DbUpdater::popuplateBeerTags(const QString beerId, const QVariantList &tags)
 {
-    QVector<BrandTag> brandTags;
+    QVector<BeerTag> beerTags;
     foreach(QVariant tag, tags) {
-       BrandTag brandTag;
-       brandTag.brandId = brandId;
-       brandTag.tag = tag.toString();
-       brandTags.append(brandTag);
+       BeerTag beerTag;
+       beerTag.beerId = beerId;
+       beerTag.tag = tag.toString();
+       beerTags.append(beerTag);
     }
-    return brandTags;
+    return beerTags;
 }

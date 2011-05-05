@@ -4,7 +4,7 @@
 #include <QGeoPositionInfoSource>
 #include "dbupdatedownloader.h"
 
-enum Views { MainView, BrandTabsView, BeerCounterView, PubListView, PubInfoView, FeelingThirstyView, BrandListView, BeerMapView, SinglePubMapView };
+enum Views { MainView, BeerTabsView, BeerCounterView, PubListView, PubInfoView, FeelingThirstyView, BeerListView, BeerMapView, SinglePubMapView };
 
 MainController::MainController(QWidget *parent) :
     QMainWindow(parent),
@@ -14,28 +14,28 @@ MainController::MainController(QWidget *parent) :
     dbManager = new DbManager();
     dbManager->init();
 
-    brandTabs = new BrandTabs(this);
+    beerTabs = new BeerTabs(this);
     mainWidget = new AlausRadaras(this);
     counter = new BeerCounter(this);
     pubList = new PubList(this);
     pubView = new PubView(this);
     feelingThirsty = new FeelingThirsty(this);
-    brandList = new BrandList(this);
+    beerList = new BeerList(this);
     map = new BeerMap(this);
     singleMap = new BeerMap(this);
 
     ui->setupUi(this);
     ui->stackedWidget->addWidget(mainWidget);
-    ui->stackedWidget->addWidget(brandTabs);
+    ui->stackedWidget->addWidget(beerTabs);
     ui->stackedWidget->addWidget(counter);
     ui->stackedWidget->addWidget(pubList);
     ui->stackedWidget->addWidget(pubView);
     ui->stackedWidget->addWidget(feelingThirsty);
-    ui->stackedWidget->addWidget(brandList);
+    ui->stackedWidget->addWidget(beerList);
     ui->stackedWidget->addWidget(map);
     ui->stackedWidget->addWidget(singleMap);
 
-    connect(mainWidget,SIGNAL(BrandsSelected()),this,SLOT(showBrandTabs()));
+    connect(mainWidget,SIGNAL(BeersSelected()),this,SLOT(showBeerTabs()));
     connect(mainWidget,SIGNAL(ExitApp()),this,SLOT(close()));
     connect(mainWidget,SIGNAL(LetsCount()),this,SLOT(showCounter()));
     connect(mainWidget,SIGNAL(PubListSelected(PubListType,QString,QString)),this,SLOT(showPubList(PubListType,QString,QString)));
@@ -47,16 +47,16 @@ MainController::MainController(QWidget *parent) :
 
     connect(counter,SIGNAL(Back()),this,SLOT(goBack()));
 
-    connect(brandTabs,SIGNAL(Back()),this,SLOT(goBack()));
-    connect(brandTabs,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
-    connect(brandTabs,SIGNAL(BrandListSelected(BrandListType,QString,QString)), this, SLOT(showBrandList(BrandListType,QString,QString)));
+    connect(beerTabs,SIGNAL(Back()),this,SLOT(goBack()));
+    connect(beerTabs,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
+    connect(beerTabs,SIGNAL(BeerListSelected(BeerListType,QString,QString)), this, SLOT(showBeerList(BeerListType,QString,QString)));
 
     connect(feelingThirsty,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
     connect(feelingThirsty,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
     connect(feelingThirsty,SIGNAL(Back()),this,SLOT(goBack()));
 
-    connect(brandList,SIGNAL(Back()),this,SLOT(goBack()));
-    connect(brandList,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
+    connect(beerList,SIGNAL(Back()),this,SLOT(goBack()));
+    connect(beerList,SIGNAL(PubListSelected(PubListType,QString,QString)), this, SLOT(showPubList(PubListType,QString,QString)));
 
     connect(pubView,SIGNAL(Back()),this,SLOT(goBack()));
     connect(pubView,SIGNAL(PubMapSelected(QString)),this,SLOT(showPubMap(QString)));
@@ -112,9 +112,9 @@ void MainController::showCounter()
     showWidget(BeerCounterView);
 }
 
-void MainController::showBrandTabs()
+void MainController::showBeerTabs()
 {
-    showWidget(BrandTabsView);
+    showWidget(BeerTabsView);
 }
 
 void MainController::showWidget(int index)
@@ -133,10 +133,10 @@ void MainController::showPubList(PubListType type, QString id, QString header)
     QTimer::singleShot(500,this,SLOT(startLocationUpdates()));
 
 }
-void MainController::showBrandList(BrandListType type, QString id, QString header)
+void MainController::showBeerList(BeerListType type, QString id, QString header)
 {
-    brandList->showBrands(type, id, header);
-    showWidget(BrandListView);
+    beerList->showBeers(type, id, header);
+    showWidget(BeerListView);
 }
 
 void MainController::showMap(QList<BeerPub*> pubs)

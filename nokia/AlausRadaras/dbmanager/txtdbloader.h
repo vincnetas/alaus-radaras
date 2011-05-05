@@ -13,9 +13,8 @@ public:
 signals:
 private:
     void insertBrands();
-    void insertTags();
+    void insertBeers();
     void insertPubs();
-    void insertCountries();
     void insertQuotes();
     void insertAssociations();
     DbManager *dbManager;

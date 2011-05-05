@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>db/brands.txt</file>
-        <file>db/countries.txt</file>
-        <file>db/pubs.txt</file>
         <file>db/quotes.txt</file>
         <file>db/tags.txt</file>
         <file>alausradaras_en.qm</file>
@@ -11,5 +8,8 @@
         <file>alausradaras_lt.ts</file>
         <file>alausradaras_ru.qm</file>
         <file>alausradaras_ru.ts</file>
+        <file>db/beers.txt</file>
+        <file>db/brands.txt</file>
+        <file>db/pubs.txt</file>
     </qresource>
 </RCC>

@@ -9,14 +9,12 @@
 #include "calculationhelper.h"
 #include <QStringBuilder>
 
-QString DbManager::QUERY_INSERT_BRANDS = "INSERT OR REPLACE INTO brands (id, title, icon) VALUES (:id, :title, :icon)";
-QString DbManager::QUERY_INSERT_TAGS = "INSERT OR REPLACE INTO tags  VALUES (:code, :title)";
+QString DbManager::QUERY_INSERT_BEERS = "INSERT OR REPLACE INTO beers (id, brand_id, title, icon) VALUES (:id, :brand_id, :title, :icon)";
+QString DbManager::QUERY_INSERT_BRANDS = "INSERT OR REPLACE INTO brands (id, title, country) VALUES (:id, :title, :country)";
 QString DbManager::QUERY_INSERT_PUBS = "INSERT OR REPLACE INTO pubs VALUES (:id, :title, :city, :longitude, :latitude,  :address, :notes, :phone, :url, :tile_x, :tile_y,:tile_pixel_x, :tile_pixel_y )";
-QString DbManager::QUERY_INSERT_COUNTRIES = "INSERT OR REPLACE INTO countries VALUES (:code, :name)";
-QString DbManager::QUERY_INSERT_QUOTES = "INSERT OR REPLACE INTO countries VALUES (:code, :name)";
-QString DbManager::QUERY_INSERT_BRAND_TAGS = "INSERT OR REPLACE INTO brands_tags VALUES (:brand_id, :country)";
-QString DbManager::QUERY_INSERT_PUB_BRANDS = "INSERT OR REPLACE INTO pubs_brands VALUES (:pub_id,:brand_id)";
-QString DbManager::QUERY_INSERT_BRAND_COUNTRIES = "INSERT OR REPLACE INTO brands_countries VALUES (:brand_id, :country)";
+QString DbManager::QUERY_INSERT_QUOTES = "INSERT OR REPLACE INTO quotes VALUES (:amount, :text)";
+QString DbManager::QUERY_INSERT_BEER_TAGS = "INSERT OR REPLACE INTO beer_tags VALUES (:beer_id, :tag)";
+QString DbManager::QUERY_INSERT_PUB_BEERS = "INSERT OR REPLACE INTO pub_beers VALUES (:pub_id,:beer_id)";
 DbManager::DbManager(QObject *parent) : QObject(parent)
 {
 }
@@ -64,27 +62,21 @@ bool DbManager::createDb()
     query.exec("CREATE TABLE brands("
                "id 			TEXT PRIMARY KEY, "
                "title 			TEXT NOT NULL, "
+               "country			TEXT NOT NULL);");
+
+    query.exec("CREATE TABLE beers("
+               "id 			TEXT PRIMARY KEY, "
+               "brand_id 		TEXT NOT NULL, "
+               "title 			TEXT NOT NULL, "
                "icon			TEXT, "
                "description 	TEXT);");
 
-    query.exec("CREATE TABLE tags("
-               "code			TEXT NOT NULL, "
-               "title			TEXT NOT NULL);");
-
-    query.exec("CREATE TABLE pubs_brands("
+    query.exec("CREATE TABLE pub_beers("
                "pub_id			TEXT NOT NULL, "
-               "brand_id 		TEXT NOT NULL);");
+               "beer_id 		TEXT NOT NULL);");
 
-    query.exec( "CREATE TABLE countries("
-                "code			TEXT NOT NULL,"
-                "name			TEXT NOT NULL);");
-
-    query.exec("CREATE TABLE brands_countries("
-               "brand_id			TEXT NOT NULL,"
-               "country			TEXT NOT NULL);");
-
-    query.exec("CREATE TABLE brands_tags("
-                "brand_id			TEXT NOT NULL,"
+    query.exec("CREATE TABLE beer_tags("
+                "beer_id			TEXT NOT NULL,"
                 "tag				TEXT NOT NULL);");
 
     query.exec("CREATE TABLE quotes("
@@ -96,6 +88,26 @@ bool DbManager::createDb()
 
 }
 
+void DbManager::populateBeers(const QVector<Beer> &beers)
+{
+     qDebug() << "begin inserting beer";
+     QSqlQuery query;
+     query.prepare(QUERY_INSERT_BEERS);
+
+     for (int i = 0; i < beers.size(); ++i) {
+         Beer beer = beers.at(i);
+         query.bindValue(":id", beer.id);
+         query.bindValue(":title", beer.title);
+         query.bindValue(":icon", beer.icon);
+         query.bindValue(":brand_id", beer.brandId);
+         query.exec();
+         if(query.lastError().isValid())
+            qDebug() << query.lastError();
+     }
+     query.clear();
+}
+
+
 void DbManager::populateBrands(const QVector<Brand> &brands)
 {
      qDebug() << "begin inserting brands";
@@ -106,24 +118,7 @@ void DbManager::populateBrands(const QVector<Brand> &brands)
          Brand brand = brands.at(i);
          query.bindValue(":id", brand.id);
          query.bindValue(":title", brand.title);
-         query.bindValue(":icon", brand.icon);
-         query.exec();
-         if(query.lastError().isValid())
-            qDebug() << query.lastError();
-     }
-     query.clear();
-}
-
-void DbManager::populateTags(const QVector<Tag> &tags)
-{
-     qDebug() << "begin inserting tags";
-     QSqlQuery query;
-     query.prepare(QUERY_INSERT_TAGS);
-
-     for (int i = 0; i < tags.size(); ++i) {
-         Tag tag = tags.at(i);
-         query.bindValue(":code", tag.code);
-         query.bindValue(":title", tag.title);
+         query.bindValue(":country", brand.country);
          query.exec();
          if(query.lastError().isValid())
             qDebug() << query.lastError();
@@ -160,23 +155,6 @@ void DbManager::populatePubs(const QVector<Pub> &pubs)
      query.clear();
 }
 
-void DbManager::populateCountries(const QVector<Country> &countries)
-{
-    qDebug() << "begin inserting countries";
-    QSqlQuery query;
-    query.prepare(QUERY_INSERT_COUNTRIES);
-
-    for (int i = 0; i < countries.size(); ++i) {
-        Country country = countries.at(i);
-        query.bindValue(":code", country.code);
-        query.bindValue(":name", country.name);
-        query.exec();
-        if(query.lastError().isValid())
-           qDebug() << query.lastError();
-    }
-    query.clear();
-}
-
 void DbManager::populateQuotes(const QVector<Quote> &quotes)
 {
     qDebug() << "begin inserting quotes";
@@ -194,16 +172,16 @@ void DbManager::populateQuotes(const QVector<Quote> &quotes)
     query.clear();
 }
 
-void DbManager::populateBrandTags(const QVector<BrandTag> &brandTags)
+void DbManager::populateBeerTags(const QVector<BeerTag> &beerTags)
 {
-    qDebug() << "begin inserting brands tags relationship";
+    qDebug() << "begin inserting beer tags relationship";
     QSqlQuery query;
-    query.prepare(QUERY_INSERT_BRAND_TAGS);
+    query.prepare(QUERY_INSERT_BEER_TAGS);
 
-    for (int i = 0; i < brandTags.size(); ++i) {
-        BrandTag brandTag = brandTags.at(i);
-        query.bindValue(":brand_id", brandTag.brandId);
-        query.bindValue(":tag", brandTag.tag);
+    for (int i = 0; i < beerTags.size(); ++i) {
+        BeerTag beerTag = beerTags.at(i);
+        query.bindValue(":beer_id", beerTag.beerId);
+        query.bindValue(":tag", beerTag.tag);
         query.exec();
         if(query.lastError().isValid())
            qDebug() << query.lastError();
@@ -211,33 +189,16 @@ void DbManager::populateBrandTags(const QVector<BrandTag> &brandTags)
     query.clear();
 }
 
-void DbManager::populatePubBrands(const QVector<PubBrand> &pubBrands)
+void DbManager::populatePubBeers(const QVector<PubBeer> &pubBeers)
 {
-    qDebug() << "begin inserting pub brands relationship";
+    qDebug() << "begin inserting pub beers relationship";
     QSqlQuery query;
-    query.prepare(QUERY_INSERT_PUB_BRANDS);
+    query.prepare(QUERY_INSERT_PUB_BEERS);
 
-    for (int i = 0; i < pubBrands.size(); ++i) {
-        PubBrand pubBrand = pubBrands.at(i);
-        query.bindValue(":pub_id", pubBrand.pubId);
-        query.bindValue(":brand_id", pubBrand.brandId);
-        query.exec();
-        if(query.lastError().isValid())
-           qDebug() << query.lastError();
-    }
-    query.clear();
-}
-
-void DbManager::populateBrandCountries(const QVector<BrandCountry> &brandCountries)
-{
-    qDebug() << "begin inserting brands countries relationship";
-    QSqlQuery query;
-    query.prepare(QUERY_INSERT_BRAND_COUNTRIES);
-
-    for (int i = 0; i < brandCountries.size(); ++i) {
-        BrandCountry brandCountry = brandCountries.at(i);
-        query.bindValue(":brand_id", brandCountry.brandId);
-        query.bindValue(":country", brandCountry.country);
+    for (int i = 0; i < pubBeers.size(); ++i) {
+        PubBeer pubBeer = pubBeers.at(i);
+        query.bindValue(":pub_id", pubBeer.pubId);
+        query.bindValue(":beer_id", pubBeer.beerId);
         query.exec();
         if(query.lastError().isValid())
            qDebug() << query.lastError();
@@ -261,18 +222,17 @@ void DbManager::setLatest()
     query.clear();
 }
 
-void DbManager::deletePubBrands(const QString pubId)
+void DbManager::deletePubBeers(const QString pubId)
 {
     QSqlQuery query;
-    query.exec(QString("DELETE FROM pubs_brands where pub_id=%1;").arg(pubId));
+    query.exec(QString("DELETE FROM pubs_beers where pub_id=%1;").arg(pubId));
     query.clear();
 }
 
-void DbManager::deleteBrandTags(const QString brandId)
+void DbManager::deleteBeerTags(const QString beerId)
 {
-    //FIXME: this is wrong, brandid might come ind db id, not in teh one we have in db
     QSqlQuery query;
-    query.exec(QString("DELETE FROM brands_tags where brand_id=%1;").arg(brandId));
+    query.exec(QString("DELETE FROM beer_tags where beer_id=%1;").arg(beerId));
     query.clear();
 }
 
@@ -280,14 +240,12 @@ void DbManager::dropTables()
 {
     qDebug() << "Deleting tables and setting user version to initial value";
     QSqlQuery query;
-    query.exec("drop table if exists pubs");
+    query.exec("drop table if exists beers");
     query.exec("drop table if exists brands");
-    query.exec("drop table if exists tags");
-    query.exec("drop table if exists pubs_brands");
-    query.exec("drop table if exists countries");
-    query.exec("drop table if exists brands_countries");
-    query.exec("drop table if exists brands_tags");
+    query.exec("drop table if exists pubs");
     query.exec("drop table if exists quotes");
+    query.exec("drop table if exists beer_tags");
+    query.exec("drop table if exists pub_beers");
     query.exec("PRAGMA user_version=1;");
     query.clear();
 }

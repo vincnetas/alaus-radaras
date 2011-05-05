@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <dbmanager.h>
 #include <QProgressDialog>
-#include "brandtabs.h"
+#include "beertabs.h"
 #include "publist.h"
 #include "waitdialog.h"
 #include "beercounter.h"
@@ -25,7 +25,7 @@ public:
     void keyPressEvent(QKeyEvent *);
     void changeEvent(QEvent* event);
 private slots:
-    void on_btnBrands_clicked();
+    void on_btnBeers_clicked();
     void on_btnNear_clicked();
     void on_btnLucky_clicked();
     void on_btnExit_clicked();
@@ -41,7 +41,7 @@ private:
     QTranslator *myappTranslator;
     void retranslateUi();
 signals:
-    void BrandsSelected();
+    void BeersSelected();
     void PubListSelected(PubListType type, QString id, QString header);
     void LetsCount();
     void ExitApp();

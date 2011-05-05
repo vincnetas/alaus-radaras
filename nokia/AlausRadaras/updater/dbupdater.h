@@ -3,9 +3,10 @@
 
 #include <QObject>
 #include <QVariant>
-#include "pubbrand.h"
+#include "pubbeer.h"
 #include "pub.h"
-#include "brandtag.h"
+#include "beertag.h"
+#include "beer.h"
 #include "brand.h"
 
 class DbUpdater : public QObject
@@ -15,9 +16,10 @@ public:
     explicit DbUpdater(QObject *parent = 0);
     bool updateDb(const QVariantMap &data);
 private:
-    const QVector<PubBrand>& popuplatePubBrands(const QString pubId, const QVariantList &brandIds);
-    const QVector<BrandTag>& popuplateBrandTags(const QString brandId, const QVariantList &tags);
+    const QVector<PubBeer>& popuplatePubBeers(const QString pubId, const QVariantList &beerIds);
+    const QVector<BeerTag>& popuplateBeerTags(const QString beerId, const QVariantList &tags);
     const Pub& populatePub(const QVariantMap &pubData);
+    const Beer& populateBeer(const QVariantMap &beerData);
     const Brand& populateBrand(const QVariantMap &brandData);
 signals:
 

@@ -8,13 +8,12 @@ SOURCES += dbmanager.cpp \
 
 HEADERS  +=   dbmanager.h \
     pub.h \
-    brand.h \
-    tag.h \
-    pubbrand.h \
-    country.h \
-    brandcountry.h \
-    brandtag.h \
+    beer.h \
+    pubbeer.h \
+    brandbeer.h \
+    beertag.h \
     quote.h \
     txtdbloader.h \
     dataprovider.h \
-    dbpopulatorrunner.h
+    dbpopulatorrunner.h \
+    DbManager/brand.h
