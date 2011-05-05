@@ -11,6 +11,22 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	
 	private Context context;
 	
+	public static final String PUBS = "pubs";
+	
+	public static final String COMPANIES = "companies";
+	
+	public static final String BRANDS = "brands";
+	
+	public static final String PUBS_BRANDS = "pubs_brands";
+	
+	public static final String TAGS = "tags";
+	
+	public static final String BRANDS_TAGS = "brands_tags";
+	
+	public static final String QOUTES = "qoutes";
+	
+	public static final String TAXI = "taxi";
+	
 	private static class Definition {
 		
 		public static String DB_NAME = "beer-radar";
@@ -18,7 +34,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 		public static int DB_VERSION = 14;
 		
 		public static String PUBS = 
-	        "CREATE TABLE pubs(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.PUBS + "(" +
 	        	"id 		TEXT PRIMARY KEY, " +
 	        	"title 		TEXT NOT NULL, " +
 	        	"longtitude REAL NOT NULL, " +
@@ -30,7 +46,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"url	 	TEXT);";
 		
 		public static String COMPANY =
-			"CREATE TABLE companies(" +
+			"CREATE TABLE " + BeerRadarSQLiteOpenHelper.COMPANIES + "(" +
 				"id				TEXT PRIMARY key, " +
 				"title			TEXT NOT NULL, " + 
 				"icon			TEXT, " +
@@ -40,7 +56,7 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 				"description	TEXT);";
 		
 		public static String BRANDS = 
-	        "CREATE TABLE brands(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.BRANDS + "(" +
 	        	"id 			TEXT PRIMARY KEY, " +
 	        	"title 			TEXT NOT NULL, " +
 	        	"icon			TEXT, " +
@@ -48,36 +64,32 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        	"companyId		TEXT NOT NULL);";
 				
 		public static String PUBS_BRANDS = 
-	        "CREATE TABLE pubs_brands(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.PUBS_BRANDS + "(" +
 	        	"pub_id			TEXT NOT NULL, " +
 	        	"brand_id 		TEXT NOT NULL);";
 				
 		public static String TAGS = 
-	        "CREATE TABLE tags(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.TAGS + "(" +
 	        	"code			TEXT PRIMARY KEY," +
 	        	"title			TEXT NOT NULL);";
 		
 		public static String BRANDS_TAGS = 
-	        "CREATE TABLE brands_tags(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.BRANDS_TAGS + "(" +
 	        	"brand_id			TEXT NOT NULL," +
 	        	"tag				TEXT NOT NULL);";
 		
 		public static String QOUTES = 
-	        "CREATE TABLE qoutes(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.QOUTES + "(" +
 	        	"amount			INTEGER NOT NULL," +
 	        	"text			TEXT NOT NULL);";
 		
 		public static String TAXI = 
-	        "CREATE TABLE taxi(" +
+	        "CREATE TABLE " + BeerRadarSQLiteOpenHelper.TAXI + "(" +
 	        	"title 		TEXT NOT NULL, " +
 	        	"phone	 	TEXT, " +
 	        	"city 		TEXT, " +
 	        	"longitude REAL NOT NULL, " +
 	        	"latitude 	REAL NOT NULL);";
-		
-		public static String UPDATES = 
-		    "CREATE TABLE updates(" +
-		        "date       INTEGER NOT NULL);";    
 	}
 	
     public BeerRadarSQLiteOpenHelper(Context context) {
@@ -95,7 +107,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
 	        db.execSQL(Definition.BRANDS);
 	        db.execSQL(Definition.PUBS_BRANDS);
 	        db.execSQL(Definition.BRANDS_TAGS);
-	        db.execSQL(Definition.UPDATES);	        
 	        db.execSQL(Definition.TAGS);
 	        db.execSQL(Definition.QOUTES);
 	        db.execSQL(Definition.TAXI);
@@ -121,7 +132,6 @@ class BeerRadarSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS tags;");
         db.execSQL("DROP TABLE IF EXISTS qoutes;");
         db.execSQL("DROP TABLE IF EXISTS taxi;");
-        db.execSQL("DROP TABLE IF EXISTS updates;");
         
         onCreate(db);
 	}

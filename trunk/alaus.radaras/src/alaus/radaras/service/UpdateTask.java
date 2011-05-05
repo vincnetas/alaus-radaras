@@ -27,6 +27,7 @@ import org.svenson.tokenize.JSONTokenizer;
 import alaus.radaras.R;
 import alaus.radaras.parser.state.StartState;
 import alaus.radaras.parser.state.State;
+import alaus.radaras.settings.SettingsManager;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
     
     private Date lastUpdate;
     
+    private SettingsManager settingsManager;
+    
     public UpdateTask(Context context, BeerUpdate beerUpdate) {
         this(context, beerUpdate, null);
     }
@@ -55,6 +58,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         this.context = context;
         this.beerUpdate = beerUpdate;
         this.progressHandler = progressHandler;
+        this.settingsManager = new SettingsManager(context);
     }
     
     @Override
@@ -103,7 +107,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
     
     private InputStream asURL(String url) {
         String updateDate = "";        
-        Date lastUpdate = beerUpdate.getLastUpdate();
+        Date lastUpdate = settingsManager.getLastUpdate();
         if (lastUpdate != null) {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 			dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+00"));
@@ -174,7 +178,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         IOUtils.closeQuietly(inputStream);
         
         if (result != null) {
-            beerUpdate.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
+            settingsManager.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
             Toast.makeText(context, context.getResources().getString(R.string.update_complete), Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
