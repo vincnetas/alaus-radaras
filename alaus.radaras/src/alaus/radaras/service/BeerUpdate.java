@@ -53,19 +53,4 @@ public interface BeerUpdate {
      *            Id of company to delete
      */
     void deleteCompany(String companyId);
-    
-    /**
-     * Returns date when last update was performed (successful finished).
-     * 
-     * @return Returns last update date or null if update was never performed.
-     */
-    Date getLastUpdate();
-    
-    /**
-     * Sets date of last successful update.
-     * 
-     * @param date Date when update finished
-     */
-    void setLastUpdate(Date date);
-
 }

@@ -1,5 +1,7 @@
 package alaus.radaras.settings;
 
+import java.util.Date;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -24,13 +26,20 @@ public class SettingsManager {
 		public static final String SETTING_MAX_DISTANCE = "maxDistance";
 		public static final String SETTINGS_ASK_ENABLE_LOCATION_PROVIDER = "askEnableLocationProvider";
         public static final String SETTINGS_ASK_ENABLE_SYNCHRONIZATION = "askEnableSynchronization";
+        public static final String SETTINGS_LAST_UPDATE = "lastUpdate";
 	}
 	
-	private void storeBool(String name, Boolean value) {
-		SharedPreferences.Editor editor = getPreferences().edit();
-		editor.putBoolean(name, value);
-		editor.commit();
-	}
+    private void storeBool(String name, Boolean value) {
+        SharedPreferences.Editor editor = getPreferences().edit();
+        editor.putBoolean(name, value);
+        editor.commit();
+    }
+
+    private void storeLong(String name, Long value) {
+        SharedPreferences.Editor editor = getPreferences().edit();
+        editor.putLong(name, value);
+        editor.commit();
+    }
 	
 	private void storeInt(String name, int value) {
 		SharedPreferences.Editor editor = getPreferences().edit();
@@ -115,6 +124,32 @@ public class SettingsManager {
 		storeBool(Settings.SETTINGS_ASK_ENABLE_LOCATION_PROVIDER, doAsk);
 	}
 
+    
+    /**
+     * Returns date when last update was performed (successful finished).
+     * 
+     * @return Returns last update date or null if update was never performed.
+     */
+    public Date getLastUpdate() {
+        Date result = null;
+        
+        long lastUpdate = getPreferences().getLong(Settings.SETTINGS_LAST_UPDATE, 0);
+        if (lastUpdate != 0) {
+            result = new Date(lastUpdate);
+        }
+        
+        return result;        
+    }
+    
+    /**
+     * Sets date of last successful update.
+     * 
+     * @param date Date when update finished
+     */
+    public void setLastUpdate(Date date) {
+        storeLong(Settings.SETTINGS_LAST_UPDATE, date.getTime());
+    }
+	
 
 
 }
