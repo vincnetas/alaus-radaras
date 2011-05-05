@@ -3,6 +3,7 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
+import alaus.radaras.utils.Utils;
 import alaus.radaras.viewholders.CountryViewHolder;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,10 +18,12 @@ public class CountryListAdapter extends BaseAdapter {
 
 	private List<String> countries;
 	private LayoutInflater inflater;
+	private Context context;
 	
 	public CountryListAdapter(Context context, List<String> countries) {
 		this.countries = countries;
 		this.inflater = LayoutInflater.from(context);
+		this.context = context;
 	}
 	
 	@Override
@@ -54,7 +57,7 @@ public class CountryListAdapter extends BaseAdapter {
         }
         String country = countries.get(position);
         // Bind the data efficiently with the holder.
-        holder.title.setText(country);
+        holder.title.setText(Utils.translate(context, country, "country"));
         holder.img.setImageResource(R.drawable.map_02);
         
         return convertView;

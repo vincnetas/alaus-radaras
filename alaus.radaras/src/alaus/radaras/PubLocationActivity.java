@@ -109,7 +109,7 @@ public class PubLocationActivity extends MapActivity  implements Observer {
 		if (getBrandId() != null) {
 			caption = beerRadar.getBrand(getBrandId()).getTitle();
 		} else if (getCountryId() != null) {
-			caption = Utils.translate(this, getTagId(), "country");
+			caption = Utils.translate(this, getCountryId(), "country");
 		} else if (getTagId() != null) {
 			caption = Utils.translate(this, getTagId(), "tag");
 		}

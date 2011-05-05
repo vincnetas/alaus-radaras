@@ -3,6 +3,7 @@ package alaus.radaras.adapters;
 import java.util.List;
 
 import alaus.radaras.R;
+import alaus.radaras.utils.Utils;
 import alaus.radaras.viewholders.TagViewHolder;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,11 +16,15 @@ import android.widget.TextView;
 public class TagListAdapter extends BaseAdapter {
 
 	private List<String> tags;
+	
 	private LayoutInflater inflater;
+	
+	private Context context;
 	
 	public TagListAdapter(Context context, List<String> tags) {
 		this.tags = tags;
 		this.inflater = LayoutInflater.from(context);
+		this.context = context;
 	}
 	
 	@Override
@@ -56,7 +61,7 @@ public class TagListAdapter extends BaseAdapter {
         String tag = tags.get(position);
 
         // Bind the data efficiently with the holder.
-        holder.title.setText(tag);
+        holder.title.setText(Utils.translate(context, tag, "tag"));
         holder.img.setImageResource(R.drawable.alus);
         
         return convertView;
