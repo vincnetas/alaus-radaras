@@ -2,11 +2,11 @@
 #define MAINCONTROLLER_H
 
 #include <QMainWindow>
-#include "brandtabs.h"
+#include "beertabs.h"
 #include "alausradaras.h"
 #include "beercounter.h"
 #include "publist.h"
-#include "brandlist.h"
+#include "beerlist.h"
 #include "beermap.h"
 #include "feelingthirsty.h"
 
@@ -35,7 +35,7 @@ public:
 private:
     Ui::MainController *ui;
 
-    BrandTabs *brandTabs;
+    BeerTabs *beerTabs;
     AlausRadaras *mainWidget;
 
     WaitDialog *progress;
@@ -45,7 +45,7 @@ private:
     PubList *pubList;
     PubView *pubView;
     FeelingThirsty *feelingThirsty;
-    BrandList *brandList;
+    BeerList *beerList;
     BeerMap *map;
     BeerMap *singleMap;
     AppUpdateChecker updater;
@@ -61,10 +61,10 @@ private:
 private slots:
     void dbInitFinished();
     void showWidget(int index);
-    void showBrandTabs();
+    void showBeerTabs();
     void showCounter();
     void showPubList(PubListType type, QString id, QString header);
-    void showBrandList(BrandListType type, QString id, QString header);
+    void showBeerList(BeerListType type, QString id, QString header);
     void showMap(QList<BeerPub*> pubs);
     void showPub(QString pubId);
     void showMain();

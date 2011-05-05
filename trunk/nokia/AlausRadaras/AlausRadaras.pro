@@ -16,9 +16,9 @@ include(Updater/Updater.pri)
 
 SOURCES += main.cpp\
         alausradaras.cpp \
-    brandlistmodel.cpp \
+    beerlistmodel.cpp \
     countrylistmodel.cpp \
-    brandtabs.cpp \
+    beertabs.cpp \
     taglistmodel.cpp \
     pubview.cpp \
     beerpub.cpp \
@@ -27,7 +27,7 @@ SOURCES += main.cpp\
     calculationhelper.cpp \
     slippymap.cpp \
     lightmaps.cpp \
-    brandlist.cpp \
+    beerlist.cpp \
     feelingluckyinfo.cpp \
     beermap.cpp \
     waitdialog.cpp \
@@ -39,9 +39,9 @@ SOURCES += main.cpp\
     feelingthirsty.cpp
 
 HEADERS  += alausradaras.h \
-    brandlistmodel.h \
+    beerlistmodel.h \
     countrylistmodel.h \
-    brandtabs.h \
+    beertabs.h \
     taglistmodel.h \
     pubview.h \
     beerpub.h \
@@ -50,7 +50,7 @@ HEADERS  += alausradaras.h \
     calculationhelper.h \
     slippymap.h \
     lightmaps.h \
-    brandlist.h \
+    beerlist.h \
     feelingluckyinfo.h \
     beermap.h \
     waitdialog.h \
@@ -62,11 +62,11 @@ HEADERS  += alausradaras.h \
     feelingthirsty.h 
 
 FORMS    += alausradaras.ui \
-    brandtabs.ui \
-    brandtabs.ui \
+    beertabs.ui \
+    beertabs.ui \
     pubview.ui \
     publist.ui \
-    brandlist.ui \
+    beerlist.ui \
     beermap.ui \
     waitdialog.ui \
     beercounter.ui \
@@ -106,7 +106,7 @@ DEPLOYMENT += my_deployment
 
 RESOURCES += \
     Assets.qrc \
-    Brands.qrc \
+    Beers.qrc \
     Images.qrc
 
 debug {

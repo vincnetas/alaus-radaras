@@ -45,8 +45,8 @@ FeelingLuckyInfo DataProvider::feelingLucky()
     QSqlQuery brandQuery(QString("SELECT id, title FROM brands b  INNER JOIN pubs_brands pb ON b.id = pb.brand_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1").arg(lucky.pubId));
 
     while(brandQuery.next()) {
-        lucky.brandId = brandQuery.value(0).toString();
-        lucky.brandName = brandQuery.value(1).toString();
+        lucky.beerId = brandQuery.value(0).toString();
+        lucky.beerName = brandQuery.value(1).toString();
     }
     brandQuery.clear();
     return lucky;

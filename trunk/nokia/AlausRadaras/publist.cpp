@@ -83,7 +83,7 @@ void PubList::showPubList(PubListType type, QString id, QString header)
         case ALL:
             pubs = dataProvider->getAllPubs();
         break;
-        case BRAND:
+        case BEER:
             pubs = dataProvider->getPubsByBrandId(id);
         break;
         case COUNTRY:

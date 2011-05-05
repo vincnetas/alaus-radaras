@@ -65,7 +65,7 @@ border-image:url(:/images/lucky.png)
       <string>Alus</string>
      </property>
      <property name="icon">
-      <iconset resource="Brands.qrc">
+      <iconset resource="Beers.qrc">
        <normaloff>:/brands/brand_default.png</normaloff>:/brands/brand_default.png</iconset>
      </property>
     </widget>
@@ -165,7 +165,7 @@ border-image:url(:/images/batonas.png);
   </layout>
  </widget>
  <resources>
-  <include location="Brands.qrc"/>
+  <include location="Beers.qrc"/>
  </resources>
  <connections/>
 </ui>

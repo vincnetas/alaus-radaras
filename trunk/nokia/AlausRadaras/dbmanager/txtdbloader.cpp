@@ -2,10 +2,9 @@
 #include <QFile>
 #include <QTextStream>
 #include <QVector>
+#include <beer.h>
 #include <brand.h>
-#include <tag.h>
 #include <pub.h>
-#include <country.h>
 #include <qdebug.h>
 
 TxtDbLoader::TxtDbLoader(QObject *parent, DbManager *dbManager) :
@@ -28,9 +27,8 @@ bool TxtDbLoader::populateIfNotLatest()
 
         //cowboy coding. But i hate c++ delegates with pointers
         insertBrands();
+        insertBeers();
         insertPubs();
-        insertTags();
-        insertCountries();
         insertQuotes();
         insertAssociations();
         dbManager->setLatest();
@@ -52,18 +50,18 @@ void TxtDbLoader::insertBrands()
        QStringList columns = line.split("\t");
        Brand brand;
        brand.id = columns.at(0);
-       brand.icon = columns.at(0);
        brand.title = columns.at(1);
+       brand.country = columns.at(2);
        brands.append(brand);
     }
     file.close();
     dbManager->populateBrands(brands);
 }
 
-void TxtDbLoader::insertTags()
+void TxtDbLoader::insertBeers()
 {
-    QVector<Tag> tags;
-    QFile file(":/db/tags.txt");
+    QVector<Beer> beers;
+    QFile file(":/db/beers.txt");
     file.open(QFile::ReadOnly | QFile::Text);
     QTextStream in(&file);
     in.setCodec(QTextCodec::codecForName("UTF-8"));
@@ -72,14 +70,17 @@ void TxtDbLoader::insertTags()
        line = in.readLine();
 
        QStringList columns = line.split("\t");
-       Tag tag;
-       tag.code = columns.at(0);
-       tag.title = columns.at(1);
-       tags.append(tag);
+       Beer beer;
+       beer.id = columns.at(0);
+       beer.icon = columns.at(1);
+       beer.title = columns.at(2);
+       beer.brandId = columns.at(5);
+       beers.append(beer);
     }
     file.close();
-    dbManager->populateTags(tags);
+    dbManager->populateBeers(beers);
 }
+
 
 void TxtDbLoader::insertPubs()
 {
@@ -108,27 +109,6 @@ void TxtDbLoader::insertPubs()
     dbManager->populatePubs(pubs);
 }
 
-void TxtDbLoader::insertCountries()
-{
-    QVector<Country> countries;
-    QFile file(":/db/countries.txt");
-    file.open(QFile::ReadOnly | QFile::Text);
-    QTextStream in(&file);
-    in.setCodec(QTextCodec::codecForName("UTF-8"));
-    QString line = NULL;
-    while (!in.atEnd()) {
-       line = in.readLine();
-
-       QStringList columns = line.split("\t");
-       Country country;
-       country.code = columns.at(0);
-       country.name = columns.at(1);
-       countries.append(country);
-    }
-    file.close();
-    dbManager->populateCountries(countries);
-}
-
 void TxtDbLoader::insertQuotes()
 {
     QVector<Quote> quotes;
@@ -152,11 +132,10 @@ void TxtDbLoader::insertQuotes()
 
 void TxtDbLoader::insertAssociations()
 {
-     QVector<BrandCountry> brandCountries;
-     QVector<BrandTag> brandTags;
-     QVector<PubBrand> pubBrands;
+     QVector<BeerTag> beerTags;
+     QVector<PubBeer> pubBeers;
 
-     QFile file(":/db/brands.txt");
+     QFile file(":/db/beers.txt");
      file.open(QFile::ReadOnly | QFile::Text);
      QTextStream in(&file);
      in.setCodec(QTextCodec::codecForName("UTF-8"));
@@ -166,32 +145,23 @@ void TxtDbLoader::insertAssociations()
 
         QStringList columns = line.split("\t");
 
-        QStringList pubs = columns.at(2).split(",");
+        QStringList pubs = columns.at(3).split(",");
         for (int i = 0; i < pubs.length(); i++) {
-            PubBrand pubBrand;
-            pubBrand.brandId = columns.at(0);
-            pubBrand.pubId = pubs.at(i).trimmed();
-            pubBrands.append(pubBrand);
-        }
-
-        QStringList countries = columns.at(3).split(",");
-        for (int i = 0; i < countries.length(); i++) {
-            BrandCountry brandCountry;
-            brandCountry.brandId = columns.at(0);
-            brandCountry.country = countries.at(i).trimmed();
-            brandCountries.append(brandCountry);
+            PubBeer pubBeer;
+            pubBeer.beerId = columns.at(0);
+            pubBeer.pubId = pubs.at(i).trimmed();
+            pubBeers.append(pubBeer);
         }
 
         QStringList tags = columns.at(4).split(",");
         for (int i = 0; i < tags.length(); i++) {
-            BrandTag brandTag;
-            brandTag.brandId = columns.at(0);
-            brandTag.tag = tags.at(i).trimmed();
-            brandTags.append(brandTag);
+            BeerTag beerTag;
+            beerTag.beerId = columns.at(0);
+            beerTag.tag = tags.at(i).trimmed();
+            beerTags.append(beerTag);
         }
      }
      file.close();
-     dbManager->populateBrandCountries(brandCountries);
-     dbManager->populateBrandTags(brandTags);
-     dbManager->populatePubBrands(pubBrands);
+     dbManager->populateBeerTags(beerTags);
+     dbManager->populatePubBeers(pubBeers);
 }

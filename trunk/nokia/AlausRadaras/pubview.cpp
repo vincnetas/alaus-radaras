@@ -1,7 +1,7 @@
 #include "pubview.h"
 #include "ui_pubview.h"
 #include <QSqlQuery>
-#include "brandlistmodel.h"
+#include "beerlistmodel.h"
 #include <QDebug>
 #include <QSqlError>
 #include "viewutils.h"
@@ -13,7 +13,7 @@
 #include <QUrl>
 PubView::PubView(QWidget *parent) :
     QWidget(parent),
-    brandsModel(0),
+    beersModel(0),
     ui(new Ui::PubView)
 {
     ui->setupUi(this);
@@ -21,10 +21,10 @@ PubView::PubView(QWidget *parent) :
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
 
-     ui->brandListView->setAutoFillBackground(true);
-     ui->brandListView->setPalette(ViewUtils::GetBackground(ui->brandListView->palette()));
+     ui->beerListView->setAutoFillBackground(true);
+     ui->beerListView->setPalette(ViewUtils::GetBackground(ui->beerListView->palette()));
 
-     QtScroller::grabGesture(ui->brandListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
+     QtScroller::grabGesture(ui->beerListView->viewport(), QtScroller::QtScroller::LeftMouseButtonGesture);
 
      //until we don't have GPS
      ui->directionsButton->setVisible(false);
@@ -55,13 +55,13 @@ void PubView::showPub(QString pubId)
         this->lng = query.value(5).toString();
     }
     query.clear();
-    if(!brandsModel) {
-        brandsModel = new BrandListModel();
+    if(!beersModel) {
+        beersModel = new BeerListModel();
     }
 
-    brandsModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = '%1'").arg(pubId));
+    beersModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = '%1'").arg(pubId));
 
-    ui->brandListView->setModel(brandsModel);
+    ui->beerListView->setModel(beersModel);
 
 
 }

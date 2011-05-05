@@ -1,14 +1,11 @@
 #ifndef BRAND_H
 #define BRAND_H
-#include "qstring.h"
+
+#include <QString>
 
 struct Brand {
     QString id;
     QString title;
-    QString icon;
-    QString description;
-
+    QString country;
 };
 #endif // BRAND_H
-
-

@@ -23,13 +23,13 @@ void FeelingThirsty::chooseNext()
     DataProvider provider(this);
     luckyInfo = provider.feelingLucky();
 
-    ui->btnBeer->setText(ViewUtils::WrapText(luckyInfo.brandName, 30));
+    ui->btnBeer->setText(ViewUtils::WrapText(luckyInfo.beerName, 30));
     ui->btnPub->setText(ViewUtils::WrapText(luckyInfo.pubName, 30));
 }
 
 void FeelingThirsty::on_btnBeer_clicked()
 {
-    emit PubListSelected(BRAND, luckyInfo.brandId,luckyInfo.brandName);
+    emit PubListSelected(BEER, luckyInfo.beerId,luckyInfo.beerName);
 }
 
 void FeelingThirsty::on_btnBack_clicked()
