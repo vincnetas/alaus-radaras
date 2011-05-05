@@ -964,42 +964,36 @@ static SQLiteManager *sharedSQLiteManager = nil;
     for (NSString *tag in beerTags) {
         // Check if tag exists
         rs_tag = 
-            [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM tags t WHERE t.code = '%@'",tag]];
+            [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM tags t WHERE t.code = '%@'", tag]];
         if ([rs_tag next]) {
             // if tag exists - proceed
             // check if beer-tag relationship exists
             rs_tag = 
-                [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers_tags bt WHERE bt.beer_id = '%@' AND bt.tag = '%@'", [beer objectForKey:@"id"],tag]];
+                [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers_tags bt WHERE bt.beer_id = '%@' AND bt.tag = '%@'", [beer objectForKey:@"id"], tag]];
             
             if ([rs_tag next]) {
                 // Relationship exists - ignore
             } else {
                 NSLog(@"insert beers_tags");
                 [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
-                 [beer objectForKey:@"id"],
-                 tag];
+                 [beer objectForKey:@"id"], tag];
             }  
-        } else {
-            // Tag does not exist - ignore
-            [db executeUpdate:@"INSERT INTO tags (code, title) values (?, ?)",
-             [beer objectForKey:@"id"],
-             [beer objectForKey:@"title"],
-             [beer objectForKey:@"icon"]];
         }
+        // Tag does not exist - ignore
      }
     [rs close];
     [rs_brand close];
     [rs_tag close];
-
 }
 
 - (void) updatePub: (NSDictionary *) pub {
     FMResultSet *rs = 
         [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs p WHERE p.id = '%@'", [pub objectForKey:@"id"]]];
-    /*
+
 	if ([rs next]) {
-        NSLog(@"update pub");
-        [db executeUpdate:@"UPDATE brands SET title = ?, icon = ?, homePage = ?, country = ?, hometown = ?, description = ? WHERE id = ?",
+		// update pub data
+		/*
+	    [db executeUpdate:@"UPDATE pub SET  WHERE id = ?",
          [brand objectForKey:@"title"],
          [brand objectForKey:@"icon"],
          [brand objectForKey:@"homePage"],
@@ -1007,8 +1001,10 @@ static SQLiteManager *sharedSQLiteManager = nil;
          [brand objectForKey:@"hometown"],
          [brand objectForKey:@"description"],
          [brand objectForKey:@"id"]];
+		 */
 	} else {
-        NSLog(@"insert pub");
+		// insert pub
+		/*
         [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
          [brand objectForKey:@"id"],
          [brand objectForKey:@"title"],
@@ -1017,10 +1013,22 @@ static SQLiteManager *sharedSQLiteManager = nil;
          [brand objectForKey:@"country"],
          [brand objectForKey:@"hometown"],
          [brand objectForKey:@"description"]];
-    }*/
+		 */
+	}
+	
+	NSArray *beerIds = [beer objectForKey:@"beerIds"];
+    for (NSString *beerId in beerIds) {
+        // Check if beer exists
+        rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
+		if ([rs next]) {
+			//if beer exists
+			
+		}
+		//if beer not found - ignore
+	}
+	
+	[rs close];
 }
-
-
 
 
 @end
