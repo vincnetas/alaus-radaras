@@ -43,7 +43,7 @@ public class ReadValueState implements State {
             case COMMA:
                 break;
             case BRACKET_CLOSE: {
-                parent.setValue(array);
+                parent.setValue(new HashSet<Object>(array));
                 result = parent;
                 break;
             }

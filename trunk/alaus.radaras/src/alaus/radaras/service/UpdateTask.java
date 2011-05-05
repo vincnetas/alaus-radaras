@@ -71,7 +71,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
             if (inputStream != null) {                
                 try {
                     result = applyUpdate(inputStream);
-                } catch (IOException e) {
+                } catch (Throwable e) {
                     /*
                      * Ignore
                      */
@@ -143,21 +143,15 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
 	 * 
 	 */
     private int applyUpdate(InputStream data) throws IOException {
-        long start = System.currentTimeMillis();
-
         JSONCharacterSource source = new InputStreamSource(data, true);
 		JSONTokenizer tokenizer = new JSONTokenizer(source, true);
-
+		
 		State state = new StartState(beerUpdate);
 		while (state != null && !isCancelled()) {
 			state = state.handle(tokenizer.next());
 		}
 		
-		int updateSize = (int) (System.currentTimeMillis() - start);
-        System.out.println("Done in " + (updateSize));
-        
-        
-        return updateSize ;
+        return 0;
     }
 
     /* (non-Javadoc)
@@ -181,7 +175,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         
         if (result != null) {
             beerUpdate.setLastUpdate(lastUpdate != null ? lastUpdate : new Date());
-            Toast.makeText(context, context.getResources().getString(R.string.update_complete, result), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.update_complete), Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
         }

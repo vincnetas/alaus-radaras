@@ -31,13 +31,12 @@
 	android:text="@string/main_near_value" 
 	android:id="@+id/around" 
 	android:layout_width="fill_parent"
-	android:layout_marginLeft="40px" 
 	android:layout_centerInParent="true"
 	android:layout_marginTop="10px"
 	android:layout_below="@id/counter" 
 	android:textSize="30dp" 
 	android:layout_height="40dp" 
-	android:background="@color/home_button"></Button>
+	android:background="@color/home_button" android:layout_marginLeft="40px"></Button>
 <Button 
 	android:text="@string/main_brand_value" 
 	android:id="@+id/search" 
@@ -60,4 +59,5 @@
 	android:layout_height="40dp" 
 	android:textSize="30dp" 
 	android:background="@color/home_button"></Button>
+<ProgressBar android:layout_width="wrap_content" android:layout_alignParentRight="true" android:layout_height="wrap_content" android:visibility="invisible" android:id="@+id/updateProgress" android:layout_margin="30dp"></ProgressBar>
 </RelativeLayout >

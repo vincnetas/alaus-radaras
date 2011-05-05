@@ -41,7 +41,7 @@ public class UpdatePubState extends UpdateValueState<Pub> implements State {
     }
 	
 	public UpdatePubState(State parent, BeerUpdate beerUpdate) {
-	    super(parent, beerUpdate, new Pub());
+	    super(parent, beerUpdate, new Pub(), methods);
 	}
 
     /* (non-Javadoc)
@@ -50,13 +50,5 @@ public class UpdatePubState extends UpdateValueState<Pub> implements State {
     @Override
     protected void objectReady(Pub pub) {
         beerUpdate.updatePub(pub);        
-    }
-
-    /* (non-Javadoc)
-     * @see alaus.radaras.parser.state.UpdateValueState#getMethod(java.lang.String)
-     */
-    @Override
-    protected Method getMethod(String key) {
-        return methods.get(key);
     }
 }
