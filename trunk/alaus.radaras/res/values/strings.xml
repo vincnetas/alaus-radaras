@@ -14,12 +14,17 @@
 <string name="generic_enable_yes">Įjungti</string>
 <string name="generic_enable_no">Vėliau</string>
 <string name="generic_stop_asking">Nebeklausti</string>
+<string name="generic_ok">Gerai</string>
 <string name="tabs_title_brands">Alūs</string>
 <string name="tabs_title_countries">Šalys</string>
 <string name="tabs_title_tags">Tipai</string>
-<string name="settings_distance_meters">Maksimalus atstumas iki barų %s metrų</string>
-<string name="settings_distance_km">Maksimalus atstumas iki barų %s km</string>
-<string name="settings_distance_disabled">Atstumas neribojamas. Rodomi visi LT barai</string>
+<string name="settings_search_distance">Kaip toli pasiruošęs keliauti iki baro</string>
+<string-array name="settings_search_distance_array">
+    <item>Keli kvartalai</item>
+    <item>Pusė miesto</item>
+    <item>Jei reiks galiu važiuoti</item>
+    <item>Rodyk visus barus</item>
+</string-array>
 <string name="settings_ask_if_no_location">Klausti jeigu išjungtas vietos nustatymas</string>
 <string name="waiting_for_location">Palaukite, bandau nustatyti Jūsų vietą...</string>
 <string name="alert_taxi_yes">Užteks, važiuoju</string>
@@ -72,8 +77,7 @@
 <string name="pub_brand_submit_thanks">Tik alus išgelbės mus! :)</string>
 <string name="update_complete">Duomenys atnaujinti</string>
 <string name="update_failed">Napavyksta gauti atnaujinimų</string>
-<string name="update_importing_data">Atnaujinami duomenys %1$d / %2$d</string>
-<string name="update_loading_data">Parsiunčiami atnaujinimai</string>
+<string name="update_in_progress">Kantrybės, vyksta duomenų atnaujinimas.</string>
 
 <string name="country_lt">Lietuviškas</string>
 <string name="country_cz">Čekiškas</string>

@@ -1,6 +1,5 @@
 package alaus.radaras;
 
-//import alaus.radaras.service.BeerRadarUpdate;
 import alaus.radaras.service.UpdateService;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.utils.Utils;
@@ -24,30 +23,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class BeerRadarActivity extends AbstractLocationActivity {
 
-    protected static final int UPDATE_DIALOG = 123;
+    private static final int UPDATE_DIALOG = 123;
 
-    protected static final int LOCATION_DIALOG = 124;
+    private static final int LOCATION_DIALOG = 124;
 
-	protected static final int UPDATE_IN_PROGRESS = 0;
+    private static final int UPDATE_IN_PROGRESS = 0;
 
     private SettingsManager settings;
-
+    
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 		
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			if (intent.getExtras().getBoolean(UpdateService.UPDATE_STATUS)) {
-			    getProgressView().setVisibility(View.VISIBLE);
+				getProgressView().setVisibility(View.VISIBLE);
+				getNotificationImageView().setVisibility(View.INVISIBLE);
 			} else {
 			    getProgressView().setVisibility(View.INVISIBLE);
+			    updateNotifications();
 			}
-		}
-		
+		}		
 	};
 	
     /** Called when the activity is first created. */
@@ -96,22 +95,34 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 				
 			}
 		});
-
-        checkIfLocationIsEnabled();
-        checkIfBackgroundDataIsEnabled();
+        
+        getNotificationImageView().setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				int notificationDialog = getNotificationDialog();
+				if (notificationDialog != -1) {
+					showDialog(notificationDialog);
+				}				
+			}
+		});
     }
-
-	private void checkIfBackgroundDataIsEnabled() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    
+    private boolean hasNotifications() {
+    	return getNotificationDialog() != -1;
+    }
+    
+    private int getNotificationDialog() {
+    	int result = -1;
+    	
+    	ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (settings.askEnableSynchronization() && !connectivityManager.getBackgroundDataSetting()) {
-            showDialog(UPDATE_DIALOG);
+        	result = UPDATE_DIALOG;
+        } else if (settings.askEnableLocationProvider() && ((BeerRadarApp) getApplication()).getLocationProvider().getAvailableProvidersCount() == 0) {
+            result = LOCATION_DIALOG;
         }
-    }
 
-    private void checkIfLocationIsEnabled() {
-        if (settings.askEnableLocationProvider() && ((BeerRadarApp) getApplication()).getLocationProvider().getAvailableProvidersCount() == 0) {
-            showDialog(LOCATION_DIALOG);
-        }
+    	return result;
     }
 
     private View getAroundView() {
@@ -130,8 +141,12 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         return findViewById(R.id.counter);
     }
     
-    private ProgressBar getProgressView() {
-        return (ProgressBar) findViewById(R.id.updateProgress);
+    private View getProgressView() {
+        return findViewById(R.id.updateProgress);
+    }
+
+    private View getNotificationImageView() {
+        return findViewById(R.id.notificationImage);
     }
 
     @Override
@@ -143,6 +158,16 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         final SettingsManager settings = new SettingsManager(this);
         TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
         counter.setText(settings.getTotalCount().toString());
+        
+        updateNotifications();
+    }
+    
+    private void updateNotifications() {
+        if (hasNotifications()) {
+        	getNotificationImageView().setVisibility(View.VISIBLE);
+        } else {
+        	getNotificationImageView().setVisibility(View.INVISIBLE);
+        }
     }
     
     /* (non-Javadoc)
@@ -153,9 +178,6 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		super.onPause();		
     	unregisterReceiver(broadcastReceiver);
 	}
-
-
-
 
 	@Override
     protected void locationUpdated(Location location) {
@@ -190,14 +212,14 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		}
 		case UPDATE_IN_PROGRESS : {
 			result = new AlertDialog.Builder(this).
-				setPositiveButton("Gerai", new DialogInterface.OnClickListener() {
+				setPositiveButton(R.string.generic_ok, new DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();						
 					}
 				}).
-				setMessage("Kantrybės, vyksta duomenų atnaujinimas...").
+				setMessage(R.string.update_in_progress).
 				create();
 			break;
 		}
@@ -235,6 +257,7 @@ public class BeerRadarActivity extends AbstractLocationActivity {
             setNegativeButton(R.string.generic_enable_no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
+                    updateNotifications();
                 }
             }).
             setView(layout).

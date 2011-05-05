@@ -184,17 +184,5 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
             Toast.makeText(context, context.getResources().getString(R.string.update_failed), Toast.LENGTH_LONG).show();
         }
     }
-
-    /* (non-Javadoc)
-     * @see android.os.AsyncTask#onProgressUpdate(Progress[])
-     */
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
-        
-        if (progressHandler != null) {
-            progressHandler.progress(values[0], values[1], context.getResources().getString(R.string.update_importing_data, values[0], values[1]));
-        }
-    }
 }
 
