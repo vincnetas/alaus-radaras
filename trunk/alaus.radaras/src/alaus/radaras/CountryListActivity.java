@@ -41,7 +41,7 @@ public class CountryListActivity extends AbstractLocationActivity {
 
 	@Override
 	protected void locationUpdated(Location location) {
-		countries = Utils.translateAndSort(this, beerRadar.getCountries(location), "country");
+		countries = Utils.sortTranslation(this, beerRadar.getCountries(location), "country");
 		
 		if(countries.size() == 0) {
 			Utils.showNoBeerAlert(getApplicationContext());

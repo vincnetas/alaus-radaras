@@ -26,10 +26,10 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 		
 		setContentView(R.layout.country_brand_list);
 	
-		final String countryId = getIntent().getExtras().getString(COUNTRY);
+		country = getIntent().getExtras().getString(COUNTRY);
 		
 		TextView countryName = (TextView)findViewById(R.id.countryBrandHeader);
-		countryName.setText(Utils.translate(this, countryId, "country"));
+		countryName.setText(Utils.translate(this, country, "country"));
 		
 		ImageView image = (ImageView)findViewById(R.id.countryBrandShowOnMap);
 		image.setOnClickListener(new OnClickListener() {
@@ -38,7 +38,7 @@ public class CountryBrandsListActivity extends BaseBrandListActivity {
 			public void onClick(View v) {
 				
 				Intent inte = new Intent(CountryBrandsListActivity.this, PubLocationActivity.class);
-        		inte.putExtra(PubLocationActivity.COUNTRY_ID, countryId);
+        		inte.putExtra(PubLocationActivity.COUNTRY_ID, country);
         		startActivity(inte);
 				
 			}

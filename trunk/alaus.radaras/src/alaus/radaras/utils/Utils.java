@@ -5,10 +5,11 @@ package alaus.radaras.utils;
 
 import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import alaus.radaras.R;
 import alaus.radaras.dialogs.NewPubReportDialog;
@@ -67,21 +68,19 @@ public class Utils {
 		return result;
 	}
 
-	public static List<String> translateAndSort(Context context, List<String> tags, String prefix) {
-		List<String> result = new ArrayList<String>();
-		
-		for (String tag : tags) {
-			result.add(translate(context, tag, prefix));
-		}
-		
-		Collections.sort(result, new Comparator<String>() {
+	public static List<String> sortTranslation(Context context, List<String> values, String prefix) {
+		SortedMap<String, String> map = new TreeMap<String, String>(new Comparator<String>() {
 
 			@Override
 			public int compare(String object1, String object2) {
 				return COLLARATOR.compare(object1, object2);
 			}
 		});
-
-		return result;
+				
+		for (String value : values) {
+			map.put(translate(context, value, prefix), value);
+		}
+		
+		return new ArrayList<String>(map.values());
 	}
 }

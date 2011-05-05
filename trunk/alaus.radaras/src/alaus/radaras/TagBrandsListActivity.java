@@ -27,7 +27,7 @@ public class TagBrandsListActivity extends BaseBrandListActivity {
 		
 		setContentView(R.layout.tag_brand_list);
 	
-		final String tag = getIntent().getExtras().getString(TAG);
+		tag = getIntent().getExtras().getString(TAG);
 
 		TextView tagName = (TextView)findViewById(R.id.tagBrandHeader);
 		tagName.setText(Utils.translate(this, tag, "tag"));
