@@ -59,7 +59,7 @@ void PubView::showPub(QString pubId)
         beersModel = new BeerListModel();
     }
 
-    beersModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM brands b INNER JOIN pubs_brands pb ON b.id = pb.brand_id AND pb.pub_id = '%1'").arg(pubId));
+    beersModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM beers b INNER JOIN pub_beers pb ON b.id = pb.beer_id AND pb.pub_id = '%1'").arg(pubId));
 
     ui->beerListView->setModel(beersModel);
 

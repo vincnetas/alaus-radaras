@@ -39,6 +39,21 @@ public:
 
     void deletePubBeers(const QString pubId);
     void deleteBeerTags(const QString beerId);
+
+    void deletePub(const QString pubId);
+    void deleteBrand(const QString brandId);
+    void deleteBeer(const QString beer);
+
+    //anti-pattern
+    static QString SELECT_RANDOM_PUB;
+    static QString SELECT_RANDOM_BEER_BY_PUB;
+    static QString SELECT_BEERPUB_PUBS;
+    static QString SELECT_BEERPUB_PUBS_BY_BEER;
+    static QString SELECT_BEERPUB_PUBS_BY_TAG;
+    static QString SELECT_BEERPUB_PUB;
+    static QString SELECT_BEERPUB_PUBS_BY_COUNTRY;
+    static QString SELECT_RANDOM_QUOTE;
+
 public slots:
 
 private:

@@ -65,7 +65,7 @@ private slots:
     void showCounter();
     void showPubList(PubListType type, QString id, QString header);
     void showBeerList(BeerListType type, QString id, QString header);
-    void showMap(QList<BeerPub*> pubs);
+    void showMap(const QVector<BeerPub> &pubs);
     void showPub(QString pubId);
     void showMain();
     void showFeelingThirsty();

@@ -9,7 +9,7 @@ class LightMaps : public QWidget
 public:
     explicit LightMaps(QWidget *parent = 0);
     void setCenter(qreal lat, qreal lng);
-    void setPubs(QList<BeerPub*> pubs);
+    void setPubs(const QVector<BeerPub> &pubs);
     ~LightMaps();
 signals:
     void pubSelected(QString pubId);

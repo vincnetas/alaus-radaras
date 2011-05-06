@@ -25,7 +25,7 @@ public:
     void render(QPainter *p, const QRect &rect);
     void invalidate();
     void pan(const QPoint &delta);
-    void setPubs(QList<BeerPub*> pubs);
+    void setPubs(const QVector<BeerPub> &pubs);
     QList<PubContainer> pubCoordinates;
 signals:
 
@@ -38,7 +38,7 @@ private:
     QHash<QPoint, QPixmap> m_tilePixmaps;
     QNetworkAccessManager m_manager;
     QUrl m_url;
-    QList<BeerPub*> pubs;
+    QVector<BeerPub> pubs;
     bool canAccessInternet;
 
 private slots:

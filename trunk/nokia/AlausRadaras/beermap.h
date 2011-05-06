@@ -17,8 +17,8 @@ class BeerMap : public QWidget
 
 public:
     explicit BeerMap(QWidget *parent = 0);
-    void showPubs(QList<BeerPub*> &pubs);
-    void showSinglePub(BeerPub *pub);
+    void showPubs(const QVector<BeerPub> &pubs);
+    void showSinglePub(const BeerPub &pub);
     void locationChanged(qreal lat, qreal lon);
     void keyPressEvent(QKeyEvent* event);
     void changeEvent(QEvent* event);

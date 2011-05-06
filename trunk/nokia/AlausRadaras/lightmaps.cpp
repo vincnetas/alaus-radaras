@@ -41,7 +41,7 @@ void LightMaps::paintEvent(QPaintEvent *event) {
     p.end();
 }
 
-void LightMaps::setPubs(QList<BeerPub*> pubs)
+void LightMaps::setPubs(const QVector<BeerPub> &pubs)
 {
     this->m_normalMap->setPubs(pubs);
 }

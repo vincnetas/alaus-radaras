@@ -29,7 +29,7 @@ void BeerMap::on_btnBack_clicked()
     emit Back();
 }
 
-void BeerMap::showPubs(QList<BeerPub*> &pubs)
+void BeerMap::showPubs(const QVector<BeerPub> &pubs)
 {
     maps->setPubs(pubs);
     maps->setCenter(54.686647, 25.282788);
@@ -52,13 +52,13 @@ void BeerMap::showPubInfo(QString pubId)
  emit PubSelected(pubId);
 }
 
-void BeerMap::showSinglePub(BeerPub* pub)
+void BeerMap::showSinglePub(const BeerPub &pub)
 {
    locationAlreadyUpdated = true;
-   QList<BeerPub*> list;
+   QVector<BeerPub> list;
    list.append(pub);
    maps->setPubs(list);
-   maps->setCenter(pub->latitude(),pub->longitude());
+   maps->setCenter(pub.latitude,pub.longitude);
 
 }
 

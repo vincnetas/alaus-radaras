@@ -21,7 +21,6 @@ SOURCES += main.cpp\
     beertabs.cpp \
     taglistmodel.cpp \
     pubview.cpp \
-    beerpub.cpp \
     publist.cpp \
     publistmodel.cpp \
     calculationhelper.cpp \
@@ -36,7 +35,8 @@ SOURCES += main.cpp\
     maincontroller.cpp \
     makecall.cpp \
     settings.cpp \
-    feelingthirsty.cpp
+    feelingthirsty.cpp \
+    translator.cpp
 
 HEADERS  += alausradaras.h \
     beerlistmodel.h \
@@ -59,7 +59,8 @@ HEADERS  += alausradaras.h \
     maincontroller.h \
     makecall.h \
     settings.h \
-    feelingthirsty.h 
+    feelingthirsty.h \  
+    translator.h
 
 FORMS    += alausradaras.ui \
     beertabs.ui \

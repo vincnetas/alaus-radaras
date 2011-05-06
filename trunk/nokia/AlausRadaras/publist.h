@@ -40,12 +40,12 @@ private slots:
 private:
 
     Ui::PubList *ui;
-    QList<BeerPub*> pubs;
+    QVector<BeerPub> pubs;
     PubListModel* pubListModel;
     DataProvider* dataProvider;
 
 signals:
-    void MapSelected(QList<BeerPub*> pubs);
+    void MapSelected(const QVector<BeerPub> &pubs);
     void PubSelected(QString pubId);
     void Back();
 };

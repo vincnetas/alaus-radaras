@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>db/quotes.txt</file>
-        <file>db/tags.txt</file>
         <file>alausradaras_en.qm</file>
         <file>alausradaras_en.ts</file>
         <file>alausradaras_lt.qm</file>

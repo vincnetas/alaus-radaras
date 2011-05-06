@@ -15,6 +15,15 @@ QString DbManager::QUERY_INSERT_PUBS = "INSERT OR REPLACE INTO pubs VALUES (:id,
 QString DbManager::QUERY_INSERT_QUOTES = "INSERT OR REPLACE INTO quotes VALUES (:amount, :text)";
 QString DbManager::QUERY_INSERT_BEER_TAGS = "INSERT OR REPLACE INTO beer_tags VALUES (:beer_id, :tag)";
 QString DbManager::QUERY_INSERT_PUB_BEERS = "INSERT OR REPLACE INTO pub_beers VALUES (:pub_id,:beer_id)";
+
+QString DbManager::SELECT_RANDOM_PUB = "SELECT id, title || '\n(' || city || ')' FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id  ORDER BY RANDOM() LIMIT 1";
+QString DbManager::SELECT_RANDOM_BEER_BY_PUB = "SELECT id, title FROM beers b INNER JOIN pub_beers pb ON b.id = pb.beer_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1";
+QString DbManager::SELECT_BEERPUB_PUBS = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_BEER = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id AND pb.beer_id = '%1'";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_TAG = "SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beer_tags bt ON bt.beer_id = pb.beer_id AND bt.tag = '%1'";
+QString DbManager::SELECT_BEERPUB_PUB = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs where id='%1'";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_COUNTRY = "SELECT DISTINCT p.id, p.title, p.longtitude, p.latitude, p.tile_x, p.tile_y, p.tile_pixel_x, p.tile_pixel_y, p.city  FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beers b ON b.id = pb.beer_id INNER JOIN brands br on br.id = b.brand_id AND br.country = '%1'";
+QString DbManager::SELECT_RANDOM_QUOTE = "SELECT text FROM quotes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1";
 DbManager::DbManager(QObject *parent) : QObject(parent)
 {
 }
@@ -219,21 +228,66 @@ void DbManager::setLatest()
 {
     QSqlQuery query;
     query.exec(QString("PRAGMA user_version=%1;").arg(DB_VERSION));
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
     query.clear();
 }
 
 void DbManager::deletePubBeers(const QString pubId)
 {
     QSqlQuery query;
-    query.exec(QString("DELETE FROM pubs_beers where pub_id=%1;").arg(pubId));
+    query.exec(QString("DELETE FROM pub_beers where pub_id=%1;").arg(pubId));
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
     query.clear();
 }
 
 void DbManager::deleteBeerTags(const QString beerId)
 {
     QSqlQuery query;
-    query.exec(QString("DELETE FROM beer_tags where beer_id=%1;").arg(beerId));
+    query.exec(QString("DELETE FROM beer_tags where beer_id='%1';").arg(beerId));
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
     query.clear();
+}
+
+
+void DbManager::deletePub(const QString pubId)
+{
+    QSqlQuery query;
+    deletePubBeers(pubId);
+    query.exec(QString("DELETE FROM pubs where id='%1';").arg(pubId));
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
+    query.clear();
+}
+
+void DbManager::deleteBrand(const QString brandId)
+{
+    QSqlQuery query;
+    query.exec(QString("DELETE FROM brands where id='%1';").arg(brandId));
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
+    query.exec(QString("DELETE FROM pub_beers where beer_id in (SELECT id from beers where brand_id = '%1')"));
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
+    query.exec(QString("DELETE FROM beers where brand_id='%1';").arg(brandId));
+    if(query.lastError().isValid())
+        qDebug() << query.lastError();
+    query.clear();
+}
+
+void DbManager::deleteBeer(const QString beerId)
+{
+     QSqlQuery query;
+     deleteBeerTags(beerId);
+     query.exec(QString("DELETE FROM pub_beers where beer_id='%1';").arg(beerId));
+     if(query.lastError().isValid())
+         qDebug() << query.lastError();
+     query.exec(QString("DELETE FROM beers where id='%1';").arg(beerId));
+     if(query.lastError().isValid())
+         qDebug() << query.lastError();
+     query.clear();
 }
 
 void DbManager::dropTables()
