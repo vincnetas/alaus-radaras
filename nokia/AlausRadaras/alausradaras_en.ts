@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
@@ -68,19 +68,6 @@
     </message>
 </context>
 <context>
-    <name>BeerMap</name>
-    <message utf8="true">
-        <location filename="beermap.ui" line="20"/>
-        <source>Alaus žemėlapis</source>
-        <translation>Beer map</translation>
-    </message>
-    <message>
-        <location filename="beermap.ui" line="73"/>
-        <source>Atgal</source>
-        <translation>Back</translation>
-    </message>
-</context>
-<context>
     <name>BeerList</name>
     <message utf8="true">
         <location filename="beerlist.ui" line="20"/>
@@ -99,37 +86,58 @@
     </message>
 </context>
 <context>
-    <name>BeerTabs</name>
-    <message>
-        <location filename="BeerTabs.ui" line="20"/>
-        <source>Alaus tipai</source>
-        <translation>Beer styles</translation>
-    </message>
+    <name>BeerMap</name>
     <message utf8="true">
-        <location filename="BeerTabs.ui" line="80"/>
-        <source>Rūšys</source>
-        <translation>Style</translation>
-    </message>
-    <message utf8="true">
-        <location filename="BeerTabs.ui" line="167"/>
-        <source>Šalys</source>
-        <translation>Country</translation>
+        <location filename="beermap.ui" line="20"/>
+        <source>Alaus žemėlapis</source>
+        <translation>Beer map</translation>
     </message>
     <message>
-        <location filename="BeerTabs.ui" line="260"/>
-        <source>Tipai</source>
-        <translation>Tags</translation>
-    </message>
-    <message>
-        <location filename="BeerTabs.ui" line="387"/>
+        <location filename="beermap.ui" line="73"/>
         <source>Atgal</source>
         <translation>Back</translation>
     </message>
 </context>
 <context>
+    <name>BeerTabs</name>
+    <message>
+        <location filename="beertabs.ui" line="20"/>
+        <source>Alaus tipai</source>
+        <translation>Beer styles</translation>
+    </message>
+    <message utf8="true">
+        <location filename="beertabs.ui" line="80"/>
+        <source>Rūšys</source>
+        <translation>Style</translation>
+    </message>
+    <message utf8="true">
+        <location filename="beertabs.ui" line="167"/>
+        <source>Šalys</source>
+        <translation>Country</translation>
+    </message>
+    <message>
+        <location filename="beertabs.ui" line="260"/>
+        <source>Tipai</source>
+        <translation>Tags</translation>
+    </message>
+    <message>
+        <location filename="beertabs.ui" line="387"/>
+        <source>Atgal</source>
+        <translation>Back</translation>
+    </message>
+</context>
+<context>
+    <name>CountryTranslator</name>
+    <message>
+        <source>lt</source>
+        <comment>lt</comment>
+        <translation type="obsolete">Lithuanian</translation>
+    </message>
+</context>
+<context>
     <name>DataProvider</name>
     <message>
-        <location filename="dataprovider.cpp" line="65"/>
+        <location filename="DbManager/dataprovider.cpp" line="69"/>
         <source>Dar po viena!</source>
         <translation>One more</translation>
     </message>
@@ -295,6 +303,93 @@
         <location filename="settings.cpp" line="69"/>
         <source>Niekada</source>
         <translation>Never</translation>
+    </message>
+</context>
+<context>
+    <name>Translator</name>
+    <message>
+        <location filename="translator.cpp" line="7"/>
+        <source>lt</source>
+        <comment>country</comment>
+        <translation type="unfinished">Lithuanian</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="8"/>
+        <source>cz</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="9"/>
+        <source>de</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="10"/>
+        <source>be</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="11"/>
+        <source>nl</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="12"/>
+        <source>ie</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="13"/>
+        <source>uk</source>
+        <comment>country</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="16"/>
+        <source>dark</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="17"/>
+        <source>larger</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="18"/>
+        <source>white</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="19"/>
+        <source>foreign</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="20"/>
+        <source>rural</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="21"/>
+        <source>strong</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="22"/>
+        <source>light</source>
+        <comment>tag</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

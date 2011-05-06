@@ -1,54 +1,58 @@
 #include "dataprovider.h"
 #include <QSqlQuery>
 #include <QVariant>
+#include <QDebug>
+#include <QSqlError>
+#include "dbmanager.h"
+
 DataProvider::DataProvider(QObject *parent) :
     QObject(parent)
 {
 }
 
-QList<BeerPub*> DataProvider::getAllPubs()
+const QVector<BeerPub> DataProvider::getAllPubs()
 {
-    return this->generatePubsFromQuery(new QSqlQuery("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs"));
+    return this->generatePubsFromQuery(DbManager::SELECT_BEERPUB_PUBS);
 }
 
-QList<BeerPub*> DataProvider::getPubsByBrandId(QString brandId)
+const QVector<BeerPub>  DataProvider::getPubsByBeerId(QString beerId)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id AND pb.brand_id = '%1'").arg(brandId)));
+    return this->generatePubsFromQuery(QSqlQuery(DbManager::SELECT_BEERPUB_PUBS_BY_BEER.arg(beerId)));
 }
 
-QList<BeerPub*> DataProvider::getPubsByCountry(QString countryCode)
+const QVector<BeerPub> DataProvider::getPubsByCountry(QString countryCode)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id  INNER JOIN brands_countries bc ON bc.brand_id = pb.brand_id AND bc.country = '%1'").arg(countryCode)));
+    return this->generatePubsFromQuery(QSqlQuery(DbManager::SELECT_BEERPUB_PUBS_BY_COUNTRY.arg(countryCode)));
 }
 
-QList<BeerPub*> DataProvider::getPubsByTag(QString tagCode)
+const QVector<BeerPub> DataProvider::getPubsByTag(QString tagCode)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id INNER JOIN brands_tags bt ON bt.brand_id = pb.brand_id AND bt.tag = '%1'").arg(tagCode)));
+    return this->generatePubsFromQuery(QSqlQuery(DbManager::SELECT_BEERPUB_PUBS_BY_TAG.arg(tagCode)));
 }
 
-BeerPub* DataProvider::getPub(QString pubId)
+const BeerPub DataProvider::getPub(QString pubId)
 {
-    return this->generatePubsFromQuery(new QSqlQuery(QString("SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs where id='%1'").arg(pubId))).at(0);
+    return this->generatePubsFromQuery(QSqlQuery(DbManager::SELECT_BEERPUB_PUB.arg(pubId))).at(0);
 }
 
 FeelingLuckyInfo DataProvider::feelingLucky()
 {
     FeelingLuckyInfo lucky;
 
-    QSqlQuery pubQuery("SELECT id, title || '\n(' || city || ')' FROM pubs p  INNER JOIN pubs_brands pb ON p.id = pb.pub_id  ORDER BY RANDOM() LIMIT 1");
+    QSqlQuery pubQuery(DbManager::SELECT_RANDOM_PUB);
     while(pubQuery.next()) {
         lucky.pubId = pubQuery.value(0).toString();
         lucky.pubName = pubQuery.value(1).toString();
     }
     pubQuery.clear();
 
-    QSqlQuery brandQuery(QString("SELECT id, title FROM brands b  INNER JOIN pubs_brands pb ON b.id = pb.brand_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1").arg(lucky.pubId));
+    QSqlQuery beerQuery(DbManager::SELECT_RANDOM_BEER_BY_PUB.arg(lucky.pubId));
 
-    while(brandQuery.next()) {
-        lucky.beerId = brandQuery.value(0).toString();
-        lucky.beerName = brandQuery.value(1).toString();
+    while(beerQuery.next()) {
+        lucky.beerId = beerQuery.value(0).toString();
+        lucky.beerName = beerQuery.value(1).toString();
     }
-    brandQuery.clear();
+    beerQuery.clear();
     return lucky;
 }
 
@@ -57,7 +61,7 @@ QString DataProvider::getQuote(int count)
 {
 
 
-    QSqlQuery query(QString("SELECT text FROM quotes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1").arg(count));
+    QSqlQuery query(DbManager::SELECT_RANDOM_QUOTE.arg(count));
     while(query.next()) {
        return query.value(0).toString();
     }
@@ -65,24 +69,28 @@ QString DataProvider::getQuote(int count)
     return tr("Dar po viena!");
 }
 
-QList<BeerPub*> DataProvider::generatePubsFromQuery(QSqlQuery* query)
+const QVector<BeerPub> DataProvider::generatePubsFromQuery(QSqlQuery query)
 {
-    QList<BeerPub*> pubs;
-    while(query->next()) {
-        BeerPub* pub = new BeerPub();
-        pub->setId(query->value(0).toString());
-        pub->setTitle(query->value(1).toString());
-        pub->setLongitude(query->value(2).toDouble());
-        pub->setLatitude(query->value(3).toDouble());
-        pub->setTile(QPoint(query->value(4).toInt(),query->value(5).toInt()));
-        pub->setTilePixel(QPoint(query->value(6).toInt(),query->value(7).toInt()));
-        pub->setDistance(-1);
-        pub->setCity(query->value(8).toString());
+
+    if(query.lastError().isValid())
+       qDebug() << query.lastError();
+
+    QVector<BeerPub> pubs;
+    while(query.next()) {
+        BeerPub pub;
+        pub.id = query.value(0).toString();
+        pub.title = query.value(1).toString();
+        pub.longitude = query.value(2).toDouble();
+        pub.latitude = query.value(3).toDouble();
+        pub.tile = QPoint(query.value(4).toInt(),query.value(5).toInt());
+        pub.tilePixel = QPoint(query.value(6).toInt(),query.value(7).toInt());
+        pub.distance = -1;
+        pub.city = query.value(8).toString();
         pubs.append(pub);
         //qDebug() << query->value(4).toString() << " "  << query->value(5).toString();
     }
 
-    query->clear();
+    query.clear();
 
    return pubs;
 

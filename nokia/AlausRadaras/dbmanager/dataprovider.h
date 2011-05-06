@@ -12,18 +12,18 @@ class DataProvider : public QObject
     Q_OBJECT
 public:
     explicit DataProvider(QObject *parent = 0);
-    QList<BeerPub*> getAllPubs();
-    QList<BeerPub*> getPubsByBrandId(QString brandId);
-    QList<BeerPub*> getPubsByCountry(QString countryCode);
-    QList<BeerPub*> getPubsByTag(QString tagCode);
-    BeerPub* getPub(QString pubId);
+    const QVector<BeerPub> getAllPubs();
+    const QVector<BeerPub> getPubsByBeerId(QString beerId);
+    const QVector<BeerPub> getPubsByCountry(QString countryCode);
+    const QVector<BeerPub> getPubsByTag(QString tagCode);
+    const BeerPub getPub(QString pubId);
     FeelingLuckyInfo feelingLucky();
     QString getQuote(int count);
     signals:
 
 public slots:
 private:
-    QList<BeerPub*> generatePubsFromQuery(QSqlQuery* query);
+    const QVector<BeerPub> generatePubsFromQuery(QSqlQuery query);
 
 };
 

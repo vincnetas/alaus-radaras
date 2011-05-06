@@ -2,6 +2,7 @@
 #include "qdebug.h"
 #include "dbmanager.h"
 #include "beertag.h"
+#include "QDebug"
 
 DbUpdater::DbUpdater(QObject *parent) :
     QObject(parent)
@@ -19,13 +20,18 @@ bool DbUpdater::updateDb(const QVariantMap &data)
     foreach(QVariant rawPub, update["pubs"].toList()) {
         QVariantMap pubData = rawPub.toMap();
         Pub pub = populatePub(pubData);
+        qDebug() << "updating pub with id " << pub.id;
         pubs.append(pub);
 
-        foreach(PubBeer pubBeer, popuplatePubBeers(pub.id, pubData["beerIds"].toList())) {
+        QVector<PubBeer> pubBeers = popuplatePubBeers(pub.id, pubData["beerIds"].toList());
+        qDebug() << "number for beers for pub " << pubBeers.size();
+        foreach(PubBeer pubBeer, pubBeers) {
             pubBeers.append(pubBeer);
         }
+        qDebug() << "Deleting beers for pub " << pub.id;
         dbManager.deletePubBeers(pub.id);
     }
+    qDebug() << "Number of pubs " << pubs.size();
     dbManager.populatePubs(pubs);
     dbManager.populatePubBeers(pubBeers);
 
@@ -34,13 +40,19 @@ bool DbUpdater::updateDb(const QVariantMap &data)
     foreach(QVariant rawPub, update["beers"].toList()) {
         QVariantMap beerData = rawPub.toMap();
         Beer beer = populateBeer(beerData);
+        qDebug() << "updating beer " << beer.id;
         beers.append(beer);
 
-        foreach(BeerTag beerTag, popuplateBeerTags(beer.id, beerData["tags"].toList())) {
+        QVector<BeerTag> beerTags = popuplateBeerTags(beer.id, beerData["tags"].toList());
+        qDebug() << "number for beer tags " << beerTags.size();
+        foreach(BeerTag beerTag, beerTags) {
             beerTags.append(beerTag);
         }
+        qDebug() << "Deleting tags for beer " << beer.id;
         dbManager.deleteBeerTags(beer.id);
     }
+
+    qDebug() << "Number of beers " << beers.size();
     dbManager.populateBeers(beers);
     dbManager.populateBeerTags(beerTags);
 
@@ -48,14 +60,33 @@ bool DbUpdater::updateDb(const QVariantMap &data)
     foreach(QVariant rawPub, update["brands"].toList()) {
         QVariantMap brandData = rawPub.toMap();
         Brand brand = populateBrand(brandData);
+        qDebug() << "updating brand " << brand.id;
         brands.append(brand);
     }
+    qDebug() << "Number of brands " << brands.size();
     dbManager.populateBrands(brands);
+
+
+    QVariantMap deleteData = data["delete"].toMap();
+    foreach(QVariant beerId, deleteData["beers"].toList()) {
+        qDebug() << "deleting beer " << beerId;
+        dbManager.deleteBeer(beerId.toString());
+    }
+    foreach(QVariant brandId, deleteData["brands"].toList()) {
+        qDebug() << "deleting brand " << brandId;
+        dbManager.deleteBrand(brandId.toString());
+    }
+
+    foreach(QVariant pubId, deleteData["pubs"].toList()) {
+        qDebug() << "deleting pub " << pubId;
+        dbManager.deletePub(pubId.toString());
+    }
+
 
     return true;
 }
 
-const Brand& DbUpdater::populateBrand(const QVariantMap &brandData)
+const Brand DbUpdater::populateBrand(const QVariantMap &brandData)
 {
     Brand brand;
     brand.id = brandData["id"].toString();
@@ -64,7 +95,7 @@ const Brand& DbUpdater::populateBrand(const QVariantMap &brandData)
     return brand;
 }
 
-const Beer& DbUpdater::populateBeer(const QVariantMap &beerData)
+const Beer DbUpdater::populateBeer(const QVariantMap &beerData)
 {
     Beer beer;
     beer.title = beerData["title"].toString();
@@ -76,7 +107,7 @@ const Beer& DbUpdater::populateBeer(const QVariantMap &beerData)
 }
 
 
-const Pub& DbUpdater::populatePub(const QVariantMap &pubData)
+const Pub DbUpdater::populatePub(const QVariantMap &pubData)
 {
         Pub pub;
         pub.id = pubData["id"].toString();
@@ -91,7 +122,7 @@ const Pub& DbUpdater::populatePub(const QVariantMap &pubData)
         return pub;
 }
 
-const QVector<PubBeer>& DbUpdater::popuplatePubBeers(const QString pubId, const QVariantList &beerIds)
+const QVector<PubBeer> DbUpdater::popuplatePubBeers(const QString pubId, const QVariantList &beerIds)
 {
     QVector<PubBeer> pubBeers;
     foreach(QVariant beerId, beerIds) {
@@ -103,7 +134,7 @@ const QVector<PubBeer>& DbUpdater::popuplatePubBeers(const QString pubId, const 
     return pubBeers;
 }
 
-const QVector<BeerTag>& DbUpdater::popuplateBeerTags(const QString beerId, const QVariantList &tags)
+const QVector<BeerTag> DbUpdater::popuplateBeerTags(const QString beerId, const QVariantList &tags)
 {
     QVector<BeerTag> beerTags;
     foreach(QVariant tag, tags) {

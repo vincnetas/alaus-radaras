@@ -84,14 +84,14 @@ void SlippyMap::render(QPainter *p, const QRect &rect) {
                 else
                     p->drawPixmap(box, m_emptyTile);
 
-                for(int i = 0 ; i < pubs.length(); i++) {
+                for(int i = 0 ; i < pubs.size(); i++) {
                     // qDebug() << "pub x" << pubs[i]->tile().x() << " and pub y " << pubs[i]->tile().y();
-                    if(pubs[i]->tile().x() == tp.x() && pubs[i]->tile().y() == tp.y()) {
+                    if(pubs[i].tile.x() == tp.x() && pubs[i].tile.y() == tp.y()) {
                        // qDebug() << "looping";
                         // qDebug() << "oslo x" << tileForOslo.x() << " oslo y " << tileForOslo.y();
                         PubContainer container;
-                        container.coordinates = QRect(box.x() + pubs[i]->tilePixel().x() - 10,box.y() + pubs[i]->tilePixel().y() - 32,35,50);
-                        container.pubId = pubs[i]->id();
+                        container.coordinates = QRect(box.x() + pubs[i].tilePixel.x() - 10,box.y() + pubs[i].tilePixel.y() - 32,35,50);
+                        container.pubId = pubs[i].id;
                         pubCoordinates.append(container);
                         p->drawImage(container.coordinates.x(),container.coordinates.y(),QImage(":/images/pin.png"));
                     }
@@ -109,7 +109,7 @@ void SlippyMap::pan(const QPoint &delta) {
     invalidate();
 }
 
-void SlippyMap::setPubs(QList<BeerPub*> pubs)
+void SlippyMap::setPubs(const QVector<BeerPub> &pubs)
 {
     //hack. We must show this every time we refresh this window. Move to
     //common settings class someday

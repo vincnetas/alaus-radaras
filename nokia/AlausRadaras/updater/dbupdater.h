@@ -16,11 +16,11 @@ public:
     explicit DbUpdater(QObject *parent = 0);
     bool updateDb(const QVariantMap &data);
 private:
-    const QVector<PubBeer>& popuplatePubBeers(const QString pubId, const QVariantList &beerIds);
-    const QVector<BeerTag>& popuplateBeerTags(const QString beerId, const QVariantList &tags);
-    const Pub& populatePub(const QVariantMap &pubData);
-    const Beer& populateBeer(const QVariantMap &beerData);
-    const Brand& populateBrand(const QVariantMap &brandData);
+    const QVector<PubBeer> popuplatePubBeers(const QString pubId, const QVariantList &beerIds);
+    const QVector<BeerTag> popuplateBeerTags(const QString beerId, const QVariantList &tags);
+    const Pub populatePub(const QVariantMap &pubData);
+    const Beer populateBeer(const QVariantMap &beerData);
+    const Brand populateBrand(const QVariantMap &brandData);
 signals:
 
 public slots:

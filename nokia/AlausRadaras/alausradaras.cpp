@@ -18,7 +18,7 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     qtTranslator = new QTranslator(this);
     myappTranslator = new QTranslator(this);
 
-    ui->txtUpdate->setVisible(false);
+   // ui->txtUpdate->setVisible(false);
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
     connect(ui->txtUpdate,SIGNAL(linkActivated(QString)),this,SLOT(loadUpdate(QString)));

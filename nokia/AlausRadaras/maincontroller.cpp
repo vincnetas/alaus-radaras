@@ -42,7 +42,7 @@ MainController::MainController(QWidget *parent) :
     connect(mainWidget,SIGNAL(FeelingLucky()),this,SLOT(showFeelingThirsty()));
 
     connect(pubList,SIGNAL(PubSelected(QString)),this,SLOT(showPub(QString)));
-    connect(pubList,SIGNAL(MapSelected(QList<BeerPub*>)),this, SLOT(showMap(QList<BeerPub*>)));
+    connect(pubList,SIGNAL(MapSelected(const QVector<BeerPub>)),this, SLOT(showMap(const QVector<BeerPub>)));
     connect(pubList,SIGNAL(Back()),this,SLOT(goBack()));
 
     connect(counter,SIGNAL(Back()),this,SLOT(goBack()));
@@ -139,7 +139,7 @@ void MainController::showBeerList(BeerListType type, QString id, QString header)
     showWidget(BeerListView);
 }
 
-void MainController::showMap(QList<BeerPub*> pubs)
+void MainController::showMap(const QVector<BeerPub> &pubs)
 {
     map->showPubs(pubs);
     showWidget(BeerMapView);
@@ -181,7 +181,7 @@ void MainController::goBack()
 void MainController::showPubMap(QString pubId)
 {
     DataProvider d(this);
-    BeerPub *pub = d.getPub(pubId);
+    BeerPub pub = d.getPub(pubId);
     singleMap->showSinglePub(pub);
     showWidget(SinglePubMapView);
 }

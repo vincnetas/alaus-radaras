@@ -65,21 +65,21 @@ void BeerTabs::loadTabData(int index)
         case 0:
             if(!beersModel) {
                 beersModel = new BeerListModel(this);
-                beersModel->setQuery("select icon, title, id from brands");
+                beersModel->setQuery("select icon, title, id from beers");
                 ui->beerListView->setModel(beersModel);
             }
             break;
         case 1:
             if(!countryModel) {
                 countryModel = new CountryListModel(this);
-                countryModel->setQuery("select name, code from countries");
+                countryModel->setQuery("select distinct(country) from brands");
                 ui->countryListView->setModel(countryModel);
             }
             break;
         case 2:
             if(!tagsModel) {
                 tagsModel = new TagListModel(this);
-                tagsModel->setQuery("select title, code from tags");
+                tagsModel->setQuery("select distinct(tag) from beer_tags");
                 ui->tagListView->setModel(tagsModel);
             }
             break;

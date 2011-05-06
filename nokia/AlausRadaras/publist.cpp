@@ -16,9 +16,9 @@
 #include <QKeyEvent>
 #include "enums.h"
 
-bool sortPubsByDistance( const BeerPub * p1 , const BeerPub * p2 )
+bool sortPubsByDistance( const BeerPub &p1 , const BeerPub &p2 )
 {
-        return p2->distance() > p1->distance();
+        return p2.distance > p1.distance;
 }
 
 PubList::PubList(QWidget *parent) :
@@ -53,13 +53,12 @@ void PubList::locationChanged(qreal lat, qreal lon)
     if(pubListModel) {
         if(pubs.size() > 0) {
             for(int i = 0; i < pubs.size(); i++) {
-                qreal p1 = pubs[i]->latitude();
-                qreal p2 = pubs[i]->longitude();
+                qreal p1 = pubs[i].latitude;
+                qreal p2 = pubs[i].longitude;
                 qreal distance = CalculationHelper::getDistance(p1,p2,lat,lon,'M');
                 //qDebug() << QString::number(distance);
-                pubs[i]->setDistance(distance);
+                pubs[i].distance = distance;
             }
-            //pubs are pointers.. so..
             qSort(pubs.begin(),pubs.end(),sortPubsByDistance);
             pubListModel->refresh();
         }
@@ -68,12 +67,6 @@ void PubList::locationChanged(qreal lat, qreal lon)
 
 void PubList::showPubList(PubListType type, QString id, QString header)
 {
-    if(pubs.size() > 0) {
-
-        for(int i = 0; i < pubs.size() ; i++) {
-            delete pubs[i];
-        }
-    }
     if(pubListModel) {
         delete pubListModel;
     }
@@ -84,7 +77,7 @@ void PubList::showPubList(PubListType type, QString id, QString header)
             pubs = dataProvider->getAllPubs();
         break;
         case BEER:
-            pubs = dataProvider->getPubsByBrandId(id);
+            pubs = dataProvider->getPubsByBeerId(id);
         break;
         case COUNTRY:
             pubs = dataProvider->getPubsByCountry(id);
@@ -94,7 +87,7 @@ void PubList::showPubList(PubListType type, QString id, QString header)
         break;
     }
 
-    pubListModel = new PubListModel(this, &pubs);
+    pubListModel = new PubListModel(this, pubs);
     ui->pubListView->setModel(pubListModel);
 
     setHeader(header);
