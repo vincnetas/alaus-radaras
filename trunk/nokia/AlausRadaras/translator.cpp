@@ -4,13 +4,16 @@ Translator::Translator(QObject *parent) :
     QObject(parent)
 {
     //Countries
-    Translator::tr("lt","country");
-    Translator::tr("cz","country");
-    Translator::tr("de","country");
-    Translator::tr("be","country");
-    Translator::tr("nl","country");
-    Translator::tr("ie","country");
-    Translator::tr("uk","country");
+    Translator::tr("LT","country");
+    Translator::tr("CZ","country");
+    Translator::tr("DE","country");
+    Translator::tr("BE","country");
+    Translator::tr("NL","country");
+    Translator::tr("IE","country");
+    Translator::tr("UK","country");
+    Translator::tr("DK","country");
+    Translator::tr("FR","country");
+    Translator::tr("PL","country");
 
     //Tags
     Translator::tr("dark","tag");
