@@ -24,6 +24,7 @@ import alaus.radaras.server.dao.BeerDao;
 import alaus.radaras.server.dao.BrandDao;
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Beer;
+import alaus.radaras.shared.model.Brand;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.inject.Inject;
@@ -99,7 +100,7 @@ public class CsvDataServlet extends HttpServlet {
 		}
 		writer.flush();
 		zos.closeEntry();
-		zos.putNextEntry(new ZipEntry("brands.txt"));
+		zos.putNextEntry(new ZipEntry("beers.txt"));
 		
 		boolean firstBeer = true;
 		for (Beer beer : getBeerDao().getAll()) {
@@ -109,11 +110,30 @@ public class CsvDataServlet extends HttpServlet {
 				writer.append("\r\n");
 			}
 			
+			writer.append(beer.getId()).append("\t");
 			writer.append(beer.getIcon()).append("\t");
 			writer.append(beer.getTitle()).append("\t");
 			writer.append(StringUtils.join(beerMap.get(beer.getId()), ",")).append("\t");
-			writer.append(getBrandDao().get(beer.getBrandId()).getCountry().toLowerCase()).append("\t");
-			writer.append(StringUtils.join(beer.getTags(), ","));
+			writer.append(StringUtils.join(beer.getTags(), ",")).append("\t");;
+			writer.append(beer.getBrandId());
+		}
+		writer.flush();
+		zos.closeEntry();
+		
+		zos.putNextEntry(new ZipEntry("brands.txt"));
+		
+		boolean firstBrand = true;
+		for (Brand brand : getBrandDao().getAll()) {
+			if (firstBrand) {
+				firstBrand = false;
+			} else {
+				writer.append("\r\n");
+			}
+			
+			writer.append(brand.getId()).append("\t");
+			writer.append(brand.getTitle()).append("\t");
+			writer.append(brand.getCountry().toUpperCase()).append("\t");
+			writer.append(StringUtils.join(brand.getTags(), ","));
 		}
 		writer.flush();
 		zos.closeEntry();
