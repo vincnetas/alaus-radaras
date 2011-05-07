@@ -309,87 +309,112 @@
     <name>Translator</name>
     <message>
         <location filename="translator.cpp" line="7"/>
-        <source>lt</source>
+        <source>LT</source>
+        <oldsource>lt</oldsource>
         <comment>country</comment>
-        <translation type="unfinished">Lithuanian</translation>
+        <translation>Lithuanian</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="8"/>
-        <source>cz</source>
+        <source>CZ</source>
+        <oldsource>cz</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>Czech</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="9"/>
-        <source>de</source>
+        <source>DE</source>
+        <oldsource>de</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>German</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="10"/>
-        <source>be</source>
+        <source>BE</source>
+        <oldsource>be</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>Belgian</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="11"/>
-        <source>nl</source>
+        <source>NL</source>
+        <oldsource>nl</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dutch</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="12"/>
-        <source>ie</source>
+        <source>IE</source>
+        <oldsource>ie</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>Irish</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="13"/>
-        <source>uk</source>
+        <source>UK</source>
+        <oldsource>uk</oldsource>
         <comment>country</comment>
-        <translation type="unfinished"></translation>
+        <translation>English</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="14"/>
+        <source>DK</source>
+        <comment>country</comment>
+        <translation>Danish</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="15"/>
+        <source>FR</source>
+        <comment>country</comment>
+        <translation>French</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="16"/>
-        <source>dark</source>
-        <comment>tag</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="translator.cpp" line="17"/>
-        <source>larger</source>
-        <comment>tag</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="translator.cpp" line="18"/>
-        <source>white</source>
-        <comment>tag</comment>
-        <translation type="unfinished"></translation>
+        <source>PL</source>
+        <comment>country</comment>
+        <translation>Polish</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="19"/>
-        <source>foreign</source>
+        <source>dark</source>
         <comment>tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dark</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="20"/>
-        <source>rural</source>
+        <source>lager</source>
         <comment>tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blonde</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="21"/>
-        <source>strong</source>
+        <source>white</source>
         <comment>tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>White</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="22"/>
+        <source>foreign</source>
+        <comment>tag</comment>
+        <translation>Foreign</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="23"/>
+        <source>rural</source>
+        <comment>tag</comment>
+        <translation>Rural</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="24"/>
+        <source>strong</source>
+        <comment>tag</comment>
+        <translation>Strong</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="25"/>
         <source>light</source>
         <comment>tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>Light</translation>
     </message>
 </context>
 <context>

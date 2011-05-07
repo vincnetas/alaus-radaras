@@ -23,9 +23,9 @@ bool DbUpdater::updateDb(const QVariantMap &data)
         qDebug() << "updating pub with id " << pub.id;
         pubs.append(pub);
 
-        QVector<PubBeer> pubBeers = popuplatePubBeers(pub.id, pubData["beerIds"].toList());
+        QVector<PubBeer> pubBeerResult = popuplatePubBeers(pub.id, pubData["beerIds"].toList());
         qDebug() << "number for beers for pub " << pubBeers.size();
-        foreach(PubBeer pubBeer, pubBeers) {
+        foreach(PubBeer pubBeer, pubBeerResult) {
             pubBeers.append(pubBeer);
         }
         qDebug() << "Deleting beers for pub " << pub.id;
@@ -43,9 +43,9 @@ bool DbUpdater::updateDb(const QVariantMap &data)
         qDebug() << "updating beer " << beer.id;
         beers.append(beer);
 
-        QVector<BeerTag> beerTags = popuplateBeerTags(beer.id, beerData["tags"].toList());
+        QVector<BeerTag> beerTagResult = popuplateBeerTags(beer.id, beerData["tags"].toList());
         qDebug() << "number for beer tags " << beerTags.size();
-        foreach(BeerTag beerTag, beerTags) {
+        foreach(BeerTag beerTag, beerTagResult) {
             beerTags.append(beerTag);
         }
         qDebug() << "Deleting tags for beer " << beer.id;

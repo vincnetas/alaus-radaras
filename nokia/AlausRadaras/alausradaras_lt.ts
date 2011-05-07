@@ -309,84 +309,114 @@
     <name>Translator</name>
     <message>
         <location filename="translator.cpp" line="7"/>
-        <source>lt</source>
+        <source>LT</source>
+        <oldsource>lt</oldsource>
         <comment>country</comment>
-        <translation>Lietuviskas</translation>
+        <translation>Lietuviškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="8"/>
-        <source>cz</source>
+        <source>CZ</source>
+        <oldsource>cz</oldsource>
         <comment>country</comment>
-        <translation>Cekiskas</translation>
+        <translation>Čekiškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="9"/>
-        <source>de</source>
+        <source>DE</source>
+        <oldsource>de</oldsource>
         <comment>country</comment>
-        <translation>Vokiskas</translation>
+        <translation>Vokiškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="10"/>
-        <source>be</source>
+        <source>BE</source>
+        <oldsource>be</oldsource>
         <comment>country</comment>
-        <translation>Belgiskas</translation>
+        <translation>Belgiškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="11"/>
-        <source>nl</source>
+        <source>NL</source>
+        <oldsource>nl</oldsource>
         <comment>country</comment>
-        <translation>Olandiskas</translation>
+        <translation>Olandiškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="12"/>
-        <source>ie</source>
+        <source>IE</source>
+        <oldsource>ie</oldsource>
         <comment>country</comment>
-        <translation></translation>
+        <translation>Airiškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="13"/>
-        <source>uk</source>
+        <source>UK</source>
+        <oldsource>uk</oldsource>
         <comment>country</comment>
-        <translation></translation>
+        <translation>Angliškas</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="14"/>
+        <source>DK</source>
+        <comment>country</comment>
+        <translation>Daniškas</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="15"/>
+        <source>FR</source>
+        <comment>country</comment>
+        <translation>Prancūziškas</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="16"/>
+        <source>PL</source>
+        <comment>country</comment>
+        <translation>Lenkiškas</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="19"/>
         <source>dark</source>
         <comment>tag</comment>
         <translation>Tamsus</translation>
     </message>
     <message>
-        <location filename="translator.cpp" line="17"/>
+        <location filename="translator.cpp" line="20"/>
+        <source>lager</source>
+        <comment>tag</comment>
+        <translation>Šviesus</translation>
+    </message>
+    <message>
         <source>larger</source>
         <comment>tag</comment>
-        <translation>Svieuss</translation>
-    </message>
-    <message>
-        <location filename="translator.cpp" line="18"/>
-        <source>white</source>
-        <comment>tag</comment>
-        <translation>Baltas</translation>
-    </message>
-    <message>
-        <location filename="translator.cpp" line="19"/>
-        <source>foreign</source>
-        <comment>tag</comment>
-        <translation>Uzsienietiskas</translation>
-    </message>
-    <message>
-        <location filename="translator.cpp" line="20"/>
-        <source>rural</source>
-        <comment>tag</comment>
-        <translation>Kaimiskas</translation>
+        <translation type="obsolete">Svieuss</translation>
     </message>
     <message>
         <location filename="translator.cpp" line="21"/>
+        <source>white</source>
+        <comment>tag</comment>
+        <translation>Kvietinis</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="22"/>
+        <source>foreign</source>
+        <comment>tag</comment>
+        <translation>Užsienietiškas</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="23"/>
+        <source>rural</source>
+        <comment>tag</comment>
+        <translation>Kaimiškas</translation>
+    </message>
+    <message>
+        <location filename="translator.cpp" line="24"/>
         <source>strong</source>
         <comment>tag</comment>
         <translation>Stiprus</translation>
     </message>
     <message>
-        <location filename="translator.cpp" line="22"/>
+        <location filename="translator.cpp" line="25"/>
         <source>light</source>
         <comment>tag</comment>
         <translation>Lengvas</translation>
