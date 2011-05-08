@@ -14,6 +14,7 @@ BaseUpdateDownloader::BaseUpdateDownloader(QObject *parent) :
 
 }
 
+
 void BaseUpdateDownloader::checkForUpdates()
 {
     if(needToCheckForUpdates()) {
@@ -24,6 +25,8 @@ void BaseUpdateDownloader::checkForUpdates()
         QString url = getUrl();
           qDebug() << url;
         manager->get(QNetworkRequest(QUrl(url)));
+    } else {
+         emit updateCheckFinished("");
     }
 }
 
@@ -34,7 +37,7 @@ bool BaseUpdateDownloader::needToCheckForUpdates()
             return true;
         } else {
             int date = settings.value(getUpdateType(),0).toInt();
-            QDateTime dateTime = QDateTime::fromTime_t(date).addDays(7);
+            QDateTime dateTime = QDateTime::fromTime_t(date).toUTC().addDays(7);
             if(dateTime < QDateTime::currentDateTime()) {
                 return true;
             }

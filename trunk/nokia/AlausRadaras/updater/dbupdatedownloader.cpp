@@ -19,8 +19,9 @@ QString DbUpdateDownloader::getUpdateType()
 
 QString DbUpdateDownloader::getUrl()
 {
-   int date = settings.value(getUpdateType(),QDateTime::fromString("2011-04-07","yyyy-MM-dd").toTime_t()).toInt();
-   return QString("http://www.alausradaras.lt/json?latestUpdate=%1").arg(QDateTime::fromTime_t(date).toString("yyyy-MM-dd"));
+  // int date = settings.value(getUpdateType(),QDateTime::fromString("2011-04-07","yyyy-MM-dd").toUTC().toTime_t()).toInt();
+    int date = QDateTime::fromString("2011-04-07","yyyy-MM-ddThh:mm:ss").toUTC().toTime_t();
+    return QString("http://www.alausradaras.lt/json?lastUpdate=%1").arg(QDateTime::fromTime_t(date).toUTC().toString("yyyy-MM-ddThh:mm:ss"));
 }
 
 void DbUpdateDownloader::saveUpdate(const QString &text)
@@ -32,7 +33,10 @@ void DbUpdateDownloader::saveUpdate(const QString &text)
         DbUpdater updater;
         ok = updater.updateDb(result);
         if(ok) {
-            //TODO: set last update;
+
+           settings.setValue(getUpdateType(),QDateTime::currentDateTimeUtc().toTime_t());
         }
     }
+    qDebug() << "emiting DbUpdateFinished";
+    emit DbUpdateFinished();
 }

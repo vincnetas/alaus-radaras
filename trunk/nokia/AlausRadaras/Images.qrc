@@ -25,5 +25,7 @@
         <file>images32/tab_map_02.png</file>
         <file>images32/tab_tag_01.png</file>
         <file>images32/tab_tag_02.png</file>
+        <file>images/gr_spinner_white.gif</file>
+        <file>images/spinner-24x24.gif</file>
     </qresource>
 </RCC>

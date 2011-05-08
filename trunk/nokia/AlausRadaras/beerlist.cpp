@@ -34,10 +34,10 @@ void BeerList::showBeers(BeerListType type, QString id, QString header)
     switch(type)
     {
         case BEER_COUNTRY:
-           beerListModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM beers b INNER JOIN brands br ON b.brand_id = br.id  WHERE br.country = '%1'").arg(id));
+           beerListModel->setQuery(QString("SELECT b.icon, b.title, b.id FROM beers b INNER JOIN brands br ON b.brand_id = br.id  WHERE br.country = '%1' ORDER BY b.title").arg(id));
            break;
        case BEER_TAG:
-           beerListModel->setQuery(QString("SELECT icon, title, id FROM beers b INNER JOIN beer_tags bt ON b.id = bt.beer_id AND bt.tag = '%1'").arg(id));
+           beerListModel->setQuery(QString("SELECT icon, title, id FROM beers b INNER JOIN beer_tags bt ON b.id = bt.beer_id AND bt.tag = '%1' ORDER BY b.title").arg(id));
            break;
     }
     ui->beerListView->setModel(beerListModel);

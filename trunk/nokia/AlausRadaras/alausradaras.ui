@@ -28,7 +28,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1,2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1,1,0,1">
      <property name="sizeConstraint">
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
@@ -67,6 +67,31 @@ border-image:url(:/images/bok_title.png);
        </property>
        <property name="text">
         <string>neverstii</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="waitLabel">
+       <property name="styleSheet">
+        <string notr="true">#waitLabel {
+ background-color: transparent;
+}</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

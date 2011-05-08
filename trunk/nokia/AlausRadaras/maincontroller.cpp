@@ -68,14 +68,15 @@ MainController::MainController(QWidget *parent) :
     showWidget(MainView);
 
     connect(&updater,SIGNAL(updateCheckFinished(QString)),SLOT(onUpdateAvailable(QString)));
-   // QTimer::singleShot(700,&updater,SLOT(checkForUpdates()));
+    QTimer::singleShot(700,&updater,SLOT(checkForUpdates()));
 
     populator = NULL;
     progress = NULL;
 
+    connect(&downloader,SIGNAL(DbUpdateFinished()),this,SLOT(remoteDbUpdateFinished()));
     QTimer::singleShot(500,this,SLOT(initDbUpdate()));
 
-    downloader.checkForUpdates();
+
 }
 
 void MainController::initDbUpdate()
@@ -90,8 +91,21 @@ void MainController::initDbUpdate()
         connect(populator,SIGNAL(finished()),this,SLOT(dbInitFinished()));
         //safeguard. Let it crash. after one minute, if its not done.
         QTimer::singleShot(60000,this,SLOT(dbInitFinished()));
+    } else {
+        initRemoteDbUpdate();
     }
 
+}
+
+void MainController::initRemoteDbUpdate()
+{
+    QTimer::singleShot(500,&downloader,SLOT(checkForUpdates()));
+    mainWidget->showProgress();
+}
+
+void MainController::remoteDbUpdateFinished()
+{
+    mainWidget->hideProgress();
 }
 
 void MainController::showFeelingThirsty()
@@ -158,7 +172,9 @@ void MainController::dbInitFinished()
     if(progress) {
         progress->done(1);
         ui->stackedWidget->currentWidget()->showFullScreen();
+        initRemoteDbUpdate();
     }
+
 }
 
 void MainController::clearHistory()

@@ -2,7 +2,7 @@
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
-  <value type="int">1</value>
+  <value type="int">2</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
@@ -824,10 +824,10 @@
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Create SIS Package</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.S60SignBuildStep</value>
-      <value key="Qt4ProjectManager.S60CreatePackageStep.Certificate" type="QString"></value>
-      <value key="Qt4ProjectManager.S60CreatePackageStep.Keyfile" type="QString"></value>
-      <value key="Qt4ProjectManager.S60CreatePackageStep.SignMode" type="int">0</value>
-      <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">false</value>
+      <value key="Qt4ProjectManager.S60CreatePackageStep.Certificate" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/OVI_2011-04-26.crt</value>
+      <value key="Qt4ProjectManager.S60CreatePackageStep.Keyfile" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/OVI_2011-04-26.key</value>
+      <value key="Qt4ProjectManager.S60CreatePackageStep.SignMode" type="int">1</value>
+      <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">true</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy</value>
@@ -844,7 +844,7 @@
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.S60DeployConfiguration</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.InstallationDriveLetter" type="QChar">C</value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName" type="QString">COM5</value>
+    <value key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName" type="QString">COM3</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.SilentInstall" type="bool">true</value>
    </valuemap>
    <value key="ProjectExplorer.Target.DeployConfigurationCount" type="int">1</value>
