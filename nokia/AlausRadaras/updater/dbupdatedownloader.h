@@ -14,6 +14,8 @@ protected:
     QString getUpdateType();
 private slots:
     void saveUpdate(const QString &text);
+signals:
+    void DbUpdateFinished();
 };
 
 #endif // DBUPDATEDOWNLOADER_H

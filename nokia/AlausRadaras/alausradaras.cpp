@@ -8,6 +8,7 @@
 #include "viewutils.h"
 #include <QDesktopServices>
 #include <QKeyEvent>
+#include <QMovie>
 
 AlausRadaras::AlausRadaras(QWidget *parent) :
     QWidget(parent),
@@ -41,6 +42,10 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     connect(settingsView,SIGNAL(LanguageChanged(QLocale::Language)), this, SLOT(changeLanguage(QLocale::Language)));
 
     retranslateUi();
+
+    progressMovie = new QMovie(":/images/spinner-24x24.gif");
+    ui->waitLabel->setMovie(progressMovie);
+    ui->waitLabel->setVisible(false);
 }
 
 void AlausRadaras::on_btnSettings_clicked()
@@ -52,7 +57,6 @@ void AlausRadaras::on_btnSettings_clicked()
 void AlausRadaras::settingsAccepted()
 {
     settingsView->close();
-
 }
 
 void AlausRadaras::on_btnBeers_clicked()
@@ -126,6 +130,24 @@ void AlausRadaras::changeEvent(QEvent* event)
         retranslateUi();
     }
     QWidget::changeEvent(event);
+}
+
+void AlausRadaras::showProgress()
+{
+    qDebug() << "showing progress";
+    ui->waitLabel->setVisible(true);
+    if(progressMovie->state() != QMovie::Running) {
+        progressMovie->start();
+    }
+}
+
+void AlausRadaras::hideProgress()
+{
+    qDebug() << "hiding progress";
+    ui->waitLabel->setVisible(false);
+    if(progressMovie->state() == QMovie::Running) {
+        progressMovie->stop();
+    }
 }
 
 void AlausRadaras::retranslateUi()

@@ -53,6 +53,7 @@ private:
 
     QStack<int> history;
     void clearHistory();
+    void initRemoteDbUpdate();
 
     QPointer<QGeoPositionInfoSource> locationDataSource;
     QGeoPositionInfo myPositionInfo;
@@ -76,6 +77,7 @@ private slots:
     void stopLocationUpdates();
     void onUpdateAvailable(const QString &version);
     void initDbUpdate();
+    void remoteDbUpdateFinished();
 
 };
 

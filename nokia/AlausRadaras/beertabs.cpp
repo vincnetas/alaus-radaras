@@ -65,7 +65,7 @@ void BeerTabs::loadTabData(int index)
         case 0:
             if(!beersModel) {
                 beersModel = new BeerListModel(this);
-                beersModel->setQuery("select icon, title, id from beers");
+                beersModel->setQuery("select icon, title, id from beers order by title");
                 ui->beerListView->setModel(beersModel);
             }
             break;

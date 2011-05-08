@@ -18,11 +18,11 @@ QString DbManager::QUERY_INSERT_PUB_BEERS = "INSERT OR REPLACE INTO pub_beers VA
 
 QString DbManager::SELECT_RANDOM_PUB = "SELECT id, title || '\n(' || city || ')' FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id  ORDER BY RANDOM() LIMIT 1";
 QString DbManager::SELECT_RANDOM_BEER_BY_PUB = "SELECT id, title FROM beers b INNER JOIN pub_beers pb ON b.id = pb.beer_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1";
-QString DbManager::SELECT_BEERPUB_PUBS = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs";
-QString DbManager::SELECT_BEERPUB_PUBS_BY_BEER = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id AND pb.beer_id = '%1'";
-QString DbManager::SELECT_BEERPUB_PUBS_BY_TAG = "SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beer_tags bt ON bt.beer_id = pb.beer_id AND bt.tag = '%1'";
-QString DbManager::SELECT_BEERPUB_PUB = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs where id='%1'";
-QString DbManager::SELECT_BEERPUB_PUBS_BY_COUNTRY = "SELECT DISTINCT p.id, p.title, p.longtitude, p.latitude, p.tile_x, p.tile_y, p.tile_pixel_x, p.tile_pixel_y, p.city  FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beers b ON b.id = pb.beer_id INNER JOIN brands br on br.id = b.brand_id AND br.country = '%1'";
+QString DbManager::SELECT_BEERPUB_PUBS = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs order by title";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_BEER = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id AND pb.beer_id = '%1' order by p.title";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_TAG = "SELECT DISTINCT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beer_tags bt ON bt.beer_id = pb.beer_id AND bt.tag = '%1' order by p.title";
+QString DbManager::SELECT_BEERPUB_PUB = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs where id='%1' order by title";
+QString DbManager::SELECT_BEERPUB_PUBS_BY_COUNTRY = "SELECT DISTINCT p.id, p.title, p.longtitude, p.latitude, p.tile_x, p.tile_y, p.tile_pixel_x, p.tile_pixel_y, p.city  FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id INNER JOIN beers b ON b.id = pb.beer_id INNER JOIN brands br on br.id = b.brand_id AND br.country = '%1' order by p.title";
 QString DbManager::SELECT_RANDOM_QUOTE = "SELECT text FROM quotes q WHERE q.amount = %1 ORDER BY RANDOM() LIMIT 1";
 DbManager::DbManager(QObject *parent) : QObject(parent)
 {

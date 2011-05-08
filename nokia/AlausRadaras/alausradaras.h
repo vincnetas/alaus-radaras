@@ -10,6 +10,7 @@
 #include "beercounter.h"
 #include "enums.h"
 #include "settings.h"
+#include <QMovie>
 namespace Ui {
     class AlausRadaras;
 }
@@ -24,6 +25,8 @@ public:
     void setUpdateVersion(const QString &version);
     void keyPressEvent(QKeyEvent *);
     void changeEvent(QEvent* event);
+    void showProgress();
+    void hideProgress();
 private slots:
     void on_btnBeers_clicked();
     void on_btnNear_clicked();
@@ -39,6 +42,7 @@ private:
     Settings *settingsView;
     QTranslator *qtTranslator;
     QTranslator *myappTranslator;
+    QMovie *progressMovie;
     void retranslateUi();
 signals:
     void BeersSelected();
