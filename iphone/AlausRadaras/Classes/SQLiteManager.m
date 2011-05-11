@@ -974,9 +974,10 @@ static SQLiteManager *sharedSQLiteManager = nil;
             if ([rs_tag next]) {
                 // Relationship exists - ignore
             } else {
+                // Save new relationship
                 NSLog(@"insert beers_tags");
                 [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
-                 [beer objectForKey:@"id"], tag];
+                [beer objectForKey:@"id"], tag];
             }  
         }
         // Tag does not exist - ignore
@@ -992,18 +993,28 @@ static SQLiteManager *sharedSQLiteManager = nil;
 
 	if ([rs next]) {
 		// update pub data
-		/*
-	    [db executeUpdate:@"UPDATE pub SET  WHERE id = ?",
-         [brand objectForKey:@"title"],
-         [brand objectForKey:@"icon"],
-         [brand objectForKey:@"homePage"],
-         [brand objectForKey:@"country"],
-         [brand objectForKey:@"hometown"],
-         [brand objectForKey:@"description"],
-         [brand objectForKey:@"id"]];
-		 */
+        NSLog(@"update pub");
+        [db executeUpdate:@"UPDATE pubs SET title = ?, address = ?, phone = ?, url = ?, latitude = ?, longitude = ?, city = ? WHERE id = ?",
+         [pub objectForKey:@"title"],
+         [pub objectForKey:@"address"],
+         [pub objectForKey:@"phone"],
+         [pub objectForKey:@"homepage"],
+         [pub objectForKey:@"latitude"],
+         [pub objectForKey:@"longitude"],
+         [pub objectForKey:@"city"],
+         [pub objectForKey:@"id"]];
 	} else {
 		// insert pub
+        NSLog(@"insert pub");
+        [db executeUpdate:@"INSERT INTO pubs (id, title, address, phone, url, latitude, longitude, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+         [pub objectForKey:@"id"],
+         [pub objectForKey:@"title"],
+         [pub objectForKey:@"address"],
+         [pub objectForKey:@"phone"],
+         [pub objectForKey:@"homepage"],
+         [pub objectForKey:@"latitude"],
+         [pub objectForKey:@"longitude"],
+         [pub objectForKey:@"city"]];
 		/*
         [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
          [brand objectForKey:@"id"],
@@ -1016,7 +1027,8 @@ static SQLiteManager *sharedSQLiteManager = nil;
 		 */
 	}
 	
-	NSArray *beerIds = [beer objectForKey:@"beerIds"];
+    
+	NSArray *beerIds = [pub objectForKey:@"beerIds"];
     for (NSString *beerId in beerIds) {
         // Check if beer exists
         rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
