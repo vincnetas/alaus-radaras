@@ -49,7 +49,7 @@
 		brandLabel.text = feelingLucky.brand.label;
 		brandImage.image = [UIImage imageNamed:feelingLucky.brand.icon];
 		if (brandImage.image == nil) {
-			brandImage.image = [UIImage imageNamed:@"brand_default.png"];		
+			brandImage.image = [UIImage imageNamed:@"beer_default.png"];		
 		}
 	}
 }

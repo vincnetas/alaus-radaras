@@ -11,7 +11,7 @@
 #import "SQLiteManager.h"
 #import "LocationManager.h"
 #import "MBProgressHUD.h"
-#import "DataPublisher.h";
+#import "DataPublisher.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation PubDetailViewController
@@ -69,7 +69,7 @@
 	 }
 	 
 	 //AlausRadarasAppDelegate *appDelegate = (AlausRadarasAppDelegate *)[[UIApplication sharedApplication] delegate];
-	 brandList = [[SQLiteManager sharedManager] getBrandsByPubId:currentPub.pubId];
+	 brandList = [[SQLiteManager sharedManager] getBeersByPubId:currentPub.pubId];
 	 
 	 /* Disable if I view didn't get users coordinates */
 	 if (userCoordinates == nil) {
