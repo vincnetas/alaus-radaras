@@ -182,6 +182,21 @@
 		C9DA6F0712F34E0700D9886A /* BeerCounterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA6F0612F34E0700D9886A /* BeerCounterController.m */; };
 		C9E5021412EE0D3F00ADD54C /* BrandsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */; };
 		C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */; };
+		C9E7414C137C78C400EA9EB6 /* beer_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E7413D137C78C400EA9EB6 /* beer_backoriu_tamsusis.png */; };
+		C9E7414D137C78C400EA9EB6 /* beer_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E7413E137C78C400EA9EB6 /* beer_belmonto_sviesusis.png */; };
+		C9E7414E137C78C400EA9EB6 /* beer_belmonto_ypatingas.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E7413F137C78C400EA9EB6 /* beer_belmonto_ypatingas.png */; };
+		C9E7414F137C78C400EA9EB6 /* beer_bernard_cerne.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74140137C78C400EA9EB6 /* beer_bernard_cerne.png */; };
+		C9E74150137C78C400EA9EB6 /* beer_birzu_sirvenos.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74141137C78C400EA9EB6 /* beer_birzu_sirvenos.png */; };
+		C9E74151137C78C400EA9EB6 /* beer_bravaria.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74142137C78C400EA9EB6 /* beer_bravaria.png */; };
+		C9E74152137C78C400EA9EB6 /* beer_budweiser_budar.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74143137C78C400EA9EB6 /* beer_budweiser_budar.png */; };
+		C9E74153137C78C400EA9EB6 /* beer_busi_trecias.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74144137C78C400EA9EB6 /* beer_busi_trecias.png */; };
+		C9E74154137C78C400EA9EB6 /* beer_butautu_dvaro.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74145137C78C400EA9EB6 /* beer_butautu_dvaro.png */; };
+		C9E74155137C78C400EA9EB6 /* beer_chodovar.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74146137C78C400EA9EB6 /* beer_chodovar.png */; };
+		C9E74156137C78C400EA9EB6 /* beer_daujotu.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74147137C78C400EA9EB6 /* beer_daujotu.png */; };
+		C9E74157137C78C400EA9EB6 /* beer_default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74148137C78C400EA9EB6 /* beer_default.png */; };
+		C9E74158137C78C400EA9EB6 /* beer_dundulio.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E74149137C78C400EA9EB6 /* beer_dundulio.png */; };
+		C9E74159137C78C400EA9EB6 /* beer_ekstra_tvirtoves.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E7414A137C78C400EA9EB6 /* beer_ekstra_tvirtoves.png */; };
+		C9E7415A137C78C400EA9EB6 /* beer_erdinger.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E7414B137C78C400EA9EB6 /* beer_erdinger.png */; };
 		C9E8E25612F9FAD400E927C1 /* beer-radar-db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */; };
 		C9E8E26612F9FB0600E927C1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
@@ -401,6 +416,21 @@
 		C9DA6F0612F34E0700D9886A /* BeerCounterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeerCounterController.m; sourceTree = "<group>"; };
 		C9E5021212EE0D3F00ADD54C /* BrandsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsViewController.m; sourceTree = "<group>"; };
 		C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsViewController.xib; path = Classes/BrandsViewController.xib; sourceTree = "<group>"; };
+		C9E7413D137C78C400EA9EB6 /* beer_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_backoriu_tamsusis.png; path = resources/beers/beer_backoriu_tamsusis.png; sourceTree = "<group>"; };
+		C9E7413E137C78C400EA9EB6 /* beer_belmonto_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_belmonto_sviesusis.png; path = resources/beers/beer_belmonto_sviesusis.png; sourceTree = "<group>"; };
+		C9E7413F137C78C400EA9EB6 /* beer_belmonto_ypatingas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_belmonto_ypatingas.png; path = resources/beers/beer_belmonto_ypatingas.png; sourceTree = "<group>"; };
+		C9E74140137C78C400EA9EB6 /* beer_bernard_cerne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_bernard_cerne.png; path = resources/beers/beer_bernard_cerne.png; sourceTree = "<group>"; };
+		C9E74141137C78C400EA9EB6 /* beer_birzu_sirvenos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_birzu_sirvenos.png; path = resources/beers/beer_birzu_sirvenos.png; sourceTree = "<group>"; };
+		C9E74142137C78C400EA9EB6 /* beer_bravaria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_bravaria.png; path = resources/beers/beer_bravaria.png; sourceTree = "<group>"; };
+		C9E74143137C78C400EA9EB6 /* beer_budweiser_budar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_budweiser_budar.png; path = resources/beers/beer_budweiser_budar.png; sourceTree = "<group>"; };
+		C9E74144137C78C400EA9EB6 /* beer_busi_trecias.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_busi_trecias.png; path = resources/beers/beer_busi_trecias.png; sourceTree = "<group>"; };
+		C9E74145137C78C400EA9EB6 /* beer_butautu_dvaro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_butautu_dvaro.png; path = resources/beers/beer_butautu_dvaro.png; sourceTree = "<group>"; };
+		C9E74146137C78C400EA9EB6 /* beer_chodovar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_chodovar.png; path = resources/beers/beer_chodovar.png; sourceTree = "<group>"; };
+		C9E74147137C78C400EA9EB6 /* beer_daujotu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_daujotu.png; path = resources/beers/beer_daujotu.png; sourceTree = "<group>"; };
+		C9E74148137C78C400EA9EB6 /* beer_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_default.png; path = resources/beers/beer_default.png; sourceTree = "<group>"; };
+		C9E74149137C78C400EA9EB6 /* beer_dundulio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_dundulio.png; path = resources/beers/beer_dundulio.png; sourceTree = "<group>"; };
+		C9E7414A137C78C400EA9EB6 /* beer_ekstra_tvirtoves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_ekstra_tvirtoves.png; path = resources/beers/beer_ekstra_tvirtoves.png; sourceTree = "<group>"; };
+		C9E7414B137C78C400EA9EB6 /* beer_erdinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_erdinger.png; path = resources/beers/beer_erdinger.png; sourceTree = "<group>"; };
 		C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beer-radar-db.sqlite"; sourceTree = "<group>"; };
 		C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -482,6 +512,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9E7413C137C78A800EA9EB6 /* beers */,
 				C986CFD512F4702D00865F6D /* pubs */,
 				C9A941DA12EA129B00992FAD /* images */,
 				C9D74E7212EF4727008DE8E8 /* brands */,
@@ -831,6 +862,28 @@
 			name = brands;
 			sourceTree = "<group>";
 		};
+		C9E7413C137C78A800EA9EB6 /* beers */ = {
+			isa = PBXGroup;
+			children = (
+				C9E7413D137C78C400EA9EB6 /* beer_backoriu_tamsusis.png */,
+				C9E7413E137C78C400EA9EB6 /* beer_belmonto_sviesusis.png */,
+				C9E7413F137C78C400EA9EB6 /* beer_belmonto_ypatingas.png */,
+				C9E74140137C78C400EA9EB6 /* beer_bernard_cerne.png */,
+				C9E74141137C78C400EA9EB6 /* beer_birzu_sirvenos.png */,
+				C9E74142137C78C400EA9EB6 /* beer_bravaria.png */,
+				C9E74143137C78C400EA9EB6 /* beer_budweiser_budar.png */,
+				C9E74144137C78C400EA9EB6 /* beer_busi_trecias.png */,
+				C9E74145137C78C400EA9EB6 /* beer_butautu_dvaro.png */,
+				C9E74146137C78C400EA9EB6 /* beer_chodovar.png */,
+				C9E74147137C78C400EA9EB6 /* beer_daujotu.png */,
+				C9E74148137C78C400EA9EB6 /* beer_default.png */,
+				C9E74149137C78C400EA9EB6 /* beer_dundulio.png */,
+				C9E7414A137C78C400EA9EB6 /* beer_ekstra_tvirtoves.png */,
+				C9E7414B137C78C400EA9EB6 /* beer_erdinger.png */,
+			);
+			name = beers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1013,6 +1066,21 @@
 				C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */,
 				C938B8EB137081E900CE7A8E /* beers.txt in Resources */,
 				C938B8ED137081FD00CE7A8E /* brands.txt.old.txt in Resources */,
+				C9E7414C137C78C400EA9EB6 /* beer_backoriu_tamsusis.png in Resources */,
+				C9E7414D137C78C400EA9EB6 /* beer_belmonto_sviesusis.png in Resources */,
+				C9E7414E137C78C400EA9EB6 /* beer_belmonto_ypatingas.png in Resources */,
+				C9E7414F137C78C400EA9EB6 /* beer_bernard_cerne.png in Resources */,
+				C9E74150137C78C400EA9EB6 /* beer_birzu_sirvenos.png in Resources */,
+				C9E74151137C78C400EA9EB6 /* beer_bravaria.png in Resources */,
+				C9E74152137C78C400EA9EB6 /* beer_budweiser_budar.png in Resources */,
+				C9E74153137C78C400EA9EB6 /* beer_busi_trecias.png in Resources */,
+				C9E74154137C78C400EA9EB6 /* beer_butautu_dvaro.png in Resources */,
+				C9E74155137C78C400EA9EB6 /* beer_chodovar.png in Resources */,
+				C9E74156137C78C400EA9EB6 /* beer_daujotu.png in Resources */,
+				C9E74157137C78C400EA9EB6 /* beer_default.png in Resources */,
+				C9E74158137C78C400EA9EB6 /* beer_dundulio.png in Resources */,
+				C9E74159137C78C400EA9EB6 /* beer_ekstra_tvirtoves.png in Resources */,
+				C9E7415A137C78C400EA9EB6 /* beer_erdinger.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

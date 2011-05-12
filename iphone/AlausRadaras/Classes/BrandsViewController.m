@@ -49,7 +49,7 @@
 
 	category = 0;
 	 
-	 brandList =  [[SQLiteManager sharedManager] getBrandsLocationBased];
+	 brandList =  [[SQLiteManager sharedManager] getBeersLocationBased];
 
 	 countryList = [[SQLiteManager sharedManager] getCountriesLocationBased];	 
 	 
@@ -134,7 +134,7 @@
 			cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
 			cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
 			if (cell.brandIcon.image == nil) {
-				cell.brandIcon.image = [UIImage imageNamed:@"brand_default.png"];
+				cell.brandIcon.image = [UIImage imageNamed:@"beer_default.png"];
 			}
 			break;
 		case 1:
@@ -158,17 +158,17 @@
 
 	switch (category) {
 		case 0:{
-			NSMutableArray *pubs = [[SQLiteManager sharedManager]getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];
+			NSMutableArray *pubs = [[SQLiteManager sharedManager]getPubsByBeerId:[[brandList objectAtIndex:indexPath.row]brandId]];
 			[self showMapWithPubs:pubs title:[[brandList objectAtIndex:indexPath.row]label]];
 			[pubs release];	
 			break;
 		} case 1: {	
-			NSMutableArray *brandsByCountry = [[SQLiteManager sharedManager] getBrandsByCountry:[[countryList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByCountry = [[SQLiteManager sharedManager] getBeersByCountry:[[countryList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByCountry title:[[countryList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByCountry release];
 			break;
 		} case 2: {
-			NSMutableArray *brandsByTag = [[SQLiteManager sharedManager] getBrandsByTag:[[tagsList objectAtIndex:indexPath.row]code]];
+			NSMutableArray *brandsByTag = [[SQLiteManager sharedManager] getBeersByTag:[[tagsList objectAtIndex:indexPath.row]code]];
 			[self showBrandDetails:brandsByTag title:[[tagsList objectAtIndex:indexPath.row]displayValue]];
 			[brandsByTag release];
 			break;
@@ -252,30 +252,5 @@
 
 
 
-
 @end
-
-
-
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- if (self) {
- // Custom initialization.
- }
- return self;
- }
- */
-
-
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
 
