@@ -162,7 +162,7 @@
 			[button setFrame:rect];
 			UIImage *buttonImageNormal=[UIImage imageNamed:item.icon];
 			if (buttonImageNormal == nil) {
-				buttonImageNormal = [UIImage imageNamed:@"brand_default.png"];
+				buttonImageNormal = [UIImage imageNamed:@"beer_default.png"];
 			}
 		
 			[button setBackgroundImage:buttonImageNormal	forState:UIControlStateNormal];

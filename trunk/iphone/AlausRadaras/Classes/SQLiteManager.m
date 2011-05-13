@@ -813,14 +813,14 @@ static SQLiteManager *sharedSQLiteManager = nil;
         NSLog(@"update beer");
         [db executeUpdate:@"UPDATE beers SET title = ?, icon = ? WHERE id = ?",
          [beer objectForKey:@"title"],
-         [beer objectForKey:@"icon"],
+         [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]],
          [beer objectForKey:@"id"]];
 	} else {
         NSLog(@"insert beer");
         [db executeUpdate:@"INSERT INTO beers (id, title, icon) values (?, ?, ?)",
          [beer objectForKey:@"id"],
          [beer objectForKey:@"title"],
-         [beer objectForKey:@"icon"]];
+         [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]]];
     }
     
     // UPDATE BEER-BRAND RELATIONSHIP
@@ -896,17 +896,22 @@ static SQLiteManager *sharedSQLiteManager = nil;
 	NSArray *beerIds = [pub objectForKey:@"beerIds"];
     for (NSString *beerId in beerIds) {
         
-        FMResultSet pubBeersResult = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs_beers pb WHERE pb.pub_id = '%@'", [pub objectForKey:@"id"]]];
+        rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs_beers pb WHERE pb.pub_id = '%@' AND pb.beer_id = '%@'",
+                [pub objectForKey:@"id"], beerId]];
 
-        // Check if beer exists
-        rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
         if ([rs next]) {
-            //if such beer exists
-            // check if relationship already exist
-            
+            // if relationship exists - do nothing
+        } else {
+            // Check if beer exists
+            rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
+            if ([rs next]) {
+                //if such beer exists
+                NSLog(@"Insert pubs_beers");
+                [db executeUpdate:@"INSERT INTO pubs_beers (pub_id, beer_id) VALUES (?, ?);",
+                    [pub objectForKey:@"id"], beerId];
+            }
+            //if beer not found - ignore
         }
-        //if beer not found - ignore
-        
 	}
 	
 	[rs close];
