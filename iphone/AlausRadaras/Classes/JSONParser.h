@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 
 
-@interface JSONParser : NSObject {
+@interface JSONParser : NSOperation {
     
+    NSString *response;
 }
 
-+ (void) parse:(NSString *) response;
+@property(retain) NSString *response;
+
+- (id)initWithResponse:(NSString*)response;
+
+
+//+ (void) parse:(NSString *) response;
 
 @end

@@ -74,7 +74,6 @@ static SyncManager *sharedManager = nil;
     
 	responseData = [[NSMutableData data] retain];
     
-	
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
 	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-04-01"]];
 	[request setHTTPMethod:@"GET"];
@@ -110,7 +109,13 @@ static SyncManager *sharedManager = nil;
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     //	[responseData release];
-	[JSONParser parse:responseString];
+    
+    queue = [[NSOperationQueue alloc] init];
+    JSONParser *plo = [[JSONParser alloc] initWithResponse:responseString];
+    [queue addOperation:plo];
+    [plo release];
+    
+	//[JSONParser parse:responseString];
 	
 	[topWindow setHidden:YES];
 }
