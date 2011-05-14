@@ -21,6 +21,9 @@
 	FMDatabase *db;
 }
 
++ (SQLiteManager*) updateManager;
+
+
 + (SQLiteManager*) sharedManager;
 + (id)allocWithZone:(NSZone *)zone;
 - (id)copyWithZone:(NSZone *)zone;

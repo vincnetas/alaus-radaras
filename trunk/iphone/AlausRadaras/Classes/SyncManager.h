@@ -12,6 +12,8 @@
 @interface SyncManager : NSObject {
 	NSMutableData *responseData;
 	UIWindow *topWindow;
+    
+    NSOperationQueue *queue;
 }
 
 + (SyncManager*) sharedManager;

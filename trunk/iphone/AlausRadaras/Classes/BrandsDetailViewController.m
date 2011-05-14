@@ -55,7 +55,7 @@
 	NSMutableArray *pubs = [[NSMutableArray alloc]init];
 
 	for(Brand *brand in brandList) {
-		[pubs addObjectsFromArray:[[SQLiteManager sharedManager] getPubsByBrandId:brand.brandId]];
+		[pubs addObjectsFromArray:[[SQLiteManager sharedManager] getPubsByBeerId:brand.brandId]];
 	}
 	[self showMapWithPubs:pubs WithInfo:titleLabel.text];
 	[pubs release];
@@ -87,7 +87,7 @@
 	cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
 	cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
 	if (cell.brandIcon.image == nil) {
-		cell.brandIcon.image = [UIImage imageNamed:@"brand_default.png"];
+		cell.brandIcon.image = [UIImage imageNamed:@"beer_default.png"];
 	}
 	
     return cell;

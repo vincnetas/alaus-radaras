@@ -11,7 +11,16 @@
 
 @implementation JSONParser
 
-+ (void) parse:(NSString *) response {
+@synthesize response;
+
+- (id)initWithResponse:(NSString*)response {
+    if (![super init]) return nil;
+    [self setResponse:response];
+    return self;
+}
+
+
+- (void) main {
 	NSDictionary *results = [response JSONValue];
     
     //1. DELETE
@@ -25,8 +34,13 @@
     NSArray *brands = [update objectForKey:@"brands"];
     NSLog(@"UPDATE: Sync Brands: %i", [brands count]);
     
+    [[SQLiteManager updateManager] initializeDatabase];
+
+    for (int i=0; i<5; i++) {
+        
+    
     for (NSDictionary *brand in brands){
-        [[SQLiteManager sharedManager] updateBrand:brand];
+        [[SQLiteManager updateManager] updateBrand:brand];
 	}
     
     //2.2. Beers
@@ -34,7 +48,7 @@
     NSLog(@"UPDATE: Sync Beers: %i", [beers count]);
 
     for (NSDictionary *beer in beers){
-        [[SQLiteManager sharedManager] updateBeer:beer];
+        [[SQLiteManager updateManager] updateBeer:beer];
 	}
     
     
@@ -43,9 +57,9 @@
     NSLog(@"UPDATE: Sync Pubs: %i", [pubs count]);
     
     for (NSDictionary *pub in pubs){
-        [[SQLiteManager sharedManager] updatePub:pub];
+        [[SQLiteManager updateManager] updatePub:pub];
     }
-    
+    }
     
 }
 

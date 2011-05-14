@@ -17,12 +17,21 @@
 }
 
 static SQLiteManager *sharedSQLiteManager = nil;
+static SQLiteManager *updateSQLiteManager = nil;
 
 + (SQLiteManager*) sharedManager {
     if (sharedSQLiteManager == nil) {
         sharedSQLiteManager = [[super allocWithZone:NULL] init];
     }
     return sharedSQLiteManager;
+}
+
++ (SQLiteManager*) updateManager {
+    if (updateSQLiteManager == nil) {
+        
+        updateSQLiteManager = [[super allocWithZone:NULL] init];
+    }
+    return updateSQLiteManager;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
@@ -405,6 +414,9 @@ static SQLiteManager *sharedSQLiteManager = nil;
 }
 
 - (NSMutableArray *) getBeersLocationBased {
+    
+    NSLog([NSString stringWithFormat:@"DB in use: %@", [db inUse]]);
+    
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
@@ -698,7 +710,7 @@ static SQLiteManager *sharedSQLiteManager = nil;
 - (FeelingLucky *) feelingLucky {
 	
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
-	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM pubs p INNER JOIN pubs_brands pb ON p.id = pb.pub_id"]];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM pubs p INNER JOIN pubs_beers pb ON p.id = pb.pub_id"]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ AND distance(p.latitude, p.longitude, %f,%f) < %i", 
 				  query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
@@ -717,6 +729,9 @@ static SQLiteManager *sharedSQLiteManager = nil;
 								   Webpage:[[rs stringForColumn:@"url"]copy]
 									   Lat:[rs doubleForColumn:@"latitude"]
 									  Long:[rs doubleForColumn:@"longitude"]];
+        
+        NSLog([NSString stringWithFormat:@"FEeL lucky : %@", pub.pubId]);
+        
 		NSMutableArray *brands = [self getBeersByPubId:pub.pubId];
 		int i = (arc4random()%(brands.count));
 		Brand *brand = [brands objectAtIndex:i];
@@ -800,7 +815,6 @@ static SQLiteManager *sharedSQLiteManager = nil;
              [brand objectForKey:@"hometown"],
              [brand objectForKey:@"description"]];
     }
-    
     [rs close];
 }
 
