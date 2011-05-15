@@ -22,6 +22,8 @@
 
 // Custom methods
 - (void) doSync;
-- (void) doFullUpdate;
+- (void) showSyncInd;
+- (void) removeSyncInd;
+
 
 @end

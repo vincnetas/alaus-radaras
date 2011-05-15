@@ -12,6 +12,7 @@
 @implementation SyncManager
 
 - (void)dealloc {
+    [queue release];
     [super dealloc];
 }
 
@@ -36,19 +37,20 @@ static SyncManager *sharedManager = nil;
 }
 
 - (void) doSync {
-    //	NSString *params = 
-    //		[NSString stringWithFormat:
-    //		 @"lastUpdate=2011-04-01"];
-    //	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    //	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];
+    [self showSyncInd];
     
-	UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 30.0f, 20.0f)];
-	[statusView setBackgroundColor:[UIColor redColor]];
-	UIImage *image  = [UIImage imageNamed:@"atnaujinimasStatus.png"];
-	UIImageView *statusImg = [[UIImageView alloc] initWithImage:image];
-    
+	responseData = [[NSMutableData data] retain];
+
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-05-14T00:00:00"]];
+	[request setHTTPMethod:@"GET"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void) showSyncInd {
 	UIView *statusView2 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-	[statusView2 setBackgroundColor:[UIColor redColor]];
+	[statusView2 setBackgroundColor:[UIColor clearColor]];
 	UIImage *image2  = [UIImage imageNamed:@"atnaujinimas.png"];
 	UIImageView *statusImg2 = [[UIImageView alloc] initWithImage:image2];
 	
@@ -59,35 +61,23 @@ static SyncManager *sharedManager = nil;
 	statusLabel.textAlignment = UITextAlignmentCenter;
 	statusLabel.font = [UIFont fontWithName:@"ArialMT" size:14]; 
 	
-	[statusView2 addSubview:statusImg2];	
-	[statusView addSubview:statusImg];	
+	[statusView2 addSubview:statusImg2];
     
 	topWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-	[topWindow setBackgroundColor:[UIColor blackColor]];
+    //	[topWindow setBackgroundColor:[UIColor blackColor]];
 	[topWindow setAlpha:1.0f];
 	[topWindow setWindowLevel:10000.0f];
 	[topWindow setHidden:NO];
     
-    //	[topWindow addSubview:statusLabel];
-	[topWindow addSubview:statusView];
+    //   [topWindow addSubview:statusLabel];
 	[topWindow addSubview:statusView2];
-    
-	responseData = [[NSMutableData data] retain];
-    
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-04-01"]];
-	[request setHTTPMethod:@"GET"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-- (void) doFullUpdate {
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json"]];
-	[request setHTTPMethod:@"GET"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+
+- (void) removeSyncInd {
+    [topWindow setHidden:YES];
 }
+
 
 
 #pragma mark -
@@ -108,27 +98,19 @@ static SyncManager *sharedManager = nil;
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    //	[responseData release];
     
     queue = [[NSOperationQueue alloc] init];
-    JSONParser *plo = [[JSONParser alloc] initWithResponse:responseString];
-    [queue addOperation:plo];
-    [plo release];
-    
-	//[JSONParser parse:responseString];
-	
-	[topWindow setHidden:YES];
+    JSONParser *json = [[JSONParser alloc] initWithResponse:responseString];
+    [queue addOperation:json];
+    [json release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
- //   NSLog(@"JSON didReceiveData: %i", 	[data length]);	
 	[responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-//	NSLog(@"JSON didReceiveResponse");	
-	[responseData setLength:0];
-    
+	[responseData setLength:0];    
 }
 
 @end

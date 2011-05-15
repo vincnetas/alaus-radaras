@@ -10,7 +10,6 @@
 #import "Pub.h"
 #import "SQLiteManager.h"
 #import "LocationManager.h"
-#import "SyncManager.h"
 //vibrate
 #import <AudioToolbox/AudioServices.h>
 #import <QuartzCore/QuartzCore.h>
@@ -38,8 +37,6 @@
 	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
 	self.view.backgroundColor = background;
 	[background release];
-    
-   [[SyncManager sharedManager] doSync];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

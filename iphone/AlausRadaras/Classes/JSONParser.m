@@ -8,6 +8,7 @@
 
 #import "JSONParser.h"
 #import "SQLiteManager.h"
+#import "SyncManager.h"
 
 @implementation JSONParser
 
@@ -28,17 +29,14 @@
     //1.2. Beers
     //1.3. Brands
     
+    [[SQLiteManager updateManager] initializeDatabase];        
+
     //2. UPDATE
     NSArray *update = [results objectForKey:@"update"];
     //2.1. Brands
     NSArray *brands = [update objectForKey:@"brands"];
     NSLog(@"UPDATE: Sync Brands: %i", [brands count]);
-    
-    [[SQLiteManager updateManager] initializeDatabase];
-
-    for (int i=0; i<5; i++) {
         
-    
     for (NSDictionary *brand in brands){
         [[SQLiteManager updateManager] updateBrand:brand];
 	}
@@ -59,8 +57,8 @@
     for (NSDictionary *pub in pubs){
         [[SQLiteManager updateManager] updatePub:pub];
     }
-    }
     
+    [[SyncManager sharedManager]removeSyncInd];
 }
 
 @end
