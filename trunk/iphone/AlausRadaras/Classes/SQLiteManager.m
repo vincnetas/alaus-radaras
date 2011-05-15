@@ -28,7 +28,6 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 + (SQLiteManager*) updateManager {
     if (updateSQLiteManager == nil) {
-        
         updateSQLiteManager = [[super allocWithZone:NULL] init];
     }
     return updateSQLiteManager;
@@ -795,7 +794,7 @@ static SQLiteManager *updateSQLiteManager = nil;
         [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [brand objectForKey:@"id"]]];
     
 	if ([rs next]) {
-        NSLog(@"update brand");
+//        NSLog(@"update brand");
         [db executeUpdate:@"UPDATE brands SET title = ?, icon = ?, homePage = ?, country = ?, hometown = ?, description = ? WHERE id = ?",
          [brand objectForKey:@"title"],
          [brand objectForKey:@"icon"],
@@ -805,7 +804,7 @@ static SQLiteManager *updateSQLiteManager = nil;
          [brand objectForKey:@"description"],
          [brand objectForKey:@"id"]];
 	} else {
-        NSLog(@"insert brand");
+//        NSLog(@"insert brand");
         [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
              [brand objectForKey:@"id"],
              [brand objectForKey:@"title"],
@@ -824,13 +823,13 @@ static SQLiteManager *updateSQLiteManager = nil;
     
     // UPDATE/INSERT BEER
 	if ([rs next]) {
-        NSLog(@"update beer");
+//        NSLog(@"update beer");
         [db executeUpdate:@"UPDATE beers SET title = ?, icon = ? WHERE id = ?",
          [beer objectForKey:@"title"],
          [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]],
          [beer objectForKey:@"id"]];
 	} else {
-        NSLog(@"insert beer");
+//        NSLog(@"insert beer");
         [db executeUpdate:@"INSERT INTO beers (id, title, icon) values (?, ?, ?)",
          [beer objectForKey:@"id"],
          [beer objectForKey:@"title"],
@@ -841,7 +840,7 @@ static SQLiteManager *updateSQLiteManager = nil;
     FMResultSet *rs_brand = 
         [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [beer objectForKey:@"brandId"]]];
     if ([rs_brand next]) {
-        NSLog(@"update beer.brand_id");
+//        NSLog(@"update beer.brand_id");
         [db executeUpdate:@"UPDATE beers SET brand_id = ? WHERE id = ?",
          [beer objectForKey:@"brandId"],
          [beer objectForKey:@"id"]];
@@ -864,7 +863,7 @@ static SQLiteManager *updateSQLiteManager = nil;
                 // Relationship exists - ignore
             } else {
                 // Save new relationship
-                NSLog(@"insert beers_tags");
+//                NSLog(@"insert beers_tags");
                 [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
                 [beer objectForKey:@"id"], tag];
             }  
@@ -883,7 +882,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 	if ([rs next]) {
 		// update pub data
-        NSLog(@"update pub");
+//        NSLog(@"update pub");
         [db executeUpdate:@"UPDATE pubs SET title = ?, address = ?, phone = ?, url = ?, latitude = ?, longitude = ?, city = ? WHERE id = ?",
          [pub objectForKey:@"title"],
          [pub objectForKey:@"address"],
@@ -895,7 +894,7 @@ static SQLiteManager *updateSQLiteManager = nil;
          [pub objectForKey:@"id"]];
 	} else {
 		// insert pub
-        NSLog(@"insert pub");
+//        NSLog(@"insert pub");
         [db executeUpdate:@"INSERT INTO pubs (id, title, address, phone, url, latitude, longitude, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
          [pub objectForKey:@"id"],
          [pub objectForKey:@"title"],

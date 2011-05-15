@@ -8,6 +8,7 @@
 
 #import "SettingsController.h"
 #import "LocationManager.h"
+#import "SyncManager.h"
 
 @implementation SettingsController
 
@@ -24,10 +25,55 @@
 	/* Application setup */
     [super viewDidLoad];
 
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    /* ############ DO SYNC ############ */
+    
+    NSString *lastUpdate = [standardUserDefaults stringForKey:@"LastUpdate"];
+    
+   // if (lastUpdate == nil) {
+        // Default date
+        lastUpdate = @"2011-05-15";
+    //}
+    
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    NSDate *now = [NSDate date];
+    NSString *todayDateString = [dateFormat stringFromDate:now];  
+
+    
+//    NSDate *dt1 = [[NSDate alloc] init];
+  //  NSDate *dt2 = [[NSDate alloc] init];
+    
+    NSDate *dt1 = now;//[dateFormat dateFromString:@"2011-02-25"];
+    NSDate *dt2 = [dateFormat dateFromString:lastUpdate];
+    
+    [dateFormat release];
+
+    NSLog(todayDateString);
+    NSComparisonResult result = [now compare:dt2];
+    
+    switch (result) {
+        case NSOrderedAscending: NSLog(@"%@ is greater than %@", dt2, dt1); break;
+        case NSOrderedDescending: NSLog(@"%@ is less %@", dt2, dt1); break;
+        case NSOrderedSame: NSLog(@"%@ is equal to %@", dt2, dt1); break;
+        default: NSLog(@"erorr dates %@, %@", dt2, dt1); break;
+    }
+    
+    
+    
+    if ([todayDateString isEqualToString:(lastUpdate)]) {
+        NSLog(@"0000000000000000000000000000");
+        //[[SyncManager sharedManager] doSync];
+    }
+    
+    /* ############ END SYNC ############ */
+
 	
 	[[LocationManager sharedManager]initializeManager];
 	BOOL enableAllFeatures = TRUE;
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	
 	/* Determine if awesome features are enabled */
 	NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
@@ -66,9 +112,7 @@
 	
 	self.view.backgroundColor = background;
 	[background release];
-	
-	//self.view.backgroundColor = [UIColor clearColor];
-	self.view.opaque = NO;
+    self.view.opaque = NO;
 	
 	if (standardUserDefaults) {
 		BOOL visibilityControlled = [standardUserDefaults boolForKey:@"VisibilityControlled"];
@@ -93,26 +137,9 @@
 }
 
 -(IBAction) hideSettings:(id) sender {
-	NSLog(@"hideSettings");
-	
-	//	CATransition *animation = [CATransition animation];
-	//	[animation setDelegate:self];
-	//	//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-	//	//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-	//	[animation setType:kCATransitionMoveIn];
-	//	[animation setSubtype:kCATransitionFade];
-	//	[animation setDuration:0.75];
-	//	[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-	//	[[settingsController.view layer] addAnimation:animation forKey:kCATransition];
-	
 	[self.view removeFromSuperview];
 	self.view.alpha = 0.0;
 	[self viewDidDisappear:NO];
-	/* Fade-out 
-	 [UIView animateWithDuration:0.2
-	 animations:^{settingsController.view.alpha = 0.0;}
-	 completion:^(BOOL finished){[settingsController.view removeFromSuperview];}];
-	 */
 }
 
 -(IBAction) visibilityControlIndexChanged {
@@ -177,39 +204,4 @@
 }
 
 
-
 @end
-
-
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- if (self) {
- // Custom initialization.
- }
- return self;
- }
- */
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
- }
- */
-
-/*
- // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
- - (void)viewDidLoad {
- [super viewDidLoad];
- }
- */
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
