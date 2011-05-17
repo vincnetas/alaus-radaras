@@ -42,7 +42,7 @@ static SyncManager *sharedManager = nil;
 	responseData = [[NSMutableData data] retain];
 
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-05-14T00:00:00"]];
+	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-01-01T00:00:00"]];
 	[request setHTTPMethod:@"GET"];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];

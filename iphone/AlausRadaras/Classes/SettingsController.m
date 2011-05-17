@@ -64,10 +64,10 @@
     
     
     
-    if ([todayDateString isEqualToString:(lastUpdate)]) {
+    //if ([todayDateString isEqualToString:(lastUpdate)]) {
         NSLog(@"0000000000000000000000000000");
-        //[[SyncManager sharedManager] doSync];
-    }
+        [[SyncManager sharedManager] doSync];
+   // }
     
     /* ############ END SYNC ############ */
 
