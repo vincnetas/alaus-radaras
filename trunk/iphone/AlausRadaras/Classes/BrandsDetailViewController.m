@@ -95,7 +95,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSMutableArray *pubs = [[SQLiteManager sharedManager] getPubsByBrandId:[[brandList objectAtIndex:indexPath.row]brandId]];		 		 
+	NSMutableArray *pubs = [[SQLiteManager sharedManager] getPubsByBeerId:[[brandList objectAtIndex:indexPath.row]brandId]];		 		 
 	[self showMapWithPubs:pubs WithInfo:[[brandList objectAtIndex:indexPath.row]label]];
 	[pubs release];	
 	

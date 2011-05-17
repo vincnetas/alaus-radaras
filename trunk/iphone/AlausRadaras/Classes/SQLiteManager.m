@@ -478,8 +478,11 @@ static SQLiteManager *updateSQLiteManager = nil;
 - (NSMutableArray *) getBeersByCountry:(NSString *)country {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 	
+    NSLog(country);
+    
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
-	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM beers b INNER JOIN beers_countries bc ON b.id = bc.beer_id AND bc.country = '%@'", country]];
+	NSString *query = [[NSString alloc] initWithString:
+            [NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.brand_id IN (SELECT id FROM brands br WHERE br.country = '%@')", country]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_beers AS pb ON pb.beer_id = b.id INNER JOIN pubs AS p ON p.id = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.id", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
@@ -603,7 +606,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 									  Long:[rs doubleForColumn:@"longitude"]];
 		pub.distance = [rs doubleForColumn:@"distance"];
 		[result addObject:pub];
-		[pub release];
+	//	[pub release];
     }
 	
 	return result;
@@ -919,7 +922,6 @@ static SQLiteManager *updateSQLiteManager = nil;
             rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
             if ([rs next]) {
                 //if such beer exists
-                NSLog(@"Insert pubs_beers");
                 [db executeUpdate:@"INSERT INTO pubs_beers (pub_id, beer_id) VALUES (?, ?);",
                     [pub objectForKey:@"id"], beerId];
             }
