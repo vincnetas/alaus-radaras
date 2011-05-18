@@ -81,7 +81,6 @@
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
-		C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */; };
 		C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
@@ -290,7 +289,6 @@
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
-		C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "atnaujinimasStatus@2x.png"; path = "resources/images/640x960/atnaujinimasStatus@2x.png"; sourceTree = "<group>"; };
 		C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "atnaujinimas@2x.png"; path = "resources/images/640x960/atnaujinimas@2x.png"; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
 		C986D03012F481A100865F6D /* LuckyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyController.h; sourceTree = "<group>"; };
@@ -540,7 +538,6 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
-				C986B632135F85AF00EC3E53 /* atnaujinimasStatus@2x.png */,
 				C986B640135F863C00EC3E53 /* atnaujinimas@2x.png */,
 				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
@@ -953,7 +950,6 @@
 				C94C8F2313366216006F0166 /* lucky@2x.png in Resources */,
 				C9A171A5135E236900AC976E /* beer_01@2x.png in Resources */,
 				C9A171A7135E237400AC976E /* beer_01.png in Resources */,
-				C986B634135F85AF00EC3E53 /* atnaujinimasStatus@2x.png in Resources */,
 				C986B641135F863C00EC3E53 /* atnaujinimas@2x.png in Resources */,
 				C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */,
 				C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */,

@@ -311,7 +311,7 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 	
-	pubDetailView.currentPub = [pubsOnMap objectAtIndex:indexPath.row];
+	pubDetailView.currentPub = [[SQLiteManager sharedManager] getPubById:[[pubsOnMap objectAtIndex:indexPath.row]pubId]];//[pubsOnMap objectAtIndex:indexPath.row];
 	
     CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
 	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];

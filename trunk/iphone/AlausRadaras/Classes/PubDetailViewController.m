@@ -56,7 +56,8 @@
 	 brandsTable.opaque = NO;
 	 /* iOS3.1 Support */	 
 	 //brandsTable.backgroundView = nil; 
-	 
+     NSLog(@"PubDetailViewController start viewDidLoad");	 
+
 	 pubTitleShortLabel.text = currentPub.pubTitle;
 	 pubTitleLabel.text = currentPub.pubTitle;
  	 pubAddressLabel.text = [NSString stringWithFormat:@"%@, %@", currentPub.pubAddress, currentPub.city];
