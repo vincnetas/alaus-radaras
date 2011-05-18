@@ -1,5 +1,7 @@
 package alaus.radaras;
 
+import java.util.Date;
+
 import alaus.radaras.service.UpdateService;
 import alaus.radaras.settings.SettingsManager;
 import alaus.radaras.utils.Utils;
@@ -33,6 +35,8 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 
     private static final int UPDATE_IN_PROGRESS = 0;
 
+	private static final String UPDATE_SITE = "www.alausradaras.lt";
+    
     private SettingsManager settings;
     
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -155,14 +159,37 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     	
     	registerReceiver(broadcastReceiver, new IntentFilter(UpdateService.UPDATE_STATUS));
     	
+    	checkForUpdate();
+        updateBeerCount();
+        updateNotifications();
+    }
+
+	private void checkForUpdate() {
+		Date lastUpdate = settings.getLastUpdateAttempt();
+		if (lastUpdate == null || System.currentTimeMillis() - lastUpdate.getTime() > Utils.DAY) {
+			ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			if (connectivityManager.getBackgroundDataSetting()) {
+				/*
+				 * If background data is enabled, schedule daily update. Check
+				 * latest update.
+				 */
+				settings.setLastUpdateAttempt(new Date());
+
+				Intent intent = new Intent(this, UpdateService.class);
+				intent.putExtra(UpdateService.UPDATE_SOURCE, UPDATE_SITE);
+
+				startService(intent);
+			}
+		}
+	}
+
+	private void updateBeerCount() {
         final SettingsManager settings = new SettingsManager(this);
         TextView counter = (TextView) findViewById(R.id.mainCounterCurrent);
         counter.setText(settings.getTotalCount().toString());
-        
-        updateNotifications();
-    }
-    
-    private void updateNotifications() {
+	}
+
+	private void updateNotifications() {
         if (hasNotifications()) {
         	getNotificationImageView().setVisibility(View.VISIBLE);
         } else {
@@ -289,7 +316,7 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 		switch (item.getItemId()) {
 		case R.id.update: {
 			Intent intent = new Intent(this, UpdateService.class);
-			intent.putExtra(UpdateService.UPDATE_SOURCE, "www.alausradaras.lt");
+			intent.putExtra(UpdateService.UPDATE_SOURCE, UPDATE_SITE);
 
 			startService(intent);
 			break;

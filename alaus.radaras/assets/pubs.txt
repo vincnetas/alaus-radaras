@@ -53,7 +53,6 @@
 1298412463923	Bambalynė	Stiklių g. 7	Vilnius	8 676 00075	http://bambalyne.lt/	54.6800344	25.2863445
 1298412463924	Alaus studija	S. Žukausko 20	Vilnius	8 685 60885	http://alausstudija.lt/	54.7076179	25.2958828
 1298412463925	Savas kampas	Vokiečių g. 4	Vilnius	8 52 123203	http://www.savaskampas.lt/	54.678471	25.2860236
-1298412463926	Chillout baras	Pylimo g. 8/2	Vilnius		http://www.facebook.com/pages/Chillout-baras/103914669678344?v=info	54.6842615	25.2771523
 1298412463927	Bermudai	Upes 6	Vilnius	8 655 70262	http://www.bermudaiclub.lt/	54.6961061	25.2691852
 1298412463928	Prie Katedros	Gedimino pr. 5	Vilnius	8 605 77555	http://www.priekatedros.lt/Bravoras_Prie_Katedros/Prie_Katedros.html	54.6864964	25.2832854
 1298412463929	Wall Street	Lvovo g. 25	Vilnius	8 52 195916	http://www.wallst.lt/	54.6955893	25.2802079

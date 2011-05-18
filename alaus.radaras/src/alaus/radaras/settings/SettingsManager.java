@@ -27,6 +27,7 @@ public class SettingsManager {
 		public static final String SETTINGS_ASK_ENABLE_LOCATION_PROVIDER = "askEnableLocationProvider";
         public static final String SETTINGS_ASK_ENABLE_SYNCHRONIZATION = "askEnableSynchronization";
         public static final String SETTINGS_LAST_UPDATE = "lastUpdate";
+        public static final String SETTINGS_LAST_UPDATE_ATTEMPT = "lastUpdateAttempt";
 	}
 	
     private void storeBool(String name, Boolean value) {
@@ -149,7 +150,19 @@ public class SettingsManager {
     public void setLastUpdate(Date date) {
         storeLong(Settings.SETTINGS_LAST_UPDATE, date.getTime());
     }
-	
 
+	public Date getLastUpdateAttempt() {
+        Date result = null;
+        
+        long lastUpdate = getPreferences().getLong(Settings.SETTINGS_LAST_UPDATE_ATTEMPT, 0);
+        if (lastUpdate != 0) {
+            result = new Date(lastUpdate);
+        }
+        
+        return result;   
+	}
 
+	public void setLastUpdateAttempt(Date date) {
+		storeLong(Settings.SETTINGS_LAST_UPDATE_ATTEMPT, date.getTime());		
+	}
 }
