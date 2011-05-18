@@ -20,9 +20,9 @@
 <string name="tabs_title_tags">Tipai</string>
 <string name="settings_search_distance">Kaip toli pasiruošęs keliauti iki baro</string>
 <string-array name="settings_search_distance_array">
-    <item>Keli kvartalai</item>
-    <item>Pusė miesto</item>
-    <item>Jei reiks galiu važiuoti</item>
+    <item>Kelis kvartalus</item>
+    <item>Puse miesto</item>
+    <item>Jei reiks, galiu važiuoti</item>
     <item>Rodyk visus barus</item>
 </string-array>
 <string name="settings_ask_if_no_location">Klausti jeigu išjungtas vietos nustatymas</string>

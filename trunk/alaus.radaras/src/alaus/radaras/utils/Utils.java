@@ -27,6 +27,16 @@ import com.google.android.maps.GeoPoint;
  */
 public class Utils {
 	
+	public static final long SECOND = 1000;
+	
+	public static final long MINUTE = SECOND * 60;
+	
+	public static final long FIVE_MINUTES = MINUTE * 5;
+	
+	public static final long HOUR = MINUTE * 60;
+	
+	public static final long DAY = HOUR * 24;
+	
 	public static final Collator COLLARATOR = Collator.getInstance(new Locale("lt", "LT"));
 
 	public static GeoPoint geoPoint(Location location) {
@@ -83,4 +93,5 @@ public class Utils {
 		
 		return new ArrayList<String>(map.values());
 	}
+
 }

@@ -7,6 +7,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 /**
  * @author Vincentas
@@ -14,6 +15,8 @@ import android.os.IBinder;
  */
 public class UpdateService extends Service {
 
+	private static final String LOG_TAG = "beer-radar";
+	
     public static final String UPDATE_SOURCE = "updateSource";
 
 	public static final String UPDATE_STATUS = "alaus.radaras.service.UPDATE_STATUS";
@@ -36,6 +39,8 @@ public class UpdateService extends Service {
      */
     @Override
     public int onStartCommand(Intent intent, int flags, final int startId) {
+    	Log.i(LOG_TAG, "Starting update from source : " + intent.getExtras().getString(UPDATE_SOURCE));
+    	
         new UpdateTask(this, new BeerRadarSqlite(this)) {
         	
 			/* (non-Javadoc)

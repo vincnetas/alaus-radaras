@@ -54,7 +54,7 @@ public class UpdateTask extends AsyncTask<String, Integer, Integer> {
         this(context, beerUpdate, null);
     }
     
-    public UpdateTask(Context context, BeerUpdate beerUpdate, ProgressHandler progressHandler) {
+    private UpdateTask(Context context, BeerUpdate beerUpdate, ProgressHandler progressHandler) {
         this.context = context;
         this.beerUpdate = beerUpdate;
         this.progressHandler = progressHandler;
