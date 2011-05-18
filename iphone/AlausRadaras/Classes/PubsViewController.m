@@ -14,7 +14,7 @@
 @synthesize pubList, pubTable;
 
 - (void)dealloc {
-	[pubList release];
+//	[pubList release];
 	[pubTable release];
     [super dealloc];
 }
@@ -73,9 +73,6 @@
 }
 
 
-
-
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -91,30 +88,5 @@
 
 
 
-
-
-
-
-
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- if (self) {
- // Custom initialization.
- }
- return self;
- }
- */
-
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
 
 @end
