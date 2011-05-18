@@ -110,6 +110,8 @@ public class BeerRadarActivity extends AbstractLocationActivity {
 				}				
 			}
 		});
+        
+    	registerReceiver(broadcastReceiver, new IntentFilter(UpdateService.UPDATE_STATUS));
     }
     
     private boolean hasNotifications() {
@@ -157,8 +159,6 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     public void onResume() {
     	super.onResume();
     	
-    	registerReceiver(broadcastReceiver, new IntentFilter(UpdateService.UPDATE_STATUS));
-    	
     	checkForUpdate();
         updateBeerCount();
         updateNotifications();
@@ -195,14 +195,11 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         } else {
         	getNotificationImageView().setVisibility(View.INVISIBLE);
         }
-    }
-    
-    /* (non-Javadoc)
-	 * @see alaus.radaras.AbstractLocationActivity#onPause()
-	 */
+    }    
+	
 	@Override
-	protected void onPause() {
-		super.onPause();		
+	protected void onDestroy() {
+		super.onDestroy();
     	unregisterReceiver(broadcastReceiver);
 	}
 
