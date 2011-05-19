@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	<LinearLayout
+
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		
+		<TextView android:id="@+id/txtSubmitPubError" 
+		android:layout_width="wrap_content"
+		android:text="@string/submiting_failed"
+		android:textColor="@color/red"
+		android:textStyle="bold"
+		android:visibility="invisible"
+			android:layout_height="wrap_content"/>
+		<CheckBox android:id="@+id/cbSubmitPubNear"
+		 android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/submit_pub_near"/>
+		
+		<TextView android:id="@+id/txtSubmitPubAnotation" 
+		android:layout_width="wrap_content"
+		android:text="@string/submit_pub_anotation"
+			android:layout_height="wrap_content"/>
+		
+		<EditText android:id="@+id/txtSubmitPubInfo"
+			android:layout_width="fill_parent"
+			android:lines="6"
+						android:minWidth="200dp"
+			android:layout_height="wrap_content"> 
+		</EditText>       
+		 <LinearLayout
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        <Button android:id="@+id/btnSubmitPub"
+            android:layout_width="fill_parent" 
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_pub_ok"/>
+        <Button android:id="@+id/btnSubmitPubCancel"
+        	android:layout_weight="1"
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:text="@string/submit_pub_cancel"/>
+            </LinearLayout>
+	</LinearLayout>
+</ScrollView>

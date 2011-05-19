@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/background">
+
+  <ImageView 
+  	android:id="@+id/countBeer" 
+  	android:src="@drawable/bok_title"
+    android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:layout_centerHorizontal="true">
+  </ImageView>
+    <TextView android:id="@+id/counterCurrent"
+  	android:textSize="100dp" 
+  	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:textStyle="bold"
+	android:paddingRight="50dp"
+	android:shadowColor="#979797"
+	android:shadowDx="5"
+	android:shadowDy="-2"
+	android:shadowRadius="2"
+	android:text="woot"
+	android:layout_marginTop="50dp"
+	android:layout_centerHorizontal="true"
+	android:textColor="#201400">
+  </TextView>
+  <TextView android:id="@+id/counterQoute"
+  	android:textSize="28dp" 
+  	android:layout_width="fill_parent" 
+  	android:text="Oh shit thats good funny something"
+	android:layout_height="300dp"
+	android:paddingTop="20dp"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"
+	android:textColor="#201400"
+	android:gravity="center"
+	android:background="@drawable/burbuliukas"
+	android:layout_below="@id/countBeer">
+  </TextView>
+</RelativeLayout>

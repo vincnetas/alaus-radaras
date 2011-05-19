@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/settings" 
+		android:icon="@drawable/settings"
+		android:title="@string/menu_settings" />
+	<item android:id="@+id/callTaxi" 
+		android:icon="@android:drawable/ic_menu_call"
+		android:title="@string/menu_call_taxi" />
+	<item android:id="@+id/submitPub" 
+		android:icon="@android:drawable/ic_dialog_info"
+		android:title="@string/menu_new_pub" />
+	<item android:id="@+id/update" 
+		android:icon="@android:drawable/ic_popup_sync"
+		android:title="@string/menu_update" />
+</menu>

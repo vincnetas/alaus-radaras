@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/LinearLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:gravity="center" android:background="@color/white">
+	<TableLayout android:id="@+id/TableLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<TableRow>
+			<LinearLayout android:id="@+id/LinearLayout02"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
+
+				<ImageButton android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/around"
+					android:id="@+id/around" android:padding="5dp" android:background="@color/home_button"></ImageButton>
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/main_near_value"></TextView>
+</LinearLayout>
+			<LinearLayout android:id="@+id/LinearLayout03"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
+				<ImageButton android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/search"
+					android:id="@+id/search" android:padding="5dp" android:background="@color/home_button"></ImageButton>
+			<TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/main_brand_value"></TextView>
+</LinearLayout>
+		</TableRow>
+		<TableRow>
+			<LinearLayout android:id="@+id/LinearLayout04"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
+				<ImageButton android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/hook"
+					android:id="@+id/lucky" android:padding="5dp" android:background="@color/home_button"></ImageButton>
+			<TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/main_lucky_value"></TextView>
+</LinearLayout>
+			<LinearLayout android:id="@+id/LinearLayout05"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal">
+				<ImageButton android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:src="@drawable/baloon"
+					android:id="@+id/counter" android:padding="5dp" android:background="@color/home_button"></ImageButton>
+			<TextView android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/BeerCounterName"></TextView>
+</LinearLayout>
+		</TableRow>
+	</TableLayout>
+</LinearLayout>
+
