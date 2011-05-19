@@ -49,7 +49,6 @@
         [[SQLiteManager updateManager] updateBeer:beer];
 	}
     
-    
     //2.3. Pubs
     NSArray *pubs = [update objectForKey:@"pubs"];
     NSLog(@"UPDATE: Sync Pubs: %i", [pubs count]);
@@ -57,6 +56,9 @@
     for (NSDictionary *pub in pubs){
         [[SQLiteManager updateManager] updatePub:pub];
     }
+    
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	[standardUserDefaults setObject:[NSDate date] forKey:@"LastUpdate"];
     
     [[SyncManager sharedManager]removeSyncInd];
 }

@@ -687,7 +687,6 @@ static SQLiteManager *updateSQLiteManager = nil;
 	while ([rs next]) {
 		CodeValue *item = [[CodeValue alloc] init];
 		item.code = [[rs stringForColumn:@"code"]copy];
-        NSLog(item.code);
 		item.displayValue = [[rs stringForColumn:@"name"]copy];
 		[result addObject:item];
 		[item release];
