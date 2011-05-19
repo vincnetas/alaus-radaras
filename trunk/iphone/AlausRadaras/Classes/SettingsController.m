@@ -28,47 +28,33 @@
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     
     /* ############ DO SYNC ############ */
-    
-    NSString *lastUpdate = [standardUserDefaults stringForKey:@"LastUpdate"];
-    
-   // if (lastUpdate == nil) {
-        // Default date
-        lastUpdate = @"2011-05-15";
-    //}
-    
-    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
     NSDate *now = [NSDate date];
-    NSString *todayDateString = [dateFormat stringFromDate:now];  
 
+    if (lastUpdate == nil) {
+        // Default date to app release date
+        lastUpdate =  [dateFormat dateFromString:@"2011-05-18"];
+    }
     
-//    NSDate *dt1 = [[NSDate alloc] init];
-  //  NSDate *dt2 = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;    
+    NSDateComponents *components = [gregorian components:unitFlags
+                                                fromDate:lastUpdate
+                                                  toDate:now options:0];
     
-    NSDate *dt1 = now;//[dateFormat dateFromString:@"2011-02-25"];
-    NSDate *dt2 = [dateFormat dateFromString:lastUpdate];
+    NSInteger daysSinceLastUpdate = [components day];
+    NSLog([NSString stringWithFormat:@"SYSTEM: DaysSinceLastUpdate: %i", daysSinceLastUpdate]);
+
+    if (daysSinceLastUpdate >= 1) {
+        [[SyncManager sharedManager] doSync];
+    }
     
     [dateFormat release];
 
-    NSLog(todayDateString);
-    NSComparisonResult result = [now compare:dt2];
-    
-    switch (result) {
-        case NSOrderedAscending: NSLog(@"%@ is greater than %@", dt2, dt1); break;
-        case NSOrderedDescending: NSLog(@"%@ is less %@", dt2, dt1); break;
-        case NSOrderedSame: NSLog(@"%@ is equal to %@", dt2, dt1); break;
-        default: NSLog(@"erorr dates %@, %@", dt2, dt1); break;
-    }
-    
-    
-    
-    //if ([todayDateString isEqualToString:(lastUpdate)]) {
-        NSLog(@"0000000000000000000000000000");
-        [[SyncManager sharedManager] doSync];
-   // }
-    
     /* ############ END SYNC ############ */
 
 	
