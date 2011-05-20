@@ -43,6 +43,10 @@ private:
     QVector<BeerPub> pubs;
     PubListModel* pubListModel;
     DataProvider* dataProvider;
+    //FIXME: these do not belong here
+    qreal latitude;
+    qreal longitude;
+    void applyLocation(QVector<BeerPub> &pubsWithoutLocation);
 
 signals:
     void MapSelected(const QVector<BeerPub> &pubs);

@@ -19,6 +19,9 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     qtTranslator = new QTranslator(this);
     myappTranslator = new QTranslator(this);
 
+    settingsMenu = new QMenu(this);
+    ui->btnSettings->setMenu(settingsMenu);
+
    // ui->txtUpdate->setVisible(false);
     setAutoFillBackground(true);
     setPalette(ViewUtils::GetBackground(palette()));
@@ -48,11 +51,15 @@ AlausRadaras::AlausRadaras(QWidget *parent) :
     ui->waitLabel->setVisible(false);
 }
 
-void AlausRadaras::on_btnSettings_clicked()
+void AlausRadaras::requestDbUpdate()
 {
-    settingsView->setModal(true);
-    settingsView->showFullScreen();
+    emit RemoteDbUpdateRequested();
+}
 
+void AlausRadaras::showSettings()
+{
+   settingsView->setModal(true);
+   settingsView->showFullScreen();
 }
 void AlausRadaras::settingsAccepted()
 {
@@ -117,7 +124,7 @@ void AlausRadaras::keyPressEvent(QKeyEvent* event)
     if(event->nativeVirtualKey() == CancelKey) {
         on_btnExit_clicked();
     } else if (event->nativeVirtualKey() == OkKey) {
-        on_btnSettings_clicked();
+        ui->btnSettings->showMenu();
     }
     QWidget::keyPressEvent(event);
 }
@@ -154,4 +161,8 @@ void AlausRadaras::retranslateUi()
 {
     QSettings settings;
     ui->btnCounter->setText(settings.value("TotalCount",0).toString());
+
+    settingsMenu->clear();
+    settingsMenu->addAction(tr("Nustatymai"), this,SLOT(showSettings()));
+    settingsMenu->addAction(tr("Atsviezinti aluti"), this,SLOT(requestDbUpdate()));
 }

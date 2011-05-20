@@ -390,7 +390,7 @@ border-image:url(:/images/batonas.png);
 }</string>
        </property>
        <property name="text">
-        <string>Nustatymai</string>
+        <string>Daugiau...</string>
        </property>
        <property name="iconSize">
         <size>

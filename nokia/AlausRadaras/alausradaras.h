@@ -34,15 +34,17 @@ private slots:
     void on_btnExit_clicked();
     void on_btnCounter_clicked();
     void loadUpdate(QString string);
-    void on_btnSettings_clicked();
+    void showSettings();
     void settingsAccepted();
     void changeLanguage(QLocale::Language language);
+    void requestDbUpdate();
 private:
     Ui::AlausRadaras *ui;
     Settings *settingsView;
     QTranslator *qtTranslator;
     QTranslator *myappTranslator;
     QMovie *progressMovie;
+    QMenu *settingsMenu;
     void retranslateUi();
 signals:
     void BeersSelected();
@@ -50,6 +52,7 @@ signals:
     void LetsCount();
     void ExitApp();
     void FeelingLucky();
+    void RemoteDbUpdateRequested();
 };
 
 #endif // ALAUSRADARAS_H

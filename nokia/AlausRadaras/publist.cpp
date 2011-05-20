@@ -44,23 +44,23 @@ PubList::PubList(QWidget *parent) :
         ui->btnMap->setIconSize(QSize(36, 36));
     else
         ui->btnMap->setIconSize(QSize(24, 24));
-
+    latitude = 0;
+    longitude = 0;
 }
 
 
 void PubList::locationChanged(qreal lat, qreal lon)
 {
+   // qDebug() << "Publist locationChanged";
+    this->latitude = lat;
+    this->longitude = lon;
+
     if(pubListModel) {
         if(pubs.size() > 0) {
-            for(int i = 0; i < pubs.size(); i++) {
-                qreal p1 = pubs[i].latitude;
-                qreal p2 = pubs[i].longitude;
-                qreal distance = CalculationHelper::getDistance(p1,p2,lat,lon,'M');
-                //qDebug() << QString::number(distance);
-                pubs[i].distance = distance;
-            }
-            qSort(pubs.begin(),pubs.end(),sortPubsByDistance);
+            applyLocation(pubs);
+            pubListModel->setPubs(pubs);
             pubListModel->refresh();
+            qDebug() << "refreshing publist";
         }
     }
 }
@@ -86,11 +86,25 @@ void PubList::showPubList(PubListType type, QString id, QString header)
             pubs = dataProvider->getPubsByTag(id);
         break;
     }
-
+    applyLocation(pubs);
     pubListModel = new PubListModel(this, pubs);
     ui->pubListView->setModel(pubListModel);
 
     setHeader(header);
+}
+
+//FIXME: this is wrong, move it out.
+void PubList::applyLocation(QVector<BeerPub> &pubsWithoutLocation)
+{
+    if(pubsWithoutLocation.size() > 0 && latitude > 0 && longitude > 0) {
+        for(int i = 0; i < pubsWithoutLocation.size(); i++) {
+            qreal p1 = pubsWithoutLocation[i].latitude;
+            qreal p2 = pubsWithoutLocation[i].longitude;
+            qreal distance = CalculationHelper::getDistance(p1,p2,latitude,longitude,'M');
+            pubsWithoutLocation[i].distance = distance;
+        }
+        qSort(pubsWithoutLocation.begin(),pubsWithoutLocation.end(),sortPubsByDistance);
+    }
 }
 
 void PubList::on_btnMap_clicked()

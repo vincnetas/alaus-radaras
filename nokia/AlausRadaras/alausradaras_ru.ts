@@ -14,32 +14,42 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="158"/>
+        <location filename="alausradaras.ui" line="183"/>
         <source>Vietos</source>
         <translation>Места</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="238"/>
+        <location filename="alausradaras.ui" line="263"/>
         <source>Rūšys</source>
         <translation>Сорта</translation>
     </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="318"/>
+        <location filename="alausradaras.ui" line="343"/>
         <source>Ištroškau</source>
         <translation>Просохло горло</translation>
     </message>
     <message>
-        <location filename="alausradaras.ui" line="368"/>
+        <location filename="alausradaras.ui" line="393"/>
+        <source>Daugiau...</source>
+        <translation>Опции...</translation>
+    </message>
+    <message>
+        <location filename="alausradaras.cpp" line="166"/>
         <source>Nustatymai</source>
         <translation>Установки</translation>
     </message>
+    <message>
+        <location filename="alausradaras.cpp" line="167"/>
+        <source>Atsviezinti aluti</source>
+        <translation>Обновить пивa</translation>
+    </message>
     <message utf8="true">
-        <location filename="alausradaras.ui" line="418"/>
+        <location filename="alausradaras.ui" line="443"/>
         <source>Išeiti</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="alausradaras.cpp" line="65"/>
+        <location filename="alausradaras.cpp" line="76"/>
         <source>Visi barai</source>
         <translation>Все бары</translation>
     </message>

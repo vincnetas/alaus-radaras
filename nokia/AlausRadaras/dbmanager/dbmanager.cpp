@@ -16,7 +16,7 @@ QString DbManager::QUERY_INSERT_QUOTES = "INSERT OR REPLACE INTO quotes VALUES (
 QString DbManager::QUERY_INSERT_BEER_TAGS = "INSERT OR REPLACE INTO beer_tags VALUES (:beer_id, :tag)";
 QString DbManager::QUERY_INSERT_PUB_BEERS = "INSERT OR REPLACE INTO pub_beers VALUES (:pub_id,:beer_id)";
 
-QString DbManager::SELECT_RANDOM_PUB = "SELECT id, title || '\n(' || city || ')' FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id  ORDER BY RANDOM() LIMIT 1";
+QString DbManager::SELECT_RANDOM_PUB = "SELECT id, title, city FROM pubs p  INNER JOIN pub_beers pb ON p.id = pb.pub_id  ORDER BY RANDOM() LIMIT 1";
 QString DbManager::SELECT_RANDOM_BEER_BY_PUB = "SELECT id, title FROM beers b INNER JOIN pub_beers pb ON b.id = pb.beer_id WHERE pb.pub_id= '%1' ORDER BY RANDOM() LIMIT 1";
 QString DbManager::SELECT_BEERPUB_PUBS = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city  from pubs order by title";
 QString DbManager::SELECT_BEERPUB_PUBS_BY_BEER = "SELECT id, title, longtitude, latitude, tile_x, tile_y, tile_pixel_x, tile_pixel_y, city FROM pubs p INNER JOIN pub_beers pb ON p.id = pb.pub_id AND pb.beer_id = '%1' order by p.title";
@@ -300,6 +300,10 @@ void DbManager::dropTables()
     query.exec("drop table if exists quotes");
     query.exec("drop table if exists beer_tags");
     query.exec("drop table if exists pub_beers");
+    //Version 10 compatability
+    query.exec("drop table if exists countries");
+    query.exec("drop table if exists brands_countries");
+    query.exec("drop table if exists brands_tags");
     query.exec("PRAGMA user_version=1;");
     query.clear();
 }
