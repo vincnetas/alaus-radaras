@@ -11,6 +11,7 @@ public:
         QString pubName;
         QString beerId;
         QString beerName;
+        QString city;
 };
 
 #endif // FEELINGLUCKYINFO_H

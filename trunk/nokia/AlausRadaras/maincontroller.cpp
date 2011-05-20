@@ -76,6 +76,7 @@ MainController::MainController(QWidget *parent) :
     connect(&downloader,SIGNAL(DbUpdateFinished()),this,SLOT(remoteDbUpdateFinished()));
     QTimer::singleShot(500,this,SLOT(initDbUpdate()));
 
+    connect(mainWidget,SIGNAL(RemoteDbUpdateRequested()),this,SLOT(initRemoteDbUpdate()));
 
 }
 
@@ -204,7 +205,7 @@ void MainController::showPubMap(QString pubId)
 
 void MainController::positionUpdated(QGeoPositionInfo geoPositionInfo)
 {
-//    qDebug() << "Position updated";
+    qDebug() << "Position updated";
     if (geoPositionInfo.isValid())
     {
         // Save the position information into a member variable
@@ -214,12 +215,10 @@ void MainController::positionUpdated(QGeoPositionInfo geoPositionInfo)
         QGeoCoordinate geoCoordinate = geoPositionInfo.coordinate();
         qreal latitude = geoCoordinate.latitude();
         qreal longitude = geoCoordinate.longitude();
-        if(ui->stackedWidget->currentIndex() == PubListView) {
-            pubList->locationChanged(latitude,longitude);
-        } else if (ui->stackedWidget->currentIndex() == BeerMapView) {
-            map->locationChanged(latitude,longitude);
-        }
-       // qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
+        //FIXME: redo this with signals
+        pubList->locationChanged(latitude,longitude);
+        map->locationChanged(latitude,longitude);
+        qDebug() << QString("Latitude: %1 Longitude: %2").arg(latitude).arg(longitude);
     }
 }
 void MainController::stopLocationUpdates()

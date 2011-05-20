@@ -2,7 +2,7 @@
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
-  <value type="int">2</value>
+  <value type="int">1</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
@@ -827,7 +827,7 @@
       <value key="Qt4ProjectManager.S60CreatePackageStep.Certificate" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/OVI_2011-04-26.crt</value>
       <value key="Qt4ProjectManager.S60CreatePackageStep.Keyfile" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/OVI_2011-04-26.key</value>
       <value key="Qt4ProjectManager.S60CreatePackageStep.SignMode" type="int">1</value>
-      <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">true</value>
+      <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy</value>

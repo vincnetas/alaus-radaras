@@ -43,6 +43,7 @@ FeelingLuckyInfo DataProvider::feelingLucky()
     while(pubQuery.next()) {
         lucky.pubId = pubQuery.value(0).toString();
         lucky.pubName = pubQuery.value(1).toString();
+        lucky.city = pubQuery.value(2).toString();
     }
     pubQuery.clear();
 

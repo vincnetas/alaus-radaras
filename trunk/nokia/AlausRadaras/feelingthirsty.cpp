@@ -23,8 +23,8 @@ void FeelingThirsty::chooseNext()
     DataProvider provider(this);
     luckyInfo = provider.feelingLucky();
 
-    ui->btnBeer->setText(ViewUtils::WrapText(luckyInfo.beerName, 30));
-    ui->btnPub->setText(ViewUtils::WrapText(luckyInfo.pubName, 30));
+    ui->btnBeer->setText(ViewUtils::WrapText(luckyInfo.beerName, 18));
+    ui->btnPub->setText(ViewUtils::WrapText(luckyInfo.pubName, 18) + "\n (" + luckyInfo.city + ")");
 }
 
 void FeelingThirsty::on_btnBeer_clicked()
