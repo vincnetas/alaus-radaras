@@ -57,7 +57,7 @@ public:
 public slots:
 
 private:
-    static const uint DB_VERSION = 11;
+    static const uint DB_VERSION = 12;
 
     static QString QUERY_INSERT_BEERS;
     static QString QUERY_INSERT_TAGS;
