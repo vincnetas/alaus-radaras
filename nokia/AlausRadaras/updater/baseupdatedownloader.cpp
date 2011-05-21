@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QDateTime>
 
-const QString BaseUpdateDownloader::VERSION = QString("1.0");
+const QString BaseUpdateDownloader::VERSION = QString("1.1");
 
 BaseUpdateDownloader::BaseUpdateDownloader(QObject *parent) :
     QObject(parent)
@@ -48,11 +48,12 @@ bool BaseUpdateDownloader::needToCheckForUpdates()
 
 void BaseUpdateDownloader::replyFinished(QNetworkReply* reply)
 {   qDebug() << "replyFinished";
+    QString replyText = "";
     if(!reply->error()) {
         qDebug() << "no error";
-        QString replyText(reply->readAll());
-        emit updateCheckFinished(replyText);
+        replyText = reply->readAll();
     }
+    emit updateCheckFinished(replyText);
     reply->deleteLater();
 }
 

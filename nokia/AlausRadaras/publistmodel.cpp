@@ -12,8 +12,6 @@ PubListModel::PubListModel(QObject *parent, const QVector<BeerPub> &pubs ) :
 
 void PubListModel::setPubs(const QVector<BeerPub> &pubs)
 {
-    qDebug() << "setting pubs";
-    qDebug() << "first pub distance " << pubs.at(0).distance;
     this->pubs = pubs;
 }
 
