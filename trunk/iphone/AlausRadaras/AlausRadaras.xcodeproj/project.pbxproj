@@ -60,7 +60,6 @@
 		C938B8DE13707DEF00CE7A8E /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DD13707DEF00CE7A8E /* FeelingLucky.m */; };
 		C938B8E113707DFB00CE7A8E /* Taxi.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E013707DFB00CE7A8E /* Taxi.m */; };
 		C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */; };
-		C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E513707E4C00CE7A8E /* SQLiteManager.m */; };
 		C938B8E913707EA200CE7A8E /* Beer.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8E813707EA200CE7A8E /* Beer.m */; };
 		C938B8EB137081E900CE7A8E /* beers.txt in Resources */ = {isa = PBXBuildFile; fileRef = C938B8EA137081E900CE7A8E /* beers.txt */; };
 		C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8F21370934C00CE7A8E /* JSONParser.m */; };
@@ -182,6 +181,7 @@
 		C9E5021512EE0D3F00ADD54C /* BrandsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */; };
 		C9E8E25612F9FAD400E927C1 /* beer-radar-db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */; };
 		C9E8E26612F9FB0600E927C1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */; };
+		C9E9BCEE1389052D007F4F38 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E9BCEF1389052D007F4F38 /* SQLiteManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -260,7 +260,6 @@
 		C938B8E013707DFB00CE7A8E /* Taxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Taxi.m; path = Classes/Taxi.m; sourceTree = "<group>"; };
 		C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlausRadarasViewController.xib; path = Classes/AlausRadarasViewController.xib; sourceTree = "<group>"; };
 		C938B8E413707E4C00CE7A8E /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteManager.h; path = Classes/SQLiteManager.h; sourceTree = "<group>"; };
-		C938B8E513707E4C00CE7A8E /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = Classes/SQLiteManager.m; sourceTree = "<group>"; };
 		C938B8E713707EA200CE7A8E /* Beer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beer.h; path = Classes/Beer.h; sourceTree = "<group>"; };
 		C938B8E813707EA200CE7A8E /* Beer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beer.m; path = Classes/Beer.m; sourceTree = "<group>"; };
 		C938B8EA137081E900CE7A8E /* beers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beers.txt; path = resources/db/beers.txt; sourceTree = "<group>"; };
@@ -399,6 +398,7 @@
 		C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsViewController.xib; path = Classes/BrandsViewController.xib; sourceTree = "<group>"; };
 		C9E8E25512F9FAD400E927C1 /* beer-radar-db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beer-radar-db.sqlite"; sourceTree = "<group>"; };
 		C9E8E26512F9FB0600E927C1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		C9E9BCEF1389052D007F4F38 /* SQLiteManager.m */ = {isa = PBXFileReference; lastKnownFileType = file; name = SQLiteManager.m; path = Classes/SQLiteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -693,7 +693,7 @@
 			isa = PBXGroup;
 			children = (
 				C938B8E413707E4C00CE7A8E /* SQLiteManager.h */,
-				C938B8E513707E4C00CE7A8E /* SQLiteManager.m */,
+				C9E9BCEF1389052D007F4F38 /* SQLiteManager.m */,
 				C97E184C131468B5004756A0 /* LocationManager.h */,
 				C97E184D131468B5004756A0 /* LocationManager.m */,
 				C9C2C309131B09340097092D /* DataPublisher.h */,
@@ -1048,7 +1048,7 @@
 				C938B8DB13707DE400CE7A8E /* CodeValue.m in Sources */,
 				C938B8DE13707DEF00CE7A8E /* FeelingLucky.m in Sources */,
 				C938B8E113707DFB00CE7A8E /* Taxi.m in Sources */,
-				C938B8E613707E4C00CE7A8E /* SQLiteManager.m in Sources */,
+				C9E9BCEE1389052D007F4F38 /* SQLiteManager.m in Sources */,
 				C938B8E913707EA200CE7A8E /* Beer.m in Sources */,
 				C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */,
 			);
