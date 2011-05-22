@@ -36,16 +36,27 @@ static SyncManager *sharedManager = nil;
     //init stuff goes here
 }
 
-- (void) doSync {
+- (void) doSync: (NSDate *) lastUpdate{
     [self showSyncInd];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];    
+    //Optionally for time zone converstions
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    
+    NSString *stringlastUpdate = [dateFormatter stringFromDate:lastUpdate];
+    
+    NSLog(@"SYNC: Last Update Date: %@", stringlastUpdate);
+    
 	responseData = [[NSMutableData data] retain];
-
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	[request setURL:[NSURL URLWithString:@"http://www.alausradaras.lt/json?lastUpdate=2011-01-01T00:00:00"]];
+	[request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.alausradaras.lt/json?lastUpdate=%@T00:00:00",
+                                          stringlastUpdate]]];
 	[request setHTTPMethod:@"GET"];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [dateFormatter release];
 }
 
 - (void) showSyncInd {

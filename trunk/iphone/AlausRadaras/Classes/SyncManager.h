@@ -21,7 +21,7 @@
 - (void) initializeManager;
 
 // Custom methods
-- (void) doSync;
+- (void) doSync:(NSDate *) lastUpdate;
 - (void) showSyncInd;
 - (void) removeSyncInd;
 

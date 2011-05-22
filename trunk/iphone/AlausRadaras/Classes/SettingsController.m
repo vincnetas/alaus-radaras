@@ -36,7 +36,8 @@
 
     if (lastUpdate == nil) {
         // Default date to app release date
-        lastUpdate =  [dateFormat dateFromString:@"2011-05-18"];
+        // Update on Database update
+        lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
     }
     
     NSCalendar *gregorian = [[NSCalendar alloc]
@@ -49,9 +50,9 @@
     NSInteger daysSinceLastUpdate = [components day];
     NSLog([NSString stringWithFormat:@"SYSTEM: DaysSinceLastUpdate: %i", daysSinceLastUpdate]);
 
-    if (daysSinceLastUpdate >= 1) {
-        [[SyncManager sharedManager] doSync];
-    }
+ //   if (daysSinceLastUpdate >= 1) {
+        [[SyncManager sharedManager] doSync:lastUpdate];
+//    }
     
     [dateFormat release];
 
