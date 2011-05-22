@@ -76,7 +76,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 	[db setLogsErrors:TRUE];
 	[db setTraceExecution:FALSE];
     //[db setShouldCacheStatements:YES];	// kind of experimentalish.
-
+    
     if (![db open]) {
         NSLog(@"Could not open db.");
 		return;
@@ -159,7 +159,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		NSLog(@"Database exists");	
 	}
 	
-
+    
 	NSLog(@"Using Database at: %@",databasePath);
 	db = [FMDatabase databaseWithPath:databasePath];
 	
@@ -178,61 +178,61 @@ static SQLiteManager *updateSQLiteManager = nil;
 	
 	
 	/*
-	NSLog(@"Creating new database");
-	NSLog(@"Droping tables");
-	[db executeUpdate:@"DROP TABLE IF EXISTS pubs_brands;"];
-	[db executeUpdate:@"DROP TABLE IF EXISTS brands_countries;"];	
-	[db executeUpdate:@"DROP TABLE IF EXISTS brands_tags;"];	
-	[db executeUpdate:@"DROP TABLE IF EXISTS quotes;"];	
-	[db executeUpdate:@"DROP TABLE IF EXISTS pubs;"];
-	[db executeUpdate:@"DROP TABLE IF EXISTS brands;"];
-	[db executeUpdate:@"DROP TABLE IF EXISTS tags;"];
-	[db executeUpdate:@"DROP TABLE IF EXISTS countries;"];
-	NSLog(@"Tables droped");
-	NSLog(@"Creating tables");
-	[db executeUpdate:@"CREATE TABLE pubs("
-									   "pubId 		TEXT PRIMARY KEY, "
-									   "pubTitle 		TEXT NOT NULL, "
-									   "longitude DOUBLE NOT NULL, "
-									   "latitude 	DOUBLE NOT NULL, "
-									   "pubAddress 	TEXT, "
-									   "city	 	TEXT, "
-									   "phone	 	TEXT, "
-									   "webpage	 	TEXT);"];
-
-	[db executeUpdate:@"CREATE TABLE brands("
-										 "brandId 			TEXT PRIMARY KEY, "
-										 "label 			TEXT NOT NULL, "
-										 "icon			TEXT);"];
-	
-
-	[db executeUpdate:@"CREATE TABLE pubs_brands("
-										 "pub_id			TEXT NOT NULL, "
-										 "brand_id 		TEXT NOT NULL);"];
-	
-	[db executeUpdate:@"CREATE TABLE countries("
-										 "code			TEXT NOT NULL," 
-										 "name			TEXT NOT NULL);"];
-	
-
-	[db executeUpdate:@"CREATE TABLE brands_countries("
-										 "brand_id			TEXT NOT NULL,"
-										 "country			TEXT NOT NULL);"];
-	
-	
-	[db executeUpdate:@"CREATE TABLE tags("
-										 "code			TEXT NOT NULL,"
-										 "title			TEXT NOT NULL);"];
-	
-	[db executeUpdate:@"CREATE TABLE brands_tags("
-										 "brand_id			TEXT NOT NULL,"
-										 "tag				TEXT NOT NULL);"];
-
-	
-	[db executeUpdate:@"CREATE TABLE quotes("
-										 "amount			INTEGER NOT NULL,"
-										 "text			TEXT NOT NULL);"];
-	*/
+     NSLog(@"Creating new database");
+     NSLog(@"Droping tables");
+     [db executeUpdate:@"DROP TABLE IF EXISTS pubs_brands;"];
+     [db executeUpdate:@"DROP TABLE IF EXISTS brands_countries;"];	
+     [db executeUpdate:@"DROP TABLE IF EXISTS brands_tags;"];	
+     [db executeUpdate:@"DROP TABLE IF EXISTS quotes;"];	
+     [db executeUpdate:@"DROP TABLE IF EXISTS pubs;"];
+     [db executeUpdate:@"DROP TABLE IF EXISTS brands;"];
+     [db executeUpdate:@"DROP TABLE IF EXISTS tags;"];
+     [db executeUpdate:@"DROP TABLE IF EXISTS countries;"];
+     NSLog(@"Tables droped");
+     NSLog(@"Creating tables");
+     [db executeUpdate:@"CREATE TABLE pubs("
+     "pubId 		TEXT PRIMARY KEY, "
+     "pubTitle 		TEXT NOT NULL, "
+     "longitude DOUBLE NOT NULL, "
+     "latitude 	DOUBLE NOT NULL, "
+     "pubAddress 	TEXT, "
+     "city	 	TEXT, "
+     "phone	 	TEXT, "
+     "webpage	 	TEXT);"];
+     
+     [db executeUpdate:@"CREATE TABLE brands("
+     "brandId 			TEXT PRIMARY KEY, "
+     "label 			TEXT NOT NULL, "
+     "icon			TEXT);"];
+     
+     
+     [db executeUpdate:@"CREATE TABLE pubs_brands("
+     "pub_id			TEXT NOT NULL, "
+     "brand_id 		TEXT NOT NULL);"];
+     
+     [db executeUpdate:@"CREATE TABLE countries("
+     "code			TEXT NOT NULL," 
+     "name			TEXT NOT NULL);"];
+     
+     
+     [db executeUpdate:@"CREATE TABLE brands_countries("
+     "brand_id			TEXT NOT NULL,"
+     "country			TEXT NOT NULL);"];
+     
+     
+     [db executeUpdate:@"CREATE TABLE tags("
+     "code			TEXT NOT NULL,"
+     "title			TEXT NOT NULL);"];
+     
+     [db executeUpdate:@"CREATE TABLE brands_tags("
+     "brand_id			TEXT NOT NULL,"
+     "tag				TEXT NOT NULL);"];
+     
+     
+     [db executeUpdate:@"CREATE TABLE quotes("
+     "amount			INTEGER NOT NULL,"
+     "text			TEXT NOT NULL);"];
+     */
 	NSLog(@"Tables created");
 	
 	NSLog(@"Inserting data");
@@ -241,46 +241,46 @@ static SQLiteManager *updateSQLiteManager = nil;
     NSArray *lines;
     
     /*
-    [db beginTransaction];
-	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	lines = [fileContents componentsSeparatedByString:@"\n"];
-
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			NSLog(@"Inserting brand: %@", [values objectAtIndex:0]);
-			[db executeUpdate:@"insert into brands (brandId, label, icon) values (?, ?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1],
-			 [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
-		}
-	}
-	[db commit];
-	
-	
-	[db beginTransaction];
-	path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
-	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			NSLog(@"Inserting pub: %@", [values objectAtIndex:0]);
-
-			[db executeUpdate:@"insert into pubs (pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
-			 [values objectAtIndex:0],
-			 [values objectAtIndex:1],
-			 [values objectAtIndex:2],
-			 [values objectAtIndex:3],
-			 [values objectAtIndex:4],
-			 [values objectAtIndex:5],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
-			 [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
-		}
-	}
-	[db commit];    
-	*/
+     [db beginTransaction];
+     path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+     fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+     lines = [fileContents componentsSeparatedByString:@"\n"];
+     
+     for (NSString *line in lines) {
+     if (![line isEqualToString:@""]) {
+     NSArray *values = [line componentsSeparatedByString:@"\t"];
+     NSLog(@"Inserting brand: %@", [values objectAtIndex:0]);
+     [db executeUpdate:@"insert into brands (brandId, label, icon) values (?, ?, ?)",
+     [values objectAtIndex:0],
+     [values objectAtIndex:1],
+     [NSString stringWithFormat:@"brand_%@.png", [values objectAtIndex:0]]];
+     }
+     }
+     [db commit];
+     
+     
+     [db beginTransaction];
+     path = [[NSBundle mainBundle] pathForResource:@"pubs" ofType:@"txt"];
+     fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+     lines = [fileContents componentsSeparatedByString:@"\n"];
+     for (NSString *line in lines) {
+     if (![line isEqualToString:@""]) {
+     NSArray *values = [line componentsSeparatedByString:@"\t"];
+     NSLog(@"Inserting pub: %@", [values objectAtIndex:0]);
+     
+     [db executeUpdate:@"insert into pubs (pubId, pubTitle, pubAddress, city, phone, webpage, latitude, longitude) values (?, ?, ?, ?, ?, ?, ?, ?)",
+     [values objectAtIndex:0],
+     [values objectAtIndex:1],
+     [values objectAtIndex:2],
+     [values objectAtIndex:3],
+     [values objectAtIndex:4],
+     [values objectAtIndex:5],
+     [NSNumber numberWithDouble:[[values objectAtIndex:6]doubleValue]],
+     [NSNumber numberWithDouble:[[values objectAtIndex:7]doubleValue]]];
+     }
+     }
+     [db commit];    
+     */
 	
 	[db beginTransaction];
 	path = [[NSBundle mainBundle] pathForResource:@"tags" ofType:@"txt"];
@@ -290,7 +290,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
 			NSLog(@"Inserting tag: %@", [values objectAtIndex:0]);
-
+            
 			[db executeUpdate:@"insert into tags (code, title) values (?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1]];
@@ -307,7 +307,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
 			NSLog(@"Inserting country: %@", [values objectAtIndex:0]);
-
+            
 			[db executeUpdate:@"insert into countries (code, name) values (?, ?)",
 			 [values objectAtIndex:0],
 			 [values objectAtIndex:1]];
@@ -324,7 +324,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		if (![line isEqualToString:@""]) {
 			NSArray *values = [line componentsSeparatedByString:@"\t"];
 			NSLog(@"Inserting quote: %@", [values objectAtIndex:0]);
-
+            
 			[db executeUpdate:@"insert into quotes (amount, text) values (?, ?)",
 			 [NSNumber numberWithInt:[[values objectAtIndex:0]intValue]],
 			 [values objectAtIndex:1]];
@@ -333,40 +333,40 @@ static SQLiteManager *updateSQLiteManager = nil;
 	[db commit];
 	
 	/*
-	[db beginTransaction];
-	path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
-	fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
-	lines = [fileContents componentsSeparatedByString:@"\n"];
-	for (NSString *line in lines) {
-		if (![line isEqualToString:@""]) {
-			NSArray *values = [line componentsSeparatedByString:@"\t"];
-			
-			NSLog(@"Inserting brand<->pub association: %@", [values objectAtIndex:0]);
-			NSArray *pubIds = [[values objectAtIndex:2] componentsSeparatedByString:@","];
-			for (NSString *pubId in pubIds) {
-				[db executeUpdate:@"insert into pubs_brands (brand_id, pub_id) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [pubId stringByReplacingOccurrencesOfString:@" " withString:@""]];                     
-			}
-			
-			NSLog(@"Inserting brand<->country association: %@", [values objectAtIndex:0]);
-			NSArray *countries = [[values objectAtIndex:3] componentsSeparatedByString:@","];
-			for (NSString *country in countries) {
-				[db executeUpdate:@"insert into brands_countries (brand_id, country) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [country stringByReplacingOccurrencesOfString:@" " withString:@""]];                   
-			}
-			
-			NSString *allTags = [[values objectAtIndex:4] substringToIndex:[[values objectAtIndex:4] length] - 1];
-			NSArray *tags = [allTags componentsSeparatedByString:@","];
-			for (NSString *tag in tags) {
-				[db executeUpdate:@"insert into brands_tags (brand_id, tag) values (?, ?)",
-				 [values objectAtIndex:0],
-				 [tag stringByReplacingOccurrencesOfString:@" " withString:@""]];                       
-			}
-		}
-	}
-	[db commit];
+     [db beginTransaction];
+     path = [[NSBundle mainBundle] pathForResource:@"brands" ofType:@"txt"];
+     fileContents = [NSString stringWithContentsOfFile:path usedEncoding:nil error:nil];
+     lines = [fileContents componentsSeparatedByString:@"\n"];
+     for (NSString *line in lines) {
+     if (![line isEqualToString:@""]) {
+     NSArray *values = [line componentsSeparatedByString:@"\t"];
+     
+     NSLog(@"Inserting brand<->pub association: %@", [values objectAtIndex:0]);
+     NSArray *pubIds = [[values objectAtIndex:2] componentsSeparatedByString:@","];
+     for (NSString *pubId in pubIds) {
+     [db executeUpdate:@"insert into pubs_brands (brand_id, pub_id) values (?, ?)",
+     [values objectAtIndex:0],
+     [pubId stringByReplacingOccurrencesOfString:@" " withString:@""]];                     
+     }
+     
+     NSLog(@"Inserting brand<->country association: %@", [values objectAtIndex:0]);
+     NSArray *countries = [[values objectAtIndex:3] componentsSeparatedByString:@","];
+     for (NSString *country in countries) {
+     [db executeUpdate:@"insert into brands_countries (brand_id, country) values (?, ?)",
+     [values objectAtIndex:0],
+     [country stringByReplacingOccurrencesOfString:@" " withString:@""]];                   
+     }
+     
+     NSString *allTags = [[values objectAtIndex:4] substringToIndex:[[values objectAtIndex:4] length] - 1];
+     NSArray *tags = [allTags componentsSeparatedByString:@","];
+     for (NSString *tag in tags) {
+     [db executeUpdate:@"insert into brands_tags (brand_id, tag) values (?, ?)",
+     [values objectAtIndex:0],
+     [tag stringByReplacingOccurrencesOfString:@" " withString:@""]];                       
+     }
+     }
+     }
+     [db commit];
      */
 	
 	[db beginTransaction];
@@ -413,9 +413,9 @@ static SQLiteManager *updateSQLiteManager = nil;
 }
 
 - (NSMutableArray *) getBeersLocationBased {
-        
+    
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-
+    
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	NSLog(@"Im here: %.2f, %.2f",  coordinates.latitude, coordinates.longitude);
 	
@@ -425,10 +425,10 @@ static SQLiteManager *updateSQLiteManager = nil;
 				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
 	query = [NSString stringWithFormat:@"%@ ORDER by b.title asc", query];
-
+    
 	FMResultSet *rs = 
-		[db executeQuery:query];
-
+    [db executeQuery:query];
+    
 	
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
@@ -445,7 +445,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (NSString *) getBeersLabelById:(NSString *)beerId {	
 	FMResultSet *rs = 
-		[db executeQuery:@"SELECT * FROM beers b WHERE b.id = ?", beerId];
+    [db executeQuery:@"SELECT * FROM beers b WHERE b.id = ?", beerId];
 	NSString *result;
 	while ([rs next]) {
 		result = [[rs stringForColumn:@"title"]copy];
@@ -458,9 +458,9 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (NSMutableArray *) getBeersByPubId:(NSString *)pubId {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-
+    
 	FMResultSet *rs = 
-        [db executeQuery:@"SELECT * FROM beers b INNER JOIN pubs_beers pb ON b.id = pb.beer_id AND pb.pub_id = ? ORDER BY b.title asc", pubId];
+    [db executeQuery:@"SELECT * FROM beers b INNER JOIN pubs_beers pb ON b.id = pb.beer_id AND pb.pub_id = ? ORDER BY b.title asc", pubId];
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"id"]copy];
@@ -475,10 +475,10 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (NSMutableArray *) getBeersByCountry:(NSString *)country {
 	NSMutableArray *result = [[NSMutableArray alloc]init];
-	    
+    
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	NSString *query = [[NSString alloc] initWithString:
-            [NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b INNER JOIN brands AS br ON b.brand_id=br.id AND br.country = '%@'", country]];
+                       [NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b INNER JOIN brands AS br ON b.brand_id=br.id AND br.country = '%@'", country]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_beers AS pb ON pb.beer_id = b.id INNER JOIN pubs AS p ON p.id = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.id", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
@@ -503,7 +503,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	
 	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b INNER JOIN beers_tags bt ON b.id = bt.beer_id AND bt.tag = '%@'", tag]];
-
+    
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_beers AS pb ON pb.beer_id = b.id INNER JOIN pubs AS p ON p.id = pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.id", query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
@@ -511,7 +511,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 	query = [NSString stringWithFormat:@"%@ ORDER by b.title asc", query];
 	
 	FMResultSet *rs = 
-		[db executeQuery:query];
+    [db executeQuery:query];
 	
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
@@ -540,7 +540,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		query = [NSString stringWithFormat:@"%@ ORDER BY title asc", query];
 	}
 	FMResultSet *rs = [db executeQuery:query];
-
+    
     while ([rs next]) {
         Pub* pub = [[Pub alloc] initWithId:[[rs stringForColumn:@"id"]copy]
 									 Title:[[rs stringForColumn:@"title"]copy]
@@ -560,7 +560,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (Pub *) getPubById:(NSString *) pubId {
 	FMResultSet *rs = 
-		[db executeQuery:@"SELECT * FROM pubs WHERE id = ?", pubId];
+    [db executeQuery:@"SELECT * FROM pubs WHERE id = ?", pubId];
     while ([rs next]) {
         Pub* pub = [[Pub alloc] initWithId:[[rs stringForColumn:@"id"]copy]
 									 Title:[[rs stringForColumn:@"title"]copy]
@@ -597,7 +597,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 									  Long:[rs doubleForColumn:@"longitude"]];
 		pub.distance = [rs doubleForColumn:@"distance"];
 		[result addObject:pub];
-	//	[pub release];
+        //	[pub release];
     }
 	return result;
 }
@@ -635,7 +635,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 	query = [NSString stringWithFormat:@"%@ ORDER BY t.title asc", query];
 	
 	FMResultSet *rs = 
-		[db executeQuery:query];
+    [db executeQuery:query];
 	
 	while ([rs next]) {
 		CodeValue *item = [[CodeValue alloc] init];
@@ -681,8 +681,8 @@ static SQLiteManager *updateSQLiteManager = nil;
 	query = [NSString stringWithFormat:@"%@ ORDER BY c.name asc", query];
 	
 	FMResultSet *rs = 
-		[db executeQuery:query];
-
+    [db executeQuery:query];
+    
 	
 	while ([rs next]) {
 		CodeValue *item = [[CodeValue alloc] init];
@@ -705,10 +705,10 @@ static SQLiteManager *updateSQLiteManager = nil;
 	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT * FROM pubs p INNER JOIN pubs_beers pb ON p.id = pb.pub_id"]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ AND distance(p.latitude, p.longitude, %f,%f) < %i", 
-				  query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+                 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
 	}
 	query = [NSString stringWithFormat:@"%@ ORDER BY RANDOM() LIMIT 1", query];
-
+    
 	FMResultSet *rs = [db executeQuery:query];
 	
 	FeelingLucky *lucky = [[FeelingLucky alloc]init];
@@ -761,10 +761,10 @@ static SQLiteManager *updateSQLiteManager = nil;
 	
     while ([rs next]) {
         Taxi* taxi = [[Taxi alloc] initWithTitle:[[rs stringForColumn:@"title"]copy]
-										City:[[rs stringForColumn:@"city"]copy] 
-										Phone:[[rs stringForColumn:@"phone"]copy]
-									   Lat:[rs doubleForColumn:@"latitude"]
-									  Long:[rs doubleForColumn:@"longitude"]];
+                                            City:[[rs stringForColumn:@"city"]copy] 
+                                           Phone:[[rs stringForColumn:@"phone"]copy]
+                                             Lat:[rs doubleForColumn:@"latitude"]
+                                            Long:[rs doubleForColumn:@"longitude"]];
 		[result addObject:taxi];
 		[taxi release];
     }	
@@ -784,10 +784,9 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (void) updateBrand: (NSDictionary *) brand {
     FMResultSet *rs = 
-        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [brand objectForKey:@"id"]]];
+    [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [brand objectForKey:@"id"]]];
     
 	if ([rs next]) {
-//        NSLog(@"update brand");
         [db executeUpdate:@"UPDATE brands SET title = ?, icon = ?, homePage = ?, country = ?, hometown = ?, description = ? WHERE id = ?",
          [brand objectForKey:@"title"],
          [brand objectForKey:@"icon"],
@@ -797,32 +796,29 @@ static SQLiteManager *updateSQLiteManager = nil;
          [brand objectForKey:@"description"],
          [brand objectForKey:@"id"]];
 	} else {
-//        NSLog(@"insert brand");
         [db executeUpdate:@"INSERT INTO brands (id, title, icon, homePage, country, hometown, description) values (?, ?, ?, ?, ?, ?, ?)",
-             [brand objectForKey:@"id"],
-             [brand objectForKey:@"title"],
-             [brand objectForKey:@"icon"],
-             [brand objectForKey:@"homePage"],
-             [brand objectForKey:@"country"],
-             [brand objectForKey:@"hometown"],
-             [brand objectForKey:@"description"]];
+         [brand objectForKey:@"id"],
+         [brand objectForKey:@"title"],
+         [brand objectForKey:@"icon"],
+         [brand objectForKey:@"homePage"],
+         [brand objectForKey:@"country"],
+         [brand objectForKey:@"hometown"],
+         [brand objectForKey:@"description"]];
     }
     [rs close];
 }
 
 - (void) updateBeer: (NSDictionary *) beer {
     FMResultSet *rs = 
-        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", [beer objectForKey:@"id"]]];
+    [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", [beer objectForKey:@"id"]]];
     
     // UPDATE/INSERT BEER
 	if ([rs next]) {
-//        NSLog(@"update beer");
         [db executeUpdate:@"UPDATE beers SET title = ?, icon = ? WHERE id = ?",
          [beer objectForKey:@"title"],
          [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]],
          [beer objectForKey:@"id"]];
 	} else {
-//        NSLog(@"insert beer");
         [db executeUpdate:@"INSERT INTO beers (id, title, icon) values (?, ?, ?)",
          [beer objectForKey:@"id"],
          [beer objectForKey:@"title"],
@@ -831,39 +827,30 @@ static SQLiteManager *updateSQLiteManager = nil;
     
     // UPDATE BEER-BRAND RELATIONSHIP
     FMResultSet *rs_brand = 
-        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [beer objectForKey:@"brandId"]]];
+    [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM brands b WHERE b.id = '%@'", [beer objectForKey:@"brandId"]]];
     if ([rs_brand next]) {
-//        NSLog(@"update beer.brand_id");
         [db executeUpdate:@"UPDATE beers SET brand_id = ? WHERE id = ?",
          [beer objectForKey:@"brandId"],
          [beer objectForKey:@"id"]];
     }
     
     // UPDATE BEER-TAG RELATIONSHIP
+    // Remove all tags
+    [db executeUpdate:[NSString stringWithFormat:@"DELETE FROM beers_tags WHERE beer_id = '%@'", [beer objectForKey:@"id"]]];
+    // Insert new tags
     NSArray *beerTags = [beer objectForKey:@"tags"];
+    
     FMResultSet *rs_tag;
     for (NSString *tag in beerTags) {
         // Check if tag exists
         rs_tag = 
-            [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM tags t WHERE t.code = '%@'", tag]];
+        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM tags t WHERE t.code = '%@'", tag]];
         if ([rs_tag next]) {
-            // if tag exists - proceed
-            // check if beer-tag relationship exists
-            rs_tag = 
-                [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers_tags bt WHERE bt.beer_id = '%@' AND bt.tag = '%@'", [beer objectForKey:@"id"], tag]];
-            
-            if ([rs_tag next]) {
-                // Relationship exists - ignore
-            } else {
-                // Save new relationship
-//                NSLog(@"insert beers_tags");
-                [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
+            [db executeUpdate:@"INSERT INTO beers_tags (beer_id, tag) values (?, ?)",
                 [beer objectForKey:@"id"], tag];
-            }  
         }
-        // Tag does not exist - ignore
-     }
-    
+    }
+
     [rs close];
     [rs_brand close];
     [rs_tag close];
@@ -871,54 +858,47 @@ static SQLiteManager *updateSQLiteManager = nil;
 
 - (void) updatePub: (NSDictionary *) pub {
     FMResultSet *rs = 
-        [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs p WHERE p.id = '%@'", [pub objectForKey:@"id"]]];
-
+    [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs p WHERE p.id = '%@'", [pub objectForKey:@"id"]]];
+    
 	if ([rs next]) {
 		// update pub data
-//        NSLog(@"update pub");
         [db executeUpdate:@"UPDATE pubs SET title = ?, address = ?, phone = ?, url = ?, latitude = ?, longitude = ?, city = ? WHERE id = ?",
-         [pub objectForKey:@"title"],
-         [pub objectForKey:@"address"],
-         [pub objectForKey:@"phone"],
-         [pub objectForKey:@"homepage"],
-         [pub objectForKey:@"latitude"],
-         [pub objectForKey:@"longitude"],
-         [pub objectForKey:@"city"],
-         [pub objectForKey:@"id"]];
+             [pub objectForKey:@"title"],
+             [pub objectForKey:@"address"],
+             [pub objectForKey:@"phone"],
+             [pub objectForKey:@"homepage"],
+             [pub objectForKey:@"latitude"],
+             [pub objectForKey:@"longitude"],
+             [pub objectForKey:@"city"],
+             [pub objectForKey:@"id"]];
 	} else {
 		// insert pub
-//        NSLog(@"insert pub");
         [db executeUpdate:@"INSERT INTO pubs (id, title, address, phone, url, latitude, longitude, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-         [pub objectForKey:@"id"],
-         [pub objectForKey:@"title"],
-         [pub objectForKey:@"address"],
-         [pub objectForKey:@"phone"],
-         [pub objectForKey:@"homepage"],
-         [pub objectForKey:@"latitude"],
-         [pub objectForKey:@"longitude"],
-         [pub objectForKey:@"city"]];
+             [pub objectForKey:@"id"],
+             [pub objectForKey:@"title"],
+             [pub objectForKey:@"address"],
+             [pub objectForKey:@"phone"],
+             [pub objectForKey:@"homepage"],
+             [pub objectForKey:@"latitude"],
+             [pub objectForKey:@"longitude"],
+             [pub objectForKey:@"city"]];
 	}
 	
+    
+    // UPDATE PUBS-BEER RELATIONSHIP
+    // Remove all beers from pub
+    [db executeUpdate:[NSString stringWithFormat:@"DELETE FROM pubs_beers WHERE pub_id = '%@'", [pub objectForKey:@"id"]]];
+    // Insert new beers
 	NSArray *beerIds = [pub objectForKey:@"beerIds"];
+    
     for (NSString *beerId in beerIds) {
-        
-        rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM pubs_beers pb WHERE pb.pub_id = '%@' AND pb.beer_id = '%@'",
-                [pub objectForKey:@"id"], beerId]];
-
+        rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
         if ([rs next]) {
-            // if relationship exists - do nothing
-        } else {
-            // Check if beer exists
-            rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM beers b WHERE b.id = '%@'", beerId]];
-            if ([rs next]) {
-                //if such beer exists
-                [db executeUpdate:@"INSERT INTO pubs_beers (pub_id, beer_id) VALUES (?, ?);",
-                    [pub objectForKey:@"id"], beerId];
-            }
-            //if beer not found - ignore
+            [db executeUpdate:@"INSERT INTO pubs_beers (pub_id, beer_id) VALUES (?, ?);",
+                [pub objectForKey:@"id"], beerId];
         }
-	}
-	
+    }
+
 	[rs close];
 }
 
