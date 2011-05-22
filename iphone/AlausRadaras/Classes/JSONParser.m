@@ -35,7 +35,7 @@
     NSArray *update = [results objectForKey:@"update"];
     //2.1. Brands
     NSArray *brands = [update objectForKey:@"brands"];
-    NSLog(@"UPDATE: Sync Brands: %i", [brands count]);
+    NSLog(@"SYNC: Total Brands: %i", [brands count]);
         
     for (NSDictionary *brand in brands){
         [[SQLiteManager updateManager] updateBrand:brand];
@@ -43,7 +43,7 @@
     
     //2.2. Beers
     NSArray *beers = [update objectForKey:@"beers"];
-    NSLog(@"UPDATE: Sync Beers: %i", [beers count]);
+    NSLog(@"SYNC: Total Beers: %i", [beers count]);
 
     for (NSDictionary *beer in beers){
         [[SQLiteManager updateManager] updateBeer:beer];
@@ -51,9 +51,10 @@
     
     //2.3. Pubs
     NSArray *pubs = [update objectForKey:@"pubs"];
-    NSLog(@"UPDATE: Sync Pubs: %i", [pubs count]);
+    NSLog(@"SYNC: Total Pubs: %i", [pubs count]);
     
     for (NSDictionary *pub in pubs){
+        NSLog(@"SYNC: Pub [%@]", [pub objectForKey:@"title"]);
         [[SQLiteManager updateManager] updatePub:pub];
     }
     

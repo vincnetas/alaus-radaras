@@ -32,7 +32,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 //	Creates database using scripts in beer-radar-schema.sqlite
-//	[[SQLiteManager sharedManager] createNewDatabase];
+	[[SQLiteManager sharedManager] createNewDatabase];
 	
 	[[SQLiteManager sharedManager] initializeDatabase];
 	
