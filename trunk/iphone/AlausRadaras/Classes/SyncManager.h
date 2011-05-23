@@ -22,7 +22,8 @@
 
 // Custom methods
 - (void) doSync:(NSDate *) lastUpdate;
-- (void) showSyncInd;
+- (void) showSyncMessageImage:(NSString *)imageName;
+- (void) syncSuccessful;
 - (void) removeSyncInd;
 
 

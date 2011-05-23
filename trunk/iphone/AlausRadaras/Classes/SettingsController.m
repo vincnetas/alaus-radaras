@@ -50,9 +50,9 @@
     NSInteger daysSinceLastUpdate = [components day];
     NSLog([NSString stringWithFormat:@"SYSTEM: DaysSinceLastUpdate: %i", daysSinceLastUpdate]);
 
- //   if (daysSinceLastUpdate >= 1) {
+   // if (daysSinceLastUpdate >= 1) {
         [[SyncManager sharedManager] doSync:lastUpdate];
-//    }
+    //}
     
     [dateFormat release];
 

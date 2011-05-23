@@ -36,9 +36,10 @@ static SyncManager *sharedManager = nil;
     //init stuff goes here
 }
 
+
 - (void) doSync: (NSDate *) lastUpdate{
-    [self showSyncInd];
-    
+    [self showSyncMessageImage:@"sync-inprogress.png"];
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];    
     //Optionally for time zone converstions
@@ -59,29 +60,29 @@ static SyncManager *sharedManager = nil;
     [dateFormatter release];
 }
 
-- (void) showSyncInd {
-	UIView *statusView2 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-	[statusView2 setBackgroundColor:[UIColor clearColor]];
-	UIImage *image2  = [UIImage imageNamed:@"atnaujinimas.png"];
-	UIImageView *statusImg2 = [[UIImageView alloc] initWithImage:image2];
-	
-	UILabel *statusLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)] autorelease];
-	statusLabel.text = @"Atnaujinami svarbūs duomenys!";
-	statusLabel.textColor = [UIColor whiteColor];
-	statusLabel.backgroundColor = [UIColor clearColor];
-	statusLabel.textAlignment = UITextAlignmentCenter;
-	statusLabel.font = [UIFont fontWithName:@"ArialMT" size:14]; 
-	
-	[statusView2 addSubview:statusImg2];
+- (void) showSyncMessageImage:(NSString *)imageName {
+    if (topWindow == nil) {
+        topWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
+        [topWindow setAlpha:1.0f];
+        [topWindow setWindowLevel:10000.0f];
+    }
     
-	topWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-    //	[topWindow setBackgroundColor:[UIColor blackColor]];
-	[topWindow setAlpha:1.0f];
-	[topWindow setWindowLevel:10000.0f];
-	[topWindow setHidden:NO];
+    [topWindow setHidden:NO];
+
+    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
+	[statusView setBackgroundColor:[UIColor clearColor]];
+	UIImage *image  = [UIImage imageNamed:imageName];
+	UIImageView *statusImgView = [[UIImageView alloc] initWithImage:image];
     
-    //   [topWindow addSubview:statusLabel];
-	[topWindow addSubview:statusView2];
+	[statusView addSubview:statusImgView];
+    
+	[topWindow addSubview:statusView];
+}
+
+- (void) syncSuccessful {
+    NSLog(@"syncSuccessful");
+    [self showSyncMessageImage:@"sync-success.png"];
+    NSLog(@"-syncSuccessful");
 }
 
 
@@ -102,6 +103,12 @@ static SyncManager *sharedManager = nil;
     NSLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+    
+    [self removeSyncInd];
+
+    // Show connection problem ind.
+
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

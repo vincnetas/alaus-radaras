@@ -61,7 +61,9 @@
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	[standardUserDefaults setObject:[NSDate date] forKey:@"LastUpdate"];
     
-    [[SyncManager sharedManager]removeSyncInd];
+    [[SyncManager sharedManager]syncSuccessful];
+
+//    [[SyncManager sharedManager]removeSyncInd];
 }
 
 @end
