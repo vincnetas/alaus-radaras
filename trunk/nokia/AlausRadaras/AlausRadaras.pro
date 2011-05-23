@@ -83,7 +83,7 @@ TRANSLATIONS = alausradaras_lt.ts \
     alausradaras_en.ts
 
 ICON = alus.svg
-VERSION = 1.1.0
+VERSION = 1.2.0
 #old uid 0xece1c5e8
 #nokia uid 0x2003986A
 symbian {
@@ -92,7 +92,7 @@ symbian {
     TARGET.EPOCSTACKSIZE = 0x14000
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
     ICON = alus.svg
-     VERSION = 1.1.0
+     VERSION = 1.2.0
 vendorinfo = \
 "%{\"X-Medikai\"}" \
 ":\"X-Medikai\""
@@ -100,7 +100,7 @@ vendorinfo = \
 translations.sources = *.qm
 DEPLOYMENT += translations
 
-packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 1, 0, TYPE=SA"
+packageheader = "$${LITERAL_HASH}{\"Alaus Radaras\"}, ($${TARGET.UID3}), 1, 2, 0, TYPE=SA"
 my_deployment.pkg_prerules = packageheader vendorinfo
 DEPLOYMENT += my_deployment
 }

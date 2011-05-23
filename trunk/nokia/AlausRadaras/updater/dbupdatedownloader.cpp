@@ -33,8 +33,7 @@ void DbUpdateDownloader::saveUpdate(const QString &text)
         DbUpdater updater;
         ok = updater.updateDb(result);
         if(ok) {
-
-           settings.setValue(getUpdateType(),QDateTime::currentDateTimeUtc().toTime_t());
+           settings.setValue(getUpdateType(),QDateTime::currentDateTime().toTime_t());
         }
     }
     qDebug() << "emiting DbUpdateFinished";

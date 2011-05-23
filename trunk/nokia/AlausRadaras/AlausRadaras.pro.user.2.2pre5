@@ -7,25 +7,7 @@
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
   <valuemap type="QVariantMap">
-   <value key="EditorConfiguration.AutoIndent" type="bool">true</value>
-   <value key="EditorConfiguration.AutoSpacesForTabs" type="bool">false</value>
-   <value key="EditorConfiguration.Codec" type="QByteArray">System</value>
-   <value key="EditorConfiguration.DoubleIndentBlocks" type="bool">false</value>
-   <value key="EditorConfiguration.IndentBraces" type="bool">false</value>
-   <value key="EditorConfiguration.IndentSize" type="int">4</value>
-   <value key="EditorConfiguration.MouseNavigation" type="bool">true</value>
-   <value key="EditorConfiguration.PaddingMode" type="int">1</value>
-   <value key="EditorConfiguration.ScrollWheelZooming" type="bool">true</value>
-   <value key="EditorConfiguration.SmartBackspace" type="bool">false</value>
-   <value key="EditorConfiguration.SpacesForTabs" type="bool">true</value>
-   <value key="EditorConfiguration.TabKeyBehavior" type="int">0</value>
-   <value key="EditorConfiguration.TabSize" type="int">8</value>
-   <value key="EditorConfiguration.UseGlobal" type="bool">true</value>
-   <value key="EditorConfiguration.Utf8BomBehavior" type="int">1</value>
-   <value key="EditorConfiguration.addFinalNewLine" type="bool">true</value>
-   <value key="EditorConfiguration.cleanIndentation" type="bool">true</value>
-   <value key="EditorConfiguration.cleanWhitespace" type="bool">true</value>
-   <value key="EditorConfiguration.inEntireDocument" type="bool">false</value>
+   <value key="EditorConfiguration.Codec" type="QByteArray">Default</value>
   </valuemap>
  </data>
  <data>
@@ -38,14 +20,12 @@
    <value key="ProjectExplorer.Target.ActiveDeployConfiguration" type="int">0</value>
    <value key="ProjectExplorer.Target.ActiveRunConfiguration" type="int">0</value>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.0" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -53,7 +33,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -67,7 +47,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -84,18 +66,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras-build-desktop</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">4</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">true</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.1" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -103,7 +83,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -117,7 +97,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -134,7 +116,7 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras-build-desktop</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">4</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">true</value>
    </valuemap>
    <value key="ProjectExplorer.Target.BuildConfigurationCount" type="int">2</value>
@@ -156,11 +138,12 @@
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.Qt4RunConfiguration</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.BaseEnvironmentBase" type="int">2</value>
-    <value key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments" type="QString"></value>
+    <valuelist key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments" type="QVariantList"/>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.ProFile" type="QString">AlausRadaras.pro</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix" type="bool">false</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal" type="bool">false</value>
     <valuelist key="Qt4ProjectManager.Qt4RunConfiguration.UserEnvironmentChanges" type="QVariantList"/>
+    <value key="Qt4ProjectManager.Qt4RunConfiguration.UserSetWorkingDirectory" type="bool">false</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory" type="QString"></value>
     <value key="RunConfiguration.QmlDebugServerPort" type="uint">3768</value>
     <value key="RunConfiguration.UseCppDebugger" type="bool">true</value>
@@ -179,14 +162,12 @@
    <value key="ProjectExplorer.Target.ActiveDeployConfiguration" type="int">0</value>
    <value key="ProjectExplorer.Target.ActiveRunConfiguration" type="int">0</value>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.0" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -194,7 +175,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -208,7 +189,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -225,18 +208,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras-build-simulator</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">3</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">true</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.1" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -244,7 +225,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -258,7 +239,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -275,7 +258,7 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras-build-simulator</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">3</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:C:/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">true</value>
    </valuemap>
    <value key="ProjectExplorer.Target.BuildConfigurationCount" type="int">2</value>
@@ -297,11 +280,12 @@
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.Qt4RunConfiguration</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.BaseEnvironmentBase" type="int">2</value>
-    <value key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments" type="QString"></value>
+    <valuelist key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments" type="QVariantList"/>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.ProFile" type="QString">AlausRadaras.pro</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix" type="bool">false</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal" type="bool">false</value>
     <valuelist key="Qt4ProjectManager.Qt4RunConfiguration.UserEnvironmentChanges" type="QVariantList"/>
+    <value key="Qt4ProjectManager.Qt4RunConfiguration.UserSetWorkingDirectory" type="bool">false</value>
     <value key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory" type="QString"></value>
     <value key="RunConfiguration.QmlDebugServerPort" type="uint">3768</value>
     <value key="RunConfiguration.UseCppDebugger" type="bool">true</value>
@@ -317,17 +301,22 @@
    <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Symbian Device</value>
    <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.Target.S60DeviceTarget</value>
    <value key="ProjectExplorer.Target.ActiveBuildConfiguration" type="int">3</value>
-   <value key="ProjectExplorer.Target.ActiveDeployConfiguration" type="int">0</value>
+   <value key="ProjectExplorer.Target.ActiveDeployConfiguration" type="int">1</value>
    <value key="ProjectExplorer.Target.ActiveRunConfiguration" type="int">0</value>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.0" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString">-after "OBJECTS_DIR=obj" "MOC_DIR=moc" "UI_DIR=ui" "RCC_DIR=rcc" "QMLJSDEBUGGER_PATH=C:/QtSDK/QtCreator/share/qtcreator/qml/qmljsdebugger"</value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList">
+       <value type="QString">-after</value>
+       <value type="QString">OBJECTS_DIR=obj</value>
+       <value type="QString">MOC_DIR=moc</value>
+       <value type="QString">UI_DIR=ui</value>
+       <value type="QString">RCC_DIR=rcc</value>
+       <value type="QString">QMLJSDEBUGGER_PATH=C:/QtSDK/QtCreator/share/qtcreator/qml/qmljsdebugger</value>
+      </valuelist>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -335,7 +324,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -349,7 +338,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -366,18 +357,23 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">6</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.1" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString">-after "OBJECTS_DIR=obj" "MOC_DIR=moc" "UI_DIR=ui" "RCC_DIR=rcc" "QMLJSDEBUGGER_PATH=C:/QtSDK/QtCreator/share/qtcreator/qml/qmljsdebugger"</value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList">
+       <value type="QString">-after</value>
+       <value type="QString">OBJECTS_DIR=obj</value>
+       <value type="QString">MOC_DIR=moc</value>
+       <value type="QString">UI_DIR=ui</value>
+       <value type="QString">RCC_DIR=rcc</value>
+       <value type="QString">QMLJSDEBUGGER_PATH=C:/QtSDK/QtCreator/share/qtcreator/qml/qmljsdebugger</value>
+      </valuelist>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -385,7 +381,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -399,7 +395,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -416,18 +414,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">6</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.2" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -435,7 +431,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -449,7 +445,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -466,18 +464,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">5</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.3" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -485,7 +481,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -499,7 +495,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -516,18 +514,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">5</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.4" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -535,7 +531,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -549,7 +545,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -566,18 +564,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">6</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.5" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -585,7 +581,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -599,7 +595,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -616,18 +614,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">6</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.6" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -635,7 +631,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -649,7 +645,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -666,18 +664,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">7</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.7" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -685,7 +681,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -699,7 +695,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -716,18 +714,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">7</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.8" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -735,7 +731,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -749,7 +745,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -766,18 +764,16 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">8</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.9" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">QtProjectManager.QMakeBuildStep</value>
-      <value key="QtProjectManager.QMakeBuildStep.LinkQmlDebuggingLibrary" type="bool">false</value>
-      <value key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QString"></value>
+      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
       <value key="QtProjectManager.QMakeBuildStep.QMakeForced" type="bool">false</value>
      </valuemap>
      <valuemap key="ProjectExplorer.BuildStepList.Step.1" type="QVariantMap">
@@ -785,7 +781,7 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString"></value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">2</value>
@@ -799,7 +795,9 @@
       <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
       <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
       <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">true</value>
-      <value key="Qt4ProjectManager.MakeStep.MakeArguments" type="QString">clean</value>
+      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList">
+       <value type="QString">clean</value>
+      </valuelist>
       <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
@@ -816,7 +814,7 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">8</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">Qt4ProjectManager.ToolChain.GCCE:C:\QtSDK\Symbian\tools\gcce4\bin\arm-none-symbianelf-g++.exe.arm-symbian-device-elf-32bit.C:\QtSDK\pythongdb\python_2.7based\gdb-arm-none-symbianelf.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">6</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <value key="ProjectExplorer.Target.BuildConfigurationCount" type="int">10</value>
@@ -830,7 +828,6 @@
       <value key="Qt4ProjectManager.S60CreatePackageStep.Keyfile" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/OVI_2011-04-26.key</value>
       <value key="Qt4ProjectManager.S60CreatePackageStep.SignMode" type="int">1</value>
       <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">true</value>
-      <value key="Qt4ProjectManager.S60CreatorPackageStep.SuppressPatchWarningDialog" type="bool">false</value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
      <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy</value>
@@ -841,9 +838,6 @@
     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy to Symbian device</value>
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.S60DeployConfiguration</value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.CommunicationChannel" type="int">0</value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.DeviceAddress" type="QString"></value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.DevicePort" type="QString">65029</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.InstallationDriveLetter" type="QChar">C</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName" type="QString"></value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.SilentInstall" type="bool">true</value>
@@ -858,7 +852,6 @@
       <value key="Qt4ProjectManager.S60CreatePackageStep.Keyfile" type="QString">C:/projects/alausradaras/nokia/AlausRadaras/RDA_private-key.pem</value>
       <value key="Qt4ProjectManager.S60CreatePackageStep.SignMode" type="int">1</value>
       <value key="Qt4ProjectManager.S60CreatorPackageStep.SmartInstaller" type="bool">true</value>
-      <value key="Qt4ProjectManager.S60CreatorPackageStep.SuppressPatchWarningDialog" type="bool">false</value>
      </valuemap>
      <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
      <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy</value>
@@ -869,9 +862,6 @@
     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy to Symbian device</value>
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Remote device test</value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.S60DeployConfiguration</value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.CommunicationChannel" type="int">0</value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.DeviceAddress" type="QString"></value>
-    <value key="Qt4ProjectManager.S60DeployConfiguration.DevicePort" type="QString">65029</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.InstallationDriveLetter" type="QChar">C</value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.SerialPortName" type="QString"></value>
     <value key="Qt4ProjectManager.S60DeployConfiguration.SilentInstall" type="bool">false</value>
@@ -881,7 +871,7 @@
     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">AlausRadaras on Symbian Device</value>
     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.S60DeviceRunConfiguration</value>
-    <value key="Qt4ProjectManager.S60DeviceRunConfiguration.CommandLineArguments" type="QString"></value>
+    <valuelist key="Qt4ProjectManager.S60DeviceRunConfiguration.CommandLineArguments" type="QVariantList"/>
     <value key="Qt4ProjectManager.S60DeviceRunConfiguration.ProFile" type="QString">AlausRadaras.pro</value>
     <value key="RunConfiguration.QmlDebugServerPort" type="uint">3768</value>
     <value key="RunConfiguration.UseCppDebugger" type="bool">true</value>
@@ -891,8 +881,81 @@
   </valuemap>
  </data>
  <data>
+  <variable>ProjectExplorer.Project.Target.3</variable>
+  <valuemap type="QVariantMap">
+   <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Remote Compiler</value>
+   <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Remote Compiler</value>
+   <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.Target.WccCompilerTarget</value>
+   <value key="ProjectExplorer.Target.ActiveBuildConfiguration" type="int">0</value>
+   <value key="ProjectExplorer.Target.ActiveDeployConfiguration" type="int">0</value>
+   <value key="ProjectExplorer.Target.ActiveRunConfiguration" type="int">0</value>
+   <valuemap key="ProjectExplorer.Target.BuildConfiguration.0" type="QVariantMap">
+    <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
+     <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
+      <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString"></value>
+      <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+      <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.WccBuildStep</value>
+      <value key="Qt4ProjectManager.WccBuildStep.CertFile" type="QString"></value>
+      <value key="Qt4ProjectManager.WccBuildStep.CertKeyFile" type="QString"></value>
+      <value key="Qt4ProjectManager.WccBuildStep.CertKeyPass" type="QString"></value>
+      <value key="Qt4ProjectManager.WccBuildStep.PkgOpt" type="int">0</value>
+      <value key="Qt4ProjectManager.WccBuildStep.PostOp" type="int">1</value>
+      <value key="Qt4ProjectManager.WccBuildStep.QtVersion" type="QString"></value>
+      <value key="Qt4ProjectManager.WccBuildStep.SisOpt" type="int">1</value>
+      <value key="Qt4ProjectManager.WccBuildStep.Target" type="QString"></value>
+     </valuemap>
+     <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">1</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Build</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">ProjectExplorer.BuildSteps.Build</value>
+    </valuemap>
+    <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.1" type="QVariantMap">
+     <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">0</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Clean</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">ProjectExplorer.BuildSteps.Clean</value>
+    </valuemap>
+    <value key="ProjectExplorer.BuildConfiguration.BuildStepListCount" type="int">2</value>
+    <value key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment" type="bool">false</value>
+    <valuelist key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges" type="QVariantList"/>
+    <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Remote Compiler</value>
+    <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+    <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.Qt4BuildConfiguration</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">C:/projects/alausradaras/nokia/AlausRadaras-build-remote</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">10</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="int">12</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">true</value>
+   </valuemap>
+   <value key="ProjectExplorer.Target.BuildConfigurationCount" type="int">1</value>
+   <valuemap key="ProjectExplorer.Target.DeployConfiguration.0" type="QVariantMap">
+    <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
+     <value key="ProjectExplorer.BuildStepList.StepsCount" type="int">0</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">Deploy</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">ProjectExplorer.BuildSteps.Deploy</value>
+    </valuemap>
+    <value key="ProjectExplorer.BuildConfiguration.BuildStepListCount" type="int">1</value>
+    <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">No deployment</value>
+    <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString"></value>
+    <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">ProjectExplorer.DefaultDeployConfiguration</value>
+   </valuemap>
+   <value key="ProjectExplorer.Target.DeployConfigurationCount" type="int">1</value>
+   <valuemap key="ProjectExplorer.Target.RunConfiguration.0" type="QVariantMap">
+    <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString"></value>
+    <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Remote Compiler - Empty Run Configuration</value>
+    <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.WccRunConfiguration</value>
+    <value key="Qt4ProjectManager.WccRunConfiguration.ProFile" type="QString">AlausRadaras.pro</value>
+    <value key="RunConfiguration.QmlDebugServerPort" type="uint">3768</value>
+    <value key="RunConfiguration.UseCppDebugger" type="bool">true</value>
+    <value key="RunConfiguration.UseQmlDebugger" type="bool">false</value>
+   </valuemap>
+   <value key="ProjectExplorer.Target.RunConfigurationCount" type="int">1</value>
+  </valuemap>
+ </data>
+ <data>
   <variable>ProjectExplorer.Project.TargetCount</variable>
-  <value type="int">3</value>
+  <value type="int">4</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.EnvironmentId</variable>
@@ -900,6 +963,6 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
-  <value type="int">9</value>
+  <value type="int">8</value>
  </data>
 </qtcreator>

@@ -19,6 +19,6 @@ QString AppUpdateChecker::getUrl()
 
 void AppUpdateChecker::setLastUpdate(const QString &text)
 {
-   settings.setValue(getUpdateType(),QDateTime::currentDateTimeUtc().toTime_t());
+   settings.setValue(getUpdateType(),QDateTime::currentDateTime().toTime_t());
 }
 
