@@ -10,6 +10,7 @@
 #import "SQLiteManager.h"
 #import "LocationManager.h"
 #import "DataPublisher.h"
+#import "SyncManager.h"
 
 @implementation AlausRadarasAppDelegate
 
@@ -67,6 +68,48 @@
     return YES;
 }
 
+/*
+ Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+ */
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
+    /* ############ DO SYNC ############ */
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
+    NSDate *now = [NSDate date];
+    
+    NSLog(@"SYNC: Last Update Date: %@", [dateFormat stringFromDate:lastUpdate]);
+    
+    if (lastUpdate == nil) {
+        // Default date to app release date
+        // Update on Database update
+        lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
+    }
+    
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;    
+    NSDateComponents *components = [gregorian components:unitFlags
+                                                fromDate:lastUpdate
+                                                  toDate:now options:0];
+    
+    NSInteger daysSinceLastUpdate = [components day];
+    NSLog(@"SYNC: DaysSinceLastUpdate: %i", daysSinceLastUpdate);
+    
+    if (daysSinceLastUpdate >= 1) {
+        [[SyncManager sharedManager] doSync:lastUpdate];
+    }
+    
+    [dateFormat release];
+    
+    [standardUserDefaults synchronize];
+    /* ############ END SYNC ############ */
+    
+}
 
 #pragma mark -
 #pragma mark Memory management
@@ -104,13 +147,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
-     */
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 }
 

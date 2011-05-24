@@ -38,11 +38,11 @@ static SyncManager *sharedManager = nil;
 
 - (void) doSync: (NSDate *) lastUpdate{
     MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
-    overlay.animation = MTStatusBarOverlayAnimationShrink;//MTStatusBarOverlayAnimationFallDown;  // MTStatusBarOverlayAnimationShrink
+    [MTStatusBarOverlay sharedInstance].animation = MTStatusBarOverlayAnimationShrink;//MTStatusBarOverlayAnimationFallDown;  // MTStatusBarOverlayAnimationShrink
 //    overlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
-    overlay.delegate = self;
-    overlay.progress = 0.0;
-    [overlay postMessage:@"Atnaujinami Duomenys"];
+//    overlay.delegate = self;
+//    overlay.progress = 0.0;
+    [[MTStatusBarOverlay sharedInstance] postMessage:@"Atnaujinami Duomenys"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];    

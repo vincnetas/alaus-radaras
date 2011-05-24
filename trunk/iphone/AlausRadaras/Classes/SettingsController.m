@@ -26,38 +26,6 @@
     [super viewDidLoad];
 
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    
-    /* ############ DO SYNC ############ */
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    
-    NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
-    NSDate *now = [NSDate date];
-
-    if (lastUpdate == nil) {
-        // Default date to app release date
-        // Update on Database update
-        lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
-    }
-    
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;    
-    NSDateComponents *components = [gregorian components:unitFlags
-                                                fromDate:lastUpdate
-                                                  toDate:now options:0];
-    
-    NSInteger daysSinceLastUpdate = [components day];
-    NSLog([NSString stringWithFormat:@"SYSTEM: DaysSinceLastUpdate: %i", daysSinceLastUpdate]);
-
-   // if (daysSinceLastUpdate >= 1) {
-        [[SyncManager sharedManager] doSync:lastUpdate];
-    //}
-    
-    [dateFormat release];
-
-    /* ############ END SYNC ############ */
-
 	
 	[[LocationManager sharedManager]initializeManager];
 	BOOL enableAllFeatures = TRUE;
@@ -75,8 +43,6 @@
 	}	
 	[standardUserDefaults setBool:enableAllFeatures forKey:@"EnableAllFeatures"];
 	[[LocationManager sharedManager]setEnableAllFeatures:enableAllFeatures];
-
-	[standardUserDefaults synchronize];
 	
 	UIColor *background;
 	/* iOS3.1 Support */
@@ -120,6 +86,8 @@
 	[[LocationManager sharedManager]setDistance:visibilityDistance];
 	[self visibilityControlIndexChanged];
 	
+    [standardUserDefaults synchronize];
+
 	NSLog(@"SettingsController viewDidLoad");
 }
 
