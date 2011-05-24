@@ -8,7 +8,6 @@
 
 #import "SyncManager.h"
 #import "JSONParser.h"
-
 @implementation SyncManager
 
 - (void)dealloc {
@@ -38,8 +37,13 @@ static SyncManager *sharedManager = nil;
 
 
 - (void) doSync: (NSDate *) lastUpdate{
-    [self showSyncMessageImage:@"sync-inprogress.png"];
-
+    MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
+    overlay.animation = MTStatusBarOverlayAnimationShrink;//MTStatusBarOverlayAnimationFallDown;  // MTStatusBarOverlayAnimationShrink
+//    overlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
+    overlay.delegate = self;
+    overlay.progress = 0.0;
+    [overlay postMessage:@"Atnaujinami Duomenys"];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];    
     //Optionally for time zone converstions
@@ -60,36 +64,10 @@ static SyncManager *sharedManager = nil;
     [dateFormatter release];
 }
 
-- (void) showSyncMessageImage:(NSString *)imageName {
-    if (topWindow == nil) {
-        topWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-        [topWindow setAlpha:1.0f];
-        [topWindow setWindowLevel:10000.0f];
-    }
-    
-    [topWindow setHidden:NO];
-
-    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 20.0f)];
-	[statusView setBackgroundColor:[UIColor clearColor]];
-	UIImage *image  = [UIImage imageNamed:imageName];
-	UIImageView *statusImgView = [[UIImageView alloc] initWithImage:image];
-    
-	[statusView addSubview:statusImgView];
-    
-	[topWindow addSubview:statusView];
-}
-
 - (void) syncSuccessful {
     NSLog(@"syncSuccessful");
-    [self showSyncMessageImage:@"sync-success.png"];
-    NSLog(@"-syncSuccessful");
+    [[MTStatusBarOverlay sharedInstance]  postImmediateFinishMessage:@"Duomenys Atnaujinti!" duration:2.0 animated:YES];
 }
-
-
-- (void) removeSyncInd {
-    [topWindow setHidden:YES];
-}
-
 
 
 #pragma mark -
@@ -104,11 +82,7 @@ static SyncManager *sharedManager = nil;
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
-    
-    [self removeSyncInd];
-
-    // Show connection problem ind.
-
+    [[MTStatusBarOverlay sharedInstance]  postErrorMessage:@"Nepavyko Atnaujinti Duomenų" duration:2.0 animated:YES];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
