@@ -62,8 +62,6 @@
 	[standardUserDefaults setObject:[NSDate date] forKey:@"LastUpdate"];
     
     [[SyncManager sharedManager]syncSuccessful];
-
-//    [[SyncManager sharedManager]removeSyncInd];
 }
 
 @end

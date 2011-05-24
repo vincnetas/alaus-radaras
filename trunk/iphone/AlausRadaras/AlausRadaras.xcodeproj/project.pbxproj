@@ -166,6 +166,7 @@
 		C9AAE4BC13896AE200984F32 /* sync-failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4B913896AE200984F32 /* sync-failure@2x.png */; };
 		C9AAE4BD13896AE200984F32 /* sync-inprogress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4BA13896AE200984F32 /* sync-inprogress@2x.png */; };
 		C9AAE4BE13896AE200984F32 /* sync-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4BB13896AE200984F32 /* sync-success@2x.png */; };
+		C9B60096138B7DD700DE3A95 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B60095138B7DD700DE3A95 /* MTStatusBarOverlay.m */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
 		C9C2C227131ADE170097092D /* PubBrandSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C2C226131ADE170097092D /* PubBrandSubmit.m */; };
@@ -382,6 +383,8 @@
 		C9AAE4B913896AE200984F32 /* sync-failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-failure@2x.png"; path = "resources/images/640x960/sync-failure@2x.png"; sourceTree = "<group>"; };
 		C9AAE4BA13896AE200984F32 /* sync-inprogress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-inprogress@2x.png"; path = "resources/images/640x960/sync-inprogress@2x.png"; sourceTree = "<group>"; };
 		C9AAE4BB13896AE200984F32 /* sync-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-success@2x.png"; path = "resources/images/640x960/sync-success@2x.png"; sourceTree = "<group>"; };
+		C9B60094138B7DD700DE3A95 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Classes/MTStatusBar/MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		C9B60095138B7DD700DE3A95 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Classes/MTStatusBar/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		C9B7CF7D13243E6A002B8A3B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -457,6 +460,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C9B60093138B7DBC00DE3A95 /* MTStatusBar */,
 				C9AAE4B7138962A400984F32 /* SystemConfiguration.framework */,
 				C915D2FB134CD9E600553FE8 /* JSON */,
 				C99A65C9132573C80036B4DF /* HUD */,
@@ -739,6 +743,15 @@
 				C960135D12F0C69200DB53C0 /* tag_02.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		C9B60093138B7DBC00DE3A95 /* MTStatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				C9B60094138B7DD700DE3A95 /* MTStatusBarOverlay.h */,
+				C9B60095138B7DD700DE3A95 /* MTStatusBarOverlay.m */,
+			);
+			name = MTStatusBar;
 			sourceTree = "<group>";
 		};
 		C9D471041300A198009C04AF /* apple */ = {
@@ -1061,6 +1074,7 @@
 				C9E9BCEE1389052D007F4F38 /* SQLiteManager.m in Sources */,
 				C938B8E913707EA200CE7A8E /* Beer.m in Sources */,
 				C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */,
+				C9B60096138B7DD700DE3A95 /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

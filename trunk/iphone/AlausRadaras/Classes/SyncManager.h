@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MTStatusBarOverlay.h"
 
 // Manages App Synchronization
-@interface SyncManager : NSObject {
-	NSMutableData *responseData;
-	UIWindow *topWindow;
-    
+@interface SyncManager : NSObject <MTStatusBarOverlayDelegate> {
+	NSMutableData *responseData;    
     NSOperationQueue *queue;
 }
 
@@ -22,9 +21,6 @@
 
 // Custom methods
 - (void) doSync:(NSDate *) lastUpdate;
-- (void) showSyncMessageImage:(NSString *)imageName;
 - (void) syncSuccessful;
-- (void) removeSyncInd;
-
 
 @end
