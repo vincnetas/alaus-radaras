@@ -54,7 +54,6 @@
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
 		C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8CB1370746D00CE7A8E /* SyncManager.m */; };
-		C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */ = {isa = PBXBuildFile; fileRef = C938B8CD1370793500CE7A8E /* SyncResponseSample.json */; };
 		C938B8D813707DD000CE7A8E /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8D713707DD000CE7A8E /* Pub.m */; };
 		C938B8DB13707DE400CE7A8E /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DA13707DE400CE7A8E /* CodeValue.m */; };
 		C938B8DE13707DEF00CE7A8E /* FeelingLucky.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DD13707DEF00CE7A8E /* FeelingLucky.m */; };
@@ -252,7 +251,6 @@
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
 		C938B8CA1370746D00CE7A8E /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncManager.h; path = Classes/SyncManager.h; sourceTree = "<group>"; };
 		C938B8CB1370746D00CE7A8E /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncManager.m; path = Classes/SyncManager.m; sourceTree = "<group>"; };
-		C938B8CD1370793500CE7A8E /* SyncResponseSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SyncResponseSample.json; sourceTree = "<group>"; };
 		C938B8D613707DD000CE7A8E /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pub.h; path = Classes/Pub.h; sourceTree = "<group>"; };
 		C938B8D713707DD000CE7A8E /* Pub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pub.m; path = Classes/Pub.m; sourceTree = "<group>"; };
 		C938B8D913707DE400CE7A8E /* CodeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeValue.h; path = Classes/CodeValue.h; sourceTree = "<group>"; };
@@ -712,7 +710,6 @@
 				C9C2C30A131B09340097092D /* DataPublisher.m */,
 				C938B8CA1370746D00CE7A8E /* SyncManager.h */,
 				C938B8CB1370746D00CE7A8E /* SyncManager.m */,
-				C938B8CD1370793500CE7A8E /* SyncResponseSample.json */,
 				C938B8F11370934C00CE7A8E /* JSONParser.h */,
 				C938B8F21370934C00CE7A8E /* JSONParser.m */,
 			);
@@ -968,7 +965,6 @@
 				C94C8F2313366216006F0166 /* lucky@2x.png in Resources */,
 				C9A171A5135E236900AC976E /* beer_01@2x.png in Resources */,
 				C9A171A7135E237400AC976E /* beer_01.png in Resources */,
-				C938B8CE1370793500CE7A8E /* SyncResponseSample.json in Resources */,
 				C938B8E313707E1100CE7A8E /* AlausRadarasViewController.xib in Resources */,
 				C938B8EB137081E900CE7A8E /* beers.txt in Resources */,
 				C9A0F8AF137DC9C6009B490D /* beer_backoriu_tamsusis.png in Resources */,
