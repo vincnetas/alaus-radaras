@@ -67,9 +67,19 @@
 	[background release];
     self.view.opaque = NO;
 	
+    /* ****** VISIBILITY SETTINGS ******* */
+    
 	if (standardUserDefaults) {
 		BOOL visibilityControlled = [standardUserDefaults boolForKey:@"VisibilityControlled"];
-		visibilityDistance = [standardUserDefaults integerForKey:@"VisibilityDistance"];
+        visibilityDistance = [standardUserDefaults integerForKey:@"VisibilityDistance"];
+
+        // if first run
+        if (visibilityDistance == 0) {
+            NSLog(@"SYSTEM: Defaulting visibility to 10km");
+            visibilityControlled = YES;
+            visibilityDistance = 10;
+        }
+        
 		[[LocationManager sharedManager]setVisibilityControlled:visibilityControlled];
 		
 		if (visibilityControlled) {
@@ -79,13 +89,13 @@
 		}
 		visibleDistanceSlider.value = visibilityDistance;
 	}
-	if (visibilityDistance == 0) {
-		visibilityDistance = 16;
-	}
 	
 	[[LocationManager sharedManager]setDistance:visibilityDistance];
 	[self visibilityControlIndexChanged];
 	
+    /* ****** END VISIBILITY SETTINGS ******* */
+
+    
     [standardUserDefaults synchronize];
 
 	NSLog(@"SettingsController viewDidLoad");

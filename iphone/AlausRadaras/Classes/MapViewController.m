@@ -17,7 +17,7 @@
 
 @implementation MapViewController
 
-@synthesize map,pubsOnMap, pubsAlreadyOnMap;
+@synthesize map, pubsOnMap, pubsAlreadyOnMap;
 @synthesize infoLabel;
 @synthesize citySegmentControl;
 @synthesize pubTable;
@@ -222,9 +222,10 @@
 
 
 -(IBAction) cityIndexChanged {
+    
 	switch (self.citySegmentControl.selectedSegmentIndex) {
 		case 0:
-			[pubTable setHidden:YES];
+			[pubTable setHidden:YES];            
 			[map setHidden:NO];
 			//[self showRegionWithLatitude:54.689313 Longitude:25.282631];
 			break;

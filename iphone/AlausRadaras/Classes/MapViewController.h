@@ -15,7 +15,8 @@
 
 @interface MapViewController : UIViewController<MKMapViewDelegate> {
 	IBOutlet MKMapView *map;
-	NSMutableArray *pubsOnMap;
+
+    NSMutableArray *pubsOnMap;
 	NSMutableArray *pubsAlreadyOnMap;
 	
 	/* Inforamtion bar */
@@ -35,6 +36,7 @@
 }
 
 @property(nonatomic, retain) IBOutlet MKMapView *map;
+
 @property(nonatomic, retain) NSMutableArray *pubsOnMap;
 @property(nonatomic, retain) NSMutableArray *pubsAlreadyOnMap;
 
