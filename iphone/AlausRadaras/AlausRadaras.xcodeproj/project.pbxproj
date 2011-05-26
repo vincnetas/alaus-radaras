@@ -153,7 +153,6 @@
 		C9A3820B1322D82600790E5E /* pub_1298412463871.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A381FE1322D82600790E5E /* pub_1298412463871.png */; };
 		C9A3820C1322D82600790E5E /* pub_1298412463876.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A381FF1322D82600790E5E /* pub_1298412463876.png */; };
 		C9A3820D1322D82600790E5E /* pub_1298412463880.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382001322D82600790E5E /* pub_1298412463880.png */; };
-		C9A3820E1322D82600790E5E /* pub_1298412463886.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382011322D82600790E5E /* pub_1298412463886.png */; };
 		C9A3820F1322D82600790E5E /* pub_1298412463895.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382021322D82600790E5E /* pub_1298412463895.png */; };
 		C9A382101322D82600790E5E /* pub_1298412463900.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382031322D82600790E5E /* pub_1298412463900.png */; };
 		C9A382111322D82600790E5E /* pub_1298412463901.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382041322D82600790E5E /* pub_1298412463901.png */; };
@@ -368,7 +367,6 @@
 		C9A381FE1322D82600790E5E /* pub_1298412463871.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463871.png; path = resources/pubs/pub_1298412463871.png; sourceTree = "<group>"; };
 		C9A381FF1322D82600790E5E /* pub_1298412463876.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463876.png; path = resources/pubs/pub_1298412463876.png; sourceTree = "<group>"; };
 		C9A382001322D82600790E5E /* pub_1298412463880.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463880.png; path = resources/pubs/pub_1298412463880.png; sourceTree = "<group>"; };
-		C9A382011322D82600790E5E /* pub_1298412463886.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463886.png; path = resources/pubs/pub_1298412463886.png; sourceTree = "<group>"; };
 		C9A382021322D82600790E5E /* pub_1298412463895.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463895.png; path = resources/pubs/pub_1298412463895.png; sourceTree = "<group>"; };
 		C9A382031322D82600790E5E /* pub_1298412463900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463900.png; path = resources/pubs/pub_1298412463900.png; sourceTree = "<group>"; };
 		C9A382041322D82600790E5E /* pub_1298412463901.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463901.png; path = resources/pubs/pub_1298412463901.png; sourceTree = "<group>"; };
@@ -658,7 +656,6 @@
 				C9A381FE1322D82600790E5E /* pub_1298412463871.png */,
 				C9A381FF1322D82600790E5E /* pub_1298412463876.png */,
 				C9A382001322D82600790E5E /* pub_1298412463880.png */,
-				C9A382011322D82600790E5E /* pub_1298412463886.png */,
 				C9A382021322D82600790E5E /* pub_1298412463895.png */,
 				C9A382031322D82600790E5E /* pub_1298412463900.png */,
 				C9A382041322D82600790E5E /* pub_1298412463901.png */,
@@ -923,7 +920,6 @@
 				C9A3820B1322D82600790E5E /* pub_1298412463871.png in Resources */,
 				C9A3820C1322D82600790E5E /* pub_1298412463876.png in Resources */,
 				C9A3820D1322D82600790E5E /* pub_1298412463880.png in Resources */,
-				C9A3820E1322D82600790E5E /* pub_1298412463886.png in Resources */,
 				C9A3820F1322D82600790E5E /* pub_1298412463895.png in Resources */,
 				C9A382101322D82600790E5E /* pub_1298412463900.png in Resources */,
 				C9A382111322D82600790E5E /* pub_1298412463901.png in Resources */,
@@ -1115,6 +1111,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "0C247C23-F42E-4899-82B8-D402D44CE24B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C247C23-F42E-4899-82B8-D402D44CE24B";
 				SDKROOT = iphoneos4.3;
 				SYMROOT = /Users/laurynasr/Documents/xCodeProjects/AlausRadaras/build;
 			};
@@ -1133,8 +1131,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "6F628CAB-030F-4B00-AB2C-32FD75282345";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6F628CAB-030F-4B00-AB2C-32FD75282345";
+				PROVISIONING_PROFILE = "0C247C23-F42E-4899-82B8-D402D44CE24B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C247C23-F42E-4899-82B8-D402D44CE24B";
 				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1154,8 +1152,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
+				PROVISIONING_PROFILE = "C0EA7A59-03BC-467E-9288-9CA9D9565A2C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C0EA7A59-03BC-467E-9288-9CA9D9565A2C";
 				SDKROOT = iphoneos4.3;
 			};
 			name = Distribution;

@@ -82,7 +82,7 @@
     NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
     NSDate *now = [NSDate date];
     
-    NSLog(@"SYNC: Last Update Date: %@", [dateFormat stringFromDate:lastUpdate]);
+    NSLog(@"SYNC: Last Update Date: %@, Now is: %@", [dateFormat stringFromDate:lastUpdate], [dateFormat stringFromDate:now]);
     
     if (lastUpdate == nil) {
         // Default date to app release date
@@ -90,17 +90,7 @@
         lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
     }
     
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;    
-    NSDateComponents *components = [gregorian components:unitFlags
-                                                fromDate:lastUpdate
-                                                  toDate:now options:0];
-    
-    NSInteger daysSinceLastUpdate = [components day];
-    NSLog(@"SYNC: DaysSinceLastUpdate: %i", daysSinceLastUpdate);
-    
-    if (daysSinceLastUpdate >= 1) {
+    if (![[dateFormat stringFromDate:lastUpdate]isEqualToString:[dateFormat stringFromDate:now]]) {
         [[SyncManager sharedManager] doSync:lastUpdate];
     }
     
