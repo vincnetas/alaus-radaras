@@ -37,7 +37,6 @@ static SyncManager *sharedManager = nil;
 
 
 - (void) doSync: (NSDate *) lastUpdate{
-    MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
     [MTStatusBarOverlay sharedInstance].animation = MTStatusBarOverlayAnimationShrink;//MTStatusBarOverlayAnimationFallDown;  // MTStatusBarOverlayAnimationShrink
 //    overlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
 //    overlay.delegate = self;
@@ -50,9 +49,7 @@ static SyncManager *sharedManager = nil;
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
     
     NSString *stringlastUpdate = [dateFormatter stringFromDate:lastUpdate];
-    
-    NSLog(@"SYNC: Last Update Date: %@", stringlastUpdate);
-    
+        
 	responseData = [[NSMutableData data] retain];
 	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
 	[request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.alausradaras.lt/json?lastUpdate=%@T00:00:00",
@@ -66,6 +63,7 @@ static SyncManager *sharedManager = nil;
 
 - (void) syncSuccessful {
     NSLog(@"syncSuccessful");
+    
     [[MTStatusBarOverlay sharedInstance]  postImmediateFinishMessage:@"Duomenys Atnaujinti!" duration:2.0 animated:YES];
 }
 
