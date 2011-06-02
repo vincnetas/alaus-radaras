@@ -13,6 +13,7 @@
 @interface SyncManager : NSObject <MTStatusBarOverlayDelegate> {
 	NSMutableData *responseData;    
     NSOperationQueue *queue;
+    MTStatusBarOverlay *overlay;
 }
 
 + (SyncManager*) sharedManager;
