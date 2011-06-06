@@ -60,6 +60,10 @@ public class BeerRadarActivity extends AbstractLocationActivity {
         
         settings = new SettingsManager(getApplicationContext());
         
+        if (settings.getLanguage() == null) {
+        	startActivity(new Intent(this, SelectLanguageActivity.class));
+        }
+        
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
 
@@ -159,10 +163,13 @@ public class BeerRadarActivity extends AbstractLocationActivity {
     public void onResume() {
     	super.onResume();
     	
+    	settings.updateLanguage(this);
     	checkForUpdate();
         updateBeerCount();
         updateNotifications();
     }
+    
+    
 
 	private void checkForUpdate() {
 		Date lastUpdate = settings.getLastUpdateAttempt();
