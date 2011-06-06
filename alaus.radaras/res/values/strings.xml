@@ -2,9 +2,9 @@
 <resources>
     
 <string name="app_name">Alaus radaras</string>
-<string name="main_near_value">Vietos</string>
-<string name="main_brand_value">Alūs</string>
-<string name="main_lucky_value">Ištroškau</string>
+<string name="main_near_value">Places</string>
+<string name="main_brand_value">Beer</string>
+<string name="main_lucky_value">Want beer NOW</string>
 <string name="BeerCounterName">Skaičiuojam</string>
 <string name="counter_max_level_qoute">земля в илюминаторе.... земля в илюминаторе....</string>
 <string name="location_disabled_header">Vietos nustatymas</string>
