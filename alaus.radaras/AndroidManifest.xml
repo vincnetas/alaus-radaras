@@ -26,6 +26,7 @@
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<activity android:name=".TagListActivity"></activity>
+		<activity android:name=".SelectLanguageActivity"></activity>
 		<activity android:name=".CountryListActivity"></activity>
 		<activity android:name=".TagBrandsListActivity" android:label="@string/activity_tag_brands_header"></activity>
 		<activity android:name=".CountryBrandsListActivity" android:label="@string/activity_country_brands_header"></activity>
