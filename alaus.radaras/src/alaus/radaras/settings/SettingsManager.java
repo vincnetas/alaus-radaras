@@ -1,9 +1,12 @@
 package alaus.radaras.settings;
 
 import java.util.Date;
+import java.util.Locale;
 
+import alaus.radaras.utils.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 public class SettingsManager {
 	
@@ -28,6 +31,7 @@ public class SettingsManager {
         public static final String SETTINGS_ASK_ENABLE_SYNCHRONIZATION = "askEnableSynchronization";
         public static final String SETTINGS_LAST_UPDATE = "lastUpdate";
         public static final String SETTINGS_LAST_UPDATE_ATTEMPT = "lastUpdateAttempt";
+		public static final String SETTINGS_LANGUAGE = "language";
 	}
 	
     private void storeBool(String name, Boolean value) {
@@ -48,7 +52,6 @@ public class SettingsManager {
 		editor.commit();
 	}
 	
-	@Deprecated
 	private void storeString(String name, String value) {
 		SharedPreferences.Editor editor = getPreferences().edit();
 		editor.putString(name, value);
@@ -164,5 +167,24 @@ public class SettingsManager {
 
 	public void setLastUpdateAttempt(Date date) {
 		storeLong(Settings.SETTINGS_LAST_UPDATE_ATTEMPT, date.getTime());		
+	}
+
+	public void setLanguage(String language) {				
+		storeString(Settings.SETTINGS_LANGUAGE, language);		
+	}
+
+	public String getLanguage() {
+		return getPreferences().getString(Settings.SETTINGS_LANGUAGE, null);
+	}
+
+	public void updateLanguage(Context context) {
+		String language = getLanguage();
+		
+		if (language != null) {
+			Toast.makeText(context, language, Toast.LENGTH_SHORT).show();
+			Utils.setLanguage(context, new Locale(language));
+		} else {
+			Toast.makeText(context, "no lang", Toast.LENGTH_SHORT).show();
+		}
 	}
 }

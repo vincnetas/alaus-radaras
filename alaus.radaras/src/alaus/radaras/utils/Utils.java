@@ -16,6 +16,7 @@ import alaus.radaras.dialogs.NewPubReportDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.widget.Toast;
 
@@ -92,6 +93,13 @@ public class Utils {
 		}
 		
 		return new ArrayList<String>(map.values());
+	}
+	
+	public static void setLanguage(Context context, Locale locale) {
+		context.getResources().getDisplayMetrics();
+		Configuration configuration = context.getResources().getConfiguration();
+		configuration.locale = locale;
+		context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());	
 	}
 
 }
