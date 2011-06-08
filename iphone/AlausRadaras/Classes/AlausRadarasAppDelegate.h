@@ -24,7 +24,6 @@
 	
 	NSString *databaseName;
 	NSString *databasePath;
-
 //	IBOutlet UINavigationController *navigationController;
 }
 

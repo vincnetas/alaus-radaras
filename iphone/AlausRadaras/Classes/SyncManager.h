@@ -13,7 +13,8 @@
 @interface SyncManager : NSObject <MTStatusBarOverlayDelegate> {
 	NSMutableData *responseData;    
     NSOperationQueue *queue;
-    MTStatusBarOverlay *overlay;
+    BOOL newAPI;
+    BOOL syncInProgressInd;
 }
 
 + (SyncManager*) sharedManager;
@@ -21,7 +22,7 @@
 - (void) initializeManager;
 
 // Custom methods
-- (void) doSync:(NSDate *) lastUpdate;
+- (void) doSync;
 - (void) syncSuccessful;
 
 @end

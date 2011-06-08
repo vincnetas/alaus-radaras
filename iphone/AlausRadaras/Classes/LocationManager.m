@@ -128,7 +128,6 @@ static LocationManager *sharedLocationManager = nil;
 				return NO;
 		}
 	} else {
-		NSLog(@"-------------------adsfasfsfd");
 		if ((!clLocationManager.locationServicesEnabled) ||
 			(lat == 0 && lon == 0)) {
 			NSLog(@"getVisibilityControlled NO");
