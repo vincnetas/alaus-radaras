@@ -36,35 +36,65 @@ static SyncManager *sharedManager = nil;
 }
 
 
-- (void) doSync: (NSDate *) lastUpdate{
-    [MTStatusBarOverlay sharedInstance].animation = MTStatusBarOverlayAnimationShrink;//MTStatusBarOverlayAnimationFallDown;  // MTStatusBarOverlayAnimationShrink
-//    overlay.detailViewMode = MTDetailViewModeHistory;         // enable automatic history-tracking and show in detail-view
-//    overlay.delegate = self;
-//    overlay.progress = 0.0;
-    [[MTStatusBarOverlay sharedInstance] postMessage:@"Atnaujinami Duomenys"];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];    
-    //Optionally for time zone converstions
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
-    
-    NSString *stringlastUpdate = [dateFormatter stringFromDate:lastUpdate];
+- (void) doSync {
+    if (!syncInProgressInd) {
+        NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
         
-	responseData = [[NSMutableData data] retain];
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	[request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.alausradaras.lt/json?lastUpdate=%@T00:00:00",
-                                          stringlastUpdate]]];
-	[request setHTTPMethod:@"GET"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    [dateFormatter release];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        //Optionally for time zone converstions
+        [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+
+        NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
+        NSDate *now = [NSDate date];
+        
+        NSLog(@"SYNC: Last Update Date: %@, Now is: %@", [dateFormat stringFromDate:lastUpdate], [dateFormat stringFromDate:now]);
+        
+        if (lastUpdate == nil) {
+            // Default date to app release date
+            // Update on Database update
+            lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
+        }
+        
+        if (![[dateFormat stringFromDate:lastUpdate]isEqualToString:[dateFormat stringFromDate:now]]) {
+
+            /* ############ DO SYNC ############ */
+
+            syncInProgressInd = YES;
+            NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+            newAPI = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
+
+            if (newAPI) {
+                [MTStatusBarOverlay sharedInstance].animation = MTStatusBarOverlayAnimationShrink;
+                [[MTStatusBarOverlay sharedInstance] postMessage:@"Atnaujinami Duomenys"];
+            } else {
+                //oldschool
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            }
+            
+            
+            NSString *stringlastUpdate = [dateFormat stringFromDate:lastUpdate];
+                
+            responseData = [[NSMutableData data] retain];
+            NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.alausradaras.lt/json?lastUpdate=%@T00:00:00",
+                                                  stringlastUpdate]]];
+            [request setHTTPMethod:@"GET"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];	
+            [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        }
+        [dateFormat release];
+    }
 }
 
 - (void) syncSuccessful {
     NSLog(@"syncSuccessful");
-    
-    [[MTStatusBarOverlay sharedInstance]  postImmediateFinishMessage:@"Duomenys Atnaujinti!" duration:2.0 animated:YES];
+    if (newAPI) {
+        [[MTStatusBarOverlay sharedInstance]  postImmediateFinishMessage:@"Duomenys Atnaujinti!" duration:2.0 animated:YES];
+    } else {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }
+    syncInProgressInd = NO;
 }
 
 
@@ -81,6 +111,7 @@ static SyncManager *sharedManager = nil;
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
     [[MTStatusBarOverlay sharedInstance]  postErrorMessage:@"Nepavyko Atnaujinti Duomenų" duration:2.0 animated:YES];
+    syncInProgressInd = NO;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -103,4 +134,9 @@ static SyncManager *sharedManager = nil;
 	[responseData setLength:0];    
 }
 
+
+
+- (void) setEnableAllFeatures:(BOOL)value {
+	newAPI = value;
+}
 @end

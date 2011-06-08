@@ -34,7 +34,7 @@
 
 //	Creates database using scripts in beer-radar-schema.sqlite
 //	[[SQLiteManager sharedManager] createNewDatabase];
-	
+
 	[[SQLiteManager sharedManager] initializeDatabase];
 	
 	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
@@ -72,32 +72,13 @@
  Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
  */
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    
+    /* ############ START SYNC CHECK ############ */
 
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    [[SyncManager sharedManager] doSync];
 
-    /* ############ DO SYNC ############ */
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    
-    NSDate *lastUpdate = [standardUserDefaults objectForKey:@"LastUpdate"];
-    NSDate *now = [NSDate date];
-    
-    NSLog(@"SYNC: Last Update Date: %@, Now is: %@", [dateFormat stringFromDate:lastUpdate], [dateFormat stringFromDate:now]);
-    
-    if (lastUpdate == nil) {
-        // Default date to app release date
-        // Update on Database update
-        lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
-    }
-    
-    if (![[dateFormat stringFromDate:lastUpdate]isEqualToString:[dateFormat stringFromDate:now]]) {
-        [[SyncManager sharedManager] doSync:lastUpdate];
-    }
-    
-    [dateFormat release];
-    
-    [standardUserDefaults synchronize];
-    /* ############ END SYNC ############ */
+    /* ############ END SYNC CHECK ############ */
     
 }
 

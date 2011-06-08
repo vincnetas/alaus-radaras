@@ -816,13 +816,13 @@ static SQLiteManager *updateSQLiteManager = nil;
 	if ([rs next]) {
         [db executeUpdate:@"UPDATE beers SET title = ?, icon = ? WHERE id = ?",
          [beer objectForKey:@"title"],
-         [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]],
+         [NSString stringWithFormat:@"beer_%@.png",[beer objectForKey:@"icon"]],
          [beer objectForKey:@"id"]];
 	} else {
         [db executeUpdate:@"INSERT INTO beers (id, title, icon) values (?, ?, ?)",
          [beer objectForKey:@"id"],
          [beer objectForKey:@"title"],
-         [NSString stringWithFormat:@"beer_%@",[beer objectForKey:@"icon"]]];
+         [NSString stringWithFormat:@"beer_%@.png",[beer objectForKey:@"icon"]]];
     }
     
     // UPDATE BEER-BRAND RELATIONSHIP
