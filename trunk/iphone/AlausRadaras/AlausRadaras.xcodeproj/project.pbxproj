@@ -161,9 +161,6 @@
 		C9A382141322D82600790E5E /* pub_1298412463912.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382071322D82600790E5E /* pub_1298412463912.png */; };
 		C9A382151322D82600790E5E /* pub_1298412463920.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382081322D82600790E5E /* pub_1298412463920.png */; };
 		C9A382161322D82600790E5E /* pub_1298412463924.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A382091322D82600790E5E /* pub_1298412463924.png */; };
-		C9AAE4BC13896AE200984F32 /* sync-failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4B913896AE200984F32 /* sync-failure@2x.png */; };
-		C9AAE4BD13896AE200984F32 /* sync-inprogress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4BA13896AE200984F32 /* sync-inprogress@2x.png */; };
-		C9AAE4BE13896AE200984F32 /* sync-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AAE4BB13896AE200984F32 /* sync-success@2x.png */; };
 		C9B60096138B7DD700DE3A95 /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B60095138B7DD700DE3A95 /* MTStatusBarOverlay.m */; };
 		C9C1CB4F12EA30B2003C7CC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB4E12EA30B2003C7CC5 /* MapKit.framework */; };
 		C9C1CB5112EA30BE003C7CC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1CB5012EA30BE003C7CC5 /* CoreLocation.framework */; };
@@ -376,9 +373,6 @@
 		C9A382081322D82600790E5E /* pub_1298412463920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463920.png; path = resources/pubs/pub_1298412463920.png; sourceTree = "<group>"; };
 		C9A382091322D82600790E5E /* pub_1298412463924.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pub_1298412463924.png; path = resources/pubs/pub_1298412463924.png; sourceTree = "<group>"; };
 		C9AAE4B7138962A400984F32 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		C9AAE4B913896AE200984F32 /* sync-failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-failure@2x.png"; path = "resources/images/640x960/sync-failure@2x.png"; sourceTree = "<group>"; };
-		C9AAE4BA13896AE200984F32 /* sync-inprogress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-inprogress@2x.png"; path = "resources/images/640x960/sync-inprogress@2x.png"; sourceTree = "<group>"; };
-		C9AAE4BB13896AE200984F32 /* sync-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-success@2x.png"; path = "resources/images/640x960/sync-success@2x.png"; sourceTree = "<group>"; };
 		C9B60094138B7DD700DE3A95 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = Classes/MTStatusBar/MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		C9B60095138B7DD700DE3A95 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = Classes/MTStatusBar/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		C9B7CF7D13243E6A002B8A3B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -542,9 +536,6 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
-				C9AAE4B913896AE200984F32 /* sync-failure@2x.png */,
-				C9AAE4BA13896AE200984F32 /* sync-inprogress@2x.png */,
-				C9AAE4BB13896AE200984F32 /* sync-success@2x.png */,
 				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
 				C90F11031335196300239BDE /* pin@2x.png */,
@@ -1017,9 +1008,6 @@
 				C9A0F8E2137DC9C6009B490D /* beer_vilniaus_kvietinis.png in Resources */,
 				C9A0F8E3137DC9C6009B490D /* beer_vilniaus_nefiltruotas.png in Resources */,
 				C9A0F8E4137DC9C6009B490D /* beer_zubr.png in Resources */,
-				C9AAE4BC13896AE200984F32 /* sync-failure@2x.png in Resources */,
-				C9AAE4BD13896AE200984F32 /* sync-inprogress@2x.png in Resources */,
-				C9AAE4BE13896AE200984F32 /* sync-success@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,14 +1092,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gytis Ramanauskas";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
+				PROVISIONING_PROFILE = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
 				SDKROOT = iphoneos4.3;
 				SYMROOT = /Users/laurynasr/Documents/xCodeProjects/AlausRadaras/build;
@@ -1122,7 +1110,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gytis Ramanauskas";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1131,7 +1119,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
+				PROVISIONING_PROFILE = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
 				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1142,8 +1130,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gytis Ramanauskas (TYGM56FZKH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gytis Ramanauskas";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gytis Ramanauskas";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1152,8 +1140,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1000B970-6DC0-43D9-8902-66C9E2E7A2B1";
+				PROVISIONING_PROFILE = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF49F65B-C070-4917-A0B0-D8A1C37101E3";
 				SDKROOT = iphoneos4.3;
 			};
 			name = Distribution;
