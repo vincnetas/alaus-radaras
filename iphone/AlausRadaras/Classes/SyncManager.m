@@ -53,7 +53,7 @@ static SyncManager *sharedManager = nil;
         if (lastUpdate == nil) {
             // Default date to app release date
             // Update on Database update
-            lastUpdate =  [dateFormat dateFromString:@"2011-05-22"];
+            lastUpdate =  [dateFormat dateFromString:@"2011-06-14"];
         }
         
         if (![[dateFormat stringFromDate:lastUpdate]isEqualToString:[dateFormat stringFromDate:now]]) {
@@ -61,7 +61,6 @@ static SyncManager *sharedManager = nil;
             /* ############ DO SYNC ############ */
 
             syncInProgressInd = YES;
-            NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
             newAPI = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
 
             if (newAPI) {
