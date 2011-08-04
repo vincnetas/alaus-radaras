@@ -19,6 +19,9 @@ import alaus.radaras.server.dao.impl.BrandServiceImpl;
 import alaus.radaras.server.dao.impl.IdProviderImpl;
 import alaus.radaras.server.dao.impl.PubDaoImpl;
 import alaus.radaras.server.dao.impl.PubServiceImpl;
+import alaus.radaras.server.json.JSONDispacher;
+import alaus.radaras.server.json.NbService;
+import alaus.radaras.server.json.NbServiceImpl;
 import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.server.locator.IPLocatorImpl;
 
@@ -48,5 +51,10 @@ class AlausServletModule extends ServletModule {
 		serve("/csv").with(CsvDataServlet.class);		
 		serve("/admin/upload").with(UploadServlet.class);
 		serve("/image/beer/*").with(ImageServlet.class);
+		
+		bind(NbService.class).to(NbServiceImpl.class);
+		
+		serve("/jsonrpc").with(JSONDispacher.class);
+
 	}
 }
