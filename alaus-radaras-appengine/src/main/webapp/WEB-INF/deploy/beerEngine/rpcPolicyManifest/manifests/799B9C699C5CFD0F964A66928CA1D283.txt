@@ -1,0 +1,2 @@
+serviceClass: alaus.radaras.client.BeerService
+path: DC6EFA24FD9C27F4E8035CED7BA595A3.gwt.rpc
