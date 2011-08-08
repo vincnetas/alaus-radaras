@@ -1,0 +1,4 @@
+# Module beerEngine
+# RPC service class, partial path of RPC policy file
+alaus.radaras.client.BeerService, DC6EFA24FD9C27F4E8035CED7BA595A3.gwt.rpc
+alaus.radaras.client.AdminBeerService, 8306565AE8DBFC7EB409A62016CFA0AD.gwt.rpc
