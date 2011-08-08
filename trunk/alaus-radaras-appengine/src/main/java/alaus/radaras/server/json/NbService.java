@@ -13,8 +13,4 @@ public interface NbService {
 	
 	JPlace[] getPlaces();
 	
-	void savePlace();
-	
-	String[] getPlaceTags(String term);
-
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.persistence.Id;
+import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Vincentas
@@ -21,7 +21,7 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@PrimaryKey
 	private String id;
 	
 	@Persistent

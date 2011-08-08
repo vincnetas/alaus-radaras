@@ -34,7 +34,6 @@ public abstract class FilterWidget<T> extends Composite implements ValueChangeHa
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.ValueChangeHandler#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)
 	 */
-	@Override
 	public void onValueChange(ValueChangeEvent<Boolean> value) {
         if (value.getValue()) {
             filter.addPubs(pubs);

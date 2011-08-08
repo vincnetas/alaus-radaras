@@ -20,7 +20,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 
 	private static ProvidesKey<Beer> keyProvider = new ProvidesKey<Beer>() {
 		
-		@Override
+		
 		public Object getKey(Beer arg0) {
 			return arg0.getId();
 		}
@@ -31,7 +31,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 		
 		addColumn(new TextColumn<Beer>() {
 			
-			@Override
+			
 			public String getValue(Beer arg0) {				
 				return arg0.getTitle();
 			}
@@ -40,7 +40,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 		
 		addColumn(new TextColumn<Beer>() {
 			
-			@Override
+			
 			public String getValue(Beer arg0) {				
 				return arg0.getBrandId();
 			}
@@ -49,7 +49,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 		
 		addColumn(new TextColumn<Beer>() {
 			
-			@Override
+			
 			public String getValue(Beer arg0) {				
 				return arg0.getIcon();
 			}
@@ -58,7 +58,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 
 		addColumn(new TextColumn<Beer>() {
 			
-			@Override
+			
 			public String getValue(Beer arg0) {				
 				return arg0.getDescription();
 			}
@@ -67,7 +67,7 @@ public abstract class BeerTable extends CellTable<Beer> {
 		
 		addColumn(new TextColumn<Beer>() {
 			
-			@Override
+			
 			public String getValue(Beer arg0) {				
 				return arg0.getTagsAsString();
 			}
@@ -76,14 +76,14 @@ public abstract class BeerTable extends CellTable<Beer> {
 		
 		Column<Beer, String> saveColumn = new Column<Beer, String>(new ButtonCell()) {
 
-			@Override
+			
 			public String getValue(Beer arg0) {
 				return "Edit";
 			}
 		};
 		saveColumn.setFieldUpdater(new FieldUpdater<Beer, String>() {
 			
-			@Override
+			
 			public void update(int arg0, Beer arg1, String arg2) {
 				editBeer(arg1);
 			}

@@ -21,7 +21,6 @@ import com.google.gson.reflect.TypeToken;
  */
 public class IPLocatorImpl implements IPLocator {
 
-	@Override
 	public IPLocation locate(String remoteAddr) {
 		IPLocation result = new IPLocation();		
 		result.setCity("Lithuania");

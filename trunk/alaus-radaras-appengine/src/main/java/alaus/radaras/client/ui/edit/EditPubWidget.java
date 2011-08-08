@@ -78,7 +78,6 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		setPub(pub);
 	}
 
-	@Override
 	public void onSelection(SelectionEvent<Suggestion> event) {
 		BeerSuggestion suggestion = (BeerSuggestion) event.getSelectedItem();
 		
@@ -95,7 +94,6 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		
 		Stat.getBeerService().addBeer(beer, new BaseAsyncCallback<Beer>() {
 			
-			@Override
 			public void onSuccess(Beer result) {
 				addBeer(result);				
 			}
@@ -165,13 +163,11 @@ public class EditPubWidget extends Composite implements SelectionHandler<Suggest
 		
 		Stat.getGeocoder().getLatLng(place, new LatLngCallback() {
 			
-			@Override
 			public void onSuccess(LatLng point) {
 				Location loc = new Location(point.getLongitude(), point.getLatitude());
 				location.setLocation(loc);
 			}
-			
-			@Override
+
 			public void onFailure() {
 				Window.alert("Failed location lookup for (" + place + ")");				
 			}

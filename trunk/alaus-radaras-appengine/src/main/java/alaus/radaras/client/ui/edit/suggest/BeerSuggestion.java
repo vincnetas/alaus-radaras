@@ -19,7 +19,6 @@ public class BeerSuggestion implements Suggestion {
 		this.query = query;
 	}
 	
-	@Override
 	public String getDisplayString() {
 		String result;
 		if (getBeer() != null) {
@@ -31,7 +30,6 @@ public class BeerSuggestion implements Suggestion {
 		return result;
 	}
 
-	@Override
 	public String getReplacementString() {
 		return "";
 	}

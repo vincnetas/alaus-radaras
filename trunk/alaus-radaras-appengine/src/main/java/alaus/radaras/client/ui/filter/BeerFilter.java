@@ -24,7 +24,6 @@ public class BeerFilter extends BaseFilter<Beer, BeerFilterWidget> {
     protected void getFilterWidgets(final Pub pub, final AsyncCallback<Set<BeerFilterWidget>> callback) {
         Stat.getBeerService().loadBeer(pub.getBeerIds(), new BaseAsyncCallback<Set<Beer>>() {
 
-			@Override
 			public void onSuccess(Set<Beer> beers) {
 		        Set<BeerFilterWidget> result = new HashSet<BeerFilterWidget>();
 		        

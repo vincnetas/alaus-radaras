@@ -73,7 +73,6 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 		title.setText(beer.getTitle());
 		Stat.getBeerService().loadBrand(Utils.set(beer.getBrandId()), new BaseAsyncCallback<Set<Brand>>() {
 
-			@Override
 			public void onSuccess(Set<Brand> arg0) {				
 				Brand value = arg0.toArray(new Brand[1])[0];
 				brandValue = value;
@@ -91,7 +90,6 @@ public class EditBeerWidget extends Composite implements SelectionHandler<Sugges
 
 	private Brand brandValue;
 	
-	@Override
 	public void onSelection(SelectionEvent<Suggestion> arg0) {
 		BrandSuggestion suggestion = (BrandSuggestion) arg0.getSelectedItem();
 		brandValue = suggestion.getBrand();

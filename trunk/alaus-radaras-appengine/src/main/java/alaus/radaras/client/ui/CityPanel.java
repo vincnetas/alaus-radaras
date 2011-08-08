@@ -46,7 +46,6 @@ public class CityPanel extends Composite {
 		
 		Stat.getBeerService().getMyLocation(new AsyncCallback<IPLocation>() {
 			
-			@Override
 			public void onSuccess(IPLocation result) {
 				String value = result.toString();
 				if (!value.isEmpty()) {
@@ -55,7 +54,6 @@ public class CityPanel extends Composite {
 				}
 			}
 			
-			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub				
 			}
