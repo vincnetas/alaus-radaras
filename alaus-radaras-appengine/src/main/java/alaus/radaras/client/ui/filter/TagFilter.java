@@ -19,10 +19,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public class TagFilter extends BaseFilter<String, TagFilterWidget> {
 
-    @Override
+    
     protected void getFilterWidgets(final Pub pub, final AsyncCallback<Set<TagFilterWidget>> callback) {
         Stat.getBeerService().loadBeer(pub.getBeerIds(), new BaseAsyncCallback<Set<Beer>>() {
 
+			
 			public void onSuccess(Set<Beer> beers) {
 		        Set<TagFilterWidget> result = new HashSet<TagFilterWidget>();
 		        Set<String> tags = new HashSet<String>();

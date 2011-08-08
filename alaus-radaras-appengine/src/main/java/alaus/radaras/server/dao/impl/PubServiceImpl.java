@@ -22,7 +22,7 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 	@Inject
 	private PubDao pubDao;
 	
-	@Override
+	
 	protected void applyUpdate(Pub pub, Pub update) {
 		pub.setAddress(defaultIfNull(update.getAddress(), pub.getAddress()));
 		
@@ -45,7 +45,7 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 	/* (non-Javadoc)
      * @see alaus.radaras.server.dao.impl.BaseServiceImpl#prepareUpdate(alaus.radaras.shared.model.Updatable, alaus.radaras.shared.model.Updatable)
      */
-    @Override
+    
     protected void prepareUpdate(Pub update, Pub pub) {
         update.setAddress(nullIfEqual(update.getAddress(), pub.getAddress()));
         update.setBeerIds(nullIfEqual(update.getBeerIds(), pub.getBeerIds()));
@@ -61,6 +61,7 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
         update.setTitle(nullIfEqual(update.getTitle(), pub.getTitle()));
     }
 
+    
 	public List<Pub> findPubs(LocationBounds bounds) {
 		return getPubDao().getApproved();
     }
@@ -80,7 +81,7 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
 		this.pubDao = pubDao;
 	}
 
-	@Override
+	
 	public BaseDao<Pub> getBaseDao() {
 		return getPubDao();
 	}

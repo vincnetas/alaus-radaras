@@ -34,6 +34,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#save(java.lang.Object)
 	 */
+	
 	public T add(T object) {
 		object.setId(getIdProvider().getId());
 		
@@ -50,6 +51,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#save(alaus.radaras.shared.model.Updatable)
 	 */
+	
 	public T save(T object) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -60,6 +62,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		
 		return object;
 	}
+	
 	
 	public List<T> add(List<T> list) {
 		for (T object : list) {
@@ -84,6 +87,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getAll() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -103,6 +107,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#load(java.util.Set)
 	 */
+	
 	public Set<T> load(Set<String> ids) {
 		Set<T> result = new HashSet<T>();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -124,6 +129,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 * @see alaus.radaras.server.dao.BaseDao#getDeleted(java.util.Date)
 	 */
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getDeleted(Date since) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -144,6 +150,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#delete(java.lang.String)
 	 */
+	
 	public void delete(String id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -157,6 +164,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 * @see alaus.radaras.server.dao.BaseDao#getUpdated(java.util.Date)
 	 */
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getUpdated(Date since) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -178,6 +186,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 * @see alaus.radaras.server.dao.BaseDao#getUpdates(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getUpdates(String id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -200,6 +209,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 * @see alaus.radaras.server.dao.BaseDao#getUpdates()
 	 */
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getUpdates() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {			
@@ -218,6 +228,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseDao#get(java.lang.String)
 	 */
+	
 	public T get(String id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -232,6 +243,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 * @see alaus.radaras.server.dao.BaseDao#getApproved()
 	 */
 	@SuppressWarnings("unchecked")
+	
 	public List<T> getApproved() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {

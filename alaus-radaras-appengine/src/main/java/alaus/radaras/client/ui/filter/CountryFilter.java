@@ -20,10 +20,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public class CountryFilter extends BaseFilter<String, CountryFilterWidget> {
 
-	@Override
+	
 	protected void getFilterWidgets(final Pub pub, final AsyncCallback<Set<CountryFilterWidget>> callback) {
         Stat.getBeerService().loadBeer(pub.getBeerIds(), new BaseAsyncCallback<Set<Beer>>() {
 
+			
 			public void onSuccess(Set<Beer> beers) {
 		        Set<String> brandIds = new HashSet<String>();
 		        
@@ -33,6 +34,7 @@ public class CountryFilter extends BaseFilter<String, CountryFilterWidget> {
 		        
 		        Stat.getBeerService().loadBrand(brandIds, new BaseAsyncCallback<Set<Brand>>() {
 
+					
 					public void onSuccess(Set<Brand> brands) {
 				        Set<CountryFilterWidget> result = new HashSet<CountryFilterWidget>();
 

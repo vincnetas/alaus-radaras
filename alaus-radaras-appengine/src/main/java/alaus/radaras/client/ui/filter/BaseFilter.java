@@ -48,12 +48,14 @@ public abstract class BaseFilter<E, T extends FilterWidget<E>> extends Composite
 
     private final Map<Pub, Set<T>> pubWidgets = new HashMap<Pub, Set<T>>(); 
     
+    
     public void pubAdded(final Pub pub) {
         if (!pubWidgets.containsKey(pub)) {
         	pubWidgets.put(pub, new HashSet<T>());
         	
 	        getFilterWidgets(pub, new BaseAsyncCallback<Set<T>>() {
 	
+	            
 	            public void onSuccess(Set<T> widgets) {
 	            	if (pubWidgets.containsKey(pub)) {
 	            		pubWidgets.get(pub).addAll(widgets);
@@ -72,6 +74,7 @@ public abstract class BaseFilter<E, T extends FilterWidget<E>> extends Composite
         }
     }
 
+    
     public void pubRemoved(final Pub pub) {
         if (pubWidgets.containsKey(pub)) {
         	Set<T> widgets = pubWidgets.get(pub);

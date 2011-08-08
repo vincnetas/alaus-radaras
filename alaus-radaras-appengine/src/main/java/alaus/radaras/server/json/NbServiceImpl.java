@@ -20,10 +20,7 @@ public class NbServiceImpl implements NbService {
 
 	@Inject
 	private PubDao pubDao;
-	
-	/* (non-Javadoc)
-	 * @see alaus.radaras.server.json.NbService#getPlaces()
-	 */
+ 
 	public JPlace[] getPlaces() {
 		List<Pub> allPubs = getPubDao().getAll();
 		List<JPlace> result = new ArrayList<JPlace>();

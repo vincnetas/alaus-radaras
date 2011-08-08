@@ -19,6 +19,7 @@ public class BeerSuggestion implements Suggestion {
 		this.query = query;
 	}
 	
+	
 	public String getDisplayString() {
 		String result;
 		if (getBeer() != null) {
@@ -30,6 +31,7 @@ public class BeerSuggestion implements Suggestion {
 		return result;
 	}
 
+	
 	public String getReplacementString() {
 		return "";
 	}

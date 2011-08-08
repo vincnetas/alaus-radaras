@@ -39,6 +39,7 @@ public class BeerInfoWidget extends Composite {
 		label.setText("Loading...");
 		Stat.getBeerService().loadBeer(Utils.set(beerId), new AsyncCallback<Set<Beer>>() {
 
+			
 			public void onSuccess(Set<Beer> result) {
 				for (Beer beer : result) {
 					setBeer(beer);
@@ -48,6 +49,7 @@ public class BeerInfoWidget extends Composite {
 			/* (non-Javadoc)
 			 * @see alaus.radaras.client.BaseAsyncCallback#onFailure(java.lang.Throwable)
 			 */
+			
 			public void onFailure(Throwable caught) {
 				label.setText("Failed...");
 			}
