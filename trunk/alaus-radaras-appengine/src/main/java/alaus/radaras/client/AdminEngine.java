@@ -15,6 +15,7 @@ public class AdminEngine implements EntryPoint {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
 	 */
+	
 	public void onModuleLoad() {
 		RootPanel.get().add(new AdminPanel());
 	}

@@ -30,10 +30,12 @@ public class BrandSuggestion implements Suggestion {
 		return result;
 	}
 
+	
 	public String getDisplayString() {
 		return getText();
 	}
 
+	
 	public String getReplacementString() {
 		return getText();
 	}

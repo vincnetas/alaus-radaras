@@ -12,5 +12,4 @@ import alaus.radaras.server.json.model.JPlace;
 public interface NbService {
 	
 	JPlace[] getPlaces();
-	
 }

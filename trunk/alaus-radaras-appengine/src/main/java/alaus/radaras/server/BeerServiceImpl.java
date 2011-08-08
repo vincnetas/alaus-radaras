@@ -74,10 +74,12 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	/* (non-Javadoc)
 	 * @see alaus.radaras.client.GreetingService#findPubs(alaus.radaras.shared.model.Location, double)
 	 */
+	
 	public List<Pub> findPubs(LocationBounds bounds) {
 		return getPubService().findPubs(bounds);
 	}
 
+	
 	public List<Beer> getBeerSuggestions(String queryString, int limit) {
 		String lowerCaseQuery = queryString.toLowerCase();
 		List<Beer> result = new ArrayList<Beer>();
@@ -105,6 +107,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 		this.beerDao = beerDao;
 	}
 
+	
 	public List<Brand> getBrandSuggestions(String queryString, int limit) {
 		String lowerCaseQuery = queryString.toLowerCase();
 		List<Brand> result = new ArrayList<Brand>();
@@ -132,6 +135,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 		this.brandDao = brandDao;
 	}
 
+	
 	public Pub updatePub(Pub pub) {
 		return getPubService().addUpdate(pub);
 	}
@@ -139,18 +143,22 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	/* (non-Javadoc)
 	 * @see alaus.radaras.client.BeerService#saveBeer(alaus.radaras.shared.model.Beer)
 	 */
+	
 	public Beer saveBeer(Beer beer) {
 		return getBeerService().addUpdate(beer);
 	}
 
+	
 	public Set<Beer> loadBeer(Set<String> beerIds) {
 		return getBeerDao().load(beerIds);
 	}
 
+	
 	public Set<Pub> loadPub(Set<String> pubIds) {
 		return getPubDao().load(pubIds);
 	}
 
+	
 	public Set<Brand> loadBrand(Set<String> brandIds) {
 		return getBrandDao().load(brandIds);
 	}
@@ -158,6 +166,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	/* (non-Javadoc)
 	 * @see alaus.radaras.client.BeerService#getMyLocation()
 	 */
+	
 	public IPLocation getMyLocation() {
 		HttpServletRequest request = perThreadRequest.get();
 		return getLocator().locate(request.getRemoteAddr());
@@ -180,6 +189,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	/* (non-Javadoc)
 	 * @see alaus.radaras.client.BeerService#addPub(alaus.radaras.shared.model.Pub)
 	 */
+	
 	public Pub addPub(Pub pub) {
 		return getPubService().add(pub);
 	}
@@ -187,6 +197,7 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 	/* (non-Javadoc)
 	 * @see alaus.radaras.client.BeerService#addBeer(alaus.radaras.shared.model.Beer)
 	 */
+	
 	public Beer addBeer(Beer beer) {
 		return getBeerService().add(beer);
 	}
@@ -205,22 +216,27 @@ public class BeerServiceImpl extends RemoteServiceServlet implements BeerService
 		this.pubService = pubService;
 	}
 
+	
 	public Brand addBrand(Brand brand) {
 		return getBrandService().add(brand);
 	}
 
+	
 	public Brand saveBrand(Brand brand) {
 		return getBrandService().addUpdate(brand);
 	}
 
+	
 	public List<Brand> getBrands() {
 		return getBrandDao().getAll();
 	}
 
+	
 	public List<Beer> getBeers() {	
 		return getBeerDao().getAll();
 	}
 
+	
 	public Pub savePub(Pub pub) {
 		return getPubService().addUpdate(pub);
 	}

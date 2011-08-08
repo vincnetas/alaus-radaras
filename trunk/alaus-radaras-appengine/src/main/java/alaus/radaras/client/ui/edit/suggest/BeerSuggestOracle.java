@@ -21,9 +21,11 @@ class BeerSuggestOracle extends SuggestOracle {
 	 * .gwt.user.client.ui.SuggestOracle.Request,
 	 * com.google.gwt.user.client.ui.SuggestOracle.Callback)
 	 */
+	
 	public void requestSuggestions(final Request request, final Callback callback) {
 		Stat.getBeerService().getBeerSuggestions(request.getQuery(), request.getLimit(), new AsyncCallback<List<Beer>>() {
 
+			
 			public void onSuccess(List<Beer> result) {
 				Collection<BeerSuggestion> beerSuggestions = new ArrayList<BeerSuggestion>();
 				for (Beer beer : result) {
@@ -38,6 +40,7 @@ class BeerSuggestOracle extends SuggestOracle {
 				callback.onSuggestionsReady(request, response);
 			}
 
+			
 			public void onFailure(Throwable caught) {
 				Window.alert(caught.toString());
 			}
