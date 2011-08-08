@@ -40,7 +40,7 @@ public class ApprovalPanel extends Composite {
 		{
 			final TextCell nameCell = new TextCell();
 			Column<UpdateRecord<Pub>, String> nameColumn = new Column<UpdateRecord<Pub>, String>(nameCell) {
-				@Override
+				
 				public String getValue(UpdateRecord<Pub> object) {
 					return object.getCurrent().getTitle();
 				}
@@ -51,7 +51,7 @@ public class ApprovalPanel extends Composite {
 		{
 			final TextCell statusCell = new TextCell();
 			Column<UpdateRecord<Pub>, String> statusColumn = new Column<UpdateRecord<Pub>, String>(statusCell) {
-				@Override
+				
 				public String getValue(UpdateRecord<Pub> object) {
 					return "Approved : " + object.getCurrent().isApproved() + " Modified : " + object.getCurrent().isModified() + " Has updates : " + object.getUpdates().size();
 				}
@@ -62,14 +62,14 @@ public class ApprovalPanel extends Composite {
 		{
 			final ButtonCell approveCell = new ButtonCell();
 			Column<UpdateRecord<Pub>, String> approveColumn = new Column<UpdateRecord<Pub>, String>(approveCell) {
-				@Override
+				
 				public String getValue(UpdateRecord<Pub> object) {
 					return "approve";
 				}
 			};
 			approveColumn.setFieldUpdater(new FieldUpdater<UpdateRecord<Pub>, String>() {
 				
-				@Override
+				
 				public void update(int index, UpdateRecord<Pub> object, String value) {
 					String updateId;
 					if (object.getUpdates().isEmpty()) {
@@ -80,7 +80,7 @@ public class ApprovalPanel extends Composite {
 					
 					Stat.getAdminBeerService().applyUpdate(updateId, new BaseAsyncCallback<Pub>() {
 						
-						@Override
+						
 						public void onSuccess(Pub result) {
 							Window.alert("Sukses");
 						}
@@ -93,14 +93,14 @@ public class ApprovalPanel extends Composite {
 		{
 			final ButtonCell rejectCell = new ButtonCell();
 			Column<UpdateRecord<Pub>, String> rejectColumn = new Column<UpdateRecord<Pub>, String>(rejectCell) {
-				@Override
+				
 				public String getValue(UpdateRecord<Pub> object) {
 					return "reject";
 				}
 			};
 			rejectColumn.setFieldUpdater(new FieldUpdater<UpdateRecord<Pub>, String>() {
 				
-				@Override
+				
 				public void update(int index, UpdateRecord<Pub> object, String value) {
 					String updateId;
 					if (object.getUpdates().isEmpty()) {
@@ -111,7 +111,7 @@ public class ApprovalPanel extends Composite {
 					
 					Stat.getAdminBeerService().rejectUpdate(updateId, new BaseAsyncCallback<Pub>() {
 						
-						@Override
+						
 						public void onSuccess(Pub result) {
 							Window.alert("Sukses");
 						}
@@ -123,7 +123,7 @@ public class ApprovalPanel extends Composite {
 		
 		Stat.getAdminBeerService().getPubUpdates(new BaseAsyncCallback<List<UpdateRecord<Pub>>>() {
 			
-			@Override
+			
 			public void onSuccess(List<UpdateRecord<Pub>> result) {
 				table.setRowCount(result.size(), true);
 				table.setRowData(result);

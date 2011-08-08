@@ -55,7 +55,8 @@ public class UploadServlet extends HttpServlet {
 	private BrandDao brandDao;
 	
 	/**
-	 * 
+	 * 	@Override
+
 	 */
 	private static final long serialVersionUID = -8055885423693792847L;
 

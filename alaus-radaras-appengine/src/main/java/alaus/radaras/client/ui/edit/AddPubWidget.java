@@ -54,7 +54,6 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 		}				
 	}
 
-	@Override
 	public void onSelection(SelectionEvent<Suggestion> event) {
 		BeerSuggestion suggestion = (BeerSuggestion) event.getSelectedItem();
 		
@@ -71,7 +70,6 @@ public class AddPubWidget extends Composite implements SelectionHandler<Suggesti
 		
 		Stat.getBeerService().addBeer(beer, new BaseAsyncCallback<Beer>() {
 			
-			@Override
 			public void onSuccess(Beer result) {
 				addBeer(result);				
 			}

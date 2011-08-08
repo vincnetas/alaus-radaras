@@ -21,11 +21,9 @@ class BrandSuggestOracle extends SuggestOracle {
 	 * .gwt.user.client.ui.SuggestOracle.Request,
 	 * com.google.gwt.user.client.ui.SuggestOracle.Callback)
 	 */
-	@Override
 	public void requestSuggestions(final Request request, final Callback callback) {
 		Stat.getBeerService().getBrandSuggestions(request.getQuery(), request.getLimit(), new AsyncCallback<List<Brand>>() {
 
-			@Override
 			public void onSuccess(List<Brand> result) {
 				Collection<BrandSuggestion> beerSuggestions = new ArrayList<BrandSuggestion>();
 				for (Brand brand : result) {
@@ -40,7 +38,6 @@ class BrandSuggestOracle extends SuggestOracle {
 				callback.onSuggestionsReady(request, response);
 			}
 
-			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert(caught.toString());
 			}

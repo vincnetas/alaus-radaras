@@ -16,7 +16,6 @@ public class IdProviderImpl implements IdProvider {
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.IdProvider#getId()
 	 */
-	@Override
 	public synchronized String getId() {
 		return String.valueOf(lastId++);
 	}

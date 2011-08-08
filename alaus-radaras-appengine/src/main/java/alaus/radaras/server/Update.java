@@ -117,12 +117,10 @@ public class Update {
 	
 				private Set<String> fieldsToSkip = Utils.set("lastUpdate", "modified", "approved", "updatedBy", "jdoDetachedState");
 				
-				@Override
 				public boolean shouldSkipField(FieldAttributes f) {
 					return fieldsToSkip.contains(f.getName());
 				}
 				
-				@Override
 				public boolean shouldSkipClass(Class<?> clazz) {
 					return false;
 				}
@@ -133,7 +131,7 @@ public class Update {
 		}
 		
 		return gson;
-	}
+	}			
 	
 	private Map<String, Map<String, Object[]>> param() {
 		Map<String, Map<String, Object[]>> result = Utils.map();
@@ -164,7 +162,8 @@ public class Update {
 		return result;
 	}
 
-	/**
+	/**				@Override
+
 	 * @return the updatedPubs
 	 */
 	public Set<Pub> getUpdatedPubs() {
@@ -193,7 +192,8 @@ public class Update {
 	}
 
 	/**
-	 * @return the updatedBeers
+	 * @return the updatedBeers				@Override
+
 	 */
 	public Set<Beer> getUpdatedBeers() {
 		return updatedBeers;
@@ -218,7 +218,7 @@ public class Update {
 	 */
 	public void setDeletedBeers(Set<String> deletedBeers) {
 		this.deletedBeers = deletedBeers;
-	}
+	}			
 
 	/**
 	 * @return the updatedBrands
@@ -246,7 +246,7 @@ public class Update {
 	 */
 	public void setDeletedBrands(Set<String> deletedBrands) {
 		this.deletedBrands = deletedBrands;
-	}
+	}				
 
 	/**
 	 * @return the updatedQuotes
@@ -281,7 +281,6 @@ class MyData implements JsonDeserializer<MyData> {
 
 	private JsonElement element;
 	
-	@Override
 	public MyData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 		MyData result = new MyData();
 

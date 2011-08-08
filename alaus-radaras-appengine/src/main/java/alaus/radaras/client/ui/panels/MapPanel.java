@@ -82,7 +82,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 	
 	private boolean addingPub = false;
 	
-	@Override
 	public void startAddPub() {
 		addingPub = true;
 		
@@ -94,7 +93,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 	
 	class BeerMapMouseMoveHandler implements MapMouseMoveHandler {
 		
-		@Override
 		public void onMouseMove(MapMouseMoveEvent event) {				
 			addPubmarker.setLatLng(event.getLatLng());				
 		}
@@ -105,7 +103,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 
 //		private CircleOverlay circleOverlay;
 		
-		@Override
 		public void onClick(MapClickEvent event) {
 //			if (event.getOverlay() != null) {
 //				if (!event.getOverlay().equals(circleOverlay)) {
@@ -113,7 +110,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 //				}
 //			}
 			
-			final LatLng location = (event.getLatLng() != null) ? event.getLatLng() : event.getOverlayLatLng();			
+			final LatLng location = (event.getLatLng() != null) ? event.getLatLng() : null;//event.getOverlayLatLng();			
 			
 			if (addingPub) {
 				mapWidget.removeMapMouseMoveHandler(beerMapMouseMoveHandler);
@@ -124,11 +121,9 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				final AddPubWidget editPubWidget = new AddPubWidget(pub);
 				EditDialog editDialog = new EditDialog(editPubWidget, "Add Pub") {
 					
-					@Override
 					public void onOkButtonClick(ClickEvent event) {
 						Stat.getBeerService().addPub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
 							
-							@Override
 							public void onSuccess(Pub result) {
 								addingPub = false;
 								mapWidget.removeOverlay(addPubmarker);
@@ -166,7 +161,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		
 		Stat.getBeerService().findPubs(bounds, new BaseAsyncCallback<List<Pub>>() {
 			
-			@Override
 			public void onSuccess(List<Pub> result) {
 				for (final Pub pub : result) {
 					Stat.getHandlerManager().fireEvent(new PubAddedEvent(pub));
@@ -204,7 +198,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 			
 			addMarkerClickHandler(new MarkerClickHandler() {
 				
-				@Override
 				public void onClick(MarkerClickEvent event) {
 					InfoWindow infoWindow = mapWidget.getInfoWindow();
 					infoWindow.open(PubMarker.this, new InfoWindowContent(new PubPanel(PubMarker.this.pub)));									
@@ -221,13 +214,11 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 			return pub;
 		}
 
-        @Override
         public void filter(PubFilter filter) {
             setVisible(filter.match(getPub()));
         }
 	}
-	
-	@Override
+
 	public void pubAdded(final Pub pub) {
 		if (pub.getLocation() != null) {
 			PubMarker marker = pubs.get(pub);
@@ -241,14 +232,12 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 		}
 	}
 
-	@Override
 	public void changeLocation(final String location) {
 		Stat.getGeocoder().getLocations(location, new LocationCallback() {
 			
-			@Override
 			public void onSuccess(JsArray<Placemark> locations) {
 				Placemark placemark = locations.get(0);
-				mapWidget.setZoomLevel(mapWidget.getBoundsZoomLevel(placemark.getExtendedData().getBounds()));
+//				mapWidget.setZoomLevel(mapWidget.getBoundsZoomLevel(placemark.getExtendedData().getBounds()));
 				mapWidget.panTo(placemark.getPoint());
 				
 				LocationBounds bounds = new LocationBounds(
@@ -258,7 +247,6 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 				findPubs(bounds);
 			}
 			
-			@Override
 			public void onFailure(int statusCode) {
 				Window.alert("Failed location lookup for (" + location + ") : " + statusCode);				
 			}

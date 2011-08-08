@@ -1,4 +1,4 @@
-pl/**
+/**
  * 
  */
 package alaus.radaras.server.json;
@@ -21,18 +21,9 @@ public class NbServiceImpl implements NbService {
 	@Inject
 	private PubDao pubDao;
 	
-	@Override
-	public void savePlace() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String[] getPlaceTags(String term) {
-		return new String[] {"alio", "kaip", "girdit"};
-	}
-
-	@Override
+	/* (non-Javadoc)
+	 * @see alaus.radaras.server.json.NbService#getPlaces()
+	 */
 	public JPlace[] getPlaces() {
 		List<Pub> allPubs = getPubDao().getAll();
 		List<JPlace> result = new ArrayList<JPlace>();

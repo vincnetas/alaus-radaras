@@ -40,7 +40,7 @@ public abstract class PubTable extends CellTable<Pub> {
 		{
 
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getTitle());
 				}
@@ -50,7 +50,7 @@ public abstract class PubTable extends CellTable<Pub> {
 		{
 
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getCountry());
 				}
@@ -59,7 +59,7 @@ public abstract class PubTable extends CellTable<Pub> {
 
 		{
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getCity());
 				}
@@ -68,7 +68,7 @@ public abstract class PubTable extends CellTable<Pub> {
 
 		{
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getAddress());
 				}
@@ -77,7 +77,7 @@ public abstract class PubTable extends CellTable<Pub> {
 
 		{
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return object.getLocation().toString();
 				}
@@ -86,7 +86,7 @@ public abstract class PubTable extends CellTable<Pub> {
 
 		{
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getPhone());
 				}
@@ -95,7 +95,7 @@ public abstract class PubTable extends CellTable<Pub> {
 
 		{
 			addColumn(new TextColumn<Pub>() {
-				@Override
+				
 				public String getValue(Pub object) {
 					return valueOrDefault(object.getHomepage());
 				}
@@ -105,14 +105,14 @@ public abstract class PubTable extends CellTable<Pub> {
 		{
 			final ButtonCell saveCell = new ButtonCell();
 			Column<Pub, String> saveColumn = new Column<Pub, String>(saveCell) {
-				@Override
+				
 				public String getValue(Pub object) {
 					return "Edit";
 				}
 			};
 			saveColumn.setFieldUpdater(new FieldUpdater<Pub, String>() {
 
-				@Override
+				
 				public void update(int arg0, Pub arg1, String arg2) {
 					editPub(arg1);
 				}

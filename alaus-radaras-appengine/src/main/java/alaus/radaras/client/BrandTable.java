@@ -20,7 +20,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 
 	private static ProvidesKey<Brand> keyProvider = new ProvidesKey<Brand>() {
 		
-		@Override
+		
 		public Object getKey(Brand arg0) {
 			return arg0.getId();
 		}
@@ -31,7 +31,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getTitle();
 			}
@@ -40,7 +40,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getIcon();
 			}
@@ -49,7 +49,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getHomePage();
 			}
@@ -58,7 +58,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getCountry();
 			}
@@ -67,7 +67,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getHometown();
 			}
@@ -76,7 +76,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getDescription();
 			}
@@ -85,7 +85,7 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		addColumn(new TextColumn<Brand>() {
 			
-			@Override
+			
 			public String getValue(Brand arg0) {				
 				return arg0.getTagsAsString();
 			}
@@ -94,14 +94,14 @@ public abstract class BrandTable extends CellTable<Brand> {
 		
 		Column<Brand, String> saveColumn = new Column<Brand, String>(new ButtonCell()) {
 
-			@Override
+			
 			public String getValue(Brand arg0) {
 				return "Edit";
 			}
 		};
 		saveColumn.setFieldUpdater(new FieldUpdater<Brand, String>() {
 			
-			@Override
+			
 			public void update(int arg0, Brand arg1, String arg2) {
 				editBrand(arg1);
 			}

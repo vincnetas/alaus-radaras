@@ -68,7 +68,7 @@ public class AdminPanel extends Composite {
 
 		brandTable = new BrandTable() {
 			
-			@Override
+			
 			public void editBrand(Brand brand) {
 				final EditBrandWidget editBrandWidget = new EditBrandWidget(brand);
 				EditDialog editDialog = new EditDialog(editBrandWidget, "Edit brand") {
@@ -76,7 +76,7 @@ public class AdminPanel extends Composite {
 					/* (non-Javadoc)
 					 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
 					 */
-					@Override
+					
 					public void onOkButtonClick(ClickEvent event) {
 						Brand brand = editBrandWidget.getBrand();
 						Brand update = new Brand();
@@ -91,7 +91,7 @@ public class AdminPanel extends Composite {
 						
 						Stat.getBeerService().saveBrand(update, new BaseAsyncCallback<Brand>() {
 							
-							@Override
+							
 							public void onSuccess(Brand arg0) {								
 								hide();
 								redraw();
@@ -107,7 +107,7 @@ public class AdminPanel extends Composite {
 		
 		beerTable = new BeerTable() {
 			
-			@Override
+			
 			public void editBeer(Beer beer) {
 				final EditBeerWidget editBeerWidget = new EditBeerWidget(beer);
 				EditDialog editDialog = new EditDialog(editBeerWidget, "Edit beer") {
@@ -115,7 +115,7 @@ public class AdminPanel extends Composite {
 					/* (non-Javadoc)
 					 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
 					 */
-					@Override
+					
 					public void onOkButtonClick(ClickEvent event) {
 						Beer beer = editBeerWidget.getBeer();
 						Beer update = new Beer();
@@ -128,7 +128,7 @@ public class AdminPanel extends Composite {
 						
 						Stat.getBeerService().saveBeer(update, new BaseAsyncCallback<Beer>() {
 							
-							@Override
+							
 							public void onSuccess(Beer arg0) {								
 								hide();
 								redraw();
@@ -144,7 +144,7 @@ public class AdminPanel extends Composite {
 		
 		pubTable = new PubTable() {
 			
-			@Override
+			
 			public void editPub(Pub arg1) {
 				final EditPubWidget editPubWidget = new EditPubWidget(arg1);
 				EditDialog editDialog = new EditDialog(editPubWidget, "Edit Pub") {
@@ -152,7 +152,7 @@ public class AdminPanel extends Composite {
 					/* (non-Javadoc)
 					 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
 					 */
-					@Override
+					
 					public void onOkButtonClick(ClickEvent event) {
 						Pub pub = editPubWidget.getPub(); 
 						Pub update = new Pub();
@@ -168,7 +168,7 @@ public class AdminPanel extends Composite {
 						
 						Stat.getBeerService().savePub(update, new BaseAsyncCallback<Pub>() {
 
-							@Override
+							
 							public void onSuccess(Pub pub) {
 								hide();
 								redraw();
@@ -195,7 +195,7 @@ public class AdminPanel extends Composite {
 	
 	private void updatePubs() {
 		Stat.getBeerService().findPubs(new LocationBounds(new Location(10, 20), new Location(10, 20)), new BaseAsyncCallback<List<Pub>>() {
-			@Override
+			
 			public void onSuccess(List<Pub> result) {
 				pubTable.setRowData(result);
 			}
@@ -205,7 +205,7 @@ public class AdminPanel extends Composite {
 	private void updateBrands() {
 		Stat.getBeerService().getBrands(new BaseAsyncCallback<List<Brand>>() {
 			
-			@Override
+			
 			public void onSuccess(List<Brand> arg0) {
 				brandTable.setRowData(arg0);
 			}
@@ -215,7 +215,7 @@ public class AdminPanel extends Composite {
 	private void updateBeers() {
 		Stat.getBeerService().getBeers(new BaseAsyncCallback<List<Beer>>() {
 			
-			@Override
+			
 			public void onSuccess(List<Beer> arg0) {
 				beerTable.setRowData(arg0);
 			}
@@ -234,11 +234,11 @@ public class AdminPanel extends Composite {
 			 * alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com
 			 * .google.gwt.event.dom.client.ClickEvent)
 			 */
-			@Override
+			
 			public void onOkButtonClick(ClickEvent event) {
 				Stat.getBeerService().addPub(editPubWidget.getPub(), new BaseAsyncCallback<Pub>() {
 
-					@Override
+					
 					public void onSuccess(Pub arg0) {
 						updatePubs();
 						hide();
@@ -259,11 +259,11 @@ public class AdminPanel extends Composite {
 			/* (non-Javadoc)
 			 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
 			 */
-			@Override
+			
 			public void onOkButtonClick(ClickEvent event) {
 				Stat.getBeerService().addBrand(editBrandWidget.getBrand(), new BaseAsyncCallback<Brand>() {
 					
-					@Override
+					
 					public void onSuccess(Brand arg0) {
 						updateBrands();
 						hide();
@@ -284,11 +284,11 @@ public class AdminPanel extends Composite {
 			/* (non-Javadoc)
 			 * @see alaus.radaras.client.ui.dialogs.EditDialog#onOkButtonClick(com.google.gwt.event.dom.client.ClickEvent)
 			 */
-			@Override
+			
 			public void onOkButtonClick(ClickEvent event) {
 				Stat.getBeerService().addBeer(editBeerWidget.getBeer(), new BaseAsyncCallback<Beer>() {
 					
-					@Override
+					
 					public void onSuccess(Beer arg0) {
 						updateBeers();
 						hide();

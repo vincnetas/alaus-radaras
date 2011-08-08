@@ -23,7 +23,6 @@ public class TagFilter extends BaseFilter<String, TagFilterWidget> {
     protected void getFilterWidgets(final Pub pub, final AsyncCallback<Set<TagFilterWidget>> callback) {
         Stat.getBeerService().loadBeer(pub.getBeerIds(), new BaseAsyncCallback<Set<Beer>>() {
 
-			@Override
 			public void onSuccess(Set<Beer> beers) {
 		        Set<TagFilterWidget> result = new HashSet<TagFilterWidget>();
 		        Set<String> tags = new HashSet<String>();

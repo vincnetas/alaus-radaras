@@ -25,17 +25,14 @@ public class AdminBeerServiceImpl extends RemoteServiceServlet implements AdminB
 	@Inject
 	private PubService pubService;
 	
-	@Override
 	public List<UpdateRecord<Pub>> getPubUpdates() {
 		return getPubService().getUpdates();
 	}
 
-	@Override
 	public Pub applyUpdate(String id) {
 		return getPubService().applyUpdate(id);
 	}
 
-	@Override
 	public Pub rejectUpdate(String id) {
 		return getPubService().rejectUpdate(id);
 	}

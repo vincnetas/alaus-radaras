@@ -61,7 +61,6 @@ public class PubServiceImpl extends BaseServiceImpl<Pub> implements PubService {
         update.setTitle(nullIfEqual(update.getTitle(), pub.getTitle()));
     }
 
-    @Override
 	public List<Pub> findPubs(LocationBounds bounds) {
 		return getPubDao().getApproved();
     }

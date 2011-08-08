@@ -32,7 +32,6 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	/* (non-Javadoc)
 	 * @see alaus.radaras.server.dao.BaseService#add(alaus.radaras.shared.model.Updatable)
 	 */
-	@Override
 	public T add(T object) {
 		if (object.getParentId() != null) {
 			throw new Error("Base object can't have parent id " + object);
@@ -51,7 +50,6 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		return result;
 	}
 	
-	@Override
 	public T addUpdate(T update) {
 		if (update.getParentId() == null) {
 			throw new Error("No parent id specified for update " + update);
@@ -91,7 +89,6 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		return parent;
 	}
 	
-	@Override
 	public T applyUpdate(String id) {
 		T update = getBaseDao().get(id);
 		if (update.getParentId() == null) {
@@ -124,7 +121,6 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	
 	protected abstract void applyUpdate(T object, T update);
 
-	@Override
 	public T rejectUpdate(String id) {
 		T update = getBaseDao().get(id);
 		if (update.getParentId() == null) {
@@ -150,7 +146,6 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 		}
 	}
 
-	@Override
 	public List<UpdateRecord<T>> getUpdates() {
 		List<UpdateRecord<T>> result = new ArrayList<UpdateRecord<T>>();
 		List<T> updates = getBaseDao().getUpdates();
