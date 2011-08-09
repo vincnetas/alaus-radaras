@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/jsonrpc"/>
+	<classpathentry kind="src" path="src/main/nb"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
@@ -16,6 +17,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/guice-multibindings-3.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/guice-servlet-3.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/javax.inject.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_25"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>

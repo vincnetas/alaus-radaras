@@ -3,9 +3,11 @@
  */
 package alaus.radaras.shared;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -21,16 +23,6 @@ import alaus.radaras.shared.model.Updatable;
  */
 public class Utils {
 
-	public static <T> Set<T> set(T ... value) {
-		Set<T> result = new HashSet<T>();
-		
-		for (T t : value) {
-			result.add(t);
-		}
-		
-		return result;
-	}
-	
 	public static <T extends Updatable> SortedMap<Updatable, SortedSet<Updatable>> sortUpdates(Collection<Updatable> collection) {
 		SortedMap<Updatable, SortedSet<Updatable>> result = new TreeMap<Updatable, SortedSet<Updatable>>();
 		Map<String, Updatable> ids = new HashMap<String, Updatable>();
@@ -52,7 +44,27 @@ public class Utils {
 
 		return result;
 	}
-
+	
+	public static <T> Set<T> set(T ... value) {
+		Set<T> result = new HashSet<T>(value.length);
+		
+		for (T t : value) {
+			result.add(t);
+		}
+		
+		return result;
+	}
+	
+	public static <T> List<T> list(T ... value) {
+		List<T> result = new ArrayList<T>(value.length);
+		
+		for (T t : value) {
+			result.add(t);
+		}
+		
+		return result;
+	}
+	
 	public static <T, U> Map<T, U> map() {
 		return new HashMap<T, U>();
 	}
