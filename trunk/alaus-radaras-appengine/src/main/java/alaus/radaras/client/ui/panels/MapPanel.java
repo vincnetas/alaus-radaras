@@ -32,7 +32,6 @@ import com.google.gwt.maps.client.control.LargeMapControl3D;
 import com.google.gwt.maps.client.event.MapClickHandler;
 import com.google.gwt.maps.client.event.MapMouseMoveHandler;
 import com.google.gwt.maps.client.event.MarkerClickHandler;
-import com.google.gwt.maps.client.geocode.Geocoder;
 import com.google.gwt.maps.client.geocode.LocationCallback;
 import com.google.gwt.maps.client.geocode.Placemark;
 import com.google.gwt.maps.client.geom.LatLng;
@@ -113,7 +112,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 //				}
 //			}
 			
-			final LatLng location = (event.getLatLng() != null) ? event.getLatLng() : null;//event.getOverlayLatLng();			
+			final LatLng location = (event.getLatLng() != null) ? event.getLatLng() : event.getOverlayLatLng();			
 			
 			if (addingPub) {
 				mapWidget.removeMapMouseMoveHandler(beerMapMouseMoveHandler);
@@ -248,7 +247,7 @@ public class MapPanel extends Composite implements StartAddPubHandler, PubAddedH
 			
 			public void onSuccess(JsArray<Placemark> locations) {
 				Placemark placemark = locations.get(0);
-//				mapWidget.setZoomLevel(mapWidget.getBoundsZoomLevel(placemark.getExtendedData().getBounds()));
+				mapWidget.setZoomLevel(mapWidget.getBoundsZoomLevel(placemark.getExtendedData().getBounds()));
 				mapWidget.panTo(placemark.getPoint());
 				
 				LocationBounds bounds = new LocationBounds(

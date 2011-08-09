@@ -1,9 +1,6 @@
 package alaus.radaras.server.guice;
 
-import alaus.radaras.server.dao.PubDao;
-
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 

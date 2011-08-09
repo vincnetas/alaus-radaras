@@ -16,11 +16,12 @@
 
 package org.json.rpc.client;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import java.io.StringReader;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Random;
+
 import org.json.rpc.commons.GsonTypeChecker;
 import org.json.rpc.commons.JsonRpcClientException;
 import org.json.rpc.commons.JsonRpcRemoteException;
@@ -28,11 +29,11 @@ import org.json.rpc.commons.TypeChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.StringReader;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Random;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public final class JsonRpcInvoker {
 

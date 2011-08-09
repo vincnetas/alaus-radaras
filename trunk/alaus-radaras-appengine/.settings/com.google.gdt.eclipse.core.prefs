@@ -1,5 +1,5 @@
-#Mon Aug 08 21:58:33 EEST 2011
+#Tue Aug 09 13:53:29 EEST 2011
 eclipse.preferences.version=1
-jarsExcludedFromWebInfLib=
+jarsExcludedFromWebInfLib=C\:/runit/workspace/alaus-radaras-appengine/client-lib/gwt-maps.jar
 warSrcDir=src/main/webapp
 warSrcDirIsOutput=true

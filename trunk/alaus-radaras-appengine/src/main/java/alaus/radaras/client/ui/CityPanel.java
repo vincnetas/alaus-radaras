@@ -45,12 +45,8 @@ public class CityPanel extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		Stat.getBeerService().getMyLocation(new AsyncCallback<IPLocation>() {
-			
-<<<<<<< .mine
-			
-=======
->>>>>>> .r487
-			public void onSuccess(IPLocation result) {
+
+		    public void onSuccess(IPLocation result) {
 				String value = result.toString();
 				if (!value.isEmpty()) {
 					textBox.setText(value);
@@ -58,10 +54,6 @@ public class CityPanel extends Composite {
 				}
 			}
 			
-<<<<<<< .mine
-			
-=======
->>>>>>> .r487
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub				
 			}

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.maps.client.geom.LatLng;
-import com.google.gwt.maps.client.overlay.PolyStyleOptions;
 import com.google.gwt.maps.client.overlay.Polygon;
 
 /**
