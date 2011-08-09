@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.json.model.JBeer;
+import alaus.radaras.server.json.model.JCompany;
 import alaus.radaras.server.json.model.JPlace;
 import alaus.radaras.shared.model.Pub;
 
@@ -21,6 +23,7 @@ public class NbServiceImpl implements NbService {
 	@Inject
 	private PubDao pubDao;
  
+	@Override
 	public JPlace[] getPlaces() {
 		List<Pub> allPubs = getPubDao().getAll();
 		List<JPlace> result = new ArrayList<JPlace>();
@@ -62,5 +65,59 @@ public class NbServiceImpl implements NbService {
 	public void setPubDao(PubDao pubDao) {
 		this.pubDao = pubDao;
 	}
+
+    @Override
+    public JPlace savePlace(JPlace place) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JPlace[] getPlaceSuggestions(String placeId) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JBeer[] getBeers() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JBeer saveBeer(JBeer beer) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JBeer[] getBeerSuggestions(String beerId) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JCompany[] getCompanies() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public JCompany saveCompany(JCompany company) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void approve(String id) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void reject(String id) {
+        // TODO Auto-generated method stub
+        
+    }
 
 }

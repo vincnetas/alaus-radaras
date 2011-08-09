@@ -19,11 +19,13 @@ public interface NbService {
 	
 	JPlace[] getPlaceSuggestions(String placeId);
 	
+	
 	JBeer[] getBeers();
 	
 	JBeer saveBeer(JBeer beer);
 	
 	JBeer[] getBeerSuggestions(String beerId);
+	
 	
 	JCompany[] getCompanies();
 	
