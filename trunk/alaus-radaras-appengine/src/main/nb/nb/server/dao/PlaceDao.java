@@ -3,6 +3,8 @@
  */
 package nb.server.dao;
 
+import java.util.List;
+
 import nb.shared.model.Place;
 
 /**
@@ -11,6 +13,6 @@ import nb.shared.model.Place;
  */
 public interface PlaceDao extends BaseDao<Place> {
 
-	
+	List<Place> acPlace(String title, int max);
 
 }

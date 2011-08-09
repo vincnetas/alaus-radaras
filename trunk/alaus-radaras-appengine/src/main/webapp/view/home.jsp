@@ -18,28 +18,32 @@
 	google.load("jqueryui", "1.8.14");
 	
 	google.setOnLoadCallback(function() {
-	    	
-		jsonService.nb.getPlaces({
-			params : [
-			],
-			onSuccess : function(result) {
-				var suggestions = [];
-				$.each(result, function(i, val) {
-					suggestions.push(val.title);
-				});
 
-				// http://docs.jquery.com/UI/API/1.8/Autocomplete  
-		        $("#field").autocomplete({  
-		            source: suggestions,
-		            delay : 0
-		        });				
-			},
-			onException : function(e) {
-				alert("Unable to compute because: " + e);
-				return true;
-			}
-		});
-	});
+		// http://docs.jquery.com/UI/API/1.8/Autocomplete  
+        $("#field").autocomplete({  
+            source: function(request, result) {
+        		jsonService.nb.acPlace({
+        			params : [
+						request.term, 5
+        			],
+        			onSuccess : function(su) {
+        				var suggestions = [];
+        				$.each(su, function(i, val) {
+        					suggestions.push(val.title);
+        				});
+						
+        				result(suggestions);
+        			},
+        			onException : function(e) {
+        				alert("Unable to compute because: " + e);
+        				return true;
+        			}
+        		});
+            },
+            delay : 0
+        });				
+
+   	});
 
 	</script>
 </body>

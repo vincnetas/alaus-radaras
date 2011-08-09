@@ -1,10 +1,7 @@
 		var jsonService = new JsonRpc.ServiceProxy("/jsonrpc", {
 			asynchronous : true,
 			methods : [ 
-				"nb.hello", 
-				"nb.savePlace", 
-				"nb.getPlaceTags",
-				"nb.getPlaces"
+				"nb.acPlace", 
 			]
 		});		  
 		JsonRpc.setAsynchronous(jsonService, true);

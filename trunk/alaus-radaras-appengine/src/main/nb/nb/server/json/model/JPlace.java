@@ -3,50 +3,14 @@
  */
 package nb.server.json.model;
 
+import nb.shared.model.Place;
+
 
 /**
  * @author vienozin
  * 
  */
 public class JPlace extends JBase {
-
-	/**
-	 * Type of place.
-	 * 
-	 * @author Vincentas
-	 * 
-	 */
-	public enum Type {
-		/**
-		 * Pub.
-		 */
-		PUB,
-
-		/**
-		 * Shop. By and take it away. No drinking in place.
-		 */
-		SHOP,
-
-		/**
-		 * Brewery with pub or restaurant.
-		 */
-		BREWPUB,
-
-		/**
-		 * Restaurant. White sheets and waiting staff.
-		 */
-		RESTAURANT,
-
-		/**
-		 * Shop with pub.
-		 */
-		PUBSHOP,
-
-		/**
-		 * Brewery. Like shop.
-		 */
-		BREWERY
-	};
 
 	/**
 	 * Place name in original language.
@@ -96,7 +60,7 @@ public class JPlace extends JBase {
 	/**
 	 * Place type.
 	 */
-	private Type type;
+	private Place.Type type;
 
 	/**
 	 * Open hours. Format unknown...
@@ -242,14 +206,14 @@ public class JPlace extends JBase {
 	/**
 	 * @return the type
 	 */
-	public Type getType() {
+	public Place.Type getType() {
 		return type;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(Type type) {
+	public void setType(Place.Type type) {
 		this.type = type;
 	}
 

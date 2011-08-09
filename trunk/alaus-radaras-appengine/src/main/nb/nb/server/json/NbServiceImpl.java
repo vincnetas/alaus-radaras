@@ -6,16 +6,14 @@ package nb.server.json;
 import java.util.ArrayList;
 import java.util.List;
 
-import alaus.radaras.server.dao.PubDao;
-import alaus.radaras.server.dao.PubService;
-import alaus.radaras.shared.model.Pub;
-
-import com.google.inject.Inject;
-
 import nb.server.json.model.JBeer;
 import nb.server.json.model.JCompany;
 import nb.server.json.model.JPlace;
+import nb.server.service.PlaceService;
 import nb.shared.model.Place;
+import alaus.radaras.shared.model.Pub;
+
+import com.google.inject.Inject;
 
 /**
  * @author vienozin
@@ -24,53 +22,46 @@ import nb.shared.model.Place;
 public class NbServiceImpl implements NbService {
 
 	@Inject
-	private PubDao pubDao;
+	private PlaceService placeService;
 	
-	@Inject
-	private PubService pubService;
- 
+	/* (non-Javadoc)
+	 * @see nb.server.json.NbService#acPlace(java.lang.String, int)
+	 */
 	@Override
-	public JPlace[] getPlaces() {
-		List<Pub> allPubs = getPubDao().getAll();
-		List<JPlace> result = new ArrayList<JPlace>();
+	public JPlace[] acPlace(String title, int max) {
+		return convert(getPlaceService().getAutocomplete(title, max));
+	}
+	
+	private JPlace[] convert(List<Place> list) {
+		JPlace[] result = new JPlace[list.size()];
 		
-		for (Pub pub : allPubs) {
-			JPlace place = new JPlace();
-			place.setBeerIds(pub.getBeerIds().toArray(new String[0]));
-			place.setCity(pub.getCity());
-			place.setCountry(pub.getCountry());
-			place.setHomepage(pub.getHomepage());
-			place.setHours(pub.getHours());
-			place.setIcon(null);
-			place.setLatitude(pub.getLatitude());
-			place.setLongitude(pub.getLongitude());
-			place.setPhone(pub.getPhone());
-			place.setStreetAddress(pub.getAddress());
-			place.setTags(pub.getTags().toArray(new String[0]));
-			place.setType(null);
-			place.setTitle(pub.getTitle());
-			place.setId(pub.getId());
-			
-			result.add(place);
+		for (int i = 0; i < result.length; i++) {
+			result[i] = convert(list.get(i));
 		}
 		
+		return result;
+	}
+	
+	private JPlace convert(Place place) {
+		JPlace result = new JPlace();
 		
-		return result.toArray(new JPlace[0]);
-	}
-
-	/**
-	 * @return the pubDao
-	 */
-	public PubDao getPubDao() {
-		return pubDao;
-	}
-
-	/**
-	 * @param pubDao the pubDao to set
-	 */
-	public void setPubDao(PubDao pubDao) {
-		this.pubDao = pubDao;
-	}
+		result.setBeerIds(place.getBeerIds().toArray(new String[0]));
+		result.setCity(place.getCity());
+		result.setCountry(place.getCountry());
+		result.setHomepage(place.getHomepage());
+		result.setHours(place.getHours());
+		result.setIcon(place.getIcon());
+		result.setId(place.getId());
+		result.setLatitude(place.getLatitude());
+		result.setLongitude(place.getLongitude());
+		result.setPhone(place.getPhone());
+		result.setStreetAddress(place.getStreetAddress());
+		result.setTags(place.getTags().toArray(new String[0]));
+		result.setTitle(place.getTitle());
+		result.setType(place.getType());	
+		
+		return result;
+	}	
 
     @Override
     public JPlace savePlace(JPlace place) {
@@ -89,12 +80,6 @@ public class NbServiceImpl implements NbService {
 
     @Override
     public JPlace[] getPlaceSuggestions(String placeId) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public JBeer[] getBeers() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -135,20 +120,32 @@ public class NbServiceImpl implements NbService {
         
     }
 
-    /**
-     * @return the pubService
-     */
-    public PubService getPubService() {
-        return pubService;
-    }
+	/**
+	 * @return the placeService
+	 */
+	public PlaceService getPlaceService() {
+		return placeService;
+	}
 
-    /**
-     * @param pubService the pubService to set
-     */
-    public void setPubService(PubService pubService) {
-        this.pubService = pubService;
-    }
-    
+	/**
+	 * @param placeService the placeService to set
+	 */
+	public void setPlaceService(PlaceService placeService) {
+		this.placeService = placeService;
+	}
+
+	@Override
+	public JPlace getPlace(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JBeer[] getBeer(String[] ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 
+    
 }

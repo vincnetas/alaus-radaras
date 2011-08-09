@@ -9,31 +9,39 @@ import nb.server.json.model.JPlace;
 
 /**
  * @author vienozin
- *
+ * 
  */
 public interface NbService {
-	
-	JPlace[] getPlaces();
-	
+
+	/**
+	 * Suggest places for auto complete.
+	 * 
+	 * @param title
+	 *            Part of place title
+	 * @param max
+	 *            Maximum suggestions
+	 * @return Returns suggested places.
+	 */
+	JPlace[] acPlace(String title, int max);
+
+	JPlace getPlace(String id);
+
 	JPlace savePlace(JPlace place);
-	
+
 	JPlace[] getPlaceSuggestions(String placeId);
-	
-	
-	JBeer[] getBeers();
-	
+
+	JBeer[] getBeer(String[] ids);
+
 	JBeer saveBeer(JBeer beer);
-	
+
 	JBeer[] getBeerSuggestions(String beerId);
-	
-	
+
 	JCompany[] getCompanies();
-	
+
 	JCompany saveCompany(JCompany company);
-	
-	
+
 	void approve(String id);
-	
+
 	void reject(String id);
 
 }

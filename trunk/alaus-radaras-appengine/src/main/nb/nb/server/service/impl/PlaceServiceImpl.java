@@ -46,13 +46,6 @@ public class PlaceServiceImpl extends BaseServiceImpl<Place> implements PlaceSer
 
 	@Override
 	public List<Place> getAutocomplete(String query, int limit) {
-		ArrayList<Place> result = new ArrayList<Place>();
-		
-		Place place = new Place();
-		place.setTitle("Place");
-		place.setId("Place");
-		result.add(place);
-		
-		return result;
+		return getPlaceDao().acPlace(query, limit);
 	}	
 }

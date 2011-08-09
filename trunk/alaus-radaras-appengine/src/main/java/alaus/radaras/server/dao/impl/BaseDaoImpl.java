@@ -13,11 +13,11 @@ import java.util.Set;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.IdProvider;
-import alaus.radaras.server.dao.PMF;
 import alaus.radaras.shared.model.Updatable;
 
 import com.google.inject.Inject;
@@ -29,6 +29,9 @@ import com.google.inject.Inject;
 public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	
 	@Inject
+	PersistenceManagerFactory pmf;
+	
+	@Inject
 	IdProvider idProvider;
 	
 	/* (non-Javadoc)
@@ -38,7 +41,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public T add(T object) {
 		object.setId(getIdProvider().getId());
 		
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			pm.makePersistent(object);
 		} finally {
@@ -53,7 +56,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 */
 	
 	public T save(T object) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			pm.makePersistent(object);
 		} finally {
@@ -69,7 +72,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 			object.setId(getIdProvider().getId());
 		}
 		
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			pm.makePersistentAll(list);
 		} finally {
@@ -89,7 +92,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getAll() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());
 			query.setFilter("parentId == null");
@@ -110,7 +113,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	
 	public Set<T> load(Set<String> ids) {
 		Set<T> result = new HashSet<T>();
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			for (String id : ids) {
 				try {
@@ -131,7 +134,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getDeleted(Date since) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());			
 			query.setFilter("lastUpdate >= since && parentId == null && deleted == 1");
@@ -152,7 +155,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 */
 	
 	public void delete(String id) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			pm.deletePersistent(get(id));
 		} finally {
@@ -166,7 +169,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getUpdated(Date since) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());			
 			query.setFilter("lastUpdate >= since && parentId == null && deleted == NULL");
@@ -188,7 +191,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getUpdates(String id) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());			
 			query.setFilter("parentId == id && approved == null");
@@ -211,7 +214,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getUpdates() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {			
 			List<T> result = new ArrayList<T>();			
 			Query query = pm.newQuery(getClazz());
@@ -230,7 +233,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	 */
 	
 	public T get(String id) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			return pm.detachCopy(pm.getObjectById(getClazz(), id));
 		} catch (JDOObjectNotFoundException e) {
@@ -247,7 +250,7 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	
 	public List<T> getApproved() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+		PersistenceManager pm = getPmf().getPersistenceManager();
 		try {
 			Query query = pm.newQuery(getClazz());			
 			query.setFilter("parentId == null && approved == true");
@@ -275,5 +278,21 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 	public void setIdProvider(IdProvider idProvider) {
 		this.idProvider = idProvider;
 	}
+
+	/**
+	 * @return the pmf
+	 */
+	public PersistenceManagerFactory getPmf() {
+		return pmf;
+	}
+
+	/**
+	 * @param pmf the pmf to set
+	 */
+	public void setPmf(PersistenceManagerFactory pmf) {
+		this.pmf = pmf;
+	}
+	
+	
 	
 }
