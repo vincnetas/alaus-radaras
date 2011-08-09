@@ -5,7 +5,7 @@ package alaus.radaras.server.place;
 
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.RequestMapping;
-import org.zdevra.guice.mvc.RequestParameter;
+import org.zdevra.guice.mvc.UriParameter;
 
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Pub;
@@ -24,8 +24,8 @@ public class PlaceController {
     @Inject
     private PubDao pubDao;
     
-    @RequestMapping(path = "/books", nameOfResult="place", toView="place.jsp")
-    public Pub getPlace(@RequestParameter("id") String id) {
+    @RequestMapping(path = "/(.*)", nameOfResult="place", toView="view/place.jsp")
+    public Pub getPlace(@UriParameter(1) String id) {
         return getPubDao().get(id);
     }
 
