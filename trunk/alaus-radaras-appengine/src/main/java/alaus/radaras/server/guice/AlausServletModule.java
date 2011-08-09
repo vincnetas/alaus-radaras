@@ -1,5 +1,7 @@
 package alaus.radaras.server.guice;
 
+import org.zdevra.guice.mvc.MvcModule;
+
 import alaus.radaras.server.AdminBeerServiceImpl;
 import alaus.radaras.server.CsvDataServlet;
 import alaus.radaras.server.ImageServlet;
@@ -24,37 +26,39 @@ import alaus.radaras.server.json.NbService;
 import alaus.radaras.server.json.NbServiceImpl;
 import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.server.locator.IPLocatorImpl;
+import alaus.radaras.server.place.PlaceController;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.google.inject.servlet.ServletModule;
 
 
 
-class AlausServletModule extends ServletModule {
-	@Override
-	protected void configureServlets() {
-		bind(IdProvider.class).to(IdProviderImpl.class);
-		bind(PubDao.class).to(PubDaoImpl.class);
-		bind(BeerDao.class).to(BeerDaoImpl.class);
-		bind(BrandDao.class).to(BrandDaoImpl.class);
-		bind(IPLocator.class).to(IPLocatorImpl.class);
-		bind(UserService.class).toInstance(UserServiceFactory.getUserService());		
-		bind(PubService.class).to(PubServiceImpl.class);
-		bind(BeerService.class).to(BeerServiceImpl.class);
-		bind(BrandService.class).to(BrandServiceImpl.class);
-		
-		serve("/beerEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
-		serve("/adminEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
-		serve("/adminEngine/adminBeerService").with(AdminBeerServiceImpl.class);
-		serve("/json").with(JsonDataServlet.class);		
-		serve("/csv").with(CsvDataServlet.class);		
-		serve("/admin/upload").with(UploadServlet.class);
-		serve("/image/beer/*").with(ImageServlet.class);
-		
-		bind(NbService.class).to(NbServiceImpl.class);
-		
-		serve("/jsonrpc").with(JSONDispacher.class);
-
-	}
+class AlausServletModule extends MvcModule {
+	
+    @Override
+    protected void configureControllers() {
+        bind(IdProvider.class).to(IdProviderImpl.class);
+        bind(PubDao.class).to(PubDaoImpl.class);
+        bind(BeerDao.class).to(BeerDaoImpl.class);
+        bind(BrandDao.class).to(BrandDaoImpl.class);
+        bind(IPLocator.class).to(IPLocatorImpl.class);
+        bind(UserService.class).toInstance(UserServiceFactory.getUserService());        
+        bind(PubService.class).to(PubServiceImpl.class);
+        bind(BeerService.class).to(BeerServiceImpl.class);
+        bind(BrandService.class).to(BrandServiceImpl.class);
+        
+        serve("/beerEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
+        serve("/adminEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
+        serve("/adminEngine/adminBeerService").with(AdminBeerServiceImpl.class);
+        serve("/json").with(JsonDataServlet.class);     
+        serve("/csv").with(CsvDataServlet.class);       
+        serve("/admin/upload").with(UploadServlet.class);
+        serve("/image/beer/*").with(ImageServlet.class);
+        
+        bind(NbService.class).to(NbServiceImpl.class);
+        
+        serve("/jsonrpc").with(JSONDispacher.class);
+        
+        control("/place").withController(PlaceController.class).set();
+    }
 }
