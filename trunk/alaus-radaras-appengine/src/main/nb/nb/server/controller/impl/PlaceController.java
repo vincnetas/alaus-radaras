@@ -1,7 +1,7 @@
 /**
  * 
  */
-package alaus.radaras.server.place;
+package nb.server.controller.impl;
 
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.RequestMapping;

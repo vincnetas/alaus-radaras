@@ -1,7 +1,5 @@
 package alaus.radaras.server.guice;
 
-import nb.server.json.JSONDispacher;
-
 import org.zdevra.guice.mvc.MvcModule;
 
 import alaus.radaras.server.AdminBeerServiceImpl;
@@ -23,11 +21,8 @@ import alaus.radaras.server.dao.impl.BrandServiceImpl;
 import alaus.radaras.server.dao.impl.IdProviderImpl;
 import alaus.radaras.server.dao.impl.PubDaoImpl;
 import alaus.radaras.server.dao.impl.PubServiceImpl;
-import alaus.radaras.server.json.NbService;
-import alaus.radaras.server.json.NbServiceImpl;
 import alaus.radaras.server.locator.IPLocator;
 import alaus.radaras.server.locator.IPLocatorImpl;
-import alaus.radaras.server.place.PlaceController;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -55,11 +50,5 @@ class AlausServletModule extends MvcModule {
         serve("/csv").with(CsvDataServlet.class);       
         serve("/admin/upload").with(UploadServlet.class);
         serve("/image/beer/*").with(ImageServlet.class);
-        
-        bind(NbService.class).to(NbServiceImpl.class);
-        
-        serve("/jsonrpc").with(JSONDispacher.class);
-        
-        control("/place/*").withController(PlaceController.class).set();        
     }
 }
