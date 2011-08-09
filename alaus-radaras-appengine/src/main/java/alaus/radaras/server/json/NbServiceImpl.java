@@ -6,11 +6,11 @@ package alaus.radaras.server.json;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.inject.Inject;
-
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.server.json.model.JPlace;
 import alaus.radaras.shared.model.Pub;
+
+import com.google.inject.Inject;
 
 /**
  * @author vienozin

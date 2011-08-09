@@ -16,8 +16,6 @@
 
 package org.json.rpc.server;
 
-import org.json.rpc.commons.TypeChecker;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+
+import org.json.rpc.commons.TypeChecker;
 
 class HandleEntry<T> {
 
