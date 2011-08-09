@@ -11,6 +11,7 @@ import nb.server.dao.PlaceDao;
 import nb.shared.model.BaseObject.State;
 import nb.shared.model.Place;
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.PubService;
 import alaus.radaras.shared.model.Pub;
 
 import com.google.inject.Inject;
@@ -29,7 +30,7 @@ public class PlaceDaoBridge implements PlaceDao {
 	 */
 	@Override
 	public List<Place> acPlace(String title, int max) {
-		List<Place> places = convert(getPubDao().getApproved());
+		List<Place> places = getAll();
 		List<Place> result = new ArrayList<Place>(max);
 		
 		for (Place place : places) {
@@ -39,6 +40,19 @@ public class PlaceDaoBridge implements PlaceDao {
 		}
 		
 		return result;
+	}
+	
+	private long lastTime = 0;
+	
+	private List<Place> storedList;
+	
+	private List<Place> getAll() {
+		if (System.currentTimeMillis() - lastTime > 1000 * 60) {
+			storedList = convert(getPubDao().getApproved());
+			lastTime = System.currentTimeMillis();
+		}
+		
+		return storedList;
 	}
 	
 	private List<Place> convert(List<Pub> list) {
@@ -63,7 +77,7 @@ public class PlaceDaoBridge implements PlaceDao {
 		result.setId(pub.getId());
 		result.setLatitude(pub.getLatitude());
 		result.setLongitude(pub.getLongitude());
-		result.setObjectId(pub.getParentId());
+		result.setObjectId(pub.getId());
 		result.setPhone(pub.getPhone());
 		result.setState(null);
 		result.setStreetAddress(pub.getAddress());
@@ -124,8 +138,7 @@ public class PlaceDaoBridge implements PlaceDao {
 	 */
 	@Override
 	public Place readCurrent(String objectId) {
-		// TODO Auto-generated method stub
-		return null;
+		return convert(getPubDao().get(objectId));
 	}
 
 	/* (non-Javadoc)

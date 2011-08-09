@@ -3,12 +3,12 @@
  */
 package nb.server.controller.impl;
 
+import nb.server.service.PlaceService;
+import nb.shared.model.Place;
+
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.RequestMapping;
 import org.zdevra.guice.mvc.UriParameter;
-
-import alaus.radaras.server.dao.PubDao;
-import alaus.radaras.shared.model.Pub;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -22,26 +22,24 @@ import com.google.inject.Singleton;
 public class PlaceController {
 
     @Inject
-    private PubDao pubDao;
+    private PlaceService placeService;
     
     @RequestMapping(path = "/(.*)", nameOfResult="place", toView="view/place.jsp")
-    public Pub getPlace(@UriParameter(1) String id) {
-        return getPubDao().get(id);
+    public Place getPlace(@UriParameter(1) String id) {
+    	return getPlaceService().getCurrent(id);
     }
 
-    /**
-     * @return the pubDao
-     */
-    public PubDao getPubDao() {
-        return pubDao;
-    }
+	/**
+	 * @return the placeService
+	 */
+	public PlaceService getPlaceService() {
+		return placeService;
+	}
 
-    /**
-     * @param pubDao the pubDao to set
-     */
-    public void setPubDao(PubDao pubDao) {
-        this.pubDao = pubDao;
-    }
-    
-    
+	/**
+	 * @param placeService the placeService to set
+	 */
+	public void setPlaceService(PlaceService placeService) {
+		this.placeService = placeService;
+	}    
 }

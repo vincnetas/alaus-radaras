@@ -44,6 +44,7 @@ public class JSONDispacher extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
 		getExecutor().execute(new JsonRpcServletTransport(req, resp));
 	}
 
