@@ -59,6 +59,6 @@ class AlausServletModule extends MvcModule {
         
         serve("/jsonrpc").with(JSONDispacher.class);
         
-        control("/place").withController(PlaceController.class).set();
+        control("/place/*").withController(PlaceController.class).set();
     }
 }

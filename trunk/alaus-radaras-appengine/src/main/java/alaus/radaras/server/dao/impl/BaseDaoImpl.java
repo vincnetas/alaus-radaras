@@ -233,6 +233,8 @@ public class BaseDaoImpl<T extends Updatable> implements BaseDao<T> {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			return pm.detachCopy(pm.getObjectById(getClazz(), id));
+		} catch (JDOObjectNotFoundException e) {
+		    return null;
 		} finally {
 			pm.close();
 		}
