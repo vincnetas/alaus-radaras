@@ -11,7 +11,7 @@
 <title></title>
 </head>
 <body>
-	<h1>${not empty place}</h1>
+	<h1>${place.title}</h1>
 	<input type="text" id="field"/>
 	<script>
 	google.load("jquery", "1.6.2");
