@@ -7,8 +7,6 @@ import java.util.Set;
 
 import javax.jdo.annotations.Persistent;
 
-import nb.shared.model.Beer;
-
 /**
  * @author vienozin
  *
@@ -49,7 +47,7 @@ public class JCompany extends JBase {
 	 * Id's of this company's beers. This is indirect value for beer companyId {@link Beer}.
 	 */
 	@Persistent
-	private Set<String> beerIds;
+	private String[] beerIds;
 
 	/**
 	 * @return the title
@@ -121,20 +119,17 @@ public class JCompany extends JBase {
 		this.hometown = hometown;
 	}
 
-	/**
-	 * @return the beerIds
-	 */
-	public Set<String> getBeerIds() {
-		return beerIds;
-	}
+    /**
+     * @return the beerIds
+     */
+    public String[] getBeerIds() {
+        return beerIds;
+    }
 
-	/**
-	 * @param beerIds the beerIds to set
-	 */
-	public void setBeerIds(Set<String> beerIds) {
-		this.beerIds = beerIds;
-	}
-
-	
-
+    /**
+     * @param beerIds the beerIds to set
+     */
+    public void setBeerIds(String[] beerIds) {
+        this.beerIds = beerIds;
+    }
 }
