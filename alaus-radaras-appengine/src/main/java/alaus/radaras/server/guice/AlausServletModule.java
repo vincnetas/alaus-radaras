@@ -1,5 +1,7 @@
 package alaus.radaras.server.guice;
 
+import nb.server.json.JSONDispacher;
+
 import org.zdevra.guice.mvc.MvcModule;
 
 import alaus.radaras.server.AdminBeerServiceImpl;
@@ -21,7 +23,6 @@ import alaus.radaras.server.dao.impl.BrandServiceImpl;
 import alaus.radaras.server.dao.impl.IdProviderImpl;
 import alaus.radaras.server.dao.impl.PubDaoImpl;
 import alaus.radaras.server.dao.impl.PubServiceImpl;
-import alaus.radaras.server.json.JSONDispacher;
 import alaus.radaras.server.json.NbService;
 import alaus.radaras.server.json.NbServiceImpl;
 import alaus.radaras.server.locator.IPLocator;
