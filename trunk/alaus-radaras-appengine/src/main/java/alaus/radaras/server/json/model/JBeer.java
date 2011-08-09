@@ -3,8 +3,6 @@
  */
 package alaus.radaras.server.json.model;
 
-import java.util.Set;
-
 import javax.jdo.annotations.Persistent;
 
 import com.google.gwt.place.shared.Place;
@@ -37,7 +35,7 @@ public class JBeer extends JBase {
 	 * Id's of places where this beer is available. This is indirect value for place beerIds {@link Place}.
 	 */
 	@Persistent
-	private Set<String> placeIds;
+	private String[] placeIds;
 	
 	/**
 	 * Beer bitterness in EBU scale.
@@ -105,21 +103,22 @@ public class JBeer extends JBase {
 		this.companyId = companyId;
 	}
 
-	/**
-	 * @return the placeIds
-	 */
-	public Set<String> getPlaceIds() {
-		return placeIds;
-	}
 
 	/**
-	 * @param placeIds the placeIds to set
-	 */
-	public void setPlaceIds(Set<String> placeIds) {
-		this.placeIds = placeIds;
-	}
+     * @return the placeIds
+     */
+    public String[] getPlaceIds() {
+        return placeIds;
+    }
 
-	/**
+    /**
+     * @param placeIds the placeIds to set
+     */
+    public void setPlaceIds(String[] placeIds) {
+        this.placeIds = placeIds;
+    }
+
+    /**
 	 * @return the bitterness
 	 */
 	public Integer getBitterness() {
