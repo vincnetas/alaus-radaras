@@ -3,7 +3,9 @@ package nb.server.guice;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
-import nb.server.AutocompleteServiceImpl;
+import org.zdevra.guice.mvc.MvcModule;
+
+import nb.server.controller.impl.PlaceController;
 import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.dao.IdProvider;
@@ -25,11 +27,10 @@ import nb.server.service.impl.CompanyServiceImpl;
 import nb.server.service.impl.PlaceServiceImpl;
 import nb.server.service.impl.RoleHandlerImpl;
 import nb.server.service.impl.UserServiceImpl;
-import nb.server.servlet.DispacherServlet;
 
 import com.google.inject.servlet.ServletModule;
 
-public class NbServletModule extends ServletModule {
+public class NbServletModule extends MvcModule {
 	
 	private static PersistenceManagerFactory pmf;
 	static {
@@ -38,8 +39,11 @@ public class NbServletModule extends ServletModule {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.zdevra.guice.mvc.MvcModule#configureControllers()
+	 */
 	@Override
-	protected void configureServlets() {
+	protected void configureControllers() {
 		bind(BeerDao.class).to(BeerDaoImpl.class);
 		bind(PlaceDao.class).to(PlaceDaoImpl.class);
 		bind(CompanyDao.class).to(CompanyDaoImpl.class);
@@ -54,9 +58,10 @@ public class NbServletModule extends ServletModule {
 		bind(IdProvider.class).to(IdProviderImpl.class);
 		bind(PersistenceManagerFactory.class).toInstance(pmf);		
 		bind(NbService.class).to(NbServiceImpl.class);
-		
-		serve("/place").with(DispacherServlet.class);
-		serve("/home/autocomplete").with(AutocompleteServiceImpl.class);
+				
 		serve("/jsonrpc").with(JSONDispacher.class);
+        control("/place/*").withController(PlaceController.class).set();  
+		
 	}
+
 }
