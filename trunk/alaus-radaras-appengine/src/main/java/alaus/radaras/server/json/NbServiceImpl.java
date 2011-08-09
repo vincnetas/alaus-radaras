@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.PubService;
 import alaus.radaras.server.json.model.JBeer;
 import alaus.radaras.server.json.model.JCompany;
 import alaus.radaras.server.json.model.JPlace;
@@ -22,6 +23,9 @@ public class NbServiceImpl implements NbService {
 
 	@Inject
 	private PubDao pubDao;
+	
+	@Inject
+	private PubService pubService;
  
 	@Override
 	public JPlace[] getPlaces() {
@@ -71,6 +75,10 @@ public class NbServiceImpl implements NbService {
         // TODO Auto-generated method stub
         return null;
     }
+    
+    private Pub convert(JPlace place) {
+        
+    }
 
     @Override
     public JPlace[] getPlaceSuggestions(String placeId) {
@@ -119,5 +127,21 @@ public class NbServiceImpl implements NbService {
         // TODO Auto-generated method stub
         
     }
+
+    /**
+     * @return the pubService
+     */
+    public PubService getPubService() {
+        return pubService;
+    }
+
+    /**
+     * @param pubService the pubService to set
+     */
+    public void setPubService(PubService pubService) {
+        this.pubService = pubService;
+    }
+    
+    
 
 }
