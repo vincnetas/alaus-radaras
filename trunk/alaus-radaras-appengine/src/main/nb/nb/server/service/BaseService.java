@@ -34,6 +34,8 @@ public interface BaseService<T extends BaseObject> {
 	
 	T getCurrent(String objectId);
 	
+	List<T> getCurrent(List<String> objectIds);
+	
 	List<T> getDeleted(Date since);
 	
 	List<T> getUpdated(Date since);

@@ -9,8 +9,8 @@ import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.dao.IdProvider;
 import nb.server.dao.PlaceDao;
+import nb.server.dao.bridge.BeerDaoBridge;
 import nb.server.dao.bridge.PlaceDaoBridge;
-import nb.server.dao.impl.BeerDaoImpl;
 import nb.server.dao.impl.CompanyDaoImpl;
 import nb.server.dao.impl.IdProviderImpl;
 import nb.server.json.JSONDispacher;
@@ -43,7 +43,7 @@ public class NbServletModule extends MvcModule {
 	 */
 	@Override
 	protected void configureControllers() {
-		bind(BeerDao.class).to(BeerDaoImpl.class);
+		bind(BeerDao.class).to(BeerDaoBridge.class);
 		bind(PlaceDao.class).to(PlaceDaoBridge.class);
 		bind(CompanyDao.class).to(CompanyDaoImpl.class);
 		

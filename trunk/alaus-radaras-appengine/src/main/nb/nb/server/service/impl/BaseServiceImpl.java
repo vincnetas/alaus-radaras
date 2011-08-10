@@ -209,7 +209,15 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 		return getBaseDao().readCurrent(objectId);
 	}
 
-	private void checkDeleted(String objectId) {
+	/* (non-Javadoc)
+     * @see nb.server.service.BaseService#getCurrent(java.util.List)
+     */
+    @Override
+    public List<T> getCurrent(List<String> objectIds) {
+        return getBaseDao().read(objectIds);
+    }
+
+    private void checkDeleted(String objectId) {
 		T value = getBaseDao().readDeleted(objectId);
 		if (value != null) {
 			throw new Error("Object is deleted");
