@@ -7,7 +7,7 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAj6N1wGgGpuuqxjU6PcoKRxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQCuZ2f9FcUf3Kd5Yh17KUSHtrfNA"></script>
 <script type="text/javascript" src="/js/jsonrpc.js"></script>
-<script type="text/javascript" src="http://4.alausradaras.appspot.com/js/nb.js"></script>
+<script type="text/javascript" src="/js/nb.js"></script>
 <title></title>
 </head>
 <body>
@@ -28,7 +28,7 @@
         			onSuccess : function(su) {
         				var suggestions = [];
         				$.each(su, function(i, val) {
-        					suggestions.push({value : val.id, label : val.title});
+        					suggestions.push({label : val.title, place : val});
         				});
 						
         				result(suggestions);
@@ -40,7 +40,7 @@
         		});
             },
             select : function(event, ui) {
-            	window.open("/place/" + ui.item.value, "_self");
+            	window.open("/place/" + ui.item.place.id, "_self");
             },
             delay : 0
         });				

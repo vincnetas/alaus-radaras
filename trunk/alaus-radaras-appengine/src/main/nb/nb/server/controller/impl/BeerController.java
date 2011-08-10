@@ -6,8 +6,9 @@ package nb.server.controller.impl;
 import java.util.ArrayList;
 
 import nb.server.service.BeerService;
+import nb.server.service.CompanyService;
 import nb.server.service.PlaceService;
-import nb.shared.model.Place;
+import nb.shared.model.Beer;
 
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.Model;
@@ -23,7 +24,7 @@ import com.google.inject.Singleton;
  */
 @Singleton
 @Controller
-public class PlaceController {
+public class BeerController {
 
     @Inject
     private PlaceService placeService;
@@ -31,15 +32,19 @@ public class PlaceController {
     @Inject
     private BeerService beerService;
     
-    @RequestMapping(path = "/(.*)", toView="view/place.jsp")
-    public Model getPlace(@UriParameter(1) String id) {
+    @Inject
+    private CompanyService companyService;
+    
+    @RequestMapping(path = "/(.*)", toView="view/beer.jsp")
+    public Model getBeer(@UriParameter(1) String id) {
         Model model = new Model();
         
-        Place place = getPlaceService().getCurrent(id);
-        if (place != null) {
-            model.addObject("place", place);
-            model.addObject("beers", getBeerService().getCurrent(new ArrayList<String>(place.getBeerIds())));
-        }
+        Beer beer = getBeerService().getCurrent(id);
+        if (beer != null) {        
+        	model.addObject("beer", beer);
+        	model.addObject("company", getCompanyService().getCurrent(beer.getCompanyId()));
+        	model.addObject("places", getPlaceService().getCurrent(new ArrayList<String>(beer.getPlaceIds())));
+        }        
         
         return model;
     }
@@ -71,6 +76,22 @@ public class PlaceController {
     public void setBeerService(BeerService beerService) {
         this.beerService = beerService;
     }
+
+	/**
+	 * @return the companyService
+	 */
+	public CompanyService getCompanyService() {
+		return companyService;
+	}
+
+	/**
+	 * @param companyService the companyService to set
+	 */
+	public void setCompanyService(CompanyService companyService) {
+		this.companyService = companyService;
+	}
+    
+    
 	
 	
 }

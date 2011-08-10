@@ -3,6 +3,8 @@
  */
 package alaus.radaras.server.dao;
 
+import java.util.List;
+
 import alaus.radaras.shared.model.Pub;
 
 /**
@@ -11,4 +13,5 @@ import alaus.radaras.shared.model.Pub;
  */
 public interface PubDao extends BaseDao<Pub> {
 
+	List<Pub> getBeerPubs(String beerId);
 }
