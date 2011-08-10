@@ -3,9 +3,15 @@
  */
 package nb.server.dao.bridge;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import nb.server.dao.BeerDao;
 import nb.shared.model.Beer;
 import alaus.radaras.server.dao.BaseDao;
+import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.shared.model.Pub;
 
 import com.google.inject.Inject;
 
@@ -17,6 +23,9 @@ public class BeerDaoBridge extends BaseDaoBridge<Beer, alaus.radaras.shared.mode
 
     @Inject
     private alaus.radaras.server.dao.BeerDao beerDao;
+    
+    @Inject
+    private PubDao pubDao;
     
     @Override
     protected BaseDao<alaus.radaras.shared.model.Beer> getBaseDao() {    
@@ -31,8 +40,21 @@ public class BeerDaoBridge extends BaseDaoBridge<Beer, alaus.radaras.shared.mode
         result.setIcon(value.getIcon());
         result.setId(value.getId());        
         result.setTitle(value.getTitle());
+        result.setObjectId(value.getId());
+        result.setPlaceIds(getBeerPubs(value.getId()));
         
         return result;
+    }
+    
+    private Set<String> getBeerPubs(String beerId) {
+    	List<Pub> pubs = getPubDao().getBeerPubs(beerId);
+    	Set<String> result = new HashSet<String>();
+    	
+    	for (Pub pub : pubs) {
+			result.add(pub.getId());
+		}
+    	
+    	return result;
     }
 
     /**
@@ -48,6 +70,20 @@ public class BeerDaoBridge extends BaseDaoBridge<Beer, alaus.radaras.shared.mode
     public void setBeerDao(alaus.radaras.server.dao.BeerDao beerDao) {
         this.beerDao = beerDao;
     }
+
+	/**
+	 * @return the pubDao
+	 */
+	public PubDao getPubDao() {
+		return pubDao;
+	}
+
+	/**
+	 * @param pubDao the pubDao to set
+	 */
+	public void setPubDao(PubDao pubDao) {
+		this.pubDao = pubDao;
+	}
     
     
 
