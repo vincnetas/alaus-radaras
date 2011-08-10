@@ -28,7 +28,7 @@
         			onSuccess : function(su) {
         				var suggestions = [];
         				$.each(su, function(i, val) {
-        					suggestions.push({value : val.objectId, label : val.title});
+        					suggestions.push({value : val.id, label : val.title});
         				});
 						
         				result(suggestions);
