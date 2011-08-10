@@ -11,36 +11,59 @@
 <title></title>
 </head>
 <body>
-	<h1>${place.title}</h1>
-	<input type="text" id="field"/>
-	<script>
-	google.load("jquery", "1.6.2");
-	google.load("jqueryui", "1.8.14");
-	
-	google.setOnLoadCallback(function() {
-	    	
-		jsonService.nb.getPlaces({
-			params : [
-			],
-			onSuccess : function(result) {
-				var suggestions = [];
-				$.each(result, function(i, val) {
-					suggestions.push(val.title);
-				});
+	<div id="content">
+		<div id="pubTitle">${place.title }</div>
 
-				// http://docs.jquery.com/UI/API/1.8/Autocomplete  
-		        $("#field").autocomplete({  
-		            source: suggestions,
-		            delay : 0
-		        });				
-			},
-			onException : function(e) {
-				alert("Unable to compute because: " + e);
-				return true;
-			}
-		});
-	});
+		<div id="infoSection" class="section">
+			<div class="sectionHeader">
+				<div class="sectionTitle">Informacija</div>
+			</div>
+			<div id="map">
+				<img alt="map" src="" width="300px" height="300px" />
+			</div>
+			<div>
+				<div id="country">${place.country }</div>
+				<div id="city">${place.city }</div>
+				<div id="address">${place.streeAddress }</div>
+				<div id="phone">${palce.phone }</div>
+				<div id="homepage">${place.homepage }</div>
+			</div>
+		</div>
 
-	</script>
+		<div id="beerSection" class="section">
+			<div class="sectionHeader">
+				<div class="sectionTitle">Alus</div>
+				<div id="addBeer">
+					<input value="pridėti alų" />
+				</div>
+			</div>
+			<div class="sectionContent">
+				<c:forEach var="beer" items="beers">
+					<div id="${beer.objectId }">
+						<img alt="" src="" /> <span>${beer.title }</span>
+						<span class="close">x</span>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+
+		<div id="tagsSection" class="section">
+			<div class="sectionHeader">
+				<div class="sectionTitle">Žymos/div>
+				<div id="addTag">
+					<input value="pridėti žymą" />
+				</div>
+			</div>			
+			<div class="sectionContent">
+				<c:forEach var="tag" items="${place.tags }">
+					<div id="tag_1">
+						<img alt="" src="" /> <span>${tag }</span>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+
 </body>
+
 </html>
