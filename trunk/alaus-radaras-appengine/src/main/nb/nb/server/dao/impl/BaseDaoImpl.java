@@ -53,6 +53,24 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 			}
 		});
 	}
+	
+	/* (non-Javadoc)
+	 * @see nb.server.dao.BaseDao#readAll()
+	 */
+	@Override
+	public List<T> readAll() {
+		T filter;
+		try {
+			filter = getClazz().newInstance();
+		} catch (InstantiationException e) {
+			throw new Error(e);
+		} catch (IllegalAccessException e) {
+			throw new Error(e);
+		}
+		
+		filter.setState(State.CURRENT);
+		return findBy(filter);
+	}
 
 	/* (non-Javadoc)
 	 * @see nb.server.dao.BaseDao#read(java.lang.String)
@@ -281,7 +299,7 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 			@Override
 			public List<T> callback(PersistenceManager pm) {
 				Query query = pm.newQuery(getClazz());			
-				query.setFilter("objectId >= oId");
+				query.setFilter("objectId == oId");
 				query.declareParameters("java.lang.String oId");
 
 				try {

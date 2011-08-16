@@ -21,5 +21,7 @@ public interface PlaceService extends BaseService<Place> {
 	 * @return
 	 */
 	List<Place> getAutocomplete(String query, int limit);
+	
+	
 
 }

@@ -3,12 +3,14 @@
  */
 package nb.server.dao.bridge;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import nb.server.dao.BeerDao;
 import nb.shared.model.Beer;
+import nb.shared.model.Place;
 import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Pub;
@@ -83,6 +85,20 @@ public class BeerDaoBridge extends BaseDaoBridge<Beer, alaus.radaras.shared.mode
 	 */
 	public void setPubDao(PubDao pubDao) {
 		this.pubDao = pubDao;
+	}
+
+	@Override
+	public List<Beer> acBeer(String title, int max) {
+		List<Beer> beers = getAll();
+		List<Beer> result = new ArrayList<Beer>(max);
+		
+		for (Beer beer : beers) {
+			if (beer.getTitle().toLowerCase().contains(title.toLowerCase())) {
+				result.add(beer);
+			}
+		}
+		
+		return result;
 	}
     
     

@@ -45,6 +45,13 @@ public interface BaseDao<T extends BaseObject> {
 
 	List<T> read(String objectId, State state);
 	
+	/**
+	 * Reads all history for object
+	 * 
+	 * @param objectId
+	 *            Object id
+	 * @return Returns all instances of object
+	 */
 	List<T> readAll(String objectId);
 	
 	List<T> findBy(T filter);
@@ -57,5 +64,11 @@ public interface BaseDao<T extends BaseObject> {
 	 * @return Returns first instance of this object or null if no found.
 	 */
 	T getFirstInstance(String objectId);
+
+	/**
+	 * Returns all
+	 * @return
+	 */
+	List<T> readAll();
 	
 }

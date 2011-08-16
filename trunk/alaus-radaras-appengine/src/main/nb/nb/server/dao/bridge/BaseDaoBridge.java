@@ -32,6 +32,20 @@ public abstract class BaseDaoBridge<T extends BaseObject, V extends Updatable> i
         return result;
     }
     
+	private long lastTime = 0;
+	
+	private List<T> storedList;
+	
+	public List<T> getAll() {
+		if (System.currentTimeMillis() - lastTime > 1000 * 60) {
+			storedList = convert(getBaseDao().getApproved());
+			lastTime = System.currentTimeMillis();
+		}
+		
+		return storedList;
+	}
+
+    
     /* (non-Javadoc)
      * @see nb.server.dao.BaseDao#readCurrent(java.lang.String)
      */
@@ -151,4 +165,14 @@ public abstract class BaseDaoBridge<T extends BaseObject, V extends Updatable> i
         // TODO Auto-generated method stub
         return null;
     }
+
+	/* (non-Javadoc)
+	 * @see nb.server.dao.BaseDao#readAll()
+	 */
+	@Override
+	public List<T> readAll() {
+		return convert(getBaseDao().getApproved());
+	}
+    
+    
 }

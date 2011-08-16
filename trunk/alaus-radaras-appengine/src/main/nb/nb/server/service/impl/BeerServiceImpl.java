@@ -28,6 +28,16 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/* (non-Javadoc)
+	 * @see nb.server.service.BeerService#getAutocomplete(java.lang.String, int)
+	 */
+	@Override
+	public List<Beer> getAutocomplete(String query, int limit) {
+		return getBeerDao().acBeer(query, limit);
+	}
+
+
 
 	@Override
 	public BaseDao<Beer> getBaseDao() {

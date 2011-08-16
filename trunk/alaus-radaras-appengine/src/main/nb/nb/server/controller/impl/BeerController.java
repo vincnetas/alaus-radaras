@@ -4,6 +4,7 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nb.server.service.BeerService;
 import nb.server.service.CompanyService;
@@ -35,7 +36,7 @@ public class BeerController {
     @Inject
     private CompanyService companyService;
     
-    @RequestMapping(path = "/(.*)", toView="view/beer.jsp")
+    @RequestMapping(path = "/(\\d+)", toView="view/beer.jsp")
     public Model getBeer(@UriParameter(1) String id) {
         Model model = new Model();
         
@@ -48,6 +49,17 @@ public class BeerController {
         
         return model;
     }
+    
+    @RequestMapping(path = "", toView="view/beers.jsp")
+    public Model getBeers() {
+        Model model = new Model();
+        
+        List<Beer> beers = getBeerService().getCurrent();
+        model.addObject("beers", beers);
+        
+        return model;
+    }
+
 
 	/**
 	 * @return the placeService

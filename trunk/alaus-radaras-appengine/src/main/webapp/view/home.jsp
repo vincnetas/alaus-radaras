@@ -11,7 +11,18 @@
 <title></title>
 </head>
 <body>
-	<input type="text" id="field"/>
+	<div id="beerSearch">
+		<span>Noriu alaus</span>
+		(<a href="/beers">rodyk visus</a>)
+		<input type="text" id="beerSearchInput"/>
+	</div>
+
+	<div id="placeSearch">
+		<span>Ieškau baro</span>
+		(<a href="/places">rodyk visus</a>)
+		<input type="text" id="placeSearchInput"/>
+	</div>
+
 	<script>
 	google.load("jquery", "1.6.2");
 	google.load("jqueryui", "1.8.14");
@@ -19,7 +30,7 @@
 	google.setOnLoadCallback(function() {
 
 		// http://docs.jquery.com/UI/API/1.8/Autocomplete  
-        $("#field").autocomplete({  
+        $("#placeSearchInput").autocomplete({  
             source: function(request, result) {
         		jsonService.nb.acPlace({
         			params : [
@@ -41,6 +52,32 @@
             },
             select : function(event, ui) {
             	window.open("/place/" + ui.item.place.id, "_self");
+            },
+            delay : 0
+        });				
+
+        $("#beerSearchInput").autocomplete({  
+            source: function(request, result) {
+        		jsonService.nb.acBeer({
+        			params : [
+						request.term, 5
+        			],
+        			onSuccess : function(su) {
+        				var suggestions = [];
+        				$.each(su, function(i, val) {
+        					suggestions.push({label : val.title, place : val});
+        				});
+						
+        				result(suggestions);
+        			},
+        			onException : function(e) {
+        				alert("Unable to compute because: " + e);
+        				return true;
+        			}
+        		});
+            },
+            select : function(event, ui) {
+            	window.open("/beer/" + ui.item.place.id, "_self");
             },
             delay : 0
         });				

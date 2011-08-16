@@ -13,4 +13,13 @@ import nb.shared.model.Place;
 public interface BeerService extends BaseService<Beer> {
 
 	List<Place> getPlaces(Beer beer);
+	
+	/**
+	 * Returns suggestions for specified query.
+	 * 
+	 * @param query
+	 * @param limit
+	 * @return
+	 */
+	List<Beer> getAutocomplete(String query, int limit);
 }

@@ -3,13 +3,14 @@
  */
 package nb.server.json;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nb.server.json.model.JBeer;
 import nb.server.json.model.JCompany;
 import nb.server.json.model.JPlace;
+import nb.server.service.BeerService;
 import nb.server.service.PlaceService;
+import nb.shared.model.Beer;
 import nb.shared.model.Place;
 import alaus.radaras.shared.model.Pub;
 
@@ -24,21 +25,58 @@ public class NbServiceImpl implements NbService {
 	@Inject
 	private PlaceService placeService;
 	
+	@Inject
+	private BeerService beerService;
+	
 	/* (non-Javadoc)
 	 * @see nb.server.json.NbService#acPlace(java.lang.String, int)
 	 */
 	@Override
 	public JPlace[] acPlace(String title, int max) {
-		return convert(getPlaceService().getAutocomplete(title, max));
+		return convertPlace(getPlaceService().getAutocomplete(title, max));
 	}
 	
-	private JPlace[] convert(List<Place> list) {
+	/* (non-Javadoc)
+	 * @see nb.server.json.NbService#acBeer(java.lang.String, int)
+	 */
+	@Override
+	public JBeer[] acBeer(String title, int max) {
+		return convertBeer(getBeerService().getAutocomplete(title, max));
+	}
+
+	private JBeer[] convertBeer(List<Beer> list) {
+		JBeer[] result = new JBeer[list.size()];
+		
+		for (int i = 0; i < result.length; i++) {
+			result[i] = convert(list.get(i));
+		}
+		
+		return result;
+	}
+
+	private JPlace[] convertPlace(List<Place> list) {
 		JPlace[] result = new JPlace[list.size()];
 		
 		for (int i = 0; i < result.length; i++) {
 			result[i] = convert(list.get(i));
 		}
 		
+		return result;
+	}
+	
+	private JBeer convert(Beer beer) {
+		JBeer result = new JBeer();
+		
+		result.setAlcohol(beer.getAlcohol());
+		result.setBitterness(beer.getBitterness());
+		result.setColor(beer.getColor());
+		result.setCompanyId(beer.getCompanyId());
+		result.setGravity(beer.getGravity());
+		result.setIcon(beer.getIcon());
+		result.setId(beer.getId());
+		result.setPlaceIds(beer.getPlaceIds().toArray(new String[0]));
+		result.setTitle(beer.getTitle());
+			
 		return result;
 	}
 	
@@ -145,6 +183,22 @@ public class NbServiceImpl implements NbService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+	 * @return the beerService
+	 */
+	public BeerService getBeerService() {
+		return beerService;
+	}
+
+	/**
+	 * @param beerService the beerService to set
+	 */
+	public void setBeerService(BeerService beerService) {
+		this.beerService = beerService;
+	}
+	
+	
     
 
     

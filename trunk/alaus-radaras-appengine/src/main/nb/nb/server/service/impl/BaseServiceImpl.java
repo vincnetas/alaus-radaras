@@ -33,6 +33,14 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 	@Inject
 	private IdProvider idProvider;
 	
+	/* (non-Javadoc)
+	 * @see nb.server.service.BaseService#getCurrent()
+	 */
+	@Override
+	public List<T> getCurrent() {
+		return getBaseDao().readAll();
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
