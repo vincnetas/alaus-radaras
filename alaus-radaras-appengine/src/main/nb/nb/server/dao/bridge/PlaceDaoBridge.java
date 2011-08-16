@@ -47,20 +47,7 @@ public class PlaceDaoBridge extends BaseDaoBridge<Place, Pub> implements PlaceDa
 		
 		return result;
 	}
-	
-	private long lastTime = 0;
-	
-	private List<Place> storedList;
-	
-	private List<Place> getAll() {
-		if (System.currentTimeMillis() - lastTime > 1000 * 60) {
-			storedList = convert(getPubDao().getApproved());
-			lastTime = System.currentTimeMillis();
-		}
 		
-		return storedList;
-	}
-	
 	/* (non-Javadoc)
      * @see nb.server.dao.bridge.BaseDaoBridge#convert(alaus.radaras.shared.model.Updatable)
      */

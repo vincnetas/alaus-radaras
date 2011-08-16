@@ -4,6 +4,11 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import nb.server.service.BeerService;
 import nb.server.service.PlaceService;
@@ -31,7 +36,7 @@ public class PlaceController {
     @Inject
     private BeerService beerService;
     
-    @RequestMapping(path = "/(.*)", toView="view/place.jsp")
+    @RequestMapping(path = "/(\\d+)", toView="view/place.jsp")
     public Model getPlace(@UriParameter(1) String id) {
         Model model = new Model();
         
@@ -42,6 +47,33 @@ public class PlaceController {
         }
         
         return model;
+    }
+    
+    @RequestMapping(path = "", toView="view/places.jsp")
+    public Model getPlaces() {
+    	Model model = new Model();
+    	
+    	SortedMap<String, SortedSet<Place>> places = new TreeMap<String, SortedSet<Place>>();
+    	for (Place place : getPlaceService().getCurrent()) {
+			SortedSet<Place> cityPlaces = places.get(place.getCity());
+			if (cityPlaces == null) {
+				cityPlaces = new TreeSet<Place>(new Comparator<Place>() {
+
+					@Override
+					public int compare(Place o1, Place o2) {
+						return o2.getTitle().compareToIgnoreCase(o1.getTitle());
+					}
+				});
+				
+				places.put(place.getCity(), cityPlaces);
+			}
+			
+			cityPlaces.add(place);
+		}
+    	
+    	
+    	model.addObject("places", places);
+    	return model;    	
     }
 
 	/**

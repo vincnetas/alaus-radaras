@@ -23,6 +23,17 @@ public interface NbService {
 	 * @return Returns suggested places.
 	 */
 	JPlace[] acPlace(String title, int max);
+	
+	/**
+	 * Suggest beer for auto complete.
+	 * 
+	 * @param title
+	 *            Part of beer title
+	 * @param max
+	 *            Maximum suggestions
+	 * @return Returns suggested beers.
+	 */
+	JBeer[] acBeer(String title, int max);
 
 	JPlace getPlace(String id);
 

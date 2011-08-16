@@ -60,8 +60,10 @@ public class NbServletModule extends MvcModule {
 		bind(NbService.class).to(NbServiceImpl.class);
 				
 		serve("/jsonrpc").with(JSONDispacher.class);
-		control("/place/*").withController(PlaceController.class).set(); 
-		control("/beer/*").withController(BeerController.class).set(); 
+		control("/place/*").withController(PlaceController.class).set();
+		control("/places").withController(PlaceController.class).set();
+		control("/beer/*").withController(BeerController.class).set();
+		control("/beers").withController(BeerController.class).set();
 		control("/home").withController(HomeController.class).set(); 
 		
 	}

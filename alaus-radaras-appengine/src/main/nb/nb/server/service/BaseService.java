@@ -34,6 +34,12 @@ public interface BaseService<T extends BaseObject> {
 	
 	T getCurrent(String objectId);
 	
+	/**
+	 * 
+	 * @return Returns all current objects
+	 */	
+	List<T> getCurrent();
+	
 	List<T> getCurrent(List<String> objectIds);
 	
 	List<T> getDeleted(Date since);
