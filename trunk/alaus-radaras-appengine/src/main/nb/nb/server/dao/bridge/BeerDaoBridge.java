@@ -95,6 +95,10 @@ public class BeerDaoBridge extends BaseDaoBridge<Beer, alaus.radaras.shared.mode
 		for (Beer beer : beers) {
 			if (beer.getTitle().toLowerCase().contains(title.toLowerCase())) {
 				result.add(beer);
+				
+				if (result.size() >= max) {
+					break;
+				}
 			}
 		}
 		
