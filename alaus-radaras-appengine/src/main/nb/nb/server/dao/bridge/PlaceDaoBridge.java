@@ -42,6 +42,10 @@ public class PlaceDaoBridge extends BaseDaoBridge<Place, Pub> implements PlaceDa
 		for (Place place : places) {
 			if (place.getTitle().toLowerCase().contains(title.toLowerCase())) {
 				result.add(place);
+				
+				if (result.size() >= max) {
+					break;
+				}
 			}
 		}
 		
