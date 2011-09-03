@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Pub.h"
 
 @interface NewPubBrandSubmit : UIViewController <UITextViewDelegate> {
 	// Add UI
 	UITextView *msgTextView;
 	UIBarButtonItem *submitBtn;
-	
-	NSString *pubId;
+    Pub *pub;
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *msgTextView;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *submitBtn;
 
-@property (nonatomic, retain) NSString *pubId;
+@property (nonatomic, retain) Pub *pub;
+
 
 - (void) sendNewPubBrandSubmit;
 - (IBAction) actionSelected;//Deprecated - remove
