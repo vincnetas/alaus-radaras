@@ -8,14 +8,15 @@
 
 #import "NewPubBrandSubmit.h"
 #import "DataPublisher.h"
-#import "LocationManager.h";
+#import "LocationManager.h"
+
 
 @implementation NewPubBrandSubmit
 
-@synthesize msgTextView, submitBtn, pubId;
+@synthesize msgTextView, submitBtn, pub;
 
 - (void)dealloc {
-	[pubId release];
+    [pub release];
 	[msgTextView release];
 	[submitBtn release];
     [super dealloc];
@@ -64,7 +65,7 @@
 		
 //		DataPublisher *dataPublisher = [[DataPublisher alloc]init];
 		BOOL success = [[DataPublisher sharedManager] submitPubBrand:@"" 
-												  pub:pubId 
+												  pub:pub.pubId 
 											   status:@"NEW_BRAND" 
 											  message:@""
 											 validate:NO];
@@ -75,7 +76,7 @@
 			NSString *post = 
 				[NSString stringWithFormat:
 					@"type=pubBrandInfo&status=NEW_BRAND&brandId=NEW_BRAND&pubId=%@&message=%@&location.latitude=%.8f&location.longitude=%.8f",
-					pubId, [NSString stringWithFormat:@"UID: %@ Message: %@", uniqueIdentifier, msgTextView.text], coords.latitude, coords.longitude];
+					pub.pubId, [NSString stringWithFormat:@"UID: %@ Message: %@ Pub: %@", uniqueIdentifier, msgTextView.text, pub.pubTitle], coords.latitude, coords.longitude];
 			
 			[self.parentViewController postData:post msg:@"+500 taškų už pilietiškumą. Dėkui! :)"];
 		}

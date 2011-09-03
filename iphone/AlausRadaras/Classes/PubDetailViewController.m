@@ -305,7 +305,8 @@
 
 
 - (IBAction) openAddBrandSubmit: (id)sender {
-	newBrandSubmit.pubId = currentPub.pubId;
+    newBrandSubmit.pub = currentPub;
+
 	newBrandSubmit.modalTransitionStyle = UIModalTransitionStyleCoverVertical;//UIModalTransitionStyleCoverVertical;	
 	[self presentModalViewController:newBrandSubmit animated:YES];	
 }
