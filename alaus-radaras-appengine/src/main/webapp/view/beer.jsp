@@ -12,6 +12,8 @@
 <title></title>
 </head>
 <body>
+	<jsp:include page="/jsp/header.jsp" />
+	
 	<div id="content">
 		<div id="pubTitle">${beer.title }</div>
 
