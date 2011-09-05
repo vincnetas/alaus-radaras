@@ -16,7 +16,7 @@
 	<fb:like href="http://www.facebook.com/pages/Alaus-radaras/147466041971168" show_faces="false" width="450" font="arial"></fb:like>
 	
 	<!-- Aboot -->
-	<a href="http://alausradaras.lt" title="Daugiau informacijos">Apie radarą</a>
+	<a href="/about" title="Daugiau informacijos">Apie radarą</a>
 </div>
 
 <script type="text/javascript">

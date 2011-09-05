@@ -66,8 +66,8 @@ public class NbServletModule extends MvcModule {
 		control("/places").withController(PlaceController.class).set();
 		control("/beer/*").withController(BeerController.class).set();
 		control("/beers").withController(BeerController.class).set();
-		control("/home").withController(HomeController.class).set();
-		control("/home/about").withController(HomeController.class).set();
+		control("/home").withController(HomeController.class).toView("view/home.jsp").set();
+		control("/about").withController(HomeController.class).toView("view/about.jsp").set();
 	}
 
 }

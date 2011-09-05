@@ -16,14 +16,10 @@ import com.google.inject.Singleton;
 @Controller
 public class HomeController {
 
-	@RequestMapping(path = "/", toView="view/home.jsp")
+	@RequestMapping(path = "/")
     public void home() {
 
     }
 	
-	@RequestMapping(path = "/about", toView="view/about.jsp")
-    public void about() {
-
-    }
 
 }
