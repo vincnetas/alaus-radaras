@@ -4,6 +4,8 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import nb.server.service.BeerService;
@@ -11,6 +13,7 @@ import nb.server.service.CompanyService;
 import nb.server.service.PlaceService;
 import nb.shared.model.Beer;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.Model;
 import org.zdevra.guice.mvc.RequestMapping;
@@ -54,7 +57,15 @@ public class BeerController {
     public Model getBeers() {
         Model model = new Model();
         
-        List<Beer> beers = getBeerService().getCurrent();
+        
+        List<Beer> beers =  getBeerService().getCurrent();
+        Collections.sort(beers, new Comparator<Beer>() {
+
+			@Override
+			public int compare(Beer o1, Beer o2) {			
+				return o1.getTitle().compareToIgnoreCase(o2.getTitle());
+			}
+		});
         model.addObject("beers", beers);
         
         return model;

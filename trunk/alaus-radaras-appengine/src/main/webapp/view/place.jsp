@@ -17,7 +17,7 @@
 	<div class="container box wide place">
 		<c:choose>
 			<c:when test="${not empty place.homepage }">
-				<a href="${place.homepage }"><span class="homepage">${place.title }</span></a>
+				<a href="${place.homepage }" title="${place.homepage }"><span class="homepage">${place.title }</span></a>
 			</c:when>
 			<c:otherwise>
 				<span>${place.title }</span>
@@ -52,8 +52,6 @@
 
 	<div id="content">
 
-
-
 		<div id="tagsSection" class="section">
 			<div class="sectionContent">
 				<c:forEach var="tag" items="${place.tags }">
@@ -63,6 +61,7 @@
 				</c:forEach>
 			</div>
 		</div>
+		
 	</div>
 
 	<jsp:include page="/jsp/footer.jsp" />

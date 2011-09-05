@@ -61,7 +61,7 @@ public class PlaceController {
 
 					@Override
 					public int compare(Place o1, Place o2) {
-						return o2.getTitle().compareToIgnoreCase(o1.getTitle());
+						return o1.getTitle().compareToIgnoreCase(o2.getTitle());
 					}
 				});
 				

@@ -20,5 +20,10 @@ public class HomeController {
     public void home() {
 
     }
+	
+	@RequestMapping(path = "/about", toView="view/about.jsp")
+    public void about() {
+
+    }
 
 }
