@@ -4,16 +4,21 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import nb.server.service.BeerService;
 import nb.server.service.CompanyService;
 import nb.server.service.PlaceService;
 import nb.shared.model.Beer;
+import nb.shared.model.Place;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.zdevra.guice.mvc.Controller;
 import org.zdevra.guice.mvc.Model;
 import org.zdevra.guice.mvc.RequestMapping;
@@ -44,15 +49,15 @@ public class BeerController {
         Model model = new Model();
         
         Beer beer = getBeerService().getCurrent(id);
-        if (beer != null) {        
+        if (beer != null) {        	
         	model.addObject("beer", beer);
         	model.addObject("company", getCompanyService().getCurrent(beer.getCompanyId()));
-        	model.addObject("places", getPlaceService().getCurrent(new ArrayList<String>(beer.getPlaceIds())));
+        	model.addObject("places", Utils.sortPlacesByCount(getPlaceService().getCurrent(new ArrayList<String>(beer.getPlaceIds()))));        	
         }        
         
         return model;
     }
-    
+        
     @RequestMapping(path = "", toView="view/beers.jsp")
     public Model getBeers() {
         Model model = new Model();

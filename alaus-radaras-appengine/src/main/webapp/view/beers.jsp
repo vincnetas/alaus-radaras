@@ -12,11 +12,20 @@
 <title></title>
 </head>
 <body>
-	<c:forEach var="beer" items="${beers }">
-		<ul>	
-			<li><a href="/beer/${beer.id }">${beer.title }</a></li>
-		</ul>
-	</c:forEach>
+	<jsp:include page="/jsp/header.jsp" />
+
+	<div class="container box wide ">
+		<c:forEach var="beer" items="${beers }">
+			<div id="${beer.objectId }" class="beer">
+				<a href="/beer/${beer.objectId }"> 
+					<img alt="${beer.title }" title="${beer.title }" src="/img/beer/brand_${beer.icon }.png" /> 
+				</a>
+			</div>
+		</c:forEach>
+	</div>
+	
+	<jsp:include page="/jsp/footer.jsp" />
+	
 </body>
 
 </html>

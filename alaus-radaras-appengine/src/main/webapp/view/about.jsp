@@ -19,8 +19,8 @@
 			girdyklos.</blockquote>
 
 		<p>
-			Šią programėlę sukūrė Gytis, Juozas, Laurynas, Vincentas, Saulius, Simonas per <a href="http://www.omnitel.lt/dirbtuves">Omnitel programėlių dirbtuvių</a> savaitgalį, kuriame
-			buvo apdovanoti, kaip geriausi naujo turinio kategorijoje.
+			Šią programėlę sukūrė Gytis, Juozas, Laurynas, Laurynas, Vincentas, Saulius, Simonas per <a href="http://www.omnitel.lt/dirbtuves">Omnitel programėlių dirbtuvių</a> savaitgalį,
+			kuriame buvo apdovanoti, kaip geriausi naujo turinio kategorijoje.
 		</p>
 
 		<img src="/img/htc-alaus-radaras-1.png" style="float:right;"/>

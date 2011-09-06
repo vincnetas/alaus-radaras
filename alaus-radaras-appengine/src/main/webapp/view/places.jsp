@@ -12,14 +12,27 @@
 <title>Places</title>
 </head>
 <body>
-	<c:forEach var="city" items="${places}">
-		<h2>${city.key}</h2>
-		<ul>
-			<c:forEach var="place" items="${city.value}">
-				<li><a href="/place/${place.id}">${place.title }</a></li>
-			</c:forEach>
-		</ul>
-	</c:forEach>
+	<jsp:include page="/jsp/header.jsp" />
+
+	<div class="container box wide placeList">
+		<div class="sectionContent">			
+			<c:forEach var="city" items="${places}">
+				<div class="cityContainer">
+					<ul>
+						<c:forEach var="place" items="${city }" varStatus="status">
+							<c:if test="${status.first }">
+								<h2>${place.city}</h2>
+							</c:if>
+							<li><a href="/place/${place.id}">${place.title }</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:forEach>			
+		</div>
+	</div>
+	
+	<jsp:include page="/jsp/footer.jsp" />
+	
 </body>
 
 </html>

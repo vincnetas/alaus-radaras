@@ -14,34 +14,29 @@
 <body>
 	<jsp:include page="/jsp/header.jsp" />
 	
-	<div id="content">
-		<div id="pubTitle">${beer.title }</div>
-
-		<div id="infoSection" class="section">
-			<div class="sectionHeader">
-				<div class="sectionTitle">Informacija</div>
-			</div>
-			<div id="map">
-				<img alt="map" src="" width="300px" height="300px" />
-			</div>
-			<div>
-				<div id="country">${company.title }</div>
-			</div>
-		</div>
-
-		<div id="beerSection" class="section">
-			<div class="sectionHeader">
-				<div class="sectionTitle">Vietos</div>
-			</div>
-			<div class="sectionContent">
-				<c:forEach var="place" items="${places }">
-					<div id="${place.objectId }">
-						<img alt="" src="" /> <span><a href="/place/${place.objectId }">${place.title }</a></span>
-					</div>
-				</c:forEach>
-			</div>
+	<div class="container box wide beerTitle">
+		<img alt="${beer.title }" title="${beer.title }" src="/img/beer/brand_${beer.icon }.png" />
+		<span>${beer.title }</span>
+	</div>
+	
+	<div class="container box wide placeList">
+		<div class="sectionContent">			
+			<c:forEach var="city" items="${places}">
+				<div class="cityContainer">
+					<ul>
+						<c:forEach var="place" items="${city }" varStatus="status">
+							<c:if test="${status.first }">
+								<h2>${place.city}</h2>
+							</c:if>
+							<li><a href="/place/${place.id}">${place.title }</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:forEach>			
 		</div>
 	</div>
+	
+	<jsp:include page="/jsp/footer.jsp" />
 
 </body>
 
