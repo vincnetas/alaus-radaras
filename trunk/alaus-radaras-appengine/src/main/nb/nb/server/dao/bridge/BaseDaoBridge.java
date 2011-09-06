@@ -37,7 +37,7 @@ public abstract class BaseDaoBridge<T extends BaseObject, V extends Updatable> i
 	private List<T> storedList;
 	
 	public synchronized List<T> getAll() {
-		if (System.currentTimeMillis() - lastTime > 1000 * 60) {
+		if (System.currentTimeMillis() - lastTime > 1000 * 60 * 10) {
 			storedList = convert(getBaseDao().getApproved());
 			lastTime = System.currentTimeMillis();
 		}
