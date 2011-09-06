@@ -13,7 +13,7 @@
 	
 	<!-- Facebook -->
 	<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-	<fb:like href="http://www.facebook.com/pages/Alaus-radaras/147466041971168" show_faces="false" width="450" font="arial"></fb:like>
+	<fb:like href="http://www.facebook.com/pages/Alaus-radaras/147466041971168" show_faces="false" width="650" font="arial"></fb:like>
 	
 	<!-- Aboot -->
 	<a href="/about" title="Daugiau informacijos">Apie radarą</a>
