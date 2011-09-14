@@ -49,7 +49,7 @@
     pubCoordinates.latitude = currentPub.latitude;
     pubCoordinates.longitude = currentPub.longitude;
     */
-    MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.01, 0.02);
+    MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(userPosition, coordSpan);
     newPubMap.region = region;
 
