@@ -13,7 +13,7 @@
 #import "NewPubBrandSubmit.h"
 #import "MBProgressHUD.h"
 
-@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate, UIActionSheetDelegate>{
+@interface PubDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate, UIActionSheetDelegate, MKMapViewDelegate>{
 	UILabel *pubTitleShortLabel;
 	UILabel *pubTitleLabel;
 	UILabel *pubAddressLabel;
@@ -42,6 +42,8 @@
 	BOOL callAlertBox;
 	
 	UIView *brandReportView;
+    
+    IBOutlet MKMapView *map;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *pubTitleShortLabel;
@@ -62,6 +64,10 @@
 // Reporting
 @property (nonatomic, retain) NSString *reportBrandId;
 @property (nonatomic, retain) NSString *reportStatus;
+
+// Map 
+@property(nonatomic, retain) IBOutlet MKMapView *map;
+
 
 - (IBAction) gotoPreviousView:(id)sender;
 - (IBAction) dialNumber:(id)sender;

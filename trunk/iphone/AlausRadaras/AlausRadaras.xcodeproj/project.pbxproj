@@ -53,6 +53,7 @@
 		C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
+		C93858181412943F008DBCCA /* NewPubSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93858161412943F008DBCCA /* NewPubSubmit.m */; };
 		C938B8CC1370746D00CE7A8E /* SyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8CB1370746D00CE7A8E /* SyncManager.m */; };
 		C938B8D813707DD000CE7A8E /* Pub.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8D713707DD000CE7A8E /* Pub.m */; };
 		C938B8DB13707DE400CE7A8E /* CodeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C938B8DA13707DE400CE7A8E /* CodeValue.m */; };
@@ -77,6 +78,7 @@
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
+		C97854881413AB320036D8AC /* ButtonShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97854871413AB320036D8AC /* ButtonShadow@2x.png */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
@@ -90,6 +92,31 @@
 		C994525B1313005500732314 /* black-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C99452591313005500732314 /* black-background@2x.png */; };
 		C9948376131C51C400A52587 /* PubsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9948374131C51C400A52587 /* PubsViewController.m */; };
 		C9948377131C51C400A52587 /* PubsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9948375131C51C400A52587 /* PubsViewController.xib */; };
+		C994BE7014214C06002101B9 /* beer_avilio_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5714214C06002101B9 /* beer_avilio_sviesusis.png */; };
+		C994BE7114214C06002101B9 /* beer_bernard.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5814214C06002101B9 /* beer_bernard.png */; };
+		C994BE7214214C06002101B9 /* beer_budweiser_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5914214C06002101B9 /* beer_budweiser_dark.png */; };
+		C994BE7314214C06002101B9 /* beer_budweiser.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5A14214C06002101B9 /* beer_budweiser.png */; };
+		C994BE7414214C06002101B9 /* beer_carlsberg.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5B14214C06002101B9 /* beer_carlsberg.png */; };
+		C994BE7514214C06002101B9 /* beer_chimay.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5C14214C06002101B9 /* beer_chimay.png */; };
+		C994BE7614214C06002101B9 /* beer_chodovar_tamsus.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5D14214C06002101B9 /* beer_chodovar_tamsus.png */; };
+		C994BE7714214C06002101B9 /* beer_duvel.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5E14214C06002101B9 /* beer_duvel.png */; };
+		C994BE7814214C06002101B9 /* beer_grimbergen_lager.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE5F14214C06002101B9 /* beer_grimbergen_lager.png */; };
+		C994BE7914214C06002101B9 /* beer_hbh.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6014214C06002101B9 /* beer_hbh.png */; };
+		C994BE7A14214C06002101B9 /* beer_hbh2.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6114214C06002101B9 /* beer_hbh2.png */; };
+		C994BE7B14214C06002101B9 /* beer_kalnapilis.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6214214C06002101B9 /* beer_kalnapilis.png */; };
+		C994BE7C14214C06002101B9 /* beer_kauno_sviesus.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6314214C06002101B9 /* beer_kauno_sviesus.png */; };
+		C994BE7D14214C06002101B9 /* beer_kauno_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6414214C06002101B9 /* beer_kauno_tamsusis.png */; };
+		C994BE7E14214C06002101B9 /* beer_kozel_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6514214C06002101B9 /* beer_kozel_dark.png */; };
+		C994BE7F14214C06002101B9 /* beer_kronenbourg_1664.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6614214C06002101B9 /* beer_kronenbourg_1664.png */; };
+		C994BE8014214C06002101B9 /* beer_krusovice_cerne.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6714214C06002101B9 /* beer_krusovice_cerne.png */; };
+		C994BE8114214C06002101B9 /* beer_kupiskenu_sventinis.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6814214C06002101B9 /* beer_kupiskenu_sventinis.png */; };
+		C994BE8214214C06002101B9 /* beer_murphys_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6914214C06002101B9 /* beer_murphys_red.png */; };
+		C994BE8314214C06002101B9 /* beer_pauwel_kwak.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6A14214C06002101B9 /* beer_pauwel_kwak.png */; };
+		C994BE8414214C06002101B9 /* beer_pilies.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6B14214C06002101B9 /* beer_pilies.png */; };
+		C994BE8514214C06002101B9 /* beer_sinkoriu_tamsus.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6C14214C06002101B9 /* beer_sinkoriu_tamsus.png */; };
+		C994BE8614214C06002101B9 /* beer_sinkoriu.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6D14214C06002101B9 /* beer_sinkoriu.png */; };
+		C994BE8714214C06002101B9 /* beer_stella_artois.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6E14214C06002101B9 /* beer_stella_artois.png */; };
+		C994BE8814214C06002101B9 /* beer_warsteiner.png in Resources */ = {isa = PBXBuildFile; fileRef = C994BE6F14214C06002101B9 /* beer_warsteiner.png */; };
 		C99A65CD132573D10036B4DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C99A65CC132573D10036B4DF /* MBProgressHUD.m */; };
 		C9A0F8AF137DC9C6009B490D /* beer_backoriu_tamsusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0F879137DC9C6009B490D /* beer_backoriu_tamsusis.png */; };
 		C9A0F8B0137DC9C6009B490D /* beer_belmonto_sviesusis.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A0F87A137DC9C6009B490D /* beer_belmonto_sviesusis.png */; };
@@ -245,6 +272,8 @@
 		C92E59A912EE146E00412BFA /* BrandsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsTableCell.m; sourceTree = "<group>"; };
 		C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsTableCell.xib; path = Classes/BrandsTableCell.xib; sourceTree = "<group>"; };
 		C92E5A3D12EE1DC900412BFA /* BrandsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsViewController.h; sourceTree = "<group>"; };
+		C93858151412943F008DBCCA /* NewPubSubmit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPubSubmit.h; sourceTree = "<group>"; };
+		C93858161412943F008DBCCA /* NewPubSubmit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPubSubmit.m; sourceTree = "<group>"; };
 		C938B8CA1370746D00CE7A8E /* SyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncManager.h; path = Classes/SyncManager.h; sourceTree = "<group>"; };
 		C938B8CB1370746D00CE7A8E /* SyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncManager.m; path = Classes/SyncManager.m; sourceTree = "<group>"; };
 		C938B8D613707DD000CE7A8E /* Pub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pub.h; path = Classes/Pub.h; sourceTree = "<group>"; };
@@ -281,6 +310,7 @@
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
 		C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsDetailViewController.h; sourceTree = "<group>"; };
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
+		C97854871413AB320036D8AC /* ButtonShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ButtonShadow@2x.png"; path = "resources/images/640x960/ButtonShadow@2x.png"; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
@@ -299,6 +329,31 @@
 		C9948373131C51C400A52587 /* PubsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubsViewController.h; sourceTree = "<group>"; };
 		C9948374131C51C400A52587 /* PubsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubsViewController.m; sourceTree = "<group>"; };
 		C9948375131C51C400A52587 /* PubsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PubsViewController.xib; path = Classes/PubsViewController.xib; sourceTree = "<group>"; };
+		C994BE5714214C06002101B9 /* beer_avilio_sviesusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_avilio_sviesusis.png; path = new_icons/beer_avilio_sviesusis.png; sourceTree = "<group>"; };
+		C994BE5814214C06002101B9 /* beer_bernard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_bernard.png; path = new_icons/beer_bernard.png; sourceTree = "<group>"; };
+		C994BE5914214C06002101B9 /* beer_budweiser_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_budweiser_dark.png; path = new_icons/beer_budweiser_dark.png; sourceTree = "<group>"; };
+		C994BE5A14214C06002101B9 /* beer_budweiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_budweiser.png; path = new_icons/beer_budweiser.png; sourceTree = "<group>"; };
+		C994BE5B14214C06002101B9 /* beer_carlsberg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_carlsberg.png; path = new_icons/beer_carlsberg.png; sourceTree = "<group>"; };
+		C994BE5C14214C06002101B9 /* beer_chimay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_chimay.png; path = new_icons/beer_chimay.png; sourceTree = "<group>"; };
+		C994BE5D14214C06002101B9 /* beer_chodovar_tamsus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_chodovar_tamsus.png; path = new_icons/beer_chodovar_tamsus.png; sourceTree = "<group>"; };
+		C994BE5E14214C06002101B9 /* beer_duvel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_duvel.png; path = new_icons/beer_duvel.png; sourceTree = "<group>"; };
+		C994BE5F14214C06002101B9 /* beer_grimbergen_lager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_grimbergen_lager.png; path = new_icons/beer_grimbergen_lager.png; sourceTree = "<group>"; };
+		C994BE6014214C06002101B9 /* beer_hbh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_hbh.png; path = new_icons/beer_hbh.png; sourceTree = "<group>"; };
+		C994BE6114214C06002101B9 /* beer_hbh2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_hbh2.png; path = new_icons/beer_hbh2.png; sourceTree = "<group>"; };
+		C994BE6214214C06002101B9 /* beer_kalnapilis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kalnapilis.png; path = new_icons/beer_kalnapilis.png; sourceTree = "<group>"; };
+		C994BE6314214C06002101B9 /* beer_kauno_sviesus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kauno_sviesus.png; path = new_icons/beer_kauno_sviesus.png; sourceTree = "<group>"; };
+		C994BE6414214C06002101B9 /* beer_kauno_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kauno_tamsusis.png; path = new_icons/beer_kauno_tamsusis.png; sourceTree = "<group>"; };
+		C994BE6514214C06002101B9 /* beer_kozel_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kozel_dark.png; path = new_icons/beer_kozel_dark.png; sourceTree = "<group>"; };
+		C994BE6614214C06002101B9 /* beer_kronenbourg_1664.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kronenbourg_1664.png; path = new_icons/beer_kronenbourg_1664.png; sourceTree = "<group>"; };
+		C994BE6714214C06002101B9 /* beer_krusovice_cerne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_krusovice_cerne.png; path = new_icons/beer_krusovice_cerne.png; sourceTree = "<group>"; };
+		C994BE6814214C06002101B9 /* beer_kupiskenu_sventinis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_kupiskenu_sventinis.png; path = new_icons/beer_kupiskenu_sventinis.png; sourceTree = "<group>"; };
+		C994BE6914214C06002101B9 /* beer_murphys_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_murphys_red.png; path = new_icons/beer_murphys_red.png; sourceTree = "<group>"; };
+		C994BE6A14214C06002101B9 /* beer_pauwel_kwak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_pauwel_kwak.png; path = new_icons/beer_pauwel_kwak.png; sourceTree = "<group>"; };
+		C994BE6B14214C06002101B9 /* beer_pilies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_pilies.png; path = new_icons/beer_pilies.png; sourceTree = "<group>"; };
+		C994BE6C14214C06002101B9 /* beer_sinkoriu_tamsus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_sinkoriu_tamsus.png; path = new_icons/beer_sinkoriu_tamsus.png; sourceTree = "<group>"; };
+		C994BE6D14214C06002101B9 /* beer_sinkoriu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_sinkoriu.png; path = new_icons/beer_sinkoriu.png; sourceTree = "<group>"; };
+		C994BE6E14214C06002101B9 /* beer_stella_artois.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_stella_artois.png; path = new_icons/beer_stella_artois.png; sourceTree = "<group>"; };
+		C994BE6F14214C06002101B9 /* beer_warsteiner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_warsteiner.png; path = new_icons/beer_warsteiner.png; sourceTree = "<group>"; };
 		C99A65CB132573D10036B4DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/HUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		C99A65CC132573D10036B4DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/HUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		C9A0F879137DC9C6009B490D /* beer_backoriu_tamsusis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beer_backoriu_tamsusis.png; path = resources/beers/beer_backoriu_tamsusis.png; sourceTree = "<group>"; };
@@ -478,6 +533,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C93AFAF714155C3200686EE3 /* new_icons */,
 				C9E7413C137C78A800EA9EB6 /* beers */,
 				C986CFD512F4702D00865F6D /* pubs */,
 				C9A941DA12EA129B00992FAD /* images */,
@@ -536,6 +592,7 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
+				C97854871413AB320036D8AC /* ButtonShadow@2x.png */,
 				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
 				C90F11031335196300239BDE /* pin@2x.png */,
@@ -592,6 +649,8 @@
 				C9642B3712EE35940033F9B8 /* MapViewController.m */,
 				C953E80A12EF5B7B001BD656 /* PubAnnotation.h */,
 				C953E80B12EF5B7B001BD656 /* PubAnnotation.m */,
+				C93858151412943F008DBCCA /* NewPubSubmit.h */,
+				C93858161412943F008DBCCA /* NewPubSubmit.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -638,6 +697,38 @@
 				C9DA6F0612F34E0700D9886A /* BeerCounterController.m */,
 			);
 			name = BeerCounter;
+			sourceTree = "<group>";
+		};
+		C93AFAF714155C3200686EE3 /* new_icons */ = {
+			isa = PBXGroup;
+			children = (
+				C994BE5714214C06002101B9 /* beer_avilio_sviesusis.png */,
+				C994BE5814214C06002101B9 /* beer_bernard.png */,
+				C994BE5914214C06002101B9 /* beer_budweiser_dark.png */,
+				C994BE5A14214C06002101B9 /* beer_budweiser.png */,
+				C994BE5B14214C06002101B9 /* beer_carlsberg.png */,
+				C994BE5C14214C06002101B9 /* beer_chimay.png */,
+				C994BE5D14214C06002101B9 /* beer_chodovar_tamsus.png */,
+				C994BE5E14214C06002101B9 /* beer_duvel.png */,
+				C994BE5F14214C06002101B9 /* beer_grimbergen_lager.png */,
+				C994BE6014214C06002101B9 /* beer_hbh.png */,
+				C994BE6114214C06002101B9 /* beer_hbh2.png */,
+				C994BE6214214C06002101B9 /* beer_kalnapilis.png */,
+				C994BE6314214C06002101B9 /* beer_kauno_sviesus.png */,
+				C994BE6414214C06002101B9 /* beer_kauno_tamsusis.png */,
+				C994BE6514214C06002101B9 /* beer_kozel_dark.png */,
+				C994BE6614214C06002101B9 /* beer_kronenbourg_1664.png */,
+				C994BE6714214C06002101B9 /* beer_krusovice_cerne.png */,
+				C994BE6814214C06002101B9 /* beer_kupiskenu_sventinis.png */,
+				C994BE6914214C06002101B9 /* beer_murphys_red.png */,
+				C994BE6A14214C06002101B9 /* beer_pauwel_kwak.png */,
+				C994BE6B14214C06002101B9 /* beer_pilies.png */,
+				C994BE6C14214C06002101B9 /* beer_sinkoriu_tamsus.png */,
+				C994BE6D14214C06002101B9 /* beer_sinkoriu.png */,
+				C994BE6E14214C06002101B9 /* beer_stella_artois.png */,
+				C994BE6F14214C06002101B9 /* beer_warsteiner.png */,
+			);
+			name = new_icons;
 			sourceTree = "<group>";
 		};
 		C986CFD512F4702D00865F6D /* pubs */ = {
@@ -1008,6 +1099,32 @@
 				C9A0F8E2137DC9C6009B490D /* beer_vilniaus_kvietinis.png in Resources */,
 				C9A0F8E3137DC9C6009B490D /* beer_vilniaus_nefiltruotas.png in Resources */,
 				C9A0F8E4137DC9C6009B490D /* beer_zubr.png in Resources */,
+				C97854881413AB320036D8AC /* ButtonShadow@2x.png in Resources */,
+				C994BE7014214C06002101B9 /* beer_avilio_sviesusis.png in Resources */,
+				C994BE7114214C06002101B9 /* beer_bernard.png in Resources */,
+				C994BE7214214C06002101B9 /* beer_budweiser_dark.png in Resources */,
+				C994BE7314214C06002101B9 /* beer_budweiser.png in Resources */,
+				C994BE7414214C06002101B9 /* beer_carlsberg.png in Resources */,
+				C994BE7514214C06002101B9 /* beer_chimay.png in Resources */,
+				C994BE7614214C06002101B9 /* beer_chodovar_tamsus.png in Resources */,
+				C994BE7714214C06002101B9 /* beer_duvel.png in Resources */,
+				C994BE7814214C06002101B9 /* beer_grimbergen_lager.png in Resources */,
+				C994BE7914214C06002101B9 /* beer_hbh.png in Resources */,
+				C994BE7A14214C06002101B9 /* beer_hbh2.png in Resources */,
+				C994BE7B14214C06002101B9 /* beer_kalnapilis.png in Resources */,
+				C994BE7C14214C06002101B9 /* beer_kauno_sviesus.png in Resources */,
+				C994BE7D14214C06002101B9 /* beer_kauno_tamsusis.png in Resources */,
+				C994BE7E14214C06002101B9 /* beer_kozel_dark.png in Resources */,
+				C994BE7F14214C06002101B9 /* beer_kronenbourg_1664.png in Resources */,
+				C994BE8014214C06002101B9 /* beer_krusovice_cerne.png in Resources */,
+				C994BE8114214C06002101B9 /* beer_kupiskenu_sventinis.png in Resources */,
+				C994BE8214214C06002101B9 /* beer_murphys_red.png in Resources */,
+				C994BE8314214C06002101B9 /* beer_pauwel_kwak.png in Resources */,
+				C994BE8414214C06002101B9 /* beer_pilies.png in Resources */,
+				C994BE8514214C06002101B9 /* beer_sinkoriu_tamsus.png in Resources */,
+				C994BE8614214C06002101B9 /* beer_sinkoriu.png in Resources */,
+				C994BE8714214C06002101B9 /* beer_stella_artois.png in Resources */,
+				C994BE8814214C06002101B9 /* beer_warsteiner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1172,7 @@
 				C938B8E913707EA200CE7A8E /* Beer.m in Sources */,
 				C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */,
 				C9B60096138B7DD700DE3A95 /* MTStatusBarOverlay.m in Sources */,
+				C93858181412943F008DBCCA /* NewPubSubmit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
