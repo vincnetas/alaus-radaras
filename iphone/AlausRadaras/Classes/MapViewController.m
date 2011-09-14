@@ -21,8 +21,11 @@
 @synthesize infoLabel;
 @synthesize citySegmentControl;
 @synthesize pubTable;
+@synthesize newPubSumbitView;
 
 - (void)dealloc {
+    [newPubSumbitView release];
+    
 	[pubTable release];
 	[citySegmentControl release];
 	[infoLabel release];
@@ -325,6 +328,90 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
+
+
+
+
+
+
+
+
+- (IBAction) openAddNewPubView: (id)sender {
+//    newPubSubmit.pub = currentPub;
+    
+	newPubSumbitView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;//UIModalTransitionStyleCoverVertical;	
+	[self presentModalViewController:newPubSumbitView animated:YES];	
+}
+
+
+
+
+
+
+#pragma mark -
+#pragma mark NSURLConnection methods
+
+
+
+- (void) postData:(NSString *) params msg:(NSString *)msg {
+	NSLog(@"MapViewController postData");
+	thankYouMsg = msg;
+	NSData *postData = [params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	NSString *postLength = [NSString stringWithFormat:@"%d", [params length]];
+	
+	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	[request setURL:[NSURL URLWithString:@"http://alausradaras.lt/android/submit.php"]];
+	[request setHTTPMethod:@"POST"];
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPBody:postData];
+	
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // release the connection, and the data object
+    [connection release];
+    
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+	
+	//Connection error occured
+	UIAlertView* alertView = 
+    [[UIAlertView alloc] initWithTitle:@"Nepavyko nusiųsti... gal dar alaus?"
+                               message:nil 
+                              delegate:self 
+                     cancelButtonTitle:@"Meginsiu vėliau"
+                     otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"New Pub Successfully Sent");
+
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+	HUD.mode = MBProgressHUDModeCustomView;
+	[self.view addSubview:HUD];
+	HUD.delegate = self;
+	HUD.labelText = thankYouMsg;//@"Tik alus išgelbės mus!";
+	[HUD showWhileExecuting:@selector(delay) onTarget:self withObject:nil animated:YES];
+	[HUD release];
+}
+
+- (void)delay {
+	sleep(2);
+}
+
+
+
+
+
+
+
 
 
 

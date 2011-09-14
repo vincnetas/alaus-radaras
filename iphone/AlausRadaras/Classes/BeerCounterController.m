@@ -167,9 +167,7 @@
 }
 
 - (void)touchHeld:(NSTimer*)timer {
-	NSLog(@"Touch Held");
-//	if ([touchTimer isValid]) [touchTimer invalidate];
-//	[self startTouchTimer:3.00];	
+	NSLog(@"Touch Held");	
 	[self resetCount];
 }
 

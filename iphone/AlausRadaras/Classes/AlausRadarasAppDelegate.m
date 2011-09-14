@@ -11,7 +11,6 @@
 #import "LocationManager.h"
 #import "DataPublisher.h"
 #import "SyncManager.h"
-
 @implementation AlausRadarasAppDelegate
 
 @synthesize window;

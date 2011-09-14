@@ -21,6 +21,7 @@
 @synthesize brandsTable;
 @synthesize userCoordinates;
 @synthesize reportBrandId, reportStatus, brandReportView;
+@synthesize map;
 
 - (void)dealloc {
 	[reportBrandId release];
@@ -41,6 +42,8 @@
 	[pubCallLabel release];
 	[brandsTable release];
 	[brandList release];
+    
+    [map release];
     [super dealloc];
 }
 
@@ -86,6 +89,49 @@
 	 NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	 enableAllFeatures = [standardUserDefaults boolForKey:@"EnableAllFeatures"];
 	 
+     
+     
+     
+     // MAP
+     
+     
+     
+     map.hidden = YES;
+     map.showsUserLocation = YES;
+	 
+     
+     /* Pub Location */
+     CLLocationCoordinate2D pubCoordinates;
+     pubCoordinates.latitude = currentPub.latitude;
+     pubCoordinates.longitude = currentPub.longitude;
+	 
+     MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.01, 0.02);
+	 MKCoordinateRegion region = MKCoordinateRegionMake(pubCoordinates, coordSpan);
+	 map.region = region;
+     
+     PubAnnotation *pubAnnotation = [[PubAnnotation alloc] initWithCoordinate:pubCoordinates];
+     [pubAnnotation setPubId:currentPub.pubId];
+     [pubAnnotation setTitle:currentPub.pubTitle];
+     
+     if (currentPub.distance != 0 && [[LocationManager sharedManager]getVisibilityControlled]){
+         [pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@ • (~%.2f Km)",currentPub.pubAddress,currentPub.distance]];
+     } else {
+         [pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",currentPub.pubAddress]];			
+     }
+     [map addAnnotation:pubAnnotation];
+
+     
+     
+     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+     HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+     HUD.mode = MBProgressHUDModeCustomView;
+     [self.view addSubview:HUD];
+     HUD.delegate = self;
+     HUD.labelText = @"Tik alus išgelbės mus!";
+     [HUD showWhileExecuting:@selector(delay1s) onTarget:self withObject:nil animated:YES];
+     [HUD release];
+     
+     
 	 NSLog(@"PubDetailViewController viewDidLoad");	 
 }
 
@@ -389,6 +435,47 @@
 - (void)delay {
 	sleep(2);
 }
+- (void)delay1s {
+	sleep(1);
+}
+
+
+
+
+
+
+#pragma mark -
+#pragma mark MAP methods
+
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation {
+    if (interfaceOrientation == UIInterfaceOrientationPortrait) {
+        map.hidden = YES;
+        return YES;
+    } else if (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown) {
+        map.hidden = NO;
+		return YES;	
+	} else {
+		return NO;
+	}
+}
+
+
+- (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
+	if ([annotation isKindOfClass:[MKUserLocation class]]) {
+		return nil;
+	}
+	
+	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
+	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
+	[customAnnotationView setImage:pinImage];
+    customAnnotationView.canShowCallout = YES;
+	
+    return customAnnotationView;
+}
+
+
 
 
 
