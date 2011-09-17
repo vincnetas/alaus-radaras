@@ -293,8 +293,8 @@
     }
     
 	Pub *pub = [pubsOnMap objectAtIndex:indexPath.row];
-	cell.titleText.text = [pub pubTitle];
-    cell.addressText.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];	
+	cell.titleText.text = [[pub pubTitle]copy];
+    cell.addressText.text = [NSString stringWithFormat:@"%@, %@",[[pub pubAddress]copy],[[pub city]copy]];	
     
 	if (pub.distance != 0 && locationBased){
 		cell.distanceText.text = [NSString stringWithFormat:@"~%.2f km", [pub distance]];
