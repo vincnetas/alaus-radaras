@@ -62,6 +62,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[msgText becomeFirstResponder];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coordinateChanged_:) name:@"DDAnnotationCoordinateDidChangeNotification" object:nil];
+    
 	[super viewDidAppear:animated];
 }
 
@@ -126,6 +129,8 @@
 		[self.parentViewController dismissModalViewControllerAnimated:YES];
 	}
 }
+
+
 
 
 

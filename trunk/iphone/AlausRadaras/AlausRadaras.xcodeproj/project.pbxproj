@@ -51,6 +51,7 @@
 		C916C32D12FC7B9300AF396A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32612FC7B9300AF396A /* FMResultSet.m */; };
 		C916C32F12FC7B9300AF396A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32912FC7B9300AF396A /* FMDatabaseAdditions.m */; };
 		C916C33012FC7B9300AF396A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C916C32B12FC7B9300AF396A /* FMDatabase.m */; };
+		C91BFF9B14248C5B0079C5D9 /* beer_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C91BFF9A14248C5B0079C5D9 /* beer_02@2x.png */; };
 		C92E59AB12EE146E00412BFA /* BrandsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E59A912EE146E00412BFA /* BrandsTableCell.m */; };
 		C92E59AC12EE146E00412BFA /* BrandsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */; };
 		C93858181412943F008DBCCA /* NewPubSubmit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93858161412943F008DBCCA /* NewPubSubmit.m */; };
@@ -78,7 +79,8 @@
 		C9642B3912EE35940033F9B8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9642B3712EE35940033F9B8 /* MapViewController.m */; };
 		C9642B3A12EE35940033F9B8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9642B3812EE35940033F9B8 /* MapViewController.xib */; };
 		C97683C312F21C0B00D4E9F3 /* BrandsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */; };
-		C97854881413AB320036D8AC /* ButtonShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97854871413AB320036D8AC /* ButtonShadow@2x.png */; };
+		C97A91CA142287080077BCED /* PlaceTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A91C8142287080077BCED /* PlaceTableCell.m */; };
+		C97A91CB142287080077BCED /* PlaceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97A91C9142287080077BCED /* PlaceTableCell.xib */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
@@ -268,6 +270,7 @@
 		C916C32A12FC7B9300AF396A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = Classes/FMDB/FMDatabaseAdditions.h; sourceTree = "<group>"; };
 		C916C32B12FC7B9300AF396A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Classes/FMDB/FMDatabase.m; sourceTree = "<group>"; };
 		C916C32C12FC7B9300AF396A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Classes/FMDB/FMDatabase.h; sourceTree = "<group>"; };
+		C91BFF9A14248C5B0079C5D9 /* beer_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer_02@2x.png"; path = "resources/images/640x960/beer_02@2x.png"; sourceTree = "<group>"; };
 		C92E59A812EE146E00412BFA /* BrandsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsTableCell.h; sourceTree = "<group>"; };
 		C92E59A912EE146E00412BFA /* BrandsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsTableCell.m; sourceTree = "<group>"; };
 		C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BrandsTableCell.xib; path = Classes/BrandsTableCell.xib; sourceTree = "<group>"; };
@@ -310,7 +313,9 @@
 		C9642B3812EE35940033F9B8 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapViewController.xib; path = Classes/MapViewController.xib; sourceTree = "<group>"; };
 		C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandsDetailViewController.h; sourceTree = "<group>"; };
 		C97683C212F21C0B00D4E9F3 /* BrandsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandsDetailViewController.m; sourceTree = "<group>"; };
-		C97854871413AB320036D8AC /* ButtonShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ButtonShadow@2x.png"; path = "resources/images/640x960/ButtonShadow@2x.png"; sourceTree = "<group>"; };
+		C97A91C7142287080077BCED /* PlaceTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTableCell.h; sourceTree = "<group>"; };
+		C97A91C8142287080077BCED /* PlaceTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTableCell.m; sourceTree = "<group>"; };
+		C97A91C9142287080077BCED /* PlaceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceTableCell.xib; path = Classes/PlaceTableCell.xib; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
@@ -479,8 +484,8 @@
 				C93929BE131ED9B400F2B40F /* BeerCounter */,
 				C93929BD131ED9A700F2B40F /* Pub */,
 				C93929BC131ED97600F2B40F /* FeelingLucky */,
-				C93929BB131ED96700F2B40F /* Brands */,
-				C93929BA131ED95E00F2B40F /* Map */,
+				C93929BB131ED96700F2B40F /* Beers */,
+				C93929BA131ED95E00F2B40F /* Places */,
 				C98DA6B7132EAC4F00A22EC0 /* Taxi */,
 				1D3623240D0F684500981E51 /* AlausRadarasAppDelegate.h */,
 				1D3623250D0F684500981E51 /* AlausRadarasAppDelegate.m */,
@@ -488,8 +493,6 @@
 				28D7ACF70DDB3853001CB0EB /* AlausRadarasViewController.m */,
 				C99452491312FD6B00732314 /* SettingsController.h */,
 				C994524A1312FD6B00732314 /* SettingsController.m */,
-				C9948373131C51C400A52587 /* PubsViewController.h */,
-				C9948374131C51C400A52587 /* PubsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				C938B8E213707E1100CE7A8E /* AlausRadarasViewController.xib */,
 				C9E5021312EE0D3F00ADD54C /* BrandsViewController.xib */,
+				C97A91C9142287080077BCED /* PlaceTableCell.xib */,
 				C92E59AA12EE146E00412BFA /* BrandsTableCell.xib */,
 				C9948375131C51C400A52587 /* PubsViewController.xib */,
 				C9642B3812EE35940033F9B8 /* MapViewController.xib */,
@@ -592,7 +596,7 @@
 		C90F106B1334F71600239BDE /* 640x960 */ = {
 			isa = PBXGroup;
 			children = (
-				C97854871413AB320036D8AC /* ButtonShadow@2x.png */,
+				C91BFF9A14248C5B0079C5D9 /* beer_02@2x.png */,
 				C9A171A4135E236900AC976E /* beer_01@2x.png */,
 				C94C8F2213366216006F0166 /* lucky@2x.png */,
 				C90F11031335196300239BDE /* pin@2x.png */,
@@ -642,9 +646,13 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
-		C93929BA131ED95E00F2B40F /* Map */ = {
+		C93929BA131ED95E00F2B40F /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				C97A91C7142287080077BCED /* PlaceTableCell.h */,
+				C97A91C8142287080077BCED /* PlaceTableCell.m */,
+				C9948373131C51C400A52587 /* PubsViewController.h */,
+				C9948374131C51C400A52587 /* PubsViewController.m */,
 				C9642B3612EE35940033F9B8 /* MapViewController.h */,
 				C9642B3712EE35940033F9B8 /* MapViewController.m */,
 				C953E80A12EF5B7B001BD656 /* PubAnnotation.h */,
@@ -652,10 +660,10 @@
 				C93858151412943F008DBCCA /* NewPubSubmit.h */,
 				C93858161412943F008DBCCA /* NewPubSubmit.m */,
 			);
-			name = Map;
+			name = Places;
 			sourceTree = "<group>";
 		};
-		C93929BB131ED96700F2B40F /* Brands */ = {
+		C93929BB131ED96700F2B40F /* Beers */ = {
 			isa = PBXGroup;
 			children = (
 				C97683C112F21C0B00D4E9F3 /* BrandsDetailViewController.h */,
@@ -665,7 +673,7 @@
 				C92E59A812EE146E00412BFA /* BrandsTableCell.h */,
 				C92E59A912EE146E00412BFA /* BrandsTableCell.m */,
 			);
-			name = Brands;
+			name = Beers;
 			sourceTree = "<group>";
 		};
 		C93929BC131ED97600F2B40F /* FeelingLucky */ = {
@@ -1099,7 +1107,6 @@
 				C9A0F8E2137DC9C6009B490D /* beer_vilniaus_kvietinis.png in Resources */,
 				C9A0F8E3137DC9C6009B490D /* beer_vilniaus_nefiltruotas.png in Resources */,
 				C9A0F8E4137DC9C6009B490D /* beer_zubr.png in Resources */,
-				C97854881413AB320036D8AC /* ButtonShadow@2x.png in Resources */,
 				C994BE7014214C06002101B9 /* beer_avilio_sviesusis.png in Resources */,
 				C994BE7114214C06002101B9 /* beer_bernard.png in Resources */,
 				C994BE7214214C06002101B9 /* beer_budweiser_dark.png in Resources */,
@@ -1125,6 +1132,8 @@
 				C994BE8614214C06002101B9 /* beer_sinkoriu.png in Resources */,
 				C994BE8714214C06002101B9 /* beer_stella_artois.png in Resources */,
 				C994BE8814214C06002101B9 /* beer_warsteiner.png in Resources */,
+				C97A91CB142287080077BCED /* PlaceTableCell.xib in Resources */,
+				C91BFF9B14248C5B0079C5D9 /* beer_02@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1182,7 @@
 				C938B8F31370934C00CE7A8E /* JSONParser.m in Sources */,
 				C9B60096138B7DD700DE3A95 /* MTStatusBarOverlay.m in Sources */,
 				C93858181412943F008DBCCA /* NewPubSubmit.m in Sources */,
+				C97A91CA142287080077BCED /* PlaceTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
