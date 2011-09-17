@@ -13,7 +13,7 @@
 #import "SQLiteManager.h"
 #import "LocationManager.h"
 #import "PubsViewController.h"
-#import "BrandsTableCell.h"
+#import "PlaceTableCell.h"
 
 @implementation MapViewController
 
@@ -228,18 +228,16 @@
     
 	switch (self.citySegmentControl.selectedSegmentIndex) {
 		case 0:
-			[pubTable setHidden:YES];            
+			[pubTable setHidden:YES];         
 			[map setHidden:NO];
-			//[self showRegionWithLatitude:54.689313 Longitude:25.282631];
+            [locateMeBtn setHidden:NO];
 			break;
 		case 1:
 			[map setHidden:YES];
+            [locateMeBtn setHidden:YES];
 			[pubTable setHidden:NO];
-			//[self.view addSubview:pubTable];
-//			[self showRegionWithLatitude:54.896872 Longitude:23.892426];
 			break;
 		case 2:
-//			[self showRegionWithLatitude:55.698541 Longitude:21.147317];
 			break;
 			
 		default:
@@ -286,26 +284,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Dequeue or if necessary create a RecipeTableViewCell, then set its recipe to the recipe for the current row.
-    static NSString *cellIdentifier = @"PubCell";
+    static NSString *MyIdentifier = @"PlaceCell";
     
-    BrandsTableCell *cell = (BrandsTableCell *)[pubTable dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
-        cell = brandCell;//[[[BrandsTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-	//	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    PlaceTableCell *cell = (PlaceTableCell *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if(cell == nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"PlaceTableCell" owner:self options:nil];
+        cell = placeCell;
     }
     
 	Pub *pub = [pubsOnMap objectAtIndex:indexPath.row];
-	cell.labelText.text = [pub pubTitle];
+	cell.titleText.text = [pub pubTitle];
+    cell.addressText.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];	
+    
 	if (pub.distance != 0 && locationBased){
-		cell.label2Text.text = [NSString stringWithFormat:@"%@, %@ • (~%.2f Km)",[pub pubAddress],[pub city], [pub distance]];
-	} else {
-		cell.label2Text.text = [NSString stringWithFormat:@"%@, %@",[pub pubAddress],[pub city]];	
+		cell.distanceText.text = [NSString stringWithFormat:@"~%.2f km", [pub distance]];
 	}
-	//[taxi release];
-	cell.brandIcon.image = [UIImage imageNamed:@"beer_01.png"];    
-	//cell.iconSmall.image = [UIImage imageNamed:@"internet.png"];
+    
+	cell.icon.image = [UIImage imageNamed:@"beer_02.png"];
+	
     return cell;
 }
 
@@ -315,7 +311,7 @@
 	PubDetailViewController *pubDetailView = 
 		[[PubDetailViewController alloc] initWithNibName:nil bundle:nil];
 	
-	pubDetailView.currentPub = [[SQLiteManager sharedManager] getPubById:[[pubsOnMap objectAtIndex:indexPath.row]pubId]];//[pubsOnMap objectAtIndex:indexPath.row];
+	pubDetailView.currentPub = [[SQLiteManager sharedManager] getPubById:[[pubsOnMap objectAtIndex:indexPath.row]pubId]];
 	
     CLLocationCoordinate2D userCoordinate = map.userLocation.location.coordinate;
 	pubDetailView.userCoordinates = [NSString stringWithFormat:@"%f,%f",userCoordinate.latitude,userCoordinate.longitude];

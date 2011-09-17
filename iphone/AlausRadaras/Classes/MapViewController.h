@@ -11,13 +11,14 @@
 #import "PubAnnotation.h"
 #import "PubAnnotationView.h"
 #import "PubDetailViewController.h"
-#import "BrandsTableCell.h"
+#import "PlaceTableCell.h"
 #import "NewPubSubmit.h"
 #import "MBProgressHUD.h"
 
 @interface MapViewController : UIViewController<MKMapViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet MKMapView *map;
-
+    IBOutlet UIButton *locateMeBtn;
+    
     NSMutableArray *pubsOnMap;
 	NSMutableArray *pubsAlreadyOnMap;
 	
@@ -33,7 +34,7 @@
 
 	// pub list
 	UITableView *pubTable;
-	BrandsTableCell *brandCell;
+	IBOutlet PlaceTableCell *placeCell;
 
     IBOutlet NewPubSubmit *newPubSumbitView;
 	NSString *thankYouMsg;
@@ -50,7 +51,6 @@
 @property (nonatomic,retain) IBOutlet UISegmentedControl *citySegmentControl;
 
 @property (nonatomic, retain) IBOutlet 	UITableView *pubTable;
-@property (nonatomic, retain) BrandsTableCell *brandCell;
 
 @property (nonatomic, retain) IBOutlet NewPubSubmit *newPubSumbitView;
 
