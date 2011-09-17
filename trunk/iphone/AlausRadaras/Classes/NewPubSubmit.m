@@ -33,8 +33,6 @@
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = background;
     [background release];
-
-    
     
     // MAP
     
@@ -59,6 +57,7 @@
     [self.newPubMap addGestureRecognizer:lpgr];
     [lpgr release];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	[msgText becomeFirstResponder];
