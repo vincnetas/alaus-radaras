@@ -17,6 +17,7 @@
 
 
 - (void)dealloc {
+    newPubMap.delegate = nil;
     [newPubPin release];
     [newPubMap release];
     [msgText release];
@@ -58,14 +59,29 @@
     [lpgr release];
 }
 
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+	
+	self.newPubMap.delegate = nil;
+	self.newPubMap = nil;
+    [super viewDidUnload];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
-	[msgText becomeFirstResponder];
+//	[msgText becomeFirstResponder];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coordinateChanged_:) name:@"DDAnnotationCoordinateDidChangeNotification" object:nil];
-    
 	[super viewDidAppear:animated];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];	
+	// NOTE: This is optional, DDAnnotationCoordinateDidChangeNotification only fired in iPhone OS 3, not in iOS 4.
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"DDAnnotationCoordinateDidChangeNotification" object:nil];	
+}
+
 
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
@@ -135,9 +151,74 @@
 
 
 
-- (void)viewDidUnload {
-    [super viewDidUnload];
+
+
+
+#pragma mark "-- text editing support --"
+// Animate the entire view up or down, to prevent the keyboard from covering the text field.
+- (void)moveView:(int)offset
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    // Make changes to the view's frame inside the animation block. They will be animated instead
+    // of taking place immediately.
+
+    CGRect rect = msgText.frame;
+    rect.origin.y -= offset;
+    msgText.frame = rect;
+    
+    NSLog(@"offset:%i",offset);
+    
+    CGRect mapRect = newPubMap.frame;
+
+    NSLog(@"mapRect.origin.y:%f",mapRect.origin.y);
+    NSLog(@"mapRect.size.height:%f",mapRect.size.height);
+
+    mapRect.size.height -= offset;
+    newPubMap.frame = mapRect;
+    
+    [UIView commitAnimations];
 }
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *) sender {
+    [sender resignFirstResponder];
+    if (msgTextVerticalOffset!=0)
+    {
+        [self moveView: - msgTextVerticalOffset];
+        msgTextVerticalOffset = 0;
+    }
+//    [self recenterMap];
+    return TRUE;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)theTextField {
+    int wantedOffset = theTextField.frame.origin.y-200;
+    if ( wantedOffset < 0 ) { 
+        wantedOffset = 0;
+    } 
+    if ( wantedOffset != msgTextVerticalOffset ) {
+        [self moveView: wantedOffset - msgTextVerticalOffset];
+        msgTextVerticalOffset = wantedOffset;
+    }
+//    [self recenterMap];
+}
+
+
+- (void) recenterMap {
+    // Re-center minimized/maximized map:
+     if (newPubPin != nil) {
+         newPubMap.centerCoordinate = newPubPin.coordinate;
+     } else {
+         newPubMap.centerCoordinate = [[LocationManager sharedManager] getLocationCoordinates];
+     }
+}
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

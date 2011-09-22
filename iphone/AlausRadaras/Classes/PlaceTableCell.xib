@@ -51,7 +51,7 @@
 							<object class="IBUIImageView" id="758734320">
 								<reference key="NSNextResponder" ref="24288716"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 2}, {40, 40}}</string>
+								<string key="NSFrame">{{11, 5}, {34, 34}}</string>
 								<reference key="NSSuperview" ref="24288716"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="487024349"/>
@@ -113,7 +113,6 @@
 								<string key="NSFrame">{{253, 11}, {81, 22}}</string>
 								<reference key="NSSuperview" ref="24288716"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -225,10 +224,10 @@
 						<reference key="object" ref="1004633498"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="758734320"/>
 							<reference ref="78378883"/>
 							<reference ref="487024349"/>
 							<reference ref="836105345"/>
+							<reference ref="758734320"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -358,6 +357,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>citySegmentControl</string>
 							<string>infoLabel</string>
+							<string>locateMeBtn</string>
 							<string>map</string>
 							<string>newPubSumbitView</string>
 							<string>placeCell</string>
@@ -367,6 +367,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UISegmentedControl</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>MKMapView</string>
 							<string>NewPubSubmit</string>
 							<string>PlaceTableCell</string>
@@ -379,6 +380,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>citySegmentControl</string>
 							<string>infoLabel</string>
+							<string>locateMeBtn</string>
 							<string>map</string>
 							<string>newPubSumbitView</string>
 							<string>placeCell</string>
@@ -393,6 +395,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">infoLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">locateMeBtn</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">map</string>

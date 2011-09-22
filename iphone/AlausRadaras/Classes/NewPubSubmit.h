@@ -10,9 +10,11 @@
 #import <MapKit/MapKit.h>
 #import "PubAnnotation.h"
 
-@interface NewPubSubmit : UIViewController <MKMapViewDelegate>{
+@interface NewPubSubmit : UIViewController <MKMapViewDelegate, UITextFieldDelegate>{
     IBOutlet MKMapView *newPubMap;
     IBOutlet UITextField *msgText;
+    int msgTextVerticalOffset;
+
     PubAnnotation *newPubPin;
 }
 
