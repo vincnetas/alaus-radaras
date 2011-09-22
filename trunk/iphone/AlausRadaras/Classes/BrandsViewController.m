@@ -144,7 +144,7 @@
 			break;
 		case 2:
 			cell.labelText.text = [[tagsList objectAtIndex:indexPath.row] displayValue];
-			cell.brandIcon.image = [UIImage imageNamed:@"tag_02.png"];
+			cell.brandIcon.image = [UIImage imageNamed:@"tag_021.png"];
 			break;
 		default:
 			break;

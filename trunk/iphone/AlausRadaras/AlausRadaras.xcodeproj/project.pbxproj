@@ -82,6 +82,8 @@
 		C97A91CA142287080077BCED /* PlaceTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A91C8142287080077BCED /* PlaceTableCell.m */; };
 		C97A91CB142287080077BCED /* PlaceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97A91C9142287080077BCED /* PlaceTableCell.xib */; };
 		C97E184E131468B5004756A0 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C97E184D131468B5004756A0 /* LocationManager.m */; };
+		C980344A1424CD3D00E8AC40 /* notes in Resources */ = {isa = PBXBuildFile; fileRef = C98034491424CD3D00E8AC40 /* notes */; };
+		C980344C1424D3D200E8AC40 /* tag_021.png in Resources */ = {isa = PBXBuildFile; fileRef = C980344B1424D3D200E8AC40 /* tag_021.png */; };
 		C986CB3D12F3F74300865F6D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C986CB3C12F3F74300865F6D /* background@2x.png */; };
 		C986D03212F481A100865F6D /* LuckyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986D03112F481A100865F6D /* LuckyController.m */; };
 		C988B7FA1331E93500C9170B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988B7F91331E93500C9170B /* AudioToolbox.framework */; };
@@ -318,6 +320,8 @@
 		C97A91C9142287080077BCED /* PlaceTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceTableCell.xib; path = Classes/PlaceTableCell.xib; sourceTree = "<group>"; };
 		C97E184C131468B5004756A0 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Classes/LocationManager.h; sourceTree = "<group>"; };
 		C97E184D131468B5004756A0 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Classes/LocationManager.m; sourceTree = "<group>"; };
+		C98034491424CD3D00E8AC40 /* notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes; sourceTree = "<group>"; };
+		C980344B1424D3D200E8AC40 /* tag_021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tag_021.png; path = resources/images/tag_021.png; sourceTree = "<group>"; };
 		C986CB3C12F3F74300865F6D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "resources/images/background@2x.png"; sourceTree = "<group>"; };
 		C986D03012F481A100865F6D /* LuckyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyController.h; sourceTree = "<group>"; };
 		C986D03112F481A100865F6D /* LuckyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyController.m; sourceTree = "<group>"; };
@@ -536,6 +540,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C98034491424CD3D00E8AC40 /* notes */,
 				C93AFAF714155C3200686EE3 /* new_icons */,
 				C9E7413C137C78A800EA9EB6 /* beers */,
 				C986CFD512F4702D00865F6D /* pubs */,
@@ -825,6 +830,7 @@
 				C960135812F0C69200DB53C0 /* map_02.png */,
 				C960135C12F0C69200DB53C0 /* tag_01.png */,
 				C960135D12F0C69200DB53C0 /* tag_02.png */,
+				C980344B1424D3D200E8AC40 /* tag_021.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -1134,6 +1140,8 @@
 				C994BE8814214C06002101B9 /* beer_warsteiner.png in Resources */,
 				C97A91CB142287080077BCED /* PlaceTableCell.xib in Resources */,
 				C91BFF9B14248C5B0079C5D9 /* beer_02@2x.png in Resources */,
+				C980344A1424CD3D00E8AC40 /* notes in Resources */,
+				C980344C1424D3D200E8AC40 /* tag_021.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

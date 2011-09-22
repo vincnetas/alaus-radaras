@@ -78,6 +78,13 @@
 	 
 	 /* Separator color */ 
 	 pubTable.separatorColor = [UIColor grayColor];
+     
+     /* Load Map or List view from defaults */
+     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+     self.citySegmentControl.selectedSegmentIndex = [standardUserDefaults integerForKey:@"selectedSegmentIndex"];
+     [self cityIndexChanged];
+
+     
 	 NSLog(@"MapViewController viewDidLoad");
 }
 
@@ -225,17 +232,20 @@
 
 
 -(IBAction) cityIndexChanged {
-    
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+
 	switch (self.citySegmentControl.selectedSegmentIndex) {
 		case 0:
 			[pubTable setHidden:YES];         
 			[map setHidden:NO];
             [locateMeBtn setHidden:NO];
+            [standardUserDefaults setInteger:0 forKey:@"selectedSegmentIndex"];
 			break;
 		case 1:
 			[map setHidden:YES];
             [locateMeBtn setHidden:YES];
 			[pubTable setHidden:NO];
+            [standardUserDefaults setInteger:1 forKey:@"selectedSegmentIndex"];
 			break;
 		case 2:
 			break;
@@ -243,6 +253,8 @@
 		default:
 			break;
 	}
+    [standardUserDefaults synchronize];
+
 }
 
 - (void) showRegionWithLatitude:(double)lat Longitude:(double)lon {
