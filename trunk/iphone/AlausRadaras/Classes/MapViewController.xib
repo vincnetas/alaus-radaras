@@ -210,7 +210,7 @@
 					<object class="IBUIButton" id="498453365">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{266, 51}, {52, 37}}</string>
+						<string key="NSFrame">{{282, 57}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="701784939"/>
@@ -234,7 +234,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">settings.png</string>
+							<string key="NSResourceName">kur-as.png</string>
 						</object>
 					</object>
 				</object>
@@ -1391,8 +1391,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">settings.png</string>
-			<string key="NS.object.0">{32, 32}</string>
+			<string key="NS.key.0">kur-as.png</string>
+			<string key="NS.object.0">{80, 80}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">300</string>
 	</data>
