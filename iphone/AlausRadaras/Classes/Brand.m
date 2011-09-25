@@ -8,9 +8,8 @@
 
 #import "Brand.h"
 
-
 @implementation Brand
 
-@synthesize brandId, icon, label, pubsString;
+@synthesize brandId, icon, label, pubsString, tagsAsString;
 
 @end 

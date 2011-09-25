@@ -419,7 +419,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
 	NSLog(@"Im here: %.2f, %.2f",  coordinates.latitude, coordinates.longitude);
 	
-	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b"]];
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b "]];
 	if ([[LocationManager sharedManager]getVisibilityControlled]) {
 		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_beers pb ON b.id = pb.beer_id INNER JOIN pubs AS p ON p.id=pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.id",
 				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
@@ -433,6 +433,81 @@ static SQLiteManager *updateSQLiteManager = nil;
 	while ([rs next]) {
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"id"]copy];
+        
+        
+        NSMutableArray *tags = [self getTagsByBeer:brand.brandId];
+        NSString *tagString = [[tags objectAtIndex:0]displayValue];
+        
+        for (int i = 1; i < [tags count]; i++) {
+            tagString = [NSString stringWithFormat:@"%@, %@", tagString, [[tags objectAtIndex:i]displayValue]];
+        }
+        
+        brand.tagsAsString = tagString;
+        
+        
+        
+		brand.icon = [[rs stringForColumn:@"icon"]copy];
+		brand.label = [[rs stringForColumn:@"title"]copy];
+		[result addObject:brand];
+		[brand release];
+	}
+	
+	[rs close];
+	return result;
+}
+
+- (NSMutableArray *) getBeersWithTagsLocationBased {
+    
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+    
+	CLLocationCoordinate2D coordinates = [[LocationManager sharedManager]getLocationCoordinates];
+	NSLog(@"Im here: %.2f, %.2f",  coordinates.latitude, coordinates.longitude);
+	
+	NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"SELECT b.id, b.icon, b.title FROM beers b INNER JOIN tags t INNER JOIN beers_tags AS bt ON bt.tag = t.code WHERE bt.beer_id = b.id"]];
+    
+	if ([[LocationManager sharedManager]getVisibilityControlled]) {
+		query = [NSString stringWithFormat:@"%@ INNER JOIN pubs_beers pb ON b.id = pb.beer_id INNER JOIN pubs AS p ON p.id=pb.pub_id AND distance(p.latitude, p.longitude, %f,%f) < %i GROUP BY b.id",
+				 query, coordinates.latitude, coordinates.longitude, [[LocationManager sharedManager]getDistance]];
+	}
+	query = [NSString stringWithFormat:@"%@ ORDER by b.title asc", query];
+    
+	FMResultSet *rs = 
+    [db executeQuery:query];
+    
+	
+	while ([rs next]) {
+		Brand *brand = [[Brand alloc] init];
+		brand.brandId = [[rs stringForColumn:@"id"]copy];
+        
+        
+        
+        
+        NSMutableArray *tags = [self getTagsByBeer:brand.brandId];
+        NSString *tagString = [[tags objectAtIndex:0]displayValue];
+        
+        for (int i = 1; i < [tags count]; i++) {
+            tagString = [NSString stringWithFormat:@"%@, %@", tagString, [[tags objectAtIndex:i]displayValue]];
+        }
+        
+        brand.tagsAsString = tagString;
+        
+        
+        /*
+         NSMutableArray *result = [[NSMutableArray alloc]init];
+         NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select * from tags t INNER JOIN beers_tags AS bt ON bt.tag = t.code WHERE bt.beer_id = %@", beerId]];
+         
+         FMResultSet *rs = [db executeQuery:query];
+         while ([rs next]) {
+         CodeValue *item = [[CodeValue alloc] init];
+         item.code = [rs stringForColumn:@"code"];
+         item.displayValue = [rs stringForColumn:@"title"];
+         [result addObject:item];
+         [item release];
+         }
+         return result;
+         */
+        
+        
 		brand.icon = [[rs stringForColumn:@"icon"]copy];
 		brand.label = [[rs stringForColumn:@"title"]copy];
 		[result addObject:brand];
@@ -610,6 +685,22 @@ static SQLiteManager *updateSQLiteManager = nil;
 	NSMutableArray *result = [[NSMutableArray alloc]init];
 	FMResultSet *rs = 
 	[db executeQuery:@"select * from tags ORDER BY title asc"];
+	while ([rs next]) {
+		CodeValue *item = [[CodeValue alloc] init];
+		item.code = [rs stringForColumn:@"code"];
+		item.displayValue = [rs stringForColumn:@"title"];
+		[result addObject:item];
+		[item release];
+	}
+	return result;
+}
+
+
+- (NSMutableArray *) getTagsByBeer: (NSString *) beerId {
+	NSMutableArray *result = [[NSMutableArray alloc]init];
+    NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select * from tags t INNER JOIN beers_tags AS bt ON bt.tag = t.code WHERE bt.beer_id = %@", beerId]];
+
+	FMResultSet *rs = [db executeQuery:query];
 	while ([rs next]) {
 		CodeValue *item = [[CodeValue alloc] init];
 		item.code = [rs stringForColumn:@"code"];
