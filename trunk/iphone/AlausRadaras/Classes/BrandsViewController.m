@@ -132,6 +132,9 @@
 	switch (category) {
 		case 0:
 			cell.labelText.text = [[brandList objectAtIndex:indexPath.row] label];
+            
+            
+            cell.label2Text.text = [[brandList objectAtIndex:indexPath.row] tagsAsString];
 
 			cell.brandIcon.image = [UIImage imageNamed:[[brandList objectAtIndex:indexPath.row] icon]];
 			if (cell.brandIcon.image == nil) {

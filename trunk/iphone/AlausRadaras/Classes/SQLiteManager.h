@@ -41,6 +41,7 @@
 
 - (NSMutableArray *) getBrands;
 - (NSMutableArray *) getBrandsLocationBased;
+- (NSMutableArray *) getBeersWithTagsLocationBased;
 - (NSString *) getBrandsLabelById:(NSString *)brandId;
 
 - (NSMutableArray *) getBrandsByPubId:(NSString *)pubId;
@@ -57,6 +58,7 @@
 - (NSMutableArray *) getCountriesLocationBased;
 
 - (NSMutableArray *) getTags;
+- (NSMutableArray *) getTagsByBeer: (NSString *) beerId;
 - (NSMutableArray *) getTagsLocationBased;
 
 - (FeelingLucky *) feelingLucky;
