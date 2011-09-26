@@ -15,6 +15,9 @@ import nb.server.dao.bridge.CompanyDaoBridge;
 import nb.server.dao.bridge.PlaceDaoBridge;
 import nb.server.dao.impl.IdProviderImpl;
 import nb.server.dispacher.BeerIconDispacher;
+import nb.server.dispacher.MailHandler;
+import nb.server.dispacher.NokiaUpdateHandler;
+import nb.server.dispacher.ReportHandler;
 import nb.server.json.JSONDispacher;
 import nb.server.json.NbService;
 import nb.server.json.NbServiceImpl;
@@ -60,6 +63,10 @@ public class NbServletModule extends MvcModule {
 		bind(PersistenceManagerFactory.class).toInstance(pmf);		
 		bind(NbService.class).to(NbServiceImpl.class);
 				
+		serve("/android/submit.php").with(ReportHandler.class);
+		serve("/android/nokia.php").with(NokiaUpdateHandler.class);
+		serve("/_ah/mail/*").with(MailHandler.class);
+		
 		serve("/jsonrpc").with(JSONDispacher.class);
 		serve("/img/beer/*").with(BeerIconDispacher.class);
 		control("/place/*").withController(PlaceController.class).set();

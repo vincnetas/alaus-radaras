@@ -3,16 +3,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<link href="/css/home.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAj6N1wGgGpuuqxjU6PcoKRxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQCuZ2f9FcUf3Kd5Yh17KUSHtrfNA"></script>
-<script type="text/javascript" src="/js/jsonrpc.js"></script>
-<script type="text/javascript" src="/js/nb.js"></script>
-<title></title>
+	<meta charset="UTF-8">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="/css/home.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAj6N1wGgGpuuqxjU6PcoKRxT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQCuZ2f9FcUf3Kd5Yh17KUSHtrfNA"></script>
+	<script type="text/javascript" src="/js/jsonrpc.js"></script>
+	<script type="text/javascript" src="/js/nb.js"></script>
+	<title></title>
+	
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+      var map;
+      function initialize() {
+        var mapDiv = document.getElementById('map-canvas');
+        map = new google.maps.Map(mapDiv, {
+          center: new google.maps.LatLng(${place.latitude}, ${place.longitude}),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+      
+        google.maps.event.addListenerOnce(map, 'tilesloaded', addMarkers);
+      
+      }
+      
+      function addMarkers() {
+          var latLng = new google.maps.LatLng(${place.latitude}, ${place.longitude});
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+      }
+      
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp" />
+
 
 	<div class="container box wide place">
 		<c:choose>
@@ -29,9 +58,7 @@
 	<div class="group">
 		
 		<div class="container box map">
-			<img alt="${place.country } ${place.city } ${place.streetAddress }" title="${place.country } ${place.city } ${place.streetAddress }"
-				src="http://maps.googleapis.com/maps/api/staticmap?center=${place.latitude },${place.longitude }&size=400x400&markers=color:yellow|${place.latitude },${place.longitude }&sensor=false"
-				width="400px" height="400px" />
+			<div id="map-canvas" style="width: 400px; height: 400px"></div>
 		</div>
 
 		<div class="container box contacts">
