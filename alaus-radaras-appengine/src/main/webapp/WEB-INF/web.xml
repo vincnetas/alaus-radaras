@@ -26,7 +26,16 @@
 		<web-resource-collection>
 			<web-resource-name>Administratioriaus puslapiai</web-resource-name>
 			<url-pattern>/admin/*</url-pattern>
-		</web-resource-collection>	
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/_ah/mail/*</url-pattern>
+		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
 		</auth-constraint>
