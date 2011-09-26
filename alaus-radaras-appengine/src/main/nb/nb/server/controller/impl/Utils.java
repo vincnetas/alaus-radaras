@@ -10,7 +10,11 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.apache.commons.collections15.ComparatorUtils;
+
 import nb.shared.model.Place;
+
+
 
 /**
  * @author Vincentas
@@ -20,13 +24,27 @@ public class Utils {
 	
 	static public SortedSet<SortedSet<Place>> sortPlacesByCount(Collection<Place> places) {
 		SortedMap<String,SortedSet<Place>> sortPlacesByCity = sortPlacesByCity(places);
-		SortedSet<SortedSet<Place>> result = new TreeSet<SortedSet<Place>>(new Comparator<SortedSet<Place>>() {
+				
+		SortedSet<SortedSet<Place>> result = new TreeSet<SortedSet<Place>>(ComparatorUtils.chainedComparator(
+			new Comparator<SortedSet<Place>>() {
+	
+				@Override
+				public int compare(SortedSet<Place> o1, SortedSet<Place> o2) {
+					return o2.size() - o1.size();
+				}
+			},
+			new Comparator<SortedSet<Place>>() {
 
-			@Override
-			public int compare(SortedSet<Place> o1, SortedSet<Place> o2) {
-				return o2.size() - o1.size();
+				@Override
+				public int compare(SortedSet<Place> o1, SortedSet<Place> o2) {
+					if (o1.isEmpty() && o2.isEmpty()) {
+						return 0;
+					}
+					
+					return o1.first().getCity().compareToIgnoreCase(o2.first().getCity());
+				}
 			}
-		});
+		));
 		
 		result.addAll(sortPlacesByCity.values());
 		
