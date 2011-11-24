@@ -1,4 +1,4 @@
-		var jsonService = new JsonRpc.ServiceProxy("/jsonrpc", {
+		var jsonService = new JsonRpc.ServiceProxy("http://www.alausradaras.lt/jsonrpc", {
 			asynchronous : true,
 			methods : [ 
 				"nb.acPlace",

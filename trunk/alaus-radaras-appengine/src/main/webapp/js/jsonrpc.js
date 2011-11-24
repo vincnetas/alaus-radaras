@@ -44,9 +44,9 @@ JsonRpc.ServiceProxy = function (serviceUrl, options) {
                 );
     }
 
-    if (this.__isCrossSite) {
-        throw new Error("Cross site rpc not supported yet");
-    }
+//    if (this.__isCrossSite) {
+//        throw new Error("Cross site rpc not supported yet");
+//    }
 
     //Set other default options
     var providedMethodList;

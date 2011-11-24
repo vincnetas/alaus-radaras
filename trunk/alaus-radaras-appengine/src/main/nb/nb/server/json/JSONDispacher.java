@@ -44,8 +44,20 @@ public class JSONDispacher extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.setCharacterEncoding("UTF-8");
 		getExecutor().execute(new JsonRpcServletTransport(req, resp));
+	}
+	
+	@Override
+	protected void doOptions(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+		resp.setHeader("Access-Control-Allow-Headers", req.getHeader("Access-Control-Request-Headers"));		
+		resp.setHeader("Access-Control-Allow-Methods", req.getHeader("Access-Control-Request-Method"));
+		resp.setHeader("Access-Control-Max-Age", "3628800");
+		
+		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
 	/**
