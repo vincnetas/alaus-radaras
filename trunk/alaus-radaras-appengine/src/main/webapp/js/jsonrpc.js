@@ -164,7 +164,7 @@ JsonRpc.ServiceProxy.prototype.__callMethod = function(methodName, params, succe
         };
         if (params)
             request.params = params;
-        postData = this.__toJSON(request);
+        postData = encodeURI(this.__toJSON(request));
 
 
         //XMLHttpRequest chosen (over Ajax.Request) because it propogates uncaught exceptions
@@ -179,7 +179,7 @@ JsonRpc.ServiceProxy.prototype.__callMethod = function(methodName, params, succe
             }
         }
         xhr.open('POST', this.__serviceURL, this.__isAsynchronous, this.__authUsername, this.__authPassword);
-        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
         xhr.setRequestHeader('Accept', 'application/json');
 
         if (this.__isAsynchronous) {
@@ -571,3 +571,4 @@ JsonRpc.zeroPad = function(value, width) {
         value = '0' + value;
     return value;
 };
+

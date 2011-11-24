@@ -19,6 +19,7 @@ package org.json.rpc.server;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +49,7 @@ public class JsonRpcServletTransport implements JsonRpcServerTransport {
                 bos.write(buff, 0, n);
             }
 
-            return bos.toString();
+            return URLDecoder.decode(bos.toString(), "UTF-8");
         } finally {
             if (in != null) {
                 in.close();
