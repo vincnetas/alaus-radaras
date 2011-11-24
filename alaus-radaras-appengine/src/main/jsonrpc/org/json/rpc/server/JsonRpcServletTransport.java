@@ -58,7 +58,7 @@ public class JsonRpcServletTransport implements JsonRpcServerTransport {
 
     public void writeResponse(String responseData) throws Exception {
         resp.addHeader("Content-Type", "application/json");
-
+        
         PrintWriter out = null;
         try {
             out = resp.getWriter();

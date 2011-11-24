@@ -18,6 +18,7 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/guice-servlet-3.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/javax.inject.jar"/>
 	<classpathentry kind="lib" path="test-lib/mockito-all-1.8.5.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/collections-generic-4.01.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GWT test tools"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
