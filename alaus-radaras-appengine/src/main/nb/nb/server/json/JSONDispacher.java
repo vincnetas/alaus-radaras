@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.rpc.server.JsonRpcExecutor;
 import org.json.rpc.server.JsonRpcServletTransport;
 
-
-
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -48,7 +46,7 @@ public class JSONDispacher extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		getExecutor().execute(new JsonRpcServletTransport(req, resp));
 	}
-	
+
 	@Override
 	protected void doOptions(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
