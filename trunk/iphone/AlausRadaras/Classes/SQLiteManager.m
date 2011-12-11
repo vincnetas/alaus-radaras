@@ -662,12 +662,12 @@ static SQLiteManager *updateSQLiteManager = nil;
 	FMResultSet *rs = [db executeQuery:query];
 	
     while ([rs next]) {
-        Pub* pub = [[Pub alloc] initWithId:[rs stringForColumn:@"id"]
-									 Title:[rs stringForColumn:@"title"]
-								   Address:[rs stringForColumn:@"address"] 
-									  City: [rs stringForColumn:@"city"]
-									 Phone:[rs stringForColumn:@"phone"]
-								   Webpage:[rs stringForColumn:@"url"]
+        Pub* pub = [[Pub alloc] initWithId:[[rs stringForColumn:@"id"]copy]
+									 Title:[[rs stringForColumn:@"title"]copy]
+								   Address:[[rs stringForColumn:@"address"] copy]
+									  City: [[rs stringForColumn:@"city"]copy]
+									 Phone:[[rs stringForColumn:@"phone"]copy]
+								   Webpage:[[rs stringForColumn:@"url"]copy]
 									   Lat:[rs doubleForColumn:@"latitude"]
 									  Long:[rs doubleForColumn:@"longitude"]];
 		pub.distance = [rs doubleForColumn:@"distance"];

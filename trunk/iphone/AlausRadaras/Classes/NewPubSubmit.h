@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "PubAnnotation.h"
+#import "MBProgressHUD.h"
 
 @interface NewPubSubmit : UIViewController <MKMapViewDelegate, UITextFieldDelegate>{
     IBOutlet MKMapView *newPubMap;

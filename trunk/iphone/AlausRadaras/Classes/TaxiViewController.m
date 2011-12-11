@@ -7,16 +7,16 @@
 //
 
 #import "TaxiViewController.h"
-#import "SQLiteManager.h";
+#import "SQLiteManager.h"
 #import "Taxi.h"
 
 @implementation TaxiViewController
 
-@synthesize taxiTable, brandCell;
+@synthesize taxiTable, placeCell;
 @synthesize taxiList;
 
 - (void)dealloc {
-	[brandCell release];
+	[placeCell release];
 	[taxiList release];
 	[taxiTable release];
     [super dealloc];
@@ -70,18 +70,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *CellIdentifier = @"TaxiCell";
-	BrandsTableCell *cell = (BrandsTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	PlaceTableCell *cell = (PlaceTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if (cell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"BrandsTableCell" owner:self options:nil];
-		cell = brandCell;		
-		self.brandCell = nil;
+		[[NSBundle mainBundle] loadNibNamed:@"PlaceTableCell" owner:self options:nil];
+		cell = placeCell;		
+		//self.brandCell = nil;
 	}
 	Taxi *taxi = [taxiList objectAtIndex:indexPath.row];
-	cell.labelText.text = [taxi title];
-	cell.label2Text.text = [NSString stringWithFormat:@"%@, %@",[taxi phone],[taxi city]];
+	cell.titleText.text = [taxi title];
+	cell.addressText.text = [NSString stringWithFormat:@"%@, %@",[taxi phone],[taxi city]];
 	//[taxi release];
-	cell.brandIcon.image = [UIImage imageNamed:@"taxi2.png"];
+	cell.icon.image = [UIImage imageNamed:@"taxi2.png"];
 	return cell;
 	
 }

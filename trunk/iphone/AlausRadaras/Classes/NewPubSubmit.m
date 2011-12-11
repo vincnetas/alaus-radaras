@@ -35,28 +35,16 @@
     self.view.backgroundColor = background;
     [background release];
     
-    // MAP
-    
-//    map.hidden = YES;
     newPubMap.showsUserLocation = YES;
     
-    CLLocationCoordinate2D userPosition = [[LocationManager sharedManager] getLocationCoordinates];//newPubMap.userLocation.location.coordinate;
-//    CLLocationCoordinate2D centerOfVilnius = {54.689313,25.282631};
-
-    /* Pub Location 
-    CLLocationCoordinate2D pubCoordinates;
-    pubCoordinates.latitude = currentPub.latitude;
-    pubCoordinates.longitude = currentPub.longitude;
-    */
-    MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.005, 0.005);
-    MKCoordinateRegion region = MKCoordinateRegionMake(userPosition, coordSpan);
-    newPubMap.region = region;
 
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
                                           initWithTarget:self action:@selector(handleLongPress:)];
     lpgr.minimumPressDuration = 0.5; //user needs to press for 2 seconds
     [self.newPubMap addGestureRecognizer:lpgr];
     [lpgr release];
+    
+
 }
 
 - (void)viewDidUnload {
@@ -72,9 +60,37 @@
 - (void)viewWillAppear:(BOOL)animated {
 //	[msgText becomeFirstResponder];
     
+    // RESET SCREEN
+    CLLocationCoordinate2D userPosition = [[LocationManager sharedManager] getLocationCoordinates];//newPubMap.userLocation.location.
+    MKCoordinateSpan coordSpan = MKCoordinateSpanMake(0.005, 0.005);
+    MKCoordinateRegion region = MKCoordinateRegionMake(userPosition, coordSpan);
+    newPubMap.region = region;
+
+    msgText.text = @"";
+    if (newPubPin != nil) {
+        [self.newPubMap removeAnnotation:newPubPin];
+    }
+    [self textFieldShouldReturn: msgText];
+    [msgText resignFirstResponder];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coordinateChanged_:) name:@"DDAnnotationCoordinateDidChangeNotification" object:nil];
 	[super viewDidAppear:animated];
+    
+    
+//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//	HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+//	HUD.mode = MBProgressHUDModeCustomView;
+//	[self.view addSubview:HUD];
+////	HUD.delegate = self;
+//	HUD.labelText = @"Pažymėk rastą barą";
+//	[HUD showWhileExecuting:@selector(delay) onTarget:self withObject:nil animated:YES];
+//	[HUD release];
 }
+
+//- (void)delay {
+//	sleep(2);
+//}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];	

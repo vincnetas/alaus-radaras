@@ -15,17 +15,17 @@ DONE:
 - IMP: Pub list new look;
 - IMP: Minor changes in new beer reporting screen layout;
 - NF: Remember which Place setting I am using;
-
-INPROGRESS:
 - NF: New pub place reporting;
 - IMP: More icons;
-- NF: Pub view turn phone to display pub location on the map;
+
+INPROGRESS:
 
 TODO:
 - IMP: Pub new look
 - IMP: Taxi list icons;
 - IMP: New look for beer list;
 - NF: Internal web-browser;
+- NF: Pub view turn phone to display pub location on the map;
 
 
 

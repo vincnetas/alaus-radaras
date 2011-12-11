@@ -137,12 +137,18 @@
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
 //	NSLog(@"viewForAnnotation");
 
+    static NSString* AnnotationIdentifier = @"Annotation";
+
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
 		//Don't trample the user location annotation (pulsing blue dot).
+/*
+        MKPinAnnotationView *customPinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier] autorelease]; 
+        customPinView.image = [UIImage imageNamed:@"kur-as.png"];
+        customPinView.frame = CGRectMake(0, 0, 40, 40);*/
 		return nil;
 	}
 	
-	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil] autorelease];
+	MKAnnotationView *customAnnotationView=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier] autorelease];
 	UIImage *pinImage = [UIImage imageNamed:@"pin.png"];
 	[customAnnotationView setImage:pinImage];
     customAnnotationView.canShowCallout = YES;
@@ -156,10 +162,11 @@
     return customAnnotationView;
 }
 
+
 /* Animating droping pins */
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views { 
 	MKAnnotationView *annotationView; 
-
+    NSLog(@"+didAddAnnotationViews");
 	for (annotationView in views) {
 		if (annotationView.annotation == mapView.userLocation) {
 			[self locateMe];
