@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BrandsTableCell.h"
+#import "PlaceTableCell.h"
 
 
 @interface TaxiViewController : UIViewController {
 	UITableView *taxiTable;
-	BrandsTableCell *brandCell;
+	PlaceTableCell *placeCell;
 
 	NSMutableArray *taxiList;
 }
 
 
 @property (nonatomic, retain) IBOutlet UITableView *taxiTable;
-@property (nonatomic, retain) BrandsTableCell *brandCell;
+@property (nonatomic, retain) PlaceTableCell *placeCell;
 
 @property (nonatomic, retain) NSMutableArray *taxiList;
 

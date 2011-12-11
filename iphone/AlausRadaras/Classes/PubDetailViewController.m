@@ -119,18 +119,6 @@
          [pubAnnotation setSubtitle:[NSString stringWithFormat:@"%@",currentPub.pubAddress]];			
      }
      [map addAnnotation:pubAnnotation];
-
-     
-     
-     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-     HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
-     HUD.mode = MBProgressHUDModeCustomView;
-     [self.view addSubview:HUD];
-     HUD.delegate = self;
-     HUD.labelText = @"Tik alus išgelbės mus!";
-     [HUD showWhileExecuting:@selector(delay1s) onTarget:self withObject:nil animated:YES];
-     [HUD release];
-     
      
 	 NSLog(@"PubDetailViewController viewDidLoad");	 
 }
@@ -448,7 +436,7 @@
 #pragma mark MAP methods
 
 
-
+/*
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation {
     if (interfaceOrientation == UIInterfaceOrientationPortrait) {
         map.hidden = YES;
@@ -460,7 +448,7 @@
 		return NO;
 	}
 }
-
+*/
 
 - (MKAnnotationView *) mapView:(MKMapView *) mapView viewForAnnotation:(id ) annotation {
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
