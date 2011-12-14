@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SettingsController : UIViewController {
+@interface SettingsController : UIViewController <UIGestureRecognizerDelegate> {
 	UISegmentedControl *visibilityControl;
 	UISlider *visibleDistanceSlider; 
 	UILabel *distanceLabel;
@@ -22,6 +22,6 @@
 
 - (IBAction) visibilityControlIndexChanged;
 - (IBAction) visibilityDistanceChanged:(id)sender;  
-- (IBAction) gotoPreviousView;
+//- (IBAction) gotoPreviousView;
 
 @end

@@ -434,7 +434,7 @@ static SQLiteManager *updateSQLiteManager = nil;
 		Brand *brand = [[Brand alloc] init];
 		brand.brandId = [[rs stringForColumn:@"id"]copy];
         
-        
+        /*
         NSMutableArray *tags = [self getTagsByBeer:brand.brandId];
         NSString *tagString = [[tags objectAtIndex:0]displayValue];
         
@@ -492,7 +492,7 @@ static SQLiteManager *updateSQLiteManager = nil;
         brand.tagsAsString = tagString;
         
         
-        /*
+        
          NSMutableArray *result = [[NSMutableArray alloc]init];
          NSString *query = [[NSString alloc] initWithString:[NSString stringWithFormat:@"select * from tags t INNER JOIN beers_tags AS bt ON bt.tag = t.code WHERE bt.beer_id = %@", beerId]];
          

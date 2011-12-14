@@ -91,7 +91,7 @@
 
 
 - (IBAction) gotoPreviousView {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];	
+	[self dismissModalViewControllerAnimated:YES];	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation {
