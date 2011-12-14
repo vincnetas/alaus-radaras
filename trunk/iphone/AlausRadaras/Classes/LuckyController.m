@@ -34,8 +34,11 @@
 	NSLog(@"LuckyController viewDidLoad");
 }
 
-- (IBAction) gotoPreviousView {
-	[self.parentViewController dismissModalViewControllerAnimated:YES];	
+- (IBAction) gotoPreviousView:(id)sender {
+	NSLog(@"INFO: LuckyController gotoPreviousView");
+
+	[self dismissModalViewControllerAnimated:YES];	
+
 	feelingLucky = nil;
 }
 

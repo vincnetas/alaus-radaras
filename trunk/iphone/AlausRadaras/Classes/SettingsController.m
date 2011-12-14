@@ -44,28 +44,17 @@
 	[standardUserDefaults setBool:enableAllFeatures forKey:@"EnableAllFeatures"];
 	[[LocationManager sharedManager]setEnableAllFeatures:enableAllFeatures];
 	
-	UIColor *background;
-	/* iOS3.1 Support */
-	if (enableAllFeatures) {
-		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];	
-	} else {
-		background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background-small.png"]];
-		visibilityControl.segmentedControlStyle = UISegmentedControlStyleBar;	
-		
-		CGRect rect = CGRectMake(0, 0, 320, 260);
-		UIButton *button=[[UIButton alloc] initWithFrame:rect];
-		[button setFrame:rect];
-		[button setBackgroundColor:[UIColor clearColor]];
-		//	[button setBackgroundImage:buttonImageNormal forState:UIControlStateNormal];
-		[button setContentMode:UIViewContentModeCenter];
-		[button addTarget:self action:@selector(hideSettings:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:button];
-		[button release];
-	}
+	UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"black-background.png"]];	
 	
 	self.view.backgroundColor = background;
-	[background release];
-    self.view.opaque = NO;
+//	[background release];
+//    self.view.opaque = NO;
+	
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSettings:)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    tap.delegate = self;          
+    [self.view addGestureRecognizer:tap];
 	
     /* ****** VISIBILITY SETTINGS ******* */
     
@@ -101,10 +90,16 @@
 	NSLog(@"SettingsController viewDidLoad");
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    //change it to your condition    
+    if ([touch.view isKindOfClass:[UISegmentedControl class]] || [touch.view isKindOfClass:[UISlider class]]) {      
+		return NO;
+    }
+    return YES;
+}
+
 -(IBAction) hideSettings:(id) sender {
-	[self.view removeFromSuperview];
-	self.view.alpha = 0.0;
-	[self viewDidDisappear:NO];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 -(IBAction) visibilityControlIndexChanged {
@@ -137,10 +132,10 @@
 	distanceLabel.text =  [[NSString alloc]initWithFormat:@"%i", visibilityDistance];
 }
 
-- (IBAction) gotoPreviousView {
-	NSLog(@"gotoPreviousView");
-	[self.parentViewController dismissModalViewControllerAnimated:YES];	
-}
+//- (IBAction) gotoPreviousView {
+//	NSLog(@"gotoPreviousView");
+//	[self dismissModalViewControllerAnimated:YES];	
+//}
 
 - (void) viewDidDisappear:(BOOL)animated {
 	NSLog(@"SettingsController viewDidDisappear");

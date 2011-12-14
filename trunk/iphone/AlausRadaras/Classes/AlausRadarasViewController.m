@@ -93,26 +93,8 @@
 
 -(IBAction) clickSettings:(id) sender {
 	NSLog(@"clickSettings");
-	
-	if (enableAllFeatures) {
-		settingsController.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
-		[self presentModalViewController:settingsController animated:YES];
-	} else {
-		//	UIViewController * myViewController = [[UIViewController alloc] initWithNibName:@"TestView" bundle:nil];
-		//	settingsController = [[SettingsController alloc] initWithNibName:nil bundle:nil];
-		settingsController.view.alpha = 1.0;
-		
-		[self.view addSubview: settingsController.view];
-		CATransition *animation = [CATransition animation];
-		[animation setDelegate:self];
-		//kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-		//kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-		[animation setType:kCATransitionMoveIn];
-		[animation setSubtype:kCATransitionFade];
-		[animation setDuration:0.75];
-		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-		[[settingsController.view layer] addAnimation:animation forKey:kCATransition];				
-	}
+	settingsController.modalTransitionStyle = UIModalTransitionStylePartialCurl;	
+	[self presentModalViewController:settingsController animated:YES];
 }
 
 -(IBAction) clickInfo:(id) sender {

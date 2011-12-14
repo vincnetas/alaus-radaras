@@ -344,7 +344,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
 			<object class="IBUIView" id="81143068">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -353,6 +353,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{80, 20}, {211, 206}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
+						<reference key="NSNextKeyView" ref="483956934"/>
 						<int key="IBUIContentMode">1</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -375,6 +376,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{102, 89}, {116, 115}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
+						<reference key="NSNextKeyView" ref="925215957"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -400,6 +402,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 196}, {280, 244}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
+						<reference key="NSNextKeyView" ref="255450047"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage" id="680858218">
@@ -412,6 +415,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{36, 256}, {247, 174}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -441,6 +445,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{12, 12}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="81143068"/>
+						<reference key="NSNextKeyView" ref="568424787"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<float key="IBUIAlpha">0.89999997615814209</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -460,7 +465,9 @@
 						<reference key="IBUIFont" ref="901795005"/>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 460}</string>
+				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView" ref="871264669"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="1032496477">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -480,7 +487,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
 			<object class="IBUIView" id="857259892">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -489,6 +496,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 154}, {280, 73}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="811972015"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -502,6 +510,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{97, 158}, {194, 69}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="606650879"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -531,6 +540,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 235}, {280, 73}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="542881780"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -551,6 +561,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{25, 235}, {266, 73}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -580,6 +592,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{25, 158}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="523773395"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -589,6 +602,7 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="20539791"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSColor" key="IBUITintColor" id="689175034">
@@ -615,6 +629,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{64, 0}, {216, 44}}</string>
 						<reference key="NSSuperview" ref="857259892"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="388818721"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -641,6 +656,8 @@
 					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="708475931"/>
 				<reference key="IBUIBackgroundColor" ref="689175034"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
@@ -658,7 +675,7 @@
 				<bool key="IBUIHorizontal">NO</bool>
 			</object>
 			<object class="IBUIView" id="256252562">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -667,7 +684,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{12, 408}, {284, 23}}</string>
 						<reference key="NSSuperview" ref="256252562"/>
-						<reference key="NSNextKeyView" ref="434043092"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -681,6 +699,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{165, 374}, {54, 29}}</string>
 						<reference key="NSSuperview" ref="256252562"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="797268390"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -700,6 +719,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{99, 367}, {58, 43}}</string>
 						<reference key="NSSuperview" ref="256252562"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="43539587"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -726,9 +747,10 @@
 					<object class="IBUISegmentedControl" id="905690664">
 						<reference key="NSNextResponder" ref="256252562"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{14, 326}, {280, 40}}</string>
+						<string key="NSFrame">{{14, 324}, {280, 44}}</string>
 						<reference key="NSSuperview" ref="256252562"/>
-						<reference key="NSNextKeyView" ref="43539587"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="434043092"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBSegmentControlStyle">3</int>
@@ -769,6 +791,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{14, 269}, {247, 57}}</string>
 						<reference key="NSSuperview" ref="256252562"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="905690664"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -795,6 +818,8 @@
 					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="53663664"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -806,7 +831,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="557899333">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -871,6 +896,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{36, 256}, {247, 174}}</string>
 						<reference key="NSSuperview" ref="557899333"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -909,6 +935,7 @@
 					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="594709561"/>
 				<reference key="IBUIBackgroundColor" ref="1032496477"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
@@ -1110,11 +1137,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">gotoPreviousView</string>
+						<string key="label">gotoPreviousView:</string>
 						<reference key="source" ref="397567913"/>
 						<reference key="destination" ref="301449804"/>
 					</object>
-					<int key="connectionID">123</int>
+					<int key="connectionID">225</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1482,11 +1509,6 @@
 						<reference key="parent" ref="256252562"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">144</int>
-						<reference key="object" ref="905690664"/>
-						<reference key="parent" ref="256252562"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">148</int>
 						<reference key="object" ref="53663664"/>
 						<reference key="parent" ref="256252562"/>
@@ -1554,6 +1576,11 @@
 						<int key="objectID">215</int>
 						<reference key="object" ref="241129159"/>
 						<reference key="parent" ref="94962305"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">144</int>
+						<reference key="object" ref="905690664"/>
+						<reference key="parent" ref="256252562"/>
 					</object>
 				</object>
 			</object>
@@ -1680,7 +1707,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">222</int>
+			<int key="maxID">225</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1927,7 +1954,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>gotoPreviousView</string>
+							<string>gotoPreviousView:</string>
 							<string>showPubDetailView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1940,13 +1967,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>gotoPreviousView</string>
+							<string>gotoPreviousView:</string>
 							<string>showPubDetailView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">gotoPreviousView</string>
+								<string key="name">gotoPreviousView:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2006,13 +2033,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>gotoPreviousView</string>
 							<string>visibilityControlIndexChanged</string>
 							<string>visibilityDistanceChanged:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -2021,16 +2046,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>gotoPreviousView</string>
 							<string>visibilityControlIndexChanged</string>
 							<string>visibilityDistanceChanged:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">gotoPreviousView</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">visibilityControlIndexChanged</string>
 								<string key="candidateClassName">id</string>
