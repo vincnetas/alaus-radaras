@@ -1,8 +1,0 @@
-LT	Lietuviškas
-CZ	Čekiškas
-DE	Vokiškas
-BE	Belgiškas
-NL	Olandiškas
-IE	Airiškas
-UK	Angliškas
-FR	Prancūziškas
