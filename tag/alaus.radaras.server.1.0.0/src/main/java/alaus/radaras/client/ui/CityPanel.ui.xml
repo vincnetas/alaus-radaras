@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.inputBox {
+			padding: 2px;
+			margin: 0px;
+			width: 192px;
+			}
+	</ui:style>
+	<g:DecoratorPanel>
+		<g:TextBox ui:field="textBox" styleName="{style.inputBox}"/>
+	</g:DecoratorPanel>
+</ui:UiBinder> 
