@@ -10,7 +10,6 @@ import java.util.List;
 
 import nb.server.guice.NbServletModule;
 import nb.server.service.BaseService;
-import nb.server.service.RoleHandler;
 import nb.server.service.UserService;
 import nb.shared.model.BaseObject;
 import nb.shared.model.BaseObject.State;
