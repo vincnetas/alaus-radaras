@@ -1,13 +1,14 @@
 package nb.server.dao.impl;
 
-import java.util.List;
+import static junit.framework.Assert.assertEquals;
 
-import org.junit.Test;
+import java.util.List;
 
 import nb.server.dao.BaseDao;
 import nb.server.dao.PlaceDao;
 import nb.shared.model.Place;
-import static junit.framework.Assert.*;
+
+import org.junit.Test;
 
 public class PlaceDaoImplTest extends BaseDaoImplTest<Place> {
 

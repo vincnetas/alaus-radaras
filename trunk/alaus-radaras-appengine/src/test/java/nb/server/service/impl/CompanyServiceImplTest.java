@@ -1,5 +1,7 @@
 package nb.server.service.impl;
 
+import static junit.framework.Assert.assertEquals;
+
 import java.util.List;
 
 import nb.server.service.BeerService;
@@ -7,7 +9,6 @@ import nb.server.service.CompanyService;
 import nb.server.service.UserService;
 import nb.shared.model.Beer;
 import nb.shared.model.Company;
-import static junit.framework.Assert.*;
 
 import org.junit.Test;
 import org.mockito.Mockito;
