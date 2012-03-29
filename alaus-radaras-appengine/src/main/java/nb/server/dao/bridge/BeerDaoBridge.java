@@ -10,7 +10,6 @@ import java.util.Set;
 
 import nb.server.dao.BeerDao;
 import nb.shared.model.Beer;
-import nb.shared.model.Place;
 import alaus.radaras.server.dao.BaseDao;
 import alaus.radaras.server.dao.PubDao;
 import alaus.radaras.shared.model.Pub;

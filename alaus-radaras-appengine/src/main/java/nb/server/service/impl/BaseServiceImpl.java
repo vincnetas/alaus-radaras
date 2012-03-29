@@ -8,6 +8,7 @@ import java.util.List;
 
 import nb.server.dao.BaseDao;
 import nb.server.dao.IdProvider;
+import nb.server.dao.impl.DaoError;
 import nb.server.service.BaseService;
 import nb.server.service.RoleHandler;
 import nb.server.service.UserService;
@@ -53,7 +54,7 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 		}
 		
 		if (!getRoleHandler().canSuggest(getUserService().getCurrentUser(), value)) {
-			throw new Error("Can't suggest");
+			throw new DaoError("Can't suggest");
 		}
 
 		value.setCreatedBy(getCurrentUserId());
@@ -83,17 +84,17 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 	public void approve(String id) {
 		T value = getBaseDao().read(id);
 		if (value == null) {
-			throw new Error("Object not found : " + id);
+			throw new DaoError("Object not found : " + id);
 		}
 
 		checkDeleted(value.getObjectId());
 
 		if (!getRoleHandler().canApprove(getUserService().getCurrentUser(), value)) {
-			throw new Error("Can't approve");
+			throw new DaoError("Can't approve");
 		}
 
 		if (!value.getState().equals(State.SUGGESTION)) {
-			throw new Error("Only PROPOSAL objects can be approved");
+			throw new DaoError("Only PROPOSAL objects can be approved");
 		}
 		
 		T currentValue = getBaseDao().readCurrent(value.getObjectId());
@@ -115,17 +116,17 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 	public void reject(String id) {
 		T value = getBaseDao().read(id);
 		if (value == null) {
-			throw new Error("Object not found : " + id);
+			throw new DaoError("Object not found : " + id);
 		}
 		
 		checkDeleted(value.getObjectId());
 		
 		if (!getRoleHandler().canReject(getUserService().getCurrentUser(), value)) {
-			throw new Error("Can't reject");
+			throw new DaoError("Can't reject");
 		}
 		
 		if (!value.getState().equals(State.SUGGESTION)) {
-			throw new Error("Only PROPOSAL objects can be rejected");
+			throw new DaoError("Only PROPOSAL objects can be rejected");
 		}
 		
 		value.setApprovedBy(getCurrentUserId());
@@ -142,7 +143,7 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 		checkDeleted(objectId);
 		T value = getBaseDao().readCurrent(objectId);
 		if (value == null) {
-			throw new Error("No current object found : " + objectId);
+			throw new DaoError("No current object found : " + objectId);
 		}
 			
 		value.setState(State.DELETED);
@@ -228,7 +229,7 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
     private void checkDeleted(String objectId) {
 		T value = getBaseDao().readDeleted(objectId);
 		if (value != null) {
-			throw new Error("Object is deleted");
+			throw new DaoError("Object is deleted");
 		}
 	}
 

@@ -17,12 +17,12 @@ public class CompanyServiceImplTest extends BaseServiceImplTest<Company>{
 
 	
 	public BeerService getBeerService() {
-		return guice.getInstance(BeerService.class);
+		return getGuice().getInstance(BeerService.class);
 	}
 	
 	@Override
 	public CompanyService getBaseService() {
-		return guice.getInstance(CompanyService.class);
+		return getGuice().getInstance(CompanyService.class);
 	}
 
 	@Override
@@ -69,6 +69,7 @@ public class CompanyServiceImplTest extends BaseServiceImplTest<Company>{
 	public void testGetBeers() {
 		addBeer("1", false);
 		addBeer("2", false);
+
 		addBeer("1", true);
 
 		List<Beer> beers = getBaseService().getBeers("1");

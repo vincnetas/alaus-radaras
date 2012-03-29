@@ -4,15 +4,18 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
+import java.util.SortedSet;
 
 import nb.server.service.BeerService;
 import nb.server.service.PlaceService;
 import nb.shared.model.Place;
 
-import org.zdevra.guice.mvc.Controller;
-import org.zdevra.guice.mvc.Model;
-import org.zdevra.guice.mvc.RequestMapping;
-import org.zdevra.guice.mvc.UriParameter;
+import org.zdevra.guice.mvc.ModelMap;
+import org.zdevra.guice.mvc.annotations.Controller;
+import org.zdevra.guice.mvc.annotations.Model;
+import org.zdevra.guice.mvc.annotations.Path;
+import org.zdevra.guice.mvc.annotations.UriParameter;
+import org.zdevra.guice.mvc.annotations.View;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -22,7 +25,7 @@ import com.google.inject.Singleton;
  *
  */
 @Singleton
-@Controller
+@Controller(path="/place/*")
 public class PlaceController {
 
     @Inject
@@ -31,9 +34,10 @@ public class PlaceController {
     @Inject
     private BeerService beerService;
     
-    @RequestMapping(path = "/(\\d+)", toView="view/place.jsp")
-    public Model getPlace(@UriParameter(1) String id) {
-        Model model = new Model();
+    @Path("/(\\d+)")
+    @View("view/place.jsp")
+    public ModelMap getPlace(@UriParameter(1) String id) {
+        ModelMap model = new ModelMap();
         
         Place place = getPlaceService().getCurrent(id);
         if (place != null) {
@@ -44,13 +48,11 @@ public class PlaceController {
         return model;
     }
     
-    @RequestMapping(path = "", toView="view/places.jsp")
-    public Model getPlaces() {
-    	Model model = new Model();
-    	    	
-    	model.addObject("places", Utils.sortPlacesByCount(getPlaceService().getCurrent()));
-    	
-    	return model;    	
+    @Path("")
+    @View("view/places.jsp")
+    @Model("places")
+    public SortedSet<SortedSet<Place>> getPlaces() {
+    	return Utils.sortPlacesByCount(getPlaceService().getCurrent());
     }
 
 	/**

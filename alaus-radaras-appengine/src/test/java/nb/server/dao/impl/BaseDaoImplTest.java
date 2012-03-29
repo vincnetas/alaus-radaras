@@ -17,6 +17,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import alaus.radaras.server.guice.AlausServletModule;
+
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
@@ -30,7 +32,16 @@ public abstract class BaseDaoImplTest<T extends BaseObject> {
 	
 	public abstract T getSample();
 	
-	protected Injector guice = Guice.createInjector(new NbServletModule());
+	private Injector guice = null;
+	
+	protected Injector getGuice() {
+		if (guice == null) {
+			guice = Guice.createInjector(new NbServletModule());//, new AlausServletModule());
+			
+		}
+		
+		return guice;
+	}
 	
     @Before
     public void setUp() {
@@ -67,16 +78,14 @@ public abstract class BaseDaoImplTest<T extends BaseObject> {
 		try {
 			getBaseDao().update(value);
 			fail("Should have failed because null id");
-		} catch (Error error) {
-			
+		} catch (DaoError error) {
 		}
 		
 		value.setId("non existing id");
 		try {
 			getBaseDao().update(value);
 			fail("Should have failed because non existing id");			
-		} catch (Throwable error) {
-			
+		} catch (DaoError error) {
 		}
 	}
 

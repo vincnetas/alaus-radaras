@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedMap;
 import java.util.SortedSet;
 
 import nb.shared.model.Place;
@@ -14,7 +15,7 @@ import org.junit.Test;
 public class UtilsTest {
 
 	@Test
-	public void testSortPlacesByCount() {
+	public void testSortPlacesByCount() {		
 		List<Place> places = new ArrayList<Place>();
 		Place place;
 		
@@ -32,7 +33,19 @@ public class UtilsTest {
 
 	@Test
 	public void testSortPlacesByCity() {
-		fail("Not yet implemented");
+		List<Place> places = new ArrayList<Place>();
+		Place place;
+		
+		place = new Place();
+		place.setCity("Vilnius");
+		places.add(place);
+
+		place = new Place();
+		place.setCity("Kaunas");
+		places.add(place);
+
+		SortedMap<String, SortedSet<Place>> sortPlacesByCity = Utils.sortPlacesByCity(places);
+		assertEquals(2, sortPlacesByCity.size());
 	}
 
 }

@@ -29,7 +29,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 
 
-class AlausServletModule extends MvcModule {
+public class AlausServletModule extends MvcModule {
 	
     @Override
     protected void configureControllers() {
