@@ -17,8 +17,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import alaus.radaras.server.guice.AlausServletModule;
-
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
@@ -36,7 +34,7 @@ public abstract class BaseDaoImplTest<T extends BaseObject> {
 	
 	protected Injector getGuice() {
 		if (guice == null) {
-			guice = Guice.createInjector(new NbServletModule());//, new AlausServletModule());
+			guice = Guice.createInjector(new NbServletModule());
 			
 		}
 		
