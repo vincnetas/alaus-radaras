@@ -1,7 +1,11 @@
 package nb.server.guice;
 
+import java.util.logging.Logger;
+
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
+
+import org.zdevra.guice.mvc.MvcModule;
 
 import nb.server.controller.impl.BeerController;
 import nb.server.controller.impl.PlaceController;
@@ -30,9 +34,6 @@ import nb.server.service.impl.CompanyServiceImpl;
 import nb.server.service.impl.PlaceServiceImpl;
 import nb.server.service.impl.RoleHandlerImpl;
 import nb.server.service.impl.UserServiceImpl;
-
-import org.zdevra.guice.mvc.MvcModule;
-
 import alaus.radaras.server.AdminBeerServiceImpl;
 import alaus.radaras.server.CsvDataServlet;
 import alaus.radaras.server.ImageServlet;
@@ -52,6 +53,8 @@ import alaus.radaras.server.locator.IPLocatorImpl;
 import com.google.appengine.api.users.UserServiceFactory;
 
 public class NbServletModule extends MvcModule {
+	
+	private static final Logger logger = Logger.getLogger(NbServletModule.class.getName());
 	
 	private static PersistenceManagerFactory pmf;
 	static {
@@ -87,6 +90,7 @@ public class NbServletModule extends MvcModule {
 		serve("/jsonrpc").with(JSONDispacher.class);
 		serve("/img/beer/*").with(BeerIconDispacher.class);
 
+		
 		control("/place/*").withController(PlaceController.class);
 		control("/places").withController(PlaceController.class);
 		control("/beer/*").withController(BeerController.class);

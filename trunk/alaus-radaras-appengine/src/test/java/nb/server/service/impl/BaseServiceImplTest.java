@@ -22,6 +22,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import alaus.radaras.server.Stat;
+
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
@@ -31,15 +33,8 @@ public abstract class BaseServiceImplTest<T extends BaseObject> {
 
 	private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	
-	private Injector guice = null;
-	
 	protected Injector getGuice() {
-		if (guice == null) {
-			guice = Guice.createInjector(new NbServletModule());
-			
-		}
-		
-		return guice;
+		return Stat.getGuice();
 	}
 	
 	public abstract BaseService<T> getBaseService();
