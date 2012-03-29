@@ -11,7 +11,6 @@ public class AlausGuiceServletContextListener extends GuiceServletContextListene
 	@Override
 	protected Injector getInjector() {
 		return Guice.createInjector(
-				new AlausServletModule(),
 				new NbServletModule()
 			);
 	}

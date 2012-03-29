@@ -33,6 +33,24 @@ import nb.server.service.impl.UserServiceImpl;
 
 import org.zdevra.guice.mvc.MvcModule;
 
+import alaus.radaras.server.AdminBeerServiceImpl;
+import alaus.radaras.server.CsvDataServlet;
+import alaus.radaras.server.ImageServlet;
+import alaus.radaras.server.JsonDataServlet;
+import alaus.radaras.server.UploadServlet;
+import alaus.radaras.server.dao.BrandDao;
+import alaus.radaras.server.dao.BrandService;
+import alaus.radaras.server.dao.PubDao;
+import alaus.radaras.server.dao.PubService;
+import alaus.radaras.server.dao.impl.BrandDaoImpl;
+import alaus.radaras.server.dao.impl.BrandServiceImpl;
+import alaus.radaras.server.dao.impl.PubDaoImpl;
+import alaus.radaras.server.dao.impl.PubServiceImpl;
+import alaus.radaras.server.locator.IPLocator;
+import alaus.radaras.server.locator.IPLocatorImpl;
+
+import com.google.appengine.api.users.UserServiceFactory;
+
 public class NbServletModule extends MvcModule {
 	
 	private static PersistenceManagerFactory pmf;
@@ -76,6 +94,28 @@ public class NbServletModule extends MvcModule {
 		
 		control("/home").withView("view/home.jsp");
 		control("/about").withView("view/about.jsp");
+		
+		/*
+		 * Legacy
+		 * 
+		 */
+        bind(alaus.radaras.server.dao.IdProvider.class).to(alaus.radaras.server.dao.impl.IdProviderImpl.class);
+        bind(PubDao.class).to(PubDaoImpl.class);
+        bind(alaus.radaras.server.dao.BeerDao.class).to(alaus.radaras.server.dao.impl.BeerDaoImpl.class);
+        bind(BrandDao.class).to(BrandDaoImpl.class);
+        bind(IPLocator.class).to(IPLocatorImpl.class);
+        bind(com.google.appengine.api.users.UserService.class).toInstance(UserServiceFactory.getUserService());        
+        bind(PubService.class).to(PubServiceImpl.class);
+        bind(alaus.radaras.server.dao.BeerService.class).to(alaus.radaras.server.dao.impl.BeerServiceImpl.class);
+        bind(BrandService.class).to(BrandServiceImpl.class);
+        
+        serve("/beerEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
+        serve("/adminEngine/beerService").with(alaus.radaras.server.BeerServiceImpl.class);
+        serve("/adminEngine/adminBeerService").with(AdminBeerServiceImpl.class);
+        serve("/json").with(JsonDataServlet.class);     
+        serve("/csv").with(CsvDataServlet.class);       
+        serve("/admin/upload").with(UploadServlet.class);
+        serve("/image/beer/*").with(ImageServlet.class);
 	}
 
 }

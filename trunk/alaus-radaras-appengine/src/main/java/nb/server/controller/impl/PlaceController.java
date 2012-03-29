@@ -25,7 +25,7 @@ import com.google.inject.Singleton;
  *
  */
 @Singleton
-@Controller(path="/place/*")
+@Controller
 public class PlaceController {
 
     @Inject
