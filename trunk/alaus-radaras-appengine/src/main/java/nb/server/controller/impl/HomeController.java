@@ -3,8 +3,8 @@
  */
 package nb.server.controller.impl;
 
-import org.zdevra.guice.mvc.Controller;
-import org.zdevra.guice.mvc.RequestMapping;
+import org.zdevra.guice.mvc.annotations.Controller;
+import org.zdevra.guice.mvc.annotations.Path;
 
 import com.google.inject.Singleton;
 
@@ -16,7 +16,7 @@ import com.google.inject.Singleton;
 @Controller
 public class HomeController {
 
-	@RequestMapping(path = "/")
+	@Path("/")
     public void home() {
 
     }

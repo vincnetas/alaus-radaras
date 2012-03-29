@@ -12,6 +12,12 @@ public interface BaseDao<T extends BaseObject> {
 
 	T create(T object);
 	
+	/**
+	 * Returns object with specified id
+	 * 
+	 * @param id
+	 * @return Returns null if no object found
+	 */
 	T read(String id);
 	
 	/**

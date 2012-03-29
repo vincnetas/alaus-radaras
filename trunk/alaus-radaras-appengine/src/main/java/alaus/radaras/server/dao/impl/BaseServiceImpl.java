@@ -8,7 +8,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
+import nb.server.dao.impl.DaoError;
+
+import org.apache.commons.collections15.CollectionUtils;
 import org.apache.commons.lang.ObjectUtils;
 
 import alaus.radaras.server.dao.BaseDao;
@@ -35,7 +37,7 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	
 	public T add(T object) {
 		if (object.getParentId() != null) {
-			throw new Error("Base object can't have parent id " + object);
+			throw new DaoError("Base object can't have parent id " + object);
 		}
 		
 		object.setApproved(null);
@@ -54,7 +56,7 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	
 	public T addUpdate(T update) {
 		if (update.getParentId() == null) {
-			throw new Error("No parent id specified for update " + update);
+			throw new DaoError("No parent id specified for update " + update);
 		}
 		
 		T parent = getParent(update);
@@ -85,7 +87,7 @@ public abstract class BaseServiceImpl<T extends Updatable> implements BaseServic
 	private T getParent(T update) {
 		T parent = getBaseDao().get(update.getParentId());
 		if (parent == null) {
-			throw new Error("Parent doesn't exists for update " + update);
+			throw new DaoError("Parent doesn't exists for update " + update);
 		}
 		
 		return parent;

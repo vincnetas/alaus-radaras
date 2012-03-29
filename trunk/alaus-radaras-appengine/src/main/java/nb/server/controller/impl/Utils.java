@@ -10,9 +10,9 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.apache.commons.collections15.ComparatorUtils;
-
 import nb.shared.model.Place;
+
+import org.apache.commons.collections15.ComparatorUtils;
 
 
 
@@ -51,6 +51,13 @@ public class Utils {
 		return result;
 	}
 	
+	/**
+	 * 
+	 * @param places
+	 *            Collection of places
+	 * @return Returns Sorted map where key is city name and value is by name
+	 *         sorted set of places in that city
+	 */
     static public SortedMap<String, SortedSet<Place>> sortPlacesByCity(Collection<Place> places) {
     	SortedMap<String, SortedSet<Place>> result = new TreeMap<String, SortedSet<Place>>();
     	

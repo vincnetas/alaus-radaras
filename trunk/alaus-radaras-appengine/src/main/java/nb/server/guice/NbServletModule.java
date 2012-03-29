@@ -4,16 +4,15 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
 import nb.server.controller.impl.BeerController;
-import nb.server.controller.impl.HomeController;
 import nb.server.controller.impl.PlaceController;
 import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.dao.IdProvider;
 import nb.server.dao.PlaceDao;
-import nb.server.dao.bridge.BeerDaoBridge;
-import nb.server.dao.bridge.CompanyDaoBridge;
-import nb.server.dao.bridge.PlaceDaoBridge;
+import nb.server.dao.impl.BeerDaoImpl;
+import nb.server.dao.impl.CompanyDaoImpl;
 import nb.server.dao.impl.IdProviderImpl;
+import nb.server.dao.impl.PlaceDaoImpl;
 import nb.server.dispacher.BeerIconDispacher;
 import nb.server.dispacher.MailHandler;
 import nb.server.dispacher.NokiaUpdateHandler;
@@ -48,9 +47,9 @@ public class NbServletModule extends MvcModule {
 	 */
 	@Override
 	protected void configureControllers() {
-		bind(BeerDao.class).to(BeerDaoBridge.class);
-		bind(PlaceDao.class).to(PlaceDaoBridge.class);
-		bind(CompanyDao.class).to(CompanyDaoBridge.class);
+		bind(BeerDao.class).to(BeerDaoImpl.class);
+		bind(PlaceDao.class).to(PlaceDaoImpl.class);
+		bind(CompanyDao.class).to(CompanyDaoImpl.class);
 		
 		bind(BeerService.class).to(BeerServiceImpl.class);
 		bind(PlaceService.class).to(PlaceServiceImpl.class);
@@ -69,12 +68,14 @@ public class NbServletModule extends MvcModule {
 		
 		serve("/jsonrpc").with(JSONDispacher.class);
 		serve("/img/beer/*").with(BeerIconDispacher.class);
-		control("/place/*").withController(PlaceController.class).set();
-		control("/places").withController(PlaceController.class).set();
-		control("/beer/*").withController(BeerController.class).set();
-		control("/beers").withController(BeerController.class).set();
-		control("/home").withController(HomeController.class).toView("view/home.jsp").set();
-		control("/about").withController(HomeController.class).toView("view/about.jsp").set();
+
+		control("/place/*").withController(PlaceController.class);
+		control("/places").withController(PlaceController.class);
+		control("/beer/*").withController(BeerController.class);
+		control("/beers").withController(BeerController.class);
+		
+		control("/home").withView("view/home.jsp");
+		control("/about").withView("view/about.jsp");
 	}
 
 }

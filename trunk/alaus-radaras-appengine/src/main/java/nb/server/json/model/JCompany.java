@@ -3,8 +3,6 @@
  */
 package nb.server.json.model;
 
-import java.util.Set;
-
 import javax.jdo.annotations.Persistent;
 
 /**

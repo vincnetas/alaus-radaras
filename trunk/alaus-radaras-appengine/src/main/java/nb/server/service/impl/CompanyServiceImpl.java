@@ -5,15 +5,15 @@ package nb.server.service.impl;
 
 import java.util.List;
 
-import com.google.inject.Inject;
-
 import nb.server.dao.BaseDao;
 import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.service.CompanyService;
+import nb.shared.model.BaseObject.State;
 import nb.shared.model.Beer;
 import nb.shared.model.Company;
-import nb.shared.model.BaseObject.State;
+
+import com.google.inject.Inject;
 
 /**
  * @author vienozin

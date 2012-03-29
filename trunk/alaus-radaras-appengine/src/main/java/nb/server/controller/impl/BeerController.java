@@ -4,25 +4,21 @@
 package nb.server.controller.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import nb.server.service.BeerService;
 import nb.server.service.CompanyService;
 import nb.server.service.PlaceService;
 import nb.shared.model.Beer;
-import nb.shared.model.Place;
 
-import org.zdevra.guice.mvc.Controller;
-import org.zdevra.guice.mvc.Model;
-import org.zdevra.guice.mvc.RequestMapping;
-import org.zdevra.guice.mvc.UriParameter;
+import org.zdevra.guice.mvc.ModelMap;
+import org.zdevra.guice.mvc.annotations.Controller;
+import org.zdevra.guice.mvc.annotations.Model;
+import org.zdevra.guice.mvc.annotations.Path;
+import org.zdevra.guice.mvc.annotations.UriParameter;
+import org.zdevra.guice.mvc.annotations.View;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -32,7 +28,7 @@ import com.google.inject.Singleton;
  *
  */
 @Singleton
-@Controller
+@Controller(path="/beer/*")
 public class BeerController {
 
     @Inject
@@ -44,9 +40,10 @@ public class BeerController {
     @Inject
     private CompanyService companyService;
     
-    @RequestMapping(path = "/(\\d+)", toView="view/beer.jsp")
-    public Model getBeer(@UriParameter(1) String id) {
-        Model model = new Model();
+    @Path("/(\\d+)")
+    @View("view/beer.jsp")
+    public ModelMap getBeer(@UriParameter(1) String id) {
+        ModelMap model = new ModelMap();
         
         Beer beer = getBeerService().getCurrent(id);
         if (beer != null) {        	
@@ -58,11 +55,10 @@ public class BeerController {
         return model;
     }
         
-    @RequestMapping(path = "", toView="view/beers.jsp")
-    public Model getBeers() {
-        Model model = new Model();
-        
-        
+    @Path("")
+    @View("view/beers.jsp")
+    @Model("beers")
+    public List<Beer> getBeers() {
         List<Beer> beers =  getBeerService().getCurrent();
         Collections.sort(beers, new Comparator<Beer>() {
 
@@ -71,9 +67,8 @@ public class BeerController {
 				return o1.getTitle().compareToIgnoreCase(o2.getTitle());
 			}
 		});
-        model.addObject("beers", beers);
         
-        return model;
+        return beers;
     }
 
 

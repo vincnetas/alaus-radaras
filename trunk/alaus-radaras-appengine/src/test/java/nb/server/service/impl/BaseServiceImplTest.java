@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -21,6 +22,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import alaus.radaras.server.guice.AlausServletModule;
+
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
@@ -30,7 +33,16 @@ public abstract class BaseServiceImplTest<T extends BaseObject> {
 
 	private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	
-	protected Injector guice = Guice.createInjector(new NbServletModule());
+	private Injector guice = null;
+	
+	protected Injector getGuice() {
+		if (guice == null) {
+			guice = Guice.createInjector(new NbServletModule());//, new AlausServletModule());
+			
+		}
+		
+		return guice;
+	}
 	
 	public abstract BaseService<T> getBaseService();
 		
@@ -190,24 +202,25 @@ public abstract class BaseServiceImplTest<T extends BaseObject> {
 
 		add(sample, true);
 		T current = getBaseService().getCurrent("qq");
-		getBaseService().delete("qw");
-		
-		
+		getBaseService().delete("qq");
 	}
 
 	@Test
 	public void testGetDeleted() {
-		fail("Not yet implemented");
+		List<T> deleted = getBaseService().getDeleted(new Date());
+		assertEquals(0, deleted.size());
 	}
 
 	@Test
 	public void testGetUpdated() {
-		fail("Not yet implemented");
+		List<T> updated = getBaseService().getUpdated(new Date());
+		assertEquals(0, updated.size());
 	}
 
 	@Test
 	public void testGetSuggestions() {
-		fail("Not yet implemented");
+		List<T> suggestions = getBaseService().getSuggestions("nonexisting");
+		assertEquals(0, suggestions.size());
 	}
 
 }

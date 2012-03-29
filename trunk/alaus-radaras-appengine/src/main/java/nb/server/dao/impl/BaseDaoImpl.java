@@ -63,9 +63,9 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 		try {
 			filter = getClazz().newInstance();
 		} catch (InstantiationException e) {
-			throw new Error(e);
+			throw new DaoError(e);
 		} catch (IllegalAccessException e) {
-			throw new Error(e);
+			throw new DaoError(e);
 		}
 		
 		filter.setState(State.CURRENT);
@@ -115,14 +115,19 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 	@Override
 	public T update(final T object) {
 		if (object.getId() == null) {
-			throw new Error("Object has no id. Update not possible");
+			throw new DaoError("Object has no id. Update not possible");
 		}
 			
 		return execute(new PersistenceManagerCallback<T>() {
 			
 			@Override
 			public T callback(PersistenceManager pm) {
-				pm.getObjectById(getClazz(), object.getId());
+				try {
+					pm.getObjectById(getClazz(), object.getId());
+				} catch (JDOObjectNotFoundException notFoundException) {
+					throw new DaoError("Object not found " + object.getId(), notFoundException);
+				}
+				
 				return pm.makePersistent(object);
 			}
 		});
@@ -139,7 +144,7 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 			public T callback(PersistenceManager pm) {
 				T value = read(id);
 				if (value == null) {
-					throw new Error("No object to delete with id " + id);
+					throw new DaoError("No object to delete with id " + id);
 				}
 				
 				pm.deletePersistent(value);
@@ -182,7 +187,7 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 					if (list.size() == 1) {
 						result = list.get(0);						
 					} else {
-						throw new Error("Should return only one element");
+						throw new DaoError("Should return only one element");
 					}
 				}
 				
@@ -338,11 +343,11 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 				try {
 					properties = BeanUtils.describe(filter);
 				} catch (IllegalAccessException e) {
-					throw new Error(e);
+					throw new DaoError(e);
 				} catch (InvocationTargetException e) {
-					throw new Error(e);
+					throw new DaoError(e);
 				} catch (NoSuchMethodException e) {
-					throw new Error(e);
+					throw new DaoError(e);
 				}
 				
 				for (Entry<String, Object> entry : properties.entrySet()) {
@@ -352,11 +357,11 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 						try {
 							propertyType = PropertyUtils.getPropertyType(filter, entry.getKey());
 						} catch (IllegalAccessException e) {
-							throw new Error(e);
+							throw new DaoError(e);
 						} catch (InvocationTargetException e) {
-							throw new Error(e);
+							throw new DaoError(e);
 						} catch (NoSuchMethodException e) {
-							throw new Error(e);
+							throw new DaoError(e);
 						}
 						
 						if (filterClass(propertyType)) {
@@ -399,7 +404,7 @@ public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplat
 		} else if (State.class.equals(propertyValue.getClass())) {
 			return propertyValue.toString();
 		} else {
-			throw new Error("unsuported property class " + propertyValue.getClass().getCanonicalName());
+			throw new DaoError("unsuported property class " + propertyValue.getClass().getCanonicalName());
 		}
 	}
 	

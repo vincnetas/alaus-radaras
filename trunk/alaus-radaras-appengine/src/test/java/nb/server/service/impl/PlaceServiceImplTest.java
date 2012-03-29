@@ -19,7 +19,7 @@ public class PlaceServiceImplTest extends BaseServiceImplTest<Place> {
 	 */
 	@Override
 	public BaseService<Place> getBaseService() {
-		return guice.getInstance(PlaceService.class);
+		return getGuice().getInstance(PlaceService.class);
 		
 	}
 
