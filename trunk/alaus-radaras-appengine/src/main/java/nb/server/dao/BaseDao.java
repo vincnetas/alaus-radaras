@@ -2,7 +2,9 @@ package nb.server.dao;
 
 import java.util.List;
 
-public interface BaseDao<T> {
+import nb.shared.model.BaseObject;
+
+public interface BaseDao<T extends BaseObject> {
 
 	T create(T object);
 
@@ -28,11 +30,7 @@ public interface BaseDao<T> {
 	void delete(String id);
 
 	List<T> findBy(T filter);
-
-	/**
-	 * Returns all
-	 * @return
-	 */
-	public abstract List<T> readAll();
+	
+	T findOne(T filter);
 
 }

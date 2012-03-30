@@ -103,15 +103,12 @@ public class NbServiceImpl implements NbService {
 
     @Override
     public JPlace savePlace(JPlace place) {
-        // TODO Auto-generated method stub
+    	
         return null;
     }
     
-    private Pub convert(JPlace place) {
-        Pub result = new Pub();
-        
-        result.setAddress(place.getStreetAddress());
-        
+    private Place convert(JPlace place) {
+        Place result = new Place();
         
         return result;
     }

@@ -173,7 +173,7 @@ div.container>sub {
 
 div.container>input {
 	font-size: 30px;
-	width: 95%;
+	width: 99%;
 }
 
 div.footer {
@@ -226,5 +226,21 @@ div.map span {
 	text-shadow: none;
 }
 
+div.newPlace {
+	float: left;
+	width: 397px;
+}
+
+div.newPlaceAddress {
+	float: right
+}
+
+div.newPlaceBeer {
+	margin-top: 15px;
+}
+
+div.newPlaceTags {
+	margin-top: 15px;
+}
 
 

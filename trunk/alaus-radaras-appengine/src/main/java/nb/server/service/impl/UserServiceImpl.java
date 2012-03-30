@@ -3,6 +3,8 @@
  */
 package nb.server.service.impl;
 
+import java.util.HashSet;
+
 import nb.server.dao.UserDao;
 import nb.server.service.UserService;
 import nb.shared.model.User;
@@ -30,7 +32,25 @@ public class UserServiceImpl implements UserService {
 		
 		com.google.appengine.api.users.User currentUser = getUserService().getCurrentUser();
 		if (currentUser != null) {
-			result = getUserDao().read(currentUser.getEmail());
+			result = new User();
+			result.setUserId(currentUser.getEmail());
+			result = getUserDao().findOne(result);
+			
+			if (result == null) {
+				result = new User();
+				result.setOwnerForCompanies(new HashSet<String>());
+				result.setOwnerForPlaces(new HashSet<String>());
+				
+				if (getUserService().isUserAdmin()) {
+					result.setRole(User.Role.ADMIN);
+				} else {
+					result.setRole(User.Role.USER);
+				}				
+				
+				result.setUserId(currentUser.getEmail());
+
+				getUserDao().create(result);
+			}
 		}
 		
 		return result;
@@ -63,6 +83,16 @@ public class UserServiceImpl implements UserService {
 	 */
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	@Override
+	public String getLoginUrl(String redirectUrl) {
+		return getUserService().createLoginURL(redirectUrl);
+	}
+
+	@Override
+	public String getLogoutUrl(String redirectUrl) {
+		return getUserService().createLogoutURL(redirectUrl);
 	}
 	
 	

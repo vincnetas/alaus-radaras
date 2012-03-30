@@ -8,7 +8,6 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
 /**
  * @author Vincentas
@@ -16,16 +15,15 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
 @Inheritance(strategy=InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class BaseHistoryObject implements Serializable {
+public abstract class BaseHistoryObject extends BaseObject implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2813446066318985148L;
 
 	public enum State {SUGGESTION, CURRENT, HISOTRY, REJECTED, DELETED};
 	
-	/**
-	 * Instance id. There can be multiple instance id's for one object id.
-	 */
-	@PrimaryKey
-	private String id;
-
 	/**
 	 * Object id.
 	 */
@@ -79,20 +77,6 @@ public abstract class BaseHistoryObject implements Serializable {
 	 */
 	@Persistent
 	private State state;
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the createdBy

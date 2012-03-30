@@ -5,15 +5,16 @@ import static junit.framework.Assert.assertEquals;
 import java.util.List;
 
 import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.PlaceDao;
 import nb.shared.model.Place;
 
 import org.junit.Test;
 
-public class PlaceDaoImplTest extends BaseDaoImplTest<Place> {
+public class PlaceDaoImplTest extends BaseHistoryDaoImplTest<Place> {
 
 	@Override
-	public BaseDao<Place> getBaseDao() {
+	public BaseHistoryDao<Place> getBaseDao() {
 		return getGuice().getInstance(PlaceDao.class);
 	}
 
