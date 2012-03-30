@@ -11,7 +11,7 @@ import javax.jdo.annotations.Persistent;
  *
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
-public class Place extends BaseObject {
+public class Place extends BaseHistoryObject {
 
 	/**
 	 * Type of place.

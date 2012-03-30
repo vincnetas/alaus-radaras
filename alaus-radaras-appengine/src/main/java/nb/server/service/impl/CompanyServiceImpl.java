@@ -9,7 +9,7 @@ import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.service.CompanyService;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject.State;
 import nb.shared.model.Beer;
 import nb.shared.model.Company;
 

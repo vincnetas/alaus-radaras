@@ -3,7 +3,7 @@
  */
 package nb.server.service;
 
-import nb.shared.model.BaseObject;
+import nb.shared.model.BaseHistoryObject;
 import nb.shared.model.User;
 
 /**
@@ -21,7 +21,7 @@ public interface RoleHandler {
 	 *            Object.
 	 * @return Returns if user is allowed to suggest.
 	 */
-	boolean canSuggest(User user, BaseObject object);
+	boolean canSuggest(User user, BaseHistoryObject object);
 
 	/**
 	 * Checks if user has rights to reject object.
@@ -32,7 +32,7 @@ public interface RoleHandler {
 	 *            Object.
 	 * @return Returns if user is allowed to reject.
 	 */
-	boolean canReject(User user, BaseObject object);
+	boolean canReject(User user, BaseHistoryObject object);
 
 	/**
 	 * Checks if user has rights to delete object.
@@ -43,7 +43,7 @@ public interface RoleHandler {
 	 *            Object.
 	 * @return Returns if user is allowed to delete.
 	 */
-	boolean canDelete(User user, BaseObject object);
+	boolean canDelete(User user, BaseHistoryObject object);
 
 	/**
 	 * Checks if user has rights to approve object.
@@ -54,7 +54,7 @@ public interface RoleHandler {
 	 *            Object.
 	 * @return Returns if user is allowed to approve.
 	 */
-	boolean canApprove(User user, BaseObject object);
+	boolean canApprove(User user, BaseHistoryObject object);
 
 
 }

@@ -12,8 +12,8 @@ import java.util.List;
 import nb.server.guice.NbServletModule;
 import nb.server.service.BaseService;
 import nb.server.service.UserService;
-import nb.shared.model.BaseObject;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject;
+import nb.shared.model.BaseHistoryObject.State;
 import nb.shared.model.User;
 import nb.shared.model.User.Role;
 
@@ -29,7 +29,7 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public abstract class BaseServiceImplTest<T extends BaseObject> {
+public abstract class BaseServiceImplTest<T extends BaseHistoryObject> {
 
 	private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	

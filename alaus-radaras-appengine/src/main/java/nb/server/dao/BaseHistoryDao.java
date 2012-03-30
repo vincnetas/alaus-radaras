@@ -3,35 +3,12 @@ package nb.server.dao;
 import java.util.Date;
 import java.util.List;
 
-import nb.shared.model.BaseObject;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject;
+import nb.shared.model.BaseHistoryObject.State;
 
 
-public interface BaseHistoryDao<T extends BaseObject> {
+public interface BaseHistoryDao<T extends BaseHistoryObject> extends BaseDao<T> {
 
-	T create(T object);
-	
-	/**
-	 * Returns object with specified id
-	 * 
-	 * @param id
-	 * @return Returns null if no object found
-	 */
-	T read(String id);
-	
-	/**
-	 * Returns List of objects with specified id's. If object is not found for
-	 * specified id, in result element at same index as id will be null.
-	 * 
-	 * @param ids
-	 * @return
-	 */
-	List<T> read(List<String> ids);
-	
-	T update(T object);
-	
-	void delete(String id);
-	
 	T readCurrent(String objectId);
 
 	/**
@@ -59,8 +36,6 @@ public interface BaseHistoryDao<T extends BaseObject> {
 	 */
 	List<T> readAll(String objectId);
 	
-	List<T> findBy(T filter);
-
 	/**
 	 * Retrieves initially created instance of object. Creation date equals
 	 * first creation date and object id's equal.
@@ -69,11 +44,5 @@ public interface BaseHistoryDao<T extends BaseObject> {
 	 * @return Returns first instance of this object or null if no found.
 	 */
 	T getFirstInstance(String objectId);
-
-	/**
-	 * Returns all
-	 * @return
-	 */
-	List<T> readAll();
 	
 }

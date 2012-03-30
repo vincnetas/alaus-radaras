@@ -6,14 +6,14 @@ package nb.server.service;
 import java.util.Date;
 import java.util.List;
 
-import nb.shared.model.BaseObject;
+import nb.shared.model.BaseHistoryObject;
 
 
 /**
  * @author Vincentas
  *
  */
-public interface BaseService<T extends BaseObject> {
+public interface BaseService<T extends BaseHistoryObject> {
 
 	/**
 	 * Suggest modification for object or addition of a new object. If passed

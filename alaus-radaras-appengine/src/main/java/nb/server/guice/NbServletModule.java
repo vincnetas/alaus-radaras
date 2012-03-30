@@ -13,10 +13,12 @@ import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.dao.IdProvider;
 import nb.server.dao.PlaceDao;
+import nb.server.dao.UserDao;
 import nb.server.dao.impl.BeerDaoImpl;
 import nb.server.dao.impl.CompanyDaoImpl;
 import nb.server.dao.impl.IdProviderImpl;
 import nb.server.dao.impl.PlaceDaoImpl;
+import nb.server.dao.impl.UserDaoImpl;
 import nb.server.dispacher.BeerIconDispacher;
 import nb.server.dispacher.MailHandler;
 import nb.server.dispacher.NokiaUpdateHandler;
@@ -71,6 +73,7 @@ public class NbServletModule extends MvcModule {
 		bind(BeerDao.class).to(BeerDaoImpl.class);
 		bind(PlaceDao.class).to(PlaceDaoImpl.class);
 		bind(CompanyDao.class).to(CompanyDaoImpl.class);
+		bind(UserDao.class).to(UserDaoImpl.class);
 		
 		bind(BeerService.class).to(BeerServiceImpl.class);
 		bind(PlaceService.class).to(PlaceServiceImpl.class);
