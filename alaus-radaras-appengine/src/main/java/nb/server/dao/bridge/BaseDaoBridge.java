@@ -156,8 +156,17 @@ public abstract class BaseDaoBridge<T extends BaseHistoryObject, V extends Updat
         // TODO Auto-generated method stub
         return null;
     }
-
+    
     /* (non-Javadoc)
+	 * @see nb.server.dao.BaseDao#findOne(nb.shared.model.BaseObject)
+	 */
+	@Override
+	public T findOne(T filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
      * @see nb.server.dao.BaseDao#getFirstInstance(java.lang.String)
      */
     @Override

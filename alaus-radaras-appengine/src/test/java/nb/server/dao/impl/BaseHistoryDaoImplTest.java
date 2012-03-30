@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.guice.NbServletModule;
 import nb.shared.model.BaseHistoryObject;
 import nb.shared.model.BaseHistoryObject.State;
@@ -24,11 +25,11 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public abstract class BaseDaoImplTest<T extends BaseHistoryObject> {
+public abstract class BaseHistoryDaoImplTest<T extends BaseHistoryObject> {
 
 	private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	
-	public abstract BaseDao<T> getBaseDao();
+	public abstract BaseHistoryDao<T> getBaseDao();
 	
 	public abstract T getSample();
 	

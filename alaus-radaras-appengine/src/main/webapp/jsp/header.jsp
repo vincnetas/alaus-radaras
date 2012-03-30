@@ -1,9 +1,11 @@
+<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@page import="com.google.apphosting.api.UserServicePb.UserService"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="header box">
 	<div class="logo">
-		<a href="/home"> <img src="/img/bokalas_vol_3.png" width="80px"> Alaus radaras </a>
+		<a href="/home"> <img src="/img/bokalas_vol_3.png" width="80px"> Alaus radaras</a>
 	</div>
 	<div class="market">
 		<ul>

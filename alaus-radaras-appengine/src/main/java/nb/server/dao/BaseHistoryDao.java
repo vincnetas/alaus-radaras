@@ -45,4 +45,12 @@ public interface BaseHistoryDao<T extends BaseHistoryObject> extends BaseDao<T> 
 	 */
 	T getFirstInstance(String objectId);
 	
+
+	/**
+	 * Returns all
+	 * @return
+	 */
+	public abstract List<T> readAll();
+
+	
 }

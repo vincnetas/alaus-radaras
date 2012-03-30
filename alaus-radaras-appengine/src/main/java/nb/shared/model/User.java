@@ -7,14 +7,14 @@ import java.util.Set;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.Persistent;
 
 /**
  * @author Vincentas
  *
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
-public class User {
+public class User extends BaseObject {
 
 	public enum Role {
 		ADMIN,
@@ -25,22 +25,25 @@ public class User {
 	/**
 	 * User id. Usually email.
 	 */
-	@PrimaryKey
+	@Persistent
 	private String userId;
 	
 	/**
 	 * User role.
 	 */
+	@Persistent
 	private Role role;
 	
 	/**
 	 * Set of places id's that this user is owner of.
 	 */
+	@Persistent
 	private Set<String> ownerForPlaces;
 	
 	/**
 	 * Set of companies id's that this user is owner of.
 	 */
+	@Persistent
 	private Set<String> ownerForCompanies;
 
 	/**
@@ -98,6 +101,4 @@ public class User {
 	public void setOwnerForCompanies(Set<String> ownerForCompanies) {
 		this.ownerForCompanies = ownerForCompanies;
 	}
-	
-	
 }

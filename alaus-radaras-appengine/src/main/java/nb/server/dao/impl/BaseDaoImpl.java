@@ -8,7 +8,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,24 +17,22 @@ import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import nb.server.dao.BaseDao;
+import nb.server.dao.IdProvider;
+import nb.shared.model.BaseHistoryObject.State;
+import nb.shared.model.BaseObject;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.google.inject.Inject;
-
-import nb.server.dao.BaseDao;
-import nb.server.dao.IdProvider;
-import nb.server.dao.impl.DataStoreTemplate.PersistenceManagerCallback;
-import nb.server.dao.impl.DataStoreTemplate.PersistenceManagerListCallback;
-import nb.shared.model.BaseHistoryObject.State;
 
 /**
  * @author vincentas
  *
  */
-public class BaseDaoImpl<T> extends DataStoreTemplate implements BaseDao<T> {
+public class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplate implements BaseDao<T> {
 
 
 	@Inject
@@ -54,24 +51,6 @@ public class BaseDaoImpl<T> extends DataStoreTemplate implements BaseDao<T> {
 				return pm.makePersistent(object);
 			}
 		});
-	}
-	
-	/* (non-Javadoc)
-	 * @see nb.server.dao.BaseDao#readAll()
-	 */
-	@Override
-	public List<T> readAll() {
-		T filter;
-		try {
-			filter = getClazz().newInstance();
-		} catch (InstantiationException e) {
-			throw new DaoError(e);
-		} catch (IllegalAccessException e) {
-			throw new DaoError(e);
-		}
-		
-		filter.setState(State.CURRENT);
-		return findBy(filter);
 	}
 
 	/* (non-Javadoc)
@@ -178,6 +157,22 @@ public class BaseDaoImpl<T> extends DataStoreTemplate implements BaseDao<T> {
 
 	private static boolean filterClass(Class clazz) {
 		return String.class.equals(clazz) || State.class.equals(clazz);
+	}
+
+	@Override
+	public T findOne(T filter) {
+		T result = null;
+		
+		List<T> findBy = findBy(filter);
+		if (findBy.size() > 1) {
+			throw new DaoError("More than one object found");
+		}
+	
+		if (!findBy.isEmpty()) {
+			result = findBy.get(0);
+		}
+		
+		return result;
 	}
 	/* (non-Javadoc)
 	 * @see nb.server.dao.BaseDao#findBy(nb.shared.model.BaseObject)

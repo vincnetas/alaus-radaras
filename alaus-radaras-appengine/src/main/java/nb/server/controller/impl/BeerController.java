@@ -28,7 +28,7 @@ import com.google.inject.Singleton;
  *
  */
 @Singleton
-@Controller(path="/beer/*")
+@Controller
 public class BeerController {
 
     @Inject

@@ -70,6 +70,9 @@ public class NbServletModule extends MvcModule {
 	 */
 	@Override
 	protected void configureControllers() {
+		registerGlobalInterceptor(UserInterceptor.class);
+		bind(com.google.appengine.api.users.UserService.class).toInstance(UserServiceFactory.getUserService()); 
+		
 		bind(BeerDao.class).to(BeerDaoImpl.class);
 		bind(PlaceDao.class).to(PlaceDaoImpl.class);
 		bind(CompanyDao.class).to(CompanyDaoImpl.class);
@@ -101,6 +104,7 @@ public class NbServletModule extends MvcModule {
 		
 		control("/home").withView("view/home.jsp");
 		control("/about").withView("view/about.jsp");
+		control("/newPlace").withView("view/newPlace.jsp");
 		
 		/*
 		 * Legacy
@@ -111,7 +115,7 @@ public class NbServletModule extends MvcModule {
         bind(alaus.radaras.server.dao.BeerDao.class).to(alaus.radaras.server.dao.impl.BeerDaoImpl.class);
         bind(BrandDao.class).to(BrandDaoImpl.class);
         bind(IPLocator.class).to(IPLocatorImpl.class);
-        bind(com.google.appengine.api.users.UserService.class).toInstance(UserServiceFactory.getUserService());        
+               
         bind(PubService.class).to(PubServiceImpl.class);
         bind(alaus.radaras.server.dao.BeerService.class).to(alaus.radaras.server.dao.impl.BeerServiceImpl.class);
         bind(BrandService.class).to(BrandServiceImpl.class);
