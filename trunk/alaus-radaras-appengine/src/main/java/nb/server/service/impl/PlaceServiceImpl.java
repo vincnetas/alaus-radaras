@@ -5,7 +5,7 @@ package nb.server.service.impl;
 
 import java.util.List;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.PlaceDao;
 import nb.server.service.PlaceService;
 import nb.shared.model.Place;
@@ -25,7 +25,7 @@ public class PlaceServiceImpl extends BaseServiceImpl<Place> implements PlaceSer
 	 * @see nb.server.service.impl.BaseServiceImpl#getBaseDao()
 	 */
 	@Override
-	public BaseDao<Place> getBaseDao() {
+	public BaseHistoryDao<Place> getBaseDao() {
 		return getPlaceDao();
 	}
 

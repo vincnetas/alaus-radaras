@@ -7,8 +7,7 @@ import nb.shared.model.BaseObject;
 import nb.shared.model.BaseObject.State;
 
 
-
-public interface BaseDao<T extends BaseObject> {
+public interface BaseHistoryDao<T extends BaseObject> {
 
 	T create(T object);
 	

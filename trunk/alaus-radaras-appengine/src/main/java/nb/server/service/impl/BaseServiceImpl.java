@@ -6,7 +6,7 @@ package nb.server.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.IdProvider;
 import nb.server.dao.impl.DaoError;
 import nb.server.service.BaseService;
@@ -248,7 +248,7 @@ public abstract class BaseServiceImpl<T extends BaseObject> implements
 		this.userService = userService;
 	}
 
-	public abstract BaseDao<T> getBaseDao();
+	public abstract BaseHistoryDao<T> getBaseDao();
 
 	/**
 	 * @return the roleHandler

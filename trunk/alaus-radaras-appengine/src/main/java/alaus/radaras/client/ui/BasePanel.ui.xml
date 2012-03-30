@@ -19,6 +19,7 @@
 
 	<g:AbsolutePanel width="100%" height="100%">
 		<g:at left="0" top="0">
+			<r:LogoPanel/>
 		</g:at>
 		<g:at left="30" top="487">
 			<r:LogoPanel/>

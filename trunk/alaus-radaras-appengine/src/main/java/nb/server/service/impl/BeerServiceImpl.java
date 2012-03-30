@@ -5,7 +5,7 @@ package nb.server.service.impl;
 
 import java.util.List;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.BeerDao;
 import nb.server.service.BeerService;
 import nb.shared.model.Beer;
@@ -40,7 +40,7 @@ public class BeerServiceImpl extends BaseServiceImpl<Beer> implements
 
 
 	@Override
-	public BaseDao<Beer> getBaseDao() {
+	public BaseHistoryDao<Beer> getBaseDao() {
 		return getBeerDao();
 	}
 
