@@ -18,7 +18,7 @@ import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.IdProvider;
 import nb.shared.model.BaseObject;
 import nb.shared.model.BaseObject.State;
@@ -34,7 +34,7 @@ import com.google.inject.Inject;
  * @author Vincentas
  *
  */
-public abstract class BaseDaoImpl<T extends BaseObject> extends DataStoreTemplate implements BaseDao<T>{
+public abstract class BaseHistoryDaoImpl<T extends BaseObject> extends DataStoreTemplate implements BaseHistoryDao<T>{
 
 	@Inject
 	private IdProvider idProvider;

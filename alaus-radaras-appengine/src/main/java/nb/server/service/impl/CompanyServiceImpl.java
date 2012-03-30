@@ -5,7 +5,7 @@ package nb.server.service.impl;
 
 import java.util.List;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.BeerDao;
 import nb.server.dao.CompanyDao;
 import nb.server.service.CompanyService;
@@ -42,7 +42,7 @@ public class CompanyServiceImpl extends BaseServiceImpl<Company> implements Comp
 	 * @see nb.server.service.impl.BaseServiceImpl#getBaseDao()
 	 */
 	@Override
-	public BaseDao<Company> getBaseDao() {
+	public BaseHistoryDao<Company> getBaseDao() {
 		return getCompanyDao();
 	}
 

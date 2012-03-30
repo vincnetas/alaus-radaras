@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import nb.server.dao.BaseDao;
+import nb.server.dao.BaseHistoryDao;
 import nb.shared.model.BaseObject;
 import nb.shared.model.BaseObject.State;
 import alaus.radaras.shared.model.Updatable;
@@ -16,7 +16,7 @@ import alaus.radaras.shared.model.Updatable;
  * @author Vincentas Vienozinskis
  *
  */
-public abstract class BaseDaoBridge<T extends BaseObject, V extends Updatable> implements BaseDao<T> {
+public abstract class BaseDaoBridge<T extends BaseObject, V extends Updatable> implements BaseHistoryDao<T> {
 
     protected abstract alaus.radaras.server.dao.BaseDao<V> getBaseDao();
     

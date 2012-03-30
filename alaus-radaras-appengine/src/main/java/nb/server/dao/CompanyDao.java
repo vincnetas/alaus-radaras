@@ -9,6 +9,6 @@ import nb.shared.model.Company;
  * @author Vincentas
  *
  */
-public interface CompanyDao extends BaseDao<Company> {
+public interface CompanyDao extends BaseHistoryDao<Company> {
 
 }

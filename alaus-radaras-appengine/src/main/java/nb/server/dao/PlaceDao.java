@@ -11,7 +11,7 @@ import nb.shared.model.Place;
  * @author Vincentas
  *
  */
-public interface PlaceDao extends BaseDao<Place> {
+public interface PlaceDao extends BaseHistoryDao<Place> {
 
 	List<Place> acPlace(String title, int max);
 
