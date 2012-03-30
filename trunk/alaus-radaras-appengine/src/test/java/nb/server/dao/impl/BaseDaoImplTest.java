@@ -10,8 +10,8 @@ import java.util.List;
 
 import nb.server.dao.BaseDao;
 import nb.server.guice.NbServletModule;
-import nb.shared.model.BaseObject;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject;
+import nb.shared.model.BaseHistoryObject.State;
 
 import org.junit.After;
 import org.junit.Before;
@@ -24,7 +24,7 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public abstract class BaseDaoImplTest<T extends BaseObject> {
+public abstract class BaseDaoImplTest<T extends BaseHistoryObject> {
 
 	private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	

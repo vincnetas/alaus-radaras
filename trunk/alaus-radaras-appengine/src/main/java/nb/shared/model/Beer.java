@@ -12,7 +12,7 @@ import javax.jdo.annotations.Persistent;
  * 
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
-public class Beer extends BaseObject {
+public class Beer extends BaseHistoryObject {
 
 	/**
 	 * Beer title in original language.

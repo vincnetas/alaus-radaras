@@ -16,7 +16,7 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
 @Inheritance(strategy=InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class BaseObject implements Serializable {
+public abstract class BaseHistoryObject implements Serializable {
 
 	public enum State {SUGGESTION, CURRENT, HISOTRY, REJECTED, DELETED};
 	
@@ -227,8 +227,8 @@ public abstract class BaseObject implements Serializable {
 	public boolean equals(Object obj) {
 		boolean result = false;
 		
-		if (obj instanceof BaseObject) {
-			result = getId().equals(((BaseObject)obj).getId());
+		if (obj instanceof BaseHistoryObject) {
+			result = getId().equals(((BaseHistoryObject)obj).getId());
 		}
 		
 		return result;

@@ -4,7 +4,7 @@
 package nb.server.service.impl;
 
 import nb.server.service.RoleHandler;
-import nb.shared.model.BaseObject;
+import nb.shared.model.BaseHistoryObject;
 import nb.shared.model.User;
 import nb.shared.model.User.Role;
 
@@ -18,7 +18,7 @@ public class RoleHandlerImpl implements RoleHandler {
 	 * @see nb.server.service.RoleHandler#canSuggest(nb.shared.model.User, nb.shared.model.BaseObject)
 	 */
 	@Override
-	public boolean canSuggest(User user, BaseObject object) {
+	public boolean canSuggest(User user, BaseHistoryObject object) {
 		/*
 		 * Everyone can suggest
 		 */
@@ -29,7 +29,7 @@ public class RoleHandlerImpl implements RoleHandler {
 	 * @see nb.server.service.RoleHandler#canReject(nb.shared.model.User, nb.shared.model.BaseObject)
 	 */
 	@Override
-	public boolean canReject(User user, BaseObject object) {
+	public boolean canReject(User user, BaseHistoryObject object) {
 		if (user.getRole().equals(Role.ADMIN)) {
 			return true;
 		}
@@ -45,7 +45,7 @@ public class RoleHandlerImpl implements RoleHandler {
 	 * @see nb.server.service.RoleHandler#canDelete(nb.shared.model.User, nb.shared.model.BaseObject)
 	 */
 	@Override
-	public boolean canDelete(User user, BaseObject object) {
+	public boolean canDelete(User user, BaseHistoryObject object) {
 		if (user.getRole().equals(Role.ADMIN)) {
 			return true;
 		}
@@ -61,7 +61,7 @@ public class RoleHandlerImpl implements RoleHandler {
 	 * @see nb.server.service.RoleHandler#canApprove(nb.shared.model.User, nb.shared.model.BaseObject)
 	 */
 	@Override
-	public boolean canApprove(User user, BaseObject object) {
+	public boolean canApprove(User user, BaseHistoryObject object) {
 		if (user.getRole().equals(Role.ADMIN)) {
 			return true;
 		}

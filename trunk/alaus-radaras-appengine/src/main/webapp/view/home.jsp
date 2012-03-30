@@ -13,7 +13,7 @@
 </head>
 <body>
 	<jsp:include page="/jsp/header.jsp"/>
-
+		
 	<div class="container box homeInputBeer">
 		<span>Noriu alaus</span> <input type="text" id="beerSearchInput" placeholder="įvesk pavadinimą" /><sub>(<a href="/beers">rodyk visus</a>)</sub>
 	</div>

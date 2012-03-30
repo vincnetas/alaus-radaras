@@ -12,8 +12,8 @@ import nb.server.dao.impl.DaoError;
 import nb.server.service.BaseService;
 import nb.server.service.RoleHandler;
 import nb.server.service.UserService;
-import nb.shared.model.BaseObject;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject;
+import nb.shared.model.BaseHistoryObject.State;
 import nb.shared.model.User;
 
 import com.google.inject.Inject;
@@ -22,7 +22,7 @@ import com.google.inject.Inject;
  * @author Vincentas
  * 
  */
-public abstract class BaseServiceImpl<T extends BaseObject> implements
+public abstract class BaseServiceImpl<T extends BaseHistoryObject> implements
 		BaseService<T> {
 
 	@Inject

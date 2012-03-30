@@ -11,7 +11,7 @@ import javax.jdo.annotations.Persistent;
  *
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION, detachable="true")
-public class Company extends BaseObject {
+public class Company extends BaseHistoryObject {
 
 	/**
 	 * Company title in original language.

@@ -20,8 +20,8 @@ import javax.jdo.Query;
 
 import nb.server.dao.BaseHistoryDao;
 import nb.server.dao.IdProvider;
-import nb.shared.model.BaseObject;
-import nb.shared.model.BaseObject.State;
+import nb.shared.model.BaseHistoryObject;
+import nb.shared.model.BaseHistoryObject.State;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -34,7 +34,7 @@ import com.google.inject.Inject;
  * @author Vincentas
  *
  */
-public abstract class BaseHistoryDaoImpl<T extends BaseObject> extends DataStoreTemplate implements BaseHistoryDao<T>{
+public abstract class BaseHistoryDaoImpl<T extends BaseHistoryObject> extends DataStoreTemplate implements BaseHistoryDao<T>{
 
 	@Inject
 	private IdProvider idProvider;
