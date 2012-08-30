@@ -1,0 +1,6 @@
+#Mon Sep 05 23:03:41 EEST 2011
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=C\:/runit/workspace/alaus-radaras-appengine/client-lib/gwt-maps.jar
+launchConfigExternalUrlPrefix=
+warSrcDir=src/main/webapp
+warSrcDirIsOutput=true

@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:r="urn:import:alaus.radaras.client.ui">
+	<ui:style>
+		.addButton {
+			margin: 10px;
+			}
+	</ui:style>
+	<g:VerticalPanel width="300px">
+		<r:CityPanel></r:CityPanel>
+		<g:Button styleName="{style.addButton}" ui:field="addPubButton">Add Pub</g:Button>
+	</g:VerticalPanel>
+</ui:UiBinder> 

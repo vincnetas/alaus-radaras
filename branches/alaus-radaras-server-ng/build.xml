@@ -1,0 +1,7 @@
+<project default="copy">
+	<target name="copy">
+		<copydir dest="target/radaras-1.0.0/jsp" src="src/main/webapp/jsp"/>
+		<copydir dest="target/radaras-1.0.0/view" src="src/main/webapp/view"/>
+		<copydir dest="target/radaras-1.0.0/css" src="src/main/webapp/css"/>
+	</target>
+</project>
